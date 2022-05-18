@@ -1,0 +1,122 @@
+{{!< main}}
+{{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
+
+<div class="page blog-page">
+	<div class="main">
+		<aside class="categories">
+			<ul>
+				<h3>CATEGORIES</h3>
+                <li>
+                    <a href="/">All Posts</a>
+                </li>
+
+                {{#get "tags"}}
+                    {{#foreach tags}}
+                        <li>
+                            <a href="{{ url }}">{{ name }}</a>
+                        </li>
+                    {{/foreach}}
+                {{/get}}
+			</ul>
+
+			<!-- Pending when there is enough content for this -->
+			<!-- <form>
+					<img src="../../assets/images/search-icon.svg" alt="search icon" />
+					<input type="search" placeholder="Search" />
+				</form> -->
+
+			<div class="social">
+				<h3>Follow Us</h3>
+
+				<ul class="socials">
+					<li>
+						<a target="_blank" rel="noopener noreferrer" href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp..ylfYMCV9s038QL0IUQ">
+							<img src="../../assets/images/slack-grey-icon.svg" alt="slack logo" />
+						</a>
+					</li>
+					<li>
+						<a target="_blank" rel="noopener noreferrer" href="https://twitter.com/fraindev"><img src="../../assets/images/twitter-grey-icon.svg" alt="twitter logo" /></a>
+					</li>
+					<li>
+						<a target="_blank" rel="noopener noreferrer" href="https://github.com/frain-dev/convoy"><img src="../../assets/images/github-grey-icon.svg" alt="mail logo" /></a>
+					</li>
+				</ul>
+			</div>
+		</aside>
+
+		<main>
+			<div class="dropdown-container">
+				<h1>
+					All Posts
+					<button id="categories-button">
+						<img src="../../assets/images/angle-down-black-icon.svg" alt="arrow down iconn" />
+					</button>
+				</h1>
+				<ul class="dropdown" id="categories">
+                    {{#get "tags"}}
+                        {{#foreach tags}}
+                            <li>
+                                <a href="{{ url }}">{{ name }}</a>
+                            </li>
+                        {{/foreach}}
+                    {{/get}}
+				</ul>
+			</div>
+
+			{{!-- <div class="featured card posts" v-if="featurePosts.length > 0 && !tag">
+				<div class="post">
+					<div class="post--head">
+						<div class="tag">FEATURED</div>
+						<div class="date">{{ featurePosts[0].published_at | date }}</div>
+					</div>
+					<nuxt-link :to="'/blog/' + featurePosts[0].slug">
+						<h3 class="post--title single-feature">{{ featurePosts[0].title }}</h3>
+					</nuxt-link>
+					<p class="post--body single-feature">{{ featurePosts[0].excerpt }}...</p>
+					<div class="post--footer single-feature">
+						<a :href="featurePosts[0].primary_author.twitter ? 'http://twitter.com/' + featurePosts[0].primary_author.twitter : ''" target="_blank" class="post--author">
+							<div class="img">
+								<img :src="featurePosts[0].primary_author.profile_image" alt="author imge" />
+							</div>
+							<div>
+								<h5>{{ featurePosts[0].primary_author.name }}</h5>
+								<p>{{ featurePosts[0].primary_author.meta_title }} Convoy</p>
+							</div>
+						</a>
+						<nuxt-link :to="'/blog/' + featurePosts[0].slug">
+							Read More
+							<img src="../../assets/images/angle-right-primary.svg" alt="read more icon" />
+						</nuxt-link>
+					</div>
+				</div>
+				<div class="img">
+					<img :src="featurePosts[0].feature_image" alt="featured post img" />
+				</div>
+			</div> --}}
+
+            {{!-- <main id="site-main" class="site-main outer"> --}}
+
+            <div class="posts post-feed{{#match @custom.feed_layout "List"}} list{{/match}}">
+                {{#foreach posts}}
+
+                    {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+                    {{> "post-card"}}
+
+                {{/foreach}}
+            </div>
+
+            {{!-- </main> --}}
+
+			{{!-- <div class="posts">
+				<Post v-for="(post, index) in posts.slice(0, 2)" :key="index" :post="post" />
+			</div> --}}
+		</main>
+	</div>
+</div>
+
+<script>
+    const categoriesButton = document.querySelector('#categories-button');
+    const categories = document.querySelector('#categories');
+
+    categoriesButton.addEventListener('click', () => categories.classList.toggle('show'));
+</script>
