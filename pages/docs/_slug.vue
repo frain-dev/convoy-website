@@ -3,7 +3,7 @@
 		<article class="content">
 			<nuxt-content :document="pageData"></nuxt-content>
 
-			<div class="blog-post--footer">
+			<div class="blog-post--footer" v-if="pageData.slug !== '404'">
 				<a :href="'https://github.com/frain-dev/convoy-website/tree/main/content' + this.$route.path + '.md'" target="_blank" referrerpolicy="noreferrer" class="edit-link">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-1">
 						<path

@@ -329,7 +329,7 @@ export default {
 			isSubmitingloadingEarlyAccessForm: false,
 			earlyAccessFormButtonText: 'Get Started',
 			earlyAccessEmail: '',
-			cloudFeatures: ['Create Account', 'Manage Webhooks', 'View Metrics', 'Create Endpoints', 'Create Projects'],
+			cloudFeatures: ['Create Account', 'Manage Webhooks', 'View Metrics'],
 			tabs: [
 				{ label: 'Convoy Cloud', id: 'cloud' },
 				{ label: 'Open Core', id: 'open' },
@@ -854,8 +854,8 @@ header {
 	}
 }
 .cloud {
-	margin: 20px auto;
-	margin-bottom: 130px;
+	margin: 20px auto 130px;
+	width: 96%;
 
 	.container {
 		background: linear-gradient(180deg, #2c2f3e 0%, #422f41 100%);
@@ -866,6 +866,7 @@ header {
 		min-height: 500px;
 		color: #fff;
 		position: relative;
+
 		h2 {
 			font-weight: bold;
 			font-size: 32px;
@@ -873,6 +874,7 @@ header {
 			letter-spacing: 0.2px;
 			margin-bottom: 16px;
 		}
+
 		p {
 			font-size: 16px;
 			line-height: 24px;
@@ -883,6 +885,7 @@ header {
 			margin-left: 20px;
 			margin-right: 20px;
 		}
+
 		@media (min-width: $desktopBreakPoint) {
 			padding: 64px 120px;
 			min-height: 600px;
@@ -892,6 +895,7 @@ header {
 				line-height: 60px;
 				letter-spacing: 0.2px;
 			}
+
 			p {
 				font-size: 18px;
 				line-height: 32px;
@@ -903,12 +907,14 @@ header {
 				min-height: 96px;
 			}
 		}
+
 		@media (max-width: 425px) {
 			p {
 				min-height: 144px;
 			}
 		}
 	}
+
 	.tabs {
 		background: rgba(252, 252, 252, 0.16);
 		border-radius: 8.91px;
@@ -917,10 +923,12 @@ header {
 		display: flex;
 		flex-flow: row;
 		margin-bottom: 55px;
+
 		li {
 			button {
 				border-radius: 6.93px;
 				padding: 13px 8px;
+
 				span {
 					font-size: 13px;
 					line-height: 16px;
@@ -934,18 +942,21 @@ header {
 					transition: 0.3s ease-in-out;
 					background: #ffffff;
 					box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
+
 					span {
 						font-weight: 600;
 						transition: 0.3s ease-in-out;
 						color: #000624;
 					}
 				}
+
 				@media (min-width: $desktopBreakPoint) {
 					span {
 						font-size: 14px;
 						line-height: 16px;
 						min-width: 132px;
 					}
+
 					&.active {
 						span {
 							font-weight: 600;
@@ -955,31 +966,39 @@ header {
 			}
 		}
 	}
+
 	&-group-img {
 		margin-top: +60px;
 		margin-bottom: -500px;
+
 		img {
 			display: none;
+
 			&.small {
 				display: block;
 			}
 		}
+
 		@media (min-width: $desktopBreakPoint) {
 			img {
 				display: block;
+
 				&.small {
 					display: none;
 				}
 			}
 		}
 	}
+
 	&-features {
 		display: flex;
+
 		@media (max-width: $desktopBreakPoint) {
 			overflow-x: scroll;
 			-webkit-overflow-scrolling: touch;
 			scroll-behavior: smooth;
 		}
+
 		&_item {
 			background: rgba(255, 255, 255, 0.1);
 			border: 1px solid rgba(237, 241, 255, 0.05);
@@ -996,12 +1015,15 @@ header {
 			display: flex;
 			align-items: center;
 			white-space: nowrap;
+
 			&:not(:last-of-type) {
 				margin-right: 20px;
 			}
+
 			&:hover {
 				cursor: pointer;
 			}
+
 			img {
 				height: 24px;
 				width: 24px;
@@ -1009,6 +1031,7 @@ header {
 			}
 		}
 	}
+
 	&-get-started {
 		background: rgba(8, 43, 145, 0.07);
 		width: 92%;
@@ -1020,30 +1043,36 @@ header {
 		align-items: flex-end;
 		justify-content: center;
 		padding-bottom: 32px;
+
 		@media (max-width: 1030px) {
 			width: 88%;
 			height: 300px;
 		}
+
 		@media (max-width: 768px) {
 			height: 470px;
 			width: 92%;
 		}
+
 		@media (min-width: 1080px) {
 			height: 350px;
 			width: 1064px;
 		}
+
 		@media (max-width: 425px) {
 			width: 86%;
 			height: 315px;
 		}
 	}
 }
+
 .get-started {
 	background: linear-gradient(180deg, #2c2f3e 0%, #422f41 100%);
 	box-shadow: 0px 4px 8px rgba(12, 26, 75, 0.1), 0px 10px 16px rgba(20, 37, 63, 0.06);
 	text-align: center;
 	color: #fff;
 	border-radius: 16px;
+
 	@media (min-width: $desktopBreakPoint) {
 		padding: 56px 196px;
 		margin-bottom: 700px;
@@ -1054,10 +1083,12 @@ header {
 			line-height: 60px;
 			letter-spacing: 0.2px;
 		}
+
 		p {
 			font-size: 18px;
 			line-height: 32px;
 		}
+
 		a {
 			height: 56px;
 			background: #477db3;
@@ -1068,6 +1099,7 @@ header {
 			font-size: 16px;
 			line-height: 24px;
 			min-width: 227px;
+
 			img {
 				margin-left: 16px;
 				height: 12px;
@@ -1075,6 +1107,7 @@ header {
 		}
 	}
 }
+
 .play-ground {
 	padding-bottom: 300px;
 	position: relative;
@@ -1182,6 +1215,7 @@ header {
 		}
 	}
 }
+
 button,
 a {
 	&.primary {
@@ -1199,12 +1233,14 @@ a {
 		white-space: nowrap;
 		color: #fff;
 		transition: 0.3s ease-in-out all;
+
 		img {
 			margin-left: 12px;
 			height: 12px;
 			width: 12px;
 		}
 	}
+
 	&:hover {
 		cursor: pointer;
 	}
@@ -1272,7 +1308,9 @@ a {
 }
 
 .start-sending {
-	margin-bottom: 130px;
+	margin: 0 auto 130px;
+	width: 96%;
+
 	.container {
 		background: url('~/assets/images/Base.png');
 		background-size: cover;
@@ -1285,13 +1323,16 @@ a {
 		flex-flow: column;
 		align-items: center;
 		text-align: center;
+
 		@media (max-width: 768px) {
 			padding: 56px 20px;
 			margin: 20px;
 		}
+
 		@media (min-width: $desktopBreakPoint) {
 			padding: 56px 173px;
 		}
+
 		h2 {
 			color: #fff;
 			letter-spacing: 0.2px;
@@ -1300,6 +1341,7 @@ a {
 			line-height: 60px;
 			margin-bottom: 16px;
 		}
+
 		p {
 			font-size: 18px;
 			line-height: 32px;

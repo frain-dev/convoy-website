@@ -255,13 +255,14 @@ main {
 	overflow: hidden;
 	position: relative;
 	max-width: 970px;
-	align-items: flex-end;
+	display: block;
 
 	@media (min-width: $desktopBreakPoint) {
 		padding: 56px 0 0 56px;
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;
+		align-items: flex-end;
 	}
 
 	& > .img {
@@ -325,6 +326,17 @@ main {
 				margin-bottom: 0;
 			}
 		}
+	}
+}
+
+aside {
+	width: 240px;
+	display: none;
+
+	@media (min-width: $desktopBreakPoint) {
+		display: block;
+		padding-left: 20px;
+		padding-right: 32px;
 	}
 }
 </style>

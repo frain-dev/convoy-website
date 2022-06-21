@@ -27,9 +27,6 @@
 
 				<ul :class="showMenu ? 'show' : ''">
 					<li>
-						<a href="/#features">Features</a>
-					</li>
-					<li>
 						<nuxt-link to="/blog">Blog</nuxt-link>
 					</li>
 					<li>
@@ -105,6 +102,7 @@ nav {
 	&.extraPadding {
 		padding: 63px 20px 21px 20px;
 	}
+
 	@media (min-width: $desktopBreakPoint) {
 		padding: 32px 20px;
 		&.extraPadding {
@@ -115,6 +113,7 @@ nav {
 	& > div {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 		max-width: 1106px;
 		margin: auto;
 	}
@@ -155,7 +154,6 @@ nav {
 		width: 256px;
 		text-align: left;
 		height: 0;
-		overflow-y: hidden;
 		background: #ffffff;
 		box-shadow: 0px 2px 4px rgba(12, 26, 75, 0.04), 0px 4px 20px -2px rgba(50, 50, 71, 0.08);
 		border-radius: 10px;
@@ -163,8 +161,7 @@ nav {
 
 		&.show {
 			padding-top: 20px;
-			height: 390px;
-			overflow-y: auto;
+			height: fit-content;
 			display: block;
 		}
 
@@ -288,7 +285,7 @@ nav {
 		top: 0;
 		left: 0;
 		background: #477db3;
-		width: 100vw;
+		width: 100%;
 		height: 40px;
 		padding: 7px 11px;
 		display: flex;

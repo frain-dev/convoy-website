@@ -2,6 +2,7 @@
 	<div>
 		<Header></Header>
 		<header></header>
+
 		<div class="page">
 			<h2>Convoy Open-Core</h2>
 			<p class="subtitle">Find the guides, samples, and references you need to use Convoy to start sending out and receiving webhook events as fast as possible.</p>
@@ -84,10 +85,14 @@
 				</div>
 			</section>
 		</div>
+
+		<Footer></Footer>
 	</div>
 </template>
 
 <style lang="scss" scoped>
+$desktopBreakPoint: 880px;
+
 header {
 	background: url('~/assets/images/docs-bg.svg'), no-repeat;
 	background-size: cover;
@@ -99,6 +104,7 @@ header {
 	max-width: 1150px;
 	margin: auto;
 	margin-top: -270px;
+	padding: 0 20px;
 }
 
 h2 {
@@ -126,14 +132,14 @@ p.subtitle {
 	background: #fcfcfc;
 	box-shadow: 0px 2px 4px rgba(12, 26, 75, 0.04), 0px 4px 20px -2px rgba(50, 50, 71, 0.08);
 	border-radius: 8px;
-	padding: 33px 0 0 61px;
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	flex-wrap: nowrap;
+	padding: 25px;
 
-	@media (max-width: 425px) {
-		padding: 25px 20px;
+	@media (min-width: $desktopBreakPoint) {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		flex-wrap: nowrap;
+		padding: 33px 0 0 61px;
 	}
 
 	h4 {
@@ -148,8 +154,11 @@ p.subtitle {
 		font-size: 14px;
 		line-height: 22px;
 		color: #737a91;
-		max-width: 489px;
 		margin-bottom: 16px;
+
+		@media (min-width: $desktopBreakPoint) {
+			max-width: 489px;
+		}
 	}
 
 	a {
