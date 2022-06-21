@@ -61,7 +61,7 @@ Global Flags:
       --redis string    Redis dsn
 ```
 
-#### Command Flags
+### Command Flags
 
 - `--config`: This is the path to the configuration file for the instance. Defaults to `./convoy.json`
 
@@ -75,7 +75,7 @@ Global Flags:
 
 Command: `convoy server`
 
-#### Synopsis
+### Synopsis
 
 ```bash[bash]
 > convoy server --help
@@ -134,11 +134,11 @@ Global Flags:
       --redis string    Redis dsn
 ```
 
-#### Description
+### Description
 
 The server command runs convoy’s REST API. The REST API is the primary entry point to using convoy and this command is likely the most important command.
 
-#### Command Flags
+### Command Flags
 
 - `--port`: This flag specifies the port number the server listens on. This is a required parameter that must be configured from one of the configuration sources.
 
@@ -146,7 +146,7 @@ The server command runs convoy’s REST API. The REST API is the primary entry p
 
 - `--api-auth`: This flag specifies an array of `API Key` authentication credentials. E.g.
 
-```bash[bash]
+```json[json]
 [
 	{
 		"api_key": "api-key",
@@ -160,7 +160,7 @@ The server command runs convoy’s REST API. The REST API is the primary entry p
 
 - `--basic-auth`: This flag specifies an array of `Basic Auth` authentication credentials. E.g.
 
-```bash[bash]
+```json[json]
 [
 	{
 		"username": "username",
@@ -213,7 +213,7 @@ The server command runs convoy’s REST API. The REST API is the primary entry p
 
 Command: `convoy worker`
 
-#### Synopsis
+### Synopsis
 
 ```bash[bash]
 > convoy worker -h
@@ -233,13 +233,13 @@ Global Flags:
       --redis string    Redis dsn
 ```
 
-#### Description
+### Description
 
 The worker command is used when running convoy in the micro-services mode. It does the job by simply reading event deliveries of the queue and passing them to consumers to process. It is possible to run multiple worker processes to scale up your workers.
 
 This command requires all Global configurations to be set either through the CLI or the configuration file. This is because the workers need to connect to both the database and the queues to perform its duty.
 
-#### Command Flags
+### Command Flags
 
 - `--help`: Get help on the worker command.
 
@@ -249,7 +249,7 @@ This command requires all Global configurations to be set either through the CLI
 
 Command: `convoy retry`
 
-#### Synopsis
+### Synopsis
 
 ```bash[bash]
 > convoy retry -h
@@ -270,11 +270,11 @@ Global Flags:
       --redis string    Redis dsn
 ```
 
-#### Description
+### Description
 
 At core, convoy is an asynchronous messaging service. It relies on message brokers to carry out its duty. This command is used to filter event deliveries that match the filters set; it will purge the queues for all matched event deliveries and re-enqueue them all.
 
-#### Command Flags
+### Command Flags
 
 - `--status`: This is used to specify the status of event delivery to re-queue.
 
@@ -285,7 +285,7 @@ At core, convoy is an asynchronous messaging service. It relies on message broke
 
 Command: `convoy queue`
 
-#### Synopsis
+### Synopsis
 
 ```bash[bash]
 > convoy queue
@@ -320,7 +320,7 @@ Global Flags:
       --redis string    Redis dsn
 ```
 
-#### Description
+### Description
 
 The `queue` command is used to debug the queue for a running cluster. 
 
@@ -328,7 +328,7 @@ The `queue` command is used to debug the queue for a running cluster.
 
 Command: `convoy scheduler`
 
-#### Synopsis
+### Synopsis
 
 ```bash[bash]
 > convoy scheduler -h
@@ -349,11 +349,11 @@ Global Flags:
       --redis string    Redis dsn
 ```
 
-#### Description
+### Description
 
 The scheduler runs as an automated `retrier`. It performs the same duty as `convoy retry` but it runs in the background and performs the retry function at a predefined interval.
 
-#### Command Flags
+### Command Flags
 
 - `--time`: This is used to specify how far in the past to look for event deliveries. It accepts a duration string. Duration strings are like integers followed by a time unit. E.g. `1h`, `300ms`, or `2h45m` etc.
 

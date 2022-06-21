@@ -72,7 +72,7 @@ You can check the [config page](./docs/configuration) for full details on config
 
 Now, let's send webhooks. We maintain an openapi spec in the repository, you can download it [here](https://raw.githubusercontent.com/frain-dev/convoy/main/docs/v3/openapi3.json) and import to Insomnia or Postman to get started.
 
-### Create Application
+#### Create Application
 
 ```json[Sample Payload]
 {
@@ -108,7 +108,7 @@ $ curl \
 }
 ```
 
-### Add Endpoint
+#### Add Endpoint
 
 ```json[Sample Payload]
 {
@@ -141,7 +141,7 @@ $ curl \
 }
 ```
 
-### Send Event
+#### Send Event
 
 ```json[Sample Payload]
 {

@@ -47,7 +47,7 @@ export default {
 	max-width: 378px;
 	width: 100%;
 	position: relative;
-	margin-right: 20px;
+	margin: 0 20px;
 }
 
 .docs-search--dropdown {
@@ -72,6 +72,4 @@ export default {
 		}
 	}
 }
-
-
 </style>
