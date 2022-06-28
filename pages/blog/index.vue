@@ -4,7 +4,7 @@
 			<ul>
 				<h3>CATEGORIES</h3>
 
-				<li v-for="(tag, index) in tags" :key="'tag' + index" @click="currentTag = tag">
+				<li v-for="(tag, index) in tags" :key="'tag' + index">
 					<nuxt-link :to="tag !== 'All Posts' ? '/blog?tag=' + tag : '/blog'">{{ tag }}</nuxt-link>
 				</li>
 			</ul>
@@ -37,7 +37,7 @@
 		<main>
 			<div class="dropdown-container">
 				<h1>
-					{{ currentTag }}
+					{{ tag !== 'Convoy' ? tag : 'All Posts' }}
 					<button @click="showCategories = !showCategories">
 						<img src="~/assets/images/angle-down-black-icon.svg" alt="arrow down iconn" />
 					</button>
@@ -49,7 +49,7 @@
 				</ul>
 			</div>
 
-			<div class="featured card posts" v-if="featurePosts.length > 0 && !tag">
+			<div class="featured card posts" v-if="featurePosts.length > 0">
 				<div class="post">
 					<div class="post--head">
 						<div class="tag">FEATURED</div>
@@ -114,8 +114,7 @@ export default {
 			showCategories: false,
 			earlyAccessEmail: '',
 			isSubmitingloadingEarlyAccessForm: false,
-			currentTag: 'All Posts',
-			tags: ['All Posts', 'App Portal', 'Convoy', 'UI']
+			tags: ['All Posts', 'App Portal', 'UI']
 		};
 	},
 	watch: {
@@ -124,14 +123,18 @@ export default {
 		}
 	},
 	async asyncData({ $content, route }) {
+		const tag = route.query?.tag ? route.query?.tag : 'Convoy';
+
 		const posts = await $content('articles')
-			.where({ tags: { $contains: route.query?.tag ? route.query?.tag : 'Convoy' }, featured: { $eq: false } })
+			.where({ tags: { $contains: tag }, featured: { $eq: false } })
 			.sortBy('published_at', 'desc')
 			.fetch();
+
 		const featurePosts = await $content('articles')
 			.where({ featured: { $eq: true } })
 			.fetch();
-		return { posts, featurePosts, tag: route.query?.tag };
+
+		return { posts, featurePosts, tag };
 	},
 	methods: {
 		async requestAccess() {
@@ -159,11 +162,13 @@ export default {
 			}
 		},
 		async filterPosts(route) {
-			this.tag = route;
+			this.tag = route ? route : 'Convoy';
+
 			const filteredPosts = await this.$content('articles')
-				.where({ tags: { $contains: this.tag } })
+				.where({ tags: { $contains: this.tag }, featured: { $eq: false } })
 				.sortBy('published_at', 'desc')
 				.fetch();
+
 			this.posts = filteredPosts;
 		}
 	},
