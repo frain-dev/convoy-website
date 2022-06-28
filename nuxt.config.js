@@ -1,11 +1,3 @@
-import GhostContentAPI from '@tryghost/content-api';
-
-const api = new GhostContentAPI({
-	url: 'https://convoy.ghost.io',
-	key: 'b9904af5cf9365f3c647cf2d8b',
-	version: 'v3'
-});
-
 const create = async feed => {
 	feed.options = {
 		title: 'Convoy',
@@ -155,6 +147,15 @@ export default {
 		'@nuxtjs/feed'
 	],
 
+	hooks: {
+		'content:file:beforeInsert': document => {
+			if (document.extension === '.md') {
+				const { time } = require('reading-time')(document.text);
+				document.readingTime = time;
+			}
+		}
+	},
+	
 	// Content module configuration: https://go.nuxtjs.dev/config-content
 	content: {
 		markdown: {
