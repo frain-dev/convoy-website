@@ -37,7 +37,7 @@
 		<main>
 			<div class="dropdown-container">
 				<h1>
-					{{currentTag}}
+					{{ currentTag }}
 					<button @click="showCategories = !showCategories">
 						<img src="~/assets/images/angle-down-black-icon.svg" alt="arrow down iconn" />
 					</button>
@@ -121,25 +121,17 @@ export default {
 	watch: {
 		async '$route.query'(route) {
 			await this.filterPosts(route.tag);
-		},
-		currentTag(v){
-			console.log(v)
 		}
 	},
 	async asyncData({ $content, route }) {
-		try {
-			const posts = await $content('articles')
-				.where({ tags: { $contains: route.query?.tag ? route.query?.tag : 'Convoy' }, featured: { $eq: false } })
-				.sortBy('published_at', 'desc')
-				.fetch();
-			const featurePosts = await $content('articles')
-				.where({ featured: { $eq: true } })
-				.fetch();
-			return { posts, featurePosts, tag: route.query?.tag };
-		} catch (error) {
-			const pageData = await $content('404').fetch();
-			return { pageData };
-		}
+		const posts = await $content('articles')
+			.where({ tags: { $contains: route.query?.tag ? route.query?.tag : 'Convoy' }, featured: { $eq: false } })
+			.sortBy('published_at', 'desc')
+			.fetch();
+		const featurePosts = await $content('articles')
+			.where({ featured: { $eq: true } })
+			.fetch();
+		return { posts, featurePosts, tag: route.query?.tag };
 	},
 	methods: {
 		async requestAccess() {
@@ -170,7 +162,7 @@ export default {
 			this.tag = route;
 			const filteredPosts = await this.$content('articles')
 				.where({ tags: { $contains: this.tag } })
-                .sortBy('published_at', 'desc')
+				.sortBy('published_at', 'desc')
 				.fetch();
 			this.posts = filteredPosts;
 		}
