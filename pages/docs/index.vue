@@ -16,10 +16,6 @@
 							Get started
 							<img src="~/assets/images/arrow-circle-right.svg" alt="arrow right" />
 						</nuxt-link>
-						<a target="_blank" href="https://convoy.readme.io/reference/introduction" class="api-reference">
-							Api Reference
-							<img src="~/assets/images/arrow-down-right-grey.svg" alt="arrow right" />
-						</a>
 					</div>
 				</div>
 

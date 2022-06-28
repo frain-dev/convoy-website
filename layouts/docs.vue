@@ -10,28 +10,14 @@
 				<img v-if="showMenu" src="~/assets/images/close-icon.svg" alt="close icon" width="24" />
 			</button>
 
-			<ul>
-				<li @click="showMenu = false">
-					<nuxt-link to="/docs/guide" @click="showMenu = false">Quick Start Guide</nuxt-link>
-				</li>
-				<li v-for="(page, index) in pages" :key="index">
-					<div v-show="page.id !== 'guide' && page.id !== 'index'" @click="showMenu = false">
-						<nuxt-link :to="'/docs/' + page.id">
-							<span>•</span>
-							{{ page.title }}
-						</nuxt-link>
-
-						<!-- Reviewing design -->
-						<!-- <ul v-show="page.toc.length > 0" class="" :class="{ show: currentPage == page.id }">
-							<li v-for="(subpage, index) in page.toc" :key="index">
-								<nuxt-link :to="{ path: '/docs/' + page.id, hash: '#' + subpage.id }">
-									{{ subpage.text }}
-								</nuxt-link>
-							</li>
-						</ul> -->
-					</div>
-				</li>
-			</ul>
+			<nav>
+				<ul>
+					<li @click="showMenu = false">
+						<nuxt-link to="/docs/guide" @click="showMenu = false">Quick Start Guide</nuxt-link>
+					</li>
+				</ul>
+				<sidebar-item :pages="pages"></sidebar-item>
+			</nav>
 		</aside>
 
 		<div class="main">
@@ -56,7 +42,10 @@
 </template>
 
 <script>
+import SidebarItem from '~/components/docs/SidebarItem.vue';
+
 export default {
+	components: { SidebarItem },
 	data() {
 		return {
 			pages: [],
@@ -69,10 +58,9 @@ export default {
 		}
 	},
 	async mounted() {
-		let pages = await this.$content('docs').only(['title', 'id', 'toc', 'order']).sortBy('order', 'asc').fetch();
+		let pages = await this.$content('docs').only(['title', 'id', 'order', 'children']).sortBy('order', 'asc').fetch();
 		pages = pages.sort((a, b) => a.order - b.order);
 		this.pages = pages;
-
 		this.watchScroll();
 	},
 	methods: {
@@ -82,21 +70,19 @@ export default {
 		watchScroll() {
 			document.querySelector('div.main').addEventListener('scroll', e => {
 				const headings = document.querySelectorAll('h2');
-
 				headings.forEach(heading => {
 					const rect = heading.getBoundingClientRect();
-
 					if (rect.top > 0 && rect.top < 200 && heading.id) {
 						const location = window.location.toString().split('#')[0];
 						history.replaceState(null, null, location + '#' + heading.id);
-
 						document.querySelectorAll('li.sub-menu').forEach(element => element.classList.remove('active'));
 						document.querySelector(`li.sub-menu#${heading.id}`).classList.add('active');
 					}
 				});
 			});
 		}
-	}
+	},
+	components: { SidebarItem }
 };
 </script>
 
@@ -190,43 +176,8 @@ aside {
 		margin: 0 0 0 0;
 	}
 
-	& > ul {
+	nav {
 		padding: 24px 0 24px 24px;
-
-		h3 {
-			padding: 0;
-			margin: 0 0 16px;
-		}
-
-		li {
-			font-size: 14px;
-			line-height: 16px;
-			margin-bottom: 30px;
-
-			li {
-				margin-bottom: 20px;
-			}
-
-			a,
-			button {
-				display: flex;
-				align-items: center;
-			}
-
-			span {
-				font-size: 20px;
-				margin-right: 10px;
-			}
-
-			img {
-				width: 16px;
-				margin-right: 10px;
-			}
-		}
-
-		ul {
-			margin: 16px 0 16px 40px;
-		}
 	}
 }
 
