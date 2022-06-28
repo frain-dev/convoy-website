@@ -6,11 +6,11 @@
 					<nuxt-link tag="button" to="/blog">Blog</nuxt-link>
 
 					<span class="breadcrumb--divider">|</span>
-					<span class="breadcrumb__tag">{{ blogPost.primary_tag.name }}</span>
+					<span class="breadcrumb__tag">{{ blogPost.primary_tag }}</span>
 				</div>
 
 				<div class="date">
-					{{ blogPost.reading_time }} min read
+					{{ blogPost.readingTime }} min read
 					<span><img src="~/assets/images/ellipse.svg" alt="ellipse" /></span>
 					{{ blogPost.published_at | date }}
 				</div>
@@ -21,7 +21,7 @@
 			<div class="post-page--author">
 				<a :href="blogPost.primary_author.twitter ? 'http://twitter.com/' + blogPost.primary_author.twitter : ''" target="_blank" class="author">
 					<div class="img">
-						<img :src="blogPost.primary_author.profile_image" alt="author imge" />
+						<img :src="require(`~/assets/profile-images/${blogPost.primary_author.name}.png`)" alt="author imge" />
 					</div>
 					<div>
 						<h5>{{ blogPost.primary_author.name }}</h5>
@@ -54,7 +54,7 @@
 			<div class="post-page--content">
 				<main>
 					<div class="post-page--body">
-						<div v-html="blogPost.html"></div>
+						<nuxt-content class="blog" :document="blogPost"></nuxt-content>
 					</div>
 				</main>
 			</div>
@@ -70,7 +70,6 @@
 </template>
 
 <script>
-import { getPost, getTwoPosts } from '../../api/blog';
 import Prism from 'prismjs';
 
 export default {
@@ -78,10 +77,16 @@ export default {
 	data: () => {
 		return {};
 	},
-	async asyncData({ params }) {
-		const blogPost = await getPost(params.slug);
-		const posts = await getTwoPosts(params.slug);
-		return { blogPost, posts };
+	async asyncData({ $content, params }) {
+		try {
+			const blogPost = await $content('articles/' + params.slug).fetch();
+			const posts = await $content('articles').limit(2).sortBy('published_at', 'desc').fetch();
+			blogPost.readingTime = Math.ceil(blogPost.readingTime / (1000 * 60))
+			return { blogPost, posts };
+		} catch (error) {
+			const pageData = await $content('404').fetch();
+			return { pageData };
+		}
 	},
 	mounted() {
 		Prism.highlightAll();
@@ -91,11 +96,11 @@ export default {
 			title: this.blogPost.title,
 			__dangerouslyDisableSanitizers: ['meta', 'script'],
 			meta: [
-				{ hid: 'description', name: 'description', content: this.blogPost.excerpt },
+				{ hid: 'description', name: 'description', content: this.blogPost.description },
 				{
 					hid: 'article:tag',
 					name: 'article:tag',
-					content: this.blogPost.primary_tag.name
+					content: this.blogPost.primary_tag
 				},
 				{
 					hid: 'twitter:label1',
@@ -128,7 +133,7 @@ export default {
 				{
 					hid: 'og:description',
 					name: 'og:description',
-					content: this.blogPost.excerpt
+					content: this.blogPost.description
 				},
 				{
 					hid: 'og:url',
@@ -143,7 +148,7 @@ export default {
 				{
 					hid: 'article:modified_time',
 					name: 'article:modified_time',
-					content: this.blogPost.updated_at
+					content: this.blogPost.updatedAt
 				},
 				{
 					hid: 'article:publisher',
@@ -173,7 +178,7 @@ export default {
 				{
 					hid: 'twitter:description',
 					name: 'twitter:description',
-					content: this.blogPost.excerpt
+					content: this.blogPost.description
 				},
 				{
 					hid: 'og:image',
@@ -188,7 +193,7 @@ export default {
 				{
 					hid: 'twitter:url',
 					name: 'twitter:url',
-					content: `https://getconvoy.io/blog/${this.postId}`
+					content: `https://getconvoy.io/blog/${this.blogPost.slug}`
 				}
 			],
 			link: [{ rel: 'canonical', href: `https://getconvoy.io/blog/${this.blogPost.slug}` }],
@@ -218,7 +223,7 @@ export default {
 					"headline": "Introducing Convoy",
 					"url": "https://getconvoy.io/blog/${this.blogPost.slug}",
 					"datePublished": "${this.blogPost.published_at}",
-					"dateModified": "${this.blogPost.updated_at}",
+					"dateModified": "${this.blogPost.updatedAt}",
 					"image": {
 						"@type": "ImageObject",
 						"url": "${this.blogPost.feature_image}",
@@ -226,7 +231,7 @@ export default {
 						"height": 1086
 					},
 					"keywords": "Convoy",
-					"description": "${this.blogPost.excerpt}"",
+					"description": "${this.blogPost.description}"",
 					"mainEntityOfPage": {
 						"@type": "WebPage",
 						"@id": "https://getconvoy.io/"

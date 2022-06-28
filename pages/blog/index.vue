@@ -5,7 +5,7 @@
 				<h3>CATEGORIES</h3>
 
 				<li v-for="(tag, index) in tags" :key="'tag' + index">
-					<nuxt-link :to="'/blog?tag=' + tag.slug">{{ tag.name }}</nuxt-link>
+					<nuxt-link :to="'/blog?tag=' + tag">{{ tag }}</nuxt-link>
 				</li>
 			</ul>
 
@@ -44,7 +44,7 @@
 				</h1>
 				<ul class="dropdown" v-if="showCategories">
 					<li v-for="(tag, index) in tags" :key="'tag' + index">
-						<nuxt-link :to="'/blog?tag=' + tag.slug">{{ tag.name }}</nuxt-link>
+						<nuxt-link :to="'/blog?tag=' + tag">{{ tag }}</nuxt-link>
 					</li>
 				</ul>
 			</div>
@@ -58,15 +58,15 @@
 					<nuxt-link :to="'/blog/' + featurePosts[0].slug">
 						<h3 class="post--title single-feature">{{ featurePosts[0].title }}</h3>
 					</nuxt-link>
-					<p class="post--body single-feature">{{ featurePosts[0].excerpt }}...</p>
+					<p class="post--body single-feature">{{ featurePosts[0].description }}...</p>
 					<div class="post--footer single-feature">
 						<a :href="featurePosts[0].primary_author.twitter ? 'http://twitter.com/' + featurePosts[0].primary_author.twitter : ''" target="_blank" class="post--author">
 							<div class="img">
-								<img :src="featurePosts[0].primary_author.profile_image" alt="author imge" />
+								<img :src="require(`~/assets/profile-images/${featurePosts[0].primary_author.name}.png`)" alt="author imge" />
 							</div>
 							<div>
 								<h5>{{ featurePosts[0].primary_author.name }}</h5>
-								<p>{{ featurePosts[0].primary_author.meta_title }} Convoy</p>
+								<p>Convoy</p>
 							</div>
 						</a>
 						<nuxt-link :to="'/blog/' + featurePosts[0].slug">
@@ -76,7 +76,7 @@
 					</div>
 				</div>
 				<div class="img">
-					<img :src="featurePosts[0].feature_image" alt="featured post img" />
+					<img :src="require(`~/assets/images/${featurePosts[0].feature_image}`)" alt="featured post img" />
 				</div>
 			</div>
 
@@ -107,27 +107,35 @@
 </template>
 
 <script>
-import { getFeaturedPosts, getTags, getTagPosts, getLimitedPosts } from '../../api/blog';
-
 export default {
 	layout: 'blog',
-	watch: {
-		async '$route.query'(route) {
-			this.posts = await getTagPosts(route.tag);
-		}
-	},
 	data: () => {
 		return {
 			showCategories: false,
 			earlyAccessEmail: '',
-			isSubmitingloadingEarlyAccessForm: false
+			isSubmitingloadingEarlyAccessForm: false,
+			tags: ['App Portal', 'Convoy', 'UI']
 		};
 	},
-	async asyncData({ route }) {
-		const posts = route.query?.tag ? await getTagPosts(route.query?.tag) : await getLimitedPosts();
-		const featurePosts = await getFeaturedPosts();
-		const tags = await getTags();
-		return { posts, featurePosts, tags, tag: route.query?.tag };
+	watch: {
+		async '$route.query'(route) {
+			await this.filterPosts(route.tag);
+		}
+	},
+	async asyncData({ $content, route }) {
+		try {
+			const posts = await $content('articles')
+				.where({ tags: { $contains: route.query?.tag ? route.query?.tag : 'Convoy' }, featured: { $eq: false } })
+				.sortBy('published_at', 'desc')
+				.fetch();
+			const featurePosts = await $content('articles')
+				.where({ featured: { $eq: true } })
+				.fetch();
+			return { posts, featurePosts, tag: route.query?.tag };
+		} catch (error) {
+			const pageData = await $content('404').fetch();
+			return { pageData };
+		}
 	},
 	methods: {
 		async requestAccess() {
@@ -156,6 +164,14 @@ export default {
 		},
 		author(authorSlug) {
 			return this.authors.find(author => author.slug === authorSlug);
+		},
+		async filterPosts(route) {
+			this.tag = route;
+			const filteredPosts = await this.$content('articles')
+				.where({ tags: { $contains: this.tag } })
+                .sortBy('published_at', 'desc')
+				.fetch();
+			this.posts = filteredPosts;
 		}
 	},
 	head() {
