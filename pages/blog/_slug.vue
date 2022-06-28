@@ -21,7 +21,7 @@
 			<div class="post-page--author">
 				<a :href="blogPost.primary_author.twitter ? 'http://twitter.com/' + blogPost.primary_author.twitter : ''" target="_blank" class="author">
 					<div class="img">
-						<img :src="require(`~/assets/profile-images/${blogPost.primary_author.name}.png`)" alt="author imge" />
+						<img :src="require(`~/static/profile-images/${blogPost.primary_author.name}.png`)" alt="author imge" />
 					</div>
 					<div>
 						<h5>{{ blogPost.primary_author.name }}</h5>
@@ -74,9 +74,6 @@ import Prism from 'prismjs';
 
 export default {
 	layout: 'blog',
-	data: () => {
-		return {};
-	},
 	async asyncData({ $content, params }) {
 		try {
 			const blogPost = await $content('articles/' + params.slug).fetch();

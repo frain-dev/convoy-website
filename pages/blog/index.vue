@@ -4,8 +4,8 @@
 			<ul>
 				<h3>CATEGORIES</h3>
 
-				<li v-for="(tag, index) in tags" :key="'tag' + index">
-					<nuxt-link :to="'/blog?tag=' + tag">{{ tag }}</nuxt-link>
+				<li v-for="(tag, index) in tags" :key="'tag' + index" @click="currentTag = tag">
+					<nuxt-link :to="tag !== 'All Posts' ? '/blog?tag=' + tag : '/blog'">{{ tag }}</nuxt-link>
 				</li>
 			</ul>
 
@@ -37,7 +37,7 @@
 		<main>
 			<div class="dropdown-container">
 				<h1>
-					All Posts
+					{{currentTag}}
 					<button @click="showCategories = !showCategories">
 						<img src="~/assets/images/angle-down-black-icon.svg" alt="arrow down iconn" />
 					</button>
@@ -62,7 +62,7 @@
 					<div class="post--footer single-feature">
 						<a :href="featurePosts[0].primary_author.twitter ? 'http://twitter.com/' + featurePosts[0].primary_author.twitter : ''" target="_blank" class="post--author">
 							<div class="img">
-								<img :src="require(`~/assets/profile-images/${featurePosts[0].primary_author.name}.png`)" alt="author imge" />
+								<img :src="require(`~/static/profile-images/${featurePosts[0].primary_author.name}.png`)" alt="author imge" />
 							</div>
 							<div>
 								<h5>{{ featurePosts[0].primary_author.name }}</h5>
@@ -76,7 +76,7 @@
 					</div>
 				</div>
 				<div class="img">
-					<img :src="require(`~/assets/images/${featurePosts[0].feature_image}`)" alt="featured post img" />
+					<img :src="require(`~/static/feature-images/${featurePosts[0].feature_image}`)" alt="featured post img" />
 				</div>
 			</div>
 
@@ -114,12 +114,16 @@ export default {
 			showCategories: false,
 			earlyAccessEmail: '',
 			isSubmitingloadingEarlyAccessForm: false,
-			tags: ['App Portal', 'Convoy', 'UI']
+			currentTag: 'All Posts',
+			tags: ['All Posts', 'App Portal', 'Convoy', 'UI']
 		};
 	},
 	watch: {
 		async '$route.query'(route) {
 			await this.filterPosts(route.tag);
+		},
+		currentTag(v){
+			console.log(v)
 		}
 	},
 	async asyncData({ $content, route }) {
@@ -161,9 +165,6 @@ export default {
 			} catch (error) {
 				this.isSubmitingloadingEarlyAccessForm = false;
 			}
-		},
-		author(authorSlug) {
-			return this.authors.find(author => author.slug === authorSlug);
 		},
 		async filterPosts(route) {
 			this.tag = route;
