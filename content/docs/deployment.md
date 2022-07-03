@@ -3,25 +3,6 @@ title: Deployment
 description: 'Techniques to deploy convoy to the various cloud platforms'
 id: deployment
 order: 3
-
-children:
-  - label: 'Cli1'
-    link: '/docs/test/guide'
-	
-  - label: 'Cli2'
-    link: '/docs/test/guide'
-    children:
-      - label: 'Cli21'
-        link: '/docs/test/guide'
-
-      - label: 'Cli22'
-        link: '/docs/test/guide'
-        children:
-          - label: 'Cli221'
-            link: '/docs/test/guide'
-
-          - label: 'Cli222'
-            link: '/docs/test/guide'
 ---
 
 # Deploying Convoy
