@@ -28,6 +28,7 @@
 						<p>{{ blogPost.primary_author.meta_title }} Convoy</p>
 					</div>
 				</a>
+
 				<div>
 					<p>Share to:</p>
 					<ul class="socials">
