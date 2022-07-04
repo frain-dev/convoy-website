@@ -101,6 +101,10 @@
 		margin-top: 30px;
 		font-size: 14px;
 
+		strong {
+			font-weight: bold;
+		}
+
 		th {
 			font-weight: bold;
 		}
@@ -110,6 +114,13 @@
 			text-align: left;
 			padding: 10px 0;
 			border-bottom: 1px solid #eee;
+		}
+
+		tr {
+			td:not(:first-of-type),
+			th:not(:first-of-type) {
+				padding-left: 5px;
+			}
 		}
 	}
 }

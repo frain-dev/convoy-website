@@ -1,5 +1,7 @@
 <template>
-	<DocPage :pageData="pageData"></DocPage>
+	<div>
+		<DocPage :pageData="pageData"></DocPage>
+	</div>
 </template>
 
 <script>
@@ -7,7 +9,7 @@ export default {
 	layout: 'docs',
 	async asyncData({ $content, params }) {
 		try {
-			const pageData = await $content('docs/' + params.subsubsubSlug || 'index').fetch();
+			const pageData = await $content('docs/' + params.pathMatch || 'index').fetch();
 			return { pageData };
 		} catch (error) {
 			const pageData = await $content('404').fetch();
