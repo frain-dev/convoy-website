@@ -30,23 +30,23 @@ The number of events sent and how they’ve grown over time helps you to have a 
 
 ![chart section](../../blog-assets/chart_section.gif)
 
-# Chart
+## Chart
 
 The chart shows you the metric of events sent over time while making filters (date and frequency) available to tweak your preference quickly.
 
-# Configurations
+## Configurations
 
 You can get the config details that your convoy instance is currently running on related to your webhooks activities. We itemized these config details (except the security-protected ones) directly beside the chart.
 
 ![configurations](../../blog-assets/configurations.png)
 
-# Monitoring
+## Monitoring
 
 Now down to the critical part, monitoring events. The card on the dashboard shows this in full, along with the list of applications. The card is tabbed into two different sections.
 
 ![monitoring](../../blog-assets/monitoring.png)
 
-# Events
+## Events
 
 The default active tab is the events tab that shows all your events, paginated into 20 events per page. The events table highlights basic details you need to see to know the status of each event. You can filter your events by Apps (events sent by a specific app) and date (events sent within a particular date frame).
 
@@ -54,7 +54,7 @@ On clicking each event, you can view the event’s last delivery attempt respons
 
 ![events](../../blog-assets/events.gif)
 
-# Apps
+## Apps
 
 The next tab to events is the apps tab which has a table of apps receiving events. The apps table shows the individual app name, date created, date updated, events no (number of events the app has received), endpoints no (the number of endpoints your system sends endpoints to for that app), and an events button that takes you to the events tab to view events of that specific app.
 
@@ -62,6 +62,6 @@ The next tab to events is the apps tab which has a table of apps receiving event
 
 Furthermore, in the apps table, you can click on each app to open the details tab and show the individual endpoints of that app.
 
-# Summary
+## Summary
 
 Convoy dashboard provides you with a graph that shows your event activities, your convoy instance configuration details, a filterable table of events that further gives you details of your events, and a table of apps for an overview of your apps.

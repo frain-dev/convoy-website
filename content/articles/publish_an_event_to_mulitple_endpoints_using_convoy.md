@@ -18,9 +18,9 @@ One common scenario in publishing webhook events is enabling users to provide mu
 
 Without Convoy, your users have to build in the fan-out mechanism themselves, which is more stressful.
 
-## Steps
+# Steps
 
-# Start Convoy Instance
+## Start Convoy Instance
 
 To follow through with this article, you’d need to run an instance of Convoy:
 
@@ -32,7 +32,7 @@ $ docker run \
 	ghcr.io/frain-dev/convoy:v0.4.18
 ```
 
-# Create an Application
+## Create an Application
 
 Next, we have to create an application under this group
 
@@ -69,7 +69,7 @@ $ curl \
 }
 ```
 
-# Create Two Endpoints
+## Create Two Endpoints
 
 Now we can create multiple endpoints under this app. The first endpoint will take the `*` event type. Essentially this event type means all incoming events to that app will be published to that endpoint. The second endpoint will take the event type payment.created. Only incoming with the exact type payment.created will be published to that endpoint. Convoy tries to match the event type to all available endpoints under that app; the event is then published to all the matched endpoints.
 
@@ -153,7 +153,7 @@ $ curl \
 }
 ```
 
-# Publish Event
+## Publish Event
 
 Now let us publish an event with the type `payment.created` to this app. The `payment.created` will match both endpoints since `*` will match all event types, and the `payment.created` type of the second endpoint matches precisely.
 
@@ -199,7 +199,7 @@ $ curl \
 }
 ```
 
-# Show Endpoint Response
+## Show Endpoint Response
 
 ![multiple endpoints](../../blog-assets/endpoint_response.gif)
 

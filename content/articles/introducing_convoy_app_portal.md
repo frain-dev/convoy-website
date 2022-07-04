@@ -18,7 +18,7 @@ One of the essential characteristics of a reliable webhooks infrastructure is vi
 
 ![introducing convoy app portal](../../blog-assets/introducing_convoy_app_portal.png)
 
-Unlike the Convoy Dashboard, App Portal is for just one application;giving your customers a good and extensive amount of details they needto test, manage and debug their integration with you.
+Unlike the Convoy Dashboard, App Portal is for just one application, giving your customers a good and extensive amount of details they need to test, manage and debug their integration with you.
 
 ![convoy app portal](../../blog-assets/convoy_app_portal.gif)
 
@@ -44,9 +44,9 @@ Let's see how this works. App Portal component requires just two props:
 
 The token generated from the API already has the context of the app you want to view, so you don't need to worry about that. App portal handles everything it needs within itself; all you need today are the two props listed above.
 
-## Installing App Portal
+# Installing App Portal
 
-# Angular
+## Angular
 
 You can get started with using App Portal in your Angular application by following the three simple steps below:
 
@@ -70,7 +70,7 @@ import { ConvoyAppModule } from 'convoy-app';
 <convoy-app [token]="token" [apiURL]="apiURL"></convoy-app>
 ```
 
-# React
+## React
 
 Adding App Portal to your React application can be done in two steps:
 
@@ -88,7 +88,7 @@ import 'convoy-app-react/dist/index.css';
 ...
 ```
 
-## Next Steps
+# Next Steps
 
 The next steps:
 

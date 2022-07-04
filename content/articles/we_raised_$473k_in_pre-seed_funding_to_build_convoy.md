@@ -32,7 +32,7 @@ For Frain, it is time to build for the world and not just for Africa, re-echoing
 
 Frain Technologies is currently being led by [Subomi Oluwalana](https://www.linkedin.com/in/subomi-oluwalana-one/), [Emmanuel Aina](https://www.linkedin.com/in/emmanuel-aina-76071a133/), and [Raymond Tukpe](https://www.linkedin.com/in/rtukpe/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAABGsYP0Bi9v4PLyaqY7ZwTf4sfTt4sPpcxo).
 
-## About Frain Technologies
+# About Frain Technologies
 
 Frain Technologies is a Nigerian-based developer tooling startup reinventing how we build products by designing tools for the product delivery value chain. Our flagship product, Convoy, is an open-source webhooks service that enables developers to push webhook events to their users.
 
