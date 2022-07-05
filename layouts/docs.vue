@@ -11,11 +11,6 @@
 			</button>
 
 			<nav>
-				<ul>
-					<li @click="showMenu = false">
-						<nuxt-link to="/docs/guide" @click="showMenu = false">Quick Start Guide</nuxt-link>
-					</li>
-				</ul>
 				<sidebar-item :pages="pages"></sidebar-item>
 			</nav>
 		</aside>
@@ -42,10 +37,9 @@
 </template>
 
 <script>
-import SidebarItem from '~/components/docs/SidebarItem.vue';
+const getNav = () => import('~/data/nav.json').then(m => m.default || m);
 
 export default {
-	components: { SidebarItem },
 	data() {
 		return {
 			pages: [],
@@ -58,8 +52,7 @@ export default {
 		}
 	},
 	async mounted() {
-		let pages = await this.$content('docs').only(['title', 'id', 'order', 'children']).sortBy('order', 'asc').fetch();
-		pages = pages.sort((a, b) => a.order - b.order);
+		const pages = await getNav();
 		this.pages = pages;
 		this.watchScroll();
 	},
@@ -81,8 +74,7 @@ export default {
 				});
 			});
 		}
-	},
-	components: { SidebarItem }
+	}
 };
 </script>
 
