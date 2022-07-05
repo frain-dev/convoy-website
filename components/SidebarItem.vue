@@ -37,6 +37,10 @@ export default {
 
 		li {
 			margin-bottom: 15px;
+
+			&.spaced {
+				margin-left: 0;
+			}
 		}
 
 		a,
@@ -46,6 +50,7 @@ export default {
 			color: #fff;
 			font-weight: 400;
 			font-size: 14px;
+			padding: 0;
 		}
 
 		span {
@@ -59,7 +64,7 @@ export default {
 		}
 
 		ul {
-			margin-left: 30px;
+			margin-left: 35px;
 		}
 	}
 

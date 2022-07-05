@@ -9,11 +9,11 @@
 
 			<div class="banner">
 				<div>
-					<h4 class="title">Quick Start Guide</h4>
+					<h4 class="title">Overview</h4>
 					<p>We've put together a short easy to follow steps to get started with deploying Convoy to your environment and sending out webhook events in few minutes.</p>
 					<div class="links">
 						<nuxt-link to="/docs/guide" class="get-started">
-							Get started
+							Read more
 							<img src="~/assets/images/arrow-circle-right.svg" alt="arrow right" />
 						</nuxt-link>
 					</div>
@@ -26,17 +26,6 @@
 
 			<section class="cards">
 				<div class="cards_item green">
-					<h3>Overview</h3>
-					<p>A detail breakdown of Convoy, explaining some technical terms used in this documentation.</p>
-					<nuxt-link to="/docs/overview">
-						<button>
-							Read more
-							<img src="~/assets/images/dark-arrow-circle-right.svg" alt="arrow right" />
-						</button>
-					</nuxt-link>
-				</div>
-
-				<div class="cards_item yellow">
 					<h3>Configuration</h3>
 					<p>Step by step explanation on how to configure Convoy to best suite your preference and use case.</p>
 					<nuxt-link to="/docs/configuration">

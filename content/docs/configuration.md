@@ -109,8 +109,8 @@ An example configuration is shown below:
 
 ## Parameters
 
--   `environment`: Configure which environment configure is running on. Defaults `development`.
--   `database`: Configures the main data store. Currently supported databases: `mongodb` and `in-memory` using [badgerdb](https://github.com/dgraph-io/badger), planned: `postgres`.
+- `environment`: Configure which environment configure is running on. Defaults `development`.
+- `database`: Configures the main data store. Currently supported databases: `mongodb` and `in-memory` using [badgerdb](https://github.com/dgraph-io/badger), planned: `postgres`.
 	```json[sample]
 	{
 	  "database": {

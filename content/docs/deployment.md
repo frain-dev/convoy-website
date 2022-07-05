@@ -3,29 +3,6 @@ title: Deployment
 description: 'Techniques to deploy convoy to the various cloud platforms'
 id: overview
 order: 3
-
-children:
-    - label: Test
-      link: /docs/test/app-portal
-    - label: Test Deployments
-      link: /docs/test/configuration
-      children:
-          - label: Test
-            link: /docs/test/test
-          - label: Test Deployments
-            link: /docs/test/test
-            children:
-              - label: Test
-                link: /docs/test/test
-              - label: Test Deployments
-                link: /docs/test/test
-    - label: Test Deployments Deployments
-      link: /docs/test/test
-      children:
-          - label: Test
-            link: /docs/test/test
-          - label: Test Deployments
-            link: /docs/test/test
 ---
 
 # Deploying Convoy
