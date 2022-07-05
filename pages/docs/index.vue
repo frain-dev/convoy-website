@@ -12,7 +12,7 @@
 					<h4 class="title">Overview</h4>
 					<p>We've put together a short easy to follow steps to get started with deploying Convoy to your environment and sending out webhook events in few minutes.</p>
 					<div class="links">
-						<nuxt-link to="/docs/guide" class="get-started">
+						<nuxt-link to="/docs/overview" class="get-started">
 							Read more
 							<img src="~/assets/images/arrow-circle-right.svg" alt="arrow right" />
 						</nuxt-link>
