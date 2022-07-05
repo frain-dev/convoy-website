@@ -19,98 +19,68 @@ An example configuration is shown below:
 
 ```json[Sample Config]
 {
-  "environment": "development",
-  "host": "localhost:5005",
-  "multiple_tenants": false,
+  "environment": "dev",
   "database": {
-    "type": "mongodb",
-    "dsn": "mongodb://localhost:27017/convoy"
+      "type": "mongodb",
+      "dsn": "mongodb://mongo1:27017,mongo2:27017,mongo3:27017/convoy?replicaSet=myReplicaSet&readPreference=primary&ssl=false"
   },
   "queue": {
-    "type": "redis",
-    "redis": {
-      "dsn": "redis://localhost:6379"
-    }
+      "type": "redis",
+      "redis": {
+          "dsn": "redis://redis_server:6379"
+      }
   },
   "cache": {
-    "type": "redis",
-    "redis": {
-      "dsn": "redis://localhost:6379"
-    }
+      "type": "redis",
+      "redis": {
+          "dsn": "redis://redis_server:6379"
+      }
   },
-  "limiter": {
-    "type": "redis",
-    "redis": {
-      "dsn": "redis://localhost:6379"
-    }
+  "host": "{host}",
+  "logger": {
+      "type": "console",
+      "server_log": {
+          "level": "error"
+      }
+  },
+  "smtp": {
+      "provider": "sendgrid",
+      "url": "smtp.sendgrid.net",
+      "port": 2525,
+      "username": "apikey",
+      "password": "<api-key-from-sendgrid>",
+      "from": "support@frain.dev"
+  },
+  "search": {
+      "type": "typesense",
+      "typesense": {
+          "host": "http://typesense:8108",
+          "api_key": "convoy"
+      }
   },
   "server": {
-    "http": {
-      "ssl": false,
-      "ssl_cert_file": "",
-      "ssl_key_file": "",
-      "port": 5005,
-      "worker_port": 5006
-    }
-  },
-  "group": {
-    "signature": {
-      "header": "X-Convoy-Signature",
-      "hash": "SHA512"
-    },
-    "strategy": {
-      "type": "default",
-      "default": {
-        "intervalSeconds": 20,
-        "retryLimit": 3
+      "http": {
+          "ssl": false,
+          "ssl_cert_file": "",
+          "ssl_key_file": "",
+          "port": 5005
       }
-    }
   },
-  "tracer": {
-    "type": "new_relic"
-  },
-  "new_relic": {
-    "license_key": "012345678909876543210",
-    "app_name": "convoy",
-    "config_enabled": true,
-    "distributed_tracer_enabled": true
-  },
-  "disable_endpoint": false,
   "auth": {
-    "require_auth": false,
-    "native": {
-      "enabled": true
-    },
-    "file": {
-      "basic": [
-        {
-          "username": "admin",
-          "password": "password",
-          "role": {
-            "type": "super_user",
-            "groups": []
-          }
-        }
-      ],
-      "api-key": [
-        {
-          "api_key": "ABC1234",
-          "role": {
-            "type": "admin",
-            "groups": ["group-uid-1", "group-uid-2"],
-            "apps": ["apps-uid-1", "apps-uid-2"]
-          }
-        }
-      ]
-    }
+      "jwt": {
+          "enabled": true
+      },
+      "native": {
+          "enabled": true
+      }
   }
 }
 ```
 
 ## Parameters
 
-- `environment`: Configure which environment configure is running on. Defaults `development`.
-- `database`: Configures the main data store. Currently supported databases: `mongodb` and `in-memory` using [badgerdb](https://github.com/dgraph-io/badger), planned: `postgres`.
+-   `environment`: Configure which environment configure is running on. Defaults `development`.
+-   `database`: Configures the main data store. Currently supported databases: `mongodb`.
 	```json[sample]
 	{
 	  "database": {
@@ -119,7 +89,7 @@ An example configuration is shown below:
 	  },
 	}
 	```
--   `queue`, `cache` and `limiter`: This configures a queuing backend to use. Currently supported queuing, caching and rate limiter backends: `redis` and `in-memory`, planned queuing backends: `rabbitmq` and `sqs`.
+-   `queue`, `cache` and `limiter`: This configures a queuing backend to use. Currently supported queuing, caching and rate limiter backends: `redis`, planned queuing backends: `rabbitmq` and `sqs`.
 	```json[sample]
 	{
 	   "queue": {
@@ -132,67 +102,24 @@ An example configuration is shown below:
 	```
 -   `port`: Specifies which port Convoy should run on.
 -   `worker_port`: Specifies which port Convoy workers should run on.
--   `auth`: This specifies authentication mechanism used to access Convoy's API. If `require_auth` is set to `false`, Convoy's API won't need to be authenticated. Convoy supports two authentication mechanisms:
-	- `basic`: username and password
-	- `api_key`: revocable API keys
+-   `auth`: This specifies authentication mechanism used to access Convoy's API. Convoy has two APIs, one for the UI and the second is the public API. Each API requires authentication by default.  Convoy supports two authentication mechanisms:
+	- `native`: Configure realm. This is used for the Public API.
+	- `jwt`: Configure jwt. This is used for UI authentication.
 
 	```json[sample]
 	{
 	  "auth": {
-	    "require_auth": false,
 	    "native": {
 	      "enabled": true
 	    },
-	    "file": {
-	      "basic": [
-	        {
-	          "username": "admin",
-	          "password": "password",
-	          "role": {
-	            "type": "super_user",
-	            "groups": []
-	          }
-	        }
-	      ],
-	      "api-key": [
-	        {
-	          "api_key": "ABC1234",
-	          "role": {
-	            "type": "admin",
-	            "groups": ["group-uid-1", "group-uid-2"],
-	            "apps": ["apps-uid-1", "apps-uid-2"]
-	          }
-	        }
-	      ]
-	    }
+	    "jwt": {
+	      "enabled": true
+	    },
 	  }
 	}
 	```
 
--   `strategy`: This specifies retry mechanism for convoy to retry events. Currently supported: `default` (constant time interval) and `exponential-backoff`.
-
-	```json[sample]
-	{
-	  "strategy": {
-	    "type": "default",
-	    "default": {
-	      "intervalSeconds": 20,
-	      "retryLimit": 3
-	    }
-	  }
-	}
-	```
--   `signature`: Convoy signs your payload and adds a specific request header specified here. If you omit the header, we default to `X-Convoy-Signature`.
-
-	```json[sample]
-	{
-	    "signature": {
-	        "header": "X-Your-Signature",
-	        "hash": "SHA256"
-	    }
-	}
-	```
--   `smtp`: Convoy identifies [dead endpoints](./overview#dead-endpoints) and sends an email to the developers to fix.
+-   `smtp`: Convoy sends out emails for several reasons for [dead endpoints](./overview#dead-endpoints), team invitation etc. It needs a SMTP provider to do this.
 
 	```json[sample]
 	{
@@ -221,16 +148,7 @@ An example configuration is shown below:
 	  }
 	}
 	```
--   `disable_endpoint`: Convoy will disable dead endpoints if this is set to `true`. Defaults to `false`.
--   `sentry`: Convoy uses [sentry](https://sentry.io) for error monitoring.
 
-	```json[sample]
-	{
-	    "sentry": {
-	        "dsn": "sentry-dsn"
-	    }
-	}
-	```
 ## Environment Variables
 
 Alternatively, you can configure Convoy using the following environment variables:
@@ -242,8 +160,6 @@ Alternatively, you can configure Convoy using the following environment variable
 - `CONVOY_HOST`
 - `CONVOY_DB_TYPE`
 - `CONVOY_DB_DSN`
-- `CONVOY_SENTRY_DSN`
-- `CONVOY_MUTIPLE_TENANTS`
 - `CONVOY_LIMITER_PROVIDER`
 - `CONVOY_CACHE_PROVIDER`
 - `CONVOY_QUEUE_PROVIDER`
@@ -252,12 +168,6 @@ Alternatively, you can configure Convoy using the following environment variable
 - `CONVOY_LOGGER_PROVIDER`
 - `CONVOY_SSL_KEY_FILE`
 - `CONVOY_SSL_CERT_FILE`
-- `CONVOY_STRATEGY_TYPE`
-- `CONVOY_SIGNATURE_HASH`
-- `CONVOY_DISABLE_ENDPOINT`
-- `CONVOY_SIGNATURE_HEADER`
-- `CONVOY_INTERVAL_SECONDS`
-- `CONVOY_RETRY_LIMIT`
 - `CONVOY_SMTP_PROVIDER`
 - `CONVOY_SMTP_URL`
 - `CONVOY_SMTP_USERNAME`
@@ -273,3 +183,11 @@ Alternatively, you can configure Convoy using the following environment variable
 - `CONVOY_BASIC_AUTH_CONFIG`
 - `CONVOY_API_KEY_CONFIG`
 - `CONVOY_NATIVE_REALM_ENABLED`
+- `CONVOY_JWT_REALM_ENABLED`
+- `CONVOY_JWT_SECRET`
+- `CONVOY_JWT_EXPIRY`
+- `CONVOY_JWT_REFRESH_SECRET`
+- `CONVOY_JWT_REFRESH_EXPIRY`
+- `CONVOY_SEARCH_TYPE`
+- `CONVOY_TYPESENSE_HOST`
+- `CONVOY_TYPESENSE_API_KEY`

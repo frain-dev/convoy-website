@@ -2,7 +2,7 @@
 title: CLI
 description: 'CLI'
 id: cli
-order: 2
+order: 3
 ---
 
 # CLI

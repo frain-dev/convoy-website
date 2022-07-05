@@ -8,7 +8,7 @@
 		"link": "/docs/cli"
 	},
 	{
-		"title": "API Spec",
+		"title": "API",
 		"link": "/docs/api"
 	},
 	{
@@ -17,7 +17,47 @@
 	},
 	{
 		"title": "Deployment",
-		"link": "/docs/deployment"
+		"showDropdown": false,
+		"children": [
+			{
+				"title": "Overview",
+				"link": "/docs/deploy/overview"
+			},
+			{
+				"title": "DigitalOcean",
+				"link": "/docs/deploy/digitalocean"
+			}
+		]
+	},
+	{
+		"title": "User Manual",
+		"showDropdown": false,
+		"children": [
+			{
+				"title": "Overview",
+				"link": "/docs/manual/overview"
+			},
+			{
+				"title": "Organizations and Projects",
+				"link": "/docs/manual/organizations-and-projects"
+			},
+			{
+				"title": "Sources",
+				"link": "/docs/manual/sources"
+			},
+			{
+				"title": "Subscriptions",
+				"link": "/docs/manual/subscriptions"
+			},
+			{
+				"title": "Event and Event Deliveries",
+				"link": "/docs/manual/events-and-event-deliveries"
+			},
+			{
+				"title": "Applications and Endpoints",
+				"link": "/docs/manual/applications-and-endpoints"
+			}
+		]
 	},
 	{
 		"title": "App Portal",
@@ -29,6 +69,24 @@
 	},
 	{
 		"title": "Release Notes",
-		"link": "/docs/release-notes"
+		"showDropdown": false,
+		"children": [
+			{
+				"title": "Overview",
+				"link": "/docs/releases/overview"
+			},
+			{
+				"title": "v0.5",
+				"link": "/docs/releases/version-5"
+			},
+			{
+				"title": "v0.5",
+				"link": "/docs/releases/version-6"
+			}
+		]
+	},
+	{
+		"title": "Glossary",
+		"link": "/docs/glossary"
 	}
 ]
