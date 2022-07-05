@@ -1,31 +1,31 @@
 <template>
 	<div class="main">
 		<div class="blog-post">
-			<div class="post-page--head">
+			<div class="post-page--head" v-if="blogPageData.slug !== '404'">
 				<div class="breadcrumb">
 					<nuxt-link tag="button" to="/blog">Blog</nuxt-link>
 
 					<span class="breadcrumb--divider">|</span>
-					<span class="breadcrumb__tag">{{ blogPost.primary_tag.name }}</span>
+					<span class="breadcrumb__tag">{{ blogPageData.primary_tag }}</span>
 				</div>
 
 				<div class="date">
-					{{ blogPost.reading_time }} min read
+					{{ blogPageData.readingTime }} min read
 					<span><img src="~/assets/images/ellipse.svg" alt="ellipse" /></span>
-					{{ blogPost.published_at | date }}
+					{{ blogPageData.published_at | date }}
 				</div>
 			</div>
 
-			<h3 class="post-page--title">{{ blogPost.title }}</h3>
+			<h3 class="post-page--title" v-if="blogPageData.slug !== '404'">{{ blogPageData.title }}</h3>
 
-			<div class="post-page--author">
-				<a :href="blogPost.primary_author.twitter ? 'http://twitter.com/' + blogPost.primary_author.twitter : ''" target="_blank" class="author">
+			<div class="post-page--author" v-if="blogPageData.slug !== '404'">
+				<a :href="blogPageData.primary_author.twitter ? 'http://twitter.com/' + blogPageData.primary_author.twitter : ''" target="_blank" class="author">
 					<div class="img">
-						<img :src="blogPost.primary_author.profile_image" alt="author imge" />
+						<img :src="require(`~/static/profile-images/${blogPageData.primary_author.name}.png`)" alt="author imge" />
 					</div>
 					<div>
-						<h5>{{ blogPost.primary_author.name }}</h5>
-						<p>{{ blogPost.primary_author.meta_title }} Convoy</p>
+						<h5>{{ blogPageData.primary_author.name }}</h5>
+						<p>{{ blogPageData.primary_author.meta_title }} Convoy</p>
 					</div>
 				</a>
 
@@ -35,7 +35,7 @@
 						<li>
 							<a
 								rel="noopener noreferrer"
-								:href="'https://twitter.com/intent/tweet/?text=' + blogPost.title + '%20from%20@fraindev&url=https://getconvoy.io/blog/' + blogPost.slug + '&via=frainDev'"
+								:href="'https://twitter.com/intent/tweet/?text=' + blogPageData.title + '%20from%20@fraindev&url=https://getconvoy.io/blog/' + blogPageData.slug + '&via=frainDev'"
 								target="_blank"
 							>
 								<img src="~/assets/images/twitter-grey-icon.svg" alt="twitter logo" />
@@ -43,7 +43,7 @@
 						</li>
 
 						<li>
-							<a rel="noopener noreferrer" :href="'https://www.linkedin.com/sharing/share-offsite/?mini=true&url=https://getconvoy.io/blog/' + blogPost.slug + ''" target="_blank">
+							<a rel="noopener noreferrer" :href="'https://www.linkedin.com/sharing/share-offsite/?mini=true&url=https://getconvoy.io/blog/' + blogPageData.slug + ''" target="_blank">
 								<img src="~/assets/images/linkedin-grey-icon.svg" alt="linkedin logo" />
 							</a>
 						</li>
@@ -54,7 +54,7 @@
 			<div class="post-page--content">
 				<main>
 					<div class="post-page--body">
-						<div v-html="blogPost.html"></div>
+						<nuxt-content class="blog" :document="blogPageData"></nuxt-content>
 					</div>
 				</main>
 			</div>
@@ -70,32 +70,34 @@
 </template>
 
 <script>
-import { getPost, getTwoPosts } from '../../api/blog';
 import Prism from 'prismjs';
 
 export default {
 	layout: 'blog',
-	data: () => {
-		return {};
-	},
-	async asyncData({ params }) {
-		const blogPost = await getPost(params.slug);
-		const posts = await getTwoPosts(params.slug);
-		return { blogPost, posts };
+	async asyncData({ $content, params }) {
+		try {
+			const blogPageData = await $content('articles/' + params.slug).fetch();
+			const posts = await $content('articles').limit(2).sortBy('published_at', 'desc').fetch();
+			blogPageData.readingTime = Math.ceil(blogPageData.readingTime / (1000 * 60));
+			return { blogPageData, posts };
+		} catch (error) {
+			const blogPageData = await $content('404').fetch();
+			return { blogPageData };
+		}
 	},
 	mounted() {
 		Prism.highlightAll();
 	},
 	head() {
 		return {
-			title: this.blogPost.title,
+			title: this.blogPageData.title,
 			__dangerouslyDisableSanitizers: ['meta', 'script'],
 			meta: [
-				{ hid: 'description', name: 'description', content: this.blogPost.excerpt },
+				{ hid: 'description', name: 'description', content: this.blogPageData.description },
 				{
 					hid: 'article:tag',
 					name: 'article:tag',
-					content: this.blogPost.primary_tag.name
+					content: this.blogPageData.primary_tag
 				},
 				{
 					hid: 'twitter:label1',
@@ -105,7 +107,7 @@ export default {
 				{
 					hid: 'twitter:data1',
 					name: 'twitter:data1',
-					content: this.blogPost.primary_author.name
+					content: this.blogPageData.primary_author.name
 				},
 				{
 					hid: 'twitter:label2',
@@ -120,40 +122,40 @@ export default {
 				{
 					hid: 'apple-mobile-web-app-title',
 					name: 'apple-mobile-web-app-title',
-					content: this.blogPost.title
+					content: this.blogPageData.title
 				},
-				{ hid: 'og:title', name: 'og:title', content: this.blogPost.title },
+				{ hid: 'og:title', name: 'og:title', content: this.blogPageData.title },
 				{ hid: 'og:site_name', name: 'og:site_name', content: 'Convoy' },
 				{ hid: 'og:type', name: 'og:type', content: 'article' },
 				{
 					hid: 'og:description',
 					name: 'og:description',
-					content: this.blogPost.excerpt
+					content: this.blogPageData.description
 				},
 				{
 					hid: 'og:url',
 					name: 'og:url',
-					content: `https://getconvoy.io/blog/${this.blogPost.slug}`
+					content: `https://getconvoy.io/blog/${this.blogPageData.slug}`
 				},
 				{
 					hid: 'article:published_time',
 					name: 'article:published_time',
-					content: this.blogPost.published_at
+					content: this.blogPageData.published_at
 				},
 				{
 					hid: 'article:modified_time',
 					name: 'article:modified_time',
-					content: this.blogPost.updated_at
+					content: this.blogPageData.updatedAt
 				},
 				{
 					hid: 'article:publisher',
 					name: 'article:publisher',
-					content: 'http://twitter.com/' + this.blogPost.primary_author.twitter
+					content: 'http://twitter.com/' + this.blogPageData.primary_author.twitter
 				},
 				{
 					hid: 'twitter:title',
 					name: 'twitter:title',
-					content: this.blogPost.title
+					content: this.blogPageData.title
 				},
 				{
 					hid: 'twitter:card',
@@ -163,35 +165,35 @@ export default {
 				{
 					hid: 'twitter:url',
 					name: 'twitter:url',
-					content: `https://getconvoy.io/blog/${this.blogPost.slug}`
+					content: `https://getconvoy.io/blog/${this.blogPageData.slug}`
 				},
 				{
 					hid: 'twitter:text:title',
 					name: 'twitter:text:title',
-					content: this.blogPost.title
+					content: this.blogPageData.title
 				},
 				{
 					hid: 'twitter:description',
 					name: 'twitter:description',
-					content: this.blogPost.excerpt
+					content: this.blogPageData.description
 				},
 				{
 					hid: 'og:image',
 					property: 'og:image',
-					content: this.blogPost.feature_image
+					content: this.blogPageData.feature_image
 				},
 				{
 					hid: 'twitter:image',
 					property: 'twitter:image',
-					content: this.blogPost.feature_image
+					content: this.blogPageData.feature_image
 				},
 				{
 					hid: 'twitter:url',
 					name: 'twitter:url',
-					content: `https://getconvoy.io/blog/${this.postId}`
+					content: `https://getconvoy.io/blog/${this.blogPageData.slug}`
 				}
 			],
-			link: [{ rel: 'canonical', href: `https://getconvoy.io/blog/${this.blogPost.slug}` }],
+			link: [{ rel: 'canonical', href: `https://getconvoy.io/blog/${this.blogPageData.slug}` }],
 			script: [
 				{
 					innerHTML: `
@@ -211,22 +213,22 @@ export default {
 					},
 					"author": {
 						"@type": "Person",
-						"name": "${this.blogPost.primary_author.name}",
-						"url": "http://twitter.com/${this.blogPost.primary_author.twitter}",
+						"name": "${this.blogPageData.primary_author.name}",
+						"url": "http://twitter.com/${this.blogPageData.primary_author.twitter}",
 						"sameAs": []
 					},
 					"headline": "Introducing Convoy",
-					"url": "https://getconvoy.io/blog/${this.blogPost.slug}",
-					"datePublished": "${this.blogPost.published_at}",
-					"dateModified": "${this.blogPost.updated_at}",
+					"url": "https://getconvoy.io/blog/${this.blogPageData.slug}",
+					"datePublished": "${this.blogPageData.published_at}",
+					"dateModified": "${this.blogPageData.updatedAt}",
 					"image": {
 						"@type": "ImageObject",
-						"url": "${this.blogPost.feature_image}",
+						"url": "${this.blogPageData.feature_image}",
 						"width": 1400,
 						"height": 1086
 					},
 					"keywords": "Convoy",
-					"description": "${this.blogPost.excerpt}"",
+					"description": "${this.blogPageData.description}"",
 					"mainEntityOfPage": {
 						"@type": "WebPage",
 						"@id": "https://getconvoy.io/"

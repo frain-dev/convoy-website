@@ -1,7 +1,7 @@
 <template>
 	<main class="page--container">
 		<article class="content">
-			<nuxt-content :document="pageData"></nuxt-content>
+			<nuxt-content class="docs" :document="pageData"></nuxt-content>
 
 			<div class="blog-post--footer" v-if="pageData.slug !== '404'">
 				<a :href="'https://github.com/frain-dev/convoy-website/tree/main/content' + this.$route.path + '.md'" target="_blank" referrerpolicy="noreferrer" class="edit-link">

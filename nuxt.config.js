@@ -1,11 +1,3 @@
-import GhostContentAPI from '@tryghost/content-api';
-
-const api = new GhostContentAPI({
-	url: 'https://convoy.ghost.io',
-	key: 'b9904af5cf9365f3c647cf2d8b',
-	version: 'v3'
-});
-
 const create = async feed => {
 	feed.options = {
 		title: 'Convoy',
@@ -13,26 +5,26 @@ const create = async feed => {
 		description: 'A Cloud native Webhook Service with out-of-the-box security, reliability and scalability for your webhooks infrastructure.'
 	};
 
-	const posts = await api.posts.browse({
-		limit: 'all',
-		include: 'tags,authors',
-		order: 'published_at DESC'
-	});
+	const { $content } = require('@nuxt/content');
+	const posts = await $content('articles').fetch();
+
 	posts.forEach(post => {
+		const url = `https://getconvoy.io/blog/${post.slug}`;
+
 		feed.addItem({
 			title: post.title,
-			id: post.canonical_url,
-			category: post.tags[0].name,
-			link: post.canonical_url,
-			description: post.excerpt,
-			content: post.html,
+			id: url,
+			category: post.primary_tag,
+			link: url,
+			description: post.description,
+			content: post.description,
 			author: [
 				{
 					name: post.primary_author.name,
 					link: 'http://twitter.com/' + post.primary_author.twitter
 				}
 			],
-			image: post.feature_image
+			image: 'https://getconvoy.io/blog-assets/' + post.feature_image
 		});
 	});
 };
@@ -154,6 +146,15 @@ export default {
 		'@nuxt/content',
 		'@nuxtjs/feed'
 	],
+
+	hooks: {
+		'content:file:beforeInsert': document => {
+			if (document.extension === '.md') {
+				const { time } = require('reading-time')(document.text);
+				document.readingTime = time;
+			}
+		}
+	},
 
 	// Content module configuration: https://go.nuxtjs.dev/config-content
 	content: {
