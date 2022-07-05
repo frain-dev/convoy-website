@@ -1,7 +1,5 @@
 <template>
-	<div>
-		<DocPage :pageData="pageData"></DocPage>
-	</div>
+	<DocPage :pageData="pageData"></DocPage>
 </template>
 
 <script>

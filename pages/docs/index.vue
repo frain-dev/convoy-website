@@ -25,6 +25,17 @@
 			</div>
 
 			<section class="cards">
+				<div class="cards_item green">
+					<h3>Overview</h3>
+					<p>A detail breakdown of Convoy, explaining some technical terms used in this documentation.</p>
+					<nuxt-link to="/docs/overview">
+						<button>
+							Read more
+							<img src="~/assets/images/dark-arrow-circle-right.svg" alt="arrow right" />
+						</button>
+					</nuxt-link>
+				</div>
+
 				<div class="cards_item yellow">
 					<h3>Configuration</h3>
 					<p>Step by step explanation on how to configure Convoy to best suite your preference and use case.</p>

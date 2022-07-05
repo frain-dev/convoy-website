@@ -1,0 +1,50 @@
+[
+	{
+		"title": "Quick Start Guide",
+		"link": "/docs/guide"
+	},
+	{
+		"title": "CLI",
+		"link": "/docs/cli"
+	},
+	{
+		"title": "API Spec",
+		"link": "/docs/api"
+	},
+	{
+		"title": "Configuration",
+		"link": "/docs/configuration"
+	},
+	{
+		"title": "Deployment",
+		"showDropdown": false,
+		"children": [
+			{
+				"title": "Overview",
+				"link": "/docs/deployment/overview"
+			},
+			{
+				"title": "AWS",
+				"link": "/docs/deployment/aws"
+			}
+		]
+	},
+	{
+		"title": "Deployment 2",
+		"showDropdown": false,
+		"children": [
+			{
+				"title": "Overview",
+				"link": "/docs/deployment/overview"
+			},
+			{
+				"title": "AWS",
+				"link": "/docs/deployment/aws"
+			}
+		]
+	},
+	{
+		"title": "App Portal",
+		"link": "/docs/app-portal"
+	}
+]
