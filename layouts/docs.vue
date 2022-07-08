@@ -10,6 +10,13 @@
 				<img v-if="showMenu" src="~/assets/images/close-icon.svg" alt="close icon" width="24" />
 			</button>
 
+			<div class="input">
+				<select name="" id="" required>
+					<option v-for="version in versions" selected :key="version" :value="version">{{ version }}</option>
+				</select>
+				<label for="version">Version</label>
+			</div>
+
 			<nav>
 				<sidebar-item :pages="pages"></sidebar-item>
 			</nav>
@@ -43,7 +50,8 @@ export default {
 	data() {
 		return {
 			pages: [],
-			showMenu: false
+			showMenu: false,
+			versions: ['Latest v0.5.x']
 		};
 	},
 	computed: {
@@ -170,6 +178,10 @@ aside {
 
 	nav {
 		padding: 24px 0 24px 24px;
+	}
+
+	.input {
+		margin-left: 24px;
 	}
 }
 
