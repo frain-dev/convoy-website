@@ -51,7 +51,7 @@ export default {
 		return {
 			pages: [],
 			showMenu: false,
-			versions: ['Latest v0.5.x']
+			versions: ['Latest v0.6.x']
 		};
 	},
 	computed: {
