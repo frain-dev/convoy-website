@@ -10,8 +10,8 @@ We provide an easy way to deploy Convoy without spending a ton on infrastructure
 
 ## Pre-requisites
 - You have deployed a Linux Ubuntu Virtual Machine. 
-    - Anything between a $10/month (2GB RAM) to $20/month (4GB RAM) droplet will work fine.
-    - You have ssh access to the VM. You'd need ssh access to the VM to run commands from time to time.
+- Anything between a $10/month (2GB RAM) to $20/month (4GB RAM) droplet will work fine.
+- You have ssh access to the VM. You'd need ssh access to the VM to run commands from time to time.
 
 
 ### Quick Install on an Ubuntu VM

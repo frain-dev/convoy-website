@@ -44,5 +44,5 @@ All these configurations act as sensible defaults for all subscriptions in a pro
 
 ### Multiple Projects
 There are several practical ways of using projects:
-1. A project per environment: You can decide to test your integration with a development or staging environment, before going live to a production environment to keep data separate.
-2. A project per product: If you have several projects, you can scope them differently on Convoy too.
+1. **A project per environment:** You can decide to test your integration with a development or staging environment, before going live to a production environment to keep data separate.
+2. **A project per product:** If you have several projects, you can scope them differently on Convoy too.
