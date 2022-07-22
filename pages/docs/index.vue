@@ -39,7 +39,7 @@
 				<div class="cards_item purple">
 					<h3>Deployment</h3>
 					<p>Learn how to deploy Convoy to any environment of your choice.</p>
-					<nuxt-link to="/docs/deployment">
+					<nuxt-link to="/docs/deployment/overview">
 						<button>
 							Read more
 							<img src="~/assets/images/dark-arrow-circle-right.svg" alt="arrow right" />

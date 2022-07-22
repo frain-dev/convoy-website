@@ -92,12 +92,15 @@ $desktopBreakPoint: 880px;
 			margin: 20px 0 10px;
 		}
 
-		ul li {
-			border-top: 1px solid #e3e8ee;
-			padding: 10px 0;
+		ul {
+			margin-left: 20px;
 
-			&:first-of-type {
-				margin-top: 20px;
+			li {
+				padding: 10px 0;
+
+				&:first-of-type {
+					margin-top: 20px;
+				}
 			}
 		}
 
@@ -108,6 +111,12 @@ $desktopBreakPoint: 880px;
 				list-style-type: decimal;
 				padding: 8px 0;
 			}
+		}
+
+		ul,
+		li,
+		ol {
+			list-style-type: unset;
 		}
 
 		hr {
