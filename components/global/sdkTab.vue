@@ -63,6 +63,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 li {
-	list-style-type: none;
+	list-style-type: none !important;
 }
 </style>
