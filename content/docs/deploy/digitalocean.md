@@ -2,7 +2,7 @@
 title: Digital Ocean
 description: 'Deploy Convoy to a Digital Ocean Droplet'
 id: digitalocean
-order: 4
+order: 3
 ---
 
 # Digital Ocean
@@ -17,7 +17,7 @@ Follow the steps below to have a complete setup on a Digital Ocean droplet.
 
 3. SSH into your machine with the provided IP address in step 1 and run the following:
    ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/frain-dev/convoy/main/deploy/do-deploy)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/frain-dev/convoy/main/deploy/vm-deploy)"
    ```
 
 4. Visit your domain name and login with [default credentials]() 🎉

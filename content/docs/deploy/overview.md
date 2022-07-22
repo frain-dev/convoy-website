@@ -13,7 +13,8 @@ children:
 In addition to being open-source, we provide simple configurations to help you get started running an instance of Convoy. While Convoy is a simple binary, deploying it requires third-party dependencies like MongoDB & Redis. To keep things simple, we choose to use Docker & Docker-Compose for ease of deployment. 
 
 ## Platforms
-- [DigitalOcean](./deploy/digitalocean)
+- [Hobby](./hobby)
+- [DigitalOcean](./digitalocean)
 
 ## Configure
 Convoy can be configured from either CLI flags, environment variables or a `convoy.json` file. You can head over to the [Configuration](./configuration) page for full details.
