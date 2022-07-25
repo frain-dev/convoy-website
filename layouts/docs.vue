@@ -182,6 +182,8 @@ aside {
 
 	.input {
 		margin-left: 24px;
+		margin-top: 24px;
+		margin-right: 24px;
 	}
 }
 
