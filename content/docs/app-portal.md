@@ -5,96 +5,159 @@ id: app-portal
 order: 5
 ---
 
-# App Portal
+# Convoy App SDK
 
-We extended the visibility we provide you on the Convoy dashboard to your users through app portal, so that your users can view, debug and inspect events sent to them. While the APIs behind app portal are available to build and customize for yourself, we built app portal so you don't have to go through that stress.
+We extended the visibility we provide you on the Convoy dashboard to your users through app portal; your users can view, debug and inspect events sent to them. App Portal is available through `convoy-app.js` SDK, through which you can render our pre-built UI on your platform out of the box or use it to power your custom built UI for your users. We automatically manage your customer's application context so you don't have to be concerned about a customer seeing events from another customer.
 
+## Usage
+
+You can embed the `convoy-app.js` sdk into your client application through any of the following ways:
+- Using Jsdelivr
+```html
+<script src="https://cdn.jsdelivr.net/npm/convoy-app.js@0.0.1/dist/bundle.js"></script>
+```
+
+- Installing the `convoy-app.js` node module
+```bash[terminal]
+npm i convoy-app.js
+```
+
+```
+import * as Convoy from 'convoy-app.js';
+
+// Or
+
+<script src="node_modules/convoy-app.js/dist/bundle.js"></script>
+ ```
+
+## Initializing
+You need two details to setup convoy app:
+- **url;** this represents you Convoy instance url
+- **api_key;** authentication token generated from your backend system see API reference [here](https://github.com/frain-dev/convoy/blob/v0.6.0-rc.3/docs/v3/openapi3.json)
+
+**Javascript**
+```js
+const convoy = new Convoy({ uri: 'convoy instance url', api_key: 'app token from your backend'});
+```
+
+**Typescript**
+```ts
+declare const Convoy: any;
+
+export class ConvoyExampleClass {
+    convoy: any;
+
+    constructor() {
+        this.convoy = new Convoy({ uri: 'convoy instance url', api_key: 'app token from your backend'})
+    }
+}
+```
+
+## SDK Methods
+### App Portal UI
+
+You can use the SDK to load app portal within your client platform
+```js
+convoy.initAppPortal();
+// You can optionally pass a DOM selector string, convoy-app uses #convoy-app by default
+convoy.initAppPortal('#convoy-app');
+```
 ![convoy app portal](../../docs-assets/app-portal-ui.png)
 
-App portal to be usable in three different ways:
+### Create Subscription Modal
 
-1. **As a web component**: enabling you to install it into your existing customer application (that's ease). App portal is currently available for two of the most popular Javascript frameworks, Angular and React.
-2. **Through a link**: you can just open in a new tab and share with a customer quickly. Note: the token expires, i.e the link will be usable for a limited period of time.
-3. **Through an iframe**: you can embed into a vanilla HTML/Javascript application, copy the iframe code from the dashboard and past in to code.
+You can use the SDK to load a modal that renders a form for your users to create subscription
+```js
+convoy.createSubscription();
+// You can optionally pass a DOM selector string, convoy-app uses #convoy-create-sub by default
+convoy.createSubscription('#convoy-create-sub');
+```
+![convoy app portal](../../docs-assets/app-portal-create-subscription.png)
 
-![convoy dashboard app details](../../docs-assets/convoy-dashboard-app-details.png)
+### App Event
 
-## App Portal Iframe
+You can use the SDK to get the app's events
+```js
+try {
+    const response = await convoy.events.all();
+} catch (error) {
+    console.log(error);
+}
 
-As explained above, the iframe url snippet was made available as the easiest to present app portal to your customers. The token embedded into the iframe code expires, so you can use this [API](https://convoy.readme.io/reference/post_security-applications-appid-keys) to generate a new token whenever your user enters the page with the iframe. Replace the `key` gotten from the API response with `{token}`, replace `apiURL` with your Convoy instance and also replace `{appId}` with your applications ID in the example below.
 
-```html[iframe snippet]
-<iframe style="width: 100%; height: 100vh; border: none;" src="{ apiURL }/app-portal/{ token }&appId={ appId }"></iframe>
+try {
+    const response = await convoy.events.get(eventId);
+} catch (error) {
+    console.log(error);
+}
 ```
 
-## App Portal Web Components
+### Event Deliveries
 
-### React
+You can use the SDK to get the app's event deliveries
+```js
+try {
+    const response = await convoy.eventDeliveries.all();
+} catch (error) {
+    console.log(error);
+}
 
-Adding App Portal to your React application can be done in two steps:
+try {
+    const response = await convoy.eventDeliveries.get(eventDeliveryId);
+} catch (error) {
+    console.log(error);
+}
 
-1. Run `npm i convoy-app-react` in your existing React application to install the package
-2. Add `ConvoyApp` to your desired page
 
-```javascript[app.js]
-import { ConvoyApp } from 'convoy-app-react';
-import 'convoy-app-react/dist/index.css';
+// get event delivery attempt
 
-...
+try {
+    const response = await convoy.eventDeliveries.deliveryAttempts(eventDeliveryId);
+} catch (error) {
+    console.log(error);
+}
 
-<ConvoyApp token={'token'} apiURL={'apiURL'} />
+try {
+    const response = await convoy.eventDeliveries.deliveryAttempt(eventDeliveryId, eventDeliveryAttemptId);
+} catch (error) {
+    console.log(error);
+}
 
-...
+
+
+// resend event
+
+try {
+    const response = await convoy.eventDeliveries.resend(eventDeliveryId);
+} catch (error) {
+    console.log(error);
+}
+
+
+
+// batch resend events
+
+try {
+    const response = await convoy.eventDeliveries.batchResend({ids: [...eventDeliveryIds]});
+} catch (error) {
+    console.log(error);
+}
 ```
 
-### Angular
+### Subscription
 
-You can get started with using App Portal in your Angular application by following these simple steps below:
+You can use the SDK to get the app's subscription
+```js
+try {
+    const response = await convoy.subscriptions.all();
+} catch (error) {
+    console.log(error);
+}
 
-1. Run `npm i convoy-app` in your existing Angular application to install the package
-2. Run `ng add @angular/material` in your existing Angular application to install angular material
-3. In your `package.json`, add these under your dependencies:
 
-```javascript[package.json]
-  "dependencies": {
-    "convoy-ui": "^0.0.2",
-    "date-fns": "^2.27.0",
-    "prismjs": "^1.25.0",
-    "chart.js": "^3.6.0",
-  }
+try {
+    const response = await convoy.subscriptions.get(eventId);
+} catch (error) {
+    console.log(error);
+}
 ```
-
-4. Run `npm install`
-5. Add `convoy-ui` to your styles:
-
-```css[styles.scss]
-@import '../node_modules/convoy-ui/scss/main.scss';
-```
-
-6. Import `ConvoyAppModule` into your application module as shown below
-7. Add `ConvoyApp` to your HTML page
-
-```javascript[app.module.ts]
-import { ConvoyAppModule } from 'convoy-app';
-
-
-@NgModule({
-    ...
-    imports: [..., ConvoyAppModule],
-    ...
-
-    )}
-
-...
-```
-
-```html[app.component.html]
-...
-
-<convoy-app [token]="token" [apiURL]="apiURL"></convoy-app>
-
-...
-```
-
-
-
