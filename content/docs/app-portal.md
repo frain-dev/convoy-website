@@ -33,7 +33,7 @@ import * as Convoy from 'convoy-app.js';
 ## Initializing
 You need two details to setup convoy app:
 - **url;** this represents you Convoy instance url
-- **api_key;** authentication token generated from your backend system see API reference [here](https://convoy.readme.io/reference/post_security-applications-appid-keys)
+- **api_key;** authentication token generated from your backend system see API reference [here](https://github.com/frain-dev/convoy/blob/v0.6.0-rc.3/docs/v3/openapi3.json)
 
 **Javascript**
 ```js
