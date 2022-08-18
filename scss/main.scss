@@ -1,9 +1,20 @@
-@import './reset';
-@import './font';
-@import './typography';
-@import './prism';
-@import './page';
-@import './posts';
-@import './tabs';
-@import './forms';
-@import './table';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// @import './reset';
+// @import './font';
+// @import './typography';
+// @import './prism';
+// @import './page';
+// @import './posts';
+// @import './tabs';
+// @import './forms';
+// @import './table';
+
+
+@layer base {
+	:root {
+		--color-white: 252, 252, 252;
+	}
+}
