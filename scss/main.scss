@@ -2,9 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './page';
+@import './font';
+@import './typography';
+@import './prism';
+
 
 @layer base {
 	:root {
-		--color-white: 252, 252, 252;
+		--color-white: 255, 255, 255;
+	}
+	h1{
+		@apply text-h1;
+	}
+	h2{
+		@apply text-h2;
+	}
+	h3{
+		@apply text-h3;
+	}
+	h4{
+		@apply text-h4;
+	}
+	h5{
+		@apply text-h5;
+	}
+	h6{
+		@apply text-h6;
 	}
 }
