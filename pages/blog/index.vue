@@ -1,105 +1,118 @@
 <template>
-	<div class="main blog-home">
-		<aside class="categories">
-			<ul>
-				<h3>CATEGORIES</h3>
+	<div class="m-auto pb-0 flex justify-between pt-0">
+		<aside class="w-240px hidden desktop:sticky desktop:top-150px desktop:block desktop:pl-20px desktop:pr-32px">
+			<ul class="p-0">
+				<h6 class="font-bold text-black mb-18px">CATEGORIES</h6>
 
-				<li v-for="(tag, index) in tags" :key="'tag' + index">
+				<li v-for="(tag, index) in tags" :key="'tag' + index" class="font-semibold text-14 mb-30px text-grey-40">
 					<nuxt-link :to="tag !== 'All Posts' ? '/blog?tag=' + tag : '/blog'">{{ tag }}</nuxt-link>
 				</li>
 			</ul>
 
 			<!-- Pending when there is enough content for this -->
-			<!-- <form>
-				<img src="~/assets/images/search-icon.svg" alt="search icon" />
-				<input type="search" placeholder="Search" />
+			<!-- <form class="bg-white-100 rounded-4px w-full flex border border-grey-40">
+				<img src="~/assets/images/search-icon.svg" class="w-14px mr-10px" alt="search icon" />
+				<input type="search" placeholder="Search" class="border-none w-full outline-none" />
 			</form> -->
 
-			<div class="social">
-				<h3>Follow Us</h3>
+			<div>
+				<h6 class="font-semibold mb-18px">Follow Us</h6>
 
 				<ul class="socials">
-					<li>
+					<li class="bg-grey-40 bg-opacity-10">
 						<a target="_blank" rel="noopener noreferrer" href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
 							<img src="~/assets/images/slack-grey-icon.svg" alt="slack logo" />
 						</a>
 					</li>
-					<li>
+					<li class="bg-grey-40 bg-opacity-10">
 						<a target="_blank" rel="noopener noreferrer" href="https://twitter.com/fraindev"><img src="~/assets/images/twitter-grey-icon.svg" alt="twitter logo" /></a>
 					</li>
-					<li>
+					<li class="bg-grey-40 bg-opacity-10">
 						<a target="_blank" rel="noopener noreferrer" href="https://github.com/frain-dev/convoy"><img src="~/assets/images/github-grey-icon.svg" alt="mail logo" /></a>
 					</li>
 				</ul>
 			</div>
 		</aside>
 
-		<main>
-			<div class="dropdown-container">
-				<h1>
+		<main class="max-w-[1035px] w-full px-20px">
+			<div class="relative">
+				<h2 class="font-bold text-black flex items-center">
 					{{ tag !== 'Convoy' ? tag : 'All Posts' }}
-					<button @click="showCategories = !showCategories">
+					<button @click="showCategories = !showCategories" class="h-fit mt-4px ml-8px desktop:hidden">
 						<img src="~/assets/images/angle-down-black-icon.svg" alt="arrow down iconn" />
 					</button>
-				</h1>
-				<ul class="dropdown" v-if="showCategories">
-					<li v-for="(tag, index) in tags" :key="'tag' + index">
+				</h2>
+				<ul class="absolute bg-white-100 shadow-sm rounded-10px p-24px z-1 w-216px mt-4px" v-if="showCategories">
+					<li v-for="(tag, index) in tags" :key="'tag' + index" class="mb-32px last-of-type:mb-0 text-14 text-grey-60">
 						<nuxt-link :to="'/blog?tag=' + tag">{{ tag }}</nuxt-link>
 					</li>
 				</ul>
 			</div>
 
-			<div class="featured card posts" v-if="featurePosts.length > 0">
-				<div class="post">
-					<div class="post--head">
-						<div class="tag">FEATURED</div>
-						<div class="date">{{ featurePosts[0].published_at | date }}</div>
+			<div
+				class="
+					rounded-8px
+					shadow-card
+					max-w-[970px]
+					bg-white-100
+					mt-32px
+					pt-32px
+					px-12px
+					desktop:pl-56px desktop:pt-56px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
+					mobile:mb-48px
+				"
+				v-if="featurePosts.length > 0"
+			>
+				<div class="desktop:max-w-[470px] p-10px">
+					<div class="flex justify-between items-center mb-24px">
+						<div class="py-2px px-16px bg-[#0747a6] bg-opacity-10 rounded-2px font-medium text-14 text-primary-100 uppercase">FEATURED</div>
+						<div class="font-medium text-14">{{ featurePosts[0].published_at | date }}</div>
 					</div>
 					<nuxt-link :to="'/blog/' + featurePosts[0].slug">
 						<h3 class="post--title single-feature">{{ featurePosts[0].title }}</h3>
 					</nuxt-link>
-					<p class="post--body single-feature">{{ featurePosts[0].description }}...</p>
-					<div class="post--footer single-feature">
-						<a :href="featurePosts[0].primary_author.twitter ? 'http://twitter.com/' + featurePosts[0].primary_author.twitter : ''" target="_blank" class="post--author">
-							<div class="img">
-								<img :src="require(`~/static/profile-images/${featurePosts[0].primary_author.name}.png`)" alt="author imge" />
+					<p class="font-light text-grey-80 text-16 mb-16px">{{ featurePosts[0].description }}...</p>
+					<div class="flex flex-col flex-wrap my-26px desktop:items-end desktop:flex-row desktop:justify-between">
+						<a :href="featurePosts[0].primary_author.twitter ? 'http://twitter.com/' + featurePosts[0].primary_author.twitter : ''" target="_blank" class="flex items-start mb-40px desktop:mb-0">
+							<div class="w-40px h-40px rounded-[50%] mr-16px overflow-hidden flex items-center">
+								<img :src="require(`~/static/profile-images/${featurePosts[0].primary_author.name}.png`)" class="w-full mr-12px rounded-[50%]" alt="author imge" />
 							</div>
 							<div>
-								<h5>{{ featurePosts[0].primary_author.name }}</h5>
-								<p>Convoy</p>
+								<h5 class="font-medium mb-4px">{{ featurePosts[0].primary_author.name }}</h5>
+								<p class="text-14 text-grey-80">Convoy</p>
 							</div>
 						</a>
-						<nuxt-link :to="'/blog/' + featurePosts[0].slug">
+						<nuxt-link :to="'/blog/' + featurePosts[0].slug" class="flex items-center text-primary-100 font-medium text-14">
 							Read More
-							<img src="~/assets/images/angle-right-primary.svg" alt="read more icon" />
+							<img src="~/assets/images/angle-right-primary.svg" class="w-20px" alt="read more icon" />
 						</nuxt-link>
 					</div>
 				</div>
-				<div class="img">
-					<img :src="require(`~/static/feature-images/${featurePosts[0].feature_image}`)" alt="featured post img" />
+				<div class="w-full desktop:w-380px desktop:right-0 desktop:bottom-0 desktop:mt-0">
+					<img :src="require(`~/static/feature-images/${featurePosts[0].feature_image}`)" class="rounded-bl-10px w-full" alt="featured post img" />
 				</div>
 			</div>
 
-			<div class="posts">
+			<div class="desktop:grid desktop:grid-cols-2 gap-y-62px gap-x-48px max-w-[970px] mb-48px mt-48px">
 				<Post v-for="(post, index) in posts.slice(0, 2)" :key="index" :post="post" />
 			</div>
 
-			<div class="newsletter card">
+			<div class="bg-white-100 shadow-card rounded-8px flex flex-col items-center max-w-[970px] py-32px px-24px desktop:px-70px mt-40px desktop:mt-48px desktop:flex-row desktop:justify-around">
 				<div>
-					<h5>Join our newsletter</h5>
-					<p>No spam! Just articles, events, and talks.</p>
-					<form @submit.prevent="requestAccess()">
-						<img src="~/assets/images/mail-primary-icon.svg" alt="mail icon" />
-						<input type="email" id="email" placeholder="Your email" aria-label="Email" v-model="earlyAccessEmail" />
+					<p class="mb-10px text-14 text-center desktop:text-left">Join our newsletter</p>
+					<p class="text-14 text-center desktop:text-left">No spam! Just articles, events, and talks.</p>
+					<form @submit.prevent="requestAccess()" class="bg-primary-500 border-grey-20 flex p-10px rounded-8px items-center mt-24px">
+						<img src="~/assets/images/mail-primary-icon.svg" alt="mail icon" class="w-30px" />
+						<input type="email" id="email" placeholder="Your email" aria-label="Email" v-model="earlyAccessEmail" class="bg-transparent focus:outline-none focus:border-none" />
 						<button>
-							<img src="~/assets/images/send-primary-icon.svg" alt="send icon" />
+							<img src="~/assets/images/send-primary-icon.svg" alt="send icon" class="w-24px h-24px" />
 						</button>
 					</form>
 				</div>
-				<img src="~/assets/images/mailbox.gif" alt="mailbox animation" />
+				<img src="~/assets/images/mailbox.gif" class="w-180px order-1 m-auto desktop:order-2 desktop:m-[unset]" alt="mailbox animation" />
 			</div>
 
-			<div class="posts">
+			<div class="desktop:grid desktop:grid-cols-2 gap-y-62px gap-x-48px max-w-[970px] mt-48px">
 				<Post v-for="(post, index) in posts.slice(2)" :key="index" :post="post" />
 			</div>
 		</main>
@@ -218,139 +231,3 @@ export default {
 	}
 };
 </script>
-
-<style lang="scss" scoped>
-$desktopBreakPoint: 880px;
-
-.main {
-	margin: 0 auto;
-	padding-bottom: 0;
-	display: flex;
-	justify-content: space-between;
-	height: unset;
-	padding-top: 0;
-}
-
-main {
-	max-width: 1035px;
-	width: 100%;
-	padding: 0 20px;
-
-	h1 {
-		font-weight: bold;
-		font-size: 24px;
-		line-height: 35px;
-		color: #000624;
-		margin-bottom: 1px;
-		display: flex;
-		align-items: center;
-
-		button {
-			height: fit-content;
-			margin-top: 5px;
-			margin-left: 8px;
-
-			@media (min-width: $desktopBreakPoint) {
-				display: none;
-			}
-		}
-	}
-
-	& > p {
-		font-size: 16px;
-		line-height: 24px;
-		color: #5f5f68;
-	}
-}
-
-.featured {
-	margin-top: 32px;
-	padding: 32px 11px 0;
-	overflow: hidden;
-	position: relative;
-	max-width: 970px;
-	display: block;
-
-	@media (min-width: $desktopBreakPoint) {
-		padding: 56px 0 0 56px;
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		align-items: flex-end;
-	}
-
-	& > .img {
-		@media (min-width: $desktopBreakPoint) {
-			width: 380px;
-			right: 0;
-			bottom: 0;
-			margin-top: 0;
-
-			img {
-				border-radius: 10px 0 0 0;
-			}
-		}
-
-		@media (max-width: 1111px) {
-			width: 100%;
-		}
-
-		img {
-			width: 100%;
-		}
-	}
-
-	.post {
-		max-width: unset;
-		width: 100%;
-		box-shadow: unset;
-
-		@media (min-width: $desktopBreakPoint) {
-			max-width: 470px;
-		}
-	}
-}
-
-.card {
-	background: #ffffff;
-	box-shadow: 10px 20px 81px rgb(111 118 138 / 8%);
-	border-radius: 8px;
-}
-
-.dropdown-container {
-	position: relative;
-
-	.dropdown {
-		position: absolute;
-		background: #ffffff;
-		box-shadow: 0px 2px 4px rgba(12, 26, 75, 0.04), 0px 4px 20px -2px rgba(50, 50, 71, 0.08);
-		border-radius: 10px;
-		padding: 24px;
-		z-index: 1;
-		width: 217px;
-		margin-top: 4px;
-
-		li {
-			margin: 0 0 32px;
-			font-size: 14px;
-			line-height: 22px;
-			color: #5f5f68;
-
-			&:last-of-type {
-				margin-bottom: 0;
-			}
-		}
-	}
-}
-
-aside {
-	width: 240px;
-	display: none;
-
-	@media (min-width: $desktopBreakPoint) {
-		display: block;
-		padding-left: 20px;
-		padding-right: 32px;
-	}
-}
-</style>
