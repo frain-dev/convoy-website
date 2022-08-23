@@ -1,11 +1,16 @@
 <template>
-	<main class="page--container">
-		<article class="content">
-			<nuxt-content class="docs" :document="pageData"></nuxt-content>
+	<main class="py-36px px-0 w-full m-0 desktop:flex desktop:justify-center">
+		<article class="content max-w-[800px] w-full py-0 px-20px m-auto md:px-60px md:m-[unset]">
+			<nuxt-content class="docs w-full" :document="pageData"></nuxt-content>
 
-			<div class="blog-post--footer" v-if="pageData.slug !== '404'">
-				<a :href="'https://github.com/frain-dev/convoy-website/tree/main/content' + this.$route.path + '.md'" target="_blank" referrerpolicy="noreferrer" class="edit-link">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-1">
+			<div class="py-30px px-0 text-14 font-light desktop:flex desktop:items-center desktop:justify-between" v-if="pageData.slug !== '404'">
+				<a
+					:href="'https://github.com/frain-dev/convoy-website/tree/main/content' + this.$route.path + '.md'"
+					target="_blank"
+					referrerpolicy="noreferrer"
+					class="flex items-center underline text-light-green mobile:mb-20px"
+				>
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-10px w-14px">
 						<path
 							d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13"
 							stroke="currentColor"
@@ -24,16 +29,22 @@
 					<span>Edit this page on GitHub</span>
 				</a>
 
-				<div class="updated-at">Updated at {{ pageData.updatedAt | date }}</div>
+				<div class="font-light">Updated at {{ pageData.updatedAt | date }}</div>
 			</div>
 		</article>
 
-		<div class="sidemenu" v-show="pageData.toc.length > 0">
-			<h4>ON THIS PAGE</h4>
+		<div class="sidemenu hidden md:min-w-[250px] md:sticky md:top-104px md:h-fit md:block" v-show="pageData.toc.length > 0">
+			<h4 class="font-semibold text-14 text-black pl-10px mb-8px">ON THIS PAGE</h4>
 			<ul v-show="pageData.toc.length > 0">
-				<li class="sub-menu" :class="{ sub: subpage.depth > 2 }" v-for="(subpage, index) in pageData.toc" :key="index" :id="subpage.id">
-					<img src="~/assets/images/arrow-right.svg" alt="angle right" />
-					<nuxt-link :to="{ path: './' + pageData.id, hash: '#' + subpage.id }">{{ subpage.text }}</nuxt-link>
+				<li
+					class="sub-menu py-8px px-0 flex items-center border-b border-b-grey-10"
+					:class="{ 'pl-[15px] py-4px': subpage.depth > 2 }"
+					v-for="(subpage, index) in pageData.toc"
+					:key="index"
+					:id="subpage.id"
+				>
+					<img src="~/assets/images/arrow-right.svg" class="w-8px h-8px invisible group-active:visible" alt="angle right" />
+					<nuxt-link :to="{ path: './' + pageData.id, hash: '#' + subpage.id }" class="font-light text-14 text-grey-60 group-active:font-semibold">{{ subpage.text }}</nuxt-link>
 				</li>
 			</ul>
 		</div>
@@ -47,119 +58,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$desktopBreakPoint: 1060px;
-$desktopBreakPoint2: 1240px;
-
-article {
-	max-width: 800px;
-	width: 100%;
-	padding: 0 20px;
-	margin: auto;
-
-	@media (min-width: $desktopBreakPoint) {
-		padding: 0 60px;
-		margin: unset;
-	}
-}
-
-.page--container {
-	padding: 36px 0;
-	width: 100%;
-	margin: auto;
-
-	@media (min-width: $desktopBreakPoint) {
-		display: flex;
-		justify-content: center;
-	}
-
-	.nuxt-content {
-		width: 100%;
-	}
-}
-
 .sidemenu {
-	display: none;
-
-	@media (min-width: $desktopBreakPoint) {
-		min-width: 250px;
-		position: sticky;
-		top: 104px;
-		height: fit-content;
-		display: block;
-	}
-
-	h4 {
-		font-weight: 600;
-		font-size: 14px;
-		line-height: 22px;
-		color: #000624;
-		padding-left: 10px;
-		margin-bottom: 8px;
-	}
-
 	li {
 		&.sub-menu {
-			font-weight: 400;
-			font-size: 14px;
-			line-height: 22px;
-			color: #737a91;
-			padding: 8px 0;
-			border-bottom: 1px solid #edeff5;
-
 			&.active {
 				a {
-					font-weight: 600;
+					@apply font-semibold transition-all duration-300;
 				}
-
 				img {
-					visibility: unset;
+					@apply visible;
 				}
 			}
-
 			img {
-				visibility: hidden;
-				height: 8px;
-				width: 8px;
+				@apply invisible mr-2px;
 			}
 		}
-
-		&.sub {
-			padding: 4px 0 4px 15px;
-		}
-	}
-}
-
-.blog-post--footer {
-	padding: 30px 0;
-	font-size: 14px;
-	font-weight: 300;
-
-	@media (min-width: $desktopBreakPoint) {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-
-	.updated-at,
-	.edit-link {
-		font-weight: 300;
-	}
-
-	.edit-link {
-		display: flex;
-		align-items: center;
-		text-decoration: underline;
-		color: #47b38d;
-		margin-bottom: 20px;
-
-		svg {
-			margin-right: 10px;
-			width: 14px;
-		}
-	}
-
-	.updated-at {
-		font-weight: 200;
 	}
 }
 </style>
