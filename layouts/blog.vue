@@ -1,10 +1,10 @@
 <template>
-	<div class="page blog">
-		<header>
+	<div class="flex-wrap min-h-screen bg-[#fafafe]">
+		<header class="w-full bg-transparent -mt-110px">
 			<Header></Header>
 		</header>
 
-		<div class="main">
+		<div class="pt-150px pb-100px max-w-[1237px] w-full mt-110px m-auto">
 			<Nuxt />
 		</div>
 		<Footer></Footer>
@@ -27,24 +27,3 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-$desktopBreakPoint: 880px;
-
-.page.blog {
-	flex-wrap: wrap;
-	height: 100vh;
-}
-
-header {
-	width: 100%;
-	background: transparent;
-	margin-top: -110px;
-}
-
-.main {
-	margin: calc(20px + 32px + 58.23px) auto 0;
-	padding: 150px 0 100px;
-	width: 100%;
-	max-width: calc(1035px + 170px + 32px);
-}
-</style>

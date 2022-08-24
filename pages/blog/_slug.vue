@@ -1,38 +1,38 @@
 <template>
-	<div class="main">
-		<div class="blog-post">
-			<div class="post-page--head" v-if="blogPageData.slug !== '404'">
-				<div class="breadcrumb">
+	<div class="m-auto p-0">
+		<div class="max-w-[780px] w-full m-auto px-20px desktop:p-0">
+			<div class="flex w-full flex-col desktop:flex-row desktop:items-center desktop:justify-between" v-if="blogPageData.slug !== '404'">
+				<div class="font-medium text-14 text-grey-80">
 					<nuxt-link tag="button" to="/blog">Blog</nuxt-link>
 
-					<span class="breadcrumb--divider">|</span>
-					<span class="breadcrumb__tag">{{ blogPageData.primary_tag }}</span>
+					<span class="mx-16px">|</span>
+					<span class="text-primary-100">{{ blogPageData.primary_tag }}</span>
 				</div>
 
-				<div class="date">
+				<div class="font-medium text-14 flex items-center mt-16px desktop:mt-0">
 					{{ blogPageData.readingTime }} min read
-					<span><img src="~/assets/images/ellipse.svg" alt="ellipse" /></span>
+					<span class="mx-6px mb-2px"><img src="~/assets/images/ellipse.svg" class="w-4px h-4px" alt="ellipse" /></span>
 					{{ blogPageData.published_at | date }}
 				</div>
 			</div>
 
-			<h3 class="post-page--title" v-if="blogPageData.slug !== '404'">{{ blogPageData.title }}</h3>
+			<h3 class="font-bold text-black mt-16px mb-40px desktop:mt-30px desktop:mb-26px desktop:text-[48px] desktop:leading-[58px]" v-if="blogPageData.slug !== '404'">{{ blogPageData.title }}</h3>
 
-			<div class="post-page--author" v-if="blogPageData.slug !== '404'">
-				<a :href="blogPageData.primary_author.twitter ? 'http://twitter.com/' + blogPageData.primary_author.twitter : ''" target="_blank" class="author">
-					<div class="img">
-						<img :src="require(`~/static/profile-images/${blogPageData.primary_author.name}.png`)" alt="author imge" />
+			<div class="flex items-end justify-between mb-56px desktop:mb-44px" v-if="blogPageData.slug !== '404'">
+				<a :href="blogPageData.primary_author.twitter ? 'http://twitter.com/' + blogPageData.primary_author.twitter : ''" target="_blank" class="flex items-start">
+					<div class="w-40px h-40px rounded-[50%] mr-16px overflow-hidden flex items-center bg-[#f5f5f5]">
+						<img :src="require(`~/static/profile-images/${blogPageData.primary_author.name}.png`)" class="w-full rounded-[50%] mr-12px" alt="author imge" />
 					</div>
 					<div>
-						<h5>{{ blogPageData.primary_author.name }}</h5>
-						<p>{{ blogPageData.primary_author.meta_title }} Convoy</p>
+						<h6 class="font-semibold text-primary-100 mb-2px">{{ blogPageData.primary_author.name }}</h6>
+						<p class="font-normal text-14 mb-6px text-grey-80">{{ blogPageData.primary_author.meta_title }} Convoy</p>
 					</div>
 				</a>
 
 				<div>
-					<p>Share to:</p>
+					<p class="mb-8px text-14 text-grey-80">Share to:</p>
 					<ul class="socials">
-						<li>
+						<li class="!w-32px !h-32px">
 							<a
 								rel="noopener noreferrer"
 								:href="'https://twitter.com/intent/tweet/?text=' + blogPageData.title + '%20from%20@fraindev&url=https://getconvoy.io/blog/' + blogPageData.slug + '&via=frainDev'"
@@ -42,7 +42,7 @@
 							</a>
 						</li>
 
-						<li>
+						<li class="!w-32px !h-32px">
 							<a rel="noopener noreferrer" :href="'https://www.linkedin.com/sharing/share-offsite/?mini=true&url=https://getconvoy.io/blog/' + blogPageData.slug + ''" target="_blank">
 								<img src="~/assets/images/linkedin-grey-icon.svg" alt="linkedin logo" />
 							</a>
@@ -51,18 +51,18 @@
 				</div>
 			</div>
 
-			<div class="post-page--content">
-				<main>
-					<div class="post-page--body">
+			<div>
+				<main class="max-w-[780px] w-full">
+					<div class="font-normal text-16 text-grey-80">
 						<nuxt-content class="blog" :document="blogPageData"></nuxt-content>
 					</div>
 				</main>
 			</div>
 		</div>
 
-		<div class="more-posts">
-			<h1>More Posts</h1>
-			<div class="posts">
+		<div class="max-w-[970px] w-full m-auto px-20px desktop:mt-130px">
+			<h1 class="font-bold">More Posts</h1>
+			<div class="mt-32px justify-center desktop:grid desktop:grid-cols-2 desktop:gap-48px">
 				<Post v-for="(post, index) in posts" :key="index" :post="post" />
 			</div>
 		</div>
@@ -254,266 +254,3 @@ export default {
 	}
 };
 </script>
-
-<style lang="scss" scoped>
-$desktopBreakPoint: 880px;
-
-.main {
-	margin: 0 auto;
-	padding: 0;
-}
-.blog-post {
-	max-width: 780px;
-	width: 100%;
-	margin: 0 auto;
-	padding: 0 20px;
-	@media (min-width: $desktopBreakPoint) {
-		padding: 0;
-	}
-}
-
-aside {
-	position: sticky;
-	top: 0;
-
-	& > div.fix {
-		position: fixed;
-		top: 190px;
-	}
-
-	h3 {
-		font-size: 14px;
-		line-height: 17px;
-	}
-
-	li {
-		margin-bottom: 16px;
-		font-size: 13px;
-		line-height: 16px;
-	}
-
-	.social {
-		// move up since content list isn't available yet
-		// margin-top: 40px;
-		// padding-top: 16px;
-		// border-top: 1px dashed rgba(7, 71, 166, 0.08);
-
-		h3 {
-			font-weight: bold;
-			font-size: 14px;
-			line-height: 17px;
-			color: #000624;
-		}
-	}
-}
-
-main {
-	max-width: 780px;
-	width: 100%;
-
-	h1 {
-		font-weight: bold;
-		font-size: 24px;
-		line-height: 35px;
-		color: #000624;
-		margin-bottom: 1px;
-		display: flex;
-		align-items: center;
-
-		button {
-			height: fit-content;
-			margin-top: 5px;
-			margin-left: 8px;
-
-			@media (min-width: $desktopBreakPoint) {
-				display: none;
-			}
-		}
-	}
-
-	& > p {
-		font-size: 16px;
-		line-height: 24px;
-		color: #5f5f68;
-	}
-}
-
-.post-page {
-	.date {
-		font-weight: 500;
-		font-size: 14px;
-		line-height: 22px;
-	}
-
-	&--head {
-		display: flex;
-		width: 100%;
-		flex-flow: column;
-
-		@media (min-width: $desktopBreakPoint) {
-			flex-flow: row;
-			align-items: center;
-			justify-content: space-between;
-		}
-		button {
-			padding: 0;
-			font-weight: 500;
-		}
-		.breadcrumb {
-			font-weight: 500;
-			font-size: 14px;
-			line-height: 22px;
-			color: #31323d;
-			&__tag {
-				color: #477db3;
-			}
-			&--divider {
-				margin-left: 16px;
-				margin-right: 16px;
-			}
-		}
-
-		.date {
-			font-weight: 500;
-			font-size: 14px;
-			line-height: 24px;
-			color: #000624;
-			display: flex;
-			margin-top: 16px;
-			img {
-				width: 4px;
-				height: 4px;
-				margin: 0 7px 2px 7px;
-			}
-			@media (min-width: $desktopBreakPoint) {
-				margin-top: unset;
-			}
-		}
-	}
-
-	&--loader {
-		width: 80%;
-		left: 10%;
-		height: 5px;
-		background: #e6e6e6;
-		position: sticky;
-		margin-bottom: 52px;
-		overflow: hidden;
-
-		&.fix {
-			position: fixed;
-			max-width: calc(1035px + 170px + 32px);
-			top: 90px;
-			z-index: 5;
-		}
-
-		div {
-			position: absolute;
-			background: #5cc685;
-			left: 0;
-			height: 100%;
-		}
-	}
-
-	&--body {
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 24px;
-		color: #31323d;
-	}
-
-	&--title {
-		font-weight: 700;
-		font-size: 24px;
-		line-height: 32px;
-		color: #000624;
-		margin: 16px 0 40px 0;
-
-		@media (min-width: $desktopBreakPoint) {
-			font-weight: 700;
-			font-size: 48px;
-			line-height: 58px;
-			margin: 31px 0 25px 0;
-		}
-
-		&.small {
-			font-size: 24px;
-		}
-	}
-
-	&--author {
-		display: flex;
-		align-items: flex-end;
-		justify-content: space-between;
-		margin-bottom: 56px;
-
-		@media (min-width: $desktopBreakPoint) {
-			margin-bottom: 45px;
-		}
-
-		.author {
-			display: flex;
-			align-items: flex-start;
-			img {
-				width: 100% !important;
-				border-radius: 50%;
-				margin-right: 12px;
-			}
-		}
-		.img {
-			width: 40px;
-			height: 40px;
-			border-radius: 50%;
-			background: #f5f5f5;
-			margin-right: 16px;
-			overflow: hidden;
-			display: flex;
-			align-items: center;
-		}
-
-		h5 {
-			font-weight: 600;
-			font-size: 14px;
-			line-height: 22px;
-			color: #477db3;
-			margin-bottom: 3px;
-		}
-
-		p {
-			font-weight: 400;
-			font-size: 14px;
-			line-height: 22px;
-			color: #31323d;
-			margin-bottom: 7px;
-		}
-
-		.socials {
-			li {
-				width: 32px;
-				height: 32px;
-			}
-		}
-	}
-}
-
-.more-posts {
-	padding: 0 20px;
-	max-width: 970px;
-	margin: 80px auto 0;
-
-	@media (min-width: $desktopBreakPoint) {
-		margin-top: 130px;
-	}
-
-	h1 {
-		font-weight: bold;
-		font-size: 32px;
-		line-height: 130%;
-	}
-
-	.posts {
-		margin-top: 32px;
-		justify-content: center;
-	}
-}
-</style>
