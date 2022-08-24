@@ -1,6 +1,6 @@
 <template>
 	<ul class="sidebar-item">
-		<li v-for="(page, index) in pages" :key="index" :class="!page.children && page.title ? 'spaced' : ''">
+		<li v-for="(page, index) in pages" :key="index" class="text-white-100 text-14" :class="!page.children && page.title ? 'spaced' : ''">
 			<template @click="showMenu = false">
 				<SidebarSubItem :page="page"></SidebarSubItem>
 			</template>
@@ -21,69 +21,32 @@ export default {
 
 <style lang="scss">
 .sidebar-item {
-	h3 {
-		padding: 0;
-		margin: 0 0 16px;
-	}
-
 	li {
-		font-size: 14px;
-		line-height: 16px;
-		margin-bottom: 30px;
+		@apply mb-30px;
 
 		&.spaced {
-			margin-left: 21px;
+			@apply ml-20px;
 		}
 
 		li {
-			margin-bottom: 15px;
+			@apply mb-16px;
 
 			&.spaced {
-				margin-left: 0;
+				@apply ml-0;
 			}
 		}
-
-		a,
-		button {
-			display: flex;
-			align-items: center;
-			color: #fff;
-			font-weight: 400;
-			font-size: 14px;
-			padding: 0;
-		}
-
-		span {
-			font-size: 16px;
-			margin-right: 10px;
-		}
-
 		img {
-			width: 16px;
-			margin-right: 5px;
+			@apply w-16px mr-4px;
 		}
 
 		ul {
-			margin-left: 35px;
+			@apply ml-34px pt-16px;
 		}
 	}
-
 	a {
 		&.nuxt-link-active {
-			color: #47b38d;
-
-			span {
-				font-size: 24px;
-			}
-
-			h3 {
-				color: inherit;
-			}
+			@apply text-light-green;
 		}
-	}
-
-	ul {
-		margin: 16px 0 16px 21px;
 	}
 }
 </style>

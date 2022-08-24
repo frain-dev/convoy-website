@@ -1,30 +1,52 @@
 <template>
-	<div class="page">
-		<aside :class="{ show: showMenu }">
-			<div class="logo">
-				<nuxt-link to="/"><img src="~/assets/images/logo.svg" alt="logo" /></nuxt-link>
-				<span>Docs</span>
+	<div class="flex h-screen">
+		<aside class="max-w-[270px] bg-[#16192C] text-white-100 h-screen overflow-y-auto overflow-x-hidden fixed transition-all duration-300 z-50 md:static md:w-full" :class="showMenu ? 'w-full' : 'w-0'">
+			<div class="flex items-center px-24px py-20px border-b border-b-white-4">
+				<nuxt-link to="/"><img src="~/assets/images/logo.svg" class="h-22px w-84px mr-4px" alt="logo" /></nuxt-link>
+				<span class="font-medium text-16 text-success-100">Docs</span>
 			</div>
 
-			<button class="menu-button" @click="showMenu = !showMenu">
+			<button class="absolute top-[19px] right-10px md:hidden" @click="showMenu = !showMenu">
 				<img v-if="showMenu" src="~/assets/images/close-icon.svg" alt="close icon" width="24" />
 			</button>
 
-			<div class="input">
-				<select name="" id="" required>
+			<div class="flex flex-col relative mx-24px mt-24px">
+				<select
+					class="
+						font-normal
+						text-14 text-white-100
+						bg-[#181d31]
+						border border-grey-60
+						rounded-4px
+						py-10px
+						px-16px
+						transition-all
+						duration-300
+						focus:outline-none focus:pt-20px focus:pb-10px focus:px-16px
+						valid:pt-20px valid:pb-10px valid:px-16px
+						appearance-none
+						peer
+					"
+					required
+				>
 					<option v-for="version in versions" selected :key="version" :value="version">{{ version }}</option>
 				</select>
-				<label for="version">Version</label>
+				<label
+					for="version"
+					class="font-medium text-14 text-[#a5abc1] capitalize absolute ml-16px top-10px transition-all duration-300 peer-valid:font-medium peer-valid:text-10 peer-valid:ml-16px peer-valid:top-6px"
+				>
+					Version
+				</label>
 			</div>
 
-			<nav>
+			<nav class="py-20px pl-20px">
 				<sidebar-item :pages="pages"></sidebar-item>
 			</nav>
 		</aside>
 
-		<div class="main">
-			<header>
-				<button class="menu-button" @click="showMenu = !showMenu">
+		<div class="main bg-[#fafafe] w-full overflow-y-auto pb-100px">
+			<header class="w-full bg-white-100 flex items-center justify-between sticky top-0 py-10px px-20px md:py-12px md:px-24px">
+				<button class="block md:hidden" @click="showMenu = !showMenu">
 					<img v-if="!showMenu" src="~/assets/images/menu-icon-dark.svg" alt="menu icon" width="24" />
 					<img v-if="showMenu" src="~/assets/images/close-icon-dark.svg" alt="close icon" width="24" />
 				</button>
@@ -85,141 +107,3 @@ export default {
 	}
 };
 </script>
-
-<style lang="scss" scoped>
-$desktopBreakPoint: 880px;
-$desktopBreakPoint2: 1240px;
-
-body,
-html {
-	padding: 0;
-}
-.page {
-	display: flex;
-	height: 100vh;
-}
-
-aside {
-	max-width: 270px;
-	width: 0;
-	background: #16192c;
-	color: #ffffff;
-	height: 100vh;
-	overflow-y: auto;
-	overflow-x: hidden;
-	position: fixed;
-	z-index: 1;
-	transition: 0.3s all;
-
-	&.show {
-		width: 100%;
-	}
-
-	@media (min-width: $desktopBreakPoint2) {
-		position: static;
-		width: 100%;
-	}
-
-	.logo {
-		display: flex;
-		align-items: center;
-		padding: 20px 24px;
-		border-bottom: 1px solid rgba(236, 233, 241, 0.1);
-
-		img {
-			height: 22px;
-			width: 85px;
-			margin-right: 4px;
-		}
-
-		span {
-			font-weight: 500;
-			font-size: 16px;
-			line-height: 20px;
-			color: #47b38d;
-		}
-	}
-
-	.menu-button {
-		position: absolute;
-		top: 19px;
-		right: 10px;
-
-		@media (min-width: $desktopBreakPoint2) {
-			display: none;
-		}
-	}
-
-	a {
-		color: #fff;
-	}
-
-	a.nuxt-link-active {
-		color: #47b38d;
-
-		span {
-			font-size: 24px;
-		}
-
-		h3 {
-			color: inherit;
-		}
-	}
-
-	h3 {
-		font-weight: bold;
-		font-size: 14px;
-		line-height: 17px;
-		font-variant: small-caps;
-		color: rgba(255, 255, 255, 0.5);
-		padding: 24px 0 0 24px;
-		margin: 0 0 0 0;
-	}
-
-	nav {
-		padding: 24px 0 24px 24px;
-	}
-
-	.input {
-		margin-left: 24px;
-		margin-top: 24px;
-		margin-right: 24px;
-	}
-}
-
-a.api-reference {
-	img {
-		transform: rotate(270deg);
-		margin-left: 5px;
-		filter: brightness(0) invert(1);
-	}
-}
-
-.main {
-	width: 100%;
-	overflow-y: auto;
-	padding-bottom: 100px;
-
-	header {
-		width: 100%;
-	}
-}
-
-header {
-	background: #ffffff;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	position: sticky;
-	top: 0px;
-	padding: 10px 20px;
-
-	@media (min-width: $desktopBreakPoint2) {
-		padding: 13px 24px;
-
-		.menu-button {
-			display: none;
-		}
-	}
-}
-</style>
