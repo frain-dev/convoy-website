@@ -119,7 +119,7 @@
 		</section>
 
 		<!-- why use use use  -->
-		<section class="my-100px desktop:my-130px max-w-[1170px] w-full m-auto px-30px">
+		<section class="mb-100px desktop:mb-130p mt-60px max-w-[1170px] w-full m-auto px-30px">
 			<h1 class="text-center text-[28px] leading-[36px] desktop:text-[48px] desktop:leading-[58px] font-bold">Why use Convoy</h1>
 			<p class="text-center text-16 text-grey-80 font-normal mt-16px mb-40px desktop:mb-88px max-w-[540px] w-full m-auto">
 				Easily filter & debug events sent to multiple applications & endpoints with Delivery Attempt Logs
@@ -207,7 +207,7 @@
 		</section>
 
 		<!-- core features  -->
-		<section class="sticky mt-100px desktop:mt-130px">
+		<section class="sticky top-0 mt-100px desktop:mt-130px">
 			<div class="bg-[#F9FBFE] w-full py-30px px-30px desktop:px-126px mb-40px">
 				<div class="w-full max-w-[1170px]">
 					<h1 class="text-[48px] font-bold mb-16px">Core Features</h1>

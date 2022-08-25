@@ -27,7 +27,7 @@
 				</div>
 			</div>
 
-			<section class="grid grid-cols-1 desktop:grid-cols-3 gap-24px mb-56px mt-24px">
+			<section class="grid grid-cols-[repeat(auto-fill,minmax(333px,_1fr))] gap-24px mb-56px mt-24px">
 				<div class="card bg-[#e7fbf4]">
 					<h4>Configuration</h4>
 					<p>Step by step explanation on how to configure Convoy to best suite your preference and use case.</p>

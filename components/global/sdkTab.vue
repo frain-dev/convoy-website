@@ -1,10 +1,10 @@
 <template>
 	<div>
-		<div class="tabs tabs__line margin-top__32px">
-			<li v-for="tab of tabs" :key="tab.id">
-				<button class="has-icon" :class="activeTab === tab.id ? 'active' : ''" @click="switchTabs(tab.id)">
-					<img :src="require(`~/assets/images/${tab.id}.svg`)" :alt="tab.label" />
-					<span>{{ tab.label }}</span>
+		<div class="flex flex-row m-auto w-full mt-32px mb-24px border-b border-b-grey-10">
+			<li v-for="tab of tabs" :key="tab.id" class="mr-24px !list-none last-of-type:mr-0">
+				<button class="pb-10px flex items-center has-icon" :class="activeTab === tab.id ? 'active' : ''" @click="switchTabs(tab.id)">
+					<img :src="require(`~/assets/images/${tab.id}.svg`)" :alt="tab.label" class="h-16px w-16px mr-16px !my-0" />
+					<span class="text-14 text-left text-black tracking-[0.02em] mobile:min-w-[80px]">{{ tab.label }}</span>
 				</button>
 			</li>
 		</div>
@@ -62,7 +62,13 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-li {
-	list-style-type: none !important;
+
+.active {
+	@apply transition-all duration-300 relative after:bottom-0 after:h-[3px] after:w-full after:left-0 after:right-0 after:bg-primary-100 after:absolute after:rounded-tl-16px after:rounded-tr-16px;
+
+	span {
+		@apply font-semibold text-primary-100 transition-all duration-300;
+	}
+
 }
 </style>

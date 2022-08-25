@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<nav class="w-full m-auto bg-[#302f3f] shadow-default px-20px pt-60px pb-20px fixed left-[50%] -translate-x-1/2 translate-y-0 desktop:pt-50px desktop:pb-12px">
+		<nav class="w-full m-auto bg-[#302f3f] shadow-default px-20px pt-60px pb-20px z-50 fixed left-[50%] -translate-x-1/2 translate-y-0 desktop:pt-50px desktop:pb-12px">
 			<section class="fixed top-0 left-0 bg-primary-100 w-full h-40px py-8px px-12px flex items-center justify-center font-medium text-12 text-white-100 desktop:text-14">
 				<span>Give us a star on GitHub</span>
 				<a class="h-20px w-20px mx-12px hover:cursor-pointer" target="_blank" rel="noopener noreferrer" href="https://github.com/frain-dev/convoy">
@@ -35,7 +35,7 @@
 					"
 					:class="showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'"
 				>
-					<li class="py-14px px-20px mr-20px border-b border-b-grey-10 desktop:border-none" v-for="link in menuItems" :key="link.name">
+					<li class="py-14px px-20px desktop:mr-20px border-b border-b-grey-10 last-of-type:border-none desktop:border-none" v-for="link in menuItems" :key="link.name">
 						<nuxt-link class="text-black desktop:text-white-100 text-14" v-if="link.type === 'route'" :to="link.route">{{ link.name }}</nuxt-link>
 						<a class="text-black desktop:text-white-100 text-14" v-else target="_blank" rel="noopener noreferrer" :href="link.route">{{ link.name }}</a>
 					</li>
