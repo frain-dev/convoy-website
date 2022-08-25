@@ -1,6 +1,6 @@
 <template>
 	<main class="py-36px px-0 w-full m-0 desktop:flex desktop:justify-center">
-		<article class="content max-w-[800px] w-full py-0 px-20px m-auto md:px-60px md:m-[unset]">
+		<article class="content max-w-[800px] w-full py-0 px-20px m-auto md:pr-100px md:m-[unset]">
 			<nuxt-content class="docs w-full" :document="pageData"></nuxt-content>
 
 			<div class="py-30px px-0 text-14 font-light desktop:flex desktop:items-center desktop:justify-between" v-if="pageData.slug !== '404'">
@@ -54,7 +54,7 @@
 		</article>
 
 		<div class="sidemenu hidden md:min-w-[250px] md:sticky md:top-104px md:h-fit md:block" v-show="pageData.toc.length > 0">
-			<h6 class="font-semibold text-black pl-10px mb-8px">ON THIS PAGE</h6>
+			<h6 class="font-semibold text-black pl-10px mb-14px">ON THIS PAGE</h6>
 			<ul v-show="pageData.toc.length > 0">
 				<li
 					class="sub-menu py-8px px-0 flex items-center border-b border-b-grey-10"

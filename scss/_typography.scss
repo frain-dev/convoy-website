@@ -9,7 +9,7 @@
 	}
 
 	p {
-		@apply text-16 text-grey-80 mt-16px mb-32px font-normal;
+		@apply text-14 desktop:text-16 text-grey-80 mt-16px mb-32px;
 	}
 	code {
 		@apply bg-success-500 rounded-4px py-2px px-8px my-0 mx-[1px] text-12 font-menlo text-success-100 border border-none;
@@ -61,7 +61,7 @@
 			@apply ml-20px;
 
 			li {
-				@apply py-8px list-decimal;
+				@apply py-8px list-decimal marker:text-grey-40 text-14 desktop:text-16 text-grey-80;
 			}
 		}
 
@@ -79,10 +79,10 @@
 	// styles for blog content
 	&.blog {
 		ul {
-			@apply list-disc ml-20px mt-14px;
+			@apply list-disc marker:text-grey-40 ml-20px mt-14px;
 
 			li {
-				@apply list-disc mb-16px;
+				@apply list-disc marker:text-grey-40 mb-16px text-14 desktop:text-16 text-grey-80;
 			}
 		}
 
@@ -90,7 +90,7 @@
 			@apply list-[initial] ml-20px mt-14px;
 
 			li {
-				@apply text-16 text-grey-80 font-normal;
+				@apply text-14 desktop:text-16 text-grey-80;
 			}
 		}
 
@@ -114,10 +114,10 @@
 		
 
 		blockquote {
-			@apply rounded-16px pt-100px px-34px pb-64px desktop:px-64px bg-[url('~assets/images/blockquote-bg.svg')] bg-no-repeat bg-primary-100 my-44px relative bg-right-top after:absolute after:content-[url('~assets/images/quote-left.svg')] after:top-[67px] left-1/2 translate-y-0 -translate-x-1/2;
+			@apply bg-success-500 border-success-200 border rounded-10px pt-54px px-28px pb-24px mb-32px before:absolute before:-mt-32px before:-ml-8px before:content-[url('~assets/images/bulb-text.svg')];
 
-			p {
-				@apply text-18 text-center tracking-[0.09em] text-white-100 desktop:text-26;
+			p{
+				@apply text-14 text-grey-80 m-0;
 			}
 		}
 

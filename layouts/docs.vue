@@ -53,7 +53,16 @@
 
 				<DocsSearch />
 
-				<div>
+				<div class="flex items-center">
+					<a
+						href="https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email"
+						target="_blank"
+						rel="noreferrer"
+						class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-10 desktop:text-18 font-semibold flex items-center py-8px px-20px shadow-sm rounded-8px mr-24px w-fit "
+					>
+						Join our community
+						<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px w-10px h-10px" alt="arrow right" />
+					</a>
 					<a href="https://github.com/frain-dev/convoy/" target="_blank" rel="noreferrer">
 						<img src="~/assets/images/github-icon-dark.svg" alt="github icon" />
 					</a>
