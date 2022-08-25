@@ -18,7 +18,7 @@ function customSpacing() {
 module.exports = {
 	mode: 'jit',
 	content: ['./components/**/*.{js,vue,ts}', './layouts/**/*.vue', './pages/**/*.vue', './plugins/**/*.{js,ts}', './nuxt.config.{js,ts}'],
-	safelist: ['!brightness-0', '!invert-[1]'],
+	safelist: ['!brightness-0', '!invert'],
 	theme: {
 		extend: {
 			spacing: customSpacing(),
@@ -131,6 +131,13 @@ module.exports = {
 				'75%, 95%%': { transform: 'translateY(100px)' },
 				'100%': { transform: 'translateY(0)' }
 			},
+			slidedown: {
+				'0%, 20%': { transform: 'translateY(0)' },
+				'25%, 45%': { transform: 'translateY(100px)' },
+				'50%, 70%': { transform: 'translateY(200px)' },
+				'75%, 95%%': { transform: 'translateY(300px)' },
+				'100%': { transform: 'translateY(400px)' }
+			},
 			slide: {
 				'0%, 20%': { transform: 'translateX(200px)' },
 				'25%, 45%': { transform: 'translateX(150px)' },
@@ -141,6 +148,7 @@ module.exports = {
 		},
 		animation: {
 			slideup: 'slideup .5s ease-in-out',
+			slidedown: 'slidedown .5s ease-in-out',
 			slide: 'slide .5s ease-in-out'
 		}
 	},
