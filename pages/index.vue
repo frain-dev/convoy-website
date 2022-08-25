@@ -3,7 +3,7 @@
 		<header class="px-20px bg-gradient-to-br from-[#2c2f3e] to-[#422f41]">
 			<Header></Header>
 
-			<section class="flex flex-col justify-between m-auto pt-150px pb-60px desktop:pl-124px desktop:pr-100px px-30px min-h-[80vh] h-full w-full desktop:flex-row desktop:items-center">
+			<section class="flex flex-col justify-between m-auto pt-150px pb-60px desktop:pl-124px desktop:pr-100px px-30px min-h-[85vh] h-full w-full desktop:flex-row desktop:items-center">
 				<div class="max-w-[624px] w-full">
 					<div class="bg-[#403041] rounded-[40px] w-fit py-10px px-20px flex items-center text-14 text-white-100 mb-40px">
 						We are backed by
@@ -11,11 +11,11 @@
 					</div>
 
 					<h1 class="text-32 desktop:text-[56px] desktop:leading-[80px] font-extrabold text-white-100">A Cloud native Webhook Service</h1>
-					<p class="text-white-100 text-18 mt-16px max-w-[530px]">With out-of-the-box security, reliability and scalability for your webhooks infrastructure.</p>
+					<p class="text-white-100 text-18 mt-16px max-w-[530px] mb-40px">With out-of-the-box security, reliability and scalability for your webhooks infrastructure.</p>
 
-					<button class="mt-40px rounded-8px bg-primary-100 text-14 font-medium text-white-100 py-12px px-38px">Get Started</button>
+					<a target="_blank" rel="noopener noreferrer" href="https://dashboard.getconvoy.io/" class="rounded-8px bg-primary-100 text-14 font-medium text-white-100 py-12px desktop:py-16px px-38px desktop:px-42px">Get Started</a>
 
-					<ul class="flex items-center list-none mt-40px">
+					<ul class="flex items-center list-none mt-60px">
 						<li class="mr-20px desktop:mr-50px">
 							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
 								<img src="~/assets/images/buycoins-logo.svg" class="w-90px !brightness-0 !invert-[1]" alt="buycoins logo" />
@@ -38,19 +38,19 @@
 						</li>
 					</ul>
 				</div>
-				<div class="max-w-[600px] mr-auto w-full mobile:mt-40px relative">
+				<div class="max-w-[600px] desktop:min-h-[65vh] mr-auto w-full mobile:mt-40px relative">
 					<div class="flex flex-row w-full h-full ">
 						<img src="~/assets/images/Illustration2.png" alt="illostration" class="animate-slide transition-all duration-500" :class="activeSlide ? 'block' : 'hidden'" />
 						<img src="~/assets/images/Illustration1.png" alt="illostration" class="animate-slide transition-all duration-500" :class="!activeSlide ? 'block' : 'hidden'" />
 					</div>
 					<div class="flex justify-center mt-52px">
 						<button
-							@click="activeSlide = !activeSlide"
+							@click="activeSlide = true"
 							class="w-[47px] h-[3px] rounded-16px mr-14px transition-all duration-500"
 							:class="activeSlide ? 'bg-[#8E7392] rotate-[0.2deg]' : 'bg-[#5F4C62]'"
 						></button>
 						<button
-							@click="activeSlide = !activeSlide"
+							@click="activeSlide = false"
 							class="w-[47px] h-[3px] rounded-16px transition-all duration-500"
 							:class="activeSlide ? 'bg-[#5F4C62]' : 'bg-[#8E7392] rotate-[0.2deg]'"
 						></button>
@@ -103,11 +103,11 @@
 
 		<!-- app-portal/open-core  -->
 		<section class="max-w-[1170px] w-full m-auto px-30px">
-			<div class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] rounded-16px pt-40px px-20px pb-100px desktop:px-66px desktop:pt-66px desktop:pb-220px">
-				<div class="bg-white-16 rounded-8px w-fit m-auto flex flex-row mb-40px">
+			<div class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] rounded-16px pt-40px px-20px pb-100px desktop:px-66px desktop:pt-50px desktop:pb-200px">
+				<div class="bg-white-16 rounded-8px w-fit m-auto flex flex-row mb-30px">
 					<li class="list-none" v-for="tab of tabs" :key="tab.id">
 						<button
-							class="rounded-6px py-12px px-28px desktop:px-60px min-w-[86px] desktop:min-w-[132px] transition-all duration-300"
+							class="rounded-6px py-12px px-28px desktop:px-60px min-w-[86px] desktop:min-w-[132px] transition-all duration-500"
 							:class="activeTab === tab.id ? 'bg-white-100 shadow-sm' : ''"
 							@click="switchTabs(tab.id)"
 						>
@@ -117,14 +117,14 @@
 				</div>
 
 				<div class="w-full min-h-[280px] h-full">
-					<div class="flex flex-col items-center justify-center transition-all duration-300" :class="activeTab === 'portal' ? 'animate-slideup block' : 'hidden'">
+					<div class="flex flex-col items-center justify-center transition-all duration-500" :class="activeTab === 'portal' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden'">
 						<h1 class="text-[40px] text-white-100 font-bold text-center">App Portal</h1>
-						<p class="text-white-100 text-center text-18 mt-16px">
+						<p class="text-white-100 text-center text-18 mt-16px max-w-[860px] m-auto">
 							With the app portal, we're enabling you to extend the visibility our dashboard provides you to your customers. They no longer need to reach out to you to know what is happening with
 							their events.
 						</p>
 
-						<div class="flex justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth mt-30px desktop:mt-64px mb-60px w-full">
+						<div class="flex justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth mt-30px desktop:mt-40px w-full">
 							<div
 								class="bg-white-10 px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
 								v-for="feature of appPortal"
@@ -136,14 +136,14 @@
 						</div>
 					</div>
 
-					<div class="flex flex-col items-center justify-center transition-all duration-300" :class="activeTab === 'open' ? 'animate-slideup block' : 'hidden'">
+					<div class="flex flex-col items-center justify-center transition-all duration-500" :class="activeTab === 'open' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden'">
 						<h1 class="text-[40px] text-white-100 font-bold text-center">Open Core</h1>
-						<p class="text-white-100 text-center text-18 mt-16px">
+						<p class="text-white-100 text-center text-18 mt-16px max-w-[860px] m-auto">
 							Convoy is an open-source service that enables you to send webhook events to users, customers, and platforms reliably, securely in a scalable manner. Our open-core is open-source
 							first i.e community-driven, so you can be sure to get reliable support.
 						</p>
 
-						<div class="flex justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth mt-30px desktop:mt-64px mb-60px w-full">
+						<div class="flex justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth mt-30px desktop:mt-40px w-full">
 							<div
 								class="bg-white-10 px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
 								v-for="feature of openCore"
@@ -156,14 +156,14 @@
 					</div>
 				</div>
 			</div>
-			<div class="bg-[#082B91] bg-opacity-[0.07] w-11/12 h-220px desktop:h-300px rounded-b-16px m-auto relative">
+			<div class="bg-[#082B91] bg-opacity-[0.07] w-11/12 h-220px desktop:h-270px rounded-b-16px m-auto relative">
 				<div class="absolute left-1/2 -translate-x-1/2 -top-100px desktop:-top-200px w-full">
 					<img src="~/assets/images/core.png" alt="group" class="xs:hidden max-w-[866px] desktop:w-full w-4/5 m-auto" />
 					<img src="~/assets/images/groups-img-small.png" class="hidden xs:block m-auto" alt="group" />
 					<a
 						target="_blank"
 						rel="noopener noreferrer"
-						href="https://app.getconvoy.io/signup"
+						href="https://dashboard.getconvoy.io/"
 						class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
 					>
 						Get started for free
@@ -174,7 +174,7 @@
 		</section>
 
 		<!-- core features  -->
-		<section class="mt-100px desktop:mt-130px">
+		<section id="features" class="sticky top-0 mt-100px desktop:mt-130px">
 			<div class="bg-[#F9FBFE] w-full py-30px px-30px desktop:px-126px mb-40px">
 				<div class="w-full max-w-[1170px]">
 					<h1 class="text-[48px] font-bold mb-16px">Core Features</h1>
@@ -245,7 +245,7 @@
 				<a
 					target="_blank"
 					rel="noopener noreferrer"
-					href="https://app.getconvoy.io/signup"
+					href="https://dashboard.getconvoy.io/"
 					class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
 				>
 					Get started for free

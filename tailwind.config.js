@@ -18,6 +18,7 @@ function customSpacing() {
 module.exports = {
 	mode: 'jit',
 	content: ['./components/**/*.{js,vue,ts}', './layouts/**/*.vue', './pages/**/*.vue', './plugins/**/*.{js,ts}', './nuxt.config.{js,ts}'],
+	safelist: ['!brightness-0', '!invert-[1]'],
 	theme: {
 		extend: {
 			spacing: customSpacing(),
@@ -138,8 +139,8 @@ module.exports = {
 			}
 		},
 		animation: {
-			slideup: 'slideup .3s ease-in-out',
-			slide: 'slide 0.5s ease-in-out'
+			slideup: 'slideup .5s ease-in-out',
+			slide: 'slide .5s ease-in-out'
 		}
 	},
 	plugins: []
