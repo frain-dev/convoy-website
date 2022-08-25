@@ -29,7 +29,8 @@ module.exports = {
 				card: '40px 44px 81px rgba(111, 118, 138, 0.08)'
 			},
 			fontFamily: {
-				menlo: ['Menlo Regular', ...defaultTheme.fontFamily.sans]
+				menlo: ['Menlo Regular', ...defaultTheme.fontFamily.sans],
+				inter: ['Inter', ...defaultTheme.fontFamily.sans]
 			}
 		},
 		screens: {

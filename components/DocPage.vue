@@ -64,7 +64,7 @@
 					:id="subpage.id"
 				>
 					<img src="~/assets/images/arrow-right-success.svg" class="w-8px h-8px" alt="angle right" />
-					<nuxt-link :to="{ path: './' + pageData.id, hash: '#' + subpage.id }" class="font-light text-14 text-grey-60">{{ subpage.text }}</nuxt-link>
+					<nuxt-link :to="{ path: './' + pageData.id, hash: '#' + subpage.id }" class="font-medium text-14 text-grey-40">{{ subpage.text }}</nuxt-link>
 				</li>
 			</ul>
 		</div>

@@ -7,7 +7,7 @@
 		<nuxt-link :to="'/blog/' + post.slug">
 			<h3 class="text-24 font-bold mx-16px mb-16px">{{ post.title }}</h3>
 		</nuxt-link>
-		<p class="text-16 text-grey-80 mb-20px mx-16px">{{ post.description }}</p>
+		<p class="text-16 font-light text-grey-80 mb-20px mx-16px">{{ post.description }}</p>
 		<div class="mx-16px mt-18px mb-26px flex flex-col flex-wrap justify-between desktop:items-end desktop:flex-row">
 			<a :href="post.primary_author.twitter ? 'http://twitter.com/' + post.primary_author.twitter : ''" target="_blank" class="flex items-start mb-40px desktop:mb-[unset]">
 				<div class="w-40px h-40px rounded-50% mr-16px overflow-hidden flex items-center">
