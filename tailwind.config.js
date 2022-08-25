@@ -23,6 +23,7 @@ module.exports = {
 			spacing: customSpacing(),
 			boxShadow: {
 				sm: '0px 2px 8px rgba(12, 26, 75, 0.08), 0px 3px 8px -1px rgba(50, 50, 71, 0.05)',
+				md: '0px 15px 50px rgba(21, 37, 72, 0.05)',
 				default: '0px 2px 4px rgba(12, 26, 75, 0.04), 0px 4px 20px -2px rgba(50, 50, 71, 0.08)',
 				card: '40px 44px 81px rgba(111, 118, 138, 0.08)'
 			},
@@ -33,7 +34,8 @@ module.exports = {
 		screens: {
 			desktop: { min: '880px' },
 			md: { min: '1240px' },
-			mobile: { max: '879px' }
+			mobile: { max: '879px' },
+			xs: { max: '425px' }
 		},
 		borderRadius: {
 			'2px': '2px',
@@ -57,6 +59,7 @@ module.exports = {
 			26: ['26px', '36px'],
 			28: ['28px', '38px'],
 			30: ['30px', '46px'],
+			32: ['32px', '48px'],
 			h1: ['34px', '140%'],
 			h2: ['24px', '140%'],
 			h3: ['20px', '140%'],
@@ -117,6 +120,9 @@ module.exports = {
 			'light-green': '#47B38D',
 			black: '#16192C',
 			transparent: 'transparent'
+		},
+		bgGradientDeg: {
+			180: '180deg'
 		}
 	},
 	plugins: []
