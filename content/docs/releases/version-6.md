@@ -18,6 +18,16 @@ order: 2
 ## Changelogs
 The changelogs for this minor release version and any maintenance versions are listed below.
 
+[Convoy version v0.6.5](https://github.com/frain-dev/convoy/releases/tag/v0.6.5)
+
+[Convoy version v0.6.4](https://github.com/frain-dev/convoy/releases/tag/v0.6.4)
+
+[Convoy version v0.6.3](https://github.com/frain-dev/convoy/releases/tag/v0.6.3)
+
+[Convoy version v0.6.2](https://github.com/frain-dev/convoy/releases/tag/v0.6.2)
+
+[Convoy version v0.6.1](https://github.com/frain-dev/convoy/releases/tag/v0.6.1)
+
 [Convoy version v0.6.0](https://github.com/frain-dev/convoy/releases/tag/v0.6.0)
 
 [Convoy version v0.6.0-rc.3](https://github.com/frain-dev/convoy/releases/tag/v0.6.0-rc.3)
