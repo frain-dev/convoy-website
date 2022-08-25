@@ -3,7 +3,7 @@
 		<header class="px-20px bg-gradient-to-br from-[#2c2f3e] to-[#422f41]">
 			<Header></Header>
 
-			<section class="flex flex-col justify-between m-auto pt-150px max-w-[1170px] min-h-[75vh] h-full w-full desktop:flex-row desktop:items-center">
+			<section class="flex flex-col justify-between m-auto pt-150px pb-100px desktop:pl-124px desktop:pr-100px px-30px min-h-[75vh] h-full w-full desktop:flex-row desktop:items-center">
 				<div class="max-w-[624px] w-full">
 					<div class="bg-[#403041] rounded-[40px] w-fit py-10px px-20px flex items-center text-14 text-white-100 mb-40px">
 						We are backed by
@@ -38,58 +38,25 @@
 						</li>
 					</ul>
 				</div>
-				<div></div>
+				<div class="max-w-[600px] mr-auto w-full mobile:mt-40px">
+					<div class="flex flex-row w-full h-full relative">
+						<img src="~/assets/images/Illustration2.png" alt="illostration" class="animate-slideright transition-all duration-300" :class="activeSlide ? 'block' : 'hidden'" />
+						<img src="~/assets/images/Illustration1.png" alt="illostration" class="animate-slideright transition-all duration-300" :class="!activeSlide ? 'block' : 'hidden'" />
+					</div>
+					<div class="flex justify-center mt-52px">
+						<button
+							@click="activeSlide = !activeSlide"
+							class="w-[47px] h-[3px] rounded-16px mr-14px transition-all duration-500"
+							:class="activeSlide ? 'bg-[#8E7392] rotate-[0.2deg]' : 'bg-[#5F4C62]'"
+						></button>
+						<button
+							@click="activeSlide = !activeSlide"
+							class="w-[47px] h-[3px] rounded-16px transition-all duration-500"
+							:class="activeSlide ? 'bg-[#5F4C62]' : 'bg-[#8E7392] rotate-[0.2deg]'"
+						></button>
+					</div>
+				</div>
 			</section>
-
-			<!-- <section class="hero-section">
-				<div class="hero-section--cta">
-					<h1>An Open-Source Webhook Service</h1>
-					<p>With out-of-the-box security, reliability and scalability for your webhooks infrastructure.</p>
-
-					<a target="_blank" rel="noopener noreferrer" href="https://app.getconvoy.io/signup" class="primary">Get Started</a>
-				</div>
-				<div class="hero-section--img">
-					<img src="~/assets/images/hero-img.png" alt="hero" />
-				</div>
-			</section>
-
-			<section class="section companies">
-				<div class="backed-by">
-					<h5>Backed By:</h5>
-					<ul>
-						<li>
-							<img src="~/assets/images/y-combinator.svg" class="y-combinator" alt="y-combinator" />
-						</li>
-					</ul>
-				</div>
-
-				<div class="trusted-by">
-					<h5>Trusted By:</h5>
-
-					<ul>
-						<li>
-							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
-								<img src="~/assets/images/buycoins-logo.svg" style="width: 70px" alt="buycoins logo" />
-							</a>
-						</li>
-						<li>
-							<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
-								<img src="~/assets/images/termii-logo.png" style="width: 80px" alt="termii logo" />
-							</a>
-						</li>
-						<li>
-							<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
-								<img src="~/assets/images/getwallets-logo.svg" style="width: 80px" alt="getwallets logo" />
-							</a>
-						</li>
-						<li>
-							<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
-								<img src="~/assets/images/dojah-logo.png" style="width: 50px" alt="dojah logo" />
-							</a>
-						</li>
-					</ul>
-				</div>
-			</section> -->
 		</header>
 
 		<section class="bg-[#FAFAFA] bg-[url(~/assets/images/Newsletter-card.png)] border border-white-16 bg-cover bg-center py-30px px-20px desktop:pt-60px desktop:pb-46px">
@@ -150,7 +117,7 @@
 				</div>
 
 				<div class="w-full min-h-[280px] h-full">
-					<div class="flex flex-col items-center justify-center relative transition-all duration-300" :class="activeTab === 'portal' ? 'top-0' : 'top-full'" v-if="activeTab === 'portal'">
+					<div class="flex flex-col items-center justify-center transition-all duration-300" :class="activeTab === 'portal' ? 'animate-slideup block' : 'hidden'">
 						<h1 class="text-[40px] text-white-100 font-bold text-center">App Portal</h1>
 						<p class="text-white-100 text-center text-18 mt-16px">
 							With the app portal, we're enabling you to extend the visibility our dashboard provides you to your customers. They no longer need to reach out to you to know what is happening with
@@ -169,7 +136,7 @@
 						</div>
 					</div>
 
-					<div class="flex flex-col items-center justify-center relative transition-all duration-300" :class="activeTab === 'open' ? 'top-0' : 'top-full'" v-if="activeTab === 'open'">
+					<div class="flex flex-col items-center justify-center transition-all duration-300" :class="activeTab === 'open' ? 'animate-slideup block' : 'hidden'">
 						<h1 class="text-[40px] text-white-100 font-bold text-center">Open Core</h1>
 						<p class="text-white-100 text-center text-18 mt-16px">
 							Convoy is an open-source service that enables you to send webhook events to users, customers, and platforms reliably, securely in a scalable manner. Our open-core is open-source
@@ -207,7 +174,7 @@
 		</section>
 
 		<!-- core features  -->
-		<section class="sticky top-0 mt-100px desktop:mt-130px">
+		<section class="mt-100px desktop:mt-130px">
 			<div class="bg-[#F9FBFE] w-full py-30px px-30px desktop:px-126px mb-40px">
 				<div class="w-full max-w-[1170px]">
 					<h1 class="text-[48px] font-bold mb-16px">Core Features</h1>
@@ -216,8 +183,8 @@
 			</div>
 
 			<div class="flex justify-between items-center">
-				<div class="desktop:pl-126px pl-30px desktop:max-h-[490px] overflow-y-auto desktop:mr-120px">
-					<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] py-88px px-54px">
+				<div class="desktop:pl-126px pl-30px grid grid-rows-1 gap-60px items-center desktop:mr-120px">
+					<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] desktop:min-h-[50vh] py-88px px-54px">
 						<ul class="list-none">
 							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
 								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
@@ -241,7 +208,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] py-88px px-54px mt-130px">
+					<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] desktop:min-h-[50vh] py-88px px-54px mt-130px">
 						<ul class="list-none">
 							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
 								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
@@ -262,7 +229,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="max-w-[764px] w-full overflow-x-scroll">
+				<div class="max-w-[764px] w-full overflow-x-scroll !sticky top-160px">
 					<img src="~/assets/images/core-illustraton.png" class="desktop:min-w-[1080px]" alt="core features" />
 				</div>
 			</div>
@@ -382,7 +349,8 @@ export default {
 				{ feature: 'Scalable', description: 'Independently scale courier as your system needs grows.', img: 'scalable', shadow: 'shadow-[0_22px_24px_0px_rgba(43,214,123,0.2)]' },
 				{ feature: 'Bi-directional webhooks', description: 'Publish and recieve web hooks events from any provider.', img: 'bidirectional', shadow: 'shadow-[0_22px_24px_0px_rgba(240,173,78,0.2)]' }
 			],
-			earlyAccessEmail: ''
+			earlyAccessEmail: '',
+			activeSlide: true
 		};
 	},
 	async asyncData({ $content }) {
@@ -392,7 +360,9 @@ export default {
 
 		return { featurePosts };
 	},
-
+	mounted() {
+		this.triggerSlide();
+	},
 	methods: {
 		switchTabs(activeTab) {
 			switch (activeTab) {
@@ -464,6 +434,11 @@ export default {
 			} catch (error) {
 				this.isSubmitingloadingEarlyAccessForm = false;
 			}
+		},
+		triggerSlide() {
+			setInterval(() => {
+				this.activeSlide = !this.activeSlide;
+			}, 5000);
 		}
 	}
 };

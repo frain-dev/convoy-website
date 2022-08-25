@@ -121,8 +121,28 @@ module.exports = {
 			black: '#16192C',
 			transparent: 'transparent'
 		},
-		bgGradientDeg: {
-			180: '180deg'
+		keyframes: {
+			slideup: {
+				'0%, 20%': { transform: 'translateY(400px)' },
+				'25%, 45%': { transform: 'translateY(300px)' },
+				'50%, 70%': { transform: 'translateY(200px)' },
+				'75%, 95%%': { transform: 'translateY(100px)' },
+				'100%': { transform: 'translateY(0)' }
+			},
+			slideright: {
+				'0%, 20%': { transform: 'translateX(400px)' },
+				'25%, 45%': { transform: 'translateX(300px)' },
+				'50%, 70%': { transform: 'translateX(200px)' },
+				'75%, 95%%': { transform: 'translateX(100px)' },
+				'100%': { transform: 'translateX(0)' }
+			},
+			slide: {
+				'100%': { left: '0' }
+			}
+		},
+		animation: {
+			slideup: 'slideup .3s ease-in-out',
+			slideright: 'slideright .3s ease-in-out'
 		}
 	},
 	plugins: []
