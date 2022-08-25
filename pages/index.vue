@@ -3,7 +3,7 @@
 		<header class="px-20px bg-gradient-to-br from-[#2c2f3e] to-[#422f41]">
 			<Header></Header>
 
-			<section class="flex flex-col justify-between m-auto pt-150px pb-100px desktop:pl-124px desktop:pr-100px px-30px min-h-[75vh] h-full w-full desktop:flex-row desktop:items-center">
+			<section class="flex flex-col justify-between m-auto pt-150px pb-60px desktop:pl-124px desktop:pr-100px px-30px min-h-[80vh] h-full w-full desktop:flex-row desktop:items-center">
 				<div class="max-w-[624px] w-full">
 					<div class="bg-[#403041] rounded-[40px] w-fit py-10px px-20px flex items-center text-14 text-white-100 mb-40px">
 						We are backed by
@@ -18,30 +18,30 @@
 					<ul class="flex items-center list-none mt-40px">
 						<li class="mr-20px desktop:mr-50px">
 							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
-								<img src="~/assets/images/buycoins-logo.svg" class="w-90px brightness-0 invert-[1]" alt="buycoins logo" />
+								<img src="~/assets/images/buycoins-logo.svg" class="w-90px !brightness-0 !invert-[1]" alt="buycoins logo" />
 							</a>
 						</li>
 						<li class="mr-20px desktop:mr-50px">
 							<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
-								<img src="~/assets/images/getwallets-logo.svg" class="w-90px brightness-0 invert-[1]" alt="getwallets logo" />
+								<img src="~/assets/images/getwallets-logo.svg" class="w-90px !brightness-0 !invert-[1]" alt="getwallets logo" />
 							</a>
 						</li>
 						<li class="mr-20px desktop:mr-50px">
 							<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
-								<img src="~/assets/images/dojah-logo.png" class="w-70px brightness-0 invert-[1]" alt="dojah logo" />
+								<img src="~/assets/images/dojah-logo.png" class="w-70px !brightness-0 !invert-[1]" alt="dojah logo" />
 							</a>
 						</li>
 						<li class="">
 							<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
-								<img src="~/assets/images/termii-logo.png" class="w-100px brightness-0 invert-[1]" alt="termii logo" />
+								<img src="~/assets/images/termii-logo.png" class="w-100px !brightness-0 !invert-[1]" alt="termii logo" />
 							</a>
 						</li>
 					</ul>
 				</div>
-				<div class="max-w-[600px] mr-auto w-full mobile:mt-40px">
-					<div class="flex flex-row w-full h-full relative">
-						<img src="~/assets/images/Illustration2.png" alt="illostration" class="animate-slideright transition-all duration-300" :class="activeSlide ? 'block' : 'hidden'" />
-						<img src="~/assets/images/Illustration1.png" alt="illostration" class="animate-slideright transition-all duration-300" :class="!activeSlide ? 'block' : 'hidden'" />
+				<div class="max-w-[600px] mr-auto w-full mobile:mt-40px relative">
+					<div class="flex flex-row w-full h-full ">
+						<img src="~/assets/images/Illustration2.png" alt="illostration" class="animate-slide transition-all duration-500" :class="activeSlide ? 'block' : 'hidden'" />
+						<img src="~/assets/images/Illustration1.png" alt="illostration" class="animate-slide transition-all duration-500" :class="!activeSlide ? 'block' : 'hidden'" />
 					</div>
 					<div class="flex justify-center mt-52px">
 						<button
