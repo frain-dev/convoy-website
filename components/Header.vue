@@ -1,6 +1,9 @@
 <template>
 	<div>
-		<nav class="w-full m-auto bg-[#302f3f] shadow-default px-20px pt-60px pb-20px z-50 fixed left-[50%] -translate-x-1/2 translate-y-0 desktop:pt-50px desktop:pb-12px">
+		<nav
+			class="w-full m-auto px-20px pt-60px pb-20px z-50 fixed left-[50%] -translate-x-1/2 translate-y-0 desktop:pt-50px desktop:pb-12px transition-all duration-300"
+			:class="hasScrolled ? 'bg-[#302f3f] shadow-nav backdrop-blur-[36]' : 'bg-transparent'"
+		>
 			<section class="fixed top-0 left-0 bg-primary-100 w-full h-40px py-8px px-12px flex items-center justify-center font-medium text-12 text-white-100 desktop:text-14">
 				<span>Give us a star on GitHub</span>
 				<a class="h-20px w-20px mx-12px hover:cursor-pointer" target="_blank" rel="noopener noreferrer" href="https://github.com/frain-dev/convoy">
@@ -72,7 +75,8 @@ export default {
 				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' },
 				{ name: 'Download', route: '/download', type: 'route' },
 				{ name: 'Pricing', route: '/pricing', type: 'route' }
-			]
+			],
+			hasScrolled: false
 		};
 	},
 	mounted() {
@@ -85,6 +89,19 @@ export default {
 				const data = await response.json();
 				this.githubStars = data.stargazers_count;
 			} catch (_error) {}
+		},
+		handleScroll() {
+			window.scrollY > 100 ? (this.hasScrolled = true) : (this.hasScrolled = false);
+		}
+	},
+	created() {
+		if (process.client) {
+			window.addEventListener('scroll', this.handleScroll);
+		}
+	},
+	destroyed() {
+		if (process.client) {
+			window.removeEventListener('scroll', this.handleScroll);
 		}
 	}
 };

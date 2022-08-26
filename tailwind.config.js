@@ -25,7 +25,8 @@ module.exports = {
 				sm: '0px 2px 8px rgba(12, 26, 75, 0.08), 0px 3px 8px -1px rgba(50, 50, 71, 0.05)',
 				md: '0px 15px 50px rgba(21, 37, 72, 0.05)',
 				default: '0px 2px 4px rgba(12, 26, 75, 0.04), 0px 4px 20px -2px rgba(50, 50, 71, 0.08)',
-				card: '40px 44px 81px rgba(111, 118, 138, 0.08)'
+				card: '40px 44px 81px rgba(111, 118, 138, 0.08)',
+				nav: 'inset 0px -3px 8px rgba(255, 255, 255, 0.07);'
 			},
 			fontFamily: {
 				menlo: ['Menlo Regular', ...defaultTheme.fontFamily.sans],
@@ -124,31 +125,17 @@ module.exports = {
 		},
 		keyframes: {
 			slideup: {
-				'0%, 20%': { transform: 'translateY(100%)' },
-				'25%, 45%': { transform: 'translateY(80%)' },
-				'50%, 70%': { transform: 'translateY(60%)' },
-				'75%, 95%%': { transform: 'translateY(20%)' },
+				'0%': { transform: 'translateY(100%)' },
 				'100%': { transform: 'translateY(0)' }
 			},
 			slidedown: {
-				'0%, 20%': { transform: 'translateY(0)' },
-				'25%, 45%': { transform: 'translateY(20%)' },
-				'50%, 70%': { transform: 'translateY(40%)' },
-				'75%, 95%%': { transform: 'translateY(60%)' },
+				'0%': { transform: 'translateY(0)' },
 				'100%': { transform: 'translateY(100%)' }
-			},
-			slide: {
-				'0%, 20%': { transform: 'translateX(200px)' },
-				'25%, 45%': { transform: 'translateX(150px)' },
-				'50%, 70%': { transform: 'translateX(100px)' },
-				'75%, 95%%': { transform: 'translateX(50px)' },
-				'100%': { transform: 'translateX(0)' }
 			}
 		},
 		animation: {
-			slideup: 'slideup .4s ease-in-out',
-			slidedown: 'slidedown .4s ease-in-out',
-			slide: 'slide .5s ease-in-out'
+			slideup: 'slideup .7s ease-in-out',
+			slidedown: 'slidedown .7s ease-in-out',
 		}
 	},
 	plugins: []

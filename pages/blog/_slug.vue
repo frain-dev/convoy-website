@@ -74,6 +74,7 @@ import Prism from 'prismjs';
 
 export default {
 	layout: 'blog',
+	scrollToTop: true,
 	async asyncData({ $content, params }) {
 		try {
 			const blogPageData = await $content('articles/' + params.slug).fetch();

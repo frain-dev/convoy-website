@@ -61,12 +61,11 @@
 								h-[3px]
 								rounded-16px
 								mr-14px
-								before:transition-all before:duration-[6000ms]
 								bg-[#5F4C62]
 								relative
 								before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px
 							"
-							:class="activeSlide ? 'before:bg-transparent  before:w-[1px]' : 'before:w-[47px] before:bg-[#8E7392]'"
+							:class="activeSlide ? 'before:bg-transparent before:w-[1px] before:transition-none' : 'before:w-[47px] before:bg-[#8E7392] before:transition-all before:duration-[10s]'"
 						></button>
 						<button
 							@click="activeSlide = false"
@@ -74,12 +73,11 @@
 								w-[47px]
 								h-[3px]
 								rounded-16px
-								before:transition-all before:duration-[6000ms]
 								bg-[#5F4C62]
 								relative
 								before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px
 							"
-							:class="activeSlide ? 'before:w-[47px] before:bg-[#8E7392]' : 'before:bg-transparent  before:w-[1px]'"
+							:class="activeSlide ? 'before:w-[47px] before:bg-[#8E7392] before:transition-all before:duration-[10s]' : 'before:bg-transparent  before:w-[1px] before:transition-none'"
 						></button>
 					</div>
 				</div>
@@ -103,7 +101,7 @@
 			<div class="max-w-[695px] w-full m-auto">
 				<p class="text-grey-80 text-14 font-medium text-center">We are constantly innovating</p>
 				<p class="text-grey-80 text-14 font-medium text-center mb-40px">Join over 100 companies staying on top of any updates, subscribe to our newsletter:</p>
-				<form @submit.prevent="requestAccess()" class="bg-[#FBFDFE] border-primary-500 flex p-10px rounded-8px items-center w-full">
+				<form @submit.prevent="requestAccess()" class="bg-[#FBFDFE] border border-primary-500 flex p-10px rounded-8px items-center w-full">
 					<input
 						type="email"
 						id="email"
@@ -147,11 +145,11 @@
 				<div class="bg-white-16 rounded-8px w-fit m-auto flex flex-row mb-30px">
 					<li class="list-none" v-for="tab of tabs" :key="tab.id">
 						<button
-							class="rounded-6px py-12px px-8px desktop:px-60px min-w-[134px] desktop:min-w-[220px] transition-all duration-500"
+							class="rounded-6px py-12px px-8px desktop:px-60px min-w-[134px] desktop:min-w-[220px] transition-all duration-300"
 							:class="activeTab === tab.id ? 'bg-white-100 shadow-sm' : ''"
 							@click="switchTabs(tab.id)"
 						>
-							<span class="text-14 tracking-[0.02em] transition-all duration-500" :class="activeTab === tab.id ? 'font-bold text-black' : 'text-white-100'">{{ tab.label }}</span>
+							<span class="text-14 tracking-[0.02em] transition-all duration-300" :class="activeTab === tab.id ? 'font-bold text-black' : 'text-white-100'">{{ tab.label }}</span>
 						</button>
 					</li>
 				</div>
@@ -167,9 +165,9 @@
 							their events.
 						</p>
 
-						<div class="flex justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth mt-30px desktop:mt-40px w-full">
+						<div class="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
 							<div
-								class="bg-white-10 px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium !w-fit"
+								class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap"
 								v-for="feature of appPortal"
 								:key="feature"
 							>
@@ -189,9 +187,9 @@
 							first i.e community-driven, so you can be sure to get reliable support.
 						</p>
 
-						<div class="flex justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth mt-30px desktop:mt-40px w-full">
+						<div class="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
 							<div
-								class="bg-white-10 px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
+								class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
 								v-for="feature of openCore"
 								:key="feature"
 							>
@@ -308,7 +306,6 @@
 					rounded-8px
 					shadow-card
 					max-w-[970px]
-					mt-32px
 					pt-32px
 					px-12px
 					m-auto
@@ -484,7 +481,7 @@ export default {
 		triggerSlide() {
 			setInterval(() => {
 				this.activeSlide = !this.activeSlide;
-			}, 5000);
+			}, 10000);
 		}
 	}
 };
