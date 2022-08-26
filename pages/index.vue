@@ -56,27 +56,12 @@
 					<div class="flex justify-center mt-52px">
 						<button
 							@click="activeSlide = true"
-							class="
-								w-[47px]
-								h-[3px]
-								rounded-16px
-								mr-14px
-								bg-[#5F4C62]
-								relative
-								before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px
-							"
+							class="w-[47px] h-[3px] rounded-16px mr-14px bg-[#5F4C62] relative before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px"
 							:class="activeSlide ? 'before:bg-transparent before:w-[1px] before:transition-none' : 'before:w-[47px] before:bg-[#8E7392] before:transition-all before:duration-[10s]'"
 						></button>
 						<button
 							@click="activeSlide = false"
-							class="
-								w-[47px]
-								h-[3px]
-								rounded-16px
-								bg-[#5F4C62]
-								relative
-								before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px
-							"
+							class="w-[47px] h-[3px] rounded-16px bg-[#5F4C62] relative before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px"
 							:class="activeSlide ? 'before:w-[47px] before:bg-[#8E7392] before:transition-all before:duration-[10s]' : 'before:bg-transparent  before:w-[1px] before:transition-none'"
 						></button>
 					</div>
@@ -156,7 +141,7 @@
 
 				<div class="w-full min-h-[280px] h-full">
 					<div
-						class="flex flex-col items-center justify-center transition-all duration-700 ease-in-out"
+						class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out"
 						:class="activeTab === 'portal' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'"
 					>
 						<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">App Portal</h1>
@@ -178,7 +163,7 @@
 					</div>
 
 					<div
-						class="flex flex-col items-center justify-center transition-all duration-700 ease-in-out"
+						class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out"
 						:class="activeTab === 'open' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'"
 					>
 						<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Open Core</h1>
@@ -225,59 +210,60 @@
 					<p class="text-14 desktop:text-16 max-w-[430px] text-grey-80">Easily filter & debug events sent to multiple applications & endpoints with Delivery Attempt Logs.</p>
 				</div>
 			</div>
+		</section>
 
-			<div class="flex justify-between items-start flex-wrap desktop:flex-nowrap max-w-[1170px] m-auto desktop:max-h-[564px] desktop:overflow-y-auto">
-				<div class="flex flex-col items-center">
-					<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] py-88px px-40px desktop:px-54px">
-						<ul class="list-none">
-							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
-								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
-								Bi-directional webhooks
-							</li>
-							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
-								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
-								Independently scalable
-							</li>
-							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
-								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
-								Signature
-							</li>
-							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
-								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
-								Retries
-							</li>
-							<li class="flex items-center text-white-100">
-								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
-								Static IPs
-							</li>
-						</ul>
-					</div>
-					<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] py-88px px-40px desktop:px-54px mt-130px">
-						<ul class="list-none">
-							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
-								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
-								Language Agnostic
-							</li>
-							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
-								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
-								Flexible Configuration
-							</li>
-							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
-								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
-								URL per Event Type
-							</li>
-							<li class="flex items-center text-white-100">
-								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
-								Rich UI - Event Logs & Querying.
-							</li>
-						</ul>
-					</div>
+		<section class="flex justify-between items-start flex-wrap desktop:flex-nowrap max-w-[1170px] px-20px m-auto desktop:max-h-[564px] desktop:overflow-y-auto no-scrollbar relative">
+			<div class="flex flex-col items-center">
+				<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] py-88px px-40px desktop:px-54px">
+					<ul class="list-none">
+						<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
+							<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
+							Bi-directional webhooks
+						</li>
+						<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
+							<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
+							Independently scalable
+						</li>
+						<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
+							<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
+							Signature
+						</li>
+						<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
+							<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
+							Retries
+						</li>
+						<li class="flex items-center text-white-100">
+							<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
+							Static IPs
+						</li>
+					</ul>
 				</div>
-				<div class="max-w-[764px] desktop:h-[564px] w-full h-fit overflow-x-scroll desktop:sticky desktop:-top-60px desktop:-right-124px desktop:translate-x-120px">
-					<img src="~/assets/images/core-illustraton.png" class="desktop:min-w-[1080px] w-full" alt="core features" />
+				<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] py-88px px-40px desktop:px-54px desktop:mt-160px desktop:mb-130px">
+					<ul class="list-none">
+						<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
+							<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
+							Language Agnostic
+						</li>
+						<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
+							<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
+							Flexible Configuration
+						</li>
+						<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
+							<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
+							URL per Event Type
+						</li>
+						<li class="flex items-center text-white-100">
+							<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
+							Rich UI - Event Logs & Querying.
+						</li>
+					</ul>
 				</div>
 			</div>
+			<div class="max-w-[764px] desktop:h-[564px] w-full h-fit overflow-x-scroll desktop:sticky no-scrollbar desktop:top-0 desktop:-right-124px desktop:translate-x-120px">
+				<img src="~/assets/images/core-illustraton.png" class="desktop:min-w-[1080px] w-full" alt="core features" />
+			</div>
 		</section>
+
 
 		<!-- cta  -->
 		<section class="px-20px pb-100px desktop:pb-130px">
@@ -482,6 +468,15 @@ export default {
 			setInterval(() => {
 				this.activeSlide = !this.activeSlide;
 			}, 10000);
+		},
+		handleScroll() {
+			// console.log(window.scrollY);
+			// if(window.scrollY > 3100 && window.scrollY < 3600) console.log('yes')
+		}
+	},
+	created() {
+		if (process.client) {
+			window.addEventListener('scroll', this.handleScroll);
 		}
 	}
 };

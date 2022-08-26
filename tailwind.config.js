@@ -134,8 +134,8 @@ module.exports = {
 			}
 		},
 		animation: {
-			slideup: 'slideup .7s ease-in-out',
-			slidedown: 'slidedown .7s ease-in-out',
+			slideup: 'slideup .4s ease-in-out',
+			slidedown: 'slidedown .4s ease-in-out',
 		}
 	},
 	plugins: []

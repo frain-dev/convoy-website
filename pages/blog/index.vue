@@ -1,7 +1,7 @@
 <template>
 	<div class="m-auto pb-0 flex justify-between pt-0">
 		<aside class="w-240px hidden desktop:sticky desktop:top-150px desktop:block desktop:pl-20px desktop:pr-32px">
-			<ul class="p-0">
+			<ul class="p-0"> 
 				<h6 class="font-bold text-black mb-18px">CATEGORIES</h6>
 
 				<li v-for="(tag, index) in tags" :key="'tag' + index" class="font-semibold text-14 mb-30px text-grey-40">

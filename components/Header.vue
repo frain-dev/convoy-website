@@ -81,6 +81,7 @@ export default {
 	},
 	mounted() {
 		this.getGithubStars();
+		this.handleScroll()
 	},
 	methods: {
 		async getGithubStars() {
@@ -91,17 +92,12 @@ export default {
 			} catch (_error) {}
 		},
 		handleScroll() {
-			window.scrollY > 100 ? (this.hasScrolled = true) : (this.hasScrolled = false);
+			this.$route.name == 'blog' || window.scrollY > 70 ? (this.hasScrolled = true) : (this.hasScrolled = false);
 		}
 	},
 	created() {
 		if (process.client) {
 			window.addEventListener('scroll', this.handleScroll);
-		}
-	},
-	destroyed() {
-		if (process.client) {
-			window.removeEventListener('scroll', this.handleScroll);
 		}
 	}
 };
