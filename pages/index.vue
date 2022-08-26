@@ -207,7 +207,6 @@
 			<div class="bg-[#F9FBFE] w-full py-30px px-20px mb-40px">
 				<div class="w-full max-w-[1170px] m-auto">
 					<h1 class="text-32 desktop:text-[48px] font-bold mb-20px desktop:mb-16px">Core Features</h1>
-					<p class="text-14 desktop:text-16 max-w-[430px] text-grey-80">Easily filter & debug events sent to multiple applications & endpoints with Delivery Attempt Logs.</p>
 				</div>
 			</div>
 		</section>
