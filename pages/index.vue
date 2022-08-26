@@ -259,11 +259,13 @@
 					</ul>
 				</div>
 			</div>
-			<div class="max-w-[764px] desktop:h-[564px] w-full h-fit overflow-x-scroll desktop:sticky no-scrollbar desktop:top-0 desktop:-right-124px desktop:translate-x-120px">
+			<div
+				class="desktop:h-[564px] w-full h-fit overflow-x-scroll desktop:sticky no-scrollbar desktop:top-0 desktop:-right-124px desktop:translate-x-120px hover:cursor-pointer"
+				@click="expandImage = true"
+			>
 				<img src="~/assets/images/core-illustraton.png" class="desktop:min-w-[1080px] w-full" alt="core features" />
 			</div>
 		</section>
-
 
 		<!-- cta  -->
 		<section class="px-20px pb-100px desktop:pb-130px">
@@ -332,6 +334,16 @@
 		</section>
 
 		<Footer></Footer>
+
+		<section
+			class="fixed top-0 left-0 w-screen h-screen bg-[#fafafe] transition-all duration-500"
+			:class="expandImage ? 'block animate-slideup opacity-100 z-[100000]' : 'hidden animate-slidedown opacity-0'"
+			@click="expandImage = false"
+		>
+			<div class="flex justify-center items-center h-full w-screen">
+				<img src="~/assets/images/core-illustraton.png" class="w-full" alt="core features" />
+			</div>
+		</section>
 	</div>
 </template>
 
@@ -379,7 +391,8 @@ export default {
 				{ feature: 'Bi-directional webhooks', description: 'Publish and recieve web hooks events from any provider.', img: 'bidirectional', shadow: 'shadow-[0_22px_24px_0px_rgba(240,173,78,0.2)]' }
 			],
 			earlyAccessEmail: '',
-			activeSlide: true
+			activeSlide: true,
+			expandImage: false
 		};
 	},
 	async asyncData({ $content }) {
