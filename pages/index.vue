@@ -3,19 +3,29 @@
 		<header class="px-20px bg-gradient-to-br from-[#2c2f3e] to-[#422f41]">
 			<Header></Header>
 
-			<section class="flex flex-col justify-between m-auto pt-150px pb-60px desktop:pl-124px desktop:pr-0 px-30px min-h-[85vh] h-full w-full desktop:flex-row desktop:items-center">
-				<div class="max-w-[624px] w-full">
-					<div class="bg-[#403041] rounded-[40px] w-fit py-10px px-20px flex items-center text-14 text-white-100 mb-40px">
+			<section class="flex flex-col justify-between desktop:items-center desktop:flex-row m-auto pt-150px pb-60px px-20px max-w-[1200px] min-h-screen h-full w-full">
+				<div class="max-w-[624px] m-auto desktop:ml-0 w-full">
+					<div class="bg-[#403041] rounded-[40px] w-fit py-10px px-20px flex items-center text-14 text-white-100 m-auto desktop:ml-0 mb-40px">
 						We are backed by
 						<img src="~/assets/images/y-combinator.svg" class="ml-16px w-24px h-24px" alt="y-combinator" />
 					</div>
 
-					<h1 class="text-32 desktop:text-[56px] desktop:leading-[80px] font-extrabold text-white-100">A Cloud native Webhook Service</h1>
-					<p class="text-white-100 text-18 mt-16px max-w-[530px] mb-40px">With out-of-the-box security, reliability and scalability for your webhooks infrastructure.</p>
+					<h1 class="text-32 desktop:text-[56px] desktop:leading-[80px] font-extrabold text-white-100 text-center desktop:text-left">An Open Source Webhooks Proxy</h1>
+					<p class="text-white-100 text-18 mt-16px max-w-[530px] m-auto desktop:ml-0 mb-40px text-center desktop:text-left">
+						With out-of-the-box security, reliability and scalability for your webhooks infrastructure.
+					</p>
 
-					<a target="_blank" rel="noopener noreferrer" href="https://dashboard.getconvoy.io/" class="rounded-8px bg-primary-100 text-14 font-medium text-white-100 py-12px desktop:py-16px px-38px desktop:px-42px">Get Started</a>
-
-					<ul class="flex items-center list-none mt-60px">
+					<div class="w-full text-center desktop:text-left">
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://dashboard.getconvoy.io/"
+							class="rounded-8px bg-primary-100 text-14 font-medium text-white-100 py-12px desktop:py-16px px-38px desktop:px-42px"
+						>
+							Get Started
+						</a>
+					</div>
+					<ul class="flex items-center justify-center desktop:justify-start list-none w-full mt-60px m-auto desktop:ml-0">
 						<li class="mr-20px desktop:mr-50px">
 							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
 								<img src="~/assets/images/buycoins-logo.svg" class="w-90px" alt="buycoins logo" />
@@ -38,20 +48,37 @@
 						</li>
 					</ul>
 				</div>
-				<div class="max-w-[600px] desktop:min-h-[65vh] w-full mobile:mt-40px relative">
-					<div class="flex flex-row w-full h-full ">
+				<div class="max-w-[600px] desktop:h-[570px] w-full m-auto desktop:m-[unset] mobile:mt-40px md:-mr-120px relative">
+					<div class="flex flex-row w-full h-full">
 						<img src="~/assets/images/Illustration2.png" alt="illostration" class="transition-all duration-1000" :class="activeSlide ? 'block opacity-100' : 'hidden opacity-0'" />
 						<img src="~/assets/images/Illustration1.png" alt="illostration" class="transition-all duration-1000" :class="!activeSlide ? 'block opacity-100' : 'hidden opacity-0'" />
 					</div>
 					<div class="flex justify-center mt-52px">
 						<button
 							@click="activeSlide = true"
-							class="w-[47px] h-[3px] rounded-16px mr-14px before:transition-all before:duration-[5000ms] bg-[#5F4C62] relative before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px"
+							class="
+								w-[47px]
+								h-[3px]
+								rounded-16px
+								mr-14px
+								before:transition-all before:duration-[6000ms]
+								bg-[#5F4C62]
+								relative
+								before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px
+							"
 							:class="activeSlide ? 'before:bg-transparent  before:w-[1px]' : 'before:w-[47px] before:bg-[#8E7392]'"
 						></button>
 						<button
 							@click="activeSlide = false"
-							class="w-[47px] h-[3px] rounded-16px before:transition-all before:duration-[5000ms] bg-[#5F4C62] relative before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px"
+							class="
+								w-[47px]
+								h-[3px]
+								rounded-16px
+								before:transition-all before:duration-[6000ms]
+								bg-[#5F4C62]
+								relative
+								before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px
+							"
 							:class="activeSlide ? 'before:w-[47px] before:bg-[#8E7392]' : 'before:bg-transparent  before:w-[1px]'"
 						></button>
 					</div>
@@ -59,11 +86,24 @@
 			</section>
 		</header>
 
-		<section class="bg-[#FAFAFA] bg-[url(~/assets/images/Newsletter-card.png)] border border-white-16 bg-cover bg-center py-30px px-20px desktop:pt-60px desktop:pb-46px">
+		<!-- newsletter  -->
+		<section
+			class="
+				bg-[url(~/assets/images/Newsletter-card-small.png)]
+				desktop:bg-[url(~/assets/images/Newsletter-card.png)]
+				border border-white-16
+				bg-cover bg-no-repeat bg-center
+				pt-34px
+				pb-60px
+				desktop:py-30px
+				px-20px
+				desktop:pt-60px desktop:pb-46px
+			"
+		>
 			<div class="max-w-[695px] w-full m-auto">
 				<p class="text-grey-80 text-14 font-medium text-center">We are constantly innovating</p>
 				<p class="text-grey-80 text-14 font-medium text-center mb-40px">Join over 100 companies staying on top of any updates, subscribe to our newsletter:</p>
-				<form @submit.prevent="requestAccess()" class="bg-white-100 border-primary-500 flex p-10px rounded-8px items-center w-full">
+				<form @submit.prevent="requestAccess()" class="bg-[#FBFDFE] border-primary-500 flex p-10px rounded-8px items-center w-full">
 					<input
 						type="email"
 						id="email"
@@ -86,9 +126,9 @@
 		</section>
 
 		<!-- why use use use  -->
-		<section class="mb-100px desktop:mb-130px mt-60px desktop:mt-130px max-w-[1170px] w-full m-auto px-30px">
-			<h1 class="text-center text-[28px] leading-[36px] desktop:text-[48px] desktop:leading-[58px] font-bold">Why use Convoy</h1>
-			<p class="text-center text-16 text-grey-80 font-normal mt-16px mb-40px desktop:mb-88px max-w-[540px] w-full m-auto">
+		<section class="mb-100px desktop:mb-130px mt-60px desktop:mt-130px max-w-[1170px] w-full m-auto px-20px">
+			<h1 class="text-center text-32 desktop:text-[48px] desktop:leading-[58px] font-bold">Why use Convoy</h1>
+			<p class="text-center text-14 desktop:text-14 text-grey-80 font-normal mt-20px desktop:mt-16px mb-40px desktop:mb-88px max-w-[540px] w-full m-auto">
 				Easily filter & debug events sent to multiple applications & endpoints with Delivery Attempt Logs
 			</p>
 
@@ -102,31 +142,34 @@
 		</section>
 
 		<!-- app-portal/open-core  -->
-		<section class="max-w-[1170px] w-full m-auto px-30px">
+		<section class="max-w-[1170px] w-full m-auto px-20px">
 			<div class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] rounded-16px pt-40px px-20px pb-100px desktop:px-66px desktop:pt-50px desktop:pb-200px">
 				<div class="bg-white-16 rounded-8px w-fit m-auto flex flex-row mb-30px">
 					<li class="list-none" v-for="tab of tabs" :key="tab.id">
 						<button
-							class="rounded-6px py-12px px-28px desktop:px-60px min-w-[86px] desktop:min-w-[132px] transition-all duration-1000"
+							class="rounded-6px py-12px px-8px desktop:px-60px min-w-[134px] desktop:min-w-[220px] transition-all duration-500"
 							:class="activeTab === tab.id ? 'bg-white-100 shadow-sm' : ''"
 							@click="switchTabs(tab.id)"
 						>
-							<span class="text-12 tracking-[0.02em] desktop:text-14 transition-all duration-300" :class="activeTab === tab.id ? 'font-bold text-black' : 'text-white-100'">{{ tab.label }}</span>
+							<span class="text-14 tracking-[0.02em] transition-all duration-500" :class="activeTab === tab.id ? 'font-bold text-black' : 'text-white-100'">{{ tab.label }}</span>
 						</button>
 					</li>
 				</div>
 
 				<div class="w-full min-h-[280px] h-full">
-					<div class="flex flex-col items-center justify-center transition-all duration-[2000ms]" :class="activeTab === 'portal' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'">
-						<h1 class="text-[40px] text-white-100 font-bold text-center">App Portal</h1>
-						<p class="text-white-100 text-center text-18 mt-16px max-w-[860px] m-auto">
+					<div
+						class="flex flex-col items-center justify-center transition-all duration-700 ease-in-out"
+						:class="activeTab === 'portal' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'"
+					>
+						<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">App Portal</h1>
+						<p class="text-white-100 text-center text-14 desktop:text-18 mt-20px desktop:mt-16px max-w-[860px] m-auto">
 							With the app portal, we're enabling you to extend the visibility our dashboard provides you to your customers. They no longer need to reach out to you to know what is happening with
 							their events.
 						</p>
 
 						<div class="flex justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth mt-30px desktop:mt-40px w-full">
 							<div
-								class="bg-white-10 px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
+								class="bg-white-10 px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium !w-fit"
 								v-for="feature of appPortal"
 								:key="feature"
 							>
@@ -136,9 +179,12 @@
 						</div>
 					</div>
 
-					<div class="flex flex-col items-center justify-center transition-all duration-[2000ms]" :class="activeTab === 'open' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'">
-						<h1 class="text-[40px] text-white-100 font-bold text-center">Open Core</h1>
-						<p class="text-white-100 text-center text-18 mt-16px max-w-[860px] m-auto">
+					<div
+						class="flex flex-col items-center justify-center transition-all duration-700 ease-in-out"
+						:class="activeTab === 'open' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'"
+					>
+						<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Open Core</h1>
+						<p class="text-white-100 text-center text-14 desktop:text-18 mt-20px desktop:mt-16px max-w-[860px] m-auto">
 							Convoy is an open-source service that enables you to send webhook events to users, customers, and platforms reliably, securely in a scalable manner. Our open-core is open-source
 							first i.e community-driven, so you can be sure to get reliable support.
 						</p>
@@ -158,8 +204,8 @@
 			</div>
 			<div class="bg-[#082B91] bg-opacity-[0.07] w-11/12 h-220px desktop:h-270px rounded-b-16px m-auto relative">
 				<div class="absolute left-1/2 -translate-x-1/2 -top-100px desktop:-top-200px w-full">
-					<img src="~/assets/images/core.png" alt="group" class="xs:hidden max-w-[866px] desktop:w-full w-4/5 m-auto" />
-					<img src="~/assets/images/groups-img-small.png" class="hidden xs:block m-auto" alt="group" />
+					<img src="~/assets/images/core.png" alt="group" class="xs:hidden max-w-[866px] desktop:w-full w-5/6 m-auto" />
+					<img src="~/assets/images/groups-img-small.png" class="hidden xs:block m-auto w-5/6" alt="group" />
 					<a
 						target="_blank"
 						rel="noopener noreferrer"
@@ -175,16 +221,16 @@
 
 		<!-- core features  -->
 		<section id="features" class="mt-100px desktop:mt-130px">
-			<div class="bg-[#F9FBFE] w-full py-30px px-30px desktop:px-126px mb-40px">
-				<div class="w-full max-w-[1170px]">
-					<h1 class="text-[48px] font-bold mb-16px">Core Features</h1>
-					<p class="text-16 max-w-[430px] text-grey-80">Easily filter & debug events sent to multiple applications & endpoints with Delivery Attempt Logs.</p>
+			<div class="bg-[#F9FBFE] w-full py-30px px-20px mb-40px">
+				<div class="w-full max-w-[1170px] m-auto">
+					<h1 class="text-32 desktop:text-[48px] font-bold mb-20px desktop:mb-16px">Core Features</h1>
+					<p class="text-14 desktop:text-16 max-w-[430px] text-grey-80">Easily filter & debug events sent to multiple applications & endpoints with Delivery Attempt Logs.</p>
 				</div>
 			</div>
 
-			<div class="flex justify-between items-center">
-				<div class="desktop:pl-126px pl-30px grid grid-rows-1 gap-60px items-center desktop:mr-120px">
-					<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] desktop:min-h-[50vh] py-88px px-54px">
+			<div class="flex justify-between items-start flex-wrap desktop:flex-nowrap max-w-[1170px] m-auto desktop:max-h-[564px] desktop:overflow-y-auto">
+				<div class="flex flex-col items-center">
+					<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] py-88px px-40px desktop:px-54px">
 						<ul class="list-none">
 							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
 								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
@@ -208,7 +254,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] desktop:min-h-[50vh] py-88px px-54px mt-130px">
+					<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] py-88px px-40px desktop:px-54px mt-130px">
 						<ul class="list-none">
 							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
 								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
@@ -229,16 +275,16 @@
 						</ul>
 					</div>
 				</div>
-				<div class="max-w-[764px] w-full overflow-x-scroll !sticky top-160px">
-					<img src="~/assets/images/core-illustraton.png" class="desktop:min-w-[1080px]" alt="core features" />
+				<div class="max-w-[764px] desktop:h-[564px] w-full h-fit overflow-x-scroll desktop:sticky desktop:-top-60px desktop:-right-124px desktop:translate-x-120px">
+					<img src="~/assets/images/core-illustraton.png" class="desktop:min-w-[1080px] w-full" alt="core features" />
 				</div>
 			</div>
 		</section>
 
 		<!-- cta  -->
-		<section class="px-30px pb-100px desktop:pb-130px">
-			<div class="mt-100px desktop:mt-130px max-w-[1170px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top rounded-16px py-56px px-30px">
-				<h1 class="text-26 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-16px">Start sending webhooks now, risk free</h1>
+		<section class="px-20px pb-100px desktop:pb-130px">
+			<div class="mt-100px desktop:mt-130px max-w-[1170px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top rounded-16px py-56px px-20px">
+				<h1 class="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px desktop:mb-16px">Start sending webhooks now, risk free</h1>
 				<p class="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">
 					Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time and get started today.
 				</p>
