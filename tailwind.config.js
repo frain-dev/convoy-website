@@ -18,7 +18,6 @@ function customSpacing() {
 module.exports = {
 	mode: 'jit',
 	content: ['./components/**/*.{js,vue,ts}', './layouts/**/*.vue', './pages/**/*.vue', './plugins/**/*.{js,ts}', './nuxt.config.{js,ts}'],
-	safelist: ['!brightness-0', '!invert'],
 	theme: {
 		extend: {
 			spacing: customSpacing(),

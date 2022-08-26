@@ -38,12 +38,12 @@
 						</li>
 						<li class="mr-20px desktop:mr-50px">
 							<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
-								<img src="~/assets/images/dojah-logo.png" class="w-70px !brightness-0 !invert" alt="dojah logo" />
+								<img src="~/assets/images/dojah.png" class="w-70px" alt="dojah logo" />
 							</a>
 						</li>
 						<li class="">
 							<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
-								<img src="~/assets/images/termii-logo.png" class="w-100px !brightness-0 !invert" alt="termii logo" />
+								<img src="~/assets/images/termii.png" class="w-100px" alt="termii logo" />
 							</a>
 						</li>
 					</ul>
