@@ -13,8 +13,6 @@ description: Convoy v0.6 was a major upgrade from our previous release. We added
 published_at: 2022-08-27T12:04:00.000+00:00
 ---
 
-# Convoy v0.6
-
 Convoy v0.6 was a major upgrade from our previous release. We added our most requested features - webhooks ingress, and a number of other interesting features. :) In this post, we share what these updates were, and what you should expect from us in Convoy v0.7
 
 ### **Bi-directional webhooks support**
