@@ -14,17 +14,17 @@
 					<p class="text-white-100 text-18 mt-16px max-w-[530px] m-auto desktop:ml-0 mb-40px text-center desktop:text-left">
 						With out-of-the-box security, reliability and scalability for your webhooks infrastructure.
 					</p>
-
 					<div class="w-full text-center desktop:text-left">
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
-							href="https://dashboard.getconvoy.io/"
+							href="https://dashboard.getconvoy.io/signup"
 							class="rounded-8px bg-primary-100 text-14 font-medium text-white-100 py-12px desktop:py-16px px-38px desktop:px-42px"
 						>
-							Get Started
+							Get Started For Free
 						</a>
 					</div>
+
 					<ul class="flex items-center justify-center desktop:justify-start list-none w-full mt-60px m-auto desktop:ml-0">
 						<li class="mr-20px desktop:mr-50px">
 							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
@@ -48,10 +48,11 @@
 						</li>
 					</ul>
 				</div>
+
 				<div class="max-w-[600px] desktop:h-[570px] w-full m-auto desktop:m-[unset] mobile:mt-40px md:-mr-120px relative">
-					<div class="flex flex-row w-full h-full">
-						<img src="~/assets/images/Illustration2.png" alt="illostration" class="transition-all duration-1000" :class="activeSlide ? 'block opacity-100' : 'hidden opacity-0'" />
-						<img src="~/assets/images/Illustration1.png" alt="illostration" class="transition-all duration-1000" :class="!activeSlide ? 'block opacity-100' : 'hidden opacity-0'" />
+					<div class="flex flex-row w-full h-full relative">
+						<img src="~/assets/images/Illustration2.png" alt="illostration" class="transition-all duration-500 delay-300 absolute top-0 left-0" :class="activeSlide ? 'opacity-100' : 'opacity-0'" />
+						<img src="~/assets/images/Illustration1.png" alt="illostration" class="transition-all duration-500 delay-300 absolute top-0 left-0" :class="!activeSlide ? 'opacity-100' : 'opacity-0'" />
 					</div>
 					<div class="flex justify-center mt-52px">
 						<button
@@ -87,16 +88,9 @@
 				<p class="text-grey-80 text-14 font-medium text-center">We are constantly innovating</p>
 				<p class="text-grey-80 text-14 font-medium text-center mb-40px">Join over 100 companies staying on top of any updates, subscribe to our newsletter:</p>
 				<form @submit.prevent="requestAccess()" class="bg-[#FBFDFE] border border-primary-500 flex p-10px rounded-8px items-center w-full">
-					<input
-						type="email"
-						id="email"
-						placeholder="Your email"
-						aria-label="Email"
-						v-model="earlyAccessEmail"
-						class="bg-transparent focus:outline-none focus:border-none w-full text-16 text-white-100"
-					/>
+					<input type="email" id="email" placeholder="Your email" aria-label="Email" v-model="earlyAccessEmail" class="bg-transparent focus:outline-none focus:border-none w-full text-16" />
 					<button class="flex items-center text-primary-100 text-14">
-						Subscribe
+						{{ subscribeButtonText }}
 						<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-16px">
 							<path
 								d="M7.68681 15.7357L7.0594 15.0963C6.8933 14.9271 6.79999 14.6975 6.79999 14.4581C6.79999 14.2188 6.8933 13.9892 7.0594 13.82L10.8091 10.0013L7.06014 6.18155C6.97784 6.09774 6.91255 5.99822 6.86801 5.88868C6.82347 5.77914 6.80054 5.66174 6.80054 5.54317C6.80054 5.4246 6.82347 5.3072 6.86801 5.19766C6.91255 5.08813 6.97784 4.98861 7.06014 4.90479L7.68754 4.26547C7.76983 4.18132 7.86761 4.11456 7.97528 4.069C8.08294 4.02345 8.19837 4 8.31495 4C8.43153 4 8.54696 4.02345 8.65462 4.069C8.76229 4.11456 8.86007 4.18132 8.94236 4.26547L13.9406 9.36199C14.1067 9.53126 14.2 9.76082 14.2 10.0002C14.2 10.2396 14.1067 10.4691 13.9406 10.6384L8.9394 15.7357C8.7733 15.9049 8.54801 16 8.31311 16C8.0782 16 7.85291 15.9049 7.68681 15.7357Z"
@@ -288,7 +282,7 @@
 				<a
 					target="_blank"
 					rel="noopener noreferrer"
-					href="https://dashboard.getconvoy.io/"
+					href="https://dashboard.getconvoy.io/signup"
 					class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit"
 				>
 					Get started for free
@@ -363,12 +357,11 @@ export default {
 	data() {
 		return {
 			isSubmitingloadingEarlyAccessForm: false,
-			earlyAccessFormButtonText: 'Get Started',
+			subscribeButtonText: 'Subscribe',
 			earlyAccessEmail: '',
-			cloudFeatures: ['Create Account', 'Manage Webhooks', 'View Metrics'],
 			tabs: [
-				{ label: 'App Portal', id: 'portal' },
-				{ label: 'Open Core', id: 'open' }
+				{ label: 'Open Core', id: 'open' },
+				{ label: 'App Portal', id: 'portal' }
 			],
 			activeTab: 'portal',
 			appPortal: ['Manage multiple endpoints', 'Debug **event logs**', 'Embed into your UI', 'SDK'],
@@ -462,52 +455,24 @@ export default {
 					})
 				});
 				await response.json();
-				this.earlyAccessFormButtonText = 'Request Sent';
+				this.subscribeButtonText = 'Subscribed';
 				this.setDefaultAccessButtonText();
 				this.isSubmitingloadingEarlyAccessForm = false;
 			} catch (error) {
-				this.earlyAccessFormButtonText = 'Error';
+				this.subscribeButtonText = 'Error';
 				this.setDefaultAccessButtonText();
 				this.isSubmitingloadingEarlyAccessForm = false;
 			}
 		},
 		setDefaultAccessButtonText() {
 			setTimeout(() => {
-				this.earlyAccessFormButtonText = 'Convoy Cloud Early Access';
-			}, 5000);
-		},
-		async requestAccess() {
-			this.isSubmitingloadingEarlyAccessForm = true;
-			try {
-				const response = await fetch('/.netlify/functions/subscribe', {
-					method: 'POST',
-					mode: 'cors',
-					cache: 'no-cache',
-					credentials: 'same-origin',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					redirect: 'follow',
-					referrerPolicy: 'no-referrer',
-					body: JSON.stringify({
-						email: this.earlyAccessEmail
-					})
-				});
-				await response.json();
-				this.earlyAccessEmail = '';
-				this.isSubmitingloadingEarlyAccessForm = false;
-			} catch (error) {
-				this.isSubmitingloadingEarlyAccessForm = false;
-			}
+				this.subscribeButtonText = 'Subscribe';
+			}, 3000);
 		},
 		triggerSlide() {
 			setInterval(() => {
 				this.activeSlide = !this.activeSlide;
 			}, 10000);
-		},
-		handleScroll() {
-			// console.log(window.scrollY);
-			// if(window.scrollY > 3100 && window.scrollY < 3600) console.log('yes')
 		}
 	},
 	created() {

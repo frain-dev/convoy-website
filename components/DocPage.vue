@@ -41,7 +41,7 @@
 						class="bg-transparent focus:outline-none focus:border-none w-full text-16 text-white-100"
 					/>
 					<button class="flex items-center text-primary-100 text-14">
-						Subscribe
+						{{ subscribeButtonText }}
 						<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-16px">
 							<path
 								d="M7.68681 15.7357L7.0594 15.0963C6.8933 14.9271 6.79999 14.6975 6.79999 14.4581C6.79999 14.2188 6.8933 13.9892 7.0594 13.82L10.8091 10.0013L7.06014 6.18155C6.97784 6.09774 6.91255 5.99822 6.86801 5.88868C6.82347 5.77914 6.80054 5.66174 6.80054 5.54317C6.80054 5.4246 6.82347 5.3072 6.86801 5.19766C6.91255 5.08813 6.97784 4.98861 7.06014 4.90479L7.68754 4.26547C7.76983 4.18132 7.86761 4.11456 7.97528 4.069C8.08294 4.02345 8.19837 4 8.31495 4C8.43153 4 8.54696 4.02345 8.65462 4.069C8.76229 4.11456 8.86007 4.18132 8.94236 4.26547L13.9406 9.36199C14.1067 9.53126 14.2 9.76082 14.2 10.0002C14.2 10.2396 14.1067 10.4691 13.9406 10.6384L8.9394 15.7357C8.7733 15.9049 8.54801 16 8.31311 16C8.0782 16 7.85291 15.9049 7.68681 15.7357Z"
@@ -76,7 +76,8 @@ export default {
 	props: ['pageData'],
 	data() {
 		return {
-			earlyAccessEmail: ''
+			earlyAccessEmail: '',
+			subscribeButtonText: 'Subscribe'
 		};
 	},
 	methods: {
@@ -98,11 +99,20 @@ export default {
 					})
 				});
 				await response.json();
+				this.subscribeButtonText = 'Subscribed';
+				this.setDefaultAccessButtonText();
 				this.earlyAccessEmail = '';
 				this.isSubmitingloadingEarlyAccessForm = false;
 			} catch (error) {
+				this.subscribeButtonText = 'Error';
+				this.setDefaultAccessButtonText();
 				this.isSubmitingloadingEarlyAccessForm = false;
 			}
+		},
+		setDefaultAccessButtonText() {
+			setTimeout(() => {
+				this.subscribeButtonText = 'Subscribe';
+			}, 3000);
 		}
 	}
 };
