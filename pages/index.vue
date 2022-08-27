@@ -56,30 +56,13 @@
 					<div class="flex justify-center mt-52px">
 						<button
 							@click="activeSlide = true"
-							class="
-								w-[47px]
-								h-[3px]
-								rounded-16px
-								mr-14px
-								before:transition-all before:duration-[6000ms]
-								bg-[#5F4C62]
-								relative
-								before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px
-							"
-							:class="activeSlide ? 'before:bg-transparent  before:w-[1px]' : 'before:w-[47px] before:bg-[#8E7392]'"
+							class="w-[47px] h-[3px] rounded-16px mr-14px bg-[#5F4C62] relative before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px"
+							:class="activeSlide ? 'before:bg-transparent before:w-[1px] before:transition-none' : 'before:w-[47px] before:bg-[#8E7392] before:transition-all before:duration-[10s]'"
 						></button>
 						<button
 							@click="activeSlide = false"
-							class="
-								w-[47px]
-								h-[3px]
-								rounded-16px
-								before:transition-all before:duration-[6000ms]
-								bg-[#5F4C62]
-								relative
-								before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px
-							"
-							:class="activeSlide ? 'before:w-[47px] before:bg-[#8E7392]' : 'before:bg-transparent  before:w-[1px]'"
+							class="w-[47px] h-[3px] rounded-16px bg-[#5F4C62] relative before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px"
+							:class="activeSlide ? 'before:w-[47px] before:bg-[#8E7392] before:transition-all before:duration-[10s]' : 'before:bg-transparent  before:w-[1px] before:transition-none'"
 						></button>
 					</div>
 				</div>
@@ -103,7 +86,7 @@
 			<div class="max-w-[695px] w-full m-auto">
 				<p class="text-grey-80 text-14 font-medium text-center">We are constantly innovating</p>
 				<p class="text-grey-80 text-14 font-medium text-center mb-40px">Join over 100 companies staying on top of any updates, subscribe to our newsletter:</p>
-				<form @submit.prevent="requestAccess()" class="bg-[#FBFDFE] border-primary-500 flex p-10px rounded-8px items-center w-full">
+				<form @submit.prevent="requestAccess()" class="bg-[#FBFDFE] border border-primary-500 flex p-10px rounded-8px items-center w-full">
 					<input
 						type="email"
 						id="email"
@@ -147,18 +130,18 @@
 				<div class="bg-white-16 rounded-8px w-fit m-auto flex flex-row mb-30px">
 					<li class="list-none" v-for="tab of tabs" :key="tab.id">
 						<button
-							class="rounded-6px py-12px px-8px desktop:px-60px min-w-[134px] desktop:min-w-[220px] transition-all duration-500"
+							class="rounded-6px py-12px px-8px desktop:px-60px min-w-[134px] desktop:min-w-[220px] transition-all duration-300"
 							:class="activeTab === tab.id ? 'bg-white-100 shadow-sm' : ''"
 							@click="switchTabs(tab.id)"
 						>
-							<span class="text-14 tracking-[0.02em] transition-all duration-500" :class="activeTab === tab.id ? 'font-bold text-black' : 'text-white-100'">{{ tab.label }}</span>
+							<span class="text-14 tracking-[0.02em] transition-all duration-300" :class="activeTab === tab.id ? 'font-bold text-black' : 'text-white-100'">{{ tab.label }}</span>
 						</button>
 					</li>
 				</div>
 
 				<div class="w-full min-h-[280px] h-full">
 					<div
-						class="flex flex-col items-center justify-center transition-all duration-700 ease-in-out"
+						class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out"
 						:class="activeTab === 'portal' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'"
 					>
 						<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">App Portal</h1>
@@ -167,9 +150,9 @@
 							their events.
 						</p>
 
-						<div class="flex justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth mt-30px desktop:mt-40px w-full">
+						<div class="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
 							<div
-								class="bg-white-10 px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium !w-fit"
+								class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap"
 								v-for="feature of appPortal"
 								:key="feature"
 							>
@@ -180,7 +163,7 @@
 					</div>
 
 					<div
-						class="flex flex-col items-center justify-center transition-all duration-700 ease-in-out"
+						class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out"
 						:class="activeTab === 'open' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'"
 					>
 						<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Open Core</h1>
@@ -189,9 +172,9 @@
 							first i.e community-driven, so you can be sure to get reliable support.
 						</p>
 
-						<div class="flex justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth mt-30px desktop:mt-40px w-full">
+						<div class="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
 							<div
-								class="bg-white-10 px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
+								class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
 								v-for="feature of openCore"
 								:key="feature"
 							>
@@ -288,6 +271,7 @@
 						mt-16
 						index-animation-min:mt-0
 					"
+          @click="expandImage = true"
 				>
 					<img src="~/assets/images/core-illustraton.png" class="index-animation-min:absolute index-animation-min:w-[1077px] index-animation-min:max-w-none" alt="core features" />
 				</div>
@@ -321,7 +305,6 @@
 					rounded-8px
 					shadow-card
 					max-w-[970px]
-					mt-32px
 					pt-32px
 					px-12px
 					m-auto
@@ -362,6 +345,16 @@
 		</section>
 
 		<Footer></Footer>
+
+		<section
+			class="fixed top-0 left-0 w-screen h-screen bg-[#fafafe] transition-all duration-500"
+			:class="expandImage ? 'block animate-slideup opacity-100 z-[100000]' : 'hidden animate-slidedown opacity-0'"
+			@click="expandImage = false"
+		>
+			<div class="flex justify-center items-center h-full w-screen">
+				<img src="~/assets/images/core-illustraton.png" class="w-full" alt="core features" />
+			</div>
+		</section>
 	</div>
 </template>
 
@@ -409,7 +402,8 @@ export default {
 				{ feature: 'Bi-directional webhooks', description: 'Publish and recieve web hooks events from any provider.', img: 'bidirectional', shadow: 'shadow-[0_22px_24px_0px_rgba(240,173,78,0.2)]' }
 			],
 			earlyAccessEmail: '',
-			activeSlide: true
+			activeSlide: true,
+			expandImage: false
 		};
 	},
 	async asyncData({ $content }) {
@@ -509,7 +503,16 @@ export default {
 		triggerSlide() {
 			setInterval(() => {
 				this.activeSlide = !this.activeSlide;
-			}, 5000);
+			}, 10000);
+		},
+		handleScroll() {
+			// console.log(window.scrollY);
+			// if(window.scrollY > 3100 && window.scrollY < 3600) console.log('yes')
+		}
+	},
+	created() {
+		if (process.client) {
+			window.addEventListener('scroll', this.handleScroll);
 		}
 	}
 };
