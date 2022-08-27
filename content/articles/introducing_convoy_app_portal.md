@@ -9,7 +9,7 @@ tags:
     - Convoy
     - UI
     - App Portal
-featured: true
+featured: false
 description: One of the essential characteristics of a reliable webhooks infrastructure is visibility. We're enabling you to extend that visibility to your customers. Unlike the Convoy Dashboard, App Portal is for just one application; giving your customers a good and extensive..
 published_at: 2021-10-25T11:04:00.000+00:00
 ---
