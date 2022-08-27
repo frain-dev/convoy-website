@@ -271,7 +271,7 @@
 						mt-16
 						index-animation-min:mt-0
 					"
-          @click="expandImage = true"
+					@click="expandImage = true"
 				>
 					<img src="~/assets/images/core-illustraton.png" class="index-animation-min:absolute index-animation-min:w-[1077px] index-animation-min:max-w-none" alt="core features" />
 				</div>
@@ -348,11 +348,11 @@
 
 		<section
 			class="fixed top-0 left-0 w-screen h-screen bg-[#fafafe] transition-all duration-500"
-			:class="expandImage ? 'block animate-slideup opacity-100 z-[100000]' : 'hidden animate-slidedown opacity-0'"
+			:class="expandImage ? 'visible animate-slideup opacity-100 z-[100000]' : 'invisible animate-slidedown opacity-0'"
 			@click="expandImage = false"
 		>
-			<div class="flex justify-center items-center h-full w-screen">
-				<img src="~/assets/images/core-illustraton.png" class="w-full" alt="core features" />
+			<div class="flex justify-center items-center h-full max-h-[1300px] max-w-full">
+				<img src="~/assets/images/core-illustraton.png" class="h-full m-auto" alt="core features" />
 			</div>
 		</section>
 	</div>
