@@ -3,7 +3,7 @@
 		<header class="px-20px bg-gradient-to-br from-[#2c2f3e] to-[#422f41]">
 			<Header></Header>
 
-			<section class="flex flex-col justify-between desktop:items-center desktop:flex-row m-auto pt-150px pb-60px px-20px max-w-[1200px] min-h-[75vh] w-full">
+			<section class="flex flex-col justify-between desktop:items-center desktop:flex-row m-auto pt-150px pb-60px px-20px max-w-[1200px] min-h-[80vh] w-full">
 				<div class="max-w-[624px] m-auto desktop:ml-0 w-full">
 					<div class="bg-[#403041] rounded-[40px] w-fit py-10px px-20px flex items-center text-14 text-white-100 m-auto desktop:ml-0 mb-40px">
 						We are backed by
