@@ -34,6 +34,8 @@ module.exports = {
 			}
 		},
 		screens: {
+			'index-animation-min': { min: '1405px' },
+			'index-animation-max': { min: '2087px' },
 			desktop: { min: '880px' },
 			md: { min: '1240px' },
 			mobile: { max: '879px' },
@@ -125,17 +127,17 @@ module.exports = {
 		},
 		keyframes: {
 			slideup: {
-				'0%': { transform: 'translateY(100%)' },
-				'100%': { transform: 'translateY(0)' }
+				'0%': { opacity: '0', 'pointer-events': 'none' },
+				'100%': { opacity: '1', 'pointer-events': 'auto' }
 			},
 			slidedown: {
-				'0%': { transform: 'translateY(0)' },
-				'100%': { transform: 'translateY(100%)' }
+				'0%': { opacity: '1', 'pointer-events': 'auto' },
+				'100%': { opacity: '0', 'pointer-events': 'none' }
 			}
 		},
 		animation: {
 			slideup: 'slideup .4s ease-in-out',
-			slidedown: 'slidedown .4s ease-in-out',
+			slidedown: 'slidedown .4s ease-in-out'
 		}
 	},
 	plugins: []
