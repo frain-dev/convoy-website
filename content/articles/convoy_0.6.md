@@ -1,6 +1,6 @@
 ---
 title: Convoy v0.6
-feature_image: update-0.6.png
+feature_image: understanding-the-convoy-ui.png
 primary_author:
     name: Subomi Oluwalana
     twitter: subomiOluwalana
