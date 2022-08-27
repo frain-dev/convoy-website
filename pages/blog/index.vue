@@ -125,12 +125,12 @@ export default {
 	async asyncData({ $content, route }) {
 		const tag = route.query?.tag ? route.query?.tag : 'Convoy';
 
-		const posts = await $content('articles')
+		const posts = await $content('blog')
 			.where({ tags: { $contains: tag }, featured: { $eq: false } })
 			.sortBy('published_at', 'desc')
 			.fetch();
 
-		const featurePosts = await $content('articles')
+		const featurePosts = await $content('blog')
 			.where({ featured: { $eq: true } })
 			.fetch();
 
@@ -164,7 +164,7 @@ export default {
 		async filterPosts(route) {
 			this.tag = route ? route : 'Convoy';
 
-			const filteredPosts = await this.$content('articles')
+			const filteredPosts = await this.$content('blog')
 				.where({ tags: { $contains: this.tag }, featured: { $eq: false } })
 				.sortBy('published_at', 'desc')
 				.fetch();
