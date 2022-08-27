@@ -76,8 +76,8 @@ export default {
 	layout: 'blog',
 	async asyncData({ $content, params }) {
 		try {
-			const blogPageData = await $content('articles/' + params.slug).fetch();
-			const posts = await $content('articles').limit(2).sortBy('published_at', 'desc').fetch();
+			const blogPageData = await $content('blog/' + params.slug).fetch();
+			const posts = await $content('blog').limit(2).sortBy('published_at', 'desc').fetch();
 			blogPageData.readingTime = Math.ceil(blogPageData.readingTime / (1000 * 60));
 			return { blogPageData, posts };
 		} catch (error) {
