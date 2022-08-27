@@ -33,6 +33,8 @@ module.exports = {
 			}
 		},
 		screens: {
+			'index-animation-min': { min: '1405px' },
+			'index-animation-max': { min: '2087px' },
 			desktop: { min: '880px' },
 			md: { min: '1240px' },
 			mobile: { max: '879px' },

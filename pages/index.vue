@@ -3,7 +3,7 @@
 		<header class="px-20px bg-gradient-to-br from-[#2c2f3e] to-[#422f41]">
 			<Header></Header>
 
-			<section class="flex flex-col justify-between desktop:items-center desktop:flex-row m-auto pt-150px pb-60px px-20px max-w-[1200px] min-h-screen h-full w-full">
+			<section class="flex flex-col justify-between desktop:items-center desktop:flex-row m-auto pt-150px pb-60px px-20px max-w-[1200px] min-h-[75vh] w-full">
 				<div class="max-w-[624px] m-auto desktop:ml-0 w-full">
 					<div class="bg-[#403041] rounded-[40px] w-fit py-10px px-20px flex items-center text-14 text-white-100 m-auto desktop:ml-0 mb-40px">
 						We are backed by
@@ -133,7 +133,7 @@
 			</p>
 
 			<div class="grid grid-cols-[repeat(auto-fill,minmax(333px,_1fr))] gap-32px">
-				<div class="bg-white-100 shadow-card p-32px rounded-16px" v-for="feature of features" :key="feature">
+				<div class="bg-white-100 shadow-card p-32px rounded-16px" v-for="(feature, index) of features" :key="'feature' + index">
 					<img :src="require(`~/assets/images/${feature.img}-feature-icon.svg`)" :alt="feature.feature" class="w-48px h-48px mb-32px" :class="feature.shadow" />
 					<h3 class="font-semibold mb-16px">{{ feature.feature }}</h3>
 					<p class="text-16 text-grey-80 min-h-[72px]">{{ feature.description }}</p>
@@ -220,7 +220,7 @@
 		</section>
 
 		<!-- core features  -->
-		<section id="features" class="mt-100px desktop:mt-130px">
+		<section id="features" class="features mt-100px desktop:mt-130px">
 			<div class="bg-[#F9FBFE] w-full py-30px px-20px mb-40px">
 				<div class="w-full max-w-[1170px] m-auto">
 					<h1 class="text-32 desktop:text-[48px] font-bold mb-20px desktop:mb-16px">Core Features</h1>
@@ -228,9 +228,9 @@
 				</div>
 			</div>
 
-			<div class="flex justify-between items-start flex-wrap desktop:flex-nowrap max-w-[1170px] m-auto desktop:max-h-[564px] desktop:overflow-y-auto">
-				<div class="flex flex-col items-center">
-					<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] py-88px px-40px desktop:px-54px">
+			<div class="m-auto max-w-[1170px] w-full relative index-animation-min:flex mobile:block px-5">
+				<div class="desktop:max-h-[564px] desktop:overflow-y-hidden feature-list index-animation-min:max-w-[430px] w-full flex justify-center flex-wrap gap-10">
+					<div class="max-w-[430px] rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full py-88px px-40px desktop:px-54px index-animation-min:mt-56px">
 						<ul class="list-none">
 							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
 								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
@@ -254,7 +254,8 @@
 							</li>
 						</ul>
 					</div>
-					<div class="rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full desktop:min-w-[430px] py-88px px-40px desktop:px-54px mt-130px">
+
+					<div class="max-w-[430px] rounded-[20px] bg-gradient-to-br from-[#2c2f3e] to-[#422f41] w-full py-88px px-40px desktop:px-54px index-animation-min:mt-130px index-animation-min:mb-110px">
 						<ul class="list-none">
 							<li class="flex items-center text-white-100 mb-[29px] relative font-medium text-18 after:absolute after:h-20px after:w-[1px] after:bg-white-8 after:-bottom-24px after:left-[11px]">
 								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
@@ -275,8 +276,20 @@
 						</ul>
 					</div>
 				</div>
-				<div class="max-w-[764px] desktop:h-[564px] w-full h-fit overflow-x-scroll desktop:sticky desktop:-top-60px desktop:-right-124px desktop:translate-x-120px">
-					<img src="~/assets/images/core-illustraton.png" class="desktop:min-w-[1080px] w-full" alt="core features" />
+
+				<div
+					class="
+						index-animation-min:max-w-[1103px] index-animation-min:translate-x-120px
+						inline-block
+						w-full
+						index-animation-max:overflow-x-visible
+						index-animation-min:overflow-x-hidden
+						feature-img
+						mt-16
+						index-animation-min:mt-0
+					"
+				>
+					<img src="~/assets/images/core-illustraton.png" class="index-animation-min:absolute index-animation-min:w-[1077px] index-animation-min:max-w-none" alt="core features" />
 				</div>
 			</div>
 		</section>
@@ -408,8 +421,20 @@ export default {
 	},
 	mounted() {
 		this.triggerSlide();
+		this.animateOnScroll();
 	},
 	methods: {
+		animateOnScroll() {
+			let media = window.matchMedia('(min-width: 1405px)');
+			if (media.matches) {
+				this.$gsap.to('.feature-list', { duration: 2, scrollTo: { y: 'max' }, scrollTrigger: { trigger: '.features', scrub: true, start: '400px center', pin: true } });
+				this.$gsap.to('.feature-img', {
+					duration: 2,
+					scrollTo: { x: 'max' },
+					scrollTrigger: { trigger: '.features', scrub: true, start: '400px center', pin: true }
+				});
+			}
+		},
 		switchTabs(activeTab) {
 			switch (activeTab) {
 				case 'cloud':
