@@ -345,7 +345,7 @@
 			@click="expandImage = false"
 		>
 			<div class="flex justify-center items-center h-full max-h-[1300px] max-w-full">
-				<img src="~/assets/images/core-illustraton.png" class="h-full m-auto" alt="core features" />
+				<img src="~/assets/images/core-illustraton.png" class="w-full m-auto" alt="core features" />
 			</div>
 		</section>
 	</div>
