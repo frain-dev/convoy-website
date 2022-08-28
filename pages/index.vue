@@ -50,7 +50,7 @@
 				</div>
 
 				<div class="max-w-[600px] desktop:h-[570px] w-full m-auto desktop:m-[unset] mobile:mt-40px md:-mr-120px relative desktop:mb-40px">
-					<div class="flex flex-row w-full h-full relative">
+					<div class="flex flex-row w-full h-full relative xs:min-h-[270px] min-h-[530px]">
 						<img src="~/assets/images/Illustration2.png" alt="illostration" class="transition-all duration-500 delay-300 absolute top-0 left-0" :class="activeSlide ? 'opacity-100' : 'opacity-0'" />
 						<img src="~/assets/images/Illustration1.png" alt="illostration" class="transition-all duration-500 delay-300 absolute top-0 left-0" :class="!activeSlide ? 'opacity-100' : 'opacity-0'" />
 					</div>
