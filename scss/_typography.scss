@@ -9,7 +9,7 @@
 	}
 
 	p {
-		@apply text-14 desktop:text-16 text-grey-80 mt-16px mb-32px;
+		@apply text-14 text-grey-80 mt-16px mb-32px;
 	}
 	code {
 		@apply bg-success-500 rounded-4px py-2px px-8px my-0 mx-[1px] text-12 font-menlo text-success-100 border border-none;
@@ -26,6 +26,25 @@
 
 	img {
 		@apply mt-20px mb-10px m-auto border border-grey-10 rounded-10px;
+	}
+
+	table {
+		@apply mt-20px;
+
+		td,
+		th {
+			@apply text-left;
+			@apply pr-50px;
+			@apply py-10px;
+			@apply pl-0;
+			@apply border-t;
+			@apply border-t-[#eee];
+			@apply text-14;
+		}
+
+		th {
+			@apply font-medium;
+		}
 	}
 
 	// styles for docs content
@@ -61,7 +80,7 @@
 			@apply ml-20px;
 
 			li {
-				@apply py-8px list-decimal marker:text-grey-40 text-14 desktop:text-16 text-grey-80;
+				@apply py-8px list-decimal marker:text-grey-40 text-14 text-grey-80;
 			}
 		}
 
@@ -82,7 +101,7 @@
 			@apply list-disc marker:text-grey-40 ml-20px mt-14px;
 
 			li {
-				@apply list-disc marker:text-grey-40 mb-16px text-14 desktop:text-16 text-grey-80;
+				@apply list-disc marker:text-grey-40 mb-16px text-14  text-grey-80;
 			}
 		}
 
@@ -90,7 +109,7 @@
 			@apply list-[initial] ml-20px mt-14px;
 
 			li {
-				@apply text-14 desktop:text-16 text-grey-80;
+				@apply text-14  text-grey-80;
 			}
 		}
 
@@ -111,12 +130,10 @@
 			@apply m-auto h-full;
 		}
 
-		
-
 		blockquote {
 			@apply bg-success-500 border-success-200 border rounded-10px pt-54px px-28px pb-24px mb-32px before:absolute before:-mt-32px before:-ml-8px before:content-[url('~assets/images/bulb-text.svg')];
 
-			p{
+			p {
 				@apply text-14 text-grey-80 m-0;
 			}
 		}
