@@ -1,7 +1,7 @@
 <template>
 	<div class="m-auto pb-0 flex justify-between pt-0">
 		<aside class="w-240px hidden desktop:sticky desktop:top-150px desktop:block desktop:pl-20px desktop:pr-32px">
-			<ul class="p-0"> 
+			<ul class="p-0">
 				<h6 class="font-bold text-black mb-18px">CATEGORIES</h6>
 
 				<li v-for="(tag, index) in tags" :key="'tag' + index" class="font-semibold text-14 mb-30px text-grey-40">
@@ -56,9 +56,9 @@
 					max-w-[970px]
 					bg-white-100
 					mt-32px
-					pt-32px
+					pt-20px
 					px-12px
-					desktop:pl-56px desktop:pt-56px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
+					desktop:pl-56px desktop:pt-26px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
 					mobile:mb-48px
 				"
 				v-if="featurePosts.length > 0"
