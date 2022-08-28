@@ -4,7 +4,7 @@
 			<Header></Header>
 
 			<section class="flex flex-col justify-between desktop:items-center desktop:flex-row m-auto pt-150px pb-60px px-20px max-w-[1200px] min-h-[80vh] w-full">
-				<div class="max-w-[624px] m-auto desktop:ml-0 w-full mb-40px">
+				<div class="max-w-[624px] m-auto desktop:ml-0 w-full">
 					<div class="bg-[#403041] rounded-[40px] w-fit py-10px px-20px flex items-center text-14 text-white-100 m-auto desktop:ml-0 mb-40px">
 						We are backed by
 						<img src="~/assets/images/y-combinator.svg" class="ml-16px w-24px h-24px" alt="y-combinator" />
@@ -344,8 +344,8 @@
 			:class="expandImage ? 'visible animate-slideup opacity-100 z-[100000]' : 'invisible animate-slidedown opacity-0'"
 			@click="expandImage = false"
 		>
-			<div class="flex justify-center items-center h-full max-h-[1300px] max-w-full">
-				<img src="~/assets/images/core-illustraton.png" class="h-full m-auto" alt="core features" />
+			<div class="flex justify-center items-center h-full max-w-[2000px] m-auto">
+				<img src="~/assets/images/core-illustraton.png" class="w-full" alt="core features" />
 			</div>
 		</section>
 	</div>
