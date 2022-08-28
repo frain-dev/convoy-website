@@ -1,63 +1,64 @@
 <template>
 	<div>
-		<nav class="extraPadding">
-			<section class="github-star">
+		<nav
+			class="w-full m-auto px-20px pt-60px pb-20px z-50 fixed left-[50%] -translate-x-1/2 translate-y-0 desktop:pt-50px desktop:pb-12px transition-all duration-300"
+			:class="hasScrolled ? 'bg-[#302f3f] shadow-nav backdrop-blur-[36]' : 'bg-[#302f3f]'"
+		>
+			<section class="fixed top-0 left-0 bg-primary-100 w-full h-40px py-8px px-12px flex items-center justify-center font-medium text-12 text-white-100 desktop:text-14">
 				<span>Give us a star on GitHub</span>
-				<a class="github-icon" target="_blank" rel="noopener noreferrer" href="https://github.com/frain-dev/convoy">
-					<img src="~/assets/images/github-icon-white.svg" alt="github icon" />
+				<a class="h-20px w-20px mx-12px hover:cursor-pointer" target="_blank" rel="noopener noreferrer" href="https://github.com/frain-dev/convoy">
+					<img src="~/assets/images/github-icon-white.svg" class="w-18px h-18px" alt="github icon" />
 				</a>
 				<a target="_blank" rel="noopener noreferrer" href="https://github.com/frain-dev/convoy">
-					<button>
-						<img src="~/assets/images/github-star.svg" alt="github star" />
+					<button class="bg-white-100 border border-grey-10 shadow-default rounded-4px text-primary-100 font-medium text-12 h-24px p-10px flex items-center ml-10px">
+						<img src="~/assets/images/github-star.svg" class="w-16px h-16px mr-4px" alt="github star" />
 						{{ githubStars }}
 					</button>
 				</a>
 			</section>
-			<div>
-				<button class="menu-button" @click="showMenu = !showMenu">
+
+			<div class="flex items-center justify-between m-auto max-w-[1200px]">
+				<button class="block absolute desktop:hidden" @click="showMenu = !showMenu">
 					<img v-if="!showMenu" src="~/assets/images/menu-icon.svg" alt="menu icon" width="24" />
 					<img v-if="showMenu" src="~/assets/images/close-icon.svg" alt="close icon" width="24" />
 				</button>
 
-				<div class="logo">
+				<div class="ml-50px w-4/5 desktop:w-fit desktop:ml-0">
 					<nuxt-link to="/">
-						<img src="~/assets/images/logo.svg" alt="logo" />
+						<img src="~/assets/images/logo.svg" class="w-110px" alt="logo" />
 					</nuxt-link>
 				</div>
 
-				<ul :class="showMenu ? 'show' : ''">
-					<li>
-						<nuxt-link to="/blog">Blog</nuxt-link>
+				<ul
+					class="
+						mobile:absolute mobile:top-104px mobile:left-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-10px mobile:min-w-[250px]
+						desktop:flex desktop:items-center desktop:justify-end desktop:bg-transparent
+						transition-all
+						duration-500
+					"
+					:class="showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'"
+				>
+					<li class="py-14px px-20px desktop:mr-20px border-b border-b-grey-10 last-of-type:border-none desktop:border-none" v-for="link in menuItems" :key="link.name">
+						<nuxt-link class="text-black desktop:text-white-100 text-14" v-if="link.type === 'route'" :to="link.route">{{ link.name }}</nuxt-link>
+						<a class="text-black desktop:text-white-100 text-14" v-else target="_blank" rel="noopener noreferrer" :href="link.route">{{ link.name }}</a>
 					</li>
+
 					<li>
-						<nuxt-link to="/docs">Docs</nuxt-link>
-					</li>
-					<li>
-						<a target="_blank" rel="noopener noreferrer" href="https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email">Community</a>
-					</li>
-					<li>
-						<nuxt-link to="/download">Download</nuxt-link>
-					</li>
-					<li class="github">
 						<a href="https://github.com/frain-dev/convoy">
 							<img src="~/assets/images/github-logo.svg" alt="github logo" />
 						</a>
 					</li>
-					<li class="ml-auto">
-						<a target="_blank" rel="noopener noreferrer" href="https://app.getconvoy.io/login">Login</a>
-						<a class="primary" target="_blank" rel="noopener noreferrer" href="https://app.getconvoy.io/signup">
-							Sign up for free
-							<img src="~/assets/images/arrow-right-white.svg" alt="arrow right" />
-						</a>
-					</li>
 				</ul>
-
-				<a href="https://github.com/frain-dev/convoy" class="small">
+				<a href="https://github.com/frain-dev/convoy" class="block desktop:hidden">
 					<img src="~/assets/images/github-logo.svg" alt="github logo" />
 				</a>
 			</div>
 		</nav>
-		<div class="overlay" :class="showMenu ? 'show' : ''" @click="showMenu = !showMenu"></div>
+		<div
+			class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-10 backdrop-blur-[25px] transition-all duration-500"
+			:class="showMenu ? 'pointer-events-all opacity-100 z-[2]' : 'pointer-events-none opacity-0'"
+			@click="showMenu = !showMenu"
+		></div>
 	</div>
 </template>
 
@@ -66,11 +67,20 @@ export default {
 	data() {
 		return {
 			showMenu: false,
-			githubStars: 0
+			githubStars: 0,
+			menuItems: [
+				{ name: 'Features', route: '/#features', type: 'route' },
+				{ name: 'Blog', route: '/blog', type: 'route' },
+				{ name: 'Docs', route: '/docs', type: 'route' },
+				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' },
+				{ name: 'Download', route: '/download', type: 'route' }
+			],
+			hasScrolled: false
 		};
 	},
 	mounted() {
 		this.getGithubStars();
+		this.handleScroll();
 	},
 	methods: {
 		async getGithubStars() {
@@ -79,285 +89,15 @@ export default {
 				const data = await response.json();
 				this.githubStars = data.stargazers_count;
 			} catch (_error) {}
+		},
+		handleScroll() {
+			this.$route.name == 'blog' || window.scrollY > 70 ? (this.hasScrolled = true) : (this.hasScrolled = false);
+		}
+	},
+	created() {
+		if (process.client) {
+			window.addEventListener('scroll', this.handleScroll);
 		}
 	}
 };
 </script>
-
-<style lang="scss" scoped>
-$desktopBreakPoint: 880px;
-
-nav {
-	width: 100%;
-	margin: auto;
-	background: #302f3f;
-	box-shadow: inset 0px -3px 8px rgba(255, 255, 255, 0.07);
-	backdrop-filter: blur(36px);
-	padding: 53px 20px 21px 20px;
-	z-index: 10;
-	position: fixed;
-	left: 50%;
-	transform: translate(-50%, 0);
-
-	&.extraPadding {
-		padding: 63px 20px 21px 20px;
-	}
-
-	@media (min-width: $desktopBreakPoint) {
-		padding: 32px 20px;
-		&.extraPadding {
-			padding: 52px 20px 12px 20px;
-		}
-	}
-
-	& > div {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		max-width: 1106px;
-		margin: auto;
-	}
-
-	.logo {
-		font-weight: bold;
-		font-size: 21px;
-		line-height: 26px;
-		color: #ffffff;
-		width: 80%;
-		margin-left: 50px;
-
-		@media (min-width: $desktopBreakPoint) {
-			width: 22%;
-			margin-left: 0px;
-		}
-
-		img {
-			width: 110px;
-		}
-	}
-
-	.menu-button {
-		display: block;
-		position: absolute;
-
-		@media (min-width: $desktopBreakPoint) {
-			display: none;
-		}
-	}
-
-	ul {
-		transition: all 0.5s;
-		display: none;
-		position: absolute;
-		top: 105px;
-		left: 20px;
-		width: 256px;
-		text-align: left;
-		height: 0;
-		background: #ffffff;
-		box-shadow: 0px 2px 4px rgba(12, 26, 75, 0.04), 0px 4px 20px -2px rgba(50, 50, 71, 0.08);
-		border-radius: 10px;
-		z-index: 5;
-
-		&.show {
-			padding-top: 20px;
-			height: fit-content;
-			display: block;
-		}
-
-		li {
-			width: 100%;
-			padding: 15px 20px;
-
-			&:not(:last-of-type) {
-				margin-right: 40px;
-			}
-
-			a {
-				font-weight: 500;
-				font-size: 14px;
-				line-height: 17px;
-				color: #5f5f68;
-				width: 100%;
-
-				img {
-					width: 24px;
-				}
-			}
-			&.github {
-				display: none;
-			}
-			&.ml-auto {
-				button {
-					margin-top: 30px;
-				}
-			}
-			button,
-			a.primary {
-				background: #477db3;
-				border-radius: 8px;
-				padding: 9px 20px;
-				color: #ffffff;
-				font-weight: 500;
-				font-size: 16px;
-				line-height: 28px;
-				min-width: 175px;
-				display: flex;
-				align-items: center;
-				white-space: nowrap;
-				margin-top: 15px;
-				img {
-					height: 24px;
-					width: 24px;
-				}
-
-				@media (min-width: $desktopBreakPoint) {
-					margin-top: unset;
-					margin-left: 24px;
-				}
-			}
-		}
-
-		& + a {
-			margin-top: 3px;
-		}
-
-		@media (min-width: $desktopBreakPoint) {
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-			position: initial;
-			height: initial;
-			overflow-y: unset;
-			width: 100%;
-			background: transparent;
-
-			&.show {
-				display: flex;
-				height: unset;
-				padding-top: 0;
-				overflow-y: unset;
-			}
-
-			li {
-				padding: 0;
-				width: fit-content;
-
-				a {
-					color: rgba(255, 255, 255, 0.6);
-
-					&.nuxt-link-active {
-						color: #ffffff;
-					}
-				}
-
-				&:last-of-type {
-					display: none;
-				}
-
-				&.github {
-					display: block;
-				}
-
-				&.ml-auto {
-					margin-left: auto;
-					display: flex;
-					align-items: center;
-					button {
-						margin-left: 24px;
-						margin-top: unset;
-					}
-				}
-			}
-		}
-	}
-
-	a.small {
-		display: block;
-
-		@media (min-width: $desktopBreakPoint) {
-			display: none;
-		}
-	}
-
-	.github-star {
-		position: fixed;
-		top: 0;
-		left: 0;
-		background: #477db3;
-		width: 100%;
-		height: 40px;
-		padding: 7px 11px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-weight: 500;
-		font-size: 12px;
-		line-height: 20px;
-		color: #fff;
-		z-index: 99;
-
-		@media (min-width: $desktopBreakPoint) {
-			font-size: 14px;
-			line-height: 24px;
-		}
-
-		.github-icon {
-			height: 20px;
-			width: 20px;
-			margin-left: 13px;
-			margin-right: 13px;
-
-			&:hover {
-				cursor: pointer;
-			}
-
-			img {
-				height: 18px;
-				width: 18px;
-			}
-		}
-
-		button {
-			background: #ffffff;
-			border: 1px solid #edeff5;
-			box-shadow: 0px 2px 8px rgba(12, 26, 75, 0.08), 0px 3px 8px -1px rgba(50, 50, 71, 0.05);
-			border-radius: 4px;
-			color: #477db3;
-			font-weight: 500;
-			font-size: 12px;
-			line-height: 20px;
-			height: 24px;
-			padding: 10px;
-			display: flex;
-			align-items: center;
-			margin-left: 10px;
-
-			img {
-				height: 16px;
-				width: 16px;
-				margin-right: 5px;
-			}
-		}
-	}
-}
-
-.overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.1);
-	backdrop-filter: blur(25px);
-	transition: all 0.5s;
-	opacity: 0;
-	pointer-events: none;
-	z-index: 2;
-
-	&.show {
-		opacity: 1;
-		pointer-events: all;
-	}
-}
-</style>

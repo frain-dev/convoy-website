@@ -5,6 +5,7 @@
 <script>
 export default {
 	layout: 'docs',
+	scrollToTop: true,
 	async asyncData({ $content, params }) {
 		try {
 			const pageData = await $content('docs/' + params.pathMatch || 'index').fetch();

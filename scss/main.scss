@@ -1,9 +1,47 @@
-@import './reset';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './page';
 @import './font';
 @import './typography';
 @import './prism';
-@import './page';
-@import './posts';
-@import './tabs';
-@import './forms';
-@import './table';
+
+@layer utilities {
+	.no-scrollbar::-webkit-scrollbar {
+		@apply hidden;
+	}
+	.no-scrollbar {
+		scrollbar-width: none;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none;
+	}
+}
+
+@layer base {
+	:root {
+		--color-white: 255, 255, 255;
+	}
+	h1 {
+		@apply text-h1;
+	}
+	h2 {
+		@apply text-h2;
+	}
+	h3 {
+		@apply text-h3;
+	}
+	h4 {
+		@apply text-h4;
+	}
+	h5 {
+		@apply text-h5;
+	}
+	h6 {
+		@apply text-h6;
+	}
+	body {
+		@apply bg-[#fafafe] text-black font-inter;
+	}
+}

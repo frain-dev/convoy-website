@@ -1,5 +1,3 @@
-$desktopBreakPoint: 880px;
-
 .nuxt-content {
 	h1,
 	h2,
@@ -7,64 +5,46 @@ $desktopBreakPoint: 880px;
 	h4,
 	h5,
 	h6 {
-		font-weight: bold;
-		line-height: 140%;
-		letter-spacing: 0.01em;
-		color: #000624;
-	}
-	h1 {
-		font-size: 34px;
-	}
-	h2 {
-		font-size: 24px;
-	}
-	h3 {
-		font-size: 20px;
-	}
-	h4 {
-		font-size: 18px;
-	}
-	h5 {
-		font-size: 16px;
-	}
-	h6 {
-		font-size: 14px;
+		@apply tracking-[.01em] font-bold;
 	}
 
 	p {
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 27px;
-		color: #31323d;
-		margin: 16px 0 32px 0;
+		@apply text-14 text-grey-80 mt-16px mb-32px;
 	}
 	code {
-		background: #f3f3f8;
-		border-radius: 4px;
-		padding: 2px 4px;
-		margin: 0 1px;
-		border: 1px solid rgba(0, 0, 0, 0.05);
-		font-family: 'Menlo Regular';
-		font-size: 12px;
-		color: rgba(22, 25, 44, 0.4);
+		@apply bg-success-500 rounded-4px py-2px px-8px my-0 mx-[1px] text-12 font-menlo text-success-100 border border-none;
 	}
 	pre {
 		code {
-			border: unset;
-			color: unset;
+			@apply border-none;
 		}
 	}
 
 	a {
-		text-decoration: underline;
-		text-decoration: underline;
-		font-weight: inherit;
+		@apply underline text-success-100 font-normal;
 	}
 
 	img {
-		margin: 20px 0 10px;
-		border: 1px solid #eee;
-		border-radius: 10px;
+		@apply mt-20px mb-10px m-auto border border-grey-10 rounded-10px;
+	}
+
+	table {
+		@apply mt-20px;
+
+		td,
+		th {
+			@apply text-left;
+			@apply pr-50px;
+			@apply py-10px;
+			@apply pl-0;
+			@apply border-t;
+			@apply border-t-[#eee];
+			@apply text-14;
+		}
+
+		th {
+			@apply font-medium;
+		}
 	}
 
 	// styles for docs content
@@ -74,148 +54,92 @@ $desktopBreakPoint: 880px;
 		h4,
 		h5,
 		h6:not(:first-of-type) {
-			margin: 40px 0 5px;
+			@apply mt-40px mb-6px;
 		}
 
 		strong {
-			font-weight: 500;
-		}
-
-		a {
-			color: #47b38d;
+			@apply font-medium;
 		}
 
 		p {
-			margin: 10px 0 5px;
+			@apply mt-10px mb-6px;
 		}
 		img {
-			margin: 20px 0 10px;
+			@apply mt-20px mb-6px;
 		}
 
 		ul {
-			margin-left: 20px;
+			@apply ml-20px;
 
 			li {
-				padding: 10px 0;
-				line-height: 27px;
-
-				&:first-of-type {
-					margin-top: 20px;
-				}
+				@apply py-10px first-of-type:mt-20px;
 			}
 		}
 
 		ol {
-			margin-left: 20px;
+			@apply ml-20px;
 
 			li {
-				list-style-type: decimal;
-				padding: 8px 0;
+				@apply py-8px list-decimal marker:text-grey-40 text-14 text-grey-80;
 			}
 		}
 
 		ul,
 		li,
 		ol {
-			list-style-type: unset;
+			@apply list-[unset];
 		}
 
 		hr {
-			height: 0;
-			border: 1px solid #eee;
-			margin: 20px 0 30px;
+			@apply h-0 border border-grey-10 mt-20px mb-30px;
 		}
 	}
 
 	// styles for blog content
 	&.blog {
 		ul {
-			list-style-type: disc;
-			margin-left: 20px;
-			margin-top: 14px;
+			@apply list-disc marker:text-grey-40 ml-20px mt-14px;
 
 			li {
-				list-style-type: disc;
-				margin-bottom: 15px;
+				@apply list-disc marker:text-grey-40 mb-16px text-14  text-grey-80;
 			}
 		}
 
 		ol {
-			list-style-type: initial;
-			margin-left: 20px;
-			margin-top: 14px;
+			@apply list-[initial] ml-20px mt-14px;
 
 			li {
-				font-weight: 400;
-				font-size: 16px;
-				line-height: 24px;
-				color: #31323d;
+				@apply text-14  text-grey-80;
 			}
 		}
 
-		h1 {
-			font-size: 34px;
-		}
 		h1,
 		h2,
 		h3,
 		h4,
 		h5,
 		h6 {
-			margin: 40px 0 0;
+			@apply mt-40px;
 		}
 
 		strong {
-			font-weight: bold;
-			color: inherit;
+			@apply font-bold;
 		}
 
 		img {
-			margin: 0;
-			height: 100%;
-		}
-
-		a {
-			color: #477db3;
+			@apply m-auto h-full;
 		}
 
 		blockquote {
-			border-radius: 16px;
-			padding: 100px 34px 64px;
-			background: url('~assets/images/blockquote-bg.svg') no-repeat #477db3;
-			background-position: top right;
-			margin: 44px 0 44px;
-			position: relative;
+			@apply bg-success-500 border-success-200 border rounded-10px pt-54px px-28px pb-24px mb-32px before:absolute before:-mt-32px before:-ml-8px before:content-[url('~assets/images/bulb-text.svg')];
+
 			p {
-				font-size: 18px;
-				line-height: 40px;
-				text-align: center;
-				letter-spacing: 0.09px;
-				color: #ffffff;
-			}
-
-			@media (min-width: $desktopBreakPoint) {
-				padding: 100px 64px 64px;
-				p {
-					font-size: 26px;
-					line-height: 60px;
-				}
-			}
-
-			&::after {
-				position: absolute;
-				content: url('~assets/images/quote-left.svg');
-				top: 67px;
-				left: 50%;
-				transform: translate(0, -50%);
+				@apply text-14 text-grey-80 m-0;
 			}
 		}
 
 		hr {
-			height: 1px;
-			border: 0;
-			border-top: 1px solid rgb(219, 219, 219);
-			margin: 30px 0 44px;
+			@apply h-[1px] border-none border-t-grey-10 mt-30px mb-44px;
 		}
 	}
 }
