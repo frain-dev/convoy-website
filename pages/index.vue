@@ -4,7 +4,7 @@
 			<Header></Header>
 
 			<section class="flex flex-col justify-between desktop:items-center desktop:flex-row m-auto pt-150px pb-60px px-20px max-w-[1200px] min-h-[80vh] w-full">
-				<div class="max-w-[624px] m-auto desktop:ml-0 w-full">
+				<div class="max-w-[624px] m-auto desktop:ml-0 w-full mb-40px">
 					<div class="bg-[#403041] rounded-[40px] w-fit py-10px px-20px flex items-center text-14 text-white-100 m-auto desktop:ml-0 mb-40px">
 						We are backed by
 						<img src="~/assets/images/y-combinator.svg" class="ml-16px w-24px h-24px" alt="y-combinator" />
@@ -49,12 +49,12 @@
 					</ul>
 				</div>
 
-				<div class="max-w-[600px] desktop:h-[570px] w-full m-auto desktop:m-[unset] mobile:mt-40px md:-mr-120px relative">
+				<div class="max-w-[600px] desktop:h-[570px] w-full m-auto desktop:m-[unset] mobile:mt-40px md:-mr-120px relative desktop:mb-40px">
 					<div class="flex flex-row w-full h-full relative">
 						<img src="~/assets/images/Illustration2.png" alt="illostration" class="transition-all duration-500 delay-300 absolute top-0 left-0" :class="activeSlide ? 'opacity-100' : 'opacity-0'" />
 						<img src="~/assets/images/Illustration1.png" alt="illostration" class="transition-all duration-500 delay-300 absolute top-0 left-0" :class="!activeSlide ? 'opacity-100' : 'opacity-0'" />
 					</div>
-					<div class="flex justify-center mt-52px">
+					<div class="flex justify-center pt-52px">
 						<button
 							@click="activeSlide = true"
 							class="w-[47px] h-[3px] rounded-16px mr-14px bg-[#5F4C62] relative before:absolute before:h-[3px] before:rounded-16px before:-mt-2px before:-ml-22px"
