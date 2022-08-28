@@ -6,7 +6,7 @@ const create = async feed => {
 	};
 
 	const { $content } = require('@nuxt/content');
-	const posts = await $content('articles').fetch();
+	const posts = await $content('blog').fetch();
 
 	posts.forEach(post => {
 		const url = `https://getconvoy.io/blog/${post.slug}`;
@@ -24,7 +24,7 @@ const create = async feed => {
 					link: 'http://twitter.com/' + post.primary_author.twitter
 				}
 			],
-			image: 'https://getconvoy.io/blog-assets/' + post.feature_image
+			image: 'https://getconvoy.io/feature-images/' + post.feature_image
 		});
 	});
 };
