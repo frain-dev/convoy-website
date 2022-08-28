@@ -413,7 +413,7 @@ export default {
 		animateOnScroll() {
 			let media = window.matchMedia('(min-width: 1405px)');
 			if (media.matches) {
-				this.$gsap.to('.feature-list', { duration: 2, scrollTo: { y: 'max' }, scrollTrigger: { trigger: '.features', scrub: true, start: '400px center', pin: true } });
+				this.$gsap.to('.feature-list', { duration: 2, scrollTo: { y: 'max' }, scrollTrigger: { trigger: '.features', scrub: true, start: '300px center', pin: true } });
 				this.$gsap.to('.feature-img', {
 					duration: 2,
 					scrollTo: { x: 'max' },
