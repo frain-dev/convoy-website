@@ -122,6 +122,7 @@
 <script>
 export default {
 	layout: 'blog',
+	scrollToTop: true,
 	data: () => {
 		return {
 			showCategories: false,

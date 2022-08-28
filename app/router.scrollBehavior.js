@@ -22,18 +22,11 @@ export default async function (to, from, savedPosition) {
 
 	if (to.hash) {
 		let el = await findEl(to.hash);
-		if ('scrollBehavior' in document.documentElement.style) {
-			main.scrollTo({ top: el.offsetTop - 170, behavior: 'smooth' });
-			blog.scrollTo({ top: el.offsetTop - 170, behavior: 'smooth' });
-			return;
-		} else {
-			main.scrollTo(0, el.offsetTop);
-			blog.scrollTo(0, el.offsetTop);
-			return;
-		}
+		el.scrollIntoView({ behavior: 'smooth' });
+		return;
 	}
 
-	main.scrollTo({ top: 0, behavior: 'smooth' });
-	blog.scrollTo({ top: 0, behavior: 'smooth' });
+	if (main) main.scrollTo({ top: 0, behavior: 'smooth' });
+	if (blog) blog.scrollTo({ top: 0, behavior: 'smooth' });
 	return { x: 0, y: 0 };
 }

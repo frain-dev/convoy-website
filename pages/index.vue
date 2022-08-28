@@ -201,7 +201,6 @@
 			<div class="bg-[#F9FBFE] w-full py-30px px-20px mb-40px">
 				<div class="w-full max-w-[1170px] m-auto">
 					<h1 class="text-32 desktop:text-[48px] font-bold mb-20px desktop:mb-16px">Core Features</h1>
-					<p class="text-14 desktop:text-16 max-w-[430px] text-grey-80">Easily filter & debug events sent to multiple applications & endpoints with Delivery Attempt Logs.</p>
 				</div>
 			</div>
 
@@ -274,7 +273,7 @@
 
 		<!-- cta  -->
 		<section class="px-20px pb-100px desktop:pb-130px">
-			<div class="mt-100px desktop:mt-130px max-w-[1170px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top rounded-16px py-56px px-20px">
+			<div class="mt-100px desktop:mt-130px max-w-[1170px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
 				<h1 class="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px desktop:mb-16px">Start sending webhooks now, risk free</h1>
 				<p class="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">
 					Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time and get started today.
@@ -318,7 +317,7 @@
 					<p class="font-light text-grey-80 text-16 mb-16px">{{ featurePosts[0].description }}...</p>
 					<div class="flex flex-col flex-wrap my-26px desktop:items-end desktop:flex-row desktop:justify-between">
 						<a :href="featurePosts[0].primary_author.twitter ? 'http://twitter.com/' + featurePosts[0].primary_author.twitter : ''" target="_blank" class="flex items-start mb-40px desktop:mb-0">
-							<div class="w-40px h-40px rounded-[50%] mr-16px overflow-hidden flex items-center">
+							<div class="w-40px h-40px rounded-[50%] mr-16px overflow-hidden flex items-center bg-grey-20">
 								<img :src="require(`~/static/profile-images/${featurePosts[0].primary_author.name}.png`)" class="w-full mr-12px rounded-[50%]" alt="author imge" />
 							</div>
 							<div>
@@ -363,7 +362,7 @@ export default {
 				{ label: 'Open Core', id: 'open' },
 				{ label: 'App Portal', id: 'portal' }
 			],
-			activeTab: 'portal',
+			activeTab: 'open',
 			appPortal: ['Manage multiple endpoints', 'Debug **event logs**', 'Embed into your UI', 'SDK'],
 			openCore: ['Team management', 'Mulitple projects', 'Debug logs and metric', 'Manage app and customers'],
 			features: [
@@ -400,7 +399,7 @@ export default {
 		};
 	},
 	async asyncData({ $content }) {
-		const featurePosts = await $content('articles')
+		const featurePosts = await $content('blog')
 			.where({ featured: { $eq: true } })
 			.fetch();
 

@@ -78,6 +78,12 @@
 	</div>
 </template>
 
+<script>
+export default {
+	scrollToTop: true
+};
+</script>
+
 <style lang="scss" scoped>
 .card {
 	@apply rounded-16px p-32px;
