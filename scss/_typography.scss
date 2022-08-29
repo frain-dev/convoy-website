@@ -5,14 +5,14 @@
 	h4,
 	h5,
 	h6 {
-		@apply tracking-[.01em] font-bold;
+		@apply tracking-[.01em] font-semibold mb-12px;
 	}
 
 	p {
-		@apply text-14 text-grey-80 mt-16px mb-32px;
+		@apply text-14 text-grey-80 mb-32px;
 	}
 	code {
-		@apply bg-success-500 rounded-4px py-2px px-8px my-0 mx-[1px] text-12 font-menlo text-success-100 border border-none;
+		@apply bg-primary-500 rounded-4px py-2px px-8px my-0 mx-[1px] text-12 font-menlo text-primary-200 border border-none;
 	}
 	pre {
 		code {
@@ -61,9 +61,6 @@
 			@apply font-medium;
 		}
 
-		p {
-			@apply mt-10px mb-6px;
-		}
 		img {
 			@apply mt-20px mb-6px;
 		}
@@ -73,6 +70,9 @@
 
 			li {
 				@apply py-10px first-of-type:mt-20px;
+				p {
+					@apply m-0 p-0;
+				}
 			}
 		}
 
@@ -81,6 +81,9 @@
 
 			li {
 				@apply py-8px list-decimal marker:text-grey-40 text-14 text-grey-80;
+				p {
+					@apply m-0 p-0;
+				}
 			}
 		}
 
@@ -126,12 +129,8 @@
 			@apply font-bold;
 		}
 
-		img {
-			@apply m-auto h-full;
-		}
-
 		blockquote {
-			@apply bg-success-500 border-success-200 border rounded-10px pt-54px px-28px pb-24px mb-32px before:absolute before:-mt-32px before:-ml-8px before:content-[url('~assets/images/bulb-text.svg')];
+			@apply bg-success-500 border-success-200 border rounded-10px pt-54px px-28px pb-24px mb-32px before:absolute before:-mt-32px before:content-[url('~assets/images/bulb-text.svg')];
 
 			p {
 				@apply text-14 text-grey-80 m-0;
