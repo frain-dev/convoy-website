@@ -5,11 +5,22 @@
 	h4,
 	h5,
 	h6 {
-		@apply tracking-[.01em] font-semibold mb-12px;
+		@apply tracking-[.01em] mb-12px;
 	}
 
+	h1 {
+		@apply font-bold;
+	}
+
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-semibold;
+	}
 	p {
-		@apply text-14 text-grey-80 mb-32px;
+		@apply text-14 desktop:text-16 text-grey-80 mb-32px;
 	}
 	code {
 		@apply bg-primary-500 rounded-4px py-2px px-8px my-0 mx-[1px] text-12 font-menlo text-primary-200 border border-none;
@@ -54,7 +65,7 @@
 		h4,
 		h5,
 		h6:not(:first-of-type) {
-			@apply mt-40px mb-6px;
+			@apply mt-40px;
 		}
 
 		strong {
@@ -69,7 +80,7 @@
 			@apply ml-20px;
 
 			li {
-				@apply py-10px first-of-type:mt-20px;
+				@apply py-10px text-14 desktop:text-16 text-grey-80 first-of-type:mt-20px;
 				p {
 					@apply m-0 p-0;
 				}
@@ -80,7 +91,7 @@
 			@apply ml-20px;
 
 			li {
-				@apply py-8px list-decimal marker:text-grey-40 text-14 text-grey-80;
+				@apply py-8px list-decimal marker:text-grey-40 text-14 desktop:text-16 text-grey-80;
 				p {
 					@apply m-0 p-0;
 				}
@@ -104,7 +115,7 @@
 			@apply list-disc marker:text-grey-40 ml-20px mt-14px;
 
 			li {
-				@apply list-disc marker:text-grey-40 mb-16px text-14  text-grey-80;
+				@apply list-disc marker:text-grey-40 mb-16px text-14 desktop:text-16 text-grey-80;
 			}
 		}
 
@@ -112,7 +123,7 @@
 			@apply list-[initial] ml-20px mt-14px;
 
 			li {
-				@apply text-14  text-grey-80;
+				@apply text-14 desktop:text-16 text-grey-80;
 			}
 		}
 
