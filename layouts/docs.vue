@@ -44,16 +44,16 @@
 			</nav>
 		</aside>
 
-		<div class="main bg-[#fafafe] w-full overflow-y-auto pb-100px">
-			<header class="w-full bg-white-100 flex items-center justify-between sticky top-0 py-10px px-20px md:py-12px md:px-24px">
-				<button class="block md:hidden" @click="showMenu = !showMenu">
+		<div class="main bg-[#fafafe] w-full overflow-y-auto">
+			<header class="w-full bg-white-100 flex items-center justify-between flex-wrap sticky top-0 py-10px px-20px md:py-12px md:px-24px z-10">
+				<button class="block md:hidden order-1" @click="showMenu = !showMenu">
 					<img v-if="!showMenu" src="~/assets/images/menu-icon-dark.svg" alt="menu icon" width="24" />
 					<img v-if="showMenu" src="~/assets/images/close-icon-dark.svg" alt="close icon" width="24" />
 				</button>
 
-				<DocsSearch />
+				<DocsSearch class="order-2 xs:order-3" />
 
-				<div class="flex items-center">
+				<div class="flex items-center order-3 xs:order-2">
 					<a
 						href="https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email"
 						target="_blank"

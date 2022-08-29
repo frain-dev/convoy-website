@@ -1,9 +1,9 @@
 <template>
-	<div class="max-w-[378px] w-full relative my-0 mx-20px">
+	<div class="max-w-[378px] w-full relative my-12px desktop:my-0 desktop:mx-20px">
 		<form>
 			<div class="flex items-center bg-white-100 border border-grey-10 rounded-4px py-10px px-16px w-full">
 				<img src="~/assets/images/search-icon.svg" class="w-18px" alt="search icon" />
-				<input v-model="searchQuery" autocomplete="off" type="search" aria-label="search" id="search" name="search" placeholder="Search documentation" class="border-none ml-10px w-full outline-none" />
+				<input v-model="searchQuery" autocomplete="off" type="search" aria-label="search" id="search" name="search" placeholder="Search documentation" class="border-none ml-10px w-full outline-none text-14" />
 			</div>
 		</form>
 		<ul v-if="articles.length" class="absolute bg-white-100 w-full border border-grey-10 rounded-8px top-50px">
