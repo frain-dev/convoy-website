@@ -36,7 +36,7 @@
 	}
 
 	img {
-		@apply mt-20px mb-10px m-auto border border-grey-10 rounded-10px;
+		@apply my-30px m-auto border border-grey-10 rounded-10px;
 	}
 
 	table {
@@ -58,6 +58,11 @@
 		}
 	}
 
+	.nuxt-content-highlight{
+		@apply mt-12px;
+	}
+
+	
 	// styles for docs content
 	&.docs {
 		h2,
@@ -72,9 +77,6 @@
 			@apply font-medium;
 		}
 
-		img {
-			@apply mt-20px mb-6px;
-		}
 
 		ul {
 			@apply ml-20px;
@@ -82,7 +84,7 @@
 			li {
 				@apply py-10px text-14 desktop:text-16 text-grey-80 first-of-type:mt-20px;
 				p {
-					@apply m-0 p-0;
+					@apply m-0 p-0 text-grey-80;
 				}
 			}
 		}
@@ -91,9 +93,9 @@
 			@apply ml-20px;
 
 			li {
-				@apply py-8px list-decimal marker:text-grey-40 text-14 desktop:text-16 text-grey-80;
+				@apply py-8px list-decimal text-14 desktop:text-16 text-grey-80;
 				p {
-					@apply m-0 p-0;
+					@apply m-0 p-0 text-grey-80;
 				}
 			}
 		}
@@ -112,10 +114,10 @@
 	// styles for blog content
 	&.blog {
 		ul {
-			@apply list-disc marker:text-grey-40 ml-20px mt-14px;
+			@apply list-disc ml-20px mt-14px;
 
 			li {
-				@apply list-disc marker:text-grey-40 mb-16px text-14 desktop:text-16 text-grey-80;
+				@apply list-disc mb-16px text-14 desktop:text-16 text-grey-80;
 			}
 		}
 
