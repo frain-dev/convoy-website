@@ -19,17 +19,17 @@ Convoy v0.6 was a major upgrade from our previous release. We added our most req
 
 When we spoke to lots of our users about Convoy, there was a large consensus on being able to receive webhooks with Convoy. We decided to tackle this in the spirit of providing a consistent toolchain for webhooks. We also realised working with webhooks in either direction required the same infrastructure; events storage, indexing, queuing, dispatching and debugging. In this release, there are two types of projects: Incoming and Outgoing, as the name suggests - Incoming; is used by API consumers to receive events from their providers, and Outgoing; is used by API providers to publish events to their customers.
 
-![Screenshot 2022-08-25 at 6.36.58 PM.png](../../blog-assets/Screenshot_2022-08-25_at_6.36.58_PM.png)
+![Screenshot 2022-08-25 at 6.36.58 PM.png](/blog-assets/Screenshot_2022-08-25_at_6.36.58_PM.png)
 
 With an incoming project, you can receive events from multiple sources.  All you need to do is configure the source, with verification or no verification (to act as a proxy) and use the generated URL on the respective provider.
 
-![Screenshot 2022-08-25 at 6.42.11 PM.png](../../blog-assets/Screenshot_2022-08-25_at_6.42.11_PM.png)
+![Screenshot 2022-08-25 at 6.42.11 PM.png](/blog-assets/Screenshot_2022-08-25_at_6.42.11_PM.png)
 
 ### **Payload Search**
 
 We want it to be ridiculously easy to debug and find issues when there’s a webhook failure or when a member of your engineering or support team needs information about a certain integration, so we built Payload Search. With this, the event dashboard now includes a search bar. This allows you to search through the webhooks payload to find just almost anything. To make this work, we introduced a new dependency - [Typesense](https://typesense.org/). With this, the entire payload is indexed in Typesense and provides search abilities over every field of the webhook payload. See it in action:
 
-![convoy-search.gif](../../blog-assets/convoy-search.gif)
+![convoy-search.gif](/blog-assets/convoy-search.gif)
 
 The configuration change also is quite, small see below:
 
@@ -53,7 +53,7 @@ The configuration change also is quite, small see below:
 
 Webhook events are derived data, and usually are used to trigger other critical actions. After some days, weeks, and months you want to archive them in cold storage and keep our database fresh with recent data. This is what retention policies are for; It allows you to specify how recent the events shown on your dashboard should be. We introduced a new configuration for this; now you can configure on a project-by-project basis how far back you want your data to remain in the online storage. See the new configuration option on creating project
 
-![Screenshot 2022-08-25 at 6.59.18 PM.png](../../blog-assets/Screenshot_2022-08-27_at_12.35.05_PM.png)
+![Screenshot 2022-08-25 at 6.59.18 PM.png](/blog-assets/Screenshot_2022-08-27_at_12.35.05_PM.png)
 
 We also introduced an instance-wide configuration to support this. It specifies the archive location. See configuration below:
 
