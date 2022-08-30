@@ -11,9 +11,9 @@ Subscriptions are the conduit through which events are routed from a source to a
 
 ## Creating an Outgoing Subscription
 An outgoing subscription can be created both from the API and the UI. The API allows for a full programmatic experience. Creating it from the UI looks like this:
-![create outgoing subscription](../../docs-assets/outgoing-subscription.png)
+![create outgoing subscription](/docs-assets/outgoing-subscription.png)
 ## Creating an Incoming Subscription
 Creating an Incoming subscription from the UI looks like this:
-![create incoming subscription](../../docs-assets/incoming-subscription.png)
+![create incoming subscription](/docs-assets/incoming-subscription.png)
 
 Where you do not want to inherit the subscription configuration details, use the toggle below to add more granular configuration to each subscription.

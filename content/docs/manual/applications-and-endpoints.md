@@ -13,6 +13,6 @@ An endpoint is a specific destination that can receive webhook events. Each endp
 
 ## App Portal
 The app portal is designed for the outgoing webhooks project. This is an embeddable iframe that gives users full management capabilities over their applications. Your users can directly add endpoints, subscribe endpoints to events and debug any issues with the webhooks log. An app portal looks like this: 
-![app portal](../../docs-assets/app-portal-ui.png)
+![app portal](/docs-assets/app-portal-ui.png)
 
 It contains a list of subscriptions and events sent to those endpoints.

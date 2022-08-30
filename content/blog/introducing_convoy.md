@@ -15,7 +15,7 @@ published_at: 2021-10-25T11:04:00.000+00:00
 
 After weeks of work, I'm pleased to announce our new tool — built to send webhooks efficiently. While building out our initial API on third-party monitoring, every user we spoke to wanted asynchronous events — "Do you provide webhooks to notify us about downtime?". We looked around, and sadly, we couldn't find a great tool — language agnostic and cloud-native to build this. So we built it.
 
-![introducing convoy](../../blog-assets/introducing_convoy.png)
+![introducing convoy](/blog-assets/introducing_convoy.png)
 
 # Problems & Our Solutions
 
@@ -25,19 +25,19 @@ On the surface, when you think of webhooks, it is simply HTTP Push. You're corre
 
 Essentially, a failed webhooks event has a direct customer impact. A failed event from Paystack means a customer won't receive value for their purchase on Domino's while the customer has received a debit alert. It means a Piggyvest customer will not see their top-up, and the customer has received a debit alert. A failed webhooks event from Termii means you can't show your beautiful UX of successful OTP delivery. A failed webhooks event from Mono means you cannot notify your customers of a successful account integration even when you've received an authentication token. For the non-technical, webhooks are the glue that ties modern apps together to create endless possibilities. We choose to build Convoy in Golang and distribute binaries & docker images. Go is more or less the "de-facto language*"* for building highly available and reliable services in the Cloud.
 
-![reliability](../../blog-assets/reliability.jpeg)
+![reliability](/blog-assets/reliability.jpeg)
 
 ## Developer Experience
 
 Ok, let's be honest. In the Cloud, everything fails — I mean literally [Looking at Facebook :( ]. The question is; what is our mean time to recovery (MTTR). How fast can we resend failed events? Do we have to reach out to Paystack to resend events that didn't make it? Or reach out for the events that were sent, but you didn't handle properly? Oh. Flutterwave is sending the wrong data format? How do we verify this hypothesis fast? Can we see what was sent & what our server's response body is? Who's the culprit — DNS? Nginx? Essentially, the developer experience around your webhooks infrastructure becomes critical to debugging and recovery. We built Convoy with a web interface that should enable both Paystack & Paystack's customers to filter through event logs and resend events easily and fast.
 
-![developer experience](../../blog-assets/developer_experience.png)
+![developer experience](/blog-assets/developer_experience.png)
 
 ## Monitoring and Alerts
 
 Alright, we get it. I can search my event logs and debug fast. What's left in webhooks. You see, a successful event means your servers respond with a 200. If your server consistently fails to return a 200 for whatever reason, there's no reason to continue bombarding the endpoint with more events; It's a dead endpoint. But how do you know & triage quickly? Essentially, you can implement different solutions — uptime monitoring, monitor average request/minute on your webhooks route, and flag it when you're below a certain threshold. But obviously, the webhooks provider can see the failed delivery attempts over x time or x events. Without a monitoring and alerts solution, your customers become your Prometheus ( .\_.). With Convoy, after an endpoint consistently fails, we disable the endpoint and send an email to the developers to triage.
 
-![monitoring and alerts](../../blog-assets/monitoring-and-alerts.png)
+![monitoring and alerts](/blog-assets/monitoring-and-alerts.png)
 
 # Other Problems
 

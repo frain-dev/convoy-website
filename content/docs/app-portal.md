@@ -62,7 +62,7 @@ convoy.initAppPortal();
 // You can optionally pass a DOM selector string, convoy-app uses #convoy-app by default
 convoy.initAppPortal('#convoy-app');
 ```
-![convoy app portal](../../docs-assets/app-portal-ui.png)
+![convoy app portal](/docs-assets/app-portal-ui.png)
 
 ### Create Subscription Modal
 
@@ -72,7 +72,7 @@ convoy.createSubscription();
 // You can optionally pass a DOM selector string, convoy-app uses #convoy-create-sub by default
 convoy.createSubscription('#convoy-create-sub');
 ```
-![convoy app portal](../../docs-assets/app-portal-create-subscription.png)
+![convoy app portal](/docs-assets/app-portal-create-subscription.png)
 
 ### App Event
 

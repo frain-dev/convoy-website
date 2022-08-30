@@ -16,11 +16,11 @@ published_at: 2021-10-25T11:04:00.000+00:00
 
 One of the essential characteristics of a reliable webhooks infrastructure is visibility. We're enabling you to extend that visibility to your customers with the App Portal.
 
-![introducing convoy app portal](../../blog-assets/introducing_convoy_app_portal.png)
+![introducing convoy app portal](/blog-assets/introducing_convoy_app_portal.png)
 
 Unlike the Convoy Dashboard, App Portal is for just one application, giving your customers a good and extensive amount of details they need to test, manage and debug their integration with you.
 
-![convoy app portal](../../blog-assets/convoy_app_portal.gif)
+![convoy app portal](/blog-assets/convoy_app_portal.gif)
 
 App Portal is integrated directly into Convoy Core, meaning you can access your customer's app portal from the app details section; it doesn't end there. We built the App portal to be usable in three different ways:
 

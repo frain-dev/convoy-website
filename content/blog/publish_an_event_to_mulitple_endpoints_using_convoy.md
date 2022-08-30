@@ -15,7 +15,7 @@ published_at: 2022-03-09T20:32:07.000+00:00
 
 One common scenario in publishing webhook events is enabling users to provide multiple endpoints to receive events. One easy example is publishing an event that the user needs to process at more than one location. This location could be a no-code platform like zapier, a newly minted microservice or serverless function, or a good old slack notification. In this article, I’d like to explain how you can achieve this using [Convoy](https://getconvoy.io/).
 
-![multiple endpoints](../../blog-assets/multiple_endpoints.png)
+![multiple endpoints](/blog-assets/multiple_endpoints.png)
 
 Without Convoy, your users have to build in the fan-out mechanism themselves, which is more stressful.
 
@@ -202,6 +202,6 @@ $ curl \
 
 ## Show Endpoint Response
 
-![multiple endpoints](../../blog-assets/endpoint_response.gif)
+![multiple endpoints](/blog-assets/endpoint_response.gif)
 
 Till next time ✌🏽
