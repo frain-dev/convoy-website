@@ -4,9 +4,10 @@ feature_image: we_raised_$473_in_preseed.png
 primary_author:
     name: Press
     twitter: fraindev
-primary_tag: Convoy
+primary_tag: News
 tags:
     - Convoy
+    - News
 featured: false
 description: The pre-seed round, led by Rally Cap Ventures, also saw participation from Musha Ventures, Future Africa, Eric Idiahi, Aidi Ventures, Tomiwa Lasebikan, Prosper Otemuyiwa, Odunayo Eweniyi, Timi Ajiboye, Opeyemi Awoyemi, and several other angels
 published_at: 2022-01-19T19:20:00.000+00:00

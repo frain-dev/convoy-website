@@ -128,7 +128,7 @@ export default {
 			showCategories: false,
 			earlyAccessEmail: '',
 			isSubmitingloadingEarlyAccessForm: false,
-			tags: ['All Posts', 'App Portal', 'UI']
+			tags: ['All Posts', 'Product Update', 'News']
 		};
 	},
 	watch: {

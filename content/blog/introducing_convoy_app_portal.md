@@ -4,10 +4,10 @@ feature_image: introducing-convoy-app-portal.png
 primary_author:
     name: Emmanuel Aina
     twitter: emmanuelaina_
-primary_tag: App Portal
+primary_tag: Product Update
 tags:
     - Convoy
-    - UI
+    - Product Update
     - App Portal
 featured: false
 description: One of the essential characteristics of a reliable webhooks infrastructure is visibility. We're enabling you to extend that visibility to your customers. Unlike the Convoy Dashboard, App Portal is for just one application; giving your customers a good and extensive..

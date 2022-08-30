@@ -5,14 +5,25 @@
 	h4,
 	h5,
 	h6 {
-		@apply tracking-[.01em] font-bold;
+		@apply tracking-[.01em] mb-12px;
 	}
 
+	h1 {
+		@apply font-bold;
+	}
+
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-semibold;
+	}
 	p {
-		@apply text-14 text-grey-80 mt-16px mb-32px;
+		@apply text-14 desktop:text-16 text-grey-80 mb-32px;
 	}
 	code {
-		@apply bg-success-500 rounded-4px py-2px px-8px my-0 mx-[1px] text-12 font-menlo text-success-100 border border-none;
+		@apply bg-grey-10 rounded-4px py-2px px-8px my-0 mx-[1px] text-12 font-menlo text-black border border-none;
 	}
 	pre {
 		code {
@@ -25,7 +36,7 @@
 	}
 
 	img {
-		@apply mt-20px mb-10px m-auto border border-grey-10 rounded-10px;
+		@apply my-30px m-auto border border-grey-10 rounded-10px;
 	}
 
 	table {
@@ -47,6 +58,11 @@
 		}
 	}
 
+	.nuxt-content-highlight{
+		@apply mt-12px;
+	}
+
+	
 	// styles for docs content
 	&.docs {
 		h2,
@@ -54,25 +70,22 @@
 		h4,
 		h5,
 		h6:not(:first-of-type) {
-			@apply mt-40px mb-6px;
+			@apply mt-40px;
 		}
 
 		strong {
 			@apply font-medium;
 		}
 
-		p {
-			@apply mt-10px mb-6px;
-		}
-		img {
-			@apply mt-20px mb-6px;
-		}
 
 		ul {
 			@apply ml-20px;
 
 			li {
-				@apply py-10px first-of-type:mt-20px;
+				@apply py-10px text-14 desktop:text-16 text-grey-80 first-of-type:mt-20px;
+				p {
+					@apply m-0 p-0 text-grey-80;
+				}
 			}
 		}
 
@@ -80,7 +93,10 @@
 			@apply ml-20px;
 
 			li {
-				@apply py-8px list-decimal marker:text-grey-40 text-14 text-grey-80;
+				@apply py-8px list-decimal text-14 desktop:text-16 text-grey-80;
+				p {
+					@apply m-0 p-0 text-grey-80;
+				}
 			}
 		}
 
@@ -98,10 +114,10 @@
 	// styles for blog content
 	&.blog {
 		ul {
-			@apply list-disc marker:text-grey-40 ml-20px mt-14px;
+			@apply list-disc ml-20px mt-14px;
 
 			li {
-				@apply list-disc marker:text-grey-40 mb-16px text-14  text-grey-80;
+				@apply list-disc mb-16px text-14 desktop:text-16 text-grey-80;
 			}
 		}
 
@@ -109,7 +125,7 @@
 			@apply list-[initial] ml-20px mt-14px;
 
 			li {
-				@apply text-14  text-grey-80;
+				@apply text-14 desktop:text-16 text-grey-80;
 			}
 		}
 
@@ -126,12 +142,8 @@
 			@apply font-bold;
 		}
 
-		img {
-			@apply m-auto h-full;
-		}
-
 		blockquote {
-			@apply bg-success-500 border-success-200 border rounded-10px pt-54px px-28px pb-24px mb-32px before:absolute before:-mt-32px before:-ml-8px before:content-[url('~assets/images/bulb-text.svg')];
+			@apply bg-success-500 border-success-200 border rounded-10px pt-54px px-28px pb-24px mb-32px before:absolute before:-mt-32px before:content-[url('~assets/images/bulb-text.svg')];
 
 			p {
 				@apply text-14 text-grey-80 m-0;

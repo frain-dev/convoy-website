@@ -23,8 +23,8 @@
 
 				<div class="font-light">Updated at {{ pageData.updatedAt | date }}</div>
 			</div>
-			<hr class="border-grey-20" />
-			<div class="bg-black bg-[url(~/assets/images/doc-footer.png)] bg-no-repeat bg-contain bg-right-top p-24px mt-32px rounded-8px">
+			<hr class="border-grey-10" />
+			<div class="bg-black bg-[url(~/assets/images/doc-footer.png)] bg-no-repeat bg-contain bg-right-top p-24px mt-32px rounded-8px mb-100px">
 				<h4 class="text-white-100 font-semibold mb-10px">Don't miss anything.</h4>
 				<p class="text-14 text-white-100 max-w-[460px] w-full">
 					Subscribe to the
