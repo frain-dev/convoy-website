@@ -229,7 +229,7 @@ export default {
 						"height": 1086
 					},
 					"keywords": "Convoy",
-					"description": "${this.blogPageData.description}"",
+					"description": "${this.blogPageData.description}",
 					"mainEntityOfPage": {
 						"@type": "WebPage",
 						"@id": "https://getconvoy.io/"
