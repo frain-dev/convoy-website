@@ -7,7 +7,7 @@ primary_author:
 primary_tag: Product Update
 tags:
     - Convoy
-	- Product Update
+    - Product Update
 featured: false
 description: One common scenario in publishing webhook events is enabling users to provide multiple endpoints to receive events. One easy example is publishing an event that the user needs to process at more than one location. This location could be a no-code..
 published_at: 2022-03-09T20:32:07.000+00:00
