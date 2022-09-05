@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://getconvoy.io/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/blog/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/docs/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/download/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/blog/convoy-0.6/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/blog/?tag=Product%20Update</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/blog/?tag=News</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/blog/?tag=Engineering</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/blog/data-migrations-in-mongodb-using-golang/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/blog/publish-an-event-to-mulitple-endpoints-using-convoy/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/blog/we-raised-$473k-in-pre-seed-funding-to-build-convoy/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/blog/understanding-the-convoy-ui/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/blog/introducing-convoy/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/blog/introducing-convoy-app-portal/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/docs/overview/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/docs/configuration/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/docs/deploy/overview/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/docs/sdk/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://getconvoy.io/docs/app-portal/</loc>
+  <lastmod>2022-09-05T15:14:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
