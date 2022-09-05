@@ -125,6 +125,22 @@ export default {
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 			{ rel: 'canonical', href: 'https://getconvoy.io' }
+		],
+		script: [
+			{
+				hid: 'gtag_link',
+				src: `https://www.googletagmanager.com/gtag/js?id=G-${process.env.GOOGLE_TAG_MANAGER_ID}`,
+				async: 'true'
+			},
+			{
+				hid: 'gtag',
+				children: `window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+
+				gtag('config', 'G-${process.env.GOOGLE_TAG_MANAGER_ID});`,
+				type: 'text/javascript'
+			}
 		]
 	},
 
