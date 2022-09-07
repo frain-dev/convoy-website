@@ -4,7 +4,6 @@ description: 'Convoy-Python SDK Configuration'
 id: convoy-python
 ---
 
-
 ### Installation
 Install convoy-python with
 

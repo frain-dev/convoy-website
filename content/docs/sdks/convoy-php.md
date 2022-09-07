@@ -1,6 +1,6 @@
 ---
-title: Convoy-PHP SDK
-description: "Convoy-PHP SDK Configuration"
+title: Convoy PHP SDK
+description: "Convoy PHP SDK Configuration"
 id: convoy-php
 ---
 
