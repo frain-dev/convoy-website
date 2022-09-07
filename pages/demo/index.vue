@@ -42,9 +42,9 @@
 		</header>
 
 		<!-- calemdly -->
-		<section class="bg-white-100 rounded-16px max-w-[930px] m-auto -mt-200px mb-220px md:min-h-[685px]">
+		<section class="m-auto -mt-230px mb-150px">
 			<!-- Calendly inline widget begin -->
-			<div class="calendly-inline-widget w-full min-w-[320px]" data-url="https://calendly.com/pelumioni/15min?hide_gdpr_banner=1" style="height: 600px"></div>
+			<div class="calendly-inline-widget m-0 w-full min-w-[320px] md:min-h-[700px]" data-url="https://calendly.com/d/d6k-jw2-wgj/convoy-user-demo?hide_gdpr_banner=1" style="height: 600px"></div>
 			<!-- Calendly inline widget end -->
 		</section>
 
@@ -87,14 +87,3 @@ export default {
 	}
 };
 </script>
-<style lang="scss" scoped>
-._3efP_GeH5kyBAzqnLzL._kN_bCa3VNYpqFLH311L {
-	@apply max-w-[unset];
-}
-._3efP_GeH5kyBAzqnLzL.w_Mtb2W9166EgOSv9i3M {
-	@apply w-full;
-}
-._cUP1np9gMvFQrcPftuf.xahN8AEzyAvQtVj17TPv {
-	@apply m-0;
-}
-</style>
