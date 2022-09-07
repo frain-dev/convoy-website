@@ -140,6 +140,11 @@ export default {
 
 				gtag('config', 'G-${process.env.GOOGLE_TAG_MANAGER_ID});`,
 				type: 'text/javascript'
+			},
+			{
+				src: 'https://assets.calendly.com/assets/external/widget.js',
+				type: 'text/javascript',
+				async: 'true'
 			}
 		]
 	},
