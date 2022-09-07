@@ -4,10 +4,6 @@ description: "Convoy Golang SDK Configuration"
 id: convoy.go
 ---
 
-# Convoy SDK for Go
-
-This is the Convoy Go SDK. This SDK contains methods for easily interacting with Convoy's API. Below are examples to get you started.
-
 ## Installation
 
 Install convoy-go with
