@@ -7,12 +7,62 @@ order: 3
 
 # CLI
 
-Convoy ships with a very easy-to-use command-line interface (CLI). Refer to the navigation to the left for a list of subcommands.
+Convoy ships with a very easy-to-use command-line interface (CLI). Refer to the navigation to the right for a list of subcommands.
 
-To view a list of the available commands at any time, just run `convoy` with no arguments:
+## Installing the CLI
 
-```bash[bash]
-> convoy
+The Convoy CLI can be installed directly from your package manager or by building from the GitHub source:
+
+### Mac
+
+Install the Convoy CLI from brew:
+
+```console[terminal]
+$ brew install convoy
+```
+
+### Linux
+
+Install the Convoy CLI from apt repository:
+
+```console[terminal]
+$ sudo apt-get install convoy
+```
+
+### Windows
+
+Install the Convoy CLI using Chocolatey:
+
+```console[terminal]
+$ choco install convoy
+```
+
+### Building from Source
+
+To build Convoy from source code, you need:
+* Go [version 1.16 or greater](https://golang.org/doc/install).
+* NodeJS [version 14.17 or greater](https://nodejs.org).
+* Npm [version 6 or greater](https://npmjs.com).
+
+```bash
+$ git clone https://github.com/frain-dev/convoy.git && cd convoy
+$ make build
+```
+
+Verify the build by running the command below:
+
+```console[terminal]
+$ convoy -v
+
+Convoy version v0.6.0
+```
+
+## Using the CLI
+
+To view the list of the available commands at any time, just run `convoy` in your terminal with no arguments:
+
+```console[terminal]
+$ convoy
 Fast & reliable webhooks service
 
 Usage:
@@ -43,8 +93,8 @@ Flags:
 
 To get help for any specific command, pass the `-h` flag to the relevant subcommand. For example, to get help about the worker subcommand
 
-```bash[bash]
-> convoy worker -h
+```console[terminal]
+$ convoy worker -h
 Start worker instance
 
 Usage:
@@ -77,8 +127,8 @@ Command: `convoy server`
 
 ### Synopsis
 
-```bash[bash]
-> convoy server --help
+```console[terminal]
+$ convoy server --help
 Start the HTTP server
 
 Usage:
@@ -215,8 +265,8 @@ Command: `convoy worker`
 
 ### Synopsis
 
-```bash[bash]
-> convoy worker -h
+```console[terminal]
+$ convoy worker -h
 Start worker instance
 
 Usage:
@@ -251,8 +301,8 @@ Command: `convoy retry`
 
 ### Synopsis
 
-```bash[bash]
-> convoy retry -h
+```console[terminal]
+$ convoy retry -h
 retry event deliveries with a particular status in a timeframe
 
 Usage:
@@ -287,8 +337,8 @@ Command: `convoy queue`
 
 ### Synopsis
 
-```bash[bash]
-> convoy queue
+```console[terminal]
+$ convoy queue
 Get info about queue
 
 Usage:
@@ -330,8 +380,8 @@ Command: `convoy scheduler`
 
 ### Synopsis
 
-```bash[bash]
-> convoy scheduler -h
+```console[terminal]
+$ convoy scheduler -h
 requeue event deliveries in the background with a scheduler.
 
 Usage:
