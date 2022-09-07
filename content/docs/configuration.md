@@ -7,14 +7,15 @@ order: 4
 
 # Configuration
 
-You can configure Convoy by using one of or a combination of the methods below:
-- creating a `config json file` (default)
-- setting `environment variables`.
-- setting `cli flags`
+Convoy can be configured by using one of or a combination of the methods below:
+- Creating a `config.json` configuration file (default)
+- Setting environment variables.
+- Setting CLI flags
 
-The order of preference when all the are used is `cli flags` > `environment variables` > `config json file`. Values set in the cli flags will override the same config value set with either env vars of in the config file.
+The order of preference when all three is used is **CLI flags** > **environment variables** > **config json** file. Values set in the cli flags will override the same config value set with either env vars of in the config file.
 
 ## Creating a config json file
+
 An example configuration is shown below:
 
 ```json[Sample Config]
@@ -79,8 +80,10 @@ An example configuration is shown below:
 
 ## Parameters
 
--   `environment`: Configure which environment configure is running on. Defaults `development`.
--   `database`: Configures the main data store. Currently supported databases: `mongodb`.
+This section explains the role of the parameters used in configuring the Convoy instance.
+
+-   `environment`: This parameter specifies the environment the Convoy instance will be running on. It is default to `development` and can be switched to `production`.
+-   `database`: The parameter houses the configuration for the main data store. Currently supported databases: `mongodb`.
 	```json[sample]
 	{
 	  "database": {
@@ -89,7 +92,7 @@ An example configuration is shown below:
 	  },
 	}
 	```
--   `queue`, `cache` and `limiter`: This configures a queuing backend to use. Currently supported queuing, caching and rate limiter backends: `redis`, planned queuing backends: `rabbitmq` and `sqs`.
+-   `queue`, `cache` and `limiter`: These parameters configure a queuing backend to use. Currently supported queuing, caching and rate limiter backends: `redis`, planned queuing backends: `rabbitmq` and `sqs`.
 	```json[sample]
 	{
 	   "queue": {
@@ -100,11 +103,11 @@ An example configuration is shown below:
 	   }
 	}
 	```
--   `port`: Specifies which port Convoy should run on.
--   `worker_port`: Specifies which port Convoy workers should run on.
--   `auth`: This specifies authentication mechanism used to access Convoy's API. Convoy has two APIs, one for the UI and the second is the public API. Each API requires authentication by default.  Convoy supports two authentication mechanisms:
-	- `native`: Configure realm. This is used for the Public API.
-	- `jwt`: Configure jwt. This is used for UI authentication.
+-   `port`: This parameter pecifies which port Convoy should run on.
+-   `worker_port`: This paraneter specifies which port Convoy workers should run on.
+-   `auth`: This specifies the authentication mechanism used to access Convoy's API. Convoy has two APIs; one for the UI and the other for the public API. Each API requires authentication by default.  Convoy supports two authentication mechanisms:
+	| - `native`: Configure realm. This is used for the Public API.
+	| - `jwt`: Configure jwt. This is used for UI authentication.
 
 	```json[sample]
 	{
@@ -119,7 +122,7 @@ An example configuration is shown below:
 	}
 	```
 
--   `smtp`: Convoy sends out emails for several reasons for [dead endpoints](./overview#dead-endpoints), team invitation etc. It needs a SMTP provider to do this.
+-   `smtp`: Convoy sends out emails for several reasons for [dead endpoints](./configuration/#dead-endpoints), team invitation etc. It needs a SMTP provider to do this.
 
 	```json[sample]
 	{
@@ -153,41 +156,43 @@ An example configuration is shown below:
 
 Alternatively, you can configure Convoy using the following environment variables:
 
-- `CONVOY_ENV`
-- `SSL`
-- `PORT`
-- `WORKER_PORT`
-- `CONVOY_HOST`
-- `CONVOY_DB_TYPE`
-- `CONVOY_DB_DSN`
-- `CONVOY_LIMITER_PROVIDER`
-- `CONVOY_CACHE_PROVIDER`
-- `CONVOY_QUEUE_PROVIDER`
-- `CONVOY_REDIS_DSN`
-- `CONVOY_LOGGER_LEVEL`
-- `CONVOY_LOGGER_PROVIDER`
-- `CONVOY_SSL_KEY_FILE`
-- `CONVOY_SSL_CERT_FILE`
-- `CONVOY_SMTP_PROVIDER`
-- `CONVOY_SMTP_URL`
-- `CONVOY_SMTP_USERNAME`
-- `CONVOY_SMTP_PASSWORD`
-- `CONVOY_SMTP_FROM`
-- `CONVOY_SMTP_PORT`
-- `CONVOY_SMTP_REPLY_TO`
-- `CONVOY_NEWRELIC_APP_NAME`
-- `CONVOY_NEWRELIC_LICENSE_KEY`
-- `CONVOY_NEWRELIC_CONFIG_ENABLED`
-- `CONVOY_NEWRELIC_DISTRIBUTED_TRACER_ENABLED`
-- `CONVOY_REQUIRE_AUTH`
-- `CONVOY_BASIC_AUTH_CONFIG`
-- `CONVOY_API_KEY_CONFIG`
-- `CONVOY_NATIVE_REALM_ENABLED`
-- `CONVOY_JWT_REALM_ENABLED`
-- `CONVOY_JWT_SECRET`
-- `CONVOY_JWT_EXPIRY`
-- `CONVOY_JWT_REFRESH_SECRET`
-- `CONVOY_JWT_REFRESH_EXPIRY`
-- `CONVOY_SEARCH_TYPE`
-- `CONVOY_TYPESENSE_HOST`
-- `CONVOY_TYPESENSE_API_KEY`
+| Parameter | Description |
+| :---        |    ----:   |
+| - `CONVOY_ENV` | The environment the convoy worker runs on. The default value is `development` and can be switched to `production` depending on the scenario.|
+| - `SSL` | |
+| - `PORT` | The port on which the Convoy instance will listen to. E.g, `8080`.|
+| - `WORKER_PORT` | The port on which the Convoy worker will listen to. E.g, `8081`.|
+| - `CONVOY_HOST` | The host on which the Convoy instance will be run on. E.g, `10.0.0.1`|
+| - `CONVOY_DB_TYPE` | The database type associated with the Convoy instance. MongoDB is currently the only supported database.|
+| - `CONVOY_DB_DSN` | The connection address of the database supplied earlier. Example: `mongodb://mongo:27017/convoysample`.|
+| - `CONVOY_LIMITER_PROVIDER` | |
+| - `CONVOY_CACHE_PROVIDER` | The cache provider for the Convoy instance. E.g: `redis`.|
+| - `CONVOY_QUEUE_PROVIDER` | The queue provider for the Convoy instance. E.g: `rabbitmq`.|
+| - `CONVOY_REDIS_DSN` | The connection address for the cache provider, `redis`. E.g, `redis://redis:6379` |
+| - `CONVOY_LOGGER_LEVEL` | |
+| - `CONVOY_LOGGER_PROVIDER` | |
+| - `CONVOY_SSL_KEY_FILE` | |
+| - `CONVOY_SSL_CERT_FILE` | |
+| - `CONVOY_SMTP_PROVIDER` | The provider for SMTP ( mailing ) operations. E.g, `sengrid`.|
+| - `CONVOY_SMTP_URL` | The SMTP provider URL. E.g, `smtp.sendgrid.net`|
+| - `CONVOY_SMTP_USERNAME` | The SMTP username required to sign in to the provider.|
+| - `CONVOY_SMTP_PASSWORD` | The SMTP password required to sign in to the provider.|
+| - `CONVOY_SMTP_FROM` | THe SMTP address associated with the SMTP account and from which mails will be sent on behalf of. E.g, `welcome@frain.dev`.|
+| - `CONVOY_SMTP_PORT` | The SMTP provider port. E.g, `2525`.|
+| - `CONVOY_SMTP_REPLY_TO` | The SMPT address replies from mail will be directed to.|
+| - `CONVOY_NEWRELIC_APP_NAME` | The application name from your newrelic account.|
+| - `CONVOY_NEWRELIC_LICENSE_KEY` | The license key associated with your newrelic account.|
+| - `CONVOY_NEWRELIC_CONFIG_ENABLED` | A boolean value to set the configuration state for newrelic.|
+| - `CONVOY_NEWRELIC_DISTRIBUTED_TRACER_ENABLED` | A boolean value to set the configuration state for newrelic's tracer.|
+| - `CONVOY_REQUIRE_AUTH` | A boolean value to configure the requirement status for authentication.|
+| - `CONVOY_BASIC_AUTH_CONFIG` | THe configuration details for basic authentication.|
+| - `CONVOY_API_KEY_CONFIG` | The API key configuration value.|
+| - `CONVOY_NATIVE_REALM_ENABLED` | A boolean value to activate native realm authentication.|
+| - `CONVOY_JWT_REALM_ENABLED` | A boolean value to activate native JWT authentication.|
+| - `CONVOY_JWT_SECRET` | The JWT secret to be used in encoding and decoding JWT tokens.|
+| - `CONVOY_JWT_EXPIRY` | The expiry period for the JWT tokens signed.|
+| - `CONVOY_JWT_REFRESH_SECRET` | The refresh secret for JWT refresh tokens.|
+| - `CONVOY_JWT_REFRESH_EXPIRY` | The expiry period for JWT refresh tokens|
+| - `CONVOY_SEARCH_TYPE` | The type of search tool used in the Convoy instance. E.g, `typesense`.|
+| - `CONVOY_TYPESENSE_HOST` | The host address of the typesense instance used. E.g, `http://typesense:8108`.|
+| - `CONVOY_TYPESENSE_API_KEY` | The API key required to interact with typesense.|
