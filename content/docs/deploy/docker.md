@@ -6,10 +6,11 @@ order: 4
 ---
 
 # Docker
+
 We provide an easy way to deploy Convoy in one-command using docker and docker-compose manifests.
 
 
-## Pre-requisites
+## Prerequisites
 
 - You have Docker installed on your machine.
 
@@ -26,6 +27,8 @@ $ docker run \
 	-v `pwd`/convoy.json:/convoy.json \
 	docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:v0.6.5
 ```
+
+<!-- TODO: Huddle with RT to get this docker run config to work. -->
 
 ### Docker Compose
 
@@ -159,6 +162,13 @@ Sign in with the credentials:
 - username: **superuser@default.com**
 - password: **default**
 
+![Convoy default credentials](/docs-assets/convoy-user-pass.png)
+
 5. Welcome to your dashboard
 
 ![Convoy Dashboard](/docs-assets/convoy-dashboard-page.png)
+
+<!-- ## Next steps
+
+Include link to blogpost articles.
+ -->
