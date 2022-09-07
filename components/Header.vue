@@ -73,7 +73,8 @@ export default {
 				{ name: 'Blog', route: '/blog', type: 'route' },
 				{ name: 'Docs', route: '/docs', type: 'route' },
 				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' },
-				{ name: 'Download', route: '/download', type: 'route' }
+				{ name: 'Download', route: '/download', type: 'route' },
+				{ name: 'Book A Demo', route: '/demo', type: 'route' }
 			],
 			hasScrolled: false
 		};
