@@ -1,5 +1,5 @@
 ---
-title: User Manual
+title: Product Manual
 description: 'Manual describing how to use convoy end to end'
 id: user-manual
 order: 9
