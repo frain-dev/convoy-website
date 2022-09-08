@@ -20,8 +20,8 @@ Convoy solves that and provides you with options to get started with publishing,
 
 ## Convoy Cloud
 
-[Convoy Cloud](https://dashboard.getconvoy.io/signup) provides you a dashboard to manage your webhooks without having to worry about the underlying infrastructure.
+[Convoy Cloud](https://dashboard.getconvoy.io/signup) is our SaaS solution where we manage the underlying infrastructure for you, and you can focus on publishing and receiving webhooks only.
 
 ## Convoy OSS
 
-Convoy OSS grants you the complete flexibility of setting up Convoy to handle webhooks operations.
+Convoy OSS is our open-source software where you manage the infrastructure by yourselves, and user data never leaves your infrastructure.
