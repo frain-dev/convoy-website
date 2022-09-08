@@ -64,26 +64,11 @@
 					></iframe>
 				</div>
 			</div>
-			<div class="bg-[#3D3041] py-30px flex justify-start desktop:justify-center m-auto overflow-x-scroll scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
-				<div
-					class="bg-white-10 pl-12px pr-40px md:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap"
-					v-for="feature of features"
-					:key="feature"
-				>
-					<img src="~/assets/images/green_check.svg" class="mr-12px" alt="check" />
-					{{ feature }}
-				</div>
-			</div>
 		</section>
 	</div>
 </template>
 <script>
 export default {
 	layout: 'home',
-	data() {
-		return {
-			features: ['Mulitple projects', 'Debug logs and metric', 'Manage app and customers', 'Manage multiple endpoints', 'Debug **event logs**', 'Embed into your UI']
-		};
-	}
 };
 </script>
