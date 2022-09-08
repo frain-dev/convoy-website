@@ -14,15 +14,12 @@
 					<p class="text-white-100 text-18 mt-16px max-w-[530px] m-auto desktop:ml-0 mb-40px text-center desktop:text-left">
 						With out-of-the-box security, reliability and scalability for your webhooks infrastructure.
 					</p>
-					<div class="w-full text-center desktop:text-left">
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href="https://dashboard.getconvoy.io/signup"
-							class="rounded-8px bg-primary-100 text-14 font-medium text-white-100 py-12px desktop:py-16px px-38px desktop:px-42px"
-						>
+					<div class="w-full m-auto flex justify-center desktop:justify-start xs:flex-wrap mb-50px">
+						<a target="_blank" rel="noopener noreferrer" href="https://dashboard.getconvoy.io/signup" class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px">
 							Get Started For Free
 						</a>
+
+						<nuxt-link to="/demo" class="py-12px px-12px text-12 font-medium rounded-8px bg-white-100 text-primary-100 flex items-center">Book a Demo</nuxt-link>
 					</div>
 
 					<ul class="flex items-center justify-center desktop:justify-start list-none w-full mt-60px m-auto desktop:ml-0">
@@ -109,7 +106,7 @@
 				Easily filter & debug events sent to multiple applications & endpoints with Delivery Attempt Logs
 			</p>
 
-			<div class="grid grid-cols-[repeat(auto-fill,minmax(333px,_1fr))] gap-32px">
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,_1fr))] gap-32px">
 				<div class="bg-white-100 shadow-card p-32px rounded-16px" v-for="(feature, index) of features" :key="'feature' + index">
 					<img :src="require(`~/assets/images/${feature.img}-feature-icon.svg`)" :alt="feature.feature" class="w-48px h-48px mb-32px" :class="feature.shadow" />
 					<h3 class="font-semibold mb-16px">{{ feature.feature }}</h3>
@@ -180,7 +177,7 @@
 				</div>
 			</div>
 			<div class="bg-[#082B91] bg-opacity-[0.07] w-11/12 h-220px desktop:h-270px rounded-b-16px m-auto relative">
-				<div class="absolute left-1/2 -translate-x-1/2 -top-100px desktop:-top-200px w-full">
+				<div class="absolute left-1/2 -translate-x-1/2 -top-100px xs:-top-70px desktop:-top-200px w-full">
 					<img src="~/assets/images/core.png" alt="group" class="xs:hidden max-w-[866px] desktop:w-full w-5/6 m-auto" />
 					<img src="~/assets/images/groups-img-small.png" class="hidden xs:block m-auto w-5/6" alt="group" />
 					<a
