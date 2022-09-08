@@ -20,8 +20,8 @@ Convoy solves that and provides you with options to get started with publishing,
 
 ## Convoy Cloud
 
-[Convoy Cloud](https://dashboard.getconvoy.io/signup) provides you a dashboard built from the [app portal SDK](https://getconvoy.io/docs/app-portal) to manage your webhooks without having to worry about the underlying infrastructure.
+[Convoy Cloud](https://dashboard.getconvoy.io/signup) provides you a dashboard to manage your webhooks without having to worry about the underlying infrastructure.
 
 ## Convoy OSS
 
-Convoy OSS grants you the complete flexibility of setting up the infrastructure required to setup a convoy instance and manage webhooks operations.
+Convoy OSS grants you the complete flexibility of setting up Convoy to handle webhooks operations.

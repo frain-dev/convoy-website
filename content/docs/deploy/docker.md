@@ -25,7 +25,7 @@ $ docker run \
 	-p 5005:5005 \
 	--name convoy-server \
 	-v `pwd`/convoy.json:/convoy.json \
-	docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:v0.6.5
+	docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:latest
 ```
 
 <!-- TODO: Huddle with RT to get this docker run config to work. -->
@@ -41,7 +41,7 @@ version: "3"
 
 services:
     web:
-        image: docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:v0.6.6
+        image: docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:latest
         entrypoint:
             ["./cmd", "server", "--config", "convoy.json", "-w", "false"]
         hostname: web
