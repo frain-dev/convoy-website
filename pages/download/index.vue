@@ -57,11 +57,7 @@
 					<div v-if="linuxActiveTab == 'ubuntu'" class="bg-black rounded-4px p-34px w-full text-white-100 flex-col flex-wrap text-12">
 						<div>
 							<span class="text-primary-100">$</span>
-							<code>echo "deb [trusted=yes] https://apt.packages.getconvoy.io/ /" | sudo tee -a /etc/apt/sources.list.d/convoy.list</code>
-						</div>
-						<div>
-							<span class="text-primary-100">$</span>
-							<code>sudo apt update</code>
+							<code>curl -1sLf \ 'https://dl.cloudsmith.io/public/convoy/convoy/setup.deb.sh' \ | sudo -E bash</code>
 						</div>
 						<div>
 							<span class="text-primary-100">$</span>
@@ -72,11 +68,7 @@
 						<div class="flex">
 							<span class="mr-4px text-primary-100">$</span>
 							<div class="flex flex-col">
-								<code>echo '[convoy]</code>
-								<code>name=Convoy</code>
-								<code>baseurl=https://yum.packages.getconvoy.io/</code>
-								<code>enabled=1</code>
-								<code>gpgcheck=0' | sudo tee -a /etc/yum.repos.d/convoy.repo</code>
+								<code>curl -1sLf \ 'https://dl.cloudsmith.io/public/convoy/convoy/setup.rpm.sh' \ | sudo -E bash</code>
 							</div>
 						</div>
 						<div>
@@ -96,7 +88,7 @@
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
-							href="https://brew.packages.getconvoy.io/releases/v0.5.2/convoy_0.5.2_windows_amd64.tar.gz"
+							href="https://dl.cloudsmith.io/public/convoy/convoy/raw/versions/0.6.6/convoy_0.6.6_windows_amd64.tar.gz"
 							class="font-medium text-14 text-primary-100 whitespace-nowrap underline mr-32px"
 							download=""
 						>
@@ -105,7 +97,7 @@
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
-							href="https://brew.packages.getconvoy.io/releases/v0.5.2/convoy_0.5.2_windows_arm64.tar.gz"
+							href="https://dl.cloudsmith.io/public/convoy/convoy/raw/versions/0.6.6/convoy_0.6.6_windows_arm64.tar.gz"
 							class="font-medium text-14 text-primary-100 whitespace-nowrap underline"
 							download
 						>
