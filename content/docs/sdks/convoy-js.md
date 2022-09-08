@@ -4,10 +4,6 @@ description: "Convoy JavaScript SDK Configuration"
 id: convoy.js
 ---
 
-# Convoy SDK for JavaScript
-
-This is the Convoy JavaScript SDK. This SDK contains methods for easily interacting with Convoy's API. Below are examples to get you started.
-
 ### Installation
 
 Install convoy.js with

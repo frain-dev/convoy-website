@@ -22,8 +22,9 @@ export default {
 			tabs: [
 				{ label: 'Javascript', id: 'javascript' },
 				{ label: 'Python', id: 'python' },
-				{ label: 'PHP', id: 'php' }
-				// { label: 'Ruby', id: 'ruby' }
+				{ label: 'PHP', id: 'php' },
+				{ label: 'Ruby', id: 'ruby' },
+				{ label: 'Golang', id: 'golang' }
 			],
 			activeTab: 'javascript'
 		};
@@ -52,7 +53,11 @@ export default {
 					break;
 				case 'ruby':
 					this.activeTab = 'ruby';
-					this.fetchPageData('convoy-ruby');
+					this.fetchPageData('convoy-rb');
+					break;
+				case 'golang':
+					this.activeTab = 'golang';
+					this.fetchPageData('convoy-go');
 					break;
 				default:
 					break;
