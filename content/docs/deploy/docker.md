@@ -58,7 +58,7 @@ services:
             - backendCluster
 
     scheduler:
-        image: docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:v0.6.6
+        image: docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:latest
         entrypoint: ["./cmd", "scheduler", "--config", "convoy.json"]
         volumes:
             - ./convoy.json:/convoy.json
@@ -70,7 +70,7 @@ services:
             - backendCluster
 
     worker:
-        image: docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:v0.6.6
+        image: docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:latest
         entrypoint: ["./cmd", "worker", "--config", "convoy.json"]
         volumes:
             - ./convoy.json:/convoy.json
