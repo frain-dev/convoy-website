@@ -19,7 +19,7 @@
 							Get Started For Free
 						</a>
 
-						<nuxt-link to="/demo" class="py-12px px-12px text-12 font-medium rounded-8px bg-white-100 text-primary-100 flex items-center">Book a Demo</nuxt-link>
+						<nuxt-link to="/demo" class="py-12px px-28px text-12 font-medium rounded-8px bg-white-100 text-primary-100 flex items-center">Book a Demo</nuxt-link>
 					</div>
 
 					<ul class="flex items-center justify-center desktop:justify-start list-none w-full mt-60px m-auto desktop:ml-0">
