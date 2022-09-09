@@ -18,24 +18,32 @@ The Convoy CLI can be installed directly from your package manager or by buildin
 Install the Convoy CLI from brew:
 
 ```console[terminal]
+$ brew tap frain-dev/tools
 $ brew install convoy
 ```
 
 ### Linux
 
-Install the Convoy CLI from apt repository:
+For Ubuntu and Debian users, install the Convoy CLI from apt repository:
 
 ```console[terminal]
-$ sudo apt-get install convoy
+$ curl -1sLf \ 'https://dl.cloudsmith.io/public/convoy/convoy/setup.deb.sh' \ | sudo -E bash
+$ sudo apt install convoy
+```
+
+For CentOS and RHEL users, install the Convoy CLI using yum:
+
+```console[terminal]
+$ curl -1sLf \ 'https://dl.cloudsmith.io/public/convoy/convoy/setup.rpm.sh' \ | sudo -E bash
+$ sudo yum install convoy
 ```
 
 ### Windows
 
-Install the Convoy CLI using Chocolatey:
+To install Convoy on Windows, download the binary applicable to your machine:
 
-```console[terminal]
-$ choco install convoy
-```
+- [Download for AMD64](https://dl.cloudsmith.io/public/convoy/convoy/raw/versions/0.6.6/convoy_0.6.6_windows_amd64.tar.gz)
+- [Download for ARM64](https://dl.cloudsmith.io/public/convoy/convoy/raw/versions/0.6.6/convoy_0.6.6_windows_arm64.tar.gz)
 
 ### Building from Source
 
