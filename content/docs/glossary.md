@@ -17,7 +17,9 @@ Groups are used to create logical contexts or separate environments (dev, stagin
 
 ## Applications
 
-An application represents a user's application trying to receive webhooks. Once you create an application on Convoy. You receive an `app_id` that you should save and supply in subsequent API calls to perform other actions E.g. Send an event. Currently, an application maps to one endpoint. In the future, an application should map to multiple endpoints. When you creating an application, you should supply a [secret](#secrets).
+An application represents a user's application trying to receive webhooks. Once you create an application on Convoy, you receive an `app_id` that you should save and supply in subsequent API calls to perform other actions E.g. Send an event. Currently, an application maps to one endpoint. 
+
+In the future, an application should map to multiple endpoints. When you're creating an application, you should supply a [secret](#secrets).
 
 ## Endpoints
 
@@ -25,7 +27,7 @@ An endpoint represents a target URL to receive events. An endpoint can be in eit
 
 ## Events
 
-An event represents a specific event triggered by your system. Convoy persists events sent to dead endpoints with a status - `Discarded`. This enables users re-activate their endpoints and easily retry events without the need to re-trigger the events from your systems.
+An event represents a specific event triggered by your system. Convoy persists events sent to [dead endpoints](#dead-endpoints) with a status - `Discarded`. This enables users re-activate their endpoints and easily retry events without the need to re-trigger the events from your systems.
 
 ## Event Types
 
@@ -33,7 +35,7 @@ Events are sent to an endpoint depending on the event type, which is defined whe
 
 ## Delivery Attempts
 
-A delivery attempt represents a single attempt to dispatch an event to an endpoint. Specifically, it contains 2 things - Request Headers & Payload, Response Headers & Payload. Convoy records this information for every retry attempt sent. The UI currently shows only the last delivery attempt. The number of delivery attempts and retry strategy can be configured per group.
+A delivery attempt represents a single attempt to dispatch an event to an endpoint. Specifically, it contains two things - Request Headers & Payload, Response Headers & Payload. Convoy records this information for every retry attempt sent. The UI currently shows only the last delivery attempt. The number of delivery attempts and retry strategy can be configured per group.
 
 ## Dead Endpoints
 
@@ -44,7 +46,6 @@ A dead endpoint is an endpoint that failed consecutively to acknowledge events. 
 Secrets are used to sign the payload when sending events to an endpoint. If you don't supply a secret convoy will generate one for you.
 
 ## Hash Functions
-
 
 We have found out that most implementations use - `SHA256` & `SHA512`. However, convoy also supports the following hash functions:
 - `MD5`
@@ -79,7 +80,6 @@ We adopt a time-based release schedule.  A new release is created on the 25th of
 While you are guaranteed you'll be able to receive events as fast as possible using convoy, your customers might not be able to handle events coming to their systems at the same rate which might cause a disruption of service on their end.  You can control the number events you want to send to an application's endpoint by setting a rate limit and a rate limit duration on each endpoint. The default is `5000` in `1m` i.e. 5,000 requests per minute.
 
 ## Retry Schedule
-
 
 When an application's endpoint is experiencing temporary disruption of service, events sent to them might fail requiring you to retry them. Convoy allow you to set the number of attempts to a particular endpoint and how to initiate the retry. Convoy supports two retry strategies
 - `default`: retries are done in linear time. It's best to set a reasonable number of attempts if the duration is short.

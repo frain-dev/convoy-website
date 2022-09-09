@@ -24,6 +24,10 @@
 				"link": "/docs/deploy/overview"
 			},
 			{
+				"title": "Docker",
+				"link": "/docs/deploy/docker"
+			},
+			{
 				"title": "Hobby",
 				"link": "/docs/deploy/hobby"
 			},
@@ -34,7 +38,7 @@
 		]
 	},
 	{
-		"title": "User Manual",
+		"title": "Product Manual",
 		"showDropdown": false,
 		"children": [
 			{
