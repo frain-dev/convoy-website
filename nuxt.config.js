@@ -35,6 +35,27 @@ export default {
 
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
+		script: [
+			{
+				src: 'https://assets.calendly.com/assets/external/widget.js',
+				type: 'text/javascript',
+				async: 'true'
+			},
+			{
+				hid: 'gtag_link',
+				src: `https://www.googletagmanager.com/gtag/js?id=G-${process.env.GOOGLE_TAG_MANAGER_ID}`,
+				async: 'true'
+			},
+			{
+				hid: 'gtag',
+				children: `window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+
+				gtag('config', 'G-${process.env.GOOGLE_TAG_MANAGER_ID});`,
+				type: 'text/javascript'
+			}
+		],
 		title: 'Convoy',
 		htmlAttrs: {
 			lang: 'en'
@@ -125,27 +146,6 @@ export default {
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 			{ rel: 'canonical', href: 'https://getconvoy.io' }
-		],
-		script: [
-			{
-				hid: 'gtag_link',
-				src: `https://www.googletagmanager.com/gtag/js?id=G-${process.env.GOOGLE_TAG_MANAGER_ID}`,
-				async: 'true'
-			},
-			{
-				hid: 'gtag',
-				children: `window.dataLayer = window.dataLayer || [];
-				function gtag(){dataLayer.push(arguments);}
-				gtag('js', new Date());
-
-				gtag('config', 'G-${process.env.GOOGLE_TAG_MANAGER_ID});`,
-				type: 'text/javascript'
-			},
-			{
-				src: 'https://assets.calendly.com/assets/external/widget.js',
-				type: 'text/javascript',
-				async: 'true'
-			}
 		]
 	},
 

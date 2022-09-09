@@ -2,16 +2,21 @@
 	<div>
 		<header class="px-20px bg-gradient-to-br from-[#2c2f3e] to-[#422f41]">
 			<Header></Header>
-			<section class="max-w-[1200px] min-h-[90vh] w-full m-auto text-white-100 pt-200px">
+			<section class="max-w-[1200px] min-h-[900px] desktop:min-h-[780px] w-full m-auto text-white-100 pt-200px">
 				<h1 class="text-center font-bold text-32 desktop:text-[48px] mb-16px">Watch or Book a Live Demo</h1>
 				<p class="text-center text-18 mb-40px max-w-[530px] m-auto">Learn more about how you can use Convoy as a webhooks proxy, to send and receive webhooks events.</p>
 
 				<div class="m-auto flex justify-center mb-50px">
-					<a href="#demo" class="py-12px px-18px text-14 font-medium rounded-8px bg-white-100 text-primary-100 flex items-center mr-24px">
+					<a href="#demo" class="py-12px mobile:px-14px px-18px text-14 font-medium rounded-8px bg-white-100 text-primary-100 flex items-center mr-24px">
 						<img src="~/assets/images/play.svg" class="mr-8px" alt="play" />
 						Watch our Demo
 					</a>
-					<a target="_blank" rel="noopener noreferrer" href="https://dashboard.getconvoy.io/signup" class="py-12px px-48px text-14 font-medium rounded-8px bg-primary-100 text-white-100">
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://dashboard.getconvoy.io/signup"
+						class="desktop:w-full text-center py-12px px-18px max-w-[173px] text-14 font-medium rounded-8px bg-primary-100 text-white-100 flex items-center justify-center"
+					>
 						Get Started
 					</a>
 				</div>
@@ -69,6 +74,6 @@
 </template>
 <script>
 export default {
-	layout: 'home',
+	layout: 'home'
 };
 </script>
