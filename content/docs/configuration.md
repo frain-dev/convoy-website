@@ -159,20 +159,20 @@ Alternatively, you can configure Convoy using the following environment variable
 | Parameter | Description |
 | :---        |    ----:   |
 | - `CONVOY_ENV` | The environment the convoy worker runs on. The default value is `development` and can be switched to `production` depending on the scenario.|
-| - `SSL` | |
+| - `SSL` | A boolean value to activate SSL.|
 | - `PORT` | The port on which the Convoy instance will listen to. E.g., `8080`.|
 | - `WORKER_PORT` | The port on which the Convoy worker will listen to. E.g., `8081`.|
 | - `CONVOY_HOST` | The host on which the Convoy instance will be run on. E.g., `10.0.0.1`|
 | - `CONVOY_DB_TYPE` | The database type associated with the Convoy instance. MongoDB is currently the only supported database.|
 | - `CONVOY_DB_DSN` | The connection address of the database supplied earlier. Example: `mongodb://mongo:27017/convoysample`.|
-| - `CONVOY_LIMITER_PROVIDER` | |
+| - `CONVOY_LIMITER_PROVIDER` | The rate limiter provider. This is set to `redis` by default. |
 | - `CONVOY_CACHE_PROVIDER` | The cache provider for the Convoy instance. E.g.,: `redis`.|
 | - `CONVOY_QUEUE_PROVIDER` | The queue provider for the Convoy instance. E.g.,: `rabbitmq`.|
 | - `CONVOY_REDIS_DSN` | The connection address for the cache provider, `redis`. E.g., `redis://redis:6379` |
-| - `CONVOY_LOGGER_LEVEL` | |
-| - `CONVOY_LOGGER_PROVIDER` | |
-| - `CONVOY_SSL_KEY_FILE` | |
-| - `CONVOY_SSL_CERT_FILE` | |
+| - `CONVOY_LOGGER_LEVEL` | The log returned by Convoy's logger. The default level is `info` and can be set to `error`.|
+| - `CONVOY_LOGGER_PROVIDER` | The medium where logs are sent to. The defautl provider is set to `console`.|
+| - `CONVOY_SSL_KEY_FILE` | The path to your SSL key file. |
+| - `CONVOY_SSL_CERT_FILE` | The path to your SSL certificate file. |
 | - `CONVOY_SMTP_PROVIDER` | The provider for SMTP ( mailing ) operations. E.g., `sengrid`.|
 | - `CONVOY_SMTP_URL` | The SMTP provider URL. E.g., `smtp.sendgrid.net`|
 | - `CONVOY_SMTP_USERNAME` | The SMTP username required to sign in to the provider.|
