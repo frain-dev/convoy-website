@@ -40,6 +40,10 @@
 			</div>
 
 			<nav class="py-20px pl-20px">
+				<a href="https://convoy.readme.io/" target="_blank" class="flex items-center text-white-100 text-14 ml-20px mb-30px">
+					Api Reference
+					<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px mt-[3px] w-12px h-12px rotate-[320deg]" alt="arrow right" />
+				</a>
 				<sidebar-item :pages="pages"></sidebar-item>
 			</nav>
 		</aside>
@@ -58,7 +62,7 @@
 						href="https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email"
 						target="_blank"
 						rel="noreferrer"
-						class="bg-primary-100 m-auto text-white-100 whitespace-nowrap !text-12 desktop:!text-14 font-semibold flex items-center py-8px px-20px shadow-sm rounded-8px mr-24px w-fit "
+						class="bg-primary-100 m-auto text-white-100 whitespace-nowrap !text-12 desktop:!text-14 font-semibold flex items-center py-8px px-20px shadow-sm rounded-8px mr-24px w-fit"
 					>
 						Join our community
 						<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px w-10px h-10px" alt="arrow right" />

@@ -15,11 +15,15 @@
 					<p class="text-14 text-grey-40 mb-18px desktop:max-w-[489px]">
 						We've put together a short easy to follow steps to get started with deploying Convoy to your environment and sending out webhook events in few minutes.
 					</p>
-					<div class="mb-40px">
+					<div class="flex items-center mb-40px">
 						<nuxt-link to="/docs/overview" class="flex items-center text-primary-100">
 							Read more
 							<img src="~/assets/images/arrow-circle-right.svg" class="ml-10px" alt="arrow right" />
 						</nuxt-link>
+						<a href="https://convoy.readme.io/" target="_blank" class="flex items-center text-primary-100 ml-30px">
+							Api reference
+							<img src="~/assets/images/arrow-right-primary.svg" class="ml-10px mt-[3px] w-12px h-12px rotate-[320deg]" alt="arrow right" />
+						</a>
 					</div>
 				</div>
 				<div class="max-w-[385px] -mb-18px rounded-bl-8px">
