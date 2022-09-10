@@ -39,21 +39,10 @@
 					</nuxt-link>
 				</div>
 
-				<div class="card bg-[#5a53b3] bg-opacity-10">
+				<div class="card bg-[#ffeeed]">
 					<h4>Deployment</h4>
 					<p>Learn how to deploy Convoy to any environment of your choice.</p>
 					<nuxt-link to="/docs/deploy/overview">
-						<button class="bg-[#e0dfed] rounded-6px">
-							Read more
-							<img src="~/assets/images/dark-arrow-circle-right.svg" alt="arrow right" />
-						</button>
-					</nuxt-link>
-				</div>
-
-				<div class="card bg-[#ffeeed]">
-					<h4>SDK</h4>
-					<p>We went a step further to make it easier to integrate convoy through SDK.</p>
-					<nuxt-link to="/docs/sdk">
 						<button class="bg-[#f5dedc] rounded-6px">
 							Read more
 							<img src="~/assets/images/dark-arrow-circle-right.svg" alt="arrow right" />
@@ -61,15 +50,36 @@
 					</nuxt-link>
 				</div>
 
-				<div class="card bg-[#d1efff]">
-					<h4>App Portal</h4>
-					<p>With app portal, we're enabling you to extend the visibility our dashboard provides you to your customers.</p>
-					<nuxt-link to="/docs/app-portal">
-						<button class="bg-[#c1e1f2] rounded-6px">
+				<div class="card bg-[#5a53b3] bg-opacity-10">
+					<h4>SDK</h4>
+					<p>We went a step further to make it easier to integrate convoy through SDK.</p>
+					<nuxt-link to="/docs/sdk">
+						<button class="bg-[#e0dfed] rounded-6px">
 							Read more
 							<img src="~/assets/images/dark-arrow-circle-right.svg" alt="arrow right" />
 						</button>
 					</nuxt-link>
+				</div>
+
+				<div class="card bg-[#fcf5ec]">
+					<h4>App Portal</h4>
+					<p>With app portal, we're enabling you to extend the visibility our dashboard provides you to your customers.</p>
+					<nuxt-link to="/docs/app-portal">
+						<button class="bg-[#f2ebe2] rounded-6px">
+							Read more
+							<img src="~/assets/images/dark-arrow-circle-right.svg" alt="arrow right" />
+						</button>
+					</nuxt-link>
+				</div>
+				<div class="card bg-[#d1efff]">
+					<h4>Api Reference</h4>
+					<p>The API reference provides you with the available endpoints to interact with Convoy.</p>
+					<a href="https://convoy.readme.io/" target="_blank">
+						<button class="bg-[#c1e1f2] rounded-6px">
+							Read More
+							<img src="~/assets/images/dark-arrow-circle-right.svg" alt="arrow right" />
+						</button>
+					</a>
 				</div>
 			</section>
 		</div>
