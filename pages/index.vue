@@ -15,11 +15,16 @@
 						With out-of-the-box security, reliability and scalability for your webhooks infrastructure.
 					</p>
 					<div class="w-full m-auto flex justify-center desktop:justify-start xs:flex-wrap mb-50px">
-						<a target="_blank" rel="noopener noreferrer" href="https://dashboard.getconvoy.io/signup" class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px">
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://dashboard.getconvoy.io/signup"
+							class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px"
+						>
 							Get Started For Free
 						</a>
 
-						<nuxt-link to="/demo" class="py-12px px-28px text-14 font-medium rounded-8px bg-white-100 text-primary-100 flex items-center">Book a Demo</nuxt-link>
+						<a href="/demo" class="py-12px px-28px text-14 font-medium rounded-8px bg-white-100 text-primary-100 flex items-center">Book a Demo</a>
 					</div>
 
 					<ul class="flex items-center justify-center desktop:justify-start list-none w-full mt-60px m-auto desktop:ml-0">
