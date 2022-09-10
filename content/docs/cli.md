@@ -27,14 +27,14 @@ $ brew install convoy
 For Ubuntu and Debian users, install the Convoy CLI from apt repository:
 
 ```console[terminal]
-$ curl -1sLf \ 'https://dl.cloudsmith.io/public/convoy/convoy/setup.deb.sh' \ | sudo -E bash
+$ curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy/setup.deb.sh' | sudo -E bash
 $ sudo apt install convoy
 ```
 
 For CentOS and RHEL users, install the Convoy CLI using yum:
 
 ```console[terminal]
-$ curl -1sLf \ 'https://dl.cloudsmith.io/public/convoy/convoy/setup.rpm.sh' \ | sudo -E bash
+$ curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy/setup.rpm.sh' | sudo -E bash
 $ sudo yum install convoy
 ```
 
