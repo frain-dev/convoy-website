@@ -57,7 +57,7 @@
 					<div v-if="linuxActiveTab == 'ubuntu'" class="bg-black rounded-4px p-34px w-full text-white-100 flex-col flex-wrap text-12">
 						<div>
 							<span class="text-primary-100">$</span>
-							<code>curl -1sLf \ 'https://dl.cloudsmith.io/public/convoy/convoy/setup.deb.sh' \ | sudo -E bash</code>
+							<code>curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy/setup.deb.sh' | sudo -E bash</code>
 						</div>
 						<div>
 							<span class="text-primary-100">$</span>
@@ -65,11 +65,9 @@
 						</div>
 					</div>
 					<div v-if="linuxActiveTab == 'cent'" class="bg-black rounded-4px p-34px w-full text-white-100 flex-col flex-wrap text-12">
-						<div class="flex">
-							<span class="mr-4px text-primary-100">$</span>
-							<div class="flex flex-col">
-								<code>curl -1sLf \ 'https://dl.cloudsmith.io/public/convoy/convoy/setup.rpm.sh' \ | sudo -E bash</code>
-							</div>
+						<div>
+							<span class="text-primary-100">$</span>
+							<code>curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy/setup.rpm.sh' | sudo -E bash</code>
 						</div>
 						<div>
 							<span class="text-primary-100">$</span>
