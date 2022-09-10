@@ -44,7 +44,9 @@
 					</li>
 
 					<li class="py-14px px-20px desktop:p-0">
-						<nuxt-link to="/demo" class="desktop:py-8px desktop:px-12px text-14 font-medium rounded-8px desktop:bg-primary-100 desktop:text-white-100 text-primary-100 flex items-center mr-24px">Book a Demo</nuxt-link>
+						<a href="/demo" class="desktop:py-8px desktop:px-12px text-14 font-medium rounded-8px desktop:bg-primary-100 desktop:text-white-100 text-primary-100 flex items-center mr-24px">
+							Book a Demo
+						</a>
 					</li>
 
 					<li>
@@ -77,7 +79,7 @@ export default {
 				{ name: 'Blog', route: '/blog', type: 'route' },
 				{ name: 'Docs', route: '/docs', type: 'route' },
 				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' },
-				{ name: 'Download', route: '/download', type: 'route' },
+				{ name: 'Download', route: '/download', type: 'route' }
 			],
 			hasScrolled: false
 		};
