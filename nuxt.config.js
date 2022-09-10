@@ -30,30 +30,13 @@ const create = async feed => {
 };
 
 export default {
-	// Target: https://go.nuxtjs.dev/config-target
 	target: 'static',
-
-	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
 		script: [
 			{
 				src: 'https://assets.calendly.com/assets/external/widget.js',
 				type: 'text/javascript',
 				async: 'true'
-			},
-			{
-				hid: 'gtag_link',
-				src: `https://www.googletagmanager.com/gtag/js?id=G-${process.env.GOOGLE_TAG_MANAGER_ID}`,
-				async: 'true'
-			},
-			{
-				hid: 'gtag',
-				children: `window.dataLayer = window.dataLayer || [];
-				function gtag(){dataLayer.push(arguments);}
-				gtag('js', new Date());
-
-				gtag('config', 'G-${process.env.GOOGLE_TAG_MANAGER_ID});`,
-				type: 'text/javascript'
 			}
 		],
 		title: 'Convoy',
@@ -173,8 +156,33 @@ export default {
 	modules: [
 		// https://go.nuxtjs.dev/content
 		'@nuxt/content',
-		'@nuxtjs/feed'
+		'@nuxtjs/feed',
+		'@nuxtjs/gtm'
 	],
+
+	gtm: {
+		id: process.env.GOOGLE_TAG_MANAGER_ID,
+
+		enabled: true,
+		layer: 'dataLayer',
+
+		pageTracking: true,
+		pageViewEventName: 'nuxtRoute',
+
+		autoInit: true,
+		respectDoNotTrack: true,
+
+		scriptId: 'gtm-script',
+		scriptDefer: false,
+		scriptURL: 'https://www.googletagmanager.com/gtag/js',
+		crossOrigin: false
+	},
+
+	publicRuntimeConfig: {
+		gtm: {
+			id: process.env.GOOGLE_TAG_MANAGER_ID
+		}
+	},
 
 	hooks: {
 		'content:file:beforeInsert': document => {
