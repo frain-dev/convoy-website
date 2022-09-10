@@ -14,15 +14,12 @@
 					<p class="text-white-100 text-18 mt-16px max-w-[530px] m-auto desktop:ml-0 mb-40px text-center desktop:text-left">
 						With out-of-the-box security, reliability and scalability for your webhooks infrastructure.
 					</p>
-					<div class="w-full text-center desktop:text-left">
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href="https://dashboard.getconvoy.io/signup"
-							class="rounded-8px bg-primary-100 text-14 font-medium text-white-100 py-12px desktop:py-16px px-38px desktop:px-42px"
-						>
+					<div class="w-full m-auto flex justify-center desktop:justify-start xs:flex-wrap mb-50px">
+						<a target="_blank" rel="noopener noreferrer" href="https://dashboard.getconvoy.io/signup" class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px">
 							Get Started For Free
 						</a>
+
+						<nuxt-link to="/demo" class="py-12px px-28px text-14 font-medium rounded-8px bg-white-100 text-primary-100 flex items-center">Book a Demo</nuxt-link>
 					</div>
 
 					<ul class="flex items-center justify-center desktop:justify-start list-none w-full mt-60px m-auto desktop:ml-0">
@@ -109,7 +106,7 @@
 				Easily filter & debug events sent to multiple applications & endpoints with Delivery Attempt Logs
 			</p>
 
-			<div class="grid grid-cols-[repeat(auto-fill,minmax(333px,_1fr))] gap-32px">
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,_1fr))] gap-32px">
 				<div class="bg-white-100 shadow-card p-32px rounded-16px" v-for="(feature, index) of features" :key="'feature' + index">
 					<img :src="require(`~/assets/images/${feature.img}-feature-icon.svg`)" :alt="feature.feature" class="w-48px h-48px mb-32px" :class="feature.shadow" />
 					<h3 class="font-semibold mb-16px">{{ feature.feature }}</h3>
@@ -180,7 +177,7 @@
 				</div>
 			</div>
 			<div class="bg-[#082B91] bg-opacity-[0.07] w-11/12 h-220px desktop:h-270px rounded-b-16px m-auto relative">
-				<div class="absolute left-1/2 -translate-x-1/2 -top-100px desktop:-top-200px w-full">
+				<div class="absolute left-1/2 -translate-x-1/2 -top-100px xs:-top-70px desktop:-top-200px w-full">
 					<img src="~/assets/images/core.png" alt="group" class="xs:hidden max-w-[866px] desktop:w-full w-5/6 m-auto" />
 					<img src="~/assets/images/groups-img-small.png" class="hidden xs:block m-auto w-5/6" alt="group" />
 					<a
@@ -271,74 +268,6 @@
 			</div>
 		</section>
 
-		<!-- cta  -->
-		<section class="px-20px pb-100px desktop:pb-130px">
-			<div class="mt-100px desktop:mt-130px max-w-[1000px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
-				<h1 class="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px desktop:mb-16px">Start sending webhooks now, risk free</h1>
-				<p class="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">
-					Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time and get started today.
-				</p>
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="https://dashboard.getconvoy.io/signup"
-					class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit"
-				>
-					Get started for free
-					<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
-				</a>
-			</div>
-		</section>
-
-		<!-- blog -->
-		<section class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] desktop:p-80px p-40px">
-			<div
-				class="
-					bg-white-100
-					rounded-8px
-					shadow-card
-					max-w-[970px]
-					pt-32px
-					px-12px
-					m-auto
-					desktop:pl-56px desktop:pt-56px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
-					mobile:mb-48px
-				"
-			>
-				<div class="desktop:max-w-[470px] p-10px">
-					<div class="flex justify-between items-center mb-24px">
-						<div class="py-2px px-16px bg-[#0747a6] bg-opacity-10 rounded-2px font-medium text-14 text-primary-100 uppercase">Blog post</div>
-						<div class="font-medium text-14">{{ featurePosts[0].published_at | date }}</div>
-					</div>
-					<nuxt-link :to="'/blog/' + featurePosts[0].slug">
-						<h3 class="desktop:text-32 text-26 font-bold">{{ featurePosts[0].title }}</h3>
-					</nuxt-link>
-
-					<p class="font-light text-grey-80 text-16 mb-16px">{{ featurePosts[0].description }}...</p>
-					<div class="flex flex-col flex-wrap my-26px desktop:items-end desktop:flex-row desktop:justify-between">
-						<a :href="featurePosts[0].primary_author.twitter ? 'http://twitter.com/' + featurePosts[0].primary_author.twitter : ''" target="_blank" class="flex items-start mb-40px desktop:mb-0">
-							<div class="w-40px h-40px rounded-[50%] mr-16px overflow-hidden flex items-center bg-grey-20">
-								<img :src="require(`~/static/profile-images/${featurePosts[0].primary_author.name}.png`)" class="w-full mr-12px rounded-[50%]" alt="author imge" />
-							</div>
-							<div>
-								<h5 class="font-medium mb-4px">{{ featurePosts[0].primary_author.name }}</h5>
-								<p class="text-14 text-grey-80">Convoy</p>
-							</div>
-						</a>
-						<nuxt-link :to="'/blog/' + featurePosts[0].slug" class="flex items-center text-primary-100 font-medium text-14">
-							Read More
-							<img src="~/assets/images/angle-right-primary.svg" class="w-20px" alt="read more icon" />
-						</nuxt-link>
-					</div>
-				</div>
-				<div class="w-full desktop:w-380px desktop:right-0 desktop:bottom-0 desktop:mt-0">
-					<img :src="require(`~/static/feature-images/${featurePosts[0].feature_image}`)" class="rounded-br-10px w-full" alt="featured post img" />
-				</div>
-			</div>
-		</section>
-
-		<Footer></Footer>
-
 		<section
 			class="fixed top-0 left-0 w-screen h-screen bg-[#fafafe] transition-all duration-500"
 			:class="expandImage ? 'visible animate-slideup opacity-100 z-[100000]' : 'invisible animate-slidedown opacity-0'"
@@ -353,6 +282,7 @@
 
 <script>
 export default {
+	layout: 'home',
 	data() {
 		return {
 			isSubmitingloadingEarlyAccessForm: false,
@@ -397,13 +327,6 @@ export default {
 			activeSlide: true,
 			expandImage: false
 		};
-	},
-	async asyncData({ $content }) {
-		const featurePosts = await $content('blog')
-			.where({ featured: { $eq: true } })
-			.fetch();
-
-		return { featurePosts };
 	},
 	mounted() {
 		this.triggerSlide();
@@ -472,11 +395,6 @@ export default {
 			setInterval(() => {
 				this.activeSlide = !this.activeSlide;
 			}, 10000);
-		}
-	},
-	created() {
-		if (process.client) {
-			window.addEventListener('scroll', this.handleScroll);
 		}
 	}
 };

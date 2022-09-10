@@ -44,4 +44,7 @@
 	body {
 		@apply bg-[#fafafe] text-black font-inter;
 	}
+	html{
+		@apply scroll-smooth;
+	}
 }
