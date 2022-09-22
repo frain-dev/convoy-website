@@ -45,7 +45,7 @@ export default {
 					break;
 				case 'python':
 					this.activeTab = 'python';
-					this.fetchPageData('convoy-pyhton');
+					this.fetchPageData('convoy-python');
 					break;
 				case 'php':
 					this.activeTab = 'php';
@@ -67,13 +67,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-
 .active {
 	@apply transition-all duration-300 relative after:bottom-0 after:h-[3px] after:w-full after:left-0 after:right-0 after:bg-primary-100 after:absolute after:rounded-tl-16px after:rounded-tr-16px;
 
 	span {
 		@apply font-semibold text-primary-100 transition-all duration-300;
 	}
-
 }
 </style>
