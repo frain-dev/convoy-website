@@ -4,6 +4,24 @@
 		"link": "/docs/overview"
 	},
 	{
+		"title": "Getting started",
+		"showDropdown": false,
+		"children": [
+			{
+				"title": "Installation",
+				"link": "/docs/getting-started/installation"
+			},
+			{
+				"title": "Sending your first webhook event with Convoy",
+				"link": "/docs/getting-started/sending-webhook-example"
+			},
+			{
+				"title": "Receiving your first webhook event with Convoy",
+				"link": "/docs/getting-started/receiving-webhook-example"
+			}
+		]
+	},
+	{
 		"title": "CLI",
 		"link": "/docs/cli"
 	},

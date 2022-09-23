@@ -3,7 +3,7 @@
 		<div class="flex flex-row m-auto w-full mt-32px mb-24px border-b border-b-grey-10">
 			<li v-for="tab of tabs" :key="tab.id" class="mr-24px !list-none last-of-type:mr-0">
 				<button class="pb-10px flex items-center has-icon" :class="activeTab === tab.id ? 'active' : ''" @click="switchTabs(tab.id)">
-					<img :src="require(`~/assets/images/${tab.id}.svg`)" :alt="tab.label" class="h-16px w-16px mr-16px !my-0" />
+					<!-- <img :src="require(`~/assets/images/${tab.id}.svg`)" :alt="tab.label" class="h-16px w-16px mr-16px !my-0" /> -->
 					<span class="text-14 text-left text-black tracking-[0.02em] mobile:min-w-[80px]">{{ tab.label }}</span>
 				</button>
 			</li>
@@ -20,44 +20,39 @@ export default {
 		return {
 			pageData: '',
 			tabs: [
-				{ label: 'Javascript', id: 'javascript' },
-				{ label: 'Python', id: 'python' },
-				{ label: 'PHP', id: 'php' },
-				{ label: 'Ruby', id: 'ruby' },
-				{ label: 'Golang', id: 'golang' }
+				{ label: 'Mac', id: 'mac' },
+				{ label: 'Linux', id: 'linux' },
+				{ label: 'Windows', id: 'windows' },
+                { label: 'Source', id: 'source'}
 			],
-			activeTab: 'javascript'
+			activeTab: 'mac'
 		};
 	},
 	mounted() {
-		this.fetchPageData('convoy-js');
+		this.fetchPageData('cli-mac');
 	},
 	methods: {
 		async fetchPageData(param) {
-			const pageData = await this.$content('docs/sdks/' + param).fetch();
+			const pageData = await this.$content('docs/installation/' + param).fetch();
 			this.pageData = pageData;
 		},
 		switchTabs(activeTab) {
 			switch (activeTab) {
-				case 'javascript':
-					this.activeTab = 'javascript';
-					this.fetchPageData('convoy-js');
+				case 'mac':
+					this.activeTab = 'mac';
+					this.fetchPageData('cli-mac');
 					break;
-				case 'python':
-					this.activeTab = 'python';
-					this.fetchPageData('convoy-python');
+				case 'linux':
+					this.activeTab = 'linux';
+					this.fetchPageData('cli-linux');
 					break;
-				case 'php':
-					this.activeTab = 'php';
-					this.fetchPageData('convoy-php');
+				case 'windows':
+					this.activeTab = 'windows';
+					this.fetchPageData('cli-windows');
 					break;
-				case 'ruby':
-					this.activeTab = 'ruby';
-					this.fetchPageData('convoy-rb');
-					break;
-				case 'golang':
-					this.activeTab = 'golang';
-					this.fetchPageData('convoy-go');
+				case 'source':
+					this.activeTab = 'source';
+					this.fetchPageData('cli-source');
 					break;
 				default:
 					break;
