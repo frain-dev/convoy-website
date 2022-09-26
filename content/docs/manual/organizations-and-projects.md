@@ -46,7 +46,7 @@ An incoming project is designed to receive webhooks from third-party party sourc
 
 An outgoing project is designed to publish webhooks to user's endpoints. It is designed for API providers. 
 
-![Ingoing and outgoing projects](in-and-out-projects.png)
+![Incoming and outgoing projects](/docs-assets/in-and-out-projects.png)
 
 ### Configure a Project
 
