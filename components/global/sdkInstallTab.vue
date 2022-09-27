@@ -30,7 +30,7 @@ export default {
 		};
 	},
 	mounted() {
-		this.fetchPageData('install-js');
+		this.fetchPageData('js-sdk');
 	},
 	methods: {
 		async fetchPageData(param) {
