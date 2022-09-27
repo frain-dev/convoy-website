@@ -30,7 +30,7 @@ export default {
 		};
 	},
 	mounted() {
-		this.fetchPageData('js-sdk');
+		this.switchTabs();
 	},
 	methods: {
 		async fetchPageData(param) {
@@ -60,6 +60,7 @@ export default {
 					this.fetchPageData('golang-sdk');
 					break;
 				default:
+					this.fetchPageData('js-sdk')
 					break;
 			}
 		}
