@@ -1,7 +1,7 @@
 <template>
 	<div class="w-full bg-white-100 rounded-8px p-10px shadow-card mobile:mb-48px">
 		<div class="rounded-4px mb-20px w-full overflow-hidden backdrop-blur-[3.4767px] h-fit desktop:h-170px desktop:mb-40px">
-			<img :src="require(`~/static/feature-images/${post.feature_image}`)" class="rounded-4px w-full -z-10" alt="post image" />
+			<img :src="require(`~/static/feature-images/${post.feature_image}`)" @error="$event.target.src = require('~/static/assets/convoy.png')"  class="rounded-4px w-full -z-10" alt="post image" />
 		</div>
 		<div class="rounded-2px font-medium text-14 text-primary-100 uppercase">{{ post.tag }}</div>
 		<nuxt-link :to="'/blog/' + post.slug">
