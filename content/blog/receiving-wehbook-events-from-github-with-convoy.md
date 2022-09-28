@@ -122,6 +122,30 @@ Next, we are to create a source, select the `Ingestion HTTP` source type, and af
 
 ![Create a source](/blog-assets/create-a-source.png)
 
+As with creating a Project, this can also be done via API:
+
+```console[Sample Payload]
+{
+  "name": "github-source",
+  "type": "http",
+	"provider": "github",
+	"verifier": {
+	  "hmac": {
+			"secret": "<your-github-secret>"
+		}
+	}
+}
+```
+
+```console[terminal]
+$ curl \
+    --request POST \
+    --data @source.json \
+		-H "Authorization: BEARER <your-project-api-key>" \
+    -H "Content-Type: application/json" \
+    http://dashboard.getconvoy.io/api/v1/sources
+```
+
 **Create Subscription**
 
 Next, we have to create a subscription. Subscriptions are a many-to-many relationship between sources/apps **→** endpoints. You can find more documentation on subscriptions [here](https://getconvoy.io/docs/manual/subscriptions/).
