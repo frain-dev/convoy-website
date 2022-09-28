@@ -1,6 +1,6 @@
 ---
 title: Receiving Webhooks from GitHub with Convoy
-feature_image: webhook_event.png
+feature_image: webhook-event.png
 primary_author: 
     name: Daniel Oluojomu
     twitter: danvixent
