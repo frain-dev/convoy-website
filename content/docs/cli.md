@@ -13,7 +13,7 @@ Convoy ships with a very easy-to-use command-line interface (CLI). Refer to the 
 
 The Convoy CLI can be installed directly from your package manager or by building from the GitHub source:
 
-<cli-tab>
+<cli-tab></cli-tab>
 
 ## Using the CLI
 
