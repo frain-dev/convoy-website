@@ -12,4 +12,4 @@ Convoy provides SDK for in-app integration. These SDKs carry out the same operat
 
 This page introduces you to the SDKs as well as demonstrate the steps involved in sending an event to your Convoy instance.
 
-<sdk-tab>
+<sdk-tab></sdk-tab>
