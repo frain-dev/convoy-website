@@ -4,8 +4,6 @@ description: "Receiving webhook events with Convoy API"
 id: convoy-api
 ---
 
-The complete API reference can be viewed and interacted with on [Readme](https://convoy.readme.io).
-
 Sending webhooks with the API does not require a client setup like the SDKs. The API key retrieved from your dashboard will be added in the Authorization header.
 
 ## Create an application
@@ -95,3 +93,5 @@ curl --request GET \
 ## Cheers! 🎉
 
 You have sucessfully created a Convoy application to retrieve events sent to you from your webhook source. 
+
+The complete API reference can be viewed and interacted with on [Readme](https://convoy.readme.io).
