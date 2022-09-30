@@ -29,8 +29,8 @@ export default {
 		};
 	},
 	mounted() {
-		this.switchTabs()
-		// this.fetchPageData('cli-mac');
+		this.switchTabs();
+		this.fetchPageData('cli-mac');
 	},
 	methods: {
 		async fetchPageData(param) {

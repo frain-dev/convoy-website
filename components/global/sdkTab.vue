@@ -30,6 +30,7 @@ export default {
 		};
 	},
 	mounted() {
+		this.switchTabs();
 		this.fetchPageData('convoy-js');
 	},
 	methods: {

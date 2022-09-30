@@ -30,35 +30,39 @@ export default {
 		};
 	},
 	mounted() {
-		this.switchTabs();
-		this.fetchPageData('js-sdk');
+        this.switchTabs();
+		this.fetchPageData('convoy-js');
 	},
 	methods: {
 		async fetchPageData(param) {
-			const pageData = await this.$content('docs/installation/' + param).fetch();
+			const pageData = await this.$content('docs/getting-started/sending/' + param).fetch();
 			this.pageData = pageData;
 		},
 		switchTabs(activeTab) {
 			switch (activeTab) {
 				case 'javascript':
 					this.activeTab = 'javascript';
-					this.fetchPageData('js-sdk');
+					this.fetchPageData('convoy-js');
 					break;
 				case 'python':
 					this.activeTab = 'python';
-					this.fetchPageData('python-sdk');
+					this.fetchPageData('convoy-python');
 					break;
 				case 'php':
 					this.activeTab = 'php';
-					this.fetchPageData('php-sdk');
+					this.fetchPageData('convoy-php');
 					break;
 				case 'ruby':
 					this.activeTab = 'ruby';
-					this.fetchPageData('ruby-sdk');
+					this.fetchPageData('convoy-rb');
 					break;
 				case 'golang':
 					this.activeTab = 'golang';
-					this.fetchPageData('golang-sdk');
+					this.fetchPageData('convoy-go');
+					break;
+				case 'cURL':
+					this.activeTab = 'cURL';
+					this.fetchPageData('convoy-api');
 					break;
 				default:
 					break;
