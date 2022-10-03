@@ -6,7 +6,7 @@ id: convoy.go
 
 The first step involved in sending a webhook event is configuring your SDK client.
 
-## Setup alient
+## Setup Client
 ```go[example]
 import (
     convoy "github.com/frain-dev/convoy-go"
@@ -67,8 +67,23 @@ endpoint, err := c.Endpoints.Create(app.UID, &Convoy.CreateEndpointRequest{
   }
 ```
 
-With our application and the application endpoint in place, you're set to send an event.
+The next step is to create a subscription to the webhook source. Subscriptions are the conduit through which events are routed from a source to a destination on Convoy.
 
+## Create a subscription
+
+```go[example]
+subscription, err := c.Subscriptions.Create(&Convoy.CreateSubscriptionRequest{
+    Name: "<subscription name>"
+    AppID: app.UID
+    EndpointID: "<endpoint-id>"
+}, nil)
+
+  if err != nil {
+      log.Fatal("failed to create app endpoint \n", err)
+  }
+```
+
+With the subscription in place, you're set to send an event.
 ## Send an event
 
 To send an event, you'll need the `uid` from the application you created earlier.

@@ -28,30 +28,47 @@ convoy = Convoy({ "api_key": 'your_api_key', "uri": 'self-hosted-instance' })
 An application represents a user's application trying to receive webhooks. Once you create an application, you'll receive a `uid` that you should save and supply in subsequent API calls to perform other requests such as creating an event.
 
 ```python[example]
-appData = { "name": "my_app", "support_email": "support@myapp.com" }
-(response, status)  = convoy.applications.create({}, appData)
-appId = response["data"]["uid"]
+app_data = { "name": "my_app", "support_email": "support@myapp.com" }
+(response, status)  = convoy.applications.create({}, app_data)
+app_id = response["data"]["uid"]
 ```
 After creating an application, you'll need to add an endpoint to the application you just created. An endpoint represents a target URL to receive events.
 
 ### Add application endpoint
 ```python[example]
-endpointData = {
+endpoint_data = {
     "url": "https://0d87-102-89-2-172.ngrok.io",
     "description": "Default Endpoint",
     "secret": "endpoint-secret",
     "events": ["*"],
   }
 
-(response, status) = convoy.endpoint.create(appId, {}, endpointData)
+(response, status) = convoy.endpoint.create(appId, {}, endpoint_data)
+endpoint_id = response["data"]["uid"]
 ```
+
+The next step is to create a subscription to the webhook source. Subscriptions are the conduit through which events are routed from a source to a destination on Convoy.
+
+## Create a subscription
+
+```python[example]
+subscription_data = {
+  "name": "event-sub",
+  "app_id": app_id,
+  "endpoint_id": endpoint_id,
+}
+
+(response, status) = convoy.subscriptions.create({}, subscription_data)
+```
+
+With the subscription in place, you're set to send an event.
 
 ### Send an event
 To send an event, you'll need the `uid` you created in the earlier section.
 
 ```python[example]
 eventData = {
-    "app_id": appId,
+    "app_id": app_id,
     "event_type": "payment.success",
     "data": {
       "event": "payment.success",

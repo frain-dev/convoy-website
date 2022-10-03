@@ -22,7 +22,7 @@ curl --request POST \
 
 After creating an application, you'll need to add an endpoint to the application you just created. An endpoint represents a target URL to receive events.
 
-## Add application endpoint
+### Add application endpoint
 
 ```terminal[console]
 curl --request POST \
@@ -36,8 +36,23 @@ curl --request POST \
 }'
 ```
 
-With our application and the application endpoint in place, you're set to send an event.
+The next step is to create a subscription to the webhook source. Subscriptions are the conduit through which events are routed from a source to a destination on Convoy.
 
+### Create a subscription
+
+```console[example]
+curl --request POST \
+  --url https://dashboard.getconvoy.io/api/v1/subscriptions \
+  --header 'Authorization: Bearer <api-key>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "app_id": "<your app ID>",
+  "endpoint_id": "<your endpoint ID>",
+  "name": "Subscription name"
+}'
+```
+
+With the subscription in place, you're set to send an event.
 ## Send an event
 
 To send an event, you'll need the `uid` from the application you created earlier.
