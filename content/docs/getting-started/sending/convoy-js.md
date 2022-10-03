@@ -76,7 +76,7 @@ The next step is to create a subscription to the webhook source. Subscriptions a
     "endpoint_id": endpointId,
   };
 
-  const response = await convoy.subscriptions.create(appId, subscriptionData);
+  const response = await convoy.subscriptions.create(subscriptionData);
 } catch (error) {
   console.log(error);
 }
