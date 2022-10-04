@@ -1,8 +1,8 @@
 ---
 title: Receiving Your First Webhook Event with Convoy.
 description: 'Receiving your first webhook event with Convoy via SDK and API'
-id: receive-event
-order: 6
+id: receiving-webhook-example
+order: 3
 ---
 
 # Receiving Your First Webhook Event With Convoy
