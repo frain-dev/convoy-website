@@ -29,7 +29,7 @@ An application represents a user's application trying to receive webhooks. Once 
 
 ```python[example]
 app_data = { "name": "my_app", "support_email": "support@myapp.com" }
-(response, status)  = convoy.applications.create({}, app_data)
+(response, status)  = convoy.application.create({}, app_data)
 app_id = response["data"]["uid"]
 ```
 After creating an application, you'll need to add an endpoint to the application you just created. An endpoint represents a target URL to receive events.
