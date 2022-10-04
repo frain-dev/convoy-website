@@ -31,34 +31,34 @@ export default {
 	},
 	mounted() {
 		this.switchTabs();
-		this.fetchPageData('convoy-js');
+		this.fetchPageData('js-sdk');
 	},
 	methods: {
 		async fetchPageData(param) {
-			const pageData = await this.$content('docs/sdks/' + param).fetch();
+			const pageData = await this.$content('docs/installation/' + param).fetch();
 			this.pageData = pageData;
 		},
 		switchTabs(activeTab) {
 			switch (activeTab) {
 				case 'javascript':
 					this.activeTab = 'javascript';
-					this.fetchPageData('convoy-js');
+					this.fetchPageData('js-sdk');
 					break;
 				case 'python':
 					this.activeTab = 'python';
-					this.fetchPageData('convoy-python');
+					this.fetchPageData('python-sdk');
 					break;
 				case 'php':
 					this.activeTab = 'php';
-					this.fetchPageData('convoy-php');
+					this.fetchPageData('php-sdk');
 					break;
 				case 'ruby':
 					this.activeTab = 'ruby';
-					this.fetchPageData('convoy-rb');
+					this.fetchPageData('ruby-sdk');
 					break;
 				case 'golang':
 					this.activeTab = 'golang';
-					this.fetchPageData('convoy-go');
+					this.fetchPageData('golang-sdk');
 					break;
 				default:
 					break;
@@ -68,11 +68,13 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
 .active {
 	@apply transition-all duration-300 relative after:bottom-0 after:h-[3px] after:w-full after:left-0 after:right-0 after:bg-primary-100 after:absolute after:rounded-tl-16px after:rounded-tr-16px;
 
 	span {
 		@apply font-semibold text-primary-100 transition-all duration-300;
 	}
+
 }
 </style>

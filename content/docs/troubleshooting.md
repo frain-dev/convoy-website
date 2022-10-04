@@ -10,8 +10,8 @@ order: 3
 This page contains fixes for some of the known installation and usage errors encountered when using Convoy across different platforms.
 
 ## Docker and Docker Compose
+
 If you have any issues deploying Convoy with either Docker of Docker compose, please reach out in the [Slack channel](https://app.slack.com/client/T02JMPNCYNP).
-<!-- At the moment, we haven't encountered any issue -->
 
 ## Kubernetes
 The common issues encountered when deploying Convoy in Kubernetes are:

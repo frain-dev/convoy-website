@@ -24,18 +24,19 @@ export default {
 				{ label: 'Python', id: 'python' },
 				{ label: 'PHP', id: 'php' },
 				{ label: 'Ruby', id: 'ruby' },
-				{ label: 'Golang', id: 'golang' }
+				{ label: 'Golang', id: 'golang' },
+				{ label: 'cURL', id: 'api' }
 			],
 			activeTab: 'javascript'
 		};
 	},
 	mounted() {
-		this.switchTabs();
+        this.switchTabs();
 		this.fetchPageData('convoy-js');
 	},
 	methods: {
 		async fetchPageData(param) {
-			const pageData = await this.$content('docs/sdks/' + param).fetch();
+			const pageData = await this.$content('docs/getting-started/sending/' + param).fetch();
 			this.pageData = pageData;
 		},
 		switchTabs(activeTab) {
@@ -60,6 +61,10 @@ export default {
 					this.activeTab = 'golang';
 					this.fetchPageData('convoy-go');
 					break;
+				case 'api':
+					this.activeTab = 'cURL';
+					this.fetchPageData('convoy-api');
+					break;
 				default:
 					break;
 			}
@@ -68,11 +73,13 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
 .active {
 	@apply transition-all duration-300 relative after:bottom-0 after:h-[3px] after:w-full after:left-0 after:right-0 after:bg-primary-100 after:absolute after:rounded-tl-16px after:rounded-tr-16px;
 
 	span {
 		@apply font-semibold text-primary-100 transition-all duration-300;
 	}
+
 }
 </style>

@@ -13,57 +13,7 @@ Convoy ships with a very easy-to-use command-line interface (CLI). Refer to the 
 
 The Convoy CLI can be installed directly from your package manager or by building from the GitHub source:
 
-### Mac
-
-Install the Convoy CLI from brew:
-
-```console[terminal]
-$ brew tap frain-dev/tools
-$ brew install convoy
-```
-
-### Linux
-
-For Ubuntu and Debian users, install the Convoy CLI from apt repository:
-
-```console[terminal]
-$ curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy/setup.deb.sh' | sudo -E bash
-$ sudo apt install convoy
-```
-
-For CentOS and RHEL users, install the Convoy CLI using yum:
-
-```console[terminal]
-$ curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy/setup.rpm.sh' | sudo -E bash
-$ sudo yum install convoy
-```
-
-### Windows
-
-To install Convoy on Windows, download the binary applicable to your machine:
-
-- [Download for AMD64](https://dl.cloudsmith.io/public/convoy/convoy/raw/versions/0.6.6/convoy_0.6.6_windows_amd64.tar.gz)
-- [Download for ARM64](https://dl.cloudsmith.io/public/convoy/convoy/raw/versions/0.6.6/convoy_0.6.6_windows_arm64.tar.gz)
-
-### Building from Source
-
-To build Convoy from source code, you need:
-* Go [version 1.16 or greater](https://golang.org/doc/install).
-* NodeJS [version 14.17 or greater](https://nodejs.org).
-* Npm [version 6 or greater](https://npmjs.com).
-
-```bash
-$ git clone https://github.com/frain-dev/convoy.git && cd convoy
-$ make build
-```
-
-Verify the build by running the command below:
-
-```console[terminal]
-$ convoy -v
-
-Convoy version v0.6.0
-```
+<cli-tab></cli-tab>
 
 ## Using the CLI
 
