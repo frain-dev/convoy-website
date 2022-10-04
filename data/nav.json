@@ -48,6 +48,10 @@
 			{
 				"title": "DigitalOcean",
 				"link": "/docs/deploy/digitalocean"
+			},
+			{
+				"title": "Troubleshooting",
+				"link": "/docs/troubleshooting"
 			}
 		]
 	},
