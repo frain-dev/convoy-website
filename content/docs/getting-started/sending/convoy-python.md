@@ -58,7 +58,7 @@ subscription_data = {
   "endpoint_id": endpoint_id,
 }
 
-(response, status) = convoy.subscriptions.create({}, subscription_data)
+(response, status) = convoy.subscription.create({}, subscription_data)
 ```
 
 With the subscription in place, you're set to send an event.
