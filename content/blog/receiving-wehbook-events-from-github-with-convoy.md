@@ -41,7 +41,7 @@ Next, create an application for the project. You can do this via API with the fo
 {
   "name": "Github-app",
   "support_email": "your-app-support@email.com",
-	"slack_webhook_url": "<your-slack-webhook-url>"
+  "slack_webhook_url": "<your-slack-webhook-url>"
 }
 ```
 
@@ -49,7 +49,7 @@ Next, create an application for the project. You can do this via API with the fo
 $ curl \
     --request POST \
     --data @app.json \
-		-H "Authorization: BEARER <your-project-api-key>" \
+	-H "Authorization: BEARER <your-project-api-key>" \
     -H "Content-Type: application/json" \
     http://dashboard.getconvoy.io/api/v1/applications
 ```
@@ -78,7 +78,7 @@ Now that we have the application all set up, let’s create an endpoint:
 ```json[Sample Endpoint Payload]
 {
   "url": "<your-endpoint-url>",
-	"http_timeout": "10s",
+  "http_timeout": "10s",
   "description": "my-github-endpoint",
 }
 ```
@@ -87,7 +87,7 @@ Now that we have the application all set up, let’s create an endpoint:
 $ curl \
     --request POST \
     --data @endpoint.json \
-		-H "Authorization: BEARER <your-project-api-key>" \
+	-H "Authorization: BEARER <your-project-api-key>" \
     -H "Content-Type: application/json" \
     http://dashboard.getconvoy.io/api/v1/{appID}/endpoints
 ```
@@ -141,7 +141,7 @@ As with creating a Project, this can also be done via API:
 $ curl \
     --request POST \
     --data @source.json \
-		-H "Authorization: BEARER <your-project-api-key>" \
+	-H "Authorization: BEARER <your-project-api-key>" \
     -H "Content-Type: application/json" \
     http://dashboard.getconvoy.io/api/v1/sources
 ```
@@ -160,9 +160,9 @@ Likewise, you can create a subscription via the API:
 {
   "name": "github-sub",
   "type": "http",
-	"app_id": "<your-app-id>",
-	"source_id": "<your-source-id>",
-	"endpoint_id": "<your-endpoint-id>",
+  "app_id": "<your-app-id>",
+  "source_id": "<your-source-id>",
+  "endpoint_id": "<your-endpoint-id>",
 }
 ```
 
@@ -170,7 +170,7 @@ Likewise, you can create a subscription via the API:
 $ curl \
     --request POST \
     --data @subscription.json \
-		-H "Authorization: <your-project-api-key>" \
+	-H "Authorization: <your-project-api-key>" \
     -H "Content-Type: application/json" \
     http://dashboard.getconvoy.io/api/v1/subscriptions
 ```
@@ -216,7 +216,7 @@ Now from your local repository, push a commit, and GitHub will push two events t
 
 ![Webhook description](/blog-assets/webhook-description.png)
 
-- The second is the actual webhook you pushed to the repository for the commit.
+- The second is the actual webhook for the commit you pushed to the repository.
 
 ![Webhook event](/blog-assets/webhook-event.png)
 
@@ -224,4 +224,4 @@ Now from your local repository, push a commit, and GitHub will push two events t
 
 Convoy 0.6 provides the ability to receive webhooks from various providers and fans out to your applications. In this article, you learned how to receive webhook events from GitHub through a step-by-step guide from creating a project to subscribing to the event source, GitHub.
 
-Convoy provides you with reliability and replayability out-of-the-box. If this sounds suitable for your architecture? [try it out](https://dashboard.getconvoy.io) and give us feedback on our [Slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email) community!
+Convoy provides you with reliability and replayability out-of-the-box. If this sounds suitable for your architecture, [try it out](https://dashboard.getconvoy.io) and give us feedback on our [slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email) community!
