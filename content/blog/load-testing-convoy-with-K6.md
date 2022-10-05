@@ -4,7 +4,7 @@ feature_image: load-test-with-k6.png
 primary_author:
     name: Dotun Jolaoso
     twitter: dotunj_
-primary_tag: Product Update
+primary_tag: Engineering
 tags:
     - Convoy
     - Convoy Engineering
