@@ -22,7 +22,7 @@
 							</a>
 						</li>
 						<li>
-							<a target="_blank" rel="noopener noreferrer" href="https://twitter.com/fraindev"><img src="~/assets/images/twitter-icon.svg" alt="twitter logo" /></a>
+							<a target="_blank" rel="noopener noreferrer" href="https://twitter.com/getconvoy"><img src="~/assets/images/twitter-icon.svg" alt="twitter logo" /></a>
 						</li>
 					</ul>
 				</div>
@@ -36,7 +36,14 @@
 					</div>
 					<form class="bg-[#1c2126] border border-[#262f37] rounded-8px -mt-10px p-10px flex" @submit.prevent="requestAccess()">
 						<img src="~/assets/images/mail-primary-icon.svg" class="w-32px" alt="mail icon" />
-						<input type="email" id="email" placeholder="Your email" aria-label="Email" v-model="earlyAccessEmail" class="w-full bg-transparent border-none outline-none text-white-100 placeholder:text-white-100" />
+						<input
+							type="email"
+							id="email"
+							placeholder="Your email"
+							aria-label="Email"
+							v-model="earlyAccessEmail"
+							class="w-full bg-transparent border-none outline-none text-white-100 placeholder:text-white-100"
+						/>
 						<button class="text-16 font-semibold bg-transparent border-none">
 							<img src="~/assets/images/send-primary-icon.svg" alt="send icon" />
 						</button>

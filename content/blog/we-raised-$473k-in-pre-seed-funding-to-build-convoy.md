@@ -3,7 +3,7 @@ title: We raised $437k in pre-seed funding to build Convoy
 feature_image: we_raised_$473_in_preseed.png
 primary_author:
     name: Press
-    twitter: fraindev
+    twitter: getconvoy
 primary_tag: News
 tags:
     - Convoy
