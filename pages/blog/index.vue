@@ -25,7 +25,7 @@
 						</a>
 					</li>
 					<li class="bg-grey-40 bg-opacity-10">
-						<a target="_blank" rel="noopener noreferrer" href="https://twitter.com/fraindev"><img src="~/assets/images/twitter-grey-icon.svg" alt="twitter logo" /></a>
+						<a target="_blank" rel="noopener noreferrer" href="https://twitter.com/getconvoy"><img src="~/assets/images/twitter-grey-icon.svg" alt="twitter logo" /></a>
 					</li>
 					<li class="bg-grey-40 bg-opacity-10">
 						<a target="_blank" rel="noopener noreferrer" href="https://github.com/frain-dev/convoy"><img src="~/assets/images/github-grey-icon.svg" alt="mail logo" /></a>
