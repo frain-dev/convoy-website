@@ -201,7 +201,7 @@ $ convoy scheduler --export-spec "@every 2m"
 
 This will start the scheduler and tell it to run the events export job every 2 minutes. Now we can send events normally, events and event deliveries older than 2 minutes will be archived and hard deleted from the db and search backend; we should also see the files in our configured directory as shown below:
 
-![Event deliveries files](/blog-assets/events-delivery.png)
+![Event deliveries files](/blog-assets/event-delivery.png)
 
 ![Event files](/blog-assets/events.png)
 
