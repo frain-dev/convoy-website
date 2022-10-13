@@ -88,13 +88,14 @@
 						</nuxt-link>
 					</div>
 				</div>
+
 				<div class="w-full desktop:w-380px desktop:right-0 desktop:bottom-0 desktop:mt-0">
 					<img :src="require(`~/static/feature-images/${featurePosts[0].feature_image}`)" class="rounded-bl-10px w-full" alt="featured post img" />
 				</div>
 			</div>
 
 			<div class="desktop:grid desktop:grid-cols-2 gap-y-62px gap-x-48px max-w-[970px] mb-48px mt-48px">
-				<Post v-for="(post, index) in posts.slice(0, 2)" :key="index" :post="post" />
+				<Post v-for="(post, index) in posts.slice(0, 4)" :key="index" :post="post" />
 			</div>
 
 			<div class="bg-white-100 shadow-card rounded-8px flex flex-col items-center max-w-[970px] py-32px px-24px desktop:px-70px mt-40px desktop:mt-48px desktop:flex-row desktop:justify-around">
@@ -113,7 +114,7 @@
 			</div>
 
 			<div class="desktop:grid desktop:grid-cols-2 gap-y-62px gap-x-48px max-w-[970px] mt-48px">
-				<Post v-for="(post, index) in posts.slice(2)" :key="index" :post="post" />
+				<Post v-for="(post, index) in posts.slice(4)" :key="index" :post="post" />
 			</div>
 		</main>
 	</div>
@@ -210,7 +211,7 @@ export default {
 						"@type": "WebPage",
 						"@id": "https://getconvoy.io/blog"
 					},
-					"description": "A Cloud native Webhook Service with out-of-the-box security, reliability and scalability for your webhooks infrastructure.",
+					"description": "An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure.",
 					"url": "https://getconvoy.io/blog"
 				}`,
 					type: 'application/ld+json'

@@ -1,6 +1,7 @@
 ---
 title: Introducing Convoy App Portal
 feature_image: introducing-convoy-app-portal.png
+post_image: introducing-convoy-app-portal.png
 primary_author:
     name: Emmanuel Aina
     twitter: emmanuelaina_
@@ -30,7 +31,7 @@ App Portal is integrated directly into Convoy Core, meaning you can access your 
 
 -   **Through an iframe**: you can embed it into a vanilla HTML/Javascript application, copy the iframe code from the dashboard, and past it into your HTML code.
 
->The token embedded into the iframe code also expire, so you can use this [API](https://convoy.readme.io/reference/post_security-applications-appid-keys) to generate a new token whenever your user enters the page with the iframe.
+> The token embedded into the iframe code also expire, so you can use this [API](https://convoy.readme.io/reference/post_security-applications-appid-keys) to generate a new token whenever your user enters the page with the iframe.
 
 Let's see how this works. App Portal component requires just two props:
 

@@ -1,6 +1,7 @@
 ---
 title: Convoy v0.6
 feature_image: update_screenshot.png
+post_image: update_screenshot.png
 primary_author:
     name: Subomi Oluwalana
     twitter: subomiOluwalana
@@ -21,7 +22,7 @@ When we spoke to lots of our users about Convoy, there was a large consensus on 
 
 ![Screenshot 2022-08-25 at 6.36.58 PM.png](/blog-assets/Screenshot_2022-08-25_at_6.36.58_PM.png)
 
-With an incoming project, you can receive events from multiple sources.  All you need to do is configure the source, with verification or no verification (to act as a proxy) and use the generated URL on the respective provider.
+With an incoming project, you can receive events from multiple sources. All you need to do is configure the source, with verification or no verification (to act as a proxy) and use the generated URL on the respective provider.
 
 ![Screenshot 2022-08-25 at 6.42.11 PM.png](/blog-assets/Screenshot_2022-08-25_at_6.42.11_PM.png)
 
@@ -78,8 +79,8 @@ We plan to support more storage locations in the future. You can also raise a Gi
 
 And that will be all for now.
 
-You can get started easily with Convoy, by self-hosting an instance or using the [cloud](https://dashboard.getconvoy.io/signup). For self-hosting, please follow the instructions [here](https://github.com/frain-dev/convoy#installation-getting-started) to proceed. 
+You can get started easily with Convoy, by self-hosting an instance or using the [cloud](https://dashboard.getconvoy.io/signup). For self-hosting, please follow the instructions [here](https://github.com/frain-dev/convoy#installation-getting-started) to proceed.
 
 ### What’s Next?
 
-We’ve commenced work on Convoy v0.7. This update includes several interesting features like a new events dashboard, Ingesting with PubSub and a new CLI for debugging events. We created [Github discussion posts](https://github.com/frain-dev/convoy/discussions) for each of these features. You can head over and let us know what you think. 
+We’ve commenced work on Convoy v0.7. This update includes several interesting features like a new events dashboard, Ingesting with PubSub and a new CLI for debugging events. We created [Github discussion posts](https://github.com/frain-dev/convoy/discussions) for each of these features. You can head over and let us know what you think.

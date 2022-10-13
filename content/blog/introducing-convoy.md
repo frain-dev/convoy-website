@@ -1,6 +1,7 @@
 ---
 title: Introducing Convoy
 feature_image: introducing_convoy.png
+post_image: introducing_convoy.png
 primary_author:
     name: Subomi Oluwalana
     twitter: subomiOluwalana

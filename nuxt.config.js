@@ -2,7 +2,7 @@ const create = async feed => {
 	feed.options = {
 		title: 'Convoy',
 		link: 'https://getconvoy.io/blog/rss',
-		description: 'A Cloud native Webhook Service with out-of-the-box security, reliability and scalability for your webhooks infrastructure.'
+		description: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure.'
 	};
 
 	const { $content } = require('@nuxt/content');
@@ -49,7 +49,7 @@ export default {
 				name: 'viewport',
 				content: 'width=device-width, initial-scale=1'
 			},
-			{ hid: 'description', name: 'description', content: 'A Cloud native Webhook Service with out-of-the-box security, reliability and scalability for your webhooks infrastructure.' },
+			{ hid: 'description', name: 'description', content: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure.' },
 			{
 				hid: 'keywords',
 				name: 'keywords',
@@ -88,12 +88,12 @@ export default {
 			{
 				hid: 'og:description',
 				property: 'og:description',
-				content: 'A Cloud native Webhook Service with out-of-the-box security, reliability and scalability for your webhooks infrastructure.'
+				content: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure.'
 			},
 			{
 				hid: 'twitter:description',
 				property: 'twitter:description',
-				content: 'A Cloud native Webhook Service with out-of-the-box security, reliability and scalability for your webhooks infrastructure.'
+				content: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure.'
 			},
 			{
 				hid: 'og:image:width',
@@ -157,7 +157,8 @@ export default {
 		// https://go.nuxtjs.dev/content
 		'@nuxt/content',
 		'@nuxtjs/feed',
-		'@nuxtjs/gtm'
+		'@nuxtjs/gtm',
+		'@nuxtjs/sitemap'
 	],
 
 	gtm: {
@@ -176,6 +177,18 @@ export default {
 		scriptDefer: false,
 		scriptURL: 'https://www.googletagmanager.com/gtag/js',
 		crossOrigin: false
+	},
+
+	sitemap: {
+		hostname: 'https://getconvoy.io',
+		gzip: true,
+		exclude: ['/404'],
+		defaults: {
+			cacheTime: 1000 * 60 * 30,
+			changefreq: 'daily',
+			priority: 1,
+			lastmod: new Date()
+		}
 	},
 
 	publicRuntimeConfig: {
