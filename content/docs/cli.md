@@ -27,25 +27,28 @@ Usage:
   Convoy [command]
 
 Available Commands:
+  apps        List all your convoy cli apps
   completion  generate the autocompletion script for the specified shell
-  create      Create a resource
-  get         Get all kind of resources
+  config      config outputs your instances computed configuration
   help        Help about any command
-  queue       Get info about queue
+  listen      Starts a websocket client that listens to events streamed by the server
+  login       Logs into your Convoy instance using a CLI API Key
+  migrate     Convoy migrations
   retry       retry event deliveries with a particular status in a timeframe
-  scheduler   requeue event deliveries in the background with a scheduler.
+  scheduler   schedule a periodic task.
   server      Start the HTTP server
-  upgrade     Convoy Upgrader
+  stream      Start a websocket server to pipe events to another convoy instance
+  switch      Switches the current application context
   version     Print the version
   worker      Start worker instance
-
+  
 Flags:
-      --config string   Configuration file for convoy (default "./convoy.json")
-      --db string       Database dsn or path to in-memory file
-  -h, --help            help for Convoy
-      --queue string    Queue provider ("redis" or "in-memory")
-      --redis string    Redis dsn
-  -v, --version         version for Convoy
+    --config string   Configuration file for convoy (default "./convoy.json")
+    --db string       Database dsn or path to in-memory file
+    -h, --help        help for Convoy
+    --queue string    Queue provider ("redis" or "in-memory")
+    --redis string    Redis dsn
+    -v, --version     version for Convoy
 
 ```
 
@@ -59,14 +62,14 @@ Usage:
   Convoy worker [flags]
 
 Flags:
-  -h, --help                 help for worker
-      --worker-port uint32   Worker port (default 5006)
+  -h, --help             help for worker
+  --worker-port uint32   Worker port (default 5006)
 
 Global Flags:
-      --config string   Configuration file for convoy (default "./convoy.json")
-      --db string       Database dsn or path to in-memory file
-      --queue string    Queue provider ("redis" or "in-memory")
-      --redis string    Redis dsn
+  --config string   Configuration file for convoy (default "./convoy.json")
+  --db string       Database dsn or path to in-memory file
+  --queue string    Queue provider ("redis" or "in-memory")
+  --redis string    Redis dsn
 ```
 
 ### Command Flags
@@ -78,6 +81,246 @@ Global Flags:
 - `--queue`: This is used to specify the queuing backend to use. Either `redis` or `in-memory`.
 
 - `--redis`: This is used to specify the Redis DSN
+
+## Login
+
+Command: `convoy login`
+
+### Synopsis
+
+```console[terminal]
+$ convoy login --help
+Logs into your Convoy instance using a CLI API Key
+
+Usage:
+  Convoy login [flags]
+
+Flags:
+  --api-key string   API Key
+  -h, --help         help for login
+  --host string      Host
+
+Global Flags:
+  --config string   Configuration file for convoy (default "./convoy.json")
+  --db string       Database dsn or path to in-memory file
+  --queue string    Queue provider ("redis")
+  --redis string    Redis dsn
+```
+
+### Description
+
+The login command authenticates your Convoy CLI with an API Key to give access to your Convoy instance.
+
+### Command Flags
+
+- `--help`: Get help on the login command.
+- `--api-key`: This flag specifies the API key for authenticating the CLI. This is a required parameter that must be passed when running the command.
+- `--host`: This flag specifies the host for your Convoy instance. For cloud users, the default host is `https://cli.getconvoy.io`.
+
+## Apps
+
+Command: `convoy apps`
+
+### Synopsis
+
+```console[terminal]
+$ convoy apps --help
+List all your convoy cli apps
+
+Usage:
+  Convoy apps [flags]
+
+Flags:
+  -h, --help   help for apps
+
+Global Flags:
+  --config string   Configuration file for convoy (default "./convoy.json")
+  --db string       Database dsn or path to in-memory file
+  --queue string    Queue provider ("redis")
+  --redis string    Redis dsn
+```
+
+### Description
+
+The apps command returns the list of applications frmo your Convoy instance scoped to the API key provided when the login command was used.
+
+### Command Flags
+
+- `--help`: Get help on the apps command.
+
+## Listen
+
+Command: `convoy listen`
+
+### Synopsis
+
+```console[terminal]
+$ convoy listen --help
+Starts a websocket client that listens to events streamed by the server
+
+Usage:
+  Convoy listen [flags]
+
+Flags:
+    --events string       Events types (default "*")
+    --forward-to string   The host/web server you want to forward events to
+    -h, --help            help for listen
+    --since string        Send discarded events since a timestamp (e.g. 2013-01-02T13:23:37Z) or relative time (e.g. 42m for 42 minutes)
+    --source string       The source id of the source you want to receive events from (only applies to incoming projects)
+
+Global Flags:
+    --config string   Configuration file for convoy (default "./convoy.json")
+    --db string       Database dsn or path to in-memory file
+    --queue string    Queue provider ("redis")
+    --redis string    Redis dsn
+```
+
+### Description
+
+The listen command forwards events streamed from a source in your Convoy instance to a defined web server. The listen command starts a websocket client that listens to events streamed by the servcer.
+
+### Command Flags
+
+- `--events`: Specify the events to be streamed to the web server. Defaults to all events `*` if not specified.
+- `--forward-to`: Specify the host or web server to forward events to.
+- `--since`: Specify the timeline for events to be streamed.
+- `--source`: Specify the source ID of the source you want to receive events from. This only applies to incoming projects.
+
+## Stream
+
+Command: `convoy stream`
+
+### Synopsis
+
+```console[terminal]
+$ convoy migrate --help
+Start a websocket server to pipe events to another convoy instance
+
+Usage:
+  Convoy stream [flags]
+
+Flags:
+  -h, --help                 help for stream
+      --socket-port uint32   Socket port (default 5008)
+
+Global Flags:
+      --config string   Configuration file for convoy (default "./convoy.json")
+      --db string       Database dsn or path to in-memory file
+      --queue string    Queue provider ("redis")
+      --redis string    Redis dsn
+```
+
+### Description
+
+The stream command starts a websocket server to pipe events to another convoy instance.
+
+### Command Flags
+
+- `--help`: Get help on the stream command.
+
+## Migrate
+
+Command: `convoy migrate`
+
+### Synopsis
+
+```console[terminal]
+$ convoy migrate --help
+Convoy migrations
+
+Usage:
+  Convoy migrate [command]
+
+Available Commands:
+  down        Rollback migrations
+  up          Run all pending migrations
+
+Flags:
+  -h, --help   help for migrate
+
+Global Flags:
+      --config string   Configuration file for convoy (default "./convoy.json")
+      --db string       Database dsn or path to in-memory file
+      --queue string    Queue provider ("redis")
+      --redis string    Redis dsn
+
+Use "Convoy migrate [command] --help" for more information about a command.
+```
+
+### Description
+
+The migrate command is responsible for running pending migrations and rolling back migrations.
+
+### Command Flags
+
+- `down`: Rollback migrations.
+- `up`: Run all pending migrations
+
+## Switch
+
+Command: `convoy switch`
+
+### Synopsis
+
+```console[terminal]
+$ convoy switch --help
+Switches the current application context
+
+Usage:
+  Convoy switch [flags]
+
+Flags:
+  -h, --help          help for switch
+      --id string     Application Id
+      --name string   Application Name
+
+Global Flags:
+      --config string   Configuration file for convoy (default "./convoy.json")
+      --db string       Database dsn or path to in-memory file
+      --queue string    Queue provider ("redis")
+      --redis string    Redis dsn
+```
+
+### Description
+
+The switch command switches the active application context to a specified application.
+
+### Command Flags
+
+- `--help`: Get help on the switch command.
+- `--id`: Specify the ID of the application to be made active.
+- `--name`: Specify the name of the application to be made active.
+
+## Config
+
+Command: `convoy config`
+
+## Synopsis
+
+```console[terminal]
+$ convoy config -h
+config outputs your instances computed configuration
+
+Usage:
+  Convoy config [flags]
+
+Flags:
+  -h, --help   help for config
+
+Global Flags:
+      --config string   Configuration file for convoy (default "./convoy.json")
+      --db string       Database dsn or path to in-memory file
+      --queue string    Queue provider ("redis")
+      --redis string    Redis dsn
+```
+
+### Description
+
+The config command outputs the configuration for your active instances.
+
+### Command Flags
+
+- `--help`: Get help on the config worker.
 
 ## Server
 
@@ -287,50 +530,6 @@ At core, convoy is an asynchronous messaging service. It relies on message broke
 - `--status`: This is used to specify the status of event delivery to re-queue.
 
 - `--time`: This is used to specify how far in the past to look for event deliveries. It accepts a duration string. Duration strings are like integers followed by a time unit. E.g. `1h`, `300ms`, or `2h45m` etc.
-
-
-## Queue
-
-Command: `convoy queue`
-
-### Synopsis
-
-```console[terminal]
-$ convoy queue
-Get info about queue
-
-Usage:
-  Convoy queue [command]
-
-Available Commands:
-  batchcheckpending Event delivery on pending
-  batchcheckstream  Event delivery in stream
-  batchcheckzset    Batch Event delivery in ZSET
-  checkpending      Event delivery on pending
-  checkstream       Event delivery in stream
-  checkzset         Event delivery in ZSET
-  consumerinfo      get consumers info
-  export            Export messages from redis stream
-  length            queue length
-  pendinginfo       get Pending info
-  purge             purge queue
-  requeue           Requeue all messages on redis stream
-  streaminfo        get stream info
-  zsetlength        get ZSET Length
-
-Flags:
-  -h, --help   help for queue
-
-Global Flags:
-      --config string   Configuration file for convoy (default "./convoy.json")
-      --db string       Database dsn or path to in-memory file
-      --queue string    Queue provider ("redis" or "in-memory")
-      --redis string    Redis dsn
-```
-
-### Description
-
-The `queue` command is used to debug the queue for a running cluster. 
 
 ## Scheduler
 

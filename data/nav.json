@@ -1,5 +1,9 @@
 [
 	{
+		"title": "Introduction",
+		"link": "/docs/introduction"
+	},
+	{
 		"title": "Overview",
 		"link": "/docs/overview"
 	},
@@ -56,6 +60,14 @@
 		]
 	},
 	{
+		"title": "App Portal",
+		"link": "/docs/app-portal"
+	},
+	{
+		"title": "SDK",
+		"link": "/docs/sdk"
+	},
+	{
 		"title": "Product Manual",
 		"showDropdown": false,
 		"children": [
@@ -84,14 +96,6 @@
 				"link": "/docs/manual/applications-and-endpoints"
 			}
 		]
-	},
-	{
-		"title": "App Portal",
-		"link": "/docs/app-portal"
-	},
-	{
-		"title": "SDK",
-		"link": "/docs/sdk"
 	},
 	{
 		"title": "Release Notes",
