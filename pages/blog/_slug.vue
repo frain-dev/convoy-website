@@ -186,12 +186,12 @@ export default {
 				{
 					hid: 'og:image',
 					property: 'og:image',
-					content: 'https://getconvoy.io/feature-images/' + this.blogPageData.feature_image
+					content: 'https://getconvoy.io/post-images/' + this.blogPageData.post_image
 				},
 				{
 					hid: 'twitter:image',
 					property: 'twitter:image',
-					content: 'https://getconvoy.io/feature-images/' + this.blogPageData.feature_image
+					content: 'https://getconvoy.io/post-images/' + this.blogPageData.post_image
 				},
 				{
 					hid: 'twitter:url',
@@ -223,15 +223,15 @@ export default {
 						"url": "http://twitter.com/${this.blogPageData.primary_author.twitter}",
 						"sameAs": []
 					},
-					"headline": "Introducing Convoy",
+					"headline": ${this.blogPageData.title}",
 					"url": "https://getconvoy.io/blog/${this.blogPageData.slug}",
 					"datePublished": "${this.blogPageData.published_at}",
 					"dateModified": "${this.blogPageData.updatedAt}",
 					"image": {
 						"@type": "ImageObject",
-						"url": "${this.blogPageData.feature_image}",
-						"width": 1400,
-						"height": 1086
+						"url": "https://getconvoy.io/post-images/${this.blogPageData.post_image}",
+						"width": 882,
+						"height": 346
 					},
 					"keywords": "Convoy",
 					"description": "${this.blogPageData.description}",

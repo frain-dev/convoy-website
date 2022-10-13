@@ -1,6 +1,7 @@
 ---
 title: Publish an event to multiple endpoints using convoy
 feature_image: publish-an-event.png
+post_image: publish-an-event.png
 primary_author:
     name: Daniel Oluojomu
     twitter: danvixent

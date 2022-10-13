@@ -1,7 +1,8 @@
 ---
 title: Receiving Webhooks from GitHub with Convoy
 feature_image: webhook-event.png
-primary_author: 
+post_image: webhook-event.png
+primary_author:
     name: Daniel Oluojomu
     twitter: danvixent
 primary_tag: How-to Articles
@@ -10,7 +11,7 @@ tags:
     - Engineering
 featured: false
 description: This article demonstrates in a step-by-step manner the process involved in receiving webhook events from a GitHub repository.
-published_at: 2022-09-28T10:00:00.000+00:00 
+published_at: 2022-09-28T10:00:00.000+00:00
 ---
 
 The release of Convoy v0.6 adds support for receiving webhooks from known providers such as Github, Twitter, and Shopify.
@@ -118,7 +119,7 @@ Alternatively, on the UI, immediately after creating the group, a create applica
 
 **Create a source**
 
-Next, we are to create a source, select the `Ingestion HTTP` source type, and afterward select `Github` as the Ingester HTTP type and set a secret to communicate with your GitHub webhook source. You can find more documentation on sources [here](https://getconvoy.io/docs/manual/sources/). 
+Next, we are to create a source, select the `Ingestion HTTP` source type, and afterward select `Github` as the Ingester HTTP type and set a secret to communicate with your GitHub webhook source. You can find more documentation on sources [here](https://getconvoy.io/docs/manual/sources/).
 
 ![Create a source](/blog-assets/create-a-source.png)
 
@@ -185,21 +186,21 @@ Head over to the sources tab listed on the left sidebar. The GitHub source we ju
 
 To test our setup, let’s configure GitHub to send us webhooks each time we do the following on a repository:
 
-- Push a commit
-- Open a pull request
+-   Push a commit
+-   Open a pull request
 
 You’ll need to create a new repository, you can follow the instructions [here](https://docs.github.com/en/get-started/quickstart/create-a-repo). You’ll also need to have a GitHub personal access token. On the token creation page, make sure the following scopes are selected:
 
 ![Create a GitHub PAT](/blog-assets/create-access-token.png)
 
-Follow the instructions [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to create a GitHub personal access token. 
+Follow the instructions [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to create a GitHub personal access token.
 
 With this token we can subscribe to our source URL to receive events from GitHub by running the following command:
 
 ```console[terminal]
 $ curl \
   -X POST \
-  -H "Accept: application/vnd.github+json" \ 
+  -H "Accept: application/vnd.github+json" \
   -H "Authorization: Bearer <YOUR-PERSONAL-ACCESS-TOKEN>" \
   https://api.github.com/repos/{OWNER}/{REPO}/hooks \
   -d '{"name":"web","active":true,"events":["push","pull_request"],"config":{"url":"<your-convoy-github-source-url>","secret":"<your-source-secret>","content_type":"json","insecure_ssl":"0"}}'
@@ -212,11 +213,11 @@ This can be found in the GitHub [Repository Webhooks REST API](https://docs.gith
 
 Now from your local repository, push a commit, and GitHub will push two events to convoy:
 
-- The first describes your webhook subscription
+-   The first describes your webhook subscription
 
 ![Webhook description](/blog-assets/webhook-description.png)
 
-- The second is the actual webhook for the commit you pushed to the repository.
+-   The second is the actual webhook for the commit you pushed to the repository.
 
 ![Webhook event](/blog-assets/webhook-event.png)
 

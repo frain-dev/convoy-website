@@ -1,6 +1,7 @@
 ---
 title: Understanding the Convoy UI
 feature_image: understanding-the-convoy-ui.png
+post_image: understanding-the-convoy-ui.png
 primary_author:
     name: Emmanuel Aina
     twitter: emmanuelaina_
