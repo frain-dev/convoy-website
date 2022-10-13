@@ -182,6 +182,7 @@ export default {
 	sitemap: {
 		hostname: 'https://getconvoy.io',
 		gzip: true,
+		exclude: ['/404'],
 		defaults: {
 			cacheTime: 1000 * 60 * 30,
 			changefreq: 'daily',
