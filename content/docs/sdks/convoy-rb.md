@@ -26,7 +26,7 @@ $ gem install convoy
 
 ## Setup Client
 
-```ruby
+```ruby[example]
 require 'convoy'
 
 Convoy.ssl = true
@@ -39,7 +39,7 @@ Convoy.base_uri = "https://dashboard.getconvoy.io/api"
 ## Creating an application
 An application represents a user's application trying to receive webhooks. Once you create an application, you'll receive a `uid` as part of the response that you should save and supply in subsequent API calls to perform other requests such as creating an event.
 
-```ruby
+```ruby[example]
 app = Convoy::Application.new(
   params: {
     groupID: "c3637195-53cd-4eba-b9df-e7ba9479fbb2"
@@ -55,7 +55,7 @@ app_response = app.save
 ### Add an Endpoint to the Application
 After creating an application, you'll need to add an endpoint to the application you just created. An endpoint represents a target URL to receive events.
 
-```ruby
+```ruby[example]
 endpoint = Convoy::Endpoint.new(
   app_id,
   data: {
@@ -71,7 +71,7 @@ endpoint_response = endpoint.save
 ## Subscribe For Events
 After creating an endpoint, we need to subscribe the endpoint to events. 
 
-```ruby
+```ruby[example]
 subscription = Convoy::Subscription.new(
   data: {
     app_id: app_id,
@@ -89,7 +89,7 @@ subscription_response = subscription.save
 ## Publish an Event
 Now let's publish an event.
 
-```ruby
+```ruby[example]
 event = Convoy::Event.new(
   data: {
     app_id: app_id,
