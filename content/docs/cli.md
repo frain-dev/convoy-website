@@ -545,9 +545,9 @@ Usage:
   Convoy scheduler [flags]
 
 Flags:
-  -h, --help           help for scheduler
-      --time string    eventdelivery time interval
-      --timer string   schedule timer
+      --cronspec string   scheduler time interval '@every <duration>'
+  -h, --help              help for scheduler
+      --port uint32       port to serve Metrics (default 5007)
 
 Global Flags:
       --config string   Configuration file for convoy (default "./convoy.json")
@@ -562,6 +562,6 @@ The scheduler runs as an automated `retrier`. It performs the same duty as `conv
 
 ### Command Flags
 
-- `--time`: This is used to specify how far in the past to look for event deliveries. It accepts a duration string. Duration strings are like integers followed by a time unit. E.g. `1h`, `300ms`, or `2h45m` etc.
+- `--cronspec`: This is used to specify how far in the past to look for event deliveries. It accepts a duration string. Duration strings are like integers followed by a time unit. E.g. `1h`, `300ms`, or `2h45m` etc.
 
-- `--timer`: This is used to specify the interval to run the `retrier`. It accepts a duration string as specified above.
+- `--port`: This is the port where the metrics from the scheduler serves the metrics and has a default port of `5007`.
