@@ -8,8 +8,7 @@ primary_author:
 primary_tag: Engineering
 tags:
     - Convoy
-    - Convoy Engineering
-    - Load Testing
+    - Engineering
 featured: false
 description: Evaluating the performance and limits of a software is an important practice in software engineering. At Convoy, we employ the load testing method to continously evaluate the performance and test the limits of the products we're building.
 published_at: 2022-10-05T13:00:00.000+00:00
