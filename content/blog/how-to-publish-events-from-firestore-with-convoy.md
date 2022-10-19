@@ -106,16 +106,16 @@ const convoy = new Convoy({ api_key: 'your_api_key', uri: 'self-hosted-instance'
 
         ```js[index.js]
         function createApp() {
-        	try {
-        	  const appData = { name: "my_app", support_email: "support@myapp.com" };
-        	  const response = await convoy.applications.create(appData);
+          try {
+            const appData = { name: "my_app", support_email: "support@myapp.com" };
+            const response = await convoy.applications.create(appData);
 
-        		// You're to save this app id, you'll need it to reference this app
-        		// with it's endpoint and event
-        	  const appId = response.data.uid;
-        	} catch (error) {
-        	  console.log(error);
-        	}
+            // You're to save this app id, you'll need it to reference this app
+            // with it's endpoint and event
+            const appId = response.data.uid;
+          } catch (error) {
+            console.log(error);
+          }
         }
         ```
 
@@ -123,23 +123,23 @@ const convoy = new Convoy({ api_key: 'your_api_key', uri: 'self-hosted-instance'
 
         ```js[index.js]
         function createAppEndpoint(appId) {
-        	try {
-        	  const endpointData = {
-        	    url: "https://0d87-102-89-2-172.ngrok.io",
-        	    description: "Default Endpoint",
-        	    secret: "endpoint-secret",
-        			"http_timeout": "10s"
-        	  };
+          try {
+            const endpointData = {
+              url: "https://0d87-102-89-2-172.ngrok.io",
+              description: "Default Endpoint",
+              secret: "endpoint-secret",
+              "http_timeout": "10s"
+            };
 
-        		// appId from our app creation above
-        	  const response = await convoy.endpoints.create(appId, endpointData);
+            // appId from our app creation above
+            const response = await convoy.endpoints.create(appId, endpointData);
 
-        		// You're to save this endpoint id, you'll need it to reference this
-        		// endpoint in future
-        	  const endpointId = response.data.uid;
-        	} catch (error) {
-        	  console.log(error);
-        	}
+            // You're to save this endpoint id, you'll need it to reference this
+            // endpoint in future
+            const endpointId = response.data.uid;
+          } catch (error) {
+            console.log(error);
+          }
         }
         ```
 
@@ -152,21 +152,23 @@ const convoy = new Convoy({ api_key: 'your_api_key', uri: 'self-hosted-instance'
             try {
             const subscriptionData = {
                 app_id: appId,
+
+                // should Convoy disable the subscription's endpoint when the max retry
+                // limit has been reached and the endpoint continues to fail
                 disable_endpoint: true,
-                        // should Convoy disable the subscription's endpoint when the max retry
-                        // limit has been reached and the endpoint continues to fail
 
                 endpoint_id: endpointId,
                 group_id: projectId,
                 name: "New sub",
-                type: "outgoing"
-                        // is this subscription for an incoming or outgoing project
 
-                        filter_config: {
-                            event_types: ["*"]
-                            // event types you'll like to subscribe to, * here is a wildcard
-                            // to subscribe to all events
-                        }
+                // is this subscription for an incoming or outgoing project
+                type: "outgoing"
+
+                filter_config: {
+                    // event types you'll like to subscribe to, * here is a wildcard
+                    // to subscribe to all events
+                    event_types: ["*"]
+                }
             };
 
             const response = await convoy.subscriptions.create(subscriptionData);
@@ -231,64 +233,64 @@ Now we’re good to go to write our cloud function.
 
 5. Lastly, we want to check the data added to our events collection, pick the required details and send out an event:
 
-```js[index.js]
-const { Convoy } = require('convoy.js');
-// your_api_key is the token gotten from the Convoy project created earlier
-const convoy = new Convoy({ api_key: 'your_api_key' })
-// if you're using your self hosted Convoy instance, you should use the below
-// code snippet instead
-// const convoy = new Convoy({ api_key: 'your_api_key', uri: 'self-hosted-instance url' })
+    ```js[index.js]
+    const { Convoy } = require('convoy.js');
+    // your_api_key is the token gotten from the Convoy project created earlier
+    const convoy = new Convoy({ api_key: 'your_api_key' })
+    // if you're using your self hosted Convoy instance, you should use the below
+    // code snippet instead
+    // const convoy = new Convoy({ api_key: 'your_api_key', uri: 'self-hosted-instance url' })
 
-exports.webhookEvent = functions.firestore.document('/events/{documentId}')
-    .onCreate((snap, context) => {
-			// new data added to our events collection
-			// { app_id: string, data: any, event_type: string }
-      const newData = snap.data();
+    exports.webhookEvent = functions.firestore.document('/events/{documentId}')
+        .onCreate((snap, context) => {
+          // new data added to our events collection
+          // { app_id: string, data: any, event_type: string }
+          const newData = snap.data();
 
-			// use the new data to build a payload for Convoy
-			// containing the app_id (the event receiver) and event type (which the app subscribes to)
-			const eventData = {
-        app_id: newData.app_id,
-        event_type: newData.event_type,
-        data: newData.data,
-	    };
+          // use the new data to build a payload for Convoy
+          // containing the app_id (the event receiver) and event type (which the app subscribes to)
+          const eventData = {
+            app_id: newData.app_id,
+            event_type: newData.event_type,
+            data: newData.data,
+          };
 
-			// send to Convoy
-			return convoy.events
-        .create(eventData)
-        .then((response) => snap)
-        .catch((error) => error);
-			} catch (error) {
-			  return error;
-			}
-    });
-```
+          // send to Convoy
+          return convoy.events
+            .create(eventData)
+            .then((response) => snap)
+            .catch((error) => error);
+          } catch (error) {
+            return error;
+          }
+        });
+    ```
 
-The above code snippet is assuming that the data payload added to the events collection looks like this:
+    The above code snippet is assuming that the data payload added to the events collection looks like this:
 
-```json[Sample payload]
-{
-	"app_id": "3774387-...",
-	"event_type": "payment.success",
-	"data": {
-		// some data you want to send
-	}
-}
-```
+    ```json[Sample payload]
+    {
+      "app_id": "3774387-...",
+      "event_type": "payment.success",
+      "data": {
+        // some data you want to send
+      }
+    }
+    ```
 
-We’ll use this data to build the event payload which requires the following:
+    We’ll use this data to build the event payload which requires the following:
 
--   app_id: The app id of the app that should receive this event
--   event_type: The event type of the event you’ll like to send
--   data: The actual item then sent in the event payload
+    - app_id: The app id of the app that should receive this event
+    - event_type: The event type of the event you’ll like to send
+    - data: The actual item then sent in the event payload
 
-With the Convoy configuration in place, run the command below to test the function locally:
+    With the Convoy configuration in place, run the command below to test the function locally:
 
-```console[terminal]
-$ firebase emulators:start
-```
+    ```console[terminal]
+    $ firebase emulators:start
+    ```
 
-The command above starts a local server on port `4000`. Your local function logs can be viewed at [http://localhost:4000/logs](http://localhost:4000/logs) and the local FireStore DB at [http://localhost:4000/firestore](http://localhost:4000/firestore).
+    The command above starts a local server on port `4000`. Your local function logs can be viewed at [http://localhost:4000/logs](http://localhost:4000/logs) and the local FireStore DB at [http://localhost:4000/firestore](http://localhost:4000/firestore).
 
 With all things going well, you should see screens like these:
 

@@ -58,11 +58,10 @@
 		}
 	}
 
-	.nuxt-content-highlight{
+	.nuxt-content-highlight {
 		@apply mt-12px;
 	}
 
-	
 	// styles for docs content
 	&.docs {
 		h2,
@@ -76,7 +75,6 @@
 		strong {
 			@apply font-medium;
 		}
-
 
 		ul {
 			@apply ml-20px;
@@ -114,7 +112,7 @@
 	// styles for blog content
 	&.blog {
 		ul {
-			@apply list-disc ml-20px mt-14px;
+			@apply list-disc ml-20px my-14px;
 
 			li {
 				@apply list-disc mb-16px text-14 desktop:text-16 text-grey-80;
@@ -122,7 +120,8 @@
 		}
 
 		ol {
-			@apply list-[initial] ml-20px mt-14px;
+			@apply list-[initial] ml-20px my-14px;
+			list-style-type: auto;
 
 			li {
 				@apply text-14 desktop:text-16 text-grey-80;
