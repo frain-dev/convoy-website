@@ -39,14 +39,24 @@ pre[class*='language-'] {
 	line-height: 20px;
 	font-weight: normal;
 
+	&.comment {
+		color: #ababab;
+	}
+
+	&.literal-property,
+	&.property {
+		color: #c679db;
+		font-weight: 300;
+	}
+
+	&.keyword,
+	&.function {
+		color: #7b7bf9;
+	}
+
 	&.operator {
 		background: transparent;
 		color: #16192c;
-	}
-
-	&.property {
-		color: #16192c;
-		font-weight: 300;
 	}
 
 	&.punctuation {

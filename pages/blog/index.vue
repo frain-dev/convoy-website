@@ -69,7 +69,7 @@
 						<div class="font-medium text-14">{{ featurePosts[0].published_at | date }}</div>
 					</div>
 					<nuxt-link :to="'/blog/' + featurePosts[0].slug">
-						<h3 class="desktop:text-32 text-26 font-bold mb-16px desktop:whitespace-nowrap">{{ featurePosts[0].title }}</h3>
+						<h3 class="desktop:text-32 text-26 font-bold mb-16px">{{ featurePosts[0].title }}</h3>
 					</nuxt-link>
 					<p class="font-light text-grey-80 text-16 mb-16px">{{ featurePosts[0].description }}...</p>
 					<div class="flex flex-col flex-wrap my-26px desktop:items-end desktop:flex-row desktop:justify-between">
