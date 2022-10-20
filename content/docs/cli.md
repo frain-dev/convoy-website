@@ -545,7 +545,7 @@ Usage:
   Convoy scheduler [flags]
 
 Flags:
-      --cronspec string   scheduler time interval '@every <duration>'
+      --export-spec string   export scheduler time interval '@every <duration>' (default "@every 24h")
   -h, --help              help for scheduler
       --port uint32       port to serve Metrics (default 5007)
 
@@ -562,6 +562,6 @@ The scheduler runs as an automated `retrier`. It performs the same duty as `conv
 
 ### Command Flags
 
-- `--cronspec`: This is used to specify how far in the past to look for event deliveries. It accepts a duration string. Duration strings are like integers followed by a time unit. E.g. `1h`, `300ms`, or `2h45m` etc.
+- `--export-spec`: This is used to specify how far in the past to look for event deliveries. It accepts a duration string. Duration strings are like integers followed by a time unit. E.g. `1h`, `300ms`, or `2h45m` etc.
 
 - `--port`: This is the port where the metrics from the scheduler serves the metrics and has a default port of `5007`.
