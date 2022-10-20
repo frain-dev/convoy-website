@@ -25,12 +25,14 @@ Source verification can be configured in four different ways on Convoy:
 1. **Hmac:** Hmac is a common mechanism most providers support for webhooks. Providers like [Shopify](https://www.shopify.com/), [Stripe](https://stripe.com) etc. Creating a Hmac source looks like the below:
 ![create hmac source](/docs-assets/ingest-hmac.png)
 
+For HMAC verification mechanism, Convoy provides support for [simple and advanced signatures](/docs/manual/signatures).
+
 2. **Basic Authentication:** While not popular supported some providers user this mechanism to verify events. Creating a Basic Auth source looks like the below:
 ![create basic auth source](/docs-assets/ingest-basic.png)
 
 3. **API Keys:** Similar to Basic Authentication, API Keys while not popular are used by some providers to verify events. Providers like [Mono](https://mono.co)
-![create api key source](/docs-assets/ingest-api.png)
+![create API key source](/docs-assets/ingest-api.png)
 
 4. **Custom Verification:** For some providers, like [Github](https://github.com) and [Twitter](https://twitter.com) the core verification mechanisms aren't sufficient. Though they are wrap around the core mechanisms, these modules have to be built specifically for eah provider. 
 
-Currently, we have support for [Github](https://github.com), and have planned support for [Twitter](https://twitter.com) and [Shopify](https://shopify.com). You can request new sources by sending an email to `support@getconvoy.io`.
+Currently, we have support for [GitHub](https://github.com), and have planned support for [Twitter](https://twitter.com) and [Shopify](https://shopify.com). You can request new sources by sending an email to `support@getconvoy.io`.
