@@ -29,6 +29,10 @@ An endpoint represents a target URL to receive events. An endpoint can be in eit
 
 An event represents a specific event triggered by your system. Convoy persists events sent to [dead endpoints](#dead-endpoints) with a status - `Discarded`. This enables users re-activate their endpoints and easily retry events without the need to re-trigger the events from your systems.
 
+## Event delivery
+
+An event delivery is resource that tracks successive attempts to deliver the event payload to each application endpoint. Multiple event deliveries can be created for a single event, this is influenced by the number of subscriptions that are matched to it.
+
 ## Event Types
 
 Events are sent to an endpoint depending on the event type, which is defined when creating the endpoint defaulting to `"*"` if not set, which is a catch all for all events. An endpoint can define multiple event types, as such it will receive an event from all those events. Event types are matched using direct string comparison and are case sensitive. Support for regex event matching is planned.

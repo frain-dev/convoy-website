@@ -55,6 +55,21 @@ endpointData = {
 (response, status) = convoy.endpoint.create(appId, {}, endpointData)
 ```
 
+## Create a subscription
+
+```python[example]
+subscription_data = {
+  "name": "event-sub",
+  "app_id": app_id,
+  "endpoint_id": endpoint_id,
+}
+
+(response, status) = convoy.subscription.create({}, subscription_data)
+```
+
+With the subscription in place, you're set to send an event.
+
+
 ### Sending an Event
 
 To send an event, you'll need the `uid` we created in the earlier section.

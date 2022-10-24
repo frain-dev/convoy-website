@@ -68,7 +68,7 @@ endpoint = Convoy::Endpoint.new(
 endpoint_response = endpoint.save
 ```
 
-## Subscribe For Events
+### Subscribe For Events
 After creating an endpoint, we need to subscribe the endpoint to events. 
 
 ```ruby[example]
@@ -86,7 +86,7 @@ subscription = Convoy::Subscription.new(
 subscription_response = subscription.save
 ```
 
-## Publish an Event
+### Publish an Event
 Now let's publish an event.
 
 ```ruby[example]

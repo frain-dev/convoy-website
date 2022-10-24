@@ -28,3 +28,13 @@ In this situation, ensure your MongoDB instance is a replica set, up and running
 ```
 mongodb://username:password@mongodburi:port/database
 ```
+
+### Unable to reach Convoy servers
+
+In this situation, add the following IPs to your whitelist:
+
+```
+159.89.231.210
+159.223.166.174
+159.65.239.138
+```

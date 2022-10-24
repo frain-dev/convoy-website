@@ -49,7 +49,7 @@ endpoint_id = response["data"]["uid"]
 
 The next step is to create a subscription to the webhook source. Subscriptions are the conduit through which events are routed from a source to a destination on Convoy.
 
-## Create a subscription
+### Create a subscription
 
 ```python[example]
 subscription_data = {
