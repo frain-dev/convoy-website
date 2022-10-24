@@ -20,4 +20,6 @@ Follow the steps below to have a complete setup on a Digital Ocean droplet.
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/frain-dev/convoy/main/deploy/vm-deploy)"
    ```
 
-4. Visit your domain name and login with [default credentials]() 🎉
+4. Visit your domain name and login with the default credentials:
+   + **Username**: superuser@default.com
+   + **Password**: default

@@ -15,7 +15,7 @@ In addition to being open-source, we provide simple configurations to help you g
 
 ## Configure
 
-Convoy can be configured from either CLI flags, environment variables or a `convoy.json` file. You can head over to the [Configuration](./configuration) page for full details.
+Convoy can be configured from either CLI flags, environment variables or a `convoy.json` file. You can head over to the [Configuration](/docs/configuration) page for full details.
 
 
 ## Platforms
