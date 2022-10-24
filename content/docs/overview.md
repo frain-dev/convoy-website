@@ -9,15 +9,15 @@ order: 1
 This page provides an overview of Convoy and its components, as well as the flow for Incoming and Outgoing webhook operations.
 
 ![Incoming and Outgoing flow](/docs-assets/overview.png)
-<figcaption align="center"><b>Convoy architecture</b></figcaption>
+<figcaption>Convoy architecture</figcaption>
 
 ### Incoming webhook project flow
 ![Incoming flow](/docs-assets/incoming.png)
-<figcaption align="center"><b>Illustration of an incoming webhook flow</b></figcaption>
+<figcaption>Illustration of an incoming webhook flow</figcaption>
 
 ### Outgoing webhook project flow
 ![Outgoing flow](/docs-assets/outgoing.png)
-<figcaption align="center"><b>Illustration of an outgoing webhook flow</b></figcaption>
+<figcaption>Illustration of an outgoing webhook flow</figcaption>
 
 ## Webhook flow
 Webhooks sent to a destination and received from a source are referred to as **events** and their delivery is facilitated by a **subscription**. These webhooks are sent through a Convoy application using the API key and the events are dispatched to **endpoints** matching the event type supplied.

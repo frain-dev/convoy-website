@@ -58,11 +58,10 @@
 		}
 	}
 
-	.nuxt-content-highlight{
+	.nuxt-content-highlight {
 		@apply mt-12px;
 	}
 
-	
 	// styles for docs content
 	&.docs {
 		h2,
@@ -76,7 +75,6 @@
 		strong {
 			@apply font-medium;
 		}
-
 
 		ul {
 			@apply ml-20px;
@@ -108,6 +106,11 @@
 
 		hr {
 			@apply h-0 border border-grey-10 mt-20px mb-30px;
+		}
+
+		p + figcaption,
+		img + figcaption {
+			@apply -mt-28px text-14 text-grey-40;
 		}
 	}
 
