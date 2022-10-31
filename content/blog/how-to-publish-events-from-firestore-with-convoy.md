@@ -9,7 +9,7 @@ primary_tag: Engineering
 tags:
     - Convoy
     - Engineering
-featured: true
+featured: false
 description: Firebase Cloud Functions is a powerful tool that allows you to listen and configure multiple actions triggered by your user's activities on any of your connected Firebase services; real-time database, Firestore, storage, authentication, etc.  Learn how
 published_at: 2022-10-19T13:30:00.000+00:00
 ---
