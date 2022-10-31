@@ -198,4 +198,4 @@ Another useful benefit of Advanced Signatures is we can stop using our API Keys 
 
 ### Conclusion
 
-In this article, we showed how to implement Stripe-Like webhooks and build them in a backward-compatible fashion with your current implementation. We shipped this feature in Convoy. and you can deploy and publish great webhook signatures for your users!
+In this article, we showed how to implement Stripe-Like webhooks and build them in a backward-compatible fashion with your current implementation. We shipped this feature to Convoy OSS and Cloud. You can sign up [here](https://dashboard.getconvoy.io) to get started!
