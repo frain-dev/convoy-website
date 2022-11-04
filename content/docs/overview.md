@@ -5,42 +5,49 @@ id: overview
 order: 1
 ---
 
+
 # Overview
-This page provides an overview of Convoy and its components, as well as the flow for Incoming and Outgoing webhook operations.
 
-![Incoming and Outgoing flow](/docs-assets/overview.png)
-<figcaption>Convoy architecture</figcaption>
+![Incoming and outgoing flow](/docs-assets/webhook-flow.png)
 
-### Incoming webhook project flow
+**Describe the Proxy**
+
+![Convoy proxy](/docs-assets/proxy.png)
+
+Convoy operates in four steps: ingest webhook, persist webhook, queue, and deliver webhook.
+
+**Ingest**
+
+The first operation that is executed when a webhook event is sent to Convoy is ******************ingesting******************. Convoy ingests the webhook event sent by a source and evaluates the validity of the webhook data. The source mask in the request path is used to identify the endpoint to send the webhook.
+
+**********************Persist into DB**********************
+
+The next operation after ingesting the webhook is persisting the webhook into the database. Convoy makes use of a job that picks up new events as they are received and adds them to a queue and a `process-event-creation` job reads from the queue and writes the events to the database.
+
+************Queue************
+
+Once the webhook is persisted in the database, it is enqueued for delivery. Depending on the type of project, Convoy fetches subscriptions in two ways. For an incoming project, Convoy fetches subscriptions using the source mask ID and for outgoing projects, Convoy fetches subscriptions using the app ID.
+
+**************Deliver**************
+
+This is the final stage of a webhook lifecycle. Convoy generates headers using the project’s hash and encoding settings, merges them with the event’s original headers and performs authentication on the endpoint if it’s configured. Convoy then delivers the webhook to the destination where it’ll be consumed which is commonly a backend application.
+
+**Incoming Webhooks**
+
 ![Incoming flow](/docs-assets/incoming.png)
-<figcaption>Illustration of an incoming webhook flow</figcaption>
 
-### Outgoing webhook project flow
+Incoming webhooks are webhooks received from a valid source. Convoy serves as a reliable ingress for webhook events sent from a subscribed source to be delivered to your backend application. For example, webhook events triggered by an action executed from your Paystack dashboard can be sent to your application via an incoming project. Convoy acts as the middleman that enables you to store, filter, and replay webhook events in real-time. Convoy’s incoming projects allow you to receive webhook events from multiple sources, this is particularly ideal for grouping similar services such as payment providers.
+
+**Outgoing Webhooks**
+
 ![Outgoing flow](/docs-assets/outgoing.png)
-<figcaption>Illustration of an outgoing webhook flow</figcaption>
 
-## Webhook flow
-Webhooks sent to a destination and received from a source are referred to as **events** and their delivery is facilitated by a **subscription**. These webhooks are sent through a Convoy application using the API key and the events are dispatched to **endpoints** matching the event type supplied.
+Outgoing webhooks are webhooks sent ( dispatched ) from your infrastructure. Convoy serves as a reliable egress for sending out webhooks to your customers. Convoy’s outgoing projects allow you to dispatch webhook events to your various customer endpoints which are configured as application endpoints. Unlike traditional systems, Convoy also enables you to monitor the delivery status of a webhooks sent, retry event deliveries, apply complex filters and search through events sent at a given period, and get notifications about the health of your customer’s endpoints.
 
-Convoy provides you the option of creating projects which can either be an incoming webhook project or an outgoing webhook project. A project possesses its API keys, settings and components; applications, subscriptions, and sources. An incoming project flow differs from an outgoing project flow.
+**Feature Comparison**
 
-### Events
-Events are webhook data received from a subscribed source or transmitted to a subscribed receiver. There is no specific payload type for events in Convoy; this means any valid JSON event payload can be sent or received.
-
-Event types can be optionally created when sending an event payload to Convoy.
-
-### Subscriptions
-Subscriptions are responsible for conveying webhook events sent to a Convoy project as well as received from a source. By default, all subscriptions are mapped to an application and an application endpoint to ensure event deliveries.
-
-In incoming projects, subscriptions are also tied to a webhook source to retrieve and save events transmitted from the source to Convoy, and in outgoing projects, subscriptions are only mapped to applications to store events sent from Convoy via the API or [SDKs](/docs/sdk).
-
-Subscriptions are also defined to listen to configured event types. For example, a subscription configured to listen to event type `payment.success` will only retrieve this event from a source ( in the case of an incoming project ). This is a useful feature as different events can be mapped to different subscriptions and as a result, make the debugging and filtering of events smoother.
-
-### Apps
-
-An application represents a user's application trying to receive webhooks. Once you create an application on Convoy, you receive an `app_id` that you should save and supply in subsequent API calls to execute requests.
-
-### Endpoints
-
-An endpoint represents a target URL to receive events sent from your Convoy application via a delivery attempt. A delivery attempt represents a single attempt to dispatch an event to an endpoint. An endpoint is mapped to an application in a many-to-one fashion.
-
+| Features | Incoming | Outgoing |
+| --- | --- | --- |
+| Purpose | For API consumers. In this scenario, Convoy acts as a reliable ingress for webhook events. | For API providers. In this scenario, Convoy acts as a reliable egress for webhook events. |
+| Portal | You don’t need a portal because you have access to the entire dashboard. | Each API consumer needs a portal to view their specific endpoint webhook logs. |
+| Event Sources | Events are ingested only through HTTP source URLs. | Events are ingested through REST API and PubSub systems like Amazon SQS, Google PubSub, etc. |
