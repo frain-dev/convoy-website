@@ -7,12 +7,10 @@ order: 1
 # Overview
 
 ![Incoming and outgoing flow](/docs-assets/webhook-flow.png)
-<figcaption>Incoming and Outgoing webhook flow</figcaption>
 
 ## How Convoy works 
 
 ![Convoy proxy](/docs-assets/proxy.png)
-<figcaption>Convoy proxy</figcaption>
 
 Convoy operates in four steps: ingest webhook, persist webhook, queue, and deliver webhook.
 
@@ -35,14 +33,12 @@ This is the final stage of a webhook lifecycle. Convoy generates headers using t
 ## Incoming webhooks
 
 ![Incoming flow](/docs-assets/incoming.png)
-<figcaption>Incoming webhook flow</figcaption>
 
 Incoming webhooks are webhooks received from a valid source. Convoy serves as a reliable ingress for webhook events sent from a subscribed source to be delivered to your backend application. For example, webhook events triggered by an action executed from your Paystack dashboard can be sent to your application via an incoming project. Convoy acts as the middleman that enables you to store, filter, and replay webhook events in real-time. Convoy’s incoming projects allow you to receive webhook events from multiple sources, this is particularly ideal for grouping similar services such as payment providers.
 
 ## Outgoing webhooks
 
 ![Outgoing flow](/docs-assets/outgoing.png)
-<figcaption>Outgoing webhook flow</figcaption>
 
 Outgoing webhooks are webhooks sent ( dispatched ) from your infrastructure. Convoy serves as a reliable egress for sending out webhooks to your customers. Convoy’s outgoing projects allow you to dispatch webhook events to your various customer endpoints which are configured as application endpoints. Unlike traditional systems, Convoy also enables you to monitor the delivery status of a webhooks sent, retry event deliveries, apply complex filters and search through events sent at a given period, and get notifications about the health of your customer’s endpoints.
 
