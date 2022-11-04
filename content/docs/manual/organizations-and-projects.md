@@ -38,13 +38,16 @@ Once the invite is sent, the user will get an email with an invitation link to j
 
 ## Projects
 
-A project is a hierarchical namespace for all core resources within Convoy. All events, applications, endpoints, subscriptions and all other critical configurations belong to a project and a project belongs to an organisation.
+A [project](https://dashboard.getconvoy.io/projects) is a hierarchical namespace for all core resources within Convoy. All events, applications, endpoints, subscriptions and all other critical configurations belong to a project and a project belongs to an organisation.
 
-There are two types of projects; Incoming and Outgoing project. 
+There are two types of projects; Incoming and Outgoing projects. 
 
-An incoming project is designed to receive webhooks from third-party party sources like Github, Twilio, Stripe etc. and even custom sources based off any form of verification. It was designed for API consumers.
+### Incoming project
+An incoming project is designed to receive webhooks from third-party party sources like Github, Twilio, Stripe etc. and even custom sources based on any form of verification. It was designed for API consumers.
 
-An outgoing project is designed to publish webhooks to user's endpoints. It is designed for API providers. 
+### Outgoing project
+
+An outgoing project is designed to publish webhooks to users' endpoints. It is designed for API providers. 
 
 ![Incoming and outgoing projects](/docs-assets/in-and-out-projects.png)
 
@@ -67,7 +70,7 @@ The following are parameters that can be configured on a project.
 |           Limit          	|     Integer     	|                                             	|          5         	|
 | Disable Failing Endpoint 	|     Boolean     	|                                             	|        False       	|
 
-#### Relationship with Subscripition
+#### Relationship with subscription
 
 All these configurations act as sensible defaults for all subscriptions in a project. It is impossible for a project to exist without all these parameters defined in the project. Each configuration can also be described on subscriptions in a project, where a subscription doesn't define these parameters, we fallback to the project's defaults.
 

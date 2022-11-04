@@ -14,7 +14,7 @@ Convoy can be configured by using one of or a combination of the methods below:
 
 The order of preference when all three is used is **CLI flags** > **environment variables** > **config json** file. Values set in the cli flags will override the same config value set with either env vars of in the config file.
 
-## Creating a config json file
+## Creating a config JSON file
 
 An example configuration is shown below:
 
@@ -196,3 +196,13 @@ Alternatively, you can configure Convoy using the following environment variable
 | - `CONVOY_SEARCH_TYPE` | The type of search tool used in the Convoy instance. E.g., `typesense`.|
 | - `CONVOY_TYPESENSE_HOST` | The host address of the typesense instance used. E.g., `http://typesense:8108`.|
 | - `CONVOY_TYPESENSE_API_KEY` | The API key required to interact with typesense.|
+
+## Convoy IPs
+
+Convoy servers operate from the IPs listed below:
+
+```
+159.89.231.210
+159.223.166.174
+159.65.239.138
+```

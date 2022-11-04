@@ -107,6 +107,11 @@
 		hr {
 			@apply h-0 border border-grey-10 mt-20px mb-30px;
 		}
+
+		p + figcaption,
+		img + figcaption {
+			@apply -mt-28px text-14 text-grey-40;
+		}
 	}
 
 	// styles for blog content
