@@ -69,7 +69,8 @@ The next step is to create a subscription to the webhook source. Subscriptions a
 
 ## Create a subscription
 
-```js[example]try {
+```js[example]
+try {
   const subscriptionData = {
     "name": "event-sub",
     "app_id": appId,
