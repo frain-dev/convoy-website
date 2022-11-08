@@ -73,7 +73,8 @@ try {
 
 ## Create a subscription
 
-```js[example]try {
+```js[example]
+try {
   const subscriptionData = {
     "name": "event-sub",
     "app_id": appId,

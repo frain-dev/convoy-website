@@ -66,26 +66,19 @@ $endpointData = [
 $response = $convoy->endpoints()->create($appId, $endpointData);
 ```
 
-### Sending an Event
-
-To send an event, you'll need the `uid` from the application we created earlier.
+### Create a subscription
 
 ```php[example]
-$eventData = [
+$subscriptionData = [
+    "name" => "event-sub",
     "app_id" => $appId,
-    "event_type" => "payment.success",
-    "data" => [
-        "event" => "payment.success",
-        "data" => [
-            "status" => "Completed",
-            "description" => "Transaction Successful",
-            "userID" => "test_user_id808"
-        ]
-    ]
+    "endpoint_id" => $endpointId
 ];
 
-$response = $convoy->events()->create($eventData);
+$response = $convoy->subscriptions()->create($subscriptionData);
 ```
+
+With the subscription in place, you're set to send an event.
 
 ### Sending an Event
 
