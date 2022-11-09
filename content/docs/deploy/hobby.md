@@ -19,7 +19,7 @@ We provide an easy way to deploy Convoy without spending a ton on infrastructure
 
 2. SSH into the VM and run the following:
     ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/frain-dev/convoy/main/deploy/vm-deploy)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/frain-dev/convoy/main/deploy/vm-deploy.sh)"
     ```
 
 4. Visit your domain name and login with the default credentials:
@@ -27,5 +27,5 @@ We provide an easy way to deploy Convoy without spending a ton on infrastructure
    + **Password**: default
 ### Upgrading
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/frain-dev/convoy/main/deploy/vm-upgrade)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/frain-dev/convoy/main/deploy/vm-upgrade.sh)"
 ```
