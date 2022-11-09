@@ -20,15 +20,15 @@ Debugging webhook configuration can be very tedious, many times you are required
 
 We added new components to make this possible which I’ll go into in this section
 
-### Stream Server
+## Stream Server
 
 Convoy ships with a separate stream server which is communicated with using web sockets. This server runs independently of the main Convoy server, it listens on a MongoDB change stream and forwards saved events to registered devices as well as already existing application endpoints. This can be started by running `convoy stream`, it uses the same configuration file as the main convoy server.
 
-### Stream Client
+## Stream Client
 
 The client is used to communicate with the stream server. It can be used to register applications, listen to events sent in the past or tail events as they come in. 
 
-# Putting it all together
+## Putting it all together
 
 To effectively use these tools you would need to connect your local machine to a Convoy host; the host could be our hosted cloud at [https://cli.getconvoy.io](https://cli.getconvoy.io), your hosted Convoy stream server instance or a locally hosted stream server instance.
 
@@ -62,11 +62,11 @@ $ convoy listen --source="f9116a91-b9d5-4a68-b5b0-75a4c115469a" \
 
 When listening for events the `device` is set to active and a `subscription` is created using the device and source passed to the `--source` flag. This subscription will not have an endpoint since the events are be delivered to the device.
 
-![Untitled](/blog-assets/devices.png)
+![devices](/blog-assets/devices.png)
 
-![Untitled](/blog-assets/sources.png)
+![sources](/blog-assets/sources.png)
 
-### Dashboard changes
+## Dashboard changes
 
 When a device is offline, it won’t be able to receive events, so all it’s event deliveries will be in the `discarded` state. An icon which is used to denote that an event delivery is meant for a device is also displayed on the dashboard.
 
@@ -74,7 +74,7 @@ When a device is offline, it won’t be able to receive events, so all it’s ev
 
 Events dashboard showing discarded events
 
-### Replaying missed events
+## Replaying missed events
 
 Using the listen command, we can chose to tail events as they come in or fetch past events which were sent while the device was offline. To fetch past events, we can replay all the discarded event deliveries by passing either a date string or a valid ISO date timestamp to the `--since` flag when running the listen command.
 
@@ -100,6 +100,6 @@ Running the listen command with —since as a valid ISO timestamp
 
 Running the listen command with —since as a valid time duration string
 
-# Conclusion
+## Conclusion
 
 Using Convoy’s CLI the time taken to debug webhook configurations will be reduced drastically and these benefits are provided to you and your customers out of the box. Sounds good for your platform? Why not try it out for yourself and give us feedback on our [slack](https://www.notion.so/Debugging-your-webhooks-with-the-Convoy-CLI-b64ac0aa11934657bd0069c8470da5a8#3e5965868c72431e9d0b072b1ab1ba0e) community!
