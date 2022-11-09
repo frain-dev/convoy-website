@@ -36,7 +36,7 @@ To effectively use these tools you would need to connect your local machine to a
 
 We need to create a `CLI key`. `CLI keys` are access tokens that are scoped to one application. They can only be used to authenticate stream client and receive events from the stream server. To create one, go the application’s page and click on the “+” button.
 
-![Untitled](Debugging%20your%20webhooks%20with%20the%20Convoy%20CLI%20b64ac0aa11934657bd0069c8470da5a8/Untitled.png)
+![Create CLI Key](/blog-assets/create-cli-key.png)
 
 ## Register the app
 
@@ -46,7 +46,7 @@ Copy the generated key and proceed to your terminal to register the application.
 $ convoy login --host "https://cli.getconvoy.io" --api-key "API_KEY"
 ```
 
-![Untitled](Debugging%20your%20webhooks%20with%20the%20Convoy%20CLI%20b64ac0aa11934657bd0069c8470da5a8/Untitled%201.png)
+![Register the app](/blog-assets/register-the-app.png)
 
 ## Listen for events
 
@@ -58,19 +58,19 @@ $ convoy listen --source="f9116a91-b9d5-4a68-b5b0-75a4c115469a" \
 	--forward-to "https://webhook.site/2f1adc9b-1e2b-4809-bd42-3022be6eb3fa" 
 ```
 
-> 💡 The source flag is only required for incoming projects.
+>  The source flag is only required for incoming projects.
 
 When listening for events the `device` is set to active and a `subscription` is created using the device and source passed to the `--source` flag. This subscription will not have an endpoint since the events are be delivered to the device.
 
-![Untitled](Debugging%20your%20webhooks%20with%20the%20Convoy%20CLI%20b64ac0aa11934657bd0069c8470da5a8/Untitled%202.png)
+![Untitled](/blog-assets/devices.png)
 
-![Untitled](Debugging%20your%20webhooks%20with%20the%20Convoy%20CLI%20b64ac0aa11934657bd0069c8470da5a8/Untitled%203.png)
+![Untitled](/blog-assets/sources.png)
 
 ### Dashboard changes
 
 When a device is offline, it won’t be able to receive events, so all it’s event deliveries will be in the `discarded` state. An icon which is used to denote that an event delivery is meant for a device is also displayed on the dashboard.
 
-![Events dashboard showing discarded events](Debugging%20your%20webhooks%20with%20the%20Convoy%20CLI%20b64ac0aa11934657bd0069c8470da5a8/Untitled%204.png)
+![Events dashboard showing discarded events](/blog-assets/dashboard-changes.png)
 
 Events dashboard showing discarded events
 
@@ -92,16 +92,14 @@ $ convoy listen --source="f9116a91-b9d5-4a68-b5b0-75a4c115469a" \
 	--since "2022-10-31"
 ```
 
-![Running the listen command with —since as a valid ISO timestamp](Debugging%20your%20webhooks%20with%20the%20Convoy%20CLI%20b64ac0aa11934657bd0069c8470da5a8/Untitled%205.png)
+![Running the listen command with —since as a valid ISO timestamp](/blog-assets/iso-timestamp.png)
 
 Running the listen command with —since as a valid ISO timestamp
 
-![Running the listen command with —since as a valid time duration string](Debugging%20your%20webhooks%20with%20the%20Convoy%20CLI%20b64ac0aa11934657bd0069c8470da5a8/Untitled%206.png)
+![Running the listen command with —since as a valid time duration string](/blog-assets/time-duration.png)
 
 Running the listen command with —since as a valid time duration string
 
 # Conclusion
 
-Using Convoy’s CLI we can reduce the time taken to debug webhook configurations. We can 
-
-easily […]
+Using Convoy’s CLI the time taken to debug webhook configurations will be reduced drastically and these benefits are provided to you and your customers out of the box. Sounds good for your platform? Why not try it out for yourself and give us feedback on our [slack](https://www.notion.so/Debugging-your-webhooks-with-the-Convoy-CLI-b64ac0aa11934657bd0069c8470da5a8#3e5965868c72431e9d0b072b1ab1ba0e) community!
