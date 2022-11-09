@@ -9,7 +9,7 @@ primary_tag: Engineering
 tags:
     - Convoy
     - Engineering
-featured: true
+featured: false
 description: Building a webhook publishing infrastructure requires providing a way to validate the message’s integrity to enable consumers to validate the webhook event origin. In this blog post, Subomi takes us through how Stripe-like signatures are generated.
 published_at: 2022-10-12T10:00:00.000+00:00
 ---
