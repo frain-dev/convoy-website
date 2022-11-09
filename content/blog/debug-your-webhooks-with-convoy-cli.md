@@ -10,7 +10,7 @@ tags:
     - Convoy
     - Engineering
 featured: true
-description: At Convoy, we make use of retention policies to enable you back up your existing webhook data. In this article, Raymond discusses what a retention policy is and its role in Convoy's engineering process
+description: Debugging webhook configuration can be very tedious, many times you are required plumb together multiple tools to get it to work end to end. In this article, we demostrate Convoy CLI tool to enable easier onboarding.
 published_at: 2022-10-12T10:00:00.000+00:00
 ---
 
@@ -27,6 +27,8 @@ Convoy ships with a separate stream server which is communicated with using web 
 ## Stream Client
 
 The client is used to communicate with the stream server. It can be used to register applications, listen to events sent in the past or tail events as they come in. 
+
+> Both the stream server and client are in alpha.
 
 ## Putting it all together
 
