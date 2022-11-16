@@ -9,9 +9,9 @@ primary_tag: Engineering
 tags:
     - Convoy
     - Engineering
-featured: true
+featured: false
 description: Debugging webhook configuration can be very tedious, many times you are required plumb together multiple tools to get it to work end to end. In this article, we demostrate Convoy CLI tool to enable easier onboarding.
-published_at: 2022-10-12T10:00:00.000+00:00
+published_at: 2022-11-09T10:00:00.000+00:00
 ---
 
 Debugging webhook configuration can be very tedious, many times you are required to plumb together multiple tools to get it to work end to end, the tools include but are not limited to a proxy (e.g. ngrok), an HTTP dump (e.g. webhook.site) and most importantly the service provider’s server which triggers the webhook; which might be Convoy if you are the service provider. We have built tools to bridge that gap by allowing Convoy users and their users (in the case of API companies) debug event headers and payloads. Using our new CLI tools you can test event delivery with ease and in minutes.
