@@ -11,7 +11,7 @@ tags:
     - Engineering
 featured: true
 description: Convoy facilitates publishing webhook events from your application to your clients by serving as a reliable egress. Learn how you can publish your webhook events to multiple users and endpoint from your FastAPI API using the Convoy Python SDK.
-published_at: 2022-16-11T16:30:00.000+00:00
+published_at: 2022-11-16T16:30:00.000+00:00
 ---
 
 Webhooks are messages ( or payload ) sent from an application on the execution of an operation. They are also used to communicate between a chain of services; for example, a payment provider emits webhook events to an e-commerce application’s endpoint after an operation.
