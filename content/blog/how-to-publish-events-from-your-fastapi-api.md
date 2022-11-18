@@ -5,10 +5,11 @@ post_image: fastapi-convoy.png
 primary_author:
     name: Abdulazeez Abdulazeez
     twitter: kvng_zeez
-primary_tag: Engineering
+primary_tag: Tutorial
 tags:
     - Convoy
     - Engineering
+    - Tutorial
 featured: true
 description: Convoy facilitates publishing webhook events from your application to your clients by serving as a reliable egress. Learn how you can publish your webhook events to multiple users and endpoint from your FastAPI API using the Convoy Python SDK.
 published_at: 2022-11-16T16:30:00.000+00:00
