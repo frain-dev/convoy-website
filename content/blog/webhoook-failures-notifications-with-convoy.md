@@ -5,10 +5,10 @@ post_image: webhook-failures-notifications.png
 primary_author:
     name: Subomi Oluwalana
     twitter: subomiOluwalana
-primary_tag: Engineering
+primary_tag: Product
 tags:
     - Convoy
-    - Engineering
+    - Product
 featured: false
 description: It is the responsibility of a good webhook delivery system to send out a form of automated notification on these delivery problems. Learn how Convoy handles webhook failures notification in this article.
 published_at: 2022-11-18T16:00:00.000+00:00
