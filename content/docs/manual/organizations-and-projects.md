@@ -11,25 +11,25 @@ Convoy provides the tools to properly categorise your data. These tools are orga
 
 ## Organisations
 
-An organisation is the highest level namespace within a Convoy instance. It comprises of several projects. Ideally, this should map to a real world organisation or some form of high level grouping.
+An organisation is the highest level namespace within a Convoy instance. It comprises several projects. Ideally, this should map to a real-world organisation or some form of high-level grouping.
 
 As a new user, an organization can be created by clicking on the **Create Organisation** on the dashboard:
 
 ![Create organization](/docs-assets/create-org-dashboard.png)
 
-To switch between organizations, to open the current organization's settings, or to create a new organization, use the account dropdown on the right of the top bar.
+To switch between organizations, open the current organization's settings, or create a new organization, use the account dropdown on the right of the top bar.
 
 ![Organization operations](/docs-assets/org-process.png)
 
 ### Adding new members
 
-In the Community Edition, all users are super users, and so all users can invite other team members. 
+In the Community Edition, all users are super users, so all users can invite other team members. 
 
 > Before doing this, ensure you have your SMTP configuration set up.
 
 ![Team page](/docs-assets/team-page.png)
 
-To add a new team member, visit the teams page at the top middle of the page.
+To add a new team member, visit the **teams** page at the top middle of the page.
 
 ![Add new teammate](/docs-assets/new-teammate.png)
 
@@ -42,14 +42,13 @@ A [project](https://dashboard.getconvoy.io/projects) is a hierarchical namespace
 
 There are two types of projects; Incoming and Outgoing projects. 
 
+![Incoming and outgoing projects](/docs-assets/in-and-out-projects.png)
 ### Incoming project
 An incoming project is designed to receive webhooks from third-party party sources like Github, Twilio, Stripe etc. and even custom sources based on any form of verification. It was designed for API consumers.
 
 ### Outgoing project
 
 An outgoing project is designed to publish webhooks to users' endpoints. It is designed for API providers. 
-
-![Incoming and outgoing projects](/docs-assets/in-and-out-projects.png)
 
 ### Configure a Project
 
@@ -70,9 +69,17 @@ The following are parameters that can be configured on a project.
 |           Limit          	|     Integer     	|                                             	|          5         	|
 | Disable Failing Endpoint 	|     Boolean     	|                                             	|        False       	|
 
+### Retention policies
+
+Convoy uses retention policies to preserve webhook events sent from your Convoy application or received to your Convoy application. The default period for retaining webhook events is set to **30 days**.
+
+The retention policy can be configured during project initialisation or modified from the project settings for an existing project.
+
+![Retention policy](/docs-assets/retention-period.png)
+
 #### Relationship with subscription
 
-All these configurations act as sensible defaults for all subscriptions in a project. It is impossible for a project to exist without all these parameters defined in the project. Each configuration can also be described on subscriptions in a project, where a subscription doesn't define these parameters, we fallback to the project's defaults.
+All these configurations act as sensible defaults for all subscriptions in a project. A project can't exist without all these parameters defined in the project. Each configuration can also be described on subscriptions in a project, where a subscription doesn't define these parameters, we fall back to the project's defaults.
 
 ### Multiple Projects
 
