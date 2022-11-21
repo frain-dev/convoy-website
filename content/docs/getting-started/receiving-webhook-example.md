@@ -24,17 +24,16 @@ The steps below guide you on how to receive your webhooks using Convoy.
     
 An Organisation is the first resource you create on Convoy. It is used to house all other resources needed to receive webhooks.
 
-![Create Organisation](/docs-assets/create-org.png)
+![Create Organisation](/docs-assets/create-org-dashboard.png)
 
 After creating an organisation, you will be able to create a project from your dashboard. Your dashboard should look like this:
-
 ![Organisation dashboard](/docs-assets/org-dashboard.png)
 
 > A Project is used to isolate several webhooks projects in an organisation.
 
 3. **Create an Incoming Webhooks Project.**
 From your dashboard, click on the **Create Project** button and select an Incoming webhooks project type:
-![New incoming project](/docs-assets/new-project.png)
+![New incoming project](/docs-assets/in-and-out-projects.png)
 
 Once your project is created, an API key will be generated and displayed. The API key will be used to authorise operations on your Convoy account from the SDKs and API:
 ![New project API key](/docs-assets/project-api-key.png)
