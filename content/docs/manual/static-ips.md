@@ -5,9 +5,13 @@ id: static-ips
 order: 3
 ---
 
-# Convoy IPs
+# Static IPs
 
-Convoy cloud servers operate from a static IP address. The IPs listed below represent Convoy cloud:
+Static IP addresses are how we ensure all webhook events originate from the correct source without malicious entities impersonating the source. This added security was added for users with strict firewall restrictions. If you're deploying your Convoy instance, please read our [deployment guide](/docs/deploy/overview) on how to set the egress server to ensure IP addresses don't change.
+
+## Convoy Cloud IPs
+
+For our cloud customers, who are subscribed on a plan with Static IPs, all webhook events will originate from the following IP addresses:
 
 ```
 159.89.231.210

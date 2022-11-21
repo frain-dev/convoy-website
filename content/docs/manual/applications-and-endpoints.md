@@ -18,7 +18,7 @@ An endpoint is a specific destination that can receive webhook events. Each endp
 
 ### Endpoint authentication
 
-Endpoints, both new and existing, can now require an API key to receive events.
+Endpoint authentication is a scenario where the endpoint owner needs to specify an authentication mechanism separate from signatures to validate the webhook origin. New and existing endpoints can now require an API Key to authenticate against the endpoint. In the future, we hope to support more authentication mechanisms.
 
 ![Endpoint authentication](/docs-assets/endpoint-auth.png)
 
