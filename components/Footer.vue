@@ -54,25 +54,19 @@
 					</div>
 					<form class="bg-[#1c2126] border border-[#262f37] rounded-8px -mt-10px p-10px flex" @submit.prevent="requestAccess()">
 						<img src="~/assets/images/mail-primary-icon.svg" class="w-32px" alt="mail icon" />
-						<input
-							type="email"
-							id="email"
-							placeholder="Your email"
-							aria-label="Email"
-							v-model="earlyAccessEmail"
-							class="w-full bg-transparent border-none outline-none text-white-100 placeholder:text-white-100"
-						/>
+						<input type="email" id="email" placeholder="Your email" aria-label="Email" v-model="earlyAccessEmail" class="w-full bg-transparent border-none outline-none text-white-100 placeholder:text-white-100" />
 						<button class="text-16 font-semibold bg-transparent border-none">
 							<img src="~/assets/images/send-primary-icon.svg" alt="send icon" />
 						</button>
 					</form>
 				</div>
 			</div>
-			
+
 			<p class="mt-24px text-left desktop:text-right">Copyright {{ currentYear }}, All Rights Reserved</p>
 		</div>
 	</footer>
 </template>
+
 <script>
 export default {
 	data() {
@@ -83,19 +77,19 @@ export default {
 			footerLinks: [
 				{
 					title: 'Product',
-					links: [{ name: 'Features', link: '/#features'}, { name: 'Open Source', link: 'http://github.com/frain-dev/convoy', isExternal: true}, { name: 'Cloud', link: 'https://dashboard.getconvoy.io/login', isExternal: true}]
+					links: [{ name: 'Features', link: '/#features' }, { name: 'Open Source', link: 'http://github.com/frain-dev/convoy', isExternal: true }, { name: 'Cloud', link: 'https://dashboard.getconvoy.io/login', isExternal: true }]
 				},
 				{
 					title: 'Community',
-					links: [{ name: 'Slack', link: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', isExternal: true}, { name: 'Github Discussion', link: 'https://github.com/frain-dev/convoy/discussions', isExternal: true}]
+					links: [{ name: 'Slack', link: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', isExternal: true }, { name: 'Github Discussion', link: 'https://github.com/frain-dev/convoy/discussions', isExternal: true }]
 				},
 				{
 					title: 'Resources',
-					links: [{ name: 'API Reference', link: 'https://convoy.readme.io/', isExternal: true}, { name: 'Documentation', link: '/docs', isExternal: false}, { name: 'Status Page', link: '#', isExternal: true}]
+					links: [{ name: 'API Reference', link: 'https://convoy.readme.io/', isExternal: true }, { name: 'Documentation', link: '/docs', isExternal: false }, { name: 'Status Page', link: '#', isExternal: true }]
 				},
 				{
 					title: 'Company',
-					links: [{ name: 'About Us', link: '/about'}, { name: 'Team', link: '/about#team', isExternal: false}, { name: 'Terms of Use', link: '/legal/Terms-of-Use-Convoy.pdf', isExternal: true}, { name: 'Privacy Policy', link: '/legal/Privacy-Policy-Convoy.pdf', isExternal: true}]
+					links: [{ name: 'About Us', link: '/about' }, { name: 'Team', link: '/about#team', isExternal: false }, { name: 'Terms of Use', link: '/legal/Terms-of-Use-Convoy.pdf', isExternal: true }, { name: 'Privacy Policy', link: '/legal/Privacy-Policy-Convoy.pdf', isExternal: true }]
 				}
 			]
 		};
