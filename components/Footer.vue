@@ -85,7 +85,7 @@ export default {
 				},
 				{
 					title: 'Resources',
-					links: [{ name: 'API Reference', link: 'https://convoy.readme.io/', isExternal: true }, { name: 'Documentation', link: '/docs', isExternal: false }, { name: 'Status Page', link: '#', isExternal: true }]
+					links: [{ name: 'API Reference', link: 'https://convoy.readme.io/', isExternal: true }, { name: 'Documentation', link: '/docs', isExternal: false }, { name: 'Status Page', link: 'https://convoy.statuspage.io', isExternal: true }]
 				},
 				{
 					title: 'Company',
