@@ -1,12 +1,14 @@
 <template>
 	<div>
-		<Header></Header>
-		<header class="bg-[url(assets/images/docs-bg.svg)] bg-no-repeat bg-cover h-[350px] w-full"></header>
+		<!-- <header class="bg-[url(assets/images/docs-bg.svg)] bg-no-repeat bg-cover h-[350px] w-full"></header> -->
+		<section class="cta-section">
+			<div class="max-w-[1200px] min-h-[510px] mobile:min-h-[700px] desktop:min-h-[510px] w-full m-auto text-white-100 px-20px pt-330px">
+				<h1 class="text-center font-bold text-26 desktop:text-[40px] mb-16px">Download Convoy</h1>
+				<p class="text-center text-16 mb-40px mt-20px max-w-[530px] m-auto">Download Convoy with your favorite package manager.</p>
+			</div>
+		</section>
 
-		<div class="max-w-[1200px] m-auto -mt-130px mb-88px">
-			<p class="text-28 font-bold text-center mb-8px text-white-100">Download Convoy</p>
-			<p class="text-white-100 max-w-[590px] m-auto text-center text-16 mb-40px">Download Convoy with your favorite package manager.</p>
-
+		<section class="-mt-26px mb-150px">
 			<div class="bg-grey-20 rounded-8px w-fit m-auto flex flex-row mb-54px">
 				<li class="list-none" v-for="tab of tabs" :key="tab.id">
 					<button
@@ -18,8 +20,8 @@
 					</button>
 				</li>
 			</div>
-
-			<section class="download bg-grey-20 rounded-4px p-24px max-w-[724px] w-full m-auto">
+	
+			<div class="download bg-grey-20 rounded-4px p-24px max-w-[724px] w-full m-auto">
 				<div v-if="activeTab == 'mac'" class="font-semibold text-14 tracking-[0.03em] uppercase text-grey-40 mb-16px">Homebrew</div>
 				<div v-if="activeTab == 'linux'" class="font-semibold text-14 tracking-[0.03em] uppercase text-grey-40 mb-16px">Package manager</div>
 				<div v-if="activeTab == 'window'" class="font-semibold text-14 tracking-[0.03em] uppercase text-grey-40 mb-16px">Windows binary download</div>
@@ -107,13 +109,14 @@
 						<img src="~/assets/images/angle-right-primary.svg" class="w-16px h-16px" alt="right" />
 					</nuxt-link>
 				</div>
-			</section>
-		</div>
-		<Footer></Footer>
+			</div>
+		</section>
 	</div>
 </template>
+
 <script>
 export default {
+	layout: 'home',
 	data() {
 		return {
 			tabs: [

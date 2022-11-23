@@ -11,12 +11,7 @@
 						<img src="~/assets/images/play.svg" class="mr-8px" alt="play" />
 						Watch our Demo
 					</a>
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://dashboard.getconvoy.io/signup"
-						class="desktop:w-full text-center py-12px px-18px max-w-[173px] text-14 font-medium rounded-8px bg-primary-100 text-white-100 flex items-center justify-center"
-					>
+					<a target="_blank" rel="noopener noreferrer" href="https://dashboard.getconvoy.io/signup" class="desktop:w-full text-center py-12px px-18px max-w-[173px] text-14 font-medium rounded-8px bg-primary-100 text-white-100 flex items-center justify-center">
 						Get Started
 					</a>
 				</div>
@@ -59,19 +54,16 @@
 				<h1 class="font-bold text-32 desktop:text-[48px] mb-16px text-center">Watch our Demo</h1>
 				<p class="text-center text-14 desktop:text-16 max-w-[529px] m-auto mb-90px">A quick getting started guide on using Convoy to send and receive webhook events.</p>
 				<div class="max-w-[900px] w-full m-auto">
-					<iframe
-						class="w-full h-[350px] desktop:h-[510px] rounded-16px shadow-[0_5px_22px_rgba(232,237,250,0.2)] border-8 border-white-100"
-						src="https://www.youtube-nocookie.com/embed/DSIet81oBsg"
-						title="YouTube video player"
-						frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-						allowfullscreen
-					></iframe>
+					<iframe class="w-full h-[350px] desktop:h-[510px] rounded-16px shadow-[0_5px_22px_rgba(232,237,250,0.2)] border-8 border-white-100" src="https://www.youtube-nocookie.com/embed/DSIet81oBsg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 		</section>
+
+		<GetStartedSection></GetStartedSection>
+
 	</div>
 </template>
+
 <script>
 export default {
 	layout: 'home'
