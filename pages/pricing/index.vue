@@ -12,7 +12,7 @@
 				<li class="shadow-default bg-white-100" v-for="(plan, index) in plans" :key="index" :class="`${index == 0 ? 'rounded-tl-16px rounded-bl-16px rounded-br-16px md-max:rounded-tr-16px' : ''} ${index == 2 ? 'rounded-tr-16px rounded-bl-16px rounded-br-16px md-max:rounded-tl-16px' : ''}`">
 					<div class="head px-32px pt-32px pb-16px">
 						<div class="flex">
-							<img src="~/assets/images/developer-plan-icon.png" class="mr-16px" alt="plan icon">
+							<img  :src="require(`~/assets/images/${plan.id}-plan.svg`)" class="mr-16px" alt="plan icon">
 							<h2 class="text-grey-100 text-24 font-bold">
 								<span class="text-grey-40 text-18 font-medium">For</span><br>
 								{{ plan.name }}
@@ -45,7 +45,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="mobile:pt-84px desktop:pl-84px px-40px">
+			<div class="mobile:py-84px desktop:pl-84px px-40px">
 				<img src="~/assets/images/pricing-plans-img.png" class="max-h-[530px]" alt="convoy dashboard screenshot">
 			</div>
 		</section>
@@ -71,7 +71,7 @@ export default {
 			plans: [
 				{
 					name: 'Developers',
-					id: 'developers',
+					id: 'developer',
 					description: 'This is a perfect plan for starters',
 					price: '$0',
 					frequency: '/monthly',
@@ -79,7 +79,7 @@ export default {
 				},
 				{
 					name: 'Businesses',
-					id: 'businesses',
+					id: 'business',
 					description: 'This is a perfect plan for startups',
 					price: '$40',
 					frequency: '/monthly',
