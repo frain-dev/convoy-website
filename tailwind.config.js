@@ -42,7 +42,8 @@ module.exports = {
 			md: { min: '1288px' },
 			'md-max': { max: '1288px' },
 			mobile: { max: '1054px' },
-			xs: { max: '425px' }
+			footer: { max: '630px' },
+			xs: { max: '425px' },
 		},
 		borderRadius: {
 			'2px': '2px',
