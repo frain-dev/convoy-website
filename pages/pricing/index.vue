@@ -84,7 +84,7 @@ export default {
 					description: 'This is a perfect plan for starters',
 					price: '$0',
 					frequency: '/monthly',
-					features: ['1 user', '100,000 events', '3 day retention']
+					features: ['1 user', '100,000 events', '3 days data retention', 'Community Support']
 				},
 				{
 					name: 'Businesses',
@@ -92,7 +92,7 @@ export default {
 					description: 'This is a perfect plan for startups',
 					price: '$40',
 					frequency: '/monthly',
-					features: ['Unlimited users', '1 million events', '30 day retention']
+					features: ['Unlimited users', '1 million events', '30 day retention', 'Customer service support']
 				},
 				{
 					name: 'Enterprise',
@@ -100,7 +100,7 @@ export default {
 					description: 'For users who want to do more',
 					price: 'Custom',
 					frequency: '',
-					features: ['Unlimited users and events', 'Custom data retention', 'Enterprise support and more']
+					features: ['Unlimited users', 'Unlimited events', 'Custom data retention', 'Enterprise support and more']
 				}
 			],
 			features: ['Batch event retry', 'Portal links', 'CLI', 'Replay attack prevention', 'Advanced signatures', 'SDK support in multiple languages', 'Endpoint authentication', 'Email and slack notifications']
