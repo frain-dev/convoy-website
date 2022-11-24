@@ -128,7 +128,7 @@ export default {
 		],
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-			{ rel: 'canonical', href: 'https://getconvoy.io' }
+			{ hid: 'canonical', rel: 'canonical', href: 'https://getconvoy.io' }
 		]
 	},
 

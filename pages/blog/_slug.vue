@@ -199,7 +199,7 @@ export default {
 					content: `https://getconvoy.io/blog/${this.blogPageData.slug}`
 				}
 			],
-			link: [{ rel: 'canonical', href: `https://getconvoy.io/blog/${this.blogPageData.slug}` }],
+			link: [{ hid: 'canonical', rel: 'canonical', href: `https://getconvoy.io/blog/${this.blogPageData.slug}` }],
 			script: [
 				{
 					innerHTML: `

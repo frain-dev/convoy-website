@@ -1,32 +1,13 @@
 <template>
 	<div>
+		<Header></Header>
+
 		<Nuxt />
-
-		<!-- cta  -->
-		<section class="px-20px pb-100px desktop:pb-130px">
-			<div class="mt-100px desktop:mt-130px max-w-[1000px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
-				<h1 class="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px desktop:mb-16px">Start sending webhooks now, risk free</h1>
-				<p class="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">
-					Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time and get started today.
-				</p>
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="https://dashboard.getconvoy.io/signup"
-					class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit"
-				>
-					Get started for free
-					<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
-				</a>
-			</div>
-		</section>
-
 		<!-- blog -->
 		<section class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] desktop:p-80px p-40px">
-			<div
-				class="
+			<div class="
 					bg-white-100
-					rounded-8px
+					rounded-12px
 					shadow-card
 					max-w-[970px]
 					pt-32px
@@ -34,8 +15,7 @@
 					m-auto
 					desktop:pl-56px desktop:pt-56px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
 					mobile:mb-48px
-				"
-			>
+				">
 				<div class="desktop:max-w-[470px] p-10px">
 					<div class="flex justify-between items-center mb-24px">
 						<div class="py-2px px-16px bg-[#0747a6] bg-opacity-10 rounded-2px font-medium text-14 text-primary-100 uppercase">Blog post</div>
@@ -47,12 +27,7 @@
 
 					<p class="font-light text-grey-80 text-16 mb-16px">{{ featurePosts.description }}...</p>
 					<div class="flex flex-col flex-wrap my-26px desktop:items-end desktop:flex-row desktop:justify-between">
-						<a
-							v-if="featurePosts.primary_author"
-							:href="featurePosts.primary_author.twitter ? 'http://twitter.com/' + featurePosts.primary_author.twitter : ''"
-							target="_blank"
-							class="flex items-start mb-40px desktop:mb-0"
-						>
+						<a v-if="featurePosts.primary_author" :href="featurePosts.primary_author.twitter ? 'http://twitter.com/' + featurePosts.primary_author.twitter : ''" target="_blank" class="flex items-start mb-40px desktop:mb-0">
 							<div class="w-40px h-40px rounded-[50%] mr-16px overflow-hidden flex items-center bg-grey-20">
 								<img :src="require(`~/static/profile-images/${featurePosts.primary_author.name}.png`)" class="w-full mr-12px rounded-[50%]" alt="author imge" />
 							</div>

@@ -44,7 +44,13 @@
 	body {
 		@apply bg-[#fafafe] text-black font-inter;
 	}
-	html{
+	html {
 		@apply scroll-smooth;
+	}
+
+	.cta-section {
+		background: url('~/assets/images/background-pattern.svg') no-repeat, linear-gradient(180deg, #2c2f3e 0%, #422f41 100%);
+		background-size: cover;
+		background-position: top;
 	}
 }

@@ -1,12 +1,11 @@
 <template>
 	<div class="flex-wrap min-h-screen bg-[#fafafe]">
-		<header class="w-full bg-transparent -mt-110px">
-			<Header></Header>
-		</header>
+		<Header class="w-full bg-transparent -mt-110px"></Header>
 
 		<div class="pt-150px pb-100px max-w-[1237px] w-full mt-110px m-auto">
 			<Nuxt />
 		</div>
+		
 		<Footer></Footer>
 	</div>
 </template>
