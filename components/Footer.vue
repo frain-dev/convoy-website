@@ -89,7 +89,7 @@ export default {
 				},
 				{
 					title: 'Company',
-					links: [{ name: 'About Us', link: '/about' }, { name: 'Team', link: '/about#team', isExternal: false }, { name: 'Terms of Use', link: '/legal/Terms-of-Use-Convoy.pdf', isExternal: true }, { name: 'Privacy Policy', link: '/legal/Privacy-Policy-Convoy.pdf', isExternal: true }]
+					links: [{ name: 'Terms of Use', link: '/legal/Terms-of-Use-Convoy.pdf', isExternal: true }, { name: 'Privacy Policy', link: '/legal/Privacy-Policy-Convoy.pdf', isExternal: true }]
 				}
 			]
 		};
