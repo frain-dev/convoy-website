@@ -7,7 +7,7 @@
 		<section class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] desktop:p-80px p-40px">
 			<div class="
 					bg-white-100
-					rounded-8px
+					rounded-12px
 					shadow-card
 					max-w-[970px]
 					pt-32px
