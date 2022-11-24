@@ -73,7 +73,6 @@ export default {
 		return {
 			currentYear: '',
 			earlyAccessEmail: '',
-			isSubmitingloadingEarlyAccessForm: false,
 			footerLinks: [
 				{
 					title: 'Product',
@@ -103,7 +102,6 @@ export default {
 			this.currentYear = currentDate.getFullYear();
 		},
 		async requestAccess() {
-			this.isSubmitingloadingEarlyAccessForm = true;
 			try {
 				const response = await fetch('/.netlify/functions/subscribe', {
 					method: 'POST',
@@ -120,11 +118,16 @@ export default {
 					})
 				});
 				await response.json();
-				this.earlyAccessEmail = '';
-				this.isSubmitingloadingEarlyAccessForm = false;
+				this.earlyAccessEmail = 'Subscribed';
+				this.setDefaultAccessButtonText();
 			} catch (error) {
-				this.isSubmitingloadingEarlyAccessForm = false;
+				this.setDefaultAccessButtonText();
 			}
+		},
+		setDefaultAccessButtonText() {
+			setTimeout(() => {
+				this.earlyAccessEmail = "";
+			}, 3000);
 		}
 	}
 };

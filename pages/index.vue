@@ -246,7 +246,6 @@ export default {
 	layout: "home",
 	data() {
 		return {
-			isSubmitingloadingEarlyAccessForm: false,
 			subscribeButtonText: "Subscribe",
 			earlyAccessEmail: "",
 			tabs: [
@@ -321,7 +320,7 @@ export default {
 			}
 		},
 		async requestAccess() {
-			this.isSubmitingloadingEarlyAccessForm = true;
+			this.subscribeButtonText = 'Subscribing...'
 			try {
 				const response = await fetch("/.netlify/functions/subscribe", {
 					method: "POST",

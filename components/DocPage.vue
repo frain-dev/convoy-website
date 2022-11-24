@@ -82,8 +82,8 @@ export default {
 	},
 	methods: {
 		async requestAccess() {
-			this.isSubmitingloadingEarlyAccessForm = true;
 			try {
+				this.subscribeButtonText = 'Subscribing...';
 				const response = await fetch('/.netlify/functions/subscribe', {
 					method: 'POST',
 					mode: 'cors',
@@ -102,11 +102,9 @@ export default {
 				this.subscribeButtonText = 'Subscribed';
 				this.setDefaultAccessButtonText();
 				this.earlyAccessEmail = '';
-				this.isSubmitingloadingEarlyAccessForm = false;
 			} catch (error) {
 				this.subscribeButtonText = 'Error';
 				this.setDefaultAccessButtonText();
-				this.isSubmitingloadingEarlyAccessForm = false;
 			}
 		},
 		setDefaultAccessButtonText() {
