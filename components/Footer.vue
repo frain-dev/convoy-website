@@ -8,7 +8,7 @@
 					</div>
 
 					<h4 class="mt-22px text-16 font-semibold mb-10px">Address</h4>
-					<p class="text-14 mb-24px">251 Little Falls Drive, Wilminton, DE. 19808</p>
+					<p class="text-14 mb-24px">251 Little Falls Drive, Wilminton, DE, US. 19808</p>
 
 					<ul class="socials">
 						<li>
