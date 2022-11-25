@@ -65,8 +65,8 @@
 		</section>
 
 		<section class="all-plans">
-			<div class="flex items-center justify-center flex-wrap bg-primary-500 max-w-[1440px] m-auto">
-				<div class="list bg-gradient-to-br from-[#2c2f3e] to-[#422f41] text-white-100 p-60px max-w-[610px] w-full">
+			<div class="flex items-center justify-center md-max:flex-wrap bg-primary-500 max-w-[1440px] m-auto">
+				<div class="list bg-gradient-to-br from-[#2c2f3e] to-[#422f41] text-white-100 p-60px md:max-w-[610px] w-full ">
 					<h2 class="text-32 font-bold mb-16px">Available on all plans</h2>
 					<p class="max-w-[390px]">Convoy scales with you; choose a plan that fits you and we'll take it from there.</p>
 					<ul class="mt-46px">
@@ -76,7 +76,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="mobile:py-84px desktop:pl-84px pl-40px mobile:pr-40px md:ml-auto">
+				<div class="pl-40px md-max:py-84px desktop:pl-84px md-max:pr-40px md:ml-auto md-max:m-auto">
 					<img src="~/assets/images/pricing-plans.png" class="max-h-[398px]" alt="convoy dashboard screenshot" />
 				</div>
 			</div>
