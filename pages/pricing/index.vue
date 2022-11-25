@@ -77,8 +77,7 @@
 					</ul>
 				</div>
 				<div class="mobile:py-84px desktop:pl-84px pl-40px mobile:pr-40px md:ml-auto">
-					<img src="~/assets/images/pricing-plans-img.png" class="max-h-[530px] md-max:block md:hidden" alt="convoy dashboard screenshot" />
-					<img src="~/assets/images/pricing-plans.png" class="max-h-[530px] md-max:hidden md:block" alt="convoy dashboard screenshot" />
+					<img src="~/assets/images/pricing-plans.png" class="max-h-[398px]" alt="convoy dashboard screenshot" />
 				</div>
 			</div>
 		</section>
