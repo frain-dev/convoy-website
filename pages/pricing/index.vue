@@ -64,20 +64,22 @@
 			</ul>
 		</section>
 
-		<section class="flex items-center justify-center flex-wrap bg-primary-500 all-plans">
-			<div class="list bg-gradient-to-br from-[#2c2f3e] to-[#422f41] text-white-100 p-60px max-w-[610px] w-full">
-				<h2 class="text-32 font-bold mb-16px">Available on all plans</h2>
-				<p class="max-w-[390px]">Convoy scales with you; choose a plan that fits you and we'll take it from there.</p>
-				<ul class="mt-46px">
-					<li class="list-check pb-6px mb-26px flex items-center" v-for="(feature, index) in features" :key="index">
-						<img src="~/assets/images/check-round-icon.svg" alt="check icon" class="mr-24px" />
-						{{ feature }}
-					</li>
-				</ul>
-			</div>
-			<div class="mobile:py-84px desktop:pl-84px pl-40px mobile:pr-40px md:ml-auto">
-				<img src="~/assets/images/pricing-plans-img.png" class="max-h-[530px] md-max:block md:hidden" alt="convoy dashboard screenshot" />
-				<img src="~/assets/images/pricing-plans.png" class="max-h-[530px] md-max:hidden md:block" alt="convoy dashboard screenshot" />
+		<section class="all-plans">
+			<div class="flex items-center justify-center flex-wrap bg-primary-500 max-w-[1440px] m-auto">
+				<div class="list bg-gradient-to-br from-[#2c2f3e] to-[#422f41] text-white-100 p-60px max-w-[610px] w-full">
+					<h2 class="text-32 font-bold mb-16px">Available on all plans</h2>
+					<p class="max-w-[390px]">Convoy scales with you; choose a plan that fits you and we'll take it from there.</p>
+					<ul class="mt-46px">
+						<li class="list-check pb-6px mb-26px flex items-center" v-for="(feature, index) in features" :key="index">
+							<img src="~/assets/images/check-round-icon.svg" alt="check icon" class="mr-24px" />
+							{{ feature }}
+						</li>
+					</ul>
+				</div>
+				<div class="mobile:py-84px desktop:pl-84px pl-40px mobile:pr-40px md:ml-auto">
+					<img src="~/assets/images/pricing-plans-img.png" class="max-h-[530px] md-max:block md:hidden" alt="convoy dashboard screenshot" />
+					<img src="~/assets/images/pricing-plans.png" class="max-h-[530px] md-max:hidden md:block" alt="convoy dashboard screenshot" />
+				</div>
 			</div>
 		</section>
 
