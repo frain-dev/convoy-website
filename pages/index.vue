@@ -206,9 +206,9 @@
 								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
 								URL per Event Type
 							</li>
-							<li class="flex items-center text-white-100">
+							<li class="flex items-center text-white-100 font-medium text-18">
 								<img src="~/assets/images/feature-check-icon.svg" class="w-24px mr-24px" alt="check icon" />
-								Rich UI - Event Logs & Querying.
+								Rich UI - Event Logs & Querying
 							</li>
 						</ul>
 					</div>
