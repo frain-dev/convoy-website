@@ -129,7 +129,7 @@ export default {
 			showCategories: false,
 			earlyAccessEmail: '',
 			isSubmitingloadingEarlyAccessForm: false,
-			tags: ['All Posts', 'Product Update', 'News', 'Engineering']
+			tags: ['All Posts', 'Product Update', 'News', 'Engineering', 'Tutorial']
 		};
 	},
 	watch: {
