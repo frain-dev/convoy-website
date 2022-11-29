@@ -16,7 +16,7 @@ This is an authenticated API to push events to a Convoy instance. It is designed
 
 ## HTTP Ingestion
 
-This is an unauthenticated API to receive webhook events from third-party webhook providers like Github, Shopify etc, It is designed for incoming projects to receive events from any provider. For each provider, a source needs to be configured with it's necessary verification. Once configured, we provide you with a unique link to be supplied to the provider. 
+This is an unauthenticated API to receive webhook events from third-party webhook providers like Github, Shopify etc, It is designed for incoming projects to receive events from any provider. For each provider, a source needs to be configured with its necessary verification. Once configured, we provide you with a unique link to be supplied to the provider. 
 
 ### Verification
 
