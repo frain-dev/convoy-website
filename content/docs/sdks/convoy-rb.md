@@ -50,7 +50,7 @@ endpoint_response = endpoint.save
 ```
 
 ## Subscribe For Events
-After creating an endpoint, we need to susbscribe the endpoint to events. 
+After creating an endpoint, we need to subscribe the endpoint to events. 
 
 ```ruby
 subscription = Convoy::Subscription.new(
@@ -81,8 +81,3 @@ event = Convoy::Event.new(
 
 event_response = event.save
 ```
-
-## Cheers! 🎉
-
-You have successfully created a Convoy application to send events to your configured endpoint.
-

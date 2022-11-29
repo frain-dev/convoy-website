@@ -102,4 +102,4 @@ event, err := c.Events.Create(&convoy.CreateEventRequest{
 
 ## Cheers! 🎉
 
-You have sucessfully created a Convoy application to send webhook events to your configured endpoint.
+You have successfully created a Convoy application to send events to your configured endpoint.
