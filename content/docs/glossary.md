@@ -11,9 +11,9 @@ order: 8
 This section collects brief definitions of some of the technical terms used in the documentation for Convoy.
 
 
-## Groups
+## Projects
 
-Groups are used to create logical contexts or separate environments (dev, staging & production). Different groups can also be created for different teams each with its own login details on the same convoy deployment.
+Projects are used to create logical contexts or separate environments (dev, staging & production). Different projects can also be created for different teams each with its own login details on the same convoy deployment.
 
 ## Endpoints
 
