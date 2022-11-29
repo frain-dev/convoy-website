@@ -40,18 +40,18 @@ Once your project is created, an API key will be generated and displayed. The AP
 
 Copy the API key and store it in a secure place. Due to security reasons, the API key can not be displayed after closing the window.
 
-The next step is to create your application and endpoint.
+The next step is to create your endpoint.
 
-4. **Create your Backend Application and Endpoint.** 
+4. **Create your endpoint.** 
     
-An application and an endpoint represent your backend application and its webhook endpoint. 
+An endpoint is a specific destination that can receive webhook events. 
 
 Provide the following configuration parameters. For example:
 - App Name: Backend
 - Endpoint Description: My primary endpoint
 - Endpoint URL: URL of primary Endpoint.
 
-![Create backend application and endpoint](/docs-assets/create-app-and-endpoint.png)
+![Create backend application and endpoint](/docs-assets/create-endpoint.png)
 
 5. **Create a Source**
 A Source is an event source. It is what describes how webhook events are ingested into Convoy. Provide the following configuration parameters:
