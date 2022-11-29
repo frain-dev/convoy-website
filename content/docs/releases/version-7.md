@@ -25,6 +25,10 @@ We released Convoy v0.7 with new features, several bug fixes, UI enhancement, an
 
 The changelogs for this minor release version and any maintenance versions are listed below.
 
+[Convoy version v0.7.4](https://github.com/frain-dev/convoy/releases/tag/v0.7.4)
+
+[Convoy version v0.7.3](https://github.com/frain-dev/convoy/releases/tag/v0.7.3)
+
 [Convoy version v0.7.2](https://github.com/frain-dev/convoy/releases/tag/v0.7.2)
 
 [Convoy version v0.7.1](https://github.com/frain-dev/convoy/releases/tag/v0.7.1)
