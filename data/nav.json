@@ -64,10 +64,6 @@
 		]
 	},
 	{
-		"title": "App Portal",
-		"link": "/docs/app-portal"
-	},
-	{
 		"title": "SDK",
 		"link": "/docs/sdk"
 	},
@@ -84,8 +80,8 @@
 				"link": "/docs/manual/organizations-and-projects"
 			},
 			{
-				"title": "Applications and Endpoints",
-				"link": "/docs/manual/applications-and-endpoints"
+				"title": "Endpoints",
+				"link": "/docs/manual/endpoints"
 			},
 			{
 				"title": "Signatures",
@@ -102,6 +98,10 @@
 			{
 				"title": "Event and Event Deliveries",
 				"link": "/docs/manual/events-and-event-deliveries"
+			},
+			{
+				"title": "Portal Links",
+				"link": "/docs/manual/portal-links"
 			},
 			{
 				"title": "Static IPs",

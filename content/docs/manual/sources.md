@@ -8,11 +8,11 @@ order: 11
 Sources
 ======
 
-Sources are how events are routed into the system. In this segment we discuss the various types of sources and their use-cases. Convoy currently supports two types of sources: REST API sources and HTTP Ingested sources.
+Sources are how events are routed into the system. In this segment we discuss the various types of sources and their use cases. Convoy currently supports two types of sources: REST API sources and HTTP Ingested sources.
 
 ## REST API
 
-This is an authenticated API to push events to a Convoy instance. It is designed for an outgoing event project to push events to a specific application. This source is only and automatically available for all outgoing projects.
+This is an authenticated API to push events to a Convoy instance. It is designed for an outgoing event project to push events to a specific endpoint. This source is only and automatically available for all outgoing projects.
 
 ## HTTP Ingestion
 
