@@ -4,9 +4,13 @@ description: 'Sending an event with Convoy Python SDK.'
 id: convoy-python
 ---
 
-The first step involved in sending a webhook event is configuring your SDK client.
+## Install Client
+Install convoy-python with:
+```bash
+$ pip install convoy-python
+```
 
-## Setup client
+## Configure
 ```python[example]
 from convoy import Convoy
 convoy = Convoy({"api_key":"your_api_key", "project_id": "your_project_id"})
@@ -17,7 +21,8 @@ In the event you're using a self-hosted convoy instance, you can define the `uri
 ```python[example]
 convoy = Convoy({ "api_key": 'your_api_key', "uri": 'self-hosted-instance',"project_id": "your_project_id" })
 ```
-### Create an endpoint
+
+## Create an Endpoint
 
 An endpoint represents a target URL to receive events.
 
@@ -33,7 +38,7 @@ endpointData = {
 endpoint_id = response["data"]["uid"]
 ```
 
-## Subscribe for events
+## Subscribe for Events
 After creating an endpoint, we need to subscribe the endpoint to events. 
 
 ```python[Create subscription]
@@ -45,7 +50,7 @@ subscription_data = {
 (response, status) = convoy.subscription.create({}, subscription_data)
 ```
 
-### Sending an event
+## Send an Event
 
 To send an event, you'll need the `uid` we created in the earlier section.
 

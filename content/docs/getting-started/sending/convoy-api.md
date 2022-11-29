@@ -5,7 +5,7 @@ id: convoy-api
 ---
 Sending webhooks with the API does not require a client setup like the SDKs. The API key retrieved from your dashboard will be added to the Authorization header and the project ID will be added to the request URL.
 
-## Create an endpoint
+## Create an Endpoint
 
 An endpoint is a specific destination that can receive webhook events. Once you create an endpoint, you'll receive a `uid` as part of the response that you should save and supply in subsequent API calls to perform other requests such as creating an event.
 
@@ -25,7 +25,7 @@ curl --request POST \
 
 The next step is to create a subscription to the webhook source. Subscriptions are the conduit through which events are routed from a source to a destination on Convoy.
 
-### Create a subscription
+## Subscribe for Events
 
 ```console[example]
 curl --request POST \
@@ -39,7 +39,8 @@ curl --request POST \
 ```
 
 With the subscription in place, you're set to send an event.
-## Send an event
+
+## Send an Event
 
 To send an event, you'll need the `uid` from the application you created earlier.
 
@@ -49,7 +50,7 @@ curl --request POST \
   --header 'Authorization: Bearer <api-key>' \
   --header 'Content-Type: application/json' \
   --data '{
-    "app_id": "<app-id>",
+    "endpoint_id": "<endpoint-id>",
     "event_type": "payment.success",
     "data": {
       "event": "payment.success",

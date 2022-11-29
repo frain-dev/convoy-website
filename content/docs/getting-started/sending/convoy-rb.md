@@ -4,27 +4,13 @@ description: "Convoy Ruby SDK Configuration"
 id: convoy-rb
 ---
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-```console[terminal]
-$ gem 'convoy'
+## Install Client
+Install convoy.rb with:
+```bash
+$ gem install convoy.rb
 ```
 
-And then execute:
-
-```console[terminal]
-$ bundle install
-```
-
-Or install it yourself as:
-
-```console[terminal]
-$ gem install convoy
-```
-
-## Setup Client
+## Configure
 To configure your client, provide your `api_key` and `project_id`, see below:
 ```ruby
 require 'convoy'
@@ -34,7 +20,7 @@ Convoy.api_key = "CO.M0aBe..."
 Convoy.project_id = "23b1..."
 ```
 
-## Create Endpoint
+## Create an Endpoint
 An endpoint represents a target URL to receive webhook events. You should create one endpoint per user/business or whatever scope works well for you. 
 
 ```ruby
@@ -49,7 +35,7 @@ endpoint = Convoy::Endpoint.new(
 endpoint_response = endpoint.save
 ```
 
-## Subscribe For Events
+## Subscribe for Events
 After creating an endpoint, we need to subscribe the endpoint to events. 
 
 ```ruby
@@ -63,7 +49,7 @@ subscription = Convoy::Subscription.new(
 subscription_response = subscription.save
 ```
 
-## Send Event
+## Send an Event
 To send an event, you'll need to pass the `uid` from the endpoint we created earlier.
 
 ```ruby

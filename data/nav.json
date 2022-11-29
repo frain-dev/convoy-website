@@ -12,10 +12,6 @@
 		"showDropdown": false,
 		"children": [
 			{
-				"title": "Installation",
-				"link": "/docs/getting-started/installation"
-			},
-			{
 				"title": "Sending your first webhook event with Convoy",
 				"link": "/docs/getting-started/sending-webhook-example"
 			},
