@@ -1,7 +1,7 @@
 ---
 title: Sending Webhooks With Flask
-feature_image: fastapi-convoy.png
-post_image: fastapi-convoy.png
+feature_image: flask-convoy.png
+post_image: flask-convoy.png
 primary_author:
     name: Abdulazeez Abdulazeez
     twitter: kvng_zeez
