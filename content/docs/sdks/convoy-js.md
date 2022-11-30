@@ -4,7 +4,7 @@ description: "Convoy JavaScript SDK Configuration"
 id: convoy.js
 ---
 
-### Installation
+### Install Client
 
 Install convoy.js with
 
@@ -12,7 +12,7 @@ Install convoy.js with
 $ npm install convoy.js
 ```
 
-### Setup Client
+### Configure
 
 Next, require the `convoy` module and setup with your auth credentials.
 
@@ -36,25 +36,7 @@ const convoy = new Convoy({
 });
 ```
 
-### Creating an Application
-
-An application represents a user's application trying to receive webhooks. Once you create an application, you'll receive a `uid` as part of the response that you should save and supply in subsequent API calls to perform other requests such as creating an event.
-
-```js[example]
-try {
-  const appData = { name: "my_app", support_email: "support@myapp.com" };
-
-  const response = await convoy.application.create(appData);
-
-  const appId = response.data.uid;
-} catch (error) {
-  console.log(error);
-}
-```
-
-### Add Application Endpoint
-
-After creating an application, you'll need to add an endpoint to the application you just created. An endpoint represents a target URL to receive events.
+### Create an Endpoint
 
 ```js[example]
 try {
@@ -77,7 +59,6 @@ try {
 try {
   const subscriptionData = {
     "name": "event-sub",
-    "app_id": appId,
     "endpoint_id": endpointId,
   };
 
@@ -92,12 +73,10 @@ With the subscription in place, you're set to send an event.
 
 ### Sending an Event
 
-To send an event, you'll need the `uid` from the application we created earlier.
-
 ```js[example]
 try {
   const eventData = {
-    app_id: appId,
+    endpoint_id: endpointId,
     event_type: "payment.success",
     data: {
       event: "payment.success",
