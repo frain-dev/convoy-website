@@ -11,10 +11,9 @@ Static IP addresses are how we ensure all webhook events originate from the corr
 
 ## Convoy Cloud IPs
 
-For our cloud customers, who are subscribed on a plan with Static IPs, all webhook events will originate from the following IP addresses:
+For our cloud customers who are subscribed on a plan with Static IPs, all webhook events will originate from the following IP addresses:
 
 ```
-159.89.231.210
-159.223.166.174
-159.65.239.138
+159.223.160.239
+147.182.169.205
 ```

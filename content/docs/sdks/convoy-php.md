@@ -4,7 +4,7 @@ description: "Convoy PHP SDK Configuration"
 id: convoy-php
 ---
 
-### Installation
+### Install Client
 
 To install the package, you will need to be using Composer in your project.
 
@@ -14,7 +14,7 @@ To get started quickly,
 $ composer require frain/convoy symfony/http-client nyholm/psr7
 ```
 
-### Setup Client
+### Configure
 
 Next, import the `convoy` module and setup with your auth credentials.
 
@@ -39,21 +39,7 @@ $convoy = new Convoy([
 ]);
 ```
 
-### Creating an Application
-
-An application represents a user's application trying to receive webhooks. Once you create an application, you'll receive a `uid` from the response that you should save and supply in subsequent API calls to perform other requests such as creating an event.
-
-```php[example]
-$appData = ["name" => "my_app", "support_email" => "support@myapp.com"];
-
-$response = $convoy->applications()->create($appData);
-
-$appId = $response['data']['uid'];
-```
-
-### Add Application Endpoint
-
-After creating an application, you'll need to add an endpoint to the application you just created. An endpoint represents a target URL to receive events.
+### Create an Endpoint
 
 ```php[example]
 $endpointData = [
@@ -66,12 +52,11 @@ $endpointData = [
 $response = $convoy->endpoints()->create($appId, $endpointData);
 ```
 
-### Create a subscription
+### Create a Subscription
 
 ```php[example]
 $subscriptionData = [
     "name" => "event-sub",
-    "app_id" => $appId,
     "endpoint_id" => $endpointId
 ];
 
@@ -80,13 +65,13 @@ $response = $convoy->subscriptions()->create($subscriptionData);
 
 With the subscription in place, you're set to send an event.
 
-### Sending an Event
+### Send an Event
 
 To send an event, you'll need the `uid` from the application we created earlier.
 
 ```php[example]
 $eventData = [
-    "app_id" => $appId,
+    "endpoint_id" => $endpointId,
     "event_type" => "payment.success",
     "data" => [
         "event" => "payment.success",

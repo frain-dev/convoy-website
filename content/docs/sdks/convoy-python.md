@@ -1,50 +1,32 @@
 ---
 title: Convoy-Python SDK
-description: 'Convoy-Python SDK Configuration'
+description: 'Sending an event with Convoy Python SDK.'
 id: convoy-python
 ---
 
-### Installation
-Install convoy-python with
-
-```bash[terminal]
+## Install Client
+Install convoy-python with:
+```bash
 $ pip install convoy-python
 ```
 
-### Setup Client
-Next, import the `convoy` module and setup with your auth credentials.
-
+## Configure
 ```python[example]
 from convoy import Convoy
-convoy = Convoy({"api_key":"your_api_key"})
-```
-The SDK also supports authenticating via Basic Auth by defining your username and password.
-
-```python[example]
-convoy = Convoy({"username":"default", "password":"default"})
+convoy = Convoy({"api_key":"your_api_key", "project_id": "your_project_id"})
 ```
 
-In the event you're using a self hosted convoy instance, you can define the url as part of what is passed into convoy's constructor.
+In the event you're using a self-hosted convoy instance, you can define the `uri` as part of what is passed into tbe convoy's constructor.
 
 ```python[example]
-convoy = Convoy({ "api_key": 'your_api_key', "uri": 'self-hosted-instance' })
-```
-### Creating an Application
-
-An application represents a user's application trying to receive webhooks. Once you create an application, you'll receive a `uid` that you should save and supply in subsequent API calls to perform other requests such as creating an event.
-
-```python[example]
-appData = { "name": "my_app", "support_email": "support@myapp.com" }
-(response, status)  = convoy.applications.create({}, appData)
-appId = response["data"]["uid"]
-
+convoy = Convoy({ "api_key": 'your_api_key', "uri": 'self-hosted-instance',"project_id": "your_project_id" })
 ```
 
-### Add Application Endpoint
+### Create an Endpoint
 
-After creating an application, you'll need to add an endpoint to the application you just created. An endpoint represents a target URL to receive events.
+An endpoint represents a target URL to receive events.
 
-```python[example]
+```python[Create endpoint]
 endpointData = {
     "url": "https://0d87-102-89-2-172.ngrok.io",
     "description": "Default Endpoint",
@@ -52,31 +34,29 @@ endpointData = {
     "events": ["*"],
   }
 
-(response, status) = convoy.endpoint.create(appId, {}, endpointData)
+(response, status) = convoy.endpoint.create({}, endpointData)
+endpoint_id = response["data"]["uid"]
 ```
 
-## Create a subscription
+## Create a Subscription
+After creating an endpoint, we need to subscribe the endpoint to events. 
 
-```python[example]
+```python[Create subscription]
 subscription_data = {
-  "name": "event-sub",
-  "app_id": app_id,
-  "endpoint_id": endpoint_id,
+  "endpoint_id": endpoint_id
+  "name": "New subscription"
 }
 
 (response, status) = convoy.subscription.create({}, subscription_data)
 ```
 
-With the subscription in place, you're set to send an event.
-
-
-### Sending an Event
+### Send an Event
 
 To send an event, you'll need the `uid` we created in the earlier section.
 
-```python[example]
+```python[Create event]
 eventData = {
-    "app_id": appId,
+    "endpoint_id": endpoint_id,
     "event_type": "payment.success",
     "data": {
       "event": "payment.success",
@@ -90,3 +70,7 @@ eventData = {
 
 (response, status) = convoy.event.create({}, eventData)
 ```
+
+## Cheers! 🎉
+
+You have successfully created a Convoy application to send events to your configured endpoint.

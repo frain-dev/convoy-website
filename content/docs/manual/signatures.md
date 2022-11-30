@@ -10,7 +10,7 @@ Signatures
 
 Webhook signatures are strings used to verify the validity of a webhook event sent to Convoy. This signature is passed as header values in the format: `X-Convoy-Signature`.
 
-The signature encoding, hashing algorithm and signing secret are all retrieved from your Convoy source definition. These values are used in validating the webhook signature in the header accompanying the webhook event.
+The signature encoding, hashing algorithm and signing secret are all retrieved from your project settings. These values are used in validating the webhook signature in the header accompanying the webhook event.
 
 ![Configuring HMAC](/docs-assets/hmac-signature.png)
 
@@ -59,3 +59,34 @@ An example header with the advanced signature is:
 The signature above contains a timestamp `t` and multiple signature hashes `v0` and `v1`. Convoy matches at least one of the signatures to verify the authenticity of the webhook event sent.
 
 To further understand the concept of advanced signatures, we have made available a [blog post](/blog/generating-stripe-like-webhook-signatures) on how they are generated as well as their use cases.
+
+## Verifying signatures manually
+
+Convoy uses a hash-based message authentication code ( HMAC ) with an encoding method set in the project settings to generate signatures. Convoy [SDKs](/docs/sdks) are equipped with methods to verify your signatures, but you can also follow the steps outlined below to manually verify your signatures:
+
+### Step 1: Detect the signature type and extract the signatures
+
+Split the signature header into a list of variables using the delimiter `,` and store the list into a variable. Determine the type of signature passed in the header from the length of the list; the signature is an advanced signature if the length of the variable is greater than one and if the length equals 1, the signature type is simple.
+
+If the signature is an advanced signature, the signature is further split using `=` as the delimiter to get a key and value pair. The timetstamp and signatures values can now be retrieved respectively.
+
+If the signature is a simple signature, the signature string is returned unprocessed.
+
+### Step 2: Create a new signature string
+
+Now, we need to generate our own signature. To do this, using a HMAC library of your choice (most languages provide functions in the standard library for this purpose) create a digest with the following:
+- A shared secret.
+- Encoding: `base64` or `hex`.
+- Request Payload. If it's an advanced signature, payload should be a concatenated string of the timestamp and the request payload delimited by `,`. It should look like: `{timestamp},{payload}`
+
+### Step 3: Verify Timestamp (Optional)
+
+If it's an advanced signature, before comparing signatures. Verify that the timestamp is within your tolerance limit. Events outside your tolerance range can be ignored.
+
+### Step 4: Compare the signatures
+
+Compare the signatures from the request header to the signature computed from the previous step. With simple signatures, a string match is all that is required, while with advanced signatures, our computed signature must match at least one of the supplied signatures in the request header. To prevent against [timing attacks](https://en.wikipedia.org/wiki/Timing_attack) please use constant time string comparison for matching signatures.
+
+## References
+
+- [Generating Stripe-like Webhook Signatures](https://getconvoy.io/blog/generating-stripe-like-webhook-signatures/)

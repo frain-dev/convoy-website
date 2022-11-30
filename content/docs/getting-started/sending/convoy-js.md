@@ -4,9 +4,13 @@ description: "Send wehbook event with Convoy JavaScript SDK."
 id: convoy.js
 ---
 
-The first step involved in sending a webhook event is configuring your SDK client.
+## Install Client
+Install convoy.js with:
+```bash
+$ npm install convoy.js
+```
 
-## Setup client
+## Configure
 ```js[example]
 const { Convoy } = require("convoy.js");
 const convoy = new Convoy({ api_key: "your_api_key" });
@@ -29,26 +33,7 @@ const convoy = new Convoy({
 
 Now that your client has been configured, create a convoy application.
 
-## Creating an application
-
-An application represents a user's application trying to receive webhooks. Once you create an application, you'll receive a `uid` as part of the response that you should save and supply in subsequent API calls to perform other requests such as creating an event.
-
-```js[example]
-try {
-  const appData = { name: "my_app", support_email: "support@myapp.com" };
-
-  const response = await convoy.application.create(appData);
-
-  const appId = response.data.uid;
-} catch (error) {
-  console.log(error);
-}
-```
-
-After creating an application, you'll need to add an endpoint to the application you just created. An endpoint represents a target URL to receive events.
-
-### Add application endpoint
-
+## Create an Endpoint
 
 ```js[example]
 try {
@@ -67,14 +52,13 @@ try {
 
 The next step is to create a subscription to the webhook source. Subscriptions are the conduit through which events are routed from a source to a destination on Convoy.
 
-## Create a subscription
+## Subscribe for Events
 
 ```js[example]
 try {
   const subscriptionData = {
     "name": "event-sub",
-    "app_id": appId,
-    "endpoint_id": endpointId,
+    "endpoint_id": endpoint_id,
   };
 
   const response = await convoy.subscriptions.create(subscriptionData);
@@ -85,14 +69,14 @@ try {
 
 With the subscription in place, you're set to send an event.
 
-## Send an event
+## Send an Event
 
-To send an event, you'll need the `uid` from the application you created earlier.
+To send an event, you'll need the `uid` from the endpoint you created earlier.
 
 ```js[example]
 try {
   const eventData = {
-    app_id: appId,
+    endpoint_id: endpoint_id,
     event_type: "payment.success",
     data: {
       event: "payment.success",
@@ -112,4 +96,4 @@ try {
 
 ## Cheers! 🎉
 
-You have sucessfully created a Convoy application to send webhook events to your configured endpoint.
+You have successfully created a Convoy application to send events to your configured endpoint.

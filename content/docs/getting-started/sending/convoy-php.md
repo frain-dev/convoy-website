@@ -3,9 +3,14 @@ title: Convoy PHP SDK
 description: "Sending a webhook event with Convoy PHP SDK."
 id: convoy-php
 ---
-The first step involved in sending a webhook event is configuring your SDK client.
 
-## Setup Client
+## Install Client
+Install convoy-php, with:
+```bash
+$ composer require frain/convoy symfony/http-client nyholm/psr7
+```
+
+## Configure
 
 ```php[example]
 use Convoy\Convoy;
@@ -28,22 +33,7 @@ $convoy = new Convoy([
 ]);
 ```
 
-## Creating an application
-
-An application represents a user's application trying to receive webhooks. Once you create an application, you'll receive a `uid` from the response that you should save and supply in subsequent API calls to perform other requests such as creating an event.
-
-```php[example]
-$appData = ["name" => "my_app", "support_email" => "support@myapp.com"];
-
-$response = $convoy->applications()->create($appData);
-
-$appId = $response['data']['uid'];
-```
-
-After creating an application, you'll need to add an endpoint to the application you just created. An endpoint represents a target URL to receive events.
-
-### Add application endpoint
-
+## Create an Endpoint
 
 ```php[example]
 $endpointData = [
@@ -59,12 +49,11 @@ $endpointId = $response['data']['uid'];
 
 The next step is to create a subscription to the webhook source. Subscriptions are the conduit through which events are routed from a source to a destination on Convoy.
 
-## Create a subscription
+## Subscribe for Events
 
 ```php[example]
 $subscriptionData = [
     "name" => "event-sub",
-    "app_id" => $appId,
     "endpoint_id" => $endpointId
 ];
 
@@ -73,13 +62,13 @@ $response = $convoy->subscriptions()->create($subscriptionData);
 
 With the subscription in place, you're set to send an event.
 
-## Send an event
+## Send an Event
 
 To send an event, you'll need the `uid` from the application you created earlier.
 
 ```php[example]
 $eventData = [
-    "app_id" => $appId,
+    "endpoint_id" => $endpointId,
     "event_type" => "payment.success",
     "data" => [
         "event" => "payment.success",
@@ -96,4 +85,4 @@ $response = $convoy->events()->create($eventData);
 
 ## Cheers! 🎉
 
-You have sucessfully created a Convoy application to send webhook events to your configured endpoint.
+You have successfully created a Convoy application to send events to your configured endpoint.

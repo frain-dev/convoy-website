@@ -11,15 +11,9 @@ order: 8
 This section collects brief definitions of some of the technical terms used in the documentation for Convoy.
 
 
-## Groups
+## Projects
 
-Groups are used to create logical contexts or separate environments (dev, staging & production). Different groups can also be created for different teams each with their own login details on the same convoy deployment.
-
-## Applications
-
-An application represents a user's application trying to receive webhooks. Once you create an application on Convoy, you receive an `app_id` that you should save and supply in subsequent API calls to perform other actions E.g. Send an event. Currently, an application maps to one endpoint. 
-
-In the future, an application should map to multiple endpoints. When you're creating an application, you should supply a [secret](#secrets).
+Projects are used to create logical contexts or separate environments (dev, staging & production). Different projects can also be created for different teams each with its own login details on the same convoy deployment.
 
 ## Endpoints
 
@@ -31,7 +25,7 @@ An event represents a specific event triggered by your system. Convoy persists e
 
 ## Event delivery
 
-An event delivery is resource that tracks successive attempts to deliver the event payload to each application endpoint. Multiple event deliveries can be created for a single event, this is influenced by the number of subscriptions that are matched to it.
+An event delivery is resource that tracks successive attempts to deliver the event payload to each endpoint. Multiple event deliveries can be created for a single event, this is influenced by the number of subscriptions that are matched to it.
 
 ## Event Types
 
@@ -81,11 +75,11 @@ We adopt a time-based release schedule.  A new release is created on the 25th of
 
 ## Rate Limiting Endpoints
 
-While you are guaranteed you'll be able to receive events as fast as possible using convoy, your customers might not be able to handle events coming to their systems at the same rate which might cause a disruption of service on their end.  You can control the number events you want to send to an application's endpoint by setting a rate limit and a rate limit duration on each endpoint. The default is `5000` in `1m` i.e. 5,000 requests per minute.
+While you are guaranteed you'll be able to receive events as fast as possible using convoy, your customers might not be able to handle events coming to their systems at the same rate which might cause a disruption of service on their end.  You can control the number events you want to send to an endpoint by setting a rate limit and a rate limit duration on each endpoint. The default is `5000` in `1m` i.e. 5,000 requests per minute.
 
 ## Retry Schedule
 
-When an application's endpoint is experiencing temporary disruption of service, events sent to them might fail requiring you to retry them. Convoy allow you to set the number of attempts to a particular endpoint and how to initiate the retry. Convoy supports two retry strategies
+When an endpoint is experiencing temporary disruption of service, events sent to them might fail to require you to retry them. Convoy allow you to set the number of attempts to a particular endpoint and how to initiate the retry. Convoy supports two retry strategies
 - `default`: retries are done in linear time. It's best to set a reasonable number of attempts if the duration is short.
 - `exponential-backoff`:  retries events while progressively increasing the time before the next attempt. The default schedule looks like this:
 	-	10 seconds
