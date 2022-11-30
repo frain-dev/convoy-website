@@ -8,7 +8,7 @@ order: 5
 Events
 ======
 ## Events Log
-Events are all the webhook events pushed to Convoy via any of the available sources. They do not have a status and do not contain delivery attempts. It is only a log of events published to Convoy. The events log page can be accessed from the sidebar.
+The Events log dashboard represent all webhook events pushed to Convoy. They do not have a status and do not contain delivery attempts. It is only a log of events published to Convoy. The events log page can be accessed from the sidebar.
 ![convoy event log](/docs-assets/event-log.png)
 
 ## Event delivery

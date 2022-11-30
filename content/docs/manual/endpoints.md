@@ -18,8 +18,8 @@ Endpoint authentication is a scenario where the endpoint owner needs to specify 
 
 ![Endpoint authentication](/docs-assets/endpoint-auth.png)
 
-## Portal links
+## Portal Links
 
-A [portal link](/docs/manual/portal-link) is used to generate a mini-event dashboard to display information on an endpoint's event deliveries. The portal link serves as a medium to quickly generate portals for users to review and debug events from a publisher.
+A [Portal Link](/docs/manual/portal-link) is used to generate a customer-facing dashboard to display information on an endpoint's event deliveries. The portal link serves as a medium to quickly generate portals for users to review and debug events from a publisher. You can generate one time links via the dashboard or long-use links to be embedded in your dashboards via the API. To learn more, click [here](/docs/manual/portal-link)
 
 ![Dashboard spun from a portal link](/docs-assets/portal-event-deliveries.png)

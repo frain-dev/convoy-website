@@ -13,11 +13,16 @@ Subscriptions
 
 Subscriptions are the conduit through which events are routed from a source to a destination on Convoy. They represent the core of event routing for both Incoming and Outgoing events. There are primarily two types of subscriptions depending on the project type: **Incoming** and **Outgoing**.
 
- An Incoming subscription is used to subscribe endpoints to event sources while an outgoing subscription is used to subscribe an endpoint to event types.
+## How Event Routing Works?
+In an Incoming webhooks project, events are routed to a [source](/docs/manual/sources), then we subscribe multiple endpoints to receive from that source. If no subscriptions are present, events are only saved in the [Event Log](/docs/manual/events-and-event-deliveries) for reference purpose. If subscriptions are present, we mathc the event against it's subscription filters, only endpoints subscription filters that match will receive events. 
+
+In an Outgoing webhooks project, events are routed specifically to an endpoint from the API. If the endpoint has no subscription, we create a catch-all subscription (i.e. a subscription that will receive all events) on-the-fly, create an event delivery and forward the event to your endpoint. When a subscription is present, we match the event first, against the `event_type` then against the subscription filters. If both are present, both have to be true else events are not sent to the endpoint.
+
+Read on to understand how to craft subscription filters.
 
 ## Subscription filters
 
-Subscription filtering is the scenario where the webhook owner decides to filter events to be delivered to configured endpoints. The subscription filter is an enriched JSON syntax for both simple and complex filters ( such as special logical and arithmetic operators `$or`, `$gte`, `$eq`). 
+Subscription filtering is the scenario where we decide what events an endpoint will receive based off the webhook event payload. The subscription filter is an enriched JSON syntax for both simple and complex filters ( such as special logical and arithmetic operators `$or`, `$gte`, `$eq`). 
 
 
 Subscription filters can be configured from the subscriptions page:
