@@ -62,7 +62,7 @@ To further understand the concept of advanced signatures, we have made available
 
 ## Verifying signatures manually
 
-Convoy uses a hash-based message authentication code ( HMAC ) with an encoding method set in the project settings to generate signatures. Convoy [SDKs](/docs/sdks) are equipped with methods to verify your signatures, but you can also follow the steps outlined below to verify your signatures:
+Convoy uses a hash-based message authentication code ( HMAC ) with an encoding method set in the project settings to generate signatures. Convoy [SDKs](/docs/sdks) are equipped with methods to verify your signatures, but you can also follow the steps outlined below to manually verify your signatures:
 
 ### Step 1: Detect the signature type and extract the signatures
 
@@ -74,16 +74,18 @@ If the signature is a simple signature, the signature string is returned unproce
 
 ### Step 2: Create a new signature string
 
-A new signature payload is computed by the HMAC library and encoded in the user-defined encoding from the payload:
+Now, we need to generate our own signature. To do this, using a HMAC library of your choice (most languages provide functions in the standard library for this purpose) create a digest with the following:
+- A shared secret.
+- Encoding: `base64` or `hex`.
+- Request Payload. If it's an advanced signature, payload should be a concatenated string of the timestamp and the request payload delimited by `,`. It should look like: `{timestamp},{payload}`
 
-- The timestamp ( not required for simple signatures)
-- A request body in JSON
+### Step 3: Verify Timestamp (Optional)
 
-The payload is signed using an endpoint secret known to the webhook event sender.
+If it's an advanced signature, before comparing signatures. Verify that the timestamp is within your tolerance limit. Events outside your tolerance range can be ignored.
 
-### Step 3: Compare the signatures
+### Step 4: Compare the signatures
 
-Compare the signatures from the event header and the signature computed from the previous step. Compare the difference in the timestamps taking a tolerance value into consideration. It is also advised to perform a constant string comparison for the signatures.
+Compare the signatures from the request header to the signature computed from the previous step. With simple signatures, a string match is all that is required, while with advanced signatures, our computed signature must match at least one of the supplied signatures in the request header. To prevent against [timing attacks](https://en.wikipedia.org/wiki/Timing_attack) please use constant time string comparison for matching signatures.
 
 ## References
 
