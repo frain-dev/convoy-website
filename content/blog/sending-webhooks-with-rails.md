@@ -9,7 +9,7 @@ primary_tag: Tutorial
 tags:
     - Tutorial
     - Engineering
-featured: true
+featured: false
 description: Build a todo API with rails and send webhook events to an endpoint for every CRUD operation.
 published_at: 2022-11-29T16:00:00.000+00:00
 ---
