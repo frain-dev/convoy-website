@@ -66,7 +66,7 @@ We can also filter using the `provider` field, matching only when it’s set of 
 
 Subscription filters are currently available on [Convoy Cloud](https://dashboard.getconvoy.io) and will ship in our upcoming v0.8 release. By default all subscriptions have a “match all” filter `{}`. This is essentially like `*`  for the event type field.
 
-![Create Subscription form with filter card](/blog-assets/create-sub-filters.png)
+![Create Subscription form with filter card](/blog-assets/create-sub-filter.png)
 
 Create Subscription form with filter card
 
