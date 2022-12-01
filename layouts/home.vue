@@ -13,7 +13,7 @@
 					pt-32px
 					px-12px
 					m-auto
-					desktop:pl-56px desktop:pt-56px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
+					desktop:pl-56px desktop:pt-26px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
 					mobile:mb-48px
 				">
 				<div class="desktop:max-w-[470px] p-10px">
