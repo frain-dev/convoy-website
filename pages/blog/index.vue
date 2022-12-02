@@ -49,8 +49,7 @@
 				</ul>
 			</div>
 
-			<div
-				class="
+			<div class="
 					rounded-8px
 					shadow-card
 					max-w-[970px]
@@ -60,9 +59,7 @@
 					px-12px
 					desktop:pl-56px desktop:pt-26px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
 					mobile:mb-48px
-				"
-				v-if="featurePosts.length > 0"
-			>
+				" v-if="featurePosts.length > 0">
 				<div class="desktop:max-w-[470px] p-10px">
 					<div class="flex justify-between items-center mb-24px">
 						<div class="py-2px px-16px bg-[#0747a6] bg-opacity-10 rounded-2px font-medium text-14 text-primary-100 uppercase">FEATURED</div>
@@ -138,10 +135,12 @@ export default {
 		}
 	},
 	async asyncData({ $content, route }) {
-		const tag = route.query?.tag ? route.query?.tag : 'Convoy';
+		const tag = route.query?.tag ? route.query?.tag : '';
+		const query = { featured: { $eq: false } };
+		tag ? query.tags = { $contains: tag } : false;
 
 		const posts = await $content('blog')
-			.where({ tags: { $contains: tag }, featured: { $eq: false } })
+			.where(query)
 			.sortBy('published_at', 'desc')
 			.fetch();
 
