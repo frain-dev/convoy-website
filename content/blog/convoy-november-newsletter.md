@@ -9,7 +9,7 @@ primary_tag: News
 tags:
     - News
 featured: false
-description:
+description: This is a re-publishing of our monthly newsletter sent to subscribers earler this month. View to subscribe for future email newsletters.
 published_at: 2022-12-05T13:00:00.000+00:00
 ---
 
