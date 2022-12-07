@@ -11,7 +11,7 @@ tags:
    - Tutorial
    - Engineering
 featured: false
-description: Build a todo API with Gin library, and send webhook events to an endpoint for every CRUD operation.
+description: Build a todo API with the Gin library, and send webhook events to an endpoint for every CRUD operation using the convoy Go SDK.
 published_at: 2022-12-08T16:00:00.000+00:00
 ---
 
