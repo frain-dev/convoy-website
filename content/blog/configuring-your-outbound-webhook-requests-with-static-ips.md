@@ -1,7 +1,7 @@
 ---
 title: Configuring your outbound webhook requests with static ips
-feature_image: subscription-filtering.png
-post_image: subscription-filtering.png
+feature_image: static-ips-with-convoy.png
+post_image: static-ips-with-convoy.png
 primary_author:
     name: Raymond Tukpe
     twitter: rtukpe

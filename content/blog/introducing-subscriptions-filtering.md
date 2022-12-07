@@ -9,7 +9,7 @@ primary_tag: Product Update
 tags:
     - Convoy
     - Product Update
-featured: true
+featured: false
 description: Many times webhook consumers depend on only a fraction of the webhook events it receives. Learn how to route webhook events to endpoints based on payload structure in Convoy.
 published_at: 2022-12-01T13:00:00.000+00:00
 ---
