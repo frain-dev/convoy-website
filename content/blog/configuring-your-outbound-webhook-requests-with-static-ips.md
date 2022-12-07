@@ -16,7 +16,7 @@ published_at: 2022-12-07T17:00:00.000+00:00
 
 # Introduction
 
-When sending webhooks to other internal services or to your API consumers, it is crucial to verify the source IP of the request to prevent acknowledging webhooks from unknown and potentially malicious servers. This verification helps ensure the security of your internal services and API consumers.
+When sending webhooks to other internal services or to your API consumers, it is advisable to verify the source IP of the request as well as verifying the integrity of the payload to prevent acknowledging webhooks from unknown and potentially malicious servers. This verification helps ensure the security of your internal services and API consumers.
 
 Certain API consumers (fintechs, health techs etc) require a list of IP addresses that they expect your webhooks to come from so they can whitelist them and verify each webhook request against that list. This helps prevent unauthorized access to your services and protects against attacks such as man-in-the-middle attacks, where a malicious actor intercepts communication between your services and your API consumers. Verifying the source IP of webhook requests is an important step in maintaining the security of your systems and protecting against potential threats.
 
