@@ -1,5 +1,5 @@
 ---
-title: Configuring your outbound webhook requests with static ips
+title: Configuring your Outbound Webhook Requests with Static IPs
 feature_image: static-ips-with-convoy.png
 post_image: static-ips-with-convoy.png
 primary_author:
