@@ -1,10 +1,19 @@
-# Sending Webhooks with Gin
-
-Author: Daniel Oluojomu
-Created: October 4, 2022 4:12 PM
-Created time: October 4, 2022 4:12 PM
-Publish Date: December 5, 2022
-Status: In progress
+---
+title: Sending Webhooks With Gin
+feature_image: sending-w-gin.png
+post_image: sending-w-gin.png
+primary_author:
+    name: Daniel Oluojomu
+    twitter: danvixent
+primary_tag: Tutorial
+tags:
+- Convoy
+- Tutorial
+- Engineering
+featured: false
+description: Build a todo API with Gin library, and send webhook events to an endpoint for every CRUD operation.
+published_at: 2022-12-08T16:00:00.000+00:00
+---
 
 ### Describe Webhooks
 
