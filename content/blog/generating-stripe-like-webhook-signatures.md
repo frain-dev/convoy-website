@@ -184,9 +184,6 @@ Let’s break down the above code listing:
 
 Other aspects of this library were removed for brevity, you can find the full code [here](https://github.com/frain-dev/convoy/blob/main/pkg/signature/signature.go).
 
-### Caveat
-One caveat to keep in mind
-
 ### SDK
 
 To enable easy migration, we’ve added webhook verification logic to our [Ruby](https://github.com/frain-dev/convoy.rb), [Python](https://github.com/frain-dev/convoy-python) & [Golang](https://github.com/frain-dev/convoy-go) SDKs to parse and validate this format. This verification will automatically identify either simple or advanced signatures and validate them respectively. 
