@@ -83,8 +83,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
     var convoyClient = convoy.New(convoy.Options{
     	APIKey:      os.Getenv("CONVOY_API_KEY"),
     	APIEndpoint: os.Getenv("CONVOY_API_ENDPOINT"),
-    	APIUsername: os.Getenv("CONVOY_API_USERNAME"),
-    	APIPassword: os.Getenv("CONVOY_API_PASSWORD"),
+    	ProjectID:   os.Getenv("CONVOY_PROJECT_ID"),
     })
     
     func GetEndpoint(c *gin.Context) {
@@ -116,7 +115,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
     		Description: e.Description,
     	}
     
-    	resp, err := convoyClient.Endpoints.Create("", createEndpoint, &convoy.EndpointQueryParam{GroupID: os.Getenv("CONVOY_PROJECT_ID")})
+    	resp, err := convoyClient.Endpoints.Create(createEndpoint, nil)
     	if err != nil {
     		c.JSON(http.StatusInternalServerError, &Error{ErrMsg: "failed to create convoy endpoint"})
     		return
@@ -152,7 +151,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
     		Description: update.Description,
     	}
     
-    	resp, err := convoyClient.Endpoints.Update("", endpointID, updatendpoint, &convoy.EndpointQueryParam{GroupID: os.Getenv("CONVOY_PROJECT_ID")})
+    	resp, err := convoyClient.Endpoints.Update(endpointID, updatendpoint, nil)
     	if err != nil {
     		c.JSON(http.StatusInternalServerError, &Error{ErrMsg: "failed to update convoy endpoint"})
     		return
@@ -174,7 +173,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
     		return
     	}
     
-    	err := convoyClient.Endpoints.Delete("", endpointID, &convoy.EndpointQueryParam{GroupID: os.Getenv("CONVOY_PROJECT_ID")})
+    	err := convoyClient.Endpoints.Delete(endpointID, nil)
     	if err != nil {
     		c.JSON(http.StatusInternalServerError, &Error{ErrMsg: "failed to delete convoy endpoint"})
     		return
@@ -196,7 +195,6 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
     import (
     	"encoding/json"
     	"net/http"
-    	"os"
     
     	convoy "github.com/frain-dev/convoy-go"
     	"github.com/gin-gonic/gin"
@@ -307,7 +305,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
     	}
     
     	resp, err := convoyClient.Events.Create(r, &convoy.EventQueryParam{
-    		GroupID: os.Getenv("CONVOY_PROJECT_ID"),
+    		EndpointID: "<your-endpoint-id>",
     	})
     
     	return err
