@@ -180,8 +180,12 @@ Let’s break down the above code listing:
 1. We use the `Advanced` flag to determine what type of signature to generate.
 2. We use the `Scheme` type to encapsulate all versions, and the order in which they’re passed in determines their version. We map to index 0 to `v1` etc similar to how we don’t define API versioning as `/api/v0`.
 3. `ComputeHeaderValue` will either generate a simple signature string or an advanced signature string based on the `Advanced` flag.
+4. The line `tBuf, err := s.encodePayload()` encodes the payload and strips out all whitespace characters. This is important because verifying signatures will require both the provider and consumer to generate signatures over the exact same payload. Any difference in the payload will result in different hashes generated. This is why as a rule of thumb, in Convoy, we strip out all whitespace characters. 
 
 Other aspects of this library were removed for brevity, you can find the full code [here](https://github.com/frain-dev/convoy/blob/main/pkg/signature/signature.go).
+
+### Caveat
+One caveat to keep in mind
 
 ### SDK
 
