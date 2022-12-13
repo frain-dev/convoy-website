@@ -381,7 +381,7 @@ It’s time to publish your first webhook!
 
 Let’s see our event deliveries dashboard.
 
-![Screenshot 2022-12-09 at 00.13.05.png](Sending%20Webhooks%20with%20ExpressJS%20f0cd381007094a8b8a5bf0adabda67cf/Screenshot_2022-12-09_at_00.13.05.png)
+![Screenshot 2022-12-09 at 00.13.05.png](/blog-assets/events-expressjs.png)
 
 Let’s also see our webhooks endpoint
 
