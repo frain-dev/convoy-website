@@ -385,7 +385,7 @@ Let’s see our event deliveries dashboard.
 
 Let’s also see our webhooks endpoint
 
-![Screenshot 2022-12-09 at 00.12.22.png](Sending%20Webhooks%20with%20ExpressJS%20f0cd381007094a8b8a5bf0adabda67cf/Screenshot_2022-12-09_at_00.12.22.png)
+![Screenshot 2022-12-09 at 00.12.22.png](/blog-assets/endpoint-expressjs.png)
 
 ### Appendix
 
