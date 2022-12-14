@@ -67,7 +67,7 @@ export default {
 			githubStars: 0,
 			menuItems: [
 				{ name: 'Pricing', route: '/pricing', type: 'route' },
-				{ name: 'Features', route: '/#features', type: 'route' },
+				{ name: 'Tutorials', route: '/blog?tag=Tutorial', type: 'route' },
 				{ name: 'Blog', route: '/blog', type: 'route' },
 				{ name: 'Docs', route: '/docs', type: 'route' },
 				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' },
