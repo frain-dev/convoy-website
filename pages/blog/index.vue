@@ -37,7 +37,7 @@
 		<main class="max-w-[1035px] w-full px-20px">
 			<div class="relative">
 				<h2 class="font-bold text-black flex items-center">
-					{{ tag !== 'Convoy' ? tag : 'All Posts' }}
+					{{ tag || 'All Posts' }}
 					<button @click="showCategories = !showCategories" class="h-fit mt-4px ml-8px desktop:hidden">
 						<img src="~/assets/images/angle-down-black-icon.svg" alt="arrow down iconn" />
 					</button>
