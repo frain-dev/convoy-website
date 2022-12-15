@@ -243,7 +243,7 @@ Response
 
 ## Show Endpoint Response
 
-![Endpoint-1 Webhook](/blog-assets/endpoint_response-1.png)
-![Endpoint-2 Webhook](/blog-assets/endpoint_response-2.png)
+![Endpoint-1 Webhook](/blog-assets/endpoint-response-1.png)
+![Endpoint-2 Webhook](/blog-assets/endpoint-response-2.png)
 
 Till next time ✌🏽
