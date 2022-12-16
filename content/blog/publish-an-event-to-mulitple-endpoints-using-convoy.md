@@ -36,7 +36,6 @@ First, we have to create two endpoints with the same `owner_id` , you can think 
 
 For the first endpoint:
 
-
 ```json[Sample Payload]
 {
   "description": "test-endpoint-1",
