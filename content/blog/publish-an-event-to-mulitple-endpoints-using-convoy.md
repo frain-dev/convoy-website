@@ -8,6 +8,7 @@ primary_author:
 primary_tag: Product Update
 tags:
     - Convoy
+    - Tutorial
     - Product Update
 featured: false
 description: One common scenario in publishing webhook events is enabling users to provide multiple endpoints to receive events. One easy example is publishing an event that the user needs to process at more than one location. This location could be a no-code..
@@ -20,71 +21,28 @@ One common scenario in publishing webhook events is enabling users to provide mu
 
 Without Convoy, your users have to build in the fan-out mechanism themselves, which is more stressful.
 
-# Steps
+### Prerequisites
 
-## Start Convoy Instance
+To follow along you would need the following
 
-To follow through with this article, you’d need to run an instance of Convoy:
+1. A [Convoy Cloud](https://dashboard.getconvoy.io/signup) account.
+2. An Outgoing Project ID & API Key.
 
-```bash[]
-$ docker run \
-	-p 5005:5005 \
-	--name convoy-server \
-	-v `pwd`/convoy.json:/convoy.json \
-	ghcr.io/frain-dev/convoy:v0.4.18
-```
+### Steps
 
-## Create an Application
+**Create Two Endpoints**
 
-Next, we have to create an application under this group
-
-```json[Sample Payload]
-{
-  "name": "test-app",
-  "support_email": "test@gmail.com",
-  "secret": "eyJhbGciOiJIUzI1NiJ9"
-}
-```
-
-```bash[bash]
-$ curl \
-    --request POST \
-    --data @app.json \
-    -H "Content-Type: application/json" \
-    <http://localhost:5005/api/v1/applications>
-```
-
-```json[Response]
-{
-	"status": true,
-	"message": "App created successfully",
-	"data": {
-		"uid": "2b1e9973-ed03-403c-a8b0-341edd51fb14",
-		"group_id": "f0a187f4-edaa-4f8e-adec-75b9a36b3c68",
-		"name": "test-app",
-		"support_email": "test@gmail.com",
-		"endpoints": [],
-		"created_at": "2022-03-09T14:17:51.111+01:00",
-		"updated_at": "2022-03-09T14:17:51.111+01:00",
-		"events": 0
-	}
-}
-```
-
-## Create Two Endpoints
-
-Now we can create multiple endpoints under this app. The first endpoint will take the `*` event type. Essentially this event type means all incoming events to that app will be published to that endpoint. The second endpoint will take the event type payment.created. Only incoming with the exact type payment.created will be published to that endpoint. Convoy tries to match the event type to all available endpoints under that app; the event is then published to all the matched endpoints.
+First, we have to create two endpoints with the same `owner_id` , you can think of `owner_id`as an id used to group multiple endpoints under one entity e.g merchant.
 
 For the first endpoint:
 
 ```json[Sample Payload]
 {
   "description": "test-endpoint-1",
-  "events": [
-    "*"
-  ],
+  "owner_id": "<your-owner-id>",
+  "events": [ "*" ],
   "secret": "12345",
-  "url": "<your-endpoint>"
+  "url": "https://<your-endpoint-url>"
 }
 ```
 
@@ -93,24 +51,35 @@ $ curl \
     --request POST \
     --data @endpoint-1.json \
     -H "Content-Type: application/json" \
-    <http://localhost:5005/api/v1/applications/{appID}/endpoints>
+    https://dashboard.getconvoy.io/api/v1/projects/{projectID}/endpoints
 ```
 
 ```json[Response]
 {
 	"status": true,
-	"message": "App endpoint created successfully",
+	"message": "Endpoint created successfully",
 	"data": {
-		"uid": "2901bbc9-092e-4685-868d-a17298fe86ba",
-		"target_url": "<your-endpoint>",
-		"description": "test-endpoint-1",
-		"status": "active",
-		"secret": "12345",
-		"events": [
-			"*"
+		"uid": "7556a922-7d10-47b1-b254-4dde679d9fbd",
+		"project_id": "acc1bf6d-c309-4a99-b9a7-a9410fa5f6c4",
+		"target_url": "https://<your-endpoint-url>",
+		"owner_id": "<your-owner-id>",
+		"title": "test_endpoint_1",
+		"secrets": [
+			{
+				"uid": "72e9d70f-b57e-4f49-b098-01e8ea9795e7",
+				"value": "1234",
+				"created_at": "2022-12-15T13:38:01.638Z",
+				"updated_at": "2022-12-15T13:38:01.638Z"
+			}
 		],
-		"created_at": "2022-03-09T14:18:14.493+01:00",
-		"updated_at": "2022-03-09T14:18:14.493+01:00"
+		"advanced_signatures": false,
+		"description": "xx",
+		"http_timeout": "",
+		"rate_limit": 5000,
+		"rate_limit_duration": "1m0s",
+		"authentication": null,
+		"created_at": "2022-12-15T13:38:01.638Z",
+		"updated_at": "2022-12-15T13:38:01.638Z"
 	}
 }
 ```
@@ -120,11 +89,10 @@ For the second endpoint:
 ```json[Sample Payload]
 {
   "description": "test-endpoint-2",
-  "events": [
-    "payment.created"
-  ],
+  "owner_id": "<your-owner-id>",
+  "events": [ "*" ],
   "secret": "12345",
-  "url": "<your-endpoint>"
+  "url": "https://<your-endpoint-url>"
 }
 ```
 
@@ -133,76 +101,132 @@ $ curl \
     --request POST \
     --data @endpoint-2.json \
     -H "Content-Type: application/json" \
-    <http://localhost:5005/api/v1/applications/{appID}/endpoints>
+    https://dashboard.getconvoy.io/api/v1/projects/{projectID}/endpoints
 ```
 
 ```json[Response]
 {
 	"status": true,
-	"message": "App endpoint created successfully",
+	"message": "Endpoint created successfully",
 	"data": {
-		"uid": "2901bbc9-092e-4685-868d-a17298fe86ba",
-		"target_url": "<your-endpoint>",
-		"description": "test-endpoint-2",
-		"status": "active",
-		"secret": "12345",
-		"events": [
-			"payment.created"
+		"uid": "7556a922-7d10-47b1-b254-4dde679d9fbd",
+		"project_id": "acc1bf6d-c309-4a99-b9a7-a9410fa5f6c4",
+		"owner_id": "<your-owner-id>",
+		"target_url": "https://<your-endpoint-url>",
+		"title": "test_endpoint_2",
+		"secrets": [
+			{
+				"uid": "89e9d70f-b57e-4f49-b098-01e8ea9795e7",
+				"value": "1234",
+				"created_at": "2022-12-15T13:38:01.638Z",
+				"updated_at": "2022-12-15T13:38:01.638Z"
+			}
 		],
-		"created_at": "2022-03-09T14:18:14.493+01:00",
-		"updated_at": "2022-03-09T14:18:14.493+01:00"
+		"advanced_signatures": false,
+		"description": "xx",
+		"http_timeout": "",
+		"rate_limit": 5000,
+		"rate_limit_duration": "1m0s",
+		"authentication": null,
+		"created_at": "2022-12-15T13:38:01.638Z",
+		"updated_at": "2022-12-15T13:38:01.638Z"
 	}
 }
 ```
 
-## Publish Event
+**Create One Subscription for Each Endpoint**
 
-Now let us publish an event with the type `payment.created` to this app. The `payment.created` will match both endpoints since `*` will match all event types, and the `payment.created` type of the second endpoint matches precisely.
+Now we have to create subscriptions for each endpoint.
 
 ```json[Sample Payload]
 {
-  "app_id": "2b1e9973-ed03-403c-a8b0-341edd51fb14",
-  "data": {
-		"blog":"medium.com"
-	},
-  "event_type": "payment.created"
+  "endpoint_id": "<your-endpoint-id>",
+  "name": "test-sub-1"
 }
 ```
 
-```bash[]
+```bash[Bash]
 $ curl \
     --request POST \
-    --data @event.json \
+    --data @subscription-1.json \
     -H "Content-Type: application/json" \
-    <http://localhost:5005/api/v1/events>
+    https://dashboard.getconvoy.io/api/v1/projects/{projectID}/subscriptions
 ```
 
 ```json[Response]
 {
 	"status": true,
-	"message": "App event created successfully",
+	"message": "Subscription created successfully",
 	"data": {
-		"uid": "ddcd3928-1d7e-4527-901f-47673fd569ce",
-		"event_type": "payment.created",
-		"matched_endpoints": 2,
-		"provider_id": "",
+  	  "uid": "eb1e6167-d076-4366-b458-2ca7e358986e",
+	  "endpoint_id": "<your-endpoint-id>",
+		"name": "test-sub-1",
+		"type": "api",
+		"status": "active",
+		"filter_config": {
+			"event_types": [
+				"*"
+			],
+			"filter": {}
+		},
+		"created_at": "2022-12-15T13:56:22.256Z",
+		"updated_at": "2022-12-15T13:56:22.256Z"
+	}
+}
+```
+
+Repeat the same for the second subscription.
+
+**Publish Event**
+
+Now let us publish an event with the type to our endpoints. We’ll specify the `owner_id` we used for both endpoints, this allows convoy to dispatch the event to both endpoints.
+
+```json[Sample Payload]
+{
+  "owner_id": "<your-owner-id>",
+  "data": {
+		"blog": "https://getconvoy.io/blog"
+	},
+  "event_type": "ping"
+}
+```
+
+```bash[Bash]
+$ curl \
+    --request POST \
+    --data @event.json \
+    -H "Content-Type: application/json" \
+    https://dashboard.getconvoy.io/api/v1/projects/{projectID}/events
+```
+
+```json[Response]
+{
+	"status": true,
+	"message": "Endpoint event created successfully",
+	"data": {
+		"uid": "cdff6a37-8a41-412b-aa55-748cdefd8017",
+		"event_type": "ping",
+		"project_id": "acc1bf6d-c309-4a99-b9a7-a9410fa5f6c4",
+		"endpoints": [
+			"b5e4d42e-3ad6-4546-9f88-4f36b3f82941",
+			"7556a922-7d10-47b1-b254-4dde679d9fbd"
+		],
 		"data": {
-			"blog": "medium.com"
+			"blog": "https://getconvoy.io/blog"
 		},
-		"app_metadata": {
-			"uid": "2b1e9973-ed03-403c-a8b0-341edd51fb14",
-			"title": "test-app",
-			"group_id": "e6bbde4b-4c43-45a6-8d4c-c8eed1c2bb41",
-			"support_email": "test@gmail.com"
-		},
-		"created_at": "2022-03-09T15:14:27.569+01:00",
-		"updated_at": "2022-03-09T15:14:27.569+01:00"
+		"created_at": "2022-12-15T13:39:45.276Z",
+		"updated_at": "2022-12-15T13:39:45.276Z"
 	}
 }
 ```
 
 ## Show Endpoint Response
+The screenshots below show that the events were routed to the two endpoints.
 
-![multiple endpoints](/blog-assets/endpoint_response.gif)
+![Endpoint-1 Webhook](/blog-assets/endpoint-response-1.png)
+![Endpoint-2 Webhook](/blog-assets/endpoint-response-2.png)
+
+## Conclusion
+In this post, we discussed why letting your users provide multiple endpoints is important. We demostrated this ability in Convoy and how to use it. Sounds good for your platform? Why not try out our free [cloud](https://dashboard.getconvoy.io/signup) and give us feedback on our [slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email) community!
 
 Till next time ✌🏽
