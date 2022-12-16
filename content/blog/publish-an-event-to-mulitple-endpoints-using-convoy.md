@@ -61,8 +61,8 @@ $ curl \
 	"data": {
 		"uid": "7556a922-7d10-47b1-b254-4dde679d9fbd",
 		"project_id": "acc1bf6d-c309-4a99-b9a7-a9410fa5f6c4",
-        "owner_id": "<your-owner-id>",
 		"target_url": "https://<your-endpoint-url>",
+		"owner_id": "<your-owner-id>",
 		"title": "test_endpoint_1",
 		"secrets": [
 			{
@@ -111,7 +111,7 @@ $ curl \
 	"data": {
 		"uid": "7556a922-7d10-47b1-b254-4dde679d9fbd",
 		"project_id": "acc1bf6d-c309-4a99-b9a7-a9410fa5f6c4",
-        "owner_id": "<your-owner-id>",
+		"owner_id": "<your-owner-id>",
 		"target_url": "https://<your-endpoint-url>",
 		"title": "test_endpoint_2",
 		"secrets": [
@@ -221,6 +221,7 @@ $ curl \
 ```
 
 ## Show Endpoint Response
+In the screenshots below, you can see the events was routed to the two endpoints.
 
 ![Endpoint-1 Webhook](/blog-assets/endpoint-response-1.png)
 ![Endpoint-2 Webhook](/blog-assets/endpoint-response-2.png)
