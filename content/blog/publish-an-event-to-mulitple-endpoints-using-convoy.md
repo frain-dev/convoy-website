@@ -221,12 +221,12 @@ $ curl \
 ```
 
 ## Show Endpoint Response
-In the screenshots below, you can see the events was routed to the two endpoints.
+The screenshots below show that the events were routed to the two endpoints.
 
 ![Endpoint-1 Webhook](/blog-assets/endpoint-response-1.png)
 ![Endpoint-2 Webhook](/blog-assets/endpoint-response-2.png)
 
 ## Conclusion
-In this post, we discussed why it's important to let your users provide multiple endpoints. We demostrated this ability in Convoy and how to use it. Sounds good for your platform? Why not try out our free [cloud](https://dashboard.getconvoy.io/signup) and give us feedback on our [slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email) community!
+In this post, we discussed why letting your users provide multiple endpoints is important. We demostrated this ability in Convoy and how to use it. Sounds good for your platform? Why not try out our free [cloud](https://dashboard.getconvoy.io/signup) and give us feedback on our [slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email) community!
 
 Till next time ✌🏽
