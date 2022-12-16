@@ -8,6 +8,7 @@ primary_author:
 primary_tag: Product Update
 tags:
     - Convoy
+    - Tutorial
     - Product Update
 featured: false
 description: One common scenario in publishing webhook events is enabling users to provide multiple endpoints to receive events. One easy example is publishing an event that the user needs to process at more than one location. This location could be a no-code..
@@ -35,37 +36,33 @@ First, we have to create two endpoints with the same `owner_id` , you can think 
 
 For the first endpoint:
 
-Sample Payload
 
-```json
+```json[Sample Payload]
 {
   "description": "test-endpoint-1",
   "owner_id": "<your-owner-id>",
+  "events": [ "*" ],
   "secret": "12345",
   "url": "https://<your-endpoint-url>"
 }
 ```
 
-Bash
-
-```bash
+```bash[Bash]
 $ curl \
     --request POST \
     --data @endpoint-1.json \
     -H "Content-Type: application/json" \
-    http://localhost:5005/api/v1/projects/{projectID}/endpoints
+    https://dashboard.getconvoy.io/api/v1/projects/{projectID}/endpoints
 ```
 
-Response
-
-```json
+```json[Response]
 {
 	"status": true,
 	"message": "Endpoint created successfully",
 	"data": {
 		"uid": "7556a922-7d10-47b1-b254-4dde679d9fbd",
 		"project_id": "acc1bf6d-c309-4a99-b9a7-a9410fa5f6c4",
-    "owner_id": "<your-owner-id>",
+        "owner_id": "<your-owner-id>",
 		"target_url": "https://<your-endpoint-url>",
 		"title": "test_endpoint_1",
 		"secrets": [
@@ -90,39 +87,32 @@ Response
 
 For the second endpoint:
 
-Sample Payload
-
-```json
+```json[Sample Payload]
 {
   "description": "test-endpoint-2",
-  "events": [
-    "*"
-  ],
+  "owner_id": "<your-owner-id>",
+  "events": [ "*" ],
   "secret": "12345",
   "url": "https://<your-endpoint-url>"
 }
 ```
 
-Bash
-
-```bash
+```bash[Bash]
 $ curl \
     --request POST \
     --data @endpoint-2.json \
     -H "Content-Type: application/json" \
-    http://localhost:5005/api/v1/projects/{projectID}/endpoints
+    https://dashboard.getconvoy.io/api/v1/projects/{projectID}/endpoints
 ```
 
-Response
-
-```json
+```json[Response]
 {
 	"status": true,
 	"message": "Endpoint created successfully",
 	"data": {
 		"uid": "7556a922-7d10-47b1-b254-4dde679d9fbd",
 		"project_id": "acc1bf6d-c309-4a99-b9a7-a9410fa5f6c4",
-    "owner_id": "<your-owner-id>",
+        "owner_id": "<your-owner-id>",
 		"target_url": "https://<your-endpoint-url>",
 		"title": "test_endpoint_2",
 		"secrets": [
@@ -145,35 +135,31 @@ Response
 }
 ```
 
-**Create one subscription for each Endpoint**
+**Create One Subscription for Each Endpoint**
 
 Now we have to create subscriptions for each endpoint.
 
-Sample Payload
-
-```json
+```json[Sample Payload]
 {
   "endpoint_id": "<your-endpoint-id>",
   "name": "test-sub-1"
 }
 ```
 
-Bash
-
-```bash
+```bash[Bash]
 $ curl \
     --request POST \
     --data @subscription-1.json \
     -H "Content-Type: application/json" \
-    http://localhost:5005/api/v1/projects/{projectID}/subscriptions
+    https://dashboard.getconvoy.io/api/v1/projects/{projectID}/subscriptions
 ```
 
-```json
+```json[Response]
 {
 	"status": true,
 	"message": "Subscription created successfully",
 	"data": {
-		"uid": "eb1e6167-d076-4366-b458-2ca7e358986e",
+  	  "uid": "eb1e6167-d076-4366-b458-2ca7e358986e",
 	  "endpoint_id": "<your-endpoint-id>",
 		"name": "test-sub-1",
 		"type": "api",
@@ -196,9 +182,7 @@ Repeat the same for the second subscription.
 
 Now let us publish an event with the type to our endpoints. We’ll specify the `owner_id` we used for both endpoints, this allows convoy to dispatch the event to both endpoints.
 
-Sample Payload
-
-```json
+```json[Sample Payload]
 {
   "owner_id": "<your-owner-id>",
   "data": {
@@ -208,19 +192,15 @@ Sample Payload
 }
 ```
 
-Bash
-
-```bash
+```bash[Bash]
 $ curl \
     --request POST \
     --data @event.json \
     -H "Content-Type: application/json" \
-    http://localhost:5005/api/v1/projects/{projectID}/events
+    https://dashboard.getconvoy.io/api/v1/projects/{projectID}/events
 ```
 
-Response
-
-```json
+```json[Response]
 {
 	"status": true,
 	"message": "Endpoint event created successfully",
@@ -245,5 +225,8 @@ Response
 
 ![Endpoint-1 Webhook](/blog-assets/endpoint-response-1.png)
 ![Endpoint-2 Webhook](/blog-assets/endpoint-response-2.png)
+
+## Conclusion
+In this post, we discussed why it's important to let your users provide multiple endpoints. We demostrated this ability in Convoy and how to use it. Sounds good for your platform? Why not try out our free [cloud](https://dashboard.getconvoy.io/signup) and give us feedback on our [slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email) community!
 
 Till next time ✌🏽
