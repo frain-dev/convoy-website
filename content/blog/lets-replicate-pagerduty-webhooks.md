@@ -14,10 +14,10 @@ description: PagerDuty V3 Webhooks is one of the most advanced with several grea
 published_at: 2022-12-19T17:00:00.000+00:00
 ---
 # Introduction
+PagerDuty V3 Webhooks is the 3rd iteration of their Webhooks delivery system. In my opinion, it is one of the world’s most advanced webhook delivery systems with specific important features that are hard to find (or completely omitted) in other systems. In PagerDuty V3 Webhooks, users can subscribe to both event types and events from specific services, teams or accounts. This narrows down the number of events sent to consumers and reduces pressure on consumers dealing with unimportant events.
 
-PagerDuty V3 Webhooks is the 3rd iteration of their Webhooks delivery system. In my opinion, it is one of the world’s most advanced webhook delivery systems with specific important features that are hard to find (or completely omitted) in other systems. In PagerDuty V3 Webhooks, users can subscribe to both event types and events from specific services, teams or accounts. This narrows down the amount of events sent to consumers and reduces pressure on consumers dealing with un-important events.
+Convoy is an open-source webhooks delivery infrastructure. It can dispatch webhook events to consumers at any scale with all the fantastic features each provider needs, reducing their time to market to minutes instead of months. To achieve this, We give webhook providers APIs to send webhooks in minutes alongside other important features for better development experience, security and scalability. In this article, we will use Convoy to replicate PagerDuty V3 Webhooks.
 
-Convoy is an open-source webhooks delivery infrastructure. It can dispatch webhook events to consumers at any scale with all fantastic features each provider needs, thereby reducing their time to market to minutes instead of months. To achieve this, We give webhook providers, APIs to send webhooks in minutes alongside other important features for better development experience, security and scalability. In this article, we will use Convoy to replicate PagerDuty V3 Webhooks.
 
 ## Prerequisites
 
@@ -55,8 +55,7 @@ Because, webhooks rely on shared secrets, providing easy key rotation without do
   "incident.status_update_published",
 ]
 ```
-
-To subscribe to events on PagerDuty, you need to supply an array of event types you care about. While this may seem obvious, it is not a common implementation rather, consumers receive all events from their providers and decide to process or ignore. This is the first level of subscription that ensures that only events that are important are sent over and others are disregarded.
+To subscribe to events on PagerDuty, you need to supply an array of event types you care about. While this may seem obvious, it is not a common implementation; consumers receive all events from their providers and decide to process or ignore them. This is the first level of subscription that ensures that only important events are sent over, and others are disregarded.
 
 ### Filter By Service, Teams or Accounts
 
@@ -66,8 +65,7 @@ To subscribe to events on PagerDuty, you need to supply an array of event types 
   "type": "service_reference"
 }
 ```
-
-When subscribing to webhook events in PagerDuty, consumers are allowed to subscribe to events from specific services, teams or accounts and disregard all others. The code snippet above is an aspect of the payload for creating a webhook subscription (click [here](https://developer.pagerduty.com/docs/db0fa8c8984fc-overview#webhook-subscriptions) to see full webhook subscription request) specifically requesting for webhooks only from the service with `P393ZNQ` as reference. The `type` field can be either of the following: `service_reference`, `team_reference`, and `account_reference`. 
+When subscribing to webhook events in PagerDuty, consumers can subscribe to events from specific services, teams or accounts and disregard all others. The code snippet above is an aspect of the payload for creating a webhook subscription (click [here](https://developer.pagerduty.com/docs/db0fa8c8984fc-overview#webhook-subscriptions) to see the full webhook subscription request) specifically requesting for webhooks only from the service with `P393ZNQ` as reference. The `type` field can be either of the following: `service_reference`, `team_reference`, or `account_reference`. 
 
 ### Custom Headers
 
@@ -84,7 +82,7 @@ When subscribing to webhook events in PagerDuty, consumers are allowed to subscr
 },
 ```
 
-Often, webhooks endpoint security relies on the webhook signatures to validate payload integrity. In some cases, however, some endpoints have authentication requirements with specific headers. Asides, from security reasons, endpoints can have other required header values for reasons best know to the endpoint owner. PagerDuty V3 Webhooks provides the facility to add custom headers to the webhook request sent to the endpoint. 
+Often, webhooks endpoint security relies on the webhook signatures to validate payload integrity. In some cases, however, some endpoints have authentication requirements with specific headers. Asides from security reasons, endpoints can have other required header values for reasons best known to the endpoint owner. PagerDuty V3 Webhooks provide the facility to add custom headers to the webhook request sent to the endpoint. 
 
 # Let’s Implement in Convoy
 
