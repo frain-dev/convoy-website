@@ -1,5 +1,5 @@
 ---
-title: Let's Replicate PagerDuty Webhooks
+title: Let's Replicate PagerDuty V3 Webhooks in Convoy
 feature_image: pagerduty-webhooks.png
 post_image: pagerduty-webhooks.png
 primary_author:
