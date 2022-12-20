@@ -214,7 +214,7 @@ export default {
 						"url": "http://twitter.com/${this.blogPageData.primary_author.twitter}",
 						"sameAs": []
 					},
-					"headline": ${this.blogPageData.title}",
+					"headline": "${this.blogPageData.title}",
 					"url": "https://getconvoy.io/blog/${this.blogPageData.slug}",
 					"datePublished": "${this.blogPageData.published_at}",
 					"dateModified": "${this.blogPageData.updatedAt}",
