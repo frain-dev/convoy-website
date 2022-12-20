@@ -90,7 +90,54 @@
 
 <script>
 export default {
-	scrollToTop: true
+	scrollToTop: true,
+	head() {
+		return {
+			title: 'Convoy Documentation',
+			meta: [
+				{ hid: 'description', name: 'description', content: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure. Convoy enables you to send and receive webhook events in one place with a great developer experience.' },
+				{
+					hid: 'apple-mobile-web-app-title',
+					name: 'apple-mobile-web-app-title',
+					content: 'Convoy Documentation'
+				},
+				{ hid: 'og:title', name: 'og:title', content: 'Convoy Documentation' },
+				{ hid: 'og:site_name', name: 'og:site_name', content: 'Convoy' },
+				{ hid: 'og:type', name: 'og:type', content: 'website' },
+				{
+					hid: 'og:description',
+					name: 'og:description',
+					content: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure. Convoy enables you to send and receive webhook events in one place with a great developer experience.'
+				},
+				{
+					hid: 'og:url',
+					name: 'og:url',
+					content: `https://getconvoy.io/docs`
+				},
+				{
+					hid: 'twitter:title',
+					name: 'twitter:title',
+					content: 'Convoy Documentation'
+				},
+				{
+					hid: 'twitter:url',
+					name: 'twitter:url',
+					content: `https://getconvoy.io/docs`
+				},
+				{
+					hid: 'twitter:text:title',
+					name: 'twitter:text:title',
+					content: 'Convoy Documentation'
+				},
+				{
+					hid: 'twitter:description',
+					name: 'twitter:description',
+					content: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure. Convoy enables you to send and receive webhook events in one place with a great developer experience.'
+				}
+			],
+			link: [{ hid: 'canonical', rel: 'canonical', href: `https://getconvoy.io/docs` }]
+		};
+	}
 };
 </script>
 

@@ -66,6 +66,53 @@
 
 <script>
 export default {
-	layout: 'home'
+	layout: 'home',
+	head() {
+		return {
+			title: 'Convoy Demo',
+			meta: [
+				{ hid: 'description', name: 'description', content: 'Get a quick glance into what Convoy looks like and how it works' },
+				{
+					hid: 'apple-mobile-web-app-title',
+					name: 'apple-mobile-web-app-title',
+					content: 'Convoy Demo'
+				},
+				{ hid: 'og:title', name: 'og:title', content: 'Convoy Demo' },
+				{ hid: 'og:site_name', name: 'og:site_name', content: 'Convoy' },
+				{ hid: 'og:type', name: 'og:type', content: 'website' },
+				{
+					hid: 'og:description',
+					name: 'og:description',
+					content: 'Get a quick glance into what Convoy looks like and how it works'
+				},
+				{
+					hid: 'og:url',
+					name: 'og:url',
+					content: `https://getconvoy.io/demo`
+				},
+				{
+					hid: 'twitter:title',
+					name: 'twitter:title',
+					content: 'Convoy Demo'
+				},
+				{
+					hid: 'twitter:url',
+					name: 'twitter:url',
+					content: `https://getconvoy.io/demo`
+				},
+				{
+					hid: 'twitter:text:title',
+					name: 'twitter:text:title',
+					content: 'Convoy Demo'
+				},
+				{
+					hid: 'twitter:description',
+					name: 'twitter:description',
+					content: 'Get a quick glance into what Convoy looks like and how it works'
+				}
+			],
+			link: [{ hid: 'canonical', rel: 'canonical', href: `https://getconvoy.io/demo` }]
+		};
+	}
 };
 </script>

@@ -49,7 +49,17 @@ export default {
 				name: 'viewport',
 				content: 'width=device-width, initial-scale=1'
 			},
-			{ hid: 'description', name: 'description', content: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure.' },
+			{
+				name: 'robots',
+				hid: 'robots',
+				content: 'index, follow'
+			},
+			{
+				hid: 'description',
+				name: 'description',
+				content:
+					'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure. Convoy enables you to send and receive webhook events in one place with a great developer experience.'
+			},
 			{
 				hid: 'keywords',
 				name: 'keywords',
@@ -59,6 +69,11 @@ export default {
 				hid: 'og:title',
 				property: 'og:title',
 				content: 'Convoy'
+			},
+			{
+				hid: 'twitter:creator',
+				name: 'twitter:creator',
+				content: '@getconvoy'
 			},
 			{
 				hid: 'twitter:title',
@@ -83,6 +98,16 @@ export default {
 			{
 				hid: 'twitter:image',
 				property: 'twitter:image',
+				content: 'https://getconvoy.io/assets/convoy.png'
+			},
+			{
+				hid: 'twitter:site',
+				name: 'twitter:site',
+				content: '@getconvoy'
+			},
+			{
+				hid: 'image',
+				property: 'image',
 				content: 'https://getconvoy.io/assets/convoy.png'
 			},
 			{
@@ -124,6 +149,12 @@ export default {
 				hid: 'og:type',
 				name: 'og:type',
 				content: 'website'
+			},
+			{
+				hid: 'keywords',
+				property: 'keywords',
+				content:
+					'webhooks,webhook,webhooks service,webhooks provider,webhooks infrastructure,opensource webhooks,opensource,low code,github webhook,stripe webhook,webhook url,webhook endpoint,zapier webhook,web hook,open-source,open source,infrastructure,endpoint,API,cloud,integrate,integration,'
 			}
 		],
 		link: [
