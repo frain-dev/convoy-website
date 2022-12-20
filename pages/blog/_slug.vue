@@ -21,12 +21,7 @@
 			<div class="flex items-end justify-between mb-56px desktop:mb-44px" v-if="blogPageData.slug !== '404'">
 				<a :href="blogPageData.primary_author.twitter ? 'http://twitter.com/' + blogPageData.primary_author.twitter : ''" target="_blank" class="flex items-start">
 					<div class="w-40px h-40px rounded-[50%] mr-16px overflow-hidden flex items-center bg-[#f5f5f5]">
-						<img
-							:src="require(`~/static/profile-images/${blogPageData.primary_author.name}.png`)"
-							@error="$event.target.src = require('~/static/profile-images/Press.png')"
-							class="w-full rounded-[50%] mr-12px"
-							alt="author imge"
-						/>
+						<img :src="`/profile-images/${blogPageData.primary_author.name}.png`" @error="$event.target.src = '/profile-images/Press.png'" class="w-full rounded-[50%] mr-12px" alt="author imge" />
 					</div>
 					<div>
 						<h6 class="font-semibold text-primary-100 mb-2px">{{ blogPageData.primary_author.name }}</h6>
@@ -38,11 +33,7 @@
 					<p class="mb-8px text-14 text-grey-80">Share to:</p>
 					<ul class="socials">
 						<li class="!w-32px !h-32px">
-							<a
-								rel="noopener noreferrer"
-								:href="'https://twitter.com/intent/tweet/?text=' + blogPageData.title + '%20from%20@getconvoy&url=https://getconvoy.io/blog/' + blogPageData.slug + '&via=getconvoy'"
-								target="_blank"
-							>
+							<a rel="noopener noreferrer" :href="'https://twitter.com/intent/tweet/?text=' + blogPageData.title + '%20from%20@getconvoy&url=https://getconvoy.io/blog/' + blogPageData.slug + '&via=getconvoy'" target="_blank">
 								<img src="~/assets/images/twitter-grey-icon.svg" alt="twitter logo" />
 							</a>
 						</li>
@@ -223,7 +214,7 @@ export default {
 						"url": "http://twitter.com/${this.blogPageData.primary_author.twitter}",
 						"sameAs": []
 					},
-					"headline": ${this.blogPageData.title}",
+					"headline": "${this.blogPageData.title}",
 					"url": "https://getconvoy.io/blog/${this.blogPageData.slug}",
 					"datePublished": "${this.blogPageData.published_at}",
 					"dateModified": "${this.blogPageData.updatedAt}",

@@ -127,6 +127,53 @@ export default {
 				'Email and slack notifications'
 			]
 		};
+	},
+	head() {
+		return {
+			title: 'Convoy Pricing',
+			meta: [
+				{ hid: 'description', name: 'description', content: 'Find out how much it cost to use Convoy Cloud' },
+				{
+					hid: 'apple-mobile-web-app-title',
+					name: 'apple-mobile-web-app-title',
+					content: 'Convoy Pricing'
+				},
+				{ hid: 'og:title', name: 'og:title', content: 'Convoy Pricing' },
+				{ hid: 'og:site_name', name: 'og:site_name', content: 'Convoy' },
+				{ hid: 'og:type', name: 'og:type', content: 'website' },
+				{
+					hid: 'og:description',
+					name: 'og:description',
+					content: 'Find out how much it cost to use Convoy Cloud'
+				},
+				{
+					hid: 'og:url',
+					name: 'og:url',
+					content: `https://getconvoy.io/pricing`
+				},
+				{
+					hid: 'twitter:title',
+					name: 'twitter:title',
+					content: 'Convoy Pricing'
+				},
+				{
+					hid: 'twitter:url',
+					name: 'twitter:url',
+					content: `https://getconvoy.io/pricing`
+				},
+				{
+					hid: 'twitter:text:title',
+					name: 'twitter:text:title',
+					content: 'Convoy Pricing'
+				},
+				{
+					hid: 'twitter:description',
+					name: 'twitter:description',
+					content: 'Find out how much it cost to use Convoy Cloud'
+				},
+			],
+			link: [{ hid: 'canonical', rel: 'canonical', href: `https://getconvoy.io/pricing` }]
+		};
 	}
 };
 </script>
