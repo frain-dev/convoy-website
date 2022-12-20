@@ -151,6 +151,9 @@ export default {
 				content: [
 					'webhooks',
 					'webhook',
+					'dev tool',
+					'dev tools',
+					'dev-tools',
 					'webhooks service',
 					'webhooks provider',
 					'webhooks infrastructure',
