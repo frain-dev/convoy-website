@@ -34,6 +34,8 @@ Another quick advantage of ripping out applications is it enabled us to provide 
 ### New Fan out mechanism
 Applications in the former design were the anchor for fan-out. In this release, we introduced a new mechanism for fan-out, after deprecating apps. We introduced a new endpoint -- `/event/fanout`, and a new field on the endpoint object -- `owner_id`. The latter acts as a grouping concept to group multiple endpoints under one entity, and the endpoint is the only means of fan out possible in Convoy.
 
+### Static IPs
+At times, webhooks consumers require providers to send webhooks from predefined IP addresses. In this release, Convoy ships with a http connect proxy support that allows it route webhooks traffic through a dedicated egress. With this, we can maintain IP address of our cluster across all requests. To configure we deploy [mole](https://github.com/frain-dev/mole)(our fork of [smokescreen](https://github.com/stripe/smokescreen)) and configure to convoy to use this proxy with this environment variable - `HTTP_PROXY`.
 
 ### What's Next?
 We've commenced work on Convoy v0.9. This update includes several interesting features like ingesting events from pub/sub systems like Kafka, Amazon SQS, Google PubSub, Meta Events and several other improvements. Please watch out for our [GitHub Discussion Posts](https://github.com/frain-dev/convoy/discussions) for each of these features, and let us know what you think.

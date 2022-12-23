@@ -19,6 +19,8 @@ Convoy v0.8 was a significant upgrade from our previous versions. We introduced 
 
 - **Simpler Events Logs and Events Dashboard**: Another quick advantage of ripping out applications is it enabled us to provide a more straightforward events dashboard. The new events dashboard immediately shows your event deliveries, while the events log shows you all events sent to Convoy for incoming and outgoing projects.
 
+- **Static IPs**: At times, webhooks consumers require providers to send webhooks from predefined IP addresses. In this release, Convoy ships with a http connect proxy support that allows it route webhooks traffic through a dedicated egress. With this, we can maintain IP address of our cluster across all requests.
+
 ## Changelog
 The changelogs for this minor release version and any maintenance versions are listed below.
 
