@@ -94,7 +94,11 @@
 		"showDropdown": false,
 		"children": [
 			{
-				"title": "Latest (v0.7)",
+				"title": "Latest (v0.8)",
+				"link": "/docs/releases/version-8"
+			},
+			{
+				"title": "v0.7",
 				"link": "/docs/releases/version-7"
 			},
 			{

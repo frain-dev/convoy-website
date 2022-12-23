@@ -2,7 +2,7 @@
 title: Release Notes
 description: 'Version 7 Release Notes'
 id: release-notes-v7
-order: 2
+order: 3
 ---
 
 # Convoy v0.7
