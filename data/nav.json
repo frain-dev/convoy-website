@@ -18,10 +18,6 @@
 			{
 				"title": "Receiving your first webhook event with Convoy",
 				"link": "/docs/getting-started/receiving-webhook-example"
-			},
-			{
-				"title": "Troubleshooting",
-				"link": "/docs/troubleshooting"
 			}
 		]
 	},
@@ -43,7 +39,7 @@
 			},
 			{
 				"title": "Troubleshooting",
-				"link": "/docs/troubleshooting"
+				"link": "/docs/deploy/troubleshooting"
 			}
 		]
 	},
