@@ -21,7 +21,7 @@ Run the script below and follow the prompt
 
 ### Upgrading
 To upgrade to a new instance run the script below and follow the prompt.
-```bash
+```bash[Bash]
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/frain-dev/convoy/main/deploy/vm-upgrade.sh)"
 ```
 
