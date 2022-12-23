@@ -18,10 +18,6 @@
 			{
 				"title": "Receiving your first webhook event with Convoy",
 				"link": "/docs/getting-started/receiving-webhook-example"
-			},
-			{
-				"title": "Troubleshooting",
-				"link": "/docs/troubleshooting"
 			}
 		]
 	},
@@ -38,24 +34,12 @@
 		"showDropdown": false,
 		"children": [
 			{
-				"title": "Overview",
-				"link": "/docs/deploy/overview"
-			},
-			{
-				"title": "Docker",
-				"link": "/docs/deploy/docker"
-			},
-			{
-				"title": "Hobby",
-				"link": "/docs/deploy/hobby"
-			},
-			{
-				"title": "DigitalOcean",
-				"link": "/docs/deploy/digitalocean"
+				"title": "Install Convoy",
+				"link": "/docs/deploy/install-convoy"
 			},
 			{
 				"title": "Troubleshooting",
-				"link": "/docs/troubleshooting"
+				"link": "/docs/deploy/troubleshooting"
 			}
 		]
 	},

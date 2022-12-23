@@ -42,7 +42,7 @@
 				<div class="card bg-[#ffeeed]">
 					<h4>Deployment</h4>
 					<p>Learn how to deploy Convoy to any environment of your choice.</p>
-					<nuxt-link to="/docs/deploy/overview">
+					<nuxt-link to="/docs/deploy/install-convoy">
 						<button class="bg-[#f5dedc] rounded-6px">
 							Read more
 							<img src="~/assets/images/dark-arrow-circle-right.svg" alt="arrow right" />
