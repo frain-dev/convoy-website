@@ -46,12 +46,8 @@
 				"link": "/docs/deploy/docker"
 			},
 			{
-				"title": "Hobby",
-				"link": "/docs/deploy/hobby"
-			},
-			{
-				"title": "DigitalOcean",
-				"link": "/docs/deploy/digitalocean"
+				"title": "Install Convoy",
+				"link": "/docs/deploy/install-convoy"
 			},
 			{
 				"title": "Troubleshooting",

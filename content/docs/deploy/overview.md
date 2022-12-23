@@ -3,13 +3,10 @@ title: Deploy Convoy
 description: 'Techniques to deploy convoy to the various cloud platforms'
 id: overview
 order: 3
-
-children:
-   - label: 'Digital Ocean'
-     link: '/docs/deploy/digitalocean'
 ---
 
 # Deploying Convoy
+Convoy is a made up of several components and depends on a few third-party dependencies. 
 
 In addition to being open-source, we provide simple configurations to help you get started running an instance of Convoy. While Convoy is a simple binary, deploying it requires third-party dependencies like MongoDB & Redis. To keep things simple, we choose to use Docker & Docker-Compose for ease of deployment. 
 
@@ -22,7 +19,6 @@ Convoy can be configured from either CLI flags, environment variables or a `conv
 
 - [Docker](./docker)
 - [Hobby](./hobby)
-- [DigitalOcean](./digitalocean)
 
 ## Troubleshooting
 
