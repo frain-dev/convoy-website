@@ -13,8 +13,6 @@ This page contains fixes for some of the known installation and usage errors enc
 
 If you have any issues deploying Convoy with either Docker of Docker compose, please reach out in the [Slack channel](https://app.slack.com/client/T02JMPNCYNP).
 
-## Kubernetes
-The common issues encountered when deploying Convoy in Kubernetes are:
 
 ### Redis instance fails to connect. 
 In this situation, ensure that your redis connection string is in the format:
