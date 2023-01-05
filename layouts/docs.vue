@@ -11,8 +11,7 @@
 			</button>
 
 			<div class="flex flex-col relative mx-24px mt-24px">
-				<select
-					class="
+				<select class="
 						font-normal
 						text-14 text-white-100
 						bg-[#181d31]
@@ -26,15 +25,10 @@
 						valid:pt-20px valid:pb-10px valid:px-16px
 						appearance-none
 						peer
-					"
-					required
-				>
+					" required>
 					<option v-for="version in versions" selected :key="version" :value="version">{{ version }}</option>
 				</select>
-				<label
-					for="version"
-					class="font-medium text-14 text-[#a5abc1] capitalize absolute ml-16px top-10px transition-all duration-300 peer-valid:font-medium peer-valid:text-10 peer-valid:ml-16px peer-valid:top-6px"
-				>
+				<label for="version" class="font-medium text-14 text-[#a5abc1] capitalize absolute ml-16px top-10px transition-all duration-300 peer-valid:font-medium peer-valid:text-10 peer-valid:ml-16px peer-valid:top-6px">
 					Version
 				</label>
 			</div>
@@ -58,12 +52,7 @@
 				<DocsSearch class="order-2 xs:order-3" />
 
 				<div class="flex items-center order-3 xs:order-2">
-					<a
-						href="https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email"
-						target="_blank"
-						rel="noreferrer"
-						class="bg-primary-100 m-auto text-white-100 whitespace-nowrap !text-12 desktop:!text-14 font-semibold flex items-center py-8px px-20px shadow-sm rounded-8px mr-24px w-fit"
-					>
+					<a href="https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email" target="_blank" rel="noreferrer" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap !text-12 desktop:!text-14 font-semibold flex items-center py-8px px-20px shadow-sm rounded-8px mr-24px w-fit">
 						Join our community
 						<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px w-10px h-10px" alt="arrow right" />
 					</a>
@@ -88,11 +77,6 @@ export default {
 			showMenu: false,
 			versions: ['Latest v0.7.x']
 		};
-	},
-	computed: {
-		currentRoute() {
-			return this.$route.path;
-		}
 	},
 	async mounted() {
 		const pages = await getNav();
