@@ -10,12 +10,7 @@
 
 <script>
 export default {
-	props: ['pages'],
-	computed: {
-		routeLink() {
-			return this.$route.path;
-		}
-	}
+	props: ['pages']
 };
 </script>
 
@@ -35,6 +30,7 @@ export default {
 				@apply ml-0;
 			}
 		}
+
 		img {
 			@apply w-16px mr-4px;
 		}
@@ -43,6 +39,7 @@ export default {
 			@apply ml-34px pt-16px;
 		}
 	}
+
 	a {
 		&.nuxt-link-active {
 			@apply text-light-green;

@@ -20,9 +20,6 @@ export default {
 	computed: {
 		showItem() {
 			return this.page.showDropdown;
-		},
-		routeLink() {
-			return this.$route.path;
 		}
 	}
 };
