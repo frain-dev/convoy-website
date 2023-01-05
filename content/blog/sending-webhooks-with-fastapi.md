@@ -11,12 +11,13 @@ tags:
     - Engineering
     - Tutorial
 featured: false
-description: Build a todo API with FastAPI and send webhook events to an endpoint for every CRUD operation.
+description: Build a todo API with FastAPI and send webhook events to an endpoint for every CRUD operation. In this article, we will build a Todo API in FastAPI and use Convoy to publish webhook events for each operation on our Todo items; create, update & delete.
 published_at: 2022-11-29T16:30:00.000+00:00
 ---
+
 Webhooks are messages ( or payload ) sent from an application after the execution of an operation. They are also used to communicate between a chain of services; for example, a payment provider emits webhook events to an e-commerce application’s endpoint after a payment operation. Convoy facilitates publishing webhook events from your application to your clients by serving as a reliable egress.
 
-In this article, we will build a Todo API in FastAPI and use Convoy to publish webhook events for each operation on our Todo items; create, update & delete. 
+In this article, we will build a Todo API in FastAPI and use Convoy to publish webhook events for each operation on our Todo items; create, update & delete.
 
 ## Prerequisites
 
@@ -31,8 +32,7 @@ For the sake of brevity, we created an additional resource to help with creating
 
 Our API looks like this:
 
-- Endpoint
-    
+-   Endpoint
     ```
     GET    /endpoint
     GET    /endpoint/:id
@@ -40,9 +40,7 @@ Our API looks like this:
     PUT    /endpoint/:id
     DELETE /endpoint/:id
     ```
-    
-- Todo
-    
+-   Todo
     ```
     GET    /todo
     GET    /todo/:id
@@ -50,14 +48,13 @@ Our API looks like this:
     PUT    /todo/:id
     DELETE /todo/:id
     ```
-    
 
 Every time we `create`, `update` and `delete` a todo item, we would generate the following events — `todo.created`, `todo.updated`, and `todo.deleted` respectively.
 
 ### Let’s Build Our API
 
 1. Project Setup
-    
+
     ```console[terminal]
     $ mkdir fastapi-todo-convoy && cd fastapi-todo-convoy
     $ python3 -m venv venv
@@ -65,6 +62,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
     ```
 
     Activate virtual environment
+
     ```console[terminal]
     $ source venv/bin/activate
     $ pip install fastapi uvicorn pydantic[dotenv]
@@ -72,6 +70,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
     ```
 
     Install Convoy:
+
     ```console[terminal]
     $ pip install git+ssh://git@github.com/frain-dev/convoy-python
     ```
@@ -82,6 +81,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
     CONVOY_API_KEY=<your-api-key>
     CONVOY_PROJECT_ID=<your-project-id>
     ```
+
 2. Define events & configuration
 
     ```python[events.py]
@@ -114,6 +114,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
     ```
 
     Configuration:
+
     ```python[config.py]
     from pydantic import BaseSettings
     from typing import Optional
@@ -125,7 +126,6 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
         class Config:
             env_file = ".env"
     ```
-
 
 3. Endpoints API
 
@@ -146,13 +146,13 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
     convoy = Convoy({"api_key": config.CONVOY_API_KEY, "project_id": config.CONVOY_PROJECT_ID})
 
     ```
-    
+
     Add the code for the endpoints API:
 
     ```python[api.py | Endpoints API]
     @app.post("/endpoint", tags=["endpoint"])
     async def create_endpoint(endpoint_body: dict):
-        (endpoint, result) = convoy.endpoint.create({}, endpoint_body)    
+        (endpoint, result) = convoy.endpoint.create({}, endpoint_body)
         return {"Endpoint ID": endpoint["data"]["uid"]}
 
     @app.get("/endpoint", tags=["endpoint"])
@@ -185,13 +185,13 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
             "event_type": event_type,
             "data": events[event_type]
         }
-        
+
         (res, err) = convoy.event.create({}, event)
         return res
     ```
-    
+
 4. Todos API
-    
+
     ```python[api.py | Todos API]
     @app.get("/todo", tags=["todos"])
     async def get_todos(endpoint: str) -> dict:
@@ -247,20 +247,19 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
             "data": f"Todo with id {id} not found."
         }
     ```
-    
 
 ## Publish Webhook Events
 
-It’s time to publish your first webhook! 
+It’s time to publish your first webhook!
 
-1. To begin, we start our FastAPI app 
-    
+1. To begin, we start our FastAPI app
+
     ```console[terminal]
     $ uvicorn api:app --host 0.0.0.0 --port 8080 --reload
     ```
-    
+
 2. Second, we create an endpoint with the cURL command below:
-    
+
     ```console[terminal]
     curl -X 'POST' \
     'http://0.0.0.0:8080/endpoint' \
@@ -279,9 +278,9 @@ It’s time to publish your first webhook!
     ```console[terminal]
     {"Endpoint ID":"da6c42b5-2a51-478c-ad5e-53097c0f61cb"}
     ```
-    
+
 3. Finally, we create a Todo item, that in turn generates the webhook item. Let's use the cURL command below:
-    
+
     ```console[terminal]
     curl -X 'POST' \
     'http://0.0.0.0:8080/todo?endpoint=0299d5b3-b8b6-4b8d-b421-e5acd080c72e' \
@@ -292,13 +291,12 @@ It’s time to publish your first webhook!
     "item": "Setup a convoy webhook project and publish my first webhook"
     }'
     ```
-    
+
     The API returns a successful response:
-    
+
     ```console[terminal]
     {"data":["Todo added."]}
     ```
-    
 
 Let’s see our event deliveries dashboard.
 
@@ -310,7 +308,7 @@ Let’s also see our webhooks endpoint
 
 ### Appendix
 
-1. In production environments, Endpoints should be scoped to each user/business/customer or whatever makes sense in your case because at the point of generating webhooks 
+1. In production environments, Endpoints should be scoped to each user/business/customer or whatever makes sense in your case because at the point of generating webhooks
 2. Users can supply their endpoints through multiple means — your dashboard, the portal link
 3. In this article, we publish webhooks in our controllers, in an ideal production environment, you should publish them from your workers.
 
