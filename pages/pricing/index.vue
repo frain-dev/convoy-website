@@ -45,26 +45,28 @@
 							{{ plan.price }}
 							<span class="text-18 mobile:text-14 font-medium text-grey-80">{{ plan.frequency }}</span>
 						</p>
-						<a
-							:href="plan.link"
-							target="_blank"
-							class="
-								bg-primary-100
-								text-white-100
-								py-16px
-								px-26px
-								rounded-10px
-								mt-22px
-								flex
-								items-center
-								shadow-pricing-button
-								transition-all
-								duration-300
-								hover:shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)]
-							"
-						>
-							{{ index === 3 ? 'Contact Us' : 'Get Started' }}
-						</a>
+						<button class="border-none bg-none">
+							<a
+								:href="plan.link"
+								target="_blank"
+								class="
+									bg-primary-100
+									text-white-100
+									py-16px
+									px-26px
+									rounded-10px
+									mt-22px
+									flex
+									items-center
+									shadow-pricing-button
+									transition-all
+									duration-300
+									hover:shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)]
+								"
+							>
+								{{ index === 3 ? 'Contact Us' : 'Get Started' }}
+							</a>
+						</button>
 					</div>
 				</li>
 			</ul>
@@ -396,7 +398,7 @@ export default {
 	background-position: center;
 }
 .questions {
-	background: url('~/assets/images/background-pattern-dark.svg') no-repeat, #fcfcfc;
+	background: url('~/assets/images/bg-pattern-light.png') no-repeat, #fcfcfc;
 	background-size: cover;
 	background-position: center;
 }
