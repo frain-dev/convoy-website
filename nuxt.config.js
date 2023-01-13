@@ -208,27 +208,8 @@ export default {
 		// https://go.nuxtjs.dev/content
 		'@nuxt/content',
 		'@nuxtjs/feed',
-		'@nuxtjs/gtm',
 		'@nuxtjs/sitemap'
 	],
-
-	gtm: {
-		id: process.env.GOOGLE_TAG_MANAGER_ID,
-
-		enabled: true,
-		layer: 'dataLayer',
-
-		pageTracking: true,
-		pageViewEventName: 'nuxtRoute',
-
-		autoInit: true,
-		respectDoNotTrack: true,
-
-		scriptId: 'gtm-script',
-		scriptDefer: false,
-		scriptURL: 'https://www.googletagmanager.com/gtag/js',
-		crossOrigin: false
-	},
 
 	sitemap: {
 		hostname: 'https://getconvoy.io',
@@ -239,12 +220,6 @@ export default {
 			changefreq: 'daily',
 			priority: 1,
 			lastmod: new Date()
-		}
-	},
-
-	publicRuntimeConfig: {
-		gtm: {
-			id: process.env.GOOGLE_TAG_MANAGER_ID
 		}
 	},
 
