@@ -29,7 +29,7 @@
 							<span class="text-18 mobile:text-14 font-medium text-grey-80">{{ plan.frequency }}</span>
 						</p>
 						<button class="border-none bg-none">
-							<a href="https://dashboardgetconvoy.io/signup" target="_blank" class="
+							<a href="https://dashboard.getconvoy.io/signup" target="_blank" class="
 									bg-primary-100
 									text-white-100
 									py-16px
