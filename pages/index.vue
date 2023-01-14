@@ -57,35 +57,6 @@
 			</div>
 		</section>
 
-		<!-- newsletter  -->
-		<section class="
-				bg-[url(~/assets/images/Newsletter-card-small.png)]
-				desktop:bg-[url(~/assets/images/Newsletter-card.png)]
-				border border-white-16
-				bg-cover bg-no-repeat bg-center
-				pt-34px
-				pb-60px
-				desktop:py-30px
-				px-20px
-				desktop:pt-60px desktop:pb-46px
-			">
-			<div class="max-w-[695px] w-full m-auto">
-				<p class="text-grey-80 text-14 font-medium text-center">We are constantly innovating</p>
-				<p class="text-grey-80 text-14 font-medium text-center mb-40px">Join over 100 companies staying on top of any updates, subscribe to our newsletter:</p>
-				<form @submit.prevent="requestAccess()" class="bg-[#FBFDFE] border border-primary-500 flex p-10px rounded-8px items-center w-full">
-					<input type="email" id="email" placeholder="Your email" aria-label="Email" v-model="earlyAccessEmail" class="bg-transparent focus:outline-none focus:border-none w-full text-16" />
-					<button class="flex items-center text-primary-100 text-14">
-						{{ subscribeButtonText }}
-						<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-16px">
-							<path
-								d="M7.68681 15.7357L7.0594 15.0963C6.8933 14.9271 6.79999 14.6975 6.79999 14.4581C6.79999 14.2188 6.8933 13.9892 7.0594 13.82L10.8091 10.0013L7.06014 6.18155C6.97784 6.09774 6.91255 5.99822 6.86801 5.88868C6.82347 5.77914 6.80054 5.66174 6.80054 5.54317C6.80054 5.4246 6.82347 5.3072 6.86801 5.19766C6.91255 5.08813 6.97784 4.98861 7.06014 4.90479L7.68754 4.26547C7.76983 4.18132 7.86761 4.11456 7.97528 4.069C8.08294 4.02345 8.19837 4 8.31495 4C8.43153 4 8.54696 4.02345 8.65462 4.069C8.76229 4.11456 8.86007 4.18132 8.94236 4.26547L13.9406 9.36199C14.1067 9.53126 14.2 9.76082 14.2 10.0002C14.2 10.2396 14.1067 10.4691 13.9406 10.6384L8.9394 15.7357C8.7733 15.9049 8.54801 16 8.31311 16C8.0782 16 7.85291 15.9049 7.68681 15.7357Z"
-								class="fill-primary-100" />
-						</svg>
-					</button>
-				</form>
-			</div>
-		</section>
-
 		<!-- why use use use  -->
 		<section class="mb-100px desktop:mb-130px mt-60px desktop:mt-130px max-w-[1170px] w-full m-auto px-20px">
 			<h1 class="text-center text-32 desktop:text-[48px] desktop:leading-[58px] font-bold">Why use Convoy</h1>
@@ -246,8 +217,6 @@ export default {
 	layout: "home",
 	data() {
 		return {
-			subscribeButtonText: "Subscribe",
-			earlyAccessEmail: "",
 			tabs: [
 				{ label: "Open Core", id: "open" },
 				{ label: "App Portal", id: "portal" }
@@ -283,7 +252,6 @@ export default {
 				{ feature: "Scalable", description: "Independently scale courier as your system needs grows.", img: "scalable", shadow: "shadow-[0_22px_24px_0px_rgba(43,214,123,0.2)]" },
 				{ feature: "Bi-directional webhooks", description: "Publish and recieve web hooks events from any provider.", img: "bidirectional", shadow: "shadow-[0_22px_24px_0px_rgba(240,173,78,0.2)]" }
 			],
-			earlyAccessEmail: "",
 			activeSlide: true,
 			expandImage: false
 		};
@@ -318,39 +286,6 @@ export default {
 				default:
 					break;
 			}
-		},
-		async requestAccess() {
-			this.subscribeButtonText = 'Subscribing...'
-			try {
-				const response = await fetch("/.netlify/functions/subscribe", {
-					method: "POST",
-					mode: "cors",
-					cache: "no-cache",
-					credentials: "same-origin",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					redirect: "follow",
-					referrerPolicy: "no-referrer",
-					body: JSON.stringify({
-						email: this.earlyAccessEmail
-					})
-				});
-				await response.json();
-				this.subscribeButtonText = "Subscribed";
-				this.setDefaultAccessButtonText();
-				this.isSubmitingloadingEarlyAccessForm = false;
-			}
-			catch (error) {
-				this.subscribeButtonText = "Error";
-				this.setDefaultAccessButtonText();
-				this.isSubmitingloadingEarlyAccessForm = false;
-			}
-		},
-		setDefaultAccessButtonText() {
-			setTimeout(() => {
-				this.subscribeButtonText = "Subscribe";
-			}, 3000);
 		},
 		triggerSlide() {
 			setInterval(() => {
