@@ -16,20 +16,20 @@
 					</a>
 				</div>
 
-				<ul class="flex items-center justify-center list-none w-full mt-60px m-auto">
+				<ul class="flex items-center justify-center list-none w-full mt-60px m-auto brightness-0 invert-[1]">
 					<li class="mr-20px desktop:mr-50px">
 						<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
-							<img src="~/assets/images/buycoins-logo.svg" class="w-90px" alt="buycoins logo" />
+							<img src="~/assets/images/buycoins.png" class="w-90px" alt="buycoins logo" />
 						</a>
 					</li>
 					<li class="mr-20px desktop:mr-50px">
 						<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
-							<img src="~/assets/images/getwallets-logo.svg" class="w-90px" alt="getwallets logo" />
+							<img src="~/assets/images/getwallets.svg" class="w-90px" alt="getwallets logo" />
 						</a>
 					</li>
 					<li class="mr-20px desktop:mr-50px">
 						<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
-							<img src="~/assets/images/dojah.png" class="w-70px" alt="dojah logo" />
+							<img src="~/assets/images/dojah.svg" class="w-70px" alt="dojah logo" />
 						</a>
 					</li>
 					<li class="">

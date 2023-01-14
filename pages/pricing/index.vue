@@ -7,49 +7,29 @@
 			</div>
 		</section>
 
-		<section class="px-50px my-40px">
-			<ul class="grid grid-cols-[repeat(auto-fill,minmax(300px,_1fr))]">
+		<section class="px-50px mt-104px">
+			<ul class="grid grid-cols-[repeat(auto-fill,minmax(270px,_1fr))] max-w-[1200px] m-auto gap-x-30px gap-y-40px">
 				<li v-for="(plan, index) in plans" :key="index">
-					<div
-						class="pl-20px border-dashed border-l mb-22px"
-						:class="{ 'border-l-primary-400': index == 0, 'border-l-success-400': index == 1, 'border-l-warning-400': index == 2, 'border-l-danger-400': index == 3 }"
-					>
+					<div class="pl-20px border-dashed border-l mb-22px" :class="{ 'border-l-primary-400': index == 0, 'border-l-success-400': index == 1, 'border-l-warning-400': index == 2, 'border-l-danger-400': index == 3 }">
 						<img :src="require(`~/assets/images/${plan.id}-plan.svg`)" class="mr-16px" alt="plan icon" />
 					</div>
-					<div
-						class="pl-20px border-dashed border-l mb-22px"
-						:class="{ 'border-l-primary-100': index == 0, 'border-l-success-100': index == 1, 'border-l-warning-100': index == 2, 'border-l-danger-100': index == 3 }"
-					>
+					<div class="pl-20px border-dashed border-l mb-22px" :class="{ 'border-l-primary-100': index == 0, 'border-l-success-100': index == 1, 'border-l-warning-100': index == 2, 'border-l-danger-100': index == 3 }">
 						<h2 class="text-grey-100 text-24 font-bold">
 							{{ plan.name }}
 						</h2>
 					</div>
-					<ul
-						class="pl-32px border-dashed border-l"
-						:class="{ 'border-l-primary-400': index == 0, 'border-l-success-400': index == 1, 'border-l-warning-400': index == 2, 'border-l-danger-400': index == 3 }"
-					>
-						<li
-							class="mb-20px pl-8px"
-							:class="`${index == 0 ? 'blue-check' : ''} ${index == 1 ? 'green-check' : ''} ${index == 2 ? 'yellow-check' : ''} ${index == 3 ? 'red-check' : ''} text-14 text-grey-80 font-light`"
-							v-for="(feature, _index) in plan.features"
-							:key="_index"
-						>
+					<ul class="pl-32px border-dashed border-l" :class="{ 'border-l-primary-400': index == 0, 'border-l-success-400': index == 1, 'border-l-warning-400': index == 2, 'border-l-danger-400': index == 3 }">
+						<li class="mb-20px pl-8px" :class="`${index == 0 ? 'blue-check' : ''} ${index == 1 ? 'green-check' : ''} ${index == 2 ? 'yellow-check' : ''} ${index == 3 ? 'red-check' : ''} text-14 text-grey-80 font-light`" v-for="(feature, _index) in plan.features" :key="_index">
 							{{ feature }}
 						</li>
 					</ul>
-					<div
-						class="pl-20px border-dashed border-l mb-32px"
-						:class="{ 'border-l-primary-100': index == 0, 'border-l-success-100': index == 1, 'border-l-warning-100': index == 2, 'border-l-danger-100': index == 3 }"
-					>
+					<div class="pl-20px border-dashed border-l mb-32px" :class="{ 'border-l-primary-100': index == 0, 'border-l-success-100': index == 1, 'border-l-warning-100': index == 2, 'border-l-danger-100': index == 3 }">
 						<p class="text-[48px] font-bold leading-[64px] mobile:text-[36px] mobile:leading-[48px]">
 							{{ plan.price }}
 							<span class="text-18 mobile:text-14 font-medium text-grey-80">{{ plan.frequency }}</span>
 						</p>
 						<button class="border-none bg-none">
-							<a
-								:href="plan.link"
-								target="_blank"
-								class="
+							<a href="https://dashboardgetconvoy.io/signup" target="_blank" class="
 									bg-primary-100
 									text-white-100
 									py-16px
@@ -62,8 +42,7 @@
 									transition-all
 									duration-300
 									hover:shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)]
-								"
-							>
+								">
 								{{ index === 3 ? 'Contact Us' : 'Get Started' }}
 							</a>
 						</button>
@@ -73,26 +52,26 @@
 		</section>
 
 		<section class="py-100px px-20px">
-			<p class="text-16 text-grey-80 text-center max-w-[572px] m-auto mb-100px">Hundreds of engineering teams that value efficiency use Convoy to manage their webhook infrastructure events.</p>
+			<p class="text-14 text-grey-60 text-center max-w-[500px] m-auto mb-72px">Hundreds of engineering teams that value efficiency use Convoy to manage their webhook infrastructure events.</p>
 			<ul class="flex justify-between items-center max-w-[960px] m-auto">
 				<li class="mr-20px desktop:mr-50px">
 					<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
-						<img src="~/assets/images/buycoins.png" class="desktop:max-w-[200px] w-fit" alt="buycoins logo" />
+						<img src="~/assets/images/buycoins.png" class="desktop:max-w-[110px] w-100px" alt="buycoins logo" />
 					</a>
 				</li>
 				<li class="mr-20px desktop:mr-50px">
 					<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
-						<img src="~/assets/images/getwallet.png" class="desktop:max-w-[200px] w-fit" alt="getwallets logo" />
+						<img src="~/assets/images/getWallets logo.png" class="desktop:max-w-[150px] w-100px" alt="getwallets logo" />
 					</a>
 				</li>
 				<li class="mr-20px desktop:mr-50px">
 					<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
-						<img src="~/assets/images/dojah 2.png" class="desktop:max-w-[100px] w-fit" alt="dojah logo" />
+						<img src="~/assets/images/dojah.svg" class="desktop:max-w-[100px] w-fit" alt="dojah logo" />
 					</a>
 				</li>
 				<li class="">
 					<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
-						<img src="~/assets/images/termii 2.png" class="desktop:max-w-[180px] w-fit" alt="termii logo" />
+						<img src="~/assets/images/termii.png" class="desktop:max-w-[150px] w-100px" alt="termii logo" />
 					</a>
 				</li>
 			</ul>
@@ -154,21 +133,19 @@
 
 		<section class="px-20px py-60px desktop:py-100px">
 			<p class="text-center text-16 font-semibold mb-60px desktop:mb-90px">What people are saying about Convoy...</p>
-			<div class="px-30px flex items-start flex-nowrap gap-10 overflow-x-auto no-scrollbar">
-				<div class="min-w-[300px]" v-for="testimonial in testimonials" :key="testimonial.author.twitter">
+			<div class="px-30px flex items-start flex-nowrap gap-10 overflow-x-auto no-scrollbar justify-center">
+				<div class="max-w-[300px] min-w-[300px]" v-for="(testimonial, index) in testimonials" :key="testimonial.author.twitter">
 					<div class="flex items-center justify-between border-dashed border-l border-l-primary-400 pl-30px">
 						<div class="flex items-center">
-							<img src="~/assets/images/avatar.svg" alt="avatar icon" class="mr-10px" />
+							<img :src="require(`~/assets/images/twitter-user${index + 1}.jpeg`)" alt="avatar icon" class="mr-10px w-40px rounded-50%" />
 							<div>
 								<p class="text-12 font-medium text-grey-80">{{ testimonial.author.name }}</p>
-								<p class="text-10 text-grey-40">
-									<a :href="'https://twitter.com/' + testimonial.author.twitter">@{{ testimonial.author.twitter }}</a>
-								</p>
+								<p class="text-10 text-grey-40">@{{ testimonial.author.twitter }}</p>
 							</div>
 						</div>
-						<a :href="testimonial.link" target="_blank">
+						<div>
 							<img src="~/assets/images/twitter-logo-blue.svg" alt="twitter icon" />
-						</a>
+						</div>
 					</div>
 					<div class="border-dashed border-l border-l-primary-100 pl-30px mt-6px testimonial" v-html="testimonial.html"></div>
 				</div>
@@ -176,15 +153,10 @@
 		</section>
 
 		<section class="px-20px pb-100px desktop:pb-130px">
-			<div class="mt-100px desktop:mt-130px max-w-[1000px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
+			<div class="mt-100px desktop:mt-50px max-w-[1000px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
 				<h1 class="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px desktop:mb-16px">Need something else?</h1>
 				<p class="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">Get in touch with us today to find out how best we can support your business and work needs.</p>
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="https://calendly.com/d/d6k-jw2-wgj/convoy-user-demo"
-					class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit"
-				>
+				<a target="_blank" rel="noopener noreferrer" href="https://calendly.com/d/d6k-jw2-wgj/convoy-user-demo" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 					Contact Sales
 					<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 				</a>
@@ -222,7 +194,7 @@ export default {
 					id: 'scale',
 					description: 'For users who want to do more',
 					price: '$700',
-					frequency: '',
+					frequency: '/monthly',
 					link: '',
 					features: ['Send up to 20m events, retries are free', 'Access for unlimited users', 'Data retention for up to 3 months', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
 				},
@@ -233,7 +205,7 @@ export default {
 					price: 'Custom',
 					frequency: '',
 					link: 'http://getconvoy.io/demo',
-					features: ['Send unlimited events', 'Access for unlimited users', 'Custom data retention policy', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
+					features: ['Send unlimited number of events', 'Access for unlimited users', 'Custom data retention policy', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
 				}
 			],
 			features: [
@@ -389,14 +361,17 @@ export default {
 .yellow-check {
 	list-style-image: url('~/assets/images/check-icon-warn.svg');
 }
+
 .red-check {
 	list-style-image: url('~/assets/images/check-icon-danger.svg');
 }
+
 .all-plans {
 	background: url('~/assets/images/background-pattern-dark.svg') no-repeat, #edf2f7;
 	background-size: cover;
 	background-position: center;
 }
+
 .questions {
 	background: url('~/assets/images/bg-pattern-light.png') no-repeat, #fcfcfc;
 	background-size: cover;
