@@ -20,7 +20,7 @@
 						<a href="/demo" class="py-12px px-28px text-14 font-medium rounded-8px bg-white-100 text-primary-100 flex items-center">Book a Demo</a>
 					</div>
 
-					<ul class="flex items-center justify-center desktop:justify-start list-none w-full mt-60px m-auto desktop:ml-0 brightness-0 invert-[1]">
+					<ul class="flex items-center justify-center desktop:justify-start list-none w-full mt-60px m-auto desktop:ml-0" style="filter: brightness(0) invert(1)">
 						<li class="mr-20px desktop:mr-50px">
 							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
 								<img src="~/assets/images/buycoins.png" class="w-90px" alt="buycoins logo" />
