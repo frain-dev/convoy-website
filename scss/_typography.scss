@@ -159,3 +159,12 @@
 		}
 	}
 }
+
+.testimonial {
+	p {
+		@apply text-10 text-grey-80;
+		a {
+			@apply text-primary-100;
+		}
+	}
+}

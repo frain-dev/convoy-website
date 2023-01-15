@@ -1,79 +1,159 @@
 <template>
 	<div>
 		<section class="cta-section">
-			<div class="max-w-[1200px] min-h-[900px] mobile:min-h-[700px] desktop:min-h-[780px] w-full m-auto text-white-100 px-20px pt-200px">
-				<h1 class="text-center font-bold text-32 desktop:text-[48px] mb-16px">Convoy Pricing</h1>
-				<p class="text-center text-18 mb-40px max-w-[530px] m-auto">Convoy scales with you; choose a plan that fits you and we'll take it from there.</p>
-
-				<div class="rounded-8px bg-primary-500 p-12px max-w-[536px] w-full text-14 italic flex items-center justify-center mb-58px border border-primary-200 m-auto">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-10px">
-						<rect width="24" height="24" rx="8" fill="#C8D8E8" />
-						<path
-							d="M12 11.3125C11.8177 11.3125 11.6428 11.3849 11.5139 11.5139C11.3849 11.6428 11.3125 11.8177 11.3125 12V14.75C11.3125 14.9323 11.3849 15.1072 11.5139 15.2361C11.6428 15.3651 11.8177 15.4375 12 15.4375C12.1823 15.4375 12.3572 15.3651 12.4861 15.2361C12.6151 15.1072 12.6875 14.9323 12.6875 14.75V12C12.6875 11.8177 12.6151 11.6428 12.4861 11.5139C12.3572 11.3849 12.1823 11.3125 12 11.3125ZM12.2613 8.6175C12.0939 8.54874 11.9061 8.54874 11.7388 8.6175C11.6544 8.65022 11.5773 8.69928 11.5119 8.76187C11.4512 8.8287 11.4023 8.90544 11.3675 8.98875C11.329 9.07034 11.3102 9.15982 11.3125 9.25C11.312 9.34048 11.3293 9.43017 11.3635 9.51394C11.3977 9.5977 11.4482 9.67388 11.5119 9.73812C11.5787 9.79885 11.6554 9.84768 11.7388 9.8825C11.8429 9.92529 11.956 9.94184 12.068 9.9307C12.1801 9.91956 12.2877 9.88107 12.3814 9.81861C12.4751 9.75615 12.552 9.67163 12.6054 9.57249C12.6587 9.47334 12.6869 9.3626 12.6875 9.25C12.685 9.06797 12.6138 8.89362 12.4881 8.76187C12.4227 8.69928 12.3456 8.65022 12.2613 8.6175ZM12 5.125C10.6403 5.125 9.31105 5.52821 8.18046 6.28365C7.04987 7.03908 6.16868 8.11281 5.64833 9.36905C5.12798 10.6253 4.99183 12.0076 5.2571 13.3412C5.52238 14.6749 6.17716 15.8999 7.13864 16.8614C8.10013 17.8228 9.32514 18.4776 10.6588 18.7429C11.9924 19.0082 13.3747 18.872 14.631 18.3517C15.8872 17.8313 16.9609 16.9501 17.7164 15.8195C18.4718 14.689 18.875 13.3597 18.875 12C18.875 11.0972 18.6972 10.2032 18.3517 9.36905C18.0062 8.53494 17.4998 7.77704 16.8614 7.13864C16.223 6.50024 15.4651 5.99383 14.631 5.64833C13.7968 5.30283 12.9028 5.125 12 5.125ZM12 17.5C10.9122 17.5 9.84884 17.1774 8.94437 16.5731C8.0399 15.9687 7.33495 15.1098 6.91867 14.1048C6.50238 13.0998 6.39347 11.9939 6.60568 10.927C6.8179 9.86011 7.34173 8.8801 8.11092 8.11091C8.8801 7.34172 9.86011 6.8179 10.927 6.60568C11.9939 6.39346 13.0998 6.50238 14.1048 6.91866C15.1098 7.33494 15.9687 8.03989 16.5731 8.94436C17.1774 9.84883 17.5 10.9122 17.5 12C17.5 13.4587 16.9205 14.8576 15.8891 15.8891C14.8576 16.9205 13.4587 17.5 12 17.5Z"
-							fill="#477DB3" />
-					</svg>
-					<p class="text-black">Important Notice: Billing is scheduled to starts in January 2023</p>
-				</div>
+			<div class="max-w-[1200px] min-h-[500px] mobile:min-h-[500px] desktop:min-h-[570px] w-full m-auto text-white-100 px-20px pt-200px">
+				<h1 class="text-center font-bold text-32 desktop:text-[40px] desktop:leading-[48px] mb-22px max-w-[502px] m-auto">Transparent Pricing, pay as you grow</h1>
+				<p class="text-center text-18 mb-40px max-w-[384px] m-auto">Convoy scales with you; choose a plan that fits you and we'll take it from there.</p>
 			</div>
 		</section>
 
-		<section class="plans pb-250px px-40px">
-			<ul class="grid md-max:gap-40px m-auto max-w-[1200px] -mt-198px type items-center justify-center">
-				<li class="shadow-default bg-white-100" v-for="(plan, index) in plans" :key="index" :class="`${index == 0 ? 'rounded-tl-16px rounded-bl-16px rounded-br-16px md-max:rounded-tr-16px' : ''} ${index == 2 ? 'rounded-tr-16px rounded-bl-16px rounded-br-16px md-max:rounded-tl-16px' : ''
-				}`">
-					<div class="head px-32px pt-32px pb-16px">
-						<div class="flex">
-							<img :src="require(`~/assets/images/${plan.id}-plan.svg`)" class="mr-16px" alt="plan icon" />
-							<h2 class="text-grey-100 text-24 font-bold">
-								<span class="text-grey-40 text-18 font-medium">For</span>
-								<br />
-								{{ plan.name }}
-							</h2>
-						</div>
-						<p class="text-16 font-normal text-grey-80 my-24px">{{ plan.description }}</p>
-						<p class="text-[48px] font-bold leading-[64px]">
-							{{ plan.price }}
-							<span class="text-18 font-medium">{{ plan.frequency }}</span>
-						</p>
+		<section class="px-50px mt-104px">
+			<ul class="grid grid-cols-[repeat(auto-fill,minmax(270px,_1fr))] max-w-[1200px] m-auto gap-x-30px gap-y-40px">
+				<li v-for="(plan, index) in plans" :key="index">
+					<div class="pl-20px border-dashed border-l mb-22px" :class="{ 'border-l-primary-400': index == 0, 'border-l-success-400': index == 1, 'border-l-warning-400': index == 2, 'border-l-danger-400': index == 3 }">
+						<img :src="require(`~/assets/images/${plan.id}-plan.svg`)" class="mr-16px" alt="plan icon" />
 					</div>
-
-					<div class="pt-26px mx-32px pb-42px border-t border-t-grey-20" :class="`${index == 1 ? 'border-none' : ''}`">
-						<ul class="ml-20px">
-							<h3 class="mb-16px text-16 font-semibold -ml-20px">What’s Included</h3>
-							<li class="mb-32px pl-16px" :class="`${index == 0 ? 'blue-check' : ''} ${index == 1 ? 'green-check' : ''} ${index == 2 ? 'yellow-check' : ''} `" v-for="(feature, _index) in plan.features" :key="_index">
-								{{ feature }}
-							</li>
-						</ul>
-
-						<!-- Pending go live  -->
-						<!-- <button class="bg-primary-100 text-white-100 py-16px px-26px rounded-10px mt-48px flex items-center shadow-pricing-button">Get Started <img src="~/assets/images/arrow-right-icon.svg" class="ml-8px" alt="arrow icon"></button> -->
+					<div class="pl-20px border-dashed border-l mb-22px" :class="{ 'border-l-primary-100': index == 0, 'border-l-success-100': index == 1, 'border-l-warning-100': index == 2, 'border-l-danger-100': index == 3 }">
+						<h2 class="text-grey-100 text-24 font-bold">
+							{{ plan.name }}
+						</h2>
+					</div>
+					<ul class="pl-32px border-dashed border-l" :class="{ 'border-l-primary-400': index == 0, 'border-l-success-400': index == 1, 'border-l-warning-400': index == 2, 'border-l-danger-400': index == 3 }">
+						<li class="mb-20px pl-8px" :class="`${index == 0 ? 'blue-check' : ''} ${index == 1 ? 'green-check' : ''} ${index == 2 ? 'yellow-check' : ''} ${index == 3 ? 'red-check' : ''} text-14 text-grey-80 font-light`" v-for="(feature, _index) in plan.features" :key="_index">
+							{{ feature }}
+						</li>
+					</ul>
+					<div class="pl-20px border-dashed border-l mb-32px" :class="{ 'border-l-primary-100': index == 0, 'border-l-success-100': index == 1, 'border-l-warning-100': index == 2, 'border-l-danger-100': index == 3 }">
+						<p class="text-[48px] font-bold leading-[64px] mobile:text-[36px] mobile:leading-[48px]">
+							{{ plan.price }}
+							<span class="text-18 mobile:text-14 font-medium text-grey-80">{{ plan.frequency }}</span>
+						</p>
+						<button class="border-none bg-none">
+							<a href="https://dashboard.getconvoy.io/signup" target="_blank" class="
+									bg-primary-100
+									text-white-100
+									py-16px
+									px-26px
+									rounded-10px
+									mt-22px
+									flex
+									items-center
+									shadow-pricing-button
+									transition-all
+									duration-300
+									hover:shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)]
+								">
+								{{ index === 3 ? 'Contact Us' : 'Get Started' }}
+							</a>
+						</button>
 					</div>
 				</li>
 			</ul>
 		</section>
 
-		<section class="all-plans">
-			<div class="flex items-center justify-center md-max:flex-wrap bg-primary-500 max-w-[1440px] m-auto">
-				<div class="list bg-gradient-to-br from-[#2c2f3e] to-[#422f41] text-white-100 p-60px w-full md:max-w-[610px]">
-					<div class="max-w-[390px] m-auto">
-						<h2 class="text-32 font-bold mb-16px">Available on all plans</h2>
-						<p>Convoy scales with you; choose a plan that fits you and we'll take it from there.</p>
-						<ul class="mt-46px">
-							<li class="list-check pb-6px mb-26px flex items-center" v-for="(feature, index) in features" :key="index">
-								<img src="~/assets/images/check-round-icon.svg" alt="check icon" class="mr-24px" />
-								{{ feature }}
-							</li>
-						</ul>
+		<section class="py-100px px-20px">
+			<p class="text-14 text-grey-60 text-center max-w-[500px] m-auto mb-72px">Hundreds of engineering teams that value efficiency use Convoy to manage their webhook infrastructure events.</p>
+			<ul class="flex justify-between items-center max-w-[960px] m-auto">
+				<li class="mr-20px desktop:mr-50px">
+					<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
+						<img src="~/assets/images/buycoins.png" class="desktop:max-w-[110px] w-100px" alt="buycoins logo" />
+					</a>
+				</li>
+				<li class="mr-20px desktop:mr-50px">
+					<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
+						<img src="~/assets/images/getWallets logo.png" class="desktop:max-w-[150px] w-100px" alt="getwallets logo" />
+					</a>
+				</li>
+				<li class="mr-20px desktop:mr-50px">
+					<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
+						<img src="~/assets/images/dojah.svg" class="desktop:max-w-[100px] w-fit" alt="dojah logo" />
+					</a>
+				</li>
+				<li class="">
+					<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
+						<img src="~/assets/images/termii.png" class="desktop:max-w-[150px] w-100px" alt="termii logo" />
+					</a>
+				</li>
+			</ul>
+		</section>
+
+		<section class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] text-white-100 py-36px desktop:py-80px">
+			<div class="max-w-[1200px] m-auto px-20px">
+				<h2 class="text-32 font-bold desktop:text-center mb-46px desktop:mb-76px">Available on all plans</h2>
+				<div class="grid grid-cols-1 desktop:grid-cols-2 desktop:gap-x-[90px]">
+					<ul>
+						<li class="list-check pb-6px mb-26px flex items-start" v-for="(feature, index) in features.slice(0, 3)" :key="index">
+							<img src="~/assets/images/check-round-icon.svg" alt="check icon" class="mr-24px" />
+							{{ feature }}
+						</li>
+					</ul>
+					<ul>
+						<li class="list-check pb-6px mb-26px flex items-start" v-for="(feature, index) in features.slice(3, 7)" :key="index">
+							<img src="~/assets/images/check-round-icon.svg" alt="check icon" class="mr-24px" />
+							{{ feature }}
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="all-plans pt-72px px-20px">
+			<div class="max-w-[1000px] m-auto bg-[url(~/assets/images/Events.png)] bg-no-repeat bg-contain bg-bottom min-h-[200px] desktop:min-h-[300px]"></div>
+		</section>
+
+		<section class="questions py-46px desktop:py-80px px-20px">
+			<h1 class="desktop:text-center text-grey-100 font-bold mb-50px desktop:mb-76px">Questions and Answers</h1>
+			<div class="max-w-[1000px] m-auto">
+				<div class="grid grid-cols-1 desktop:grid-cols-2 desktop:gap-x-12">
+					<div>
+						<div class="mb-16px" v-for="(question, index) in questions.slice(0, 4)" :key="index">
+							<a class="flex items-center text-16 font-semibold justify-between mb-16px hover:cursor-pointer" @click="openQuestion = question.question">
+								{{ question.question }}
+								<img src="~/assets/images/angle-down-black-icon.svg" alt="angle icon" class="transition-all duration-300" :class="{ 'rotate-180': openQuestion === question.question }" />
+							</a>
+							<p class="text-14 text-grey-40 transition-all duration-300" :class="{ 'h-full': openQuestion === question.question, 'max-h-0 overflow-hidden': openQuestion !== question.question }">
+								{{ question.answer }}
+							</p>
+						</div>
+					</div>
+					<div>
+						<div class="mb-16px" v-for="(question, index) in questions.slice(4, 8)" :key="index">
+							<a class="flex items-center text-16 font-semibold justify-between mb-16px hover:cursor-pointer" @click="openQuestion = question.question">
+								{{ question.question }}
+								<img src="~/assets/images/angle-down-black-icon.svg" alt="angle icon" class="transition-all duration-300" :class="{ 'rotate-180': openQuestion === question.question }" />
+							</a>
+							<p class="text-14 text-grey-40 transition-all duration-300" :class="{ 'h-full': openQuestion === question.question, 'max-h-0 overflow-hidden': openQuestion !== question.question }">
+								{{ question.answer }}
+							</p>
+						</div>
 					</div>
 				</div>
-				<div class="pl-40px md-max:py-84px desktop:pl-84px md-max:pr-40px md:ml-auto md-max:m-auto">
-					<img src="~/assets/images/pricing-plans.png" class="max-h-[398px]" alt="convoy dashboard screenshot" />
+			</div>
+		</section>
+
+		<section class="px-20px py-60px desktop:py-100px">
+			<p class="text-center text-16 font-semibold mb-60px desktop:mb-90px">What people are saying about Convoy...</p>
+			<div class="px-30px flex items-start flex-nowrap gap-10 overflow-x-auto no-scrollbar justify-center">
+				<div class="max-w-[300px] min-w-[300px]" v-for="(testimonial, index) in testimonials" :key="testimonial.author.twitter">
+					<div class="flex items-center justify-between border-dashed border-l border-l-primary-400 pl-30px">
+						<div class="flex items-center">
+							<img :src="require(`~/assets/images/twitter-user${index + 1}.jpeg`)" alt="avatar icon" class="mr-10px w-40px rounded-50%" />
+							<div>
+								<p class="text-12 font-medium text-grey-80">{{ testimonial.author.name }}</p>
+								<p class="text-10 text-grey-40">@{{ testimonial.author.twitter }}</p>
+							</div>
+						</div>
+						<div>
+							<img src="~/assets/images/twitter-logo-blue.svg" alt="twitter icon" />
+						</div>
+					</div>
+					<div class="border-dashed border-l border-l-primary-100 pl-30px mt-6px testimonial" v-html="testimonial.html"></div>
 				</div>
 			</div>
 		</section>
 
 		<section class="px-20px pb-100px desktop:pb-130px">
-			<div class="mt-100px desktop:mt-130px max-w-[1000px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
+			<div class="mt-100px desktop:mt-50px max-w-[1000px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
 				<h1 class="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px desktop:mb-16px">Need something else?</h1>
 				<p class="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">Get in touch with us today to find out how best we can support your business and work needs.</p>
 				<a target="_blank" rel="noopener noreferrer" href="https://calendly.com/d/d6k-jw2-wgj/convoy-user-demo" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
@@ -92,20 +172,31 @@ export default {
 		return {
 			plans: [
 				{
-					name: 'Developers',
+					name: 'Developer',
 					id: 'developer',
 					description: 'This is a perfect plan for starters',
 					price: '$0',
 					frequency: '/monthly',
-					features: ['1 user', '100,000 events', '3 days data retention', 'Community Support']
+					link: '',
+					features: ['Send up to 150,000 events, retries are free', 'Access with up to 2 users', 'Data retention for up to 3 days', 'Basic Role-Based Access Control', 'Priority developer support']
 				},
 				{
-					name: 'Businesses',
-					id: 'business',
+					name: 'Growth',
+					id: 'growth',
 					description: 'This is a perfect plan for startups',
-					price: '$40',
+					price: '$60',
 					frequency: '/monthly',
-					features: ['Unlimited users', '1 million events', '30 day retention', 'Customer service support']
+					link: '',
+					features: ['Send up to 1.5m events, retries are free', 'Access for unlimited users', 'Data retention for up to 30 days', 'Basic Role-Based Access Control', 'Priority developer support']
+				},
+				{
+					name: 'Scale',
+					id: 'scale',
+					description: 'For users who want to do more',
+					price: '$700',
+					frequency: '/monthly',
+					link: '',
+					features: ['Send up to 20m events, retries are free', 'Access for unlimited users', 'Data retention for up to 3 months', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
 				},
 				{
 					name: 'Enterprise',
@@ -113,18 +204,92 @@ export default {
 					description: 'For users who want to do more',
 					price: 'Custom',
 					frequency: '',
-					features: ['Unlimited users', 'Unlimited events', 'Custom data retention', 'Enterprise support and more']
+					link: 'http://getconvoy.io/demo',
+					features: ['Send unlimited number of events', 'Access for unlimited users', 'Custom data retention policy', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
 				}
 			],
 			features: [
-				'Batch event retry',
-				'Portal links',
-				'CLI',
-				'Replay attack prevention',
-				'Advanced signatures',
-				'SDK support in multiple languages',
-				'Endpoint authentication',
-				'Email and slack notifications'
+				'Resilient webhooks delivery with linear or exponential time retries, bulk retries and rate limiting.',
+				'Endpoint failure notifications via email and slack.',
+				'Advanced webhooks security with endpoint authentication, payload signing, rolling webhook secrets, replay attack prevention, and forward-compatible scheme upgrades.',
+				'Route a single webhook event to several microservices based on the event type or webhook payload structure.',
+				'Customer-facing webhooks dashboard.',
+				'Support for local debugging with Convoy CLI.',
+				'SDK support in Ruby, JS, Golang, and Python.'
+			],
+			questions: [
+				{
+					question: 'Will you match the price of another platform?',
+					answer: 'At Convoy, we have the most transparent and cost-efficient pricing packages in the market today, we will be happy to be proven wrong. Please reach us here if you find a better priced platform.'
+				},
+				{
+					question: 'What happens if I go over my limit?',
+					answer: 'You have nothing you worry about. We don’t apply hard limits, else we will break critical business workflows. We also understand you can experience unplanned traffic burst which can lead to an inevitable webhooks increase. If you exceed the limits of your plan for a brief period, we will get in touch about upgrading to something more suited to your needs. Please feel free to contact support if you have any questions about your use-case.'
+				},
+				{
+					question: 'Do you have a Free Plan?',
+					answer: 'Yes, as a Developer you can use Convoy to send and receive up to 150,000 events for free. You can also benefit from our sales referral program, email sales@getconvoy.io to learn more about it.'
+				},
+				{
+					question: 'How are events counted?',
+					answer: 'Events are the amount of unique events ingested into your project, regardless of the project type. If a single event is routed to multiple destinations, it doesn’t qualify as multiple events. If an event is retried multiple times, it doesn’t qualify as multiple events. Every unique event ingested into Convoy from any source is counted as an event.'
+				},
+				{
+					question: 'Do you offer any of your paid plans as self-hosted?',
+					answer: 'At the moment, we don’t offer any of our paid plans as a self-hosted offering. If this is something you are interested in,  please feel free to reach out to us via email -  sales@getconvoy.io '
+				},
+				{
+					question: 'How Secure is Convoy?',
+					answer: 'Webhooks by nature more often than not include sensitive data. With this in mind, Convoy was built to be secure from the ground up following industry best practices. We encrypt all data in transit and at rest.'
+				},
+				{
+					question: 'What happens after the data retention period elapses?',
+					answer: 'On Convoy Cloud, after your data retention period,  all event data is hard deleted from both the db and the search backend. But with Convoy OSS, you control your data retention and what happens to your data afterwards.'
+				},
+				{
+					question: 'Do you provide discounts?',
+					answer: 'Yes, we provide discounts for people who pay annually instead of monthly, a 10% savings the process. Also, we have a very robust sales referral program providing up to 1 year free subscription for our customers who we believe are in the best position to sell Convoy to other companies, email sales@getconvoy.io to learn more about it here.'
+				},
+				{
+					question: 'Will Customer Data Leave my infrastructure?',
+					answer: 'Yes, on Convoy Cloud, customer data will leave your infrastructure, however we make use of AES256 to securely store all customer and event data such that nobody not even us can access it. Event data is stored in the database in an encrypted format, but we index parts of it so you can search through them on your dashboard. Reach us at engineering@getconvoy.io if you have any concerns.'
+				}
+			],
+			openQuestion: 'Will you match the price of another platform?',
+			testimonials: [
+				{
+					author: { name: 'K.O.O', twitter: 'Dominus_Kelvin' },
+					html: `<p>I just discovered <a href="https://twitter.com/getconvoy" target="_blank">@getConvoy</a> and being an API lover this seems interesting.</p>
+<p>Do you all want me to have a TKYT session on Convoy?</p>`,
+					link: 'https://twitter.com/Dominus_Kelvin/status/1583085997536948224'
+				},
+				{
+					author: { name: 'Aleph', twitter: 'Alephile' },
+					html: `<p>Been using <a href="https://twitter.com/getconvoy" target="_blank">@getConvoy</a> across the 
+<a href="https://twitter.com/helicarrierinc">@helicarrierinc</a>
+ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft plenty 😀</p>`,
+					link: 'https://twitter.com/alephile/status/1451540300132986883'
+				},
+				{
+					author: { name: 'Dad!', twitter: 'mykeels' },
+					html: `<p>Spent good friday with <a href="https://twitter.com/allengblack" target="_blank">@allengblack</a> and 
+						<a href="https://twitter.com/madu_victor" target="_blank">@madu_victor</a>, setting up <a href="https://twitter.com/getconvoy" target="_blank">@getConvoy</a>'s open source binaries for webhooks.</p>
+<p>Awesome software!</p>
+<p>Their support even for open source issues >>>></p>
+<p>Webhooks are harder than you'd think.</p>
+<p>Listen to Ray explain here:</p>`,
+					link: 'https://twitter.com/mykeels/status/1515749130810925060'
+				},
+				{
+					author: { name: 'Anthony Alaribe', twitter: 'tonialaribe' },
+					html: `<p>Thanks for the kind words bro. The folks at <a href="https://twitter.com/getconvoy" target="_blank">@getConvoy</a> are also doing really amazing stuff</p>`,
+					link: 'https://twitter.com/tonialaribe/status/1592746811470798848'
+				},
+				{
+					author: { name: 'favour.eth', twitter: 'OkeibunorFavour' },
+					html: `<p>Integrated <a href="https://twitter.com/getconvoy" target="_blank">@getConvoy</a> into an existing app. Awesome service for webhooks delivery and monitoring🚀.</p>`,
+					link: 'https://twitter.com/OkeibunorFavour/status/1509113222799974404'
+				}
 			]
 		};
 	},
@@ -170,7 +335,7 @@ export default {
 					hid: 'twitter:description',
 					name: 'twitter:description',
 					content: 'Find out how much it cost to use Convoy Cloud'
-				},
+				}
 			],
 			link: [{ hid: 'canonical', rel: 'canonical', href: `https://getconvoy.io/pricing` }]
 		};
@@ -181,20 +346,12 @@ export default {
 <style lang="scss" scoped>
 .plans {
 	.grid {
-		grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
-
-		&>li:nth-of-type(2) {
-			@apply -mt-80px md-max:mt-0 mobile:mt-0 rounded-16px z-10;
-
-			.head {
-				@apply bg-success-500 rounded-t-16px;
-			}
-		}
+		grid-template-columns: repeat(auto-fill, minmax(310px, 310px));
 	}
 }
 
 .blue-check {
-	list-style-image: url('~/assets/images/pricing-check-icon.svg');
+	list-style-image: url('~/assets/images/check-icon-info.svg');
 }
 
 .green-check {
@@ -205,8 +362,18 @@ export default {
 	list-style-image: url('~/assets/images/check-icon-warn.svg');
 }
 
+.red-check {
+	list-style-image: url('~/assets/images/check-icon-danger.svg');
+}
+
 .all-plans {
 	background: url('~/assets/images/background-pattern-dark.svg') no-repeat, #edf2f7;
+	background-size: cover;
+	background-position: center;
+}
+
+.questions {
+	background: url('~/assets/images/bg-pattern-light.png') no-repeat, #fcfcfc;
 	background-size: cover;
 	background-position: center;
 }
