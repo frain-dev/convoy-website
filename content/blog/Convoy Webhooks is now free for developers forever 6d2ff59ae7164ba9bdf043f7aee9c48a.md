@@ -66,7 +66,7 @@ With even more features like Payload search, Subscription filtering by event bod
 
 ### Next Steps ==> Join the Convoy
 
-Start your journey to engineering efficiency today with [Convoy Cloud](https://dashboard.getconvoy.io/signup). If you are curious about the future of Convoy, take a look at our regularly updated Public Roadmap [Link to roadmap] and Star the Project to Support us. You can also ask any questions you have on our [Community forum on Slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email), we are excited to meet you.
+Start your journey to engineering efficiency today with [Convoy Cloud](https://dashboard.getconvoy.io/signup). If you are curious about the future of Convoy, take a look at our regularly updated [Public Roadmap](https://github.com/orgs/frain-dev/projects/3/views/1) and [Star the Project to Support us](https://github.com/frain-dev/convoy). You can also ask any questions you have on our [Community forum on Slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email), we are excited to meet you.
 
 If you enjoyed reading this, consider sharing it on social media for other cool people like you to read too. 
 
