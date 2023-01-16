@@ -1,5 +1,5 @@
 ---
-title: Developers can now use Convoy’s Webhooks Management Service Free Forever
+title: Convoy is now Free Forever for Developers
 feature_image: Convoy_webhooks_is_free.png
 post_image: Convoy_webhooks_is_free.png
 primary_author:
@@ -24,9 +24,7 @@ Convoy is the very first open-source Webhooks as a Service tool to exist and we 
 
 The market is relatively new but Zapier is a market leader within the no-code Webhooks space, the image below shows what they charge for successful events or tasks.
 
-![Zapier’s Pricing Page](Convoy%20Webhooks%20is%20now%20free%20for%20developers%20forever%206d2ff59ae7164ba9bdf043f7aee9c48a/Screenshot_2023-01-06_at_14.36.27.png)
-
-Zapier’s Pricing Page
+![Zapier's Pricing Page](/blog-assets/zapier_pricing.png)
 
 When you compare the offering above with our offering [here](https://www.getconvoy.io/pricing), you will see we are selling a lot of value for $0.
 
@@ -42,7 +40,7 @@ We also know that the current climate with capital is affecting how engineers us
 
 This new year, Convoy Cloud has been reimagined and is now battle-tested and Enterprise-ready to scale with you. We are going to be completely transparent with you about our plans, starting with announcing new pricing packages that better reflect our market position today for businesses of all sizes from Startups to Mid-market companies to Enterprise partners. 
 
-![Screenshot 2023-01-16 at 12.26.42.png](Convoy%20Webhooks%20is%20now%20free%20for%20developers%20forever%206d2ff59ae7164ba9bdf043f7aee9c48a/Screenshot_2023-01-16_at_12.26.42.png)
+![Convoy's Pricing Page](/blog-assets/convoy_pricing.png)
 
 As we continue to champion all things Webhooks and contribute to developing this product category, we will keep experimenting with Pricing. However, we are very committed to providing the best value in the market at all times from our standpoint and we will be transparent about any future changes and our thought process. 
 
