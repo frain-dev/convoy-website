@@ -34,11 +34,11 @@
 			</div>
 
 			<nav class="py-20px pl-20px">
-				<sidebar-item :pages="pages"></sidebar-item>
 				<a href="https://convoy.readme.io/" target="_blank" class="flex items-center text-white-100 text-14 ml-20px mb-30px">
-					Api Reference
+					API Reference
 					<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px mt-[3px] w-12px h-12px rotate-[320deg]" alt="arrow right" />
 				</a>
+				<sidebar-item :pages="pages"></sidebar-item>
 			</nav>
 		</aside>
 
@@ -75,7 +75,7 @@ export default {
 		return {
 			pages: [],
 			showMenu: false,
-			versions: ['Latest v0.7.x']
+			versions: ['Latest v0.8.x']
 		};
 	},
 	async mounted() {

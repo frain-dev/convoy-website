@@ -34,6 +34,10 @@
 		"showDropdown": false,
 		"children": [
 			{
+				"title": "Architecture",
+				"link": "/docs/deploy/architecture"
+			},
+			{
 				"title": "Install Convoy",
 				"link": "/docs/deploy/install-convoy"
 			},
