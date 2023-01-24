@@ -8,7 +8,7 @@
 						<img src="~/assets/images/y-combinator.svg" class="ml-16px w-24px h-24px" alt="y-combinator" />
 					</div>
 
-					<h1 class="text-32 desktop:text-[56px] desktop:leading-[80px] font-extrabold text-white-100 text-center desktop:text-left">An Open Source Webhooks Proxy</h1>
+					<h1 class="text-32 desktop:text-[56px] desktop:leading-[80px] font-extrabold text-white-100 text-center desktop:text-left">An Open Source Webhooks Gateway</h1>
 					<p class="text-white-100 text-18 mt-16px max-w-[530px] m-auto desktop:ml-0 mb-40px text-center desktop:text-left">
 						With out-of-the-box security, reliability and scalability for your webhooks infrastructure.
 					</p>
