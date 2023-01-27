@@ -18,7 +18,7 @@ published_at: 2023-01-27T17:00:00.000+00:00
 
 [Convoy](https://getconvoy.io/) is the very first open-source Webhooks Gateway to exist, built for engineering teams that value efficiency in their workflow. You can easily send and receive millions of webhooks reliably using Convoy in minutes.
 
-> You can learn more on [What Webhooks Gateways are here](https://getconvoy.io/blog/what-are-webhook-gateways)
+> You can learn more about [What Webhooks Gateways are here](https://getconvoy.io/blog/what-are-webhook-gateways)
 > 
 
 Since December, we started publicly sharing important product updates on GitHub, such as what we have shipped, what we are currently building, and what we plan to build soon and in the future. Today, we are going to share our thoughts about why we started this, and explain why we think our public product roadmap is important.
