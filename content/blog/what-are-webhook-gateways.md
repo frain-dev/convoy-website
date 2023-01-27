@@ -10,13 +10,13 @@ tags:
     - Convoy
     - Open Thoughts
 featured: false
-description: A webhook gateway is a webhook management tool that sits between a webhooks provider and webhooks consumer. It acts as a reserve proxy for webhooks. It can be deployed by both the API provider that sends webhooks and the consumer that receives webhooks to handle webhook events multiplexing and de-multiplexing respectively. 
+description: A webhook gateway is a webhook management tool that sits between a webhooks provider and webhooks consumer. It acts as a reverse proxy for webhooks. It can be deployed by both the API provider that sends webhooks and the consumer that receives webhooks to handle webhook events multiplexing and de-multiplexing respectively. 
 published_at: 2023-01-23T18:00:00.000+00:00
 ---
 
 # What is a Webhook Gateway
 
-A webhook gateway is a webhook management tool that sits between a webhooks provider and webhooks consumer. It acts as a reserve and forward proxy for webhooks. It can be deployed by both the API provider that sends webhooks and the consumer that receives webhooks to handle webhook events multiplexing and de-multiplexing respectively. 
+A webhook gateway is a webhook management tool that sits between a webhooks provider and webhooks consumer. It acts as a reverse and forward proxy for webhooks. It can be deployed by both the API provider that sends webhooks and the consumer that receives webhooks to handle webhook events multiplexing and de-multiplexing respectively. 
 
 # Why use a Webhook Gateway?
 
