@@ -47,7 +47,7 @@ We know that great developers ship, and we will always be biased towards shippin
 
 ### Next Steps? Join Us
 
-You can share your product ideas with us by [creating an issue here](https://github.com/frain-dev/convoy-website/pulls) or reaching out on the [Community forum on Slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email). Are you looking to join the Convoy in the front row? You can see [the Public Roadmap here](https://github.com/orgs/frain-dev/projects/3/views/1).
+You can share your product ideas with us by [creating an issue here](https://github.com/frain-dev/convoy/pulls) or reaching out on the [Community forum on Slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email). Are you looking to join the Convoy in the front row? You can see [the Public Roadmap here](https://github.com/orgs/frain-dev/projects/3/views/1).
 
 We also offer the best pricing in the market today so you can start sending and receiving webhooks reliably with the convoy and focus most of your resources on building your core product.
 
