@@ -95,7 +95,7 @@ export default {
 		return {
 			title: 'Convoy Documentation',
 			meta: [
-				{ hid: 'description', name: 'description', content: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure. Convoy enables you to send and receive webhook events in one place with a great developer experience.' },
+				{ hid: 'description', name: 'description', content: 'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.' },
 				{
 					hid: 'apple-mobile-web-app-title',
 					name: 'apple-mobile-web-app-title',
@@ -107,7 +107,7 @@ export default {
 				{
 					hid: 'og:description',
 					name: 'og:description',
-					content: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure. Convoy enables you to send and receive webhook events in one place with a great developer experience.'
+					content: 'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.'
 				},
 				{
 					hid: 'og:url',
@@ -132,7 +132,7 @@ export default {
 				{
 					hid: 'twitter:description',
 					name: 'twitter:description',
-					content: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure. Convoy enables you to send and receive webhook events in one place with a great developer experience.'
+					content: 'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.'
 				}
 			],
 			link: [{ hid: 'canonical', rel: 'canonical', href: `https://getconvoy.io/docs` }]
