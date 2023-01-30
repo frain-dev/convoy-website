@@ -224,7 +224,7 @@ export default {
 						"width": 882,
 						"height": 346
 					},
-					"keywords": "Convoy",
+					"keywords": "Convoy,convoy,webhooks gateway,webhooks service,webhook infrastructure,sending webhooks,receiving webhooks,webhooks provider,webhooks as a service,open-source webhooks,api gateway",
 					"description": "${this.blogPageData.description}",
 					"mainEntityOfPage": {
 						"@type": "WebPage",

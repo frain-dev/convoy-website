@@ -1,8 +1,8 @@
 const create = async feed => {
 	feed.options = {
-		title: 'Convoy',
+		title: 'Webhooks Gateway for sending and receiving webhooks - Convoy',
 		link: 'https://getconvoy.io/blog/rss',
-		description: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure.'
+		description: 'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.'
 	};
 
 	const { $content } = require('@nuxt/content');
@@ -39,7 +39,7 @@ export default {
 				async: 'true'
 			}
 		],
-		title: 'Convoy',
+		title: 'Webhooks Gateway for sending and receiving webhooks - Convoy',
 		htmlAttrs: {
 			lang: 'en'
 		},
@@ -58,12 +58,12 @@ export default {
 				hid: 'description',
 				name: 'description',
 				content:
-					'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure. Convoy enables you to send and receive webhook events in one place with a great developer experience.'
+					'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.'
 			},
 			{
 				hid: 'og:title',
 				property: 'og:title',
-				content: 'Convoy'
+				content: 'Webhooks Gateway for sending and receiving webhooks - Convoy'
 			},
 			{
 				hid: 'twitter:creator',
@@ -73,7 +73,7 @@ export default {
 			{
 				hid: 'twitter:title',
 				property: 'twitter:title',
-				content: 'Convoy'
+				content: 'Webhooks Gateway for sending and receiving webhooks - Convoy'
 			},
 			{
 				hid: 'og:url',
@@ -108,12 +108,12 @@ export default {
 			{
 				hid: 'og:description',
 				property: 'og:description',
-				content: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure.'
+				content: 'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.'
 			},
 			{
 				hid: 'twitter:description',
 				property: 'twitter:description',
-				content: 'An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure.'
+				content: 'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.'
 			},
 			{
 				hid: 'og:image:width',
@@ -151,9 +151,20 @@ export default {
 				content: [
 					'webhooks',
 					'webhook',
-					'dev tool',
-					'dev tools',
-					'dev-tools',
+					'webhooks gateway',
+					'webhook gateway',
+					'sending webhooks',
+					'receiving webhooks',
+					'webhooks as a service',
+					'open-source webhooks',
+					'free webhook',
+					'secure webhooks',
+					'webhooks api',
+					'incoming webhooks',
+					'convoy webhooks',
+					'kafta',
+					'platform engineering',
+					'api gateway',
 					'webhooks service',
 					'webhooks provider',
 					'webhooks infrastructure',
@@ -166,14 +177,10 @@ export default {
 					'webhook endpoint',
 					'zapier webhook',
 					'web hook',
-					'open-source',
-					'open source',
-					'infrastructure',
 					'endpoint',
 					'API',
 					'cloud',
-					'integrate',
-					'integration'
+					'cloud-native'
 				]
 			}
 		],

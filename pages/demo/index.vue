@@ -4,7 +4,7 @@
 			<Header></Header>
 			<section class="max-w-[1200px] min-h-[900px] desktop:min-h-[780px] w-full m-auto text-white-100 pt-200px">
 				<h1 class="text-center font-bold text-32 desktop:text-[48px] mb-16px">Watch or Book a Live Demo</h1>
-				<p class="text-center text-18 mb-40px max-w-[530px] m-auto">Learn more about how you can use Convoy as a webhooks proxy, to send and receive webhooks events.</p>
+				<p class="text-center text-18 mb-40px max-w-[530px] m-auto">Learn more about how you can use Convoy as a Webhooks Gateway, to send and receive webhooks events.</p>
 
 				<div class="m-auto flex justify-center mb-50px">
 					<a href="#demo" class="py-12px mobile:px-14px px-18px text-14 font-medium rounded-8px bg-white-100 text-primary-100 flex items-center mr-24px">

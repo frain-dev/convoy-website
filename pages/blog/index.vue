@@ -170,7 +170,7 @@ export default {
 						"@type": "WebPage",
 						"@id": "https://getconvoy.io/blog"
 					},
-					"description": "An open source webhooks proxy with out-of-the-box security, reliability and scalability for your webhooks infrastructure.",
+					"description": "Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.",
 					"url": "https://getconvoy.io/blog"
 				}`,
 					type: 'application/ld+json'
