@@ -1,6 +1,6 @@
 const create = async feed => {
 	feed.options = {
-		title: 'Webhooks Gateway for sending and receiving webhooks - Convoy Blog',
+		title: 'Webhooks Gateway for sending and receiving webhooks - Convoy',
 		link: 'https://getconvoy.io/blog/rss',
 		description: 'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.'
 	};
