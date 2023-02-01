@@ -101,10 +101,9 @@
 					</div>
 
 					<div class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out" :class="activeTab === 'open' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'">
-						<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Open Core</h1>
+						<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Open Source</h1>
 						<p class="text-white-100 text-center text-14 desktop:text-18 mt-20px desktop:mt-16px max-w-[860px] m-auto">
-							Convoy is an open-source service that enables you to send webhook events to users, customers, and platforms reliably, securely in a scalable manner. Our open-core is open-source
-							first i.e community-driven, so you can be sure to get reliable support.
+							Convoy is an open-source software that enables you to send webhook events to users, customers, and platforms reliably, securely in a scalable manner. Our software is fully open-source for developers to use and deploy in their environments.
 						</p>
 
 						<div class="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
@@ -218,7 +217,7 @@ export default {
 	data() {
 		return {
 			tabs: [
-				{ label: "Open Core", id: "open" },
+				{ label: "Open Source", id: "open" },
 				{ label: "App Portal", id: "portal" }
 			],
 			activeTab: "open",
