@@ -49,6 +49,7 @@ Webhook gateways share similarities with API gateways
 |  API Type | Synchronous API | Asynchronous API |
 |  Protocols | Multiple Protocols - HTTP, Websockets, gRPC | HTTP |
 |  Message Format | JSON, XML & Protocol Buffers. | Mostly JSON. |
+|  State | Stateless | Stateful |
 
 # Conclusion
 
