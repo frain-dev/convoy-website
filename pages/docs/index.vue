@@ -4,7 +4,7 @@
 		<header class="bg-[url(assets/images/docs-bg.svg)] bg-no-repeat bg-cover h-[450px] w-full"></header>
 
 		<div class="max-w-[1200px] m-auto -mt-270px py-0 px-20px">
-			<p class="text-28 font-bold text-center mb-8px text-white-100">Convoy Open-Core</p>
+			<p class="text-28 font-bold text-center mb-8px text-white-100">Convoy Documentation</p>
 			<p class="text-white-100 max-w-[590px] m-auto text-center text-16 mb-40px">
 				Find the guides, samples, and references you need to use Convoy to start sending out and receiving webhook events as fast as possible.
 			</p>
