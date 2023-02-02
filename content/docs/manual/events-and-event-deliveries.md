@@ -12,12 +12,19 @@ The Events log dashboard represent all webhook events pushed to Convoy. They do 
 ![convoy event log](/docs-assets/event-log.png)
 
 ## Event delivery
+An event delivery is the combination of an endpoint and an event. For both incoming and outgoing webhooks project, an event can generate multiple event deliveries depending on the subscriptions. An event delivery can have any of the states below:
+1. `Scheduled`: In this state, the event delivery has been enqueued to the message broker, but a worker node is yet to pick it up for delivery.
+2. `Processing`: In this state, the event delivery has been retrieved from the message broker by a worker node, and the event is on it's way out.
+3. `Success`: In this state, the event delivery delivered successfully. Here, the `Retry` button becomes `Force Retry`. This is used to retry a successful event in case of a false positive. 
+4. `Retry`:  In this state, the event delivery previously failed and the automatic retries have kicked in. Here, Convoy will continue to retry till the max attempts is reached.
+5. `Failed`: In this state, the event delivery has reached the maximum amount of automatic retries and failed to deliver the event or the endpoint failed to acknowledge delivery. Here, the `Retry` button becomes to active to trigger manual retries.
+6. `Discarded`: In this state, the endpoint has been set to `inactive`, so Convoy did not try to process events to the endpoint at all. See [here](/docs/manual/endpoints#endpoint-state) on re-activating the endpoint.
 
-Event delivery is a resource that tracks successive attempts to deliver the event payload to each application endpoint. Multiple event deliveries can be created for a single event, this is influenced by the number of subscriptions that are matched to it. Event deliveries can be viewed on the **Events** page:
+Event deliveries can be viewed on the **Events Deliveries** page below:
 
 ![Event delivery](/docs-assets/event-delivery.png)
 
-## Debugging webhook events
+## Debugging Event Deliveries
 
 For the most part, building a webhooks dashboard requires building the tools for finding and solving problems easily, this requires the ability to quickly find the affected payload, application, endpoint and most importantly affected customer. 
 

@@ -87,6 +87,45 @@ If it's an advanced signature, before comparing signatures. Verify that the time
 
 Compare the signatures from the request header to the signature computed from the previous step. With simple signatures, a string match is all that is required, while with advanced signatures, our computed signature must match at least one of the supplied signatures in the request header. To prevent against [timing attacks](https://en.wikipedia.org/wiki/Timing_attack) please use constant time string comparison for matching signatures.
 
+### Caveat: Ensuring exact JSON payload match
+
+- **Ordering** <br />
+    According to the [JSON RFC 4627](https://www.ietf.org/rfc/rfc4627.txt). JSON objects are an unordered collection, see below:
+    ```bash
+    An object is an unordered collection of zero or more name/value
+    pairs, where a name is a string and a value is a string, number,
+    boolean, null, object, or array.
+    ```
+    With this the order shouldn't matter, but if you decide to switch the key ordering for any reason, the resulting hash would be different. You should process as received.
+
+- **Whitespaces** <br />
+    To eliminate any ambiguities in the structure of the payload used to generate the signature across languages and stacks. Convoy strips out all whitespace characters from the payload to generate the hash. See the following examples to know what's correct:
+
+    ```json[❌ Wrong]
+    {
+      "event": {
+        "id": "5ac64822-4adc-4fda-ade0-410becf0de4f",
+        "event_type": "incident.priority_updated",
+        "resource_type": "incident",
+        "occurred_at": "2020-10-02T18:45:22.169Z",
+        "agent": {
+          "id": "PLH1HKV",
+          "self": "https://api.pagerduty.com/users/PLH1HKV",
+          "summary": "Tenex Engineer",
+          "type": "user_reference"
+        }
+      }
+    }
+    ```
+
+    ```json[❌ Wrong]
+    {\n  \"event\": {\n    \"id\": \"5ac64822-4adc-4fda-ade0-410becf0de4f\",\n    \"event_type\": \"incident.priority_updated\",\n    \"resource_type\": \"incident\",\n    \"occurred_at\": \"2020-10-02T18:45:22.169Z\",\n    \"agent\": {\n      \"id\": \"PLH1HKV\",\n      \"self\": \"https://api.pagerduty.com/users/PLH1HKV\",\n      \"summary\": \"Tenex Engineer\",\n      \"type\": \"user_reference\"\n    }\n  }\n}
+    ```
+
+    ```json[✅ Correct]
+    {"event":{"id":"5ac64822-4adc-4fda-ade0-410becf0de4f","event_type":"incident.priority_updated","resource_type":"incident","occurred_at":"2020-10-02T18:45:22.169Z","agent":{"id":"PLH1HKV","self":"https://api.pagerduty.com/users/PLH1HKV","summary":"Tenex Engineer","type":"user_reference"}}}
+    ```
+
 ## References
 
 - [Generating Stripe-like Webhook Signatures](https://getconvoy.io/blog/generating-stripe-like-webhook-signatures/)
