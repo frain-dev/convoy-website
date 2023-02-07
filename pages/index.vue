@@ -279,9 +279,9 @@ export default {
 	white-space: nowrap;
 
 	.firstSlide {
-		animation: scroll 100s linear infinite;
+		animation: moveSlideshow 20s linear infinite;
 		display: flex;
-		max-width: 2330px;
+		width: calc(250px * 12);
 
 		&:hover {
 			-webkit-animation-play-state: paused;
@@ -292,9 +292,9 @@ export default {
 	}
 
 	.secondSlide {
-		animation: scroll 100s linear infinite reverse;
+		animation: scroll 20s linear infinite;
 		display: flex;
-		width: calc(250px * 14);
+		width: calc(250px * 12);
 
 		&:hover {
 			-webkit-animation-play-state: paused;
