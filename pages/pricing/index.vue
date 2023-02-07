@@ -1,7 +1,9 @@
 <template>
 	<div>
-		<section class="cta-section">
-			<div class="max-w-[1200px] min-h-[500px] mobile:min-h-[500px] desktop:min-h-[570px] w-full m-auto text-white-100 px-20px pt-200px">
+	
+
+		<section>
+			<div class="max-w-[1200px] min-h-[500px] mobile:min-h-[500px] desktop:min-h-[500px] w-full m-auto px-20px pt-200px">
 				<h1 class="text-center font-bold text-32 desktop:text-[40px] desktop:leading-[48px] mb-22px max-w-[502px] m-auto">Transparent Pricing, pay as you grow</h1>
 				<p class="text-center text-18 mb-40px max-w-[384px] m-auto">Convoy scales with you; choose a plan that fits you and we'll take it from there.</p>
 			</div>
@@ -10,26 +12,46 @@
 		<section class="px-50px mt-104px">
 			<ul class="grid grid-cols-[repeat(auto-fill,minmax(270px,_1fr))] max-w-[1200px] m-auto gap-x-30px gap-y-40px">
 				<li v-for="(plan, index) in plans" :key="index">
-					<div class="pl-20px border-dashed border-l mb-22px" :class="{ 'border-l-primary-400': index == 0, 'border-l-success-400': index == 1, 'border-l-warning-400': index == 2, 'border-l-danger-400': index == 3 }">
+					<div
+						class="pl-20px border-dashed border-l mb-22px"
+						:class="{ 'border-l-primary-400': index == 0, 'border-l-success-400': index == 1, 'border-l-warning-400': index == 2, 'border-l-danger-400': index == 3 }"
+					>
 						<img :src="require(`~/assets/images/${plan.id}-plan.svg`)" class="mr-16px" alt="plan icon" />
 					</div>
-					<div class="pl-20px border-dashed border-l mb-22px" :class="{ 'border-l-primary-100': index == 0, 'border-l-success-100': index == 1, 'border-l-warning-100': index == 2, 'border-l-danger-100': index == 3 }">
+					<div
+						class="pl-20px border-dashed border-l mb-22px"
+						:class="{ 'border-l-primary-100': index == 0, 'border-l-success-100': index == 1, 'border-l-warning-100': index == 2, 'border-l-danger-100': index == 3 }"
+					>
 						<h2 class="text-grey-100 text-24 font-bold">
 							{{ plan.name }}
 						</h2>
 					</div>
-					<ul class="pl-32px border-dashed border-l" :class="{ 'border-l-primary-400': index == 0, 'border-l-success-400': index == 1, 'border-l-warning-400': index == 2, 'border-l-danger-400': index == 3 }">
-						<li class="mb-20px pl-8px" :class="`${index == 0 ? 'blue-check' : ''} ${index == 1 ? 'green-check' : ''} ${index == 2 ? 'yellow-check' : ''} ${index == 3 ? 'red-check' : ''} text-14 text-grey-80 font-light`" v-for="(feature, _index) in plan.features" :key="_index">
+					<ul
+						class="pl-32px border-dashed border-l"
+						:class="{ 'border-l-primary-400': index == 0, 'border-l-success-400': index == 1, 'border-l-warning-400': index == 2, 'border-l-danger-400': index == 3 }"
+					>
+						<li
+							class="mb-20px pl-8px"
+							:class="`${index == 0 ? 'blue-check' : ''} ${index == 1 ? 'green-check' : ''} ${index == 2 ? 'yellow-check' : ''} ${index == 3 ? 'red-check' : ''} text-14 text-grey-80 font-light`"
+							v-for="(feature, _index) in plan.features"
+							:key="_index"
+						>
 							{{ feature }}
 						</li>
 					</ul>
-					<div class="pl-20px border-dashed border-l mb-32px" :class="{ 'border-l-primary-100': index == 0, 'border-l-success-100': index == 1, 'border-l-warning-100': index == 2, 'border-l-danger-100': index == 3 }">
+					<div
+						class="pl-20px border-dashed border-l mb-32px"
+						:class="{ 'border-l-primary-100': index == 0, 'border-l-success-100': index == 1, 'border-l-warning-100': index == 2, 'border-l-danger-100': index == 3 }"
+					>
 						<p class="text-[48px] font-bold leading-[64px] mobile:text-[36px] mobile:leading-[48px]">
 							{{ plan.price }}
 							<span class="text-18 mobile:text-14 font-medium text-grey-80">{{ plan.frequency }}</span>
 						</p>
 						<button class="border-none bg-none">
-							<a href="https://dashboard.getconvoy.io/signup" target="_blank" class="
+							<a
+								href="https://dashboard.getconvoy.io/signup"
+								target="_blank"
+								class="
 									bg-primary-100
 									text-white-100
 									py-16px
@@ -42,7 +64,8 @@
 									transition-all
 									duration-300
 									hover:shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)]
-								">
+								"
+							>
 								{{ index === 3 ? 'Contact Us' : 'Get Started' }}
 							</a>
 						</button>
@@ -156,7 +179,12 @@
 			<div class="mt-100px desktop:mt-50px max-w-[1000px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
 				<h1 class="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px desktop:mb-16px">Need something else?</h1>
 				<p class="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">Get in touch with us today to find out how best we can support your business and work needs.</p>
-				<a target="_blank" rel="noopener noreferrer" href="https://calendly.com/d/d6k-jw2-wgj/convoy-user-demo" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
+				<a
+					target="_blank"
+					rel="noopener noreferrer"
+					href="https://calendly.com/d/d6k-jw2-wgj/convoy-user-demo"
+					class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit"
+				>
 					Contact Sales
 					<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 				</a>
