@@ -63,8 +63,8 @@
 			<h1 class="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto">Convoy is the Fastest Webhooks Gateway</h1>
 		</section>
 
-		<section class="py-60px desktop:py-220px px-20px bg-white-100">
-			<div class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-150px" v-for="(feature, index) of newFeatures.slice(0, 3)" :key="'feature' + index">
+		<section class="py-60px desktop:py-120px px-20px bg-white-100 features">
+			<div class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-120px feature" v-for="(feature, index) of newFeatures.slice(0, 3)" :key="'feature' + index">
 				<div class="order-2 desktop:order-1 px-30px desktop:px-0">
 					<img :src="require(`~/assets/images/${feature.img}.png`)" :alt="feature.feature" class="w-48px h-48px mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" />
 					<h3 class="font-semibold mb-16px">{{ feature.title }}</h3>
@@ -74,7 +74,7 @@
 					<img :src="require(`~/assets/images/${feature.featureImg}.png`)" :alt="feature.featureImg" class="object-contain" />
 				</div>
 			</div>
-			<div class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-150px" v-for="(feature, index) of newFeatures.slice(3, 6)" :key="'feature' + index">
+			<div class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-120px feature" v-for="(feature, index) of newFeatures.slice(3, 6)" :key="'feature-b' + index">
 				<div class="md:max-w-[558px] tab:max-w-[450px] tab:mr-20px">
 					<img :src="require(`~/assets/images/${feature.featureImg}.png`)" :alt="feature.featureImg" class="object-contain" />
 				</div>
@@ -131,10 +131,10 @@
 			<div class="max-w-[1312px] w-full m-auto">
 				<h2 class="font-bold desktop:text-32 mb-22px">Developers use Convoy Webhooks Gateway to securely ingest, persist, debug, deliver and manage millions of events reliably...</h2>
 				<a href="#" class="text-primary-100">Learn about our infrastructure</a>
+			</div>
 
-				<div class="bg-white-100 rounded-[30px] max-w-[1062px] mx-auto mt-52px flex justify-center py-20px px-20px desktop:px-80px">
-					<img src="~/assets/images/2nd-illustration.png" alt="infrastructure" />
-				</div>
+			<div class="bg-white-100 rounded-[30px] max-w-[1062px] mx-auto mt-52px flex justify-center py-20px px-20px desktop:px-80px hover:cursor-pointer" @click="expandImage = true">
+				<img src="~/assets/images/2nd-illustration.png" alt="infrastructure" />
 			</div>
 		</section>
 
@@ -166,7 +166,11 @@
 				</div>
 			</div>
 		</section>
-
+		<section class="fixed top-0 left-0 w-screen h-screen bg-[#fafafe] transition-all duration-500" :class="expandImage ? 'visible animate-slideup opacity-100 z-[100000]' : 'invisible animate-slidedown opacity-0'" @click="expandImage = false">
+			<div class="flex justify-center items-center h-full max-w-[2000px] m-auto">
+				<img src="~/assets/images/2nd-illustration.png" class="w-full" alt="infrastructure" />
+			</div>
+		</section>
 		<GetStartedSection></GetStartedSection>
 	</div>
 </template>
@@ -251,13 +255,11 @@ export default {
 	},
 	methods: {
 		animateOnScroll() {
-			let media = window.matchMedia('(min-width: 1405px)');
+			let media = window.matchMedia('(min-width: 1024px)');
 			if (media.matches) {
-				this.$gsap.to('.feature-list', { duration: 2, scrollTo: { y: 'max' }, scrollTrigger: { trigger: '.features', scrub: true, start: '300px center', pin: true } });
-				this.$gsap.to('.feature-img', {
-					duration: 2,
-					scrollTo: { x: 'max' },
-					scrollTrigger: { trigger: '.features', scrub: true, start: '300px center', pin: true }
+				const animate = this.$gsap.utils.toArray('.feature');
+				animate.forEach(feature => {
+					this.$gsap.to(feature, { duration: 5, scrollTrigger: { trigger: feature, start: '150px center', scrub: true, pin: true } });
 				});
 			}
 		},
