@@ -180,7 +180,7 @@
 				<div class="secondSlide">
 					<div
 						v-for="(offer, index) of offerings.reverse()"
-						:key="'offer' + index"
+						:key="'offer-b' + index"
 						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center max-w-[320px] desktop:max-w-[356px] h-[80px] desktop:h-[98px] w-full mx-20px"
 						:class="offer.class"
 					>
@@ -316,9 +316,9 @@ export default {
 	transform: translate3d(0, 0, 0);
 
 	.firstSlide {
-		animation: moveSlideshow 20s linear infinite alternate-reverse;
+		animation: moveSlideshow 20s linear infinite;
 		display: flex;
-		width: calc(250px * 14);
+		width: calc(250px * 12);
 
 		&:hover {
 			-webkit-animation-play-state: paused;
@@ -329,9 +329,9 @@ export default {
 	}
 
 	.secondSlide {
-		animation: scroll 20s linear infinite alternate-reverse;
+		animation: scroll 20s linear infinite;
 		display: flex;
-		width: calc(250px * 14);
+		width: calc(250px * 12);
 
 		&:hover {
 			-webkit-animation-play-state: paused;
