@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<section class="min-h-screen flex flex-col justify-center items-center">
+		<section class="max-w-[1062] flex flex-col justify-center items-center pt-220px pb-100px desktop:pb-236px px-20px">
 			<div class="bg-primary-500 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 				We are backed by
 				<img src="~/assets/images/y-combinator.svg" class="ml-16px w-24px h-24px" alt="y-combinator" />
@@ -11,20 +11,15 @@
 				Securely Send, Receive and Manage millions of Webhooks Reliably with robust support for Retries, Rate Limiting, Static IPs, Circuit Breaking, Rolling Secrets and more.
 			</p>
 			<div class="flex justify-center xs:flex-col mt-40px">
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="https://dashboard.getconvoy.io/signup"
-					class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px"
-				>
+				<a target="_blank" rel="noopener noreferrer" href="https://dashboard.getconvoy.io/signup" class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px">
 					Get Started For Free
 				</a>
 
-				<a href="/demo" class="py-12px px-28px text-14 font-medium rounded-8px bg-white-100 text-primary-100 flex items-center text-center">Book a Demo</a>
+				<a href="/demo" class="py-12px px-28px text-14 font-medium rounded-8px bg-white-100 text-primary-100 text-center">Book a Demo</a>
 			</div>
 		</section>
 
-		<section class="rounded-[20px] desktop:rounded-[70px] mx-20px desktop:mx-44px bg-[linear-gradient(180deg,#2c2f3e_0%,#422f41_100%)] -mt-140px">
+		<section class="rounded-[20px] desktop:rounded-[70px] mx-auto bg-[linear-gradient(180deg,#2c2f3e_0%,#422f41_100%)] -mb-78px max-w-[1350px] w-[90%] z-auto relative">
 			<div class="w-full md:bg-[url(~/assets/images/Settings.png)] bg-no-repeat bg-right desktop:bg-contain rounded-[70px] min-h-[200px] py-30px desktop:py-56px px-20px desktop:px-70px">
 				<p class="font-bold text-white-100 text-24 desktop:text-32 max-w-[690px]">
 					Engineering teams that value efficiency use
@@ -58,7 +53,7 @@
 		</section>
 
 		<!-- why use us  -->
-		<section class="flex flex-col justify-center items-center pt-60px desktop:pt-120px bg-white-100">
+		<section class="flex flex-col justify-center items-center pt-254px bg-white-100">
 			<div class="bg-primary-500 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 				<div class="mr-16px w-24px h-24px rounded-50% bg-success-100 flex justify-center items-center">
 					<img src="~/assets/images/svg/lightening.svg" alt="lightening icon" />
@@ -68,7 +63,7 @@
 			<h1 class="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto">Convoy is the Fastest Webhooks Gateway</h1>
 		</section>
 
-		<section class="py-60px desktop:py-120px px-20px bg-white-100">
+		<section class="py-60px desktop:py-220px px-20px bg-white-100">
 			<div class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-150px" v-for="(feature, index) of newFeatures.slice(0, 3)" :key="'feature' + index">
 				<div class="order-2 desktop:order-1 px-30px desktop:px-0">
 					<img :src="require(`~/assets/images/${feature.img}.png`)" :alt="feature.feature" class="w-48px h-48px mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" />
@@ -111,11 +106,7 @@
 							</p>
 
 							<div class="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
-								<div
-									class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
-									v-for="feature of openCore"
-									:key="feature"
-								>
+								<div class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit" v-for="feature of openCore" :key="feature">
 									<img src="~/assets/images/green_check.svg" class="mr-12px" alt="check" />
 									{{ feature }}
 								</div>
@@ -127,12 +118,7 @@
 					<div class="absolute left-1/2 -translate-x-1/2 -top-100px xs:-top-70px desktop:-top-200px w-full">
 						<img src="~/assets/images/core.png" alt="group" class="xs:hidden max-w-[866px] desktop:w-full w-5/6 m-auto" />
 						<img src="~/assets/images/groups-img-small.png" class="hidden xs:block m-auto w-5/6" alt="group" />
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href="https://dashboard.getconvoy.io/"
-							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
-						>
+						<a target="_blank" rel="noopener noreferrer" href="https://dashboard.getconvoy.io/" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
 							Get started for free
 							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 						</a>
@@ -142,11 +128,13 @@
 		</section>
 
 		<section class="bg-[#fcfcfc] py-60px desktop:py-80px px-24px desktop:px-64px">
-			<h2 class="font-bold desktop:text-32 mb-22px">Developers use Convoy Webhooks Gateway to securely ingest, persist, debug, deliver and manage millions of events reliably...</h2>
-			<a href="#">Learn about our infrastructure</a>
+			<div class="max-w-[1312px] w-full m-auto">
+				<h2 class="font-bold desktop:text-32 mb-22px">Developers use Convoy Webhooks Gateway to securely ingest, persist, debug, deliver and manage millions of events reliably...</h2>
+				<a href="#" class="text-primary-100">Learn about our infrastructure</a>
 
-			<div class="bg-white-100 rounded-[30px] max-w-[1062px] mx-auto mt-52px flex justify-center py-20px px-20px desktop:px-80px">
-				<img src="~/assets/images/2nd-illustration.png" alt="infrastructure" />
+				<div class="bg-white-100 rounded-[30px] max-w-[1062px] mx-auto mt-52px flex justify-center py-20px px-20px desktop:px-80px">
+					<img src="~/assets/images/2nd-illustration.png" alt="infrastructure" />
+				</div>
 			</div>
 		</section>
 
@@ -163,12 +151,7 @@
 		<section>
 			<div class="slideshow">
 				<div class="firstSlide">
-					<div
-						v-for="(offer, index) of offerings"
-						:key="'offer' + index"
-						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center max-w-[320px] desktop:max-w-[356px] h-[80px] desktop:h-[98px] w-full mx-20px"
-						:class="offer.class"
-					>
+					<div v-for="(offer, index) of offerings" :key="'offer' + index" class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center py-20px px-86px h-[80px] desktop:h-[98px] w-fit mx-20px" :class="offer.class">
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
 						<p class="text-16">{{ offer.offer }}</p>
 					</div>
@@ -176,12 +159,7 @@
 			</div>
 			<div class="slideshow">
 				<div class="secondSlide">
-					<div
-						v-for="(offer, index) of offerings.reverse()"
-						:key="'offer' + index"
-						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center max-w-[320px] desktop:max-w-[356px] h-[80px] desktop:h-[98px] w-full mx-20px"
-						:class="offer.class"
-					>
+					<div v-for="(offer, index) of offerings.reverse()" :key="'offer' + index" class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center h-[80px] desktop:h-[98px] w-fit mx-20px py-20px px-86px" :class="offer.class">
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
 						<p class="text-16">{{ offer.offer }}</p>
 					</div>
@@ -253,7 +231,15 @@ export default {
 				{ offer: 'Language Agnostic', img: 'language-agnostic', class: 'bg-[#D1F0FA]' },
 				{ offer: 'Rich UI - Event Logs & Querying', img: 'monitor', class: 'bg-[#FCE3AD]' },
 				{ offer: 'Flexible Configuration', img: 'flexible', class: 'bg-[#E3EDF7]' },
-				{ offer: 'URL per Event Type', img: 'url', class: 'bg-alert-500' }
+				{ offer: 'URL per Event Type', img: 'url', class: 'bg-alert-500' },
+				{ offer: 'Independently scalable', img: 'independently', class: 'bg-success-400' },
+				{ offer: 'Bi-directional webhooks', img: 'bi-directional', class: 'bg-[#D4D1FA]' },
+				{ offer: 'Static IP’s', img: 'static', class: 'bg-[#F8DEC7]' },
+				{ offer: 'Retries', img: 'retries', class: 'bg-[#F2F2F2]' },
+				{ offer: 'Language Agnostic', img: 'language-agnostic', class: 'bg-[#D1F0FA]' },
+				{ offer: 'Rich UI - Event Logs & Querying', img: 'monitor', class: 'bg-[#FCE3AD]' },
+				{ offer: 'Flexible Configuration', img: 'flexible', class: 'bg-[#E3EDF7]' },
+				{ offer: 'URL per Event Type', img: 'url', class: 'bg-alert-500' },
 			],
 			activeSlide: true,
 			expandImage: false
@@ -299,6 +285,7 @@ export default {
 	components: { GetStartedSection }
 };
 </script>
+
 <style lang="scss" scoped>
 .slideshow {
 	height: 150px;
@@ -306,11 +293,12 @@ export default {
 	position: relative;
 	overflow: hidden;
 	transform: translate3d(0, 0, 0);
+	white-space: nowrap;
 
 	.firstSlide {
-		animation: moveSlideshow 15s linear infinite alternate-reverse;
+		animation: scroll 100s linear infinite;
 		display: flex;
-		width: calc(250px * 14);
+		max-width: 2330px;
 
 		&:hover {
 			-webkit-animation-play-state: paused;
@@ -321,7 +309,7 @@ export default {
 	}
 
 	.secondSlide {
-		animation: scroll 15s linear infinite alternate-reverse;
+		animation: scroll 100s linear infinite reverse;
 		display: flex;
 		width: calc(250px * 14);
 
@@ -334,22 +322,13 @@ export default {
 	}
 }
 
-@keyframes moveSlideshow {
-	0% {
-		transform: translateX(0%);
-	}
-	100% {
-		-ms-transform: translateX(-100%) translateX(100vw);
-		transform: translateX(calc(-100% + 100vw));
-	}
-}
-
 @keyframes scroll {
 	0% {
-		transform: translateX(0);
+		transform: translateX(100px);
 	}
+
 	100% {
-		transform: translateX(calc(-350px * 7));
+		transform: translateX(calc(-2330px)) // transform: translateX(5160.688px)
 	}
 }
 </style>
