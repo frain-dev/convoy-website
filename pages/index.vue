@@ -250,7 +250,6 @@ export default {
 		};
 	},
 	mounted() {
-		this.triggerSlide();
 		this.animateOnScroll();
 	},
 	methods: {
@@ -259,29 +258,9 @@ export default {
 			if (media.matches) {
 				const animate = this.$gsap.utils.toArray('.feature');
 				animate.forEach(feature => {
-					this.$gsap.to(feature, { duration: 5, scrollTrigger: { trigger: feature, start: '150px center', scrub: true, pin: true } });
+					this.$gsap.to(feature, { duration: 5, scrollTrigger: { trigger: feature, start: '140px center', scrub: true, pin: true } });
 				});
 			}
-		},
-		switchTabs(activeTab) {
-			switch (activeTab) {
-				case 'cloud':
-					this.activeTab = 'cloud';
-					break;
-				case 'open':
-					this.activeTab = 'open';
-					break;
-				case 'portal':
-					this.activeTab = 'portal';
-					break;
-				default:
-					break;
-			}
-		},
-		triggerSlide() {
-			setInterval(() => {
-				this.activeSlide = !this.activeSlide;
-			}, 10000);
 		}
 	},
 	components: { GetStartedSection }
