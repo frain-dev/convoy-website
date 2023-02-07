@@ -53,16 +53,16 @@
 		</section>
 
 		<!-- why use us  -->
-		<section class="flex flex-col justify-center items-center pt-254px bg-white-100">
+		<section class="flex flex-col justify-center items-center pt-200px bg-white-100 features">
 			<div class="bg-primary-500 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 				<div class="mr-16px w-24px h-24px rounded-50% bg-success-100 flex justify-center items-center">
 					<img src="~/assets/images/svg/lightening.svg" alt="lightening icon" />
 				</div>
 				Why use Convoy?
 			</div>
-			<h1 class="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto">Convoy is the Fastest Webhooks Gateway</h1>
+			<h1 class="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto mb-80px">Convoy is the Fastest Webhooks Gateway</h1>
 
-			<div class="py-60px desktop:py-120px px-20px bg-white-100 features">
+			<div class="py-60px desktop:py-40px px-20px bg-white-100 feature-list">
 				<div class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-120px feature" v-for="(feature, index) of newFeatures.slice(0, 3)" :key="'feature' + index">
 					<div class="order-2 desktop:order-1 px-30px desktop:px-0">
 						<img :src="require(`~/assets/images/${feature.img}.png`)" :alt="feature.feature" class="w-48px h-48px mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" />
@@ -159,7 +159,7 @@
 			</div>
 			<div class="slideshow">
 				<div class="secondSlide">
-					<div v-for="(offer, index) of offerings.reverse()" :key="'offer' + index" class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center h-[80px] desktop:h-[98px] w-fit mx-20px py-20px px-86px" :class="offer.class">
+					<div v-for="(offer, index) of offerings" :key="'offer' + index" class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center h-[80px] desktop:h-[98px] w-fit mx-20px py-20px px-86px" :class="offer.class">
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
 						<p class="text-16">{{ offer.offer }}</p>
 					</div>
@@ -182,6 +182,7 @@ import GetStartedSection from '~/components/GetStartedSection.vue';
 
 export default {
 	layout: 'home',
+	components: { GetStartedSection },
 	data() {
 		return {
 			tabs: [
@@ -245,31 +246,28 @@ export default {
 				{ offer: 'Language Agnostic', img: 'language-agnostic', class: 'bg-[#D1F0FA]' },
 				{ offer: 'Rich UI - Event Logs & Querying', img: 'monitor', class: 'bg-[#FCE3AD]' },
 				{ offer: 'Flexible Configuration', img: 'flexible', class: 'bg-[#E3EDF7]' },
-				{ offer: 'URL per Event Type', img: 'url', class: 'bg-alert-500' },
+				{ offer: 'URL per Event Type', img: 'url', class: 'bg-alert-500' }
 			],
 			activeSlide: true,
 			expandImage: false
 		};
 	},
 	mounted() {
-		this.animateOnScroll();
+		const tween = this.$gsap.to('.feature-list', { scrollTo: { y: "max" }, ease: 'slow', scrollTrigger: { trigger: '.features', start: '615px center', scrub: true, pin: true } });
 	},
-	methods: {
-		animateOnScroll() {
-			let media = window.matchMedia('(min-width: 1024px)');
-			if (media.matches) {
-				const animate = this.$gsap.utils.toArray('.feature');
-				animate.forEach(feature => {
-					this.$gsap.to(feature, { duration: 5, scrollTrigger: { trigger: feature, start: '140px center', scrub: true, pin: true } });
-				});
-			}
-		}
-	},
-	components: { GetStartedSection }
 };
 </script>
 
 <style lang="scss" scoped>
+.feature-list {
+	height: calc(115vh - 114px);
+	overflow: hidden;
+
+	.feature {
+		height: 50vh;
+	}
+}
+
 .slideshow {
 	height: 150px;
 	margin: 0 auto;
@@ -279,7 +277,7 @@ export default {
 	white-space: nowrap;
 
 	.firstSlide {
-		animation: moveSlideshow 20s linear infinite;
+		animation: moveSlideshow 100s linear infinite;
 		display: flex;
 		width: calc(250px * 12);
 
@@ -292,7 +290,7 @@ export default {
 	}
 
 	.secondSlide {
-		animation: scroll 20s linear infinite;
+		animation: scroll 100s linear infinite;
 		display: flex;
 		width: calc(250px * 12);
 
@@ -305,13 +303,24 @@ export default {
 	}
 }
 
-@keyframes scroll {
+@keyframes moveSlideshow {
 	0% {
-		transform: translateX(100px);
+		transform: translateX(0%);
 	}
 
 	100% {
-		transform: translateX(calc(-2330px)) // transform: translateX(5160.688px)
+		-ms-transform: translateX(-100%) translateX(100vw);
+		transform: translateX(calc(-100% + 100vw));
+	}
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(calc(-350px * 7));
 	}
 }
 </style>

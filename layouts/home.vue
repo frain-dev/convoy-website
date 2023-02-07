@@ -35,40 +35,6 @@ export default {
 		setTimeout(() => {
 			this.showBlogPost = true
 		}, 1000);
-	},
-	methods: {
-		async requestAccess() {
-			this.isSubmitingloadingEarlyAccessForm = true;
-			try {
-				const response = await fetch('/.netlify/functions/subscribe', {
-					method: 'POST',
-					mode: 'cors',
-					cache: 'no-cache',
-					credentials: 'same-origin',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					redirect: 'follow',
-					referrerPolicy: 'no-referrer',
-					body: JSON.stringify({
-						email: this.earlyAccessEmail
-					})
-				});
-				await response.json();
-				this.subscribeButtonText = 'Subscribed';
-				this.setDefaultAccessButtonText();
-				this.isSubmitingloadingEarlyAccessForm = false;
-			} catch (error) {
-				this.subscribeButtonText = 'Error';
-				this.setDefaultAccessButtonText();
-				this.isSubmitingloadingEarlyAccessForm = false;
-			}
-		},
-		setDefaultAccessButtonText() {
-			setTimeout(() => {
-				this.subscribeButtonText = 'Subscribe';
-			}, 3000);
-		}
 	}
 };
 </script>
