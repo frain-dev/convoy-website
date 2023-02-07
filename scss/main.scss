@@ -23,6 +23,9 @@
 	:root {
 		--color-white: 255, 255, 255;
 	}
+	body {
+		@apply text-grey-80;
+	}
 	h1 {
 		@apply text-h1;
 	}
