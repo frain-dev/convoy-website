@@ -46,9 +46,9 @@ export default {
 	async mounted() {
 		const featurePosts = await this.$content('blog').where().fetch();
 		this.featurePosts = featurePosts.slice(0, 7);
-		this.startCarousel();
 		setTimeout(() => {
 			this.showBlogPost = true;
+			this.startCarousel();
 		}, 1000);
 	},
 	methods: {

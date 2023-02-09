@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<section class="min-h-screen flex flex-col justify-center items-center px-20px">
+		<section class="max-w-[1062] flex flex-col justify-center items-center pt-220px pb-100px desktop:pb-236px px-20px">
 			<div class="bg-primary-500 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 				We are backed by
 				<img src="~/assets/images/y-combinator.svg" class="ml-16px w-24px h-24px" alt="y-combinator" />
@@ -30,38 +30,36 @@
 			</div>
 		</section>
 
-		<section class="bg-white-100 relative pb-100px">
-			<div class="rounded-[36px] desktop:rounded-[70px] bg-[linear-gradient(180deg,#2c2f3e_0%,#422f41_100%)] max-w-[90%] w-full absolute -top-140px -translate-x-1/2 left-1/2">
-				<div class="w-full md:bg-[url(~/assets/images/Settings.png)] bg-no-repeat bg-right desktop:bg-contain rounded-[70px] min-h-[200px] py-30px desktop:py-56px px-20px desktop:px-70px">
-					<p class="font-bold text-white-100 text-24 desktop:text-32 max-w-[690px]">
-						Engineering teams that value efficiency use
-						<span class="text-primary-300">Convoy</span>
-						to manage webhook events.
-					</p>
+		<section class="rounded-[20px] desktop:rounded-[70px] mx-auto bg-[linear-gradient(180deg,#2c2f3e_0%,#422f41_100%)] -mb-78px max-w-[1350px] w-[90%] z-auto relative">
+			<div class="w-full md:bg-[url(~/assets/images/Settings.png)] bg-no-repeat bg-right desktop:bg-contain rounded-[70px] min-h-[200px] py-30px desktop:py-56px px-20px desktop:px-70px">
+				<p class="font-bold text-white-100 text-24 desktop:text-32 max-w-[690px]">
+					Engineering teams that value efficiency use
+					<span class="text-primary-300">Convoy</span>
+					to manage webhook events.
+				</p>
 
-					<ul class="flex items-center list-none mt-38px">
-						<li class="mr-12px">
-							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
-								<img src="~/assets/images/buycoins.svg" alt="buycoins logo" />
-							</a>
-						</li>
-						<li class="mr-12px">
-							<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
-								<img src="~/assets/images/getwallets.svg" alt="getwallets logo" />
-							</a>
-						</li>
-						<li class="mr-12px">
-							<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
-								<img src="~/assets/images/dojah.svg" alt="dojah logo" />
-							</a>
-						</li>
-						<li class="">
-							<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
-								<img src="~/assets/images/termii.svg" alt="termii logo" />
-							</a>
-						</li>
-					</ul>
-				</div>
+				<ul class="flex items-center list-none mt-38px">
+					<li class="mr-12px">
+						<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
+							<img src="~/assets/images/buycoins.svg" alt="buycoins logo" />
+						</a>
+					</li>
+					<li class="mr-12px">
+						<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
+							<img src="~/assets/images/getwallets.svg" alt="getwallets logo" />
+						</a>
+					</li>
+					<li class="mr-12px">
+						<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
+							<img src="~/assets/images/dojah.svg" alt="dojah logo" />
+						</a>
+					</li>
+					<li class="">
+						<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
+							<img src="~/assets/images/termii.svg" alt="termii logo" />
+						</a>
+					</li>
+				</ul>
 			</div>
 		</section>
 
@@ -73,28 +71,37 @@
 				</div>
 				Why use Convoy?
 			</div>
-			<h1 class="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto">Convoy is the Fastest Webhooks Gateway</h1>
-		</section>
+			<h1 class="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto mb-80px">Convoy is the Fastest Webhooks Gateway</h1>
 
-		<section class="py-60px desktop:py-120px px-20px bg-white-100 features">
-			<div class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-120px feature" v-for="(feature, index) of newFeatures.slice(0, 3)" :key="'feature' + index">
-				<div class="order-2 desktop:order-1 px-30px desktop:px-0">
-					<img :src="require(`~/assets/images/${feature.img}.png`)" :alt="feature.feature" class="w-48px h-48px mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" />
-					<h3 class="font-semibold mb-16px">{{ feature.title }}</h3>
-					<p class="text-18 mobile:text-14 min-h-[72px] md:max-w-[542px]">{{ feature.body }}</p>
+			<div class="py-60px desktop:py-40px px-20px bg-white-100 feature-list">
+				<div
+					class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-120px feature gap-x-20 gap-y-10"
+					v-for="(feature, index) of newFeatures.slice(0, 3)"
+					:key="'feature' + index"
+				>
+					<div class="order-2 desktop:order-1 px-30px desktop:px-0">
+						<img :src="require(`~/assets/images/${feature.img}.png`)" :alt="feature.feature" class="w-48px h-48px mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" />
+						<h3 class="font-semibold text-26 mb-16px">{{ feature.title }}</h3>
+						<p class="text-20 font-light mobile:text-14 min-h-[72px] md:max-w-[542px]">{{ feature.body }}</p>
+					</div>
+					<div class="md:max-w-[658px] tab:max-w-[450px] tab:ml-20px order-1 desktop:order-2">
+						<img :src="require(`~/assets/images/${feature.featureImg}.png`)" :alt="feature.featureImg" class="object-contain" />
+					</div>
 				</div>
-				<div class="md:max-w-[558px] tab:max-w-[450px] tab:ml-20px order-1 desktop:order-2">
-					<img :src="require(`~/assets/images/${feature.featureImg}.png`)" :alt="feature.featureImg" class="object-contain" />
-				</div>
-			</div>
-			<div class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-120px feature" v-for="(feature, index) of newFeatures.slice(3, 6)" :key="'feature-b' + index">
-				<div class="md:max-w-[558px] tab:max-w-[450px] tab:mr-20px">
-					<img :src="require(`~/assets/images/${feature.featureImg}.png`)" :alt="feature.featureImg" class="object-contain" />
-				</div>
-				<div class="px-30px desktop:px-0">
-					<img :src="require(`~/assets/images/${feature.img}.png`)" :alt="feature.feature" class="w-48px h-48px mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" />
-					<h3 class="font-semibold mb-16px">{{ feature.title }}</h3>
-					<p class="text-18 mobile:text-14 min-h-[72px] md:max-w-[542px]">{{ feature.body }}</p>
+
+				<div
+					class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-120px feature gap-x-20 gap-y-10"
+					v-for="(feature, index) of newFeatures.slice(3, 6)"
+					:key="'feature-b' + index"
+				>
+					<div class="md:max-w-[658px] tab:max-w-[450px] tab:mr-20px">
+						<img :src="require(`~/assets/images/${feature.featureImg}.png`)" :alt="feature.featureImg" class="object-contain" />
+					</div>
+					<div class="px-30px desktop:px-0">
+						<img :src="require(`~/assets/images/${feature.img}.png`)" :alt="feature.feature" class="w-48px h-48px mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" />
+						<h3 class="font-semibold mb-16px text-26">{{ feature.title }}</h3>
+						<p class="text-20 mobile:text-14 font-light min-h-[72px] md:max-w-[542px]">{{ feature.body }}</p>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -150,6 +157,7 @@
 		</section>
 
 		<!-- offerings  -->
+
 		<section class="max-w-[1234px] mx-auto pt-60px px-20px desktop:pt-180px pb-60px desktop:pb-116px">
 			<div class="bg-primary-500 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 				<div class="mr-16px w-24px h-24px rounded-50% bg-warning-100 flex justify-center items-center">
@@ -166,7 +174,7 @@
 					<div
 						v-for="(offer, index) of offerings"
 						:key="'offer' + index"
-						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center min-w-[320px] desktop:min-w-[356px] h-[80px] desktop:h-[98px] w-full mx-20px"
+						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center py-20px px-86px h-[80px] desktop:h-[98px] min-w-[350px] mx-20px"
 						:class="offer.class"
 					>
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
@@ -177,9 +185,9 @@
 			<div class="slideshow">
 				<div class="secondSlide">
 					<div
-						v-for="(offer, index) of offerings.reverse()"
-						:key="'offer-b' + index"
-						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center min-w-[320px] desktop:min-w-[356px] h-[80px] desktop:h-[98px] w-full mx-20px"
+						v-for="(offer, index) of offerings"
+						:key="'offer' + index"
+						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center h-[80px] desktop:h-[98px] min-w-[350px] mx-20px py-20px px-86px"
 						:class="offer.class"
 					>
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
@@ -188,6 +196,7 @@
 				</div>
 			</div>
 		</section>
+
 		<section
 			class="fixed top-0 left-0 w-screen h-screen bg-[#fafafe] transition-all duration-500"
 			:class="expandImage ? 'visible animate-slideup opacity-100 z-[100000]' : 'invisible animate-slidedown opacity-0'"
@@ -207,6 +216,7 @@ import GetStartedSection from '~/components/GetStartedSection.vue';
 
 export default {
 	layout: 'home',
+	components: { GetStartedSection },
 	data() {
 		return {
 			tabs: [
@@ -262,6 +272,14 @@ export default {
 				{ offer: 'Language Agnostic', img: 'language-agnostic', class: 'bg-[#D1F0FA]' },
 				{ offer: 'Rich UI - Event Logs & Querying', img: 'monitor', class: 'bg-[#FCE3AD]' },
 				{ offer: 'Flexible Configuration', img: 'flexible', class: 'bg-[#E3EDF7]' },
+				{ offer: 'URL per Event Type', img: 'url', class: 'bg-alert-500' },
+				{ offer: 'Independently scalable', img: 'independently', class: 'bg-success-400' },
+				{ offer: 'Bi-directional webhooks', img: 'bi-directional', class: 'bg-[#D4D1FA]' },
+				{ offer: 'Static IP’s', img: 'static', class: 'bg-[#F8DEC7]' },
+				{ offer: 'Retries', img: 'retries', class: 'bg-[#F2F2F2]' },
+				{ offer: 'Language Agnostic', img: 'language-agnostic', class: 'bg-[#D1F0FA]' },
+				{ offer: 'Rich UI - Event Logs & Querying', img: 'monitor', class: 'bg-[#FCE3AD]' },
+				{ offer: 'Flexible Configuration', img: 'flexible', class: 'bg-[#E3EDF7]' },
 				{ offer: 'URL per Event Type', img: 'url', class: 'bg-alert-500' }
 			],
 			activeSlide: true,
@@ -269,43 +287,14 @@ export default {
 		};
 	},
 	mounted() {
-		this.triggerSlide();
-		this.animateOnScroll();
-	},
-	methods: {
-		animateOnScroll() {
-			let media = window.matchMedia('(min-width: 1024px)');
-			if (media.matches) {
-				const animate = this.$gsap.utils.toArray('.feature');
-				animate.forEach(feature => {
-					this.$gsap.to(feature, { duration: 3, scrollTrigger: { trigger: feature, start: '150px center', scrub: true, pin: true } });
-				});
-			}
-		},
-		switchTabs(activeTab) {
-			switch (activeTab) {
-				case 'cloud':
-					this.activeTab = 'cloud';
-					break;
-				case 'open':
-					this.activeTab = 'open';
-					break;
-				case 'portal':
-					this.activeTab = 'portal';
-					break;
-				default:
-					break;
-			}
-		},
-		triggerSlide() {
-			setInterval(() => {
-				this.activeSlide = !this.activeSlide;
-			}, 10000);
-		}
-	},
-	components: { GetStartedSection }
+		const animate = this.$gsap.utils.toArray('.feature');
+		animate.forEach(feature => {
+			this.$gsap.to(feature, { duration: 1, scrollTrigger: { trigger: feature, start: '250px center', scrub: true, pin: true } });
+		});
+	}
 };
 </script>
+
 <style lang="scss" scoped>
 .slideshow {
 	height: 150px;
@@ -313,9 +302,10 @@ export default {
 	position: relative;
 	overflow: hidden;
 	transform: translate3d(0, 0, 0);
+	white-space: nowrap;
 
 	.firstSlide {
-		animation: moveSlideshow 20s linear infinite;
+		animation: moveSlideshow 100s linear infinite;
 		display: flex;
 		width: calc(350px * 7);
 
@@ -328,7 +318,7 @@ export default {
 	}
 
 	.secondSlide {
-		animation: moveSlideShowRight 20s linear infinite;
+		animation: moveSlideshow 80s linear infinite -20s;
 		display: flex;
 		width: calc(350px * 7);
 
@@ -341,23 +331,14 @@ export default {
 	}
 }
 
+
 @keyframes moveSlideshow {
 	0% {
 		transform: translateX(0%);
 	}
-	100% {
-		-ms-transform: translateX(-100%) translateX(100vw);
-		transform: translateX(calc(-100% + 100vw));
-	}
-}
 
-@keyframes moveSlideShowRight {
-	from {
-		transform: translateX(0%);
+	100% {
+		transform: translateX(calc(-350px * 7));
 	}
-	to {
-		transform: translateX(100vw);
-	}
-	
 }
 </style>
