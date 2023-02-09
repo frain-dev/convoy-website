@@ -25,7 +25,7 @@
 					class="py-12px px-28px text-14 font-medium rounded-8px bg-[linear-gradient(0deg,#F6F7F9_0%,#FFFFFF_100%)] text-primary-100 border border-primary-500 flex items-center text-center"
 				>
 					<img src="~/assets/images/svg/play-circle.svg" class="mr-10px w-24px h-24px" alt="y-combinator" />
-					Book a Demo
+					Play 2 mins Demo
 				</a>
 			</div>
 		</section>
@@ -97,7 +97,7 @@
 					<div class="md:max-w-[658px] tab:max-w-[450px] tab:mr-20px">
 						<img :src="require(`~/assets/images/${feature.featureImg}.png`)" :alt="feature.featureImg" class="object-contain" />
 					</div>
-					<div class="px-30px desktop:px-0">
+					<div>
 						<img :src="require(`~/assets/images/${feature.img}.png`)" :alt="feature.feature" class="w-48px h-48px mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" />
 						<h3 class="font-semibold mb-16px text-26">{{ feature.title }}</h3>
 						<p class="text-20 mobile:text-14 font-light min-h-[72px] md:max-w-[542px]">{{ feature.body }}</p>
@@ -313,13 +313,10 @@ export default {
 		};
 	},
 	mounted() {
-		let media = window.matchMedia('(min-width: 1024px)');
-		if (media.matches) {
-			const animate = this.$gsap.utils.toArray('.feature');
-			animate.forEach(feature => {
-				this.$gsap.to(feature, { duration: 1, scrollTrigger: { trigger: feature, start: '250px center', scrub: true, pin: true } });
-			});
-		}
+		const animate = this.$gsap.utils.toArray('.feature');
+		animate.forEach(feature => {
+			this.$gsap.to(feature, { duration: 1, scrollTrigger: { trigger: feature, start: '250px center', scrub: true, pin: true } });
+		});
 	}
 };
 </script>
