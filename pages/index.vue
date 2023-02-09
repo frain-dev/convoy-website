@@ -64,22 +64,22 @@
 		</section>
 
 		<!-- why use us  -->
-		<section id="why-convoy" class="flex flex-col justify-center items-center pt-60px desktop:pt-120px bg-white-100">
+		<section id="why-convoy" class="flex flex-col justify-center items-center pt-160px bg-white-100">
 			<div class="bg-primary-500 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 				<div class="mr-16px w-24px h-24px rounded-50% bg-success-100 flex justify-center items-center">
 					<img src="~/assets/images/svg/lightening.svg" alt="lightening icon" />
 				</div>
 				Why use Convoy?
 			</div>
-			<h1 class="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto mb-80px">Convoy is the Fastest Webhooks Gateway</h1>
+			<h1 class="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto">Convoy is the Fastest Webhooks Gateway</h1>
 
-			<div class="py-60px desktop:py-40px px-20px bg-white-100 feature-list">
+			<div class="desktop:py-40px px-20px bg-white-100 feature-list">
 				<div
-					class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-120px feature gap-x-20 gap-y-10"
+					class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-100px feature gap-x-20 gap-y-10"
 					v-for="(feature, index) of newFeatures.slice(0, 3)"
 					:key="'feature' + index"
 				>
-					<div class="order-2 desktop:order-1 px-30px desktop:px-0">
+					<div class="order-2 desktop:order-1">
 						<img :src="require(`~/assets/images/${feature.img}.png`)" :alt="feature.feature" class="w-48px h-48px mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" />
 						<h3 class="font-semibold text-26 mb-16px">{{ feature.title }}</h3>
 						<p class="text-20 font-light mobile:text-14 min-h-[72px] md:max-w-[542px]">{{ feature.body }}</p>
@@ -174,7 +174,20 @@
 					<div
 						v-for="(offer, index) of offerings"
 						:key="'offer' + index"
-						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center py-20px px-86px h-[80px] desktop:h-[98px] min-w-[350px] mx-20px"
+						class="
+							shadow-[14px_20px_24px_rgba(20,37,63,0.04)]
+							rounded-[60px]
+							flex flex-col
+							justify-center
+							items-center
+							py-20px
+							px-86px
+							h-[80px]
+							desktop:h-[98px]
+							min-w-[280px]
+							desktop:min-w-[350px]
+							mx-20px
+						"
 						:class="offer.class"
 					>
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
@@ -187,7 +200,20 @@
 					<div
 						v-for="(offer, index) of offerings"
 						:key="'offer' + index"
-						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center h-[80px] desktop:h-[98px] min-w-[350px] mx-20px py-20px px-86px"
+						class="
+							shadow-[14px_20px_24px_rgba(20,37,63,0.04)]
+							rounded-[60px]
+							flex flex-col
+							justify-center
+							items-center
+							h-[80px]
+							desktop:h-[98px]
+							min-w-[280px]
+							desktop:min-w-[350px]
+							mx-20px
+							py-20px
+							px-86px
+						"
 						:class="offer.class"
 					>
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
@@ -287,10 +313,13 @@ export default {
 		};
 	},
 	mounted() {
-		const animate = this.$gsap.utils.toArray('.feature');
-		animate.forEach(feature => {
-			this.$gsap.to(feature, { duration: 1, scrollTrigger: { trigger: feature, start: '250px center', scrub: true, pin: true } });
-		});
+		let media = window.matchMedia('(min-width: 1024px)');
+		if (media.matches) {
+			const animate = this.$gsap.utils.toArray('.feature');
+			animate.forEach(feature => {
+				this.$gsap.to(feature, { duration: 1, scrollTrigger: { trigger: feature, start: '250px center', scrub: true, pin: true } });
+			});
+		}
 	}
 };
 </script>
@@ -330,7 +359,6 @@ export default {
 		}
 	}
 }
-
 
 @keyframes moveSlideshow {
 	0% {
