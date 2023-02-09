@@ -1,7 +1,5 @@
 <template>
 	<div>
-	
-
 		<section>
 			<div class="max-w-[1200px] min-h-[500px] mobile:min-h-[500px] desktop:min-h-[500px] w-full m-auto px-20px pt-200px">
 				<h1 class="text-center font-bold text-32 desktop:text-[40px] desktop:leading-[48px] mb-22px max-w-[502px] m-auto">Transparent Pricing, pay as you grow</h1>
@@ -79,22 +77,22 @@
 			<ul class="flex justify-between items-center max-w-[960px] m-auto">
 				<li class="mr-20px desktop:mr-50px">
 					<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
-						<img src="~/assets/images/buycoins.png" class="desktop:max-w-[110px] w-100px" alt="buycoins logo" />
+						<img src="~/assets/images/svg/buycoins-primary.svg" class="desktop:max-w-[110px] w-100px" alt="buycoins logo" />
 					</a>
 				</li>
 				<li class="mr-20px desktop:mr-50px">
 					<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
-						<img src="~/assets/images/getWallets logo.png" class="desktop:max-w-[150px] w-100px" alt="getwallets logo" />
+						<img src="~/assets/images/svg/getwallets-primary.svg" class="desktop:max-w-[150px] w-100px" alt="getwallets logo" />
 					</a>
 				</li>
 				<li class="mr-20px desktop:mr-50px">
 					<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
-						<img src="~/assets/images/dojah.svg" class="desktop:max-w-[100px] w-fit" alt="dojah logo" />
+						<img src="~/assets/images/svg/dojah-primary.svg" class="desktop:max-w-[100px] w-full" alt="dojah logo" />
 					</a>
 				</li>
 				<li class="">
 					<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
-						<img src="~/assets/images/termii.png" class="desktop:max-w-[150px] w-100px" alt="termii logo" />
+						<img src="~/assets/images/svg/termii-primary.svg" class="desktop:max-w-[150px] w-100px" alt="termii logo" />
 					</a>
 				</li>
 			</ul>

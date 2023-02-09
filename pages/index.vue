@@ -20,7 +20,13 @@
 					Get Started For Free
 				</a>
 
-				<a href="/demo" class="py-12px px-28px text-14 font-medium rounded-8px bg-white-100 text-primary-100 flex items-center text-center">Book a Demo</a>
+				<a
+					href="/demo"
+					class="py-12px px-28px text-14 font-medium rounded-8px bg-[linear-gradient(0deg,#F6F7F9_0%,#FFFFFF_100%)] text-primary-100 border border-primary-500 flex items-center text-center"
+				>
+					<img src="~/assets/images/svg/play-circle.svg" class="mr-10px w-24px h-24px" alt="y-combinator" />
+					Book a Demo
+				</a>
 			</div>
 		</section>
 
@@ -60,7 +66,7 @@
 		</section>
 
 		<!-- why use us  -->
-		<section class="flex flex-col justify-center items-center pt-60px desktop:pt-120px bg-white-100">
+		<section id="why-convoy" class="flex flex-col justify-center items-center pt-60px desktop:pt-120px bg-white-100">
 			<div class="bg-primary-500 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 				<div class="mr-16px w-24px h-24px rounded-50% bg-success-100 flex justify-center items-center">
 					<img src="~/assets/images/svg/lightening.svg" alt="lightening icon" />
@@ -143,15 +149,7 @@
 			</div>
 		</section>
 
-		<section class="bg-[#fcfcfc] py-60px desktop:py-80px px-24px desktop:px-64px">
-			<h2 class="font-bold desktop:text-32 mb-22px">Developers use Convoy Webhooks Gateway to securely ingest, persist, debug, deliver and manage millions of events reliably...</h2>
-			<a href="#">Learn about our infrastructure</a>
-
-			<div class="bg-white-100 rounded-[30px] max-w-[1062px] mx-auto mt-52px flex justify-center py-20px px-20px desktop:px-80px hover:cursor-pointer" @click="expandImage = true">
-				<img src="~/assets/images/2nd-illustration.png" alt="infrastructure" />
-			</div>
-		</section>
-
+		<!-- offerings  -->
 		<section class="max-w-[1234px] mx-auto pt-60px px-20px desktop:pt-180px pb-60px desktop:pb-116px">
 			<div class="bg-primary-500 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 				<div class="mr-16px w-24px h-24px rounded-50% bg-warning-100 flex justify-center items-center">
@@ -168,7 +166,7 @@
 					<div
 						v-for="(offer, index) of offerings"
 						:key="'offer' + index"
-						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center max-w-[320px] desktop:max-w-[356px] h-[80px] desktop:h-[98px] w-full mx-20px"
+						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center min-w-[320px] desktop:min-w-[356px] h-[80px] desktop:h-[98px] w-full mx-20px"
 						:class="offer.class"
 					>
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
@@ -181,7 +179,7 @@
 					<div
 						v-for="(offer, index) of offerings.reverse()"
 						:key="'offer-b' + index"
-						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center max-w-[320px] desktop:max-w-[356px] h-[80px] desktop:h-[98px] w-full mx-20px"
+						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center min-w-[320px] desktop:min-w-[356px] h-[80px] desktop:h-[98px] w-full mx-20px"
 						:class="offer.class"
 					>
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
@@ -199,6 +197,7 @@
 				<img src="~/assets/images/2nd-illustration.png" class="w-full" alt="infrastructure" />
 			</div>
 		</section>
+
 		<GetStartedSection></GetStartedSection>
 	</div>
 </template>
@@ -279,7 +278,7 @@ export default {
 			if (media.matches) {
 				const animate = this.$gsap.utils.toArray('.feature');
 				animate.forEach(feature => {
-					this.$gsap.to(feature, { duration: 5, scrollTrigger: { trigger: feature, start: '150px center', scrub: true, pin: true } });
+					this.$gsap.to(feature, { duration: 3, scrollTrigger: { trigger: feature, start: '150px center', scrub: true, pin: true } });
 				});
 			}
 		},
@@ -318,7 +317,7 @@ export default {
 	.firstSlide {
 		animation: moveSlideshow 20s linear infinite;
 		display: flex;
-		width: calc(250px * 12);
+		width: calc(350px * 7);
 
 		&:hover {
 			-webkit-animation-play-state: paused;
@@ -329,9 +328,9 @@ export default {
 	}
 
 	.secondSlide {
-		animation: scroll 20s linear infinite;
+		animation: moveSlideShowRight 20s linear infinite;
 		display: flex;
-		width: calc(250px * 12);
+		width: calc(350px * 7);
 
 		&:hover {
 			-webkit-animation-play-state: paused;
@@ -352,12 +351,13 @@ export default {
 	}
 }
 
-@keyframes scroll {
-	0% {
-		transform: translateX(0);
+@keyframes moveSlideShowRight {
+	from {
+		transform: translateX(0%);
 	}
-	100% {
-		transform: translateX(calc(-350px * 7));
+	to {
+		transform: translateX(100vw);
 	}
+	
 }
 </style>

@@ -33,7 +33,7 @@
 				</a>
 			</section>
 
-			<div class="flex items-center justify-between m-auto max-w-[1200px]">
+			<div class="flex items-center justify-between m-auto max-w-[1300px]">
 				<button class="block absolute nav-bar-break:hidden" @click="showMenu = !showMenu">
 					<img v-if="!showMenu" src="~/assets/images/menu-icon.svg" alt="menu icon" width="24" />
 					<img v-if="showMenu" src="~/assets/images/close-icon.svg" alt="close icon" width="24" />
@@ -54,16 +54,17 @@
 					"
 					:class="showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'"
 				>
-					<li class="py-14px px-20px nav-bar-break:mr-20px border-b border-b-grey-10 last-of-type:border-none nav-bar-break:border-none" v-for="link in menuItems" :key="link.name">
+					<li class="py-14px px-20px nav-bar-break:mr-10px border-b border-b-grey-10 last-of-type:border-none nav-bar-break:border-none" v-for="link in menuItems" :key="link.name">
 						<nuxt-link class="text-14" v-if="link.type === 'route'" :to="link.route">{{ link.name }}</nuxt-link>
 						<a class="text-14" v-else target="_blank" rel="noopener noreferrer" :href="link.route">{{ link.name }}</a>
 					</li>
 
 					<li class="py-14px px-20px nav-bar-break:p-0">
 						<a
-							href="/demo"
+							href="https://dashboard.getconvoy.io/login"
+							target="_blank"
 							class="
-								nav-bar-break:py-8px nav-bar-break:px-12px
+								nav-bar-break:py-8px nav-bar-break:px-24px
 								text-14
 								font-medium
 								rounded-8px
@@ -71,10 +72,9 @@
 								text-primary-100
 								flex
 								items-center
-								mr-24px
 							"
 						>
-							Book a Demo
+							Login
 						</a>
 					</li>
 
@@ -106,11 +106,13 @@ export default {
 			githubStars: 0,
 			menuItems: [
 				{ name: 'Pricing', route: '/pricing', type: 'route' },
+				{ name: 'Why Convoy', route: '/#why-convoy', type: 'route' },
+				{ name: 'Docs', route: '/docs', type: 'route' },
 				{ name: 'Tutorials', route: '/blog?tag=Tutorial', type: 'route' },
 				{ name: 'Blog', route: '/blog', type: 'route' },
-				{ name: 'Docs', route: '/docs', type: 'route' },
 				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' },
-				{ name: 'Download', route: '/download', type: 'route' }
+				{ name: 'Download', route: '/download', type: 'route' },
+				{ name: 'Watch Demo', route: '/demo', type: 'route' }
 			],
 			hasScrolled: false
 		};

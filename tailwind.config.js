@@ -44,7 +44,7 @@ module.exports = {
 			mobile: { max: '1054px' },
 			footer: { max: '630px' },
 			xs: { max: '425px' },
-			tab:{max: "1287px", min:"880px"}
+			tab: { max: '1287px', min: '880px' }
 		},
 		borderRadius: {
 			'2px': '2px',
