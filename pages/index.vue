@@ -71,15 +71,15 @@
 				</div>
 				Why use Convoy?
 			</div>
-			<h1 class="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto">Convoy is the Fastest Webhooks Gateway</h1>
+			<h1 class="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto mb-80px">Convoy is the Fastest Webhooks Gateway</h1>
 
 			<div class="desktop:py-40px px-20px bg-white-100 feature-list">
 				<div
-					class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-100px feature gap-x-20 gap-y-10"
+					class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto mb-140px feature gap-x-20 gap-y-10"
 					v-for="(feature, index) of newFeatures.slice(0, 3)"
 					:key="'feature' + index"
 				>
-					<div class="order-2 desktop:order-1">
+					<div class="order-2 desktop:order-1 px-20px xs:px-10px desktop:px-0">
 						<img :src="require(`~/assets/images/${feature.img}.png`)" :alt="feature.feature" class="w-48px h-48px mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" />
 						<h3 class="font-semibold text-26 mb-16px">{{ feature.title }}</h3>
 						<p class="text-20 font-light mobile:text-14 min-h-[72px] md:max-w-[542px]">{{ feature.body }}</p>
@@ -90,14 +90,14 @@
 				</div>
 
 				<div
-					class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto my-120px feature gap-x-20 gap-y-10"
+					class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto mb-140px feature gap-x-20 gap-y-10"
 					v-for="(feature, index) of newFeatures.slice(3, 6)"
 					:key="'feature-b' + index"
 				>
 					<div class="md:max-w-[658px] tab:max-w-[450px] tab:mr-20px">
 						<img :src="require(`~/assets/images/${feature.featureImg}.png`)" :alt="feature.featureImg" class="object-contain" />
 					</div>
-					<div>
+					<div class="px-20px xs:px-10px desktop:px-0">
 						<img :src="require(`~/assets/images/${feature.img}.png`)" :alt="feature.feature" class="w-48px h-48px mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" />
 						<h3 class="font-semibold mb-16px text-26">{{ feature.title }}</h3>
 						<p class="text-20 mobile:text-14 font-light min-h-[72px] md:max-w-[542px]">{{ feature.body }}</p>
@@ -311,12 +311,6 @@ export default {
 			activeSlide: true,
 			expandImage: false
 		};
-	},
-	mounted() {
-		const animate = this.$gsap.utils.toArray('.feature');
-		animate.forEach(feature => {
-			this.$gsap.to(feature, { duration: 1, scrollTrigger: { trigger: feature, start: '250px center', scrub: true, pin: true } });
-		});
 	}
 };
 </script>
