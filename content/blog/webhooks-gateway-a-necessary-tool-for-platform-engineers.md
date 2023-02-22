@@ -1,5 +1,5 @@
 ---
-title: Webhooks Gateways; A necessary tool for Platform Engineers
+title: Webhook Gateways for Platform Engineers
 feature_image: webhook-gateways-for-platform-engineers.png
 post_image: webhook-gateways-for-platform-engineers.png
 primary_author:
