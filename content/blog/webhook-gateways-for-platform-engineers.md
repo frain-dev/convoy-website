@@ -1,7 +1,7 @@
 ---
 title: Webhook Gateways for Platform Engineers
-feature_image: webhook-gateways-for-platform-engineers.png
-post_image: webhook-gateways-for-platform-engineers.png
+feature_image: webhook-gateways-for-platform-engineers-image.png
+post_image: webhook-gateways-for-platform-engineers-image.png
 primary_author:
     name: Subomi Oluwalana
     twitter: subomiOluwalana
