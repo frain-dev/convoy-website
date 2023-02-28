@@ -8,11 +8,11 @@ order: 11
 Sources
 ======
 
-Sources are how events are routed into the system. In this segment, we discuss the various types of sources and their use cases. Convoy currently supports two types of sources: REST API sources and HTTP Ingested sources.
+Sources are how events are ingested into Convoy. In this section, we explain the different types of sources and their use cases. Convoy currently supports three types of sources: REST API, HTTP Ingested and Message Brokers.
 
 ## REST API
 
-This is an authenticated API to push events to a Convoy instance. It is designed for an outgoing event project to push events to a specific endpoint. This source is only and automatically available for all outgoing projects.
+This is an authenticated API to push events to a Convoy instance. It is designed specifically for an outgoing projects  to push events to a specific endpoint. This source is only and automatically available for all outgoing projects.
 
 ## HTTP Ingestion
 
@@ -36,3 +36,37 @@ For HMAC verification mechanism, Convoy provides support for [simple and advance
 4. **Custom Verification:** For some providers, like [Github](https://github.com) and [Twitter](https://twitter.com) the core verification mechanisms aren't sufficient. Though they are wrap around the core mechanisms, these modules have to be built specifically for eah provider. 
 
 Currently, we have support for [GitHub](https://github.com), and have planned support for [Twitter](https://twitter.com) and [Shopify](https://shopify.com). You can request new sources by sending an email to `support@getconvoy.io`.
+
+## Message Brokers
+
+With this, you can write events to a queue or topic, then convoy reads off the queue and send the event to client endpoint. It is designed for and only available to outgoing projects.
+
+### Google PubSub
+To ingest events using Google PubSub, follow the steps outlined below:
+
+1. Create a PubSub Topic.
+   ![create google pubsub topic](/docs-assets/google-pubsub.png)
+2. Create a Subscription.
+   ![create a subscription](/docs-assets/create-google-subscription.png)
+3. Create a Service Account with PubSub Admin Role.
+   ![create service account](/docs-assets/create-service-account.png)
+4. Generate Service Account JSON Key
+   ![generate service account json key](/docs-assets/create-service-account-key.png)
+5. Configure Source. <br />
+   Supply your `Project ID`, `Topic Name`, `Subscription` and upload your service account json key.
+6. Send Events. <br />
+   We write `JSON` events into the queue with the following format:
+   ```json[Sample Payload]
+    {
+      "endpoint_id": "",
+      "event_type": "compliance.completed",
+      "custom_headers": {
+         "X-Event-Key": "Event XYZ"
+      },
+      "data": {}
+    }
+   ```
+   The payload is exactly the same as the one used with our REST API.
+
+### Amazon SQS
+To ingest events using Amazon SQS, follow the steps outlined below:
