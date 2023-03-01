@@ -156,6 +156,19 @@
 			</div>
 		</section>
 
+		<!-- architecture infrastructure  -->
+		<section class="bg-[#fcfcfc] py-60px desktop:py-80px px-24px desktop:px-64px">
+			<div class="max-w-[1234px] mx-auto">
+				<h2 class="font-bold desktop:text-32 mb-22px">Developers use Convoy Webhooks Gateway to securely ingest, persist, debug, deliver and manage millions of events reliably...</h2>
+				<nuxt-link to="/docs/overview" class="text-16 font-semibold text-primary-100 flex items-center">
+					Learn about our infrastructure
+					<img src="~/assets/images/angle-right-primary.svg" class="ml-8px" alt="arrow right" />
+				</nuxt-link>
+				<div class="bg-white-100 rounded-[30px] max-w-[1062px] mx-auto mt-52px flex justify-center py-20px px-20px desktop:px-80px hover:cursor-pointer" @click="expandImage = true">
+					<img src="~/assets/images/2nd-illustration.png" alt="infrastructure" />
+				</div>
+			</div>
+		</section>
 		<!-- offerings  -->
 
 		<section class="max-w-[1234px] mx-auto pt-60px px-20px desktop:pt-180px pb-60px desktop:pb-116px">
