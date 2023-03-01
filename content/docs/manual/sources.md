@@ -69,3 +69,28 @@ To ingest events using Google PubSub, follow the steps outlined below:
 
 ### Amazon SQS
 To ingest events using Amazon SQS, follow the steps outlined below:
+
+1. **Create an IAM User for authenticating with the SQS Queue and attach the AmazonSQSFullAccess policy to the user** 
+    ![create IAM user](/docs-assets/create-sqs-user.png)
+    ![attach AmazonSQSFullAccess policy](/docs-assets/attach-sqs-policy.png)
+2. **Under the security credentials tab for the IAM user, generate a new Access Key. Take note of the Access Key and Secret Key generated**
+    ![generate a new access key](/docs-assets/generate-access-key.png)
+    ![create CLI access key](/docs-assets/cli-access-key.png)
+3. **Create a SQS Queue and specify the ARN of the IAM user under the access policy**
+    ![create sqs queue](/docs-assets/create-sqs-queue.png)
+    ![add the IAM user under access policy](/docs-assets/access-policy-iam-user.png)
+4. **Configure Source** <br />
+    Supply your `Access Key`, `Secret Key`, `Queue Name` and `Default Region`.
+5. **Send Events** <br />
+   We write `JSON` events into the queue with the following format:
+   ```json[Sample Payload]
+    {
+      "endpoint_id": "01GTBP6SX313EZN6X3QE29CW6Z",
+      "event_type": "compliance.completed",
+      "custom_headers": {
+         "X-Event-Key": "Event XYZ"
+      },
+      "data": {}
+    }
+   ```
+   The payload is exactly the same as the one used with our REST API.
