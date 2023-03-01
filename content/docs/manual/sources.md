@@ -38,27 +38,26 @@ For HMAC verification mechanism, Convoy provides support for [simple and advance
 Currently, we have support for [GitHub](https://github.com), and have planned support for [Twitter](https://twitter.com) and [Shopify](https://shopify.com). You can request new sources by sending an email to `support@getconvoy.io`.
 
 ## Message Brokers
-
-With this, you can write events to a queue or topic, then convoy reads off the queue and send the event to client endpoint. It is designed for and only available to outgoing projects.
+Message Brokers provide extra reliability gains to ingest events from backend services to dispatch to client endpoints. With this, disparate services write events to a queue or topic, then convoy reads off the queue or topic and send the events to client endpoint. It is designed for and only available to outgoing projects.
 
 ### Google PubSub
 To ingest events using Google PubSub, follow the steps outlined below:
 
-1. Create a PubSub Topic.
+1. **Create a PubSub Topic**
    ![create google pubsub topic](/docs-assets/google-pubsub.png)
-2. Create a Subscription.
+2. **Create a Subscription**
    ![create a subscription](/docs-assets/create-google-subscription.png)
-3. Create a Service Account with PubSub Admin Role.
+3. **Create a Service Account with PubSub Admin Role**
    ![create service account](/docs-assets/create-service-account.png)
-4. Generate Service Account JSON Key
+4. **Generate Service Account JSON Key**
    ![generate service account json key](/docs-assets/create-service-account-key.png)
-5. Configure Source. <br />
+5. **Configure Source** <br />
    Supply your `Project ID`, `Topic Name`, `Subscription` and upload your service account json key.
-6. Send Events. <br />
+6. **Send Events** <br />
    We write `JSON` events into the queue with the following format:
    ```json[Sample Payload]
     {
-      "endpoint_id": "",
+      "endpoint_id": "01GTBP6SX313EZN6X3QE29CW6Z",
       "event_type": "compliance.completed",
       "custom_headers": {
          "X-Event-Key": "Event XYZ"
