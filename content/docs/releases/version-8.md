@@ -24,4 +24,6 @@ Convoy v0.8 was a significant upgrade from our previous versions. We introduced 
 ## Changelog
 The changelogs for this minor release version and any maintenance versions are listed below.
 
-[Convoy version v0.8.0](https://github.com/frain-dev/convoy/releases/tag/v0.8.0)
+- [Convoy version v0.8.2](https://github.com/frain-dev/convoy/releases/tag/v0.8.2)
+- [Convoy version v0.8.1](https://github.com/frain-dev/convoy/releases/tag/v0.8.1)
+- [Convoy version v0.8.0](https://github.com/frain-dev/convoy/releases/tag/v0.8.0)
