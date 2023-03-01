@@ -77,32 +77,54 @@ This filter is used to validate nested webhook payloads.
 
 Complex filters contain more logic such as logical operators and special operators. Complex filters are employed to filter events using one or more conditions, e.g, `$or` logical operator filter.
 
-#### $ne filter
+#### $neq filter
 
 This filter matches event which directly does not match the event type in the webhook payload.
 
-```json[$ne filter]
+```json[$neq filter]
 {
-    "$ne": {
-        "event": "created"
+    "event": {
+        "$neq": "created"
     }
 }
 ```
 
-![$ne subscription filter](/docs-assets/subscription-ne-filter.png)
+![$neq subscription filter](/docs-assets/subscription-ne-filter.png)
 
-#### $or filter
+#### $or and $and filters
 
-This filter is used to match either events defined in the schema.
+This filter is used to match multiple conditions defined in the schema.
 
 ```json[$or filter]
 {
   "$or": [
     {
-      "event": "success"
+      "cities": "london"
     },
     {
-      "event": "failed"
+      "type": "weekly"
+    }
+  ]
+}
+```
+
+```json[$and filter]
+{
+  "$and": [
+    {
+      "age": {
+        "$gte": 10
+      }
+    },
+    {
+      "$or": [
+        {
+          "type": "weekly"
+        },
+        {
+          "cities": "lagos"
+        }
+      ]
     }
   ]
 }
@@ -146,16 +168,17 @@ Here's full list of the supported filters:
 | Operator | Supported Type | Description |
 | --- | --- | --- |
 | none | all | Match all |
-| $gte | number, string | Greater than or equal to |
-| $gt | number, string | Greater than |
-| $lt | number, string | Less than |
-| $lte | number, string | Less than or equal to |
-| $eq | number, object, string | Equal |
-| $neq | number, object, string | Not Equal |
-| $in | array, string | Contains value in array |
-| $nin | array, string | Does not contain value in array |
-| $or | array of conditions | Array of conditions to match |
-| $exists | array | Key exists |
+| $gte | number | Greater than or equal to |
+| $gt | number | Greater than |
+| $lt | number | Less than |
+| $lte | number | Less than or equal to |
+| $eq | number, object, string, bool | Equal |
+| $neq | number, object, string, bool | Not Equal |
+| $in | array | checks if an array contains a value |
+| $nin | array | checks if an array does not contain a value |
+| $or | array of conditions | matches an array of conditions |
+| $and | array of conditions | matches an array of conditions |
+| $exist | array | checks if a key exists |
 
 ## Creating an Outgoing Subscription
 
