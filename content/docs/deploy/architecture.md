@@ -8,7 +8,7 @@ order: 1
 # Architecture
 Convoy is made up several services working in tandem. Below is an architecture diagram and the traffic pattern.
 
-![Convoy Architecture](/docs-assets/convoy-architecture.png)
+![Convoy Architecture](/docs-assets/convoy-architecture-2.png)
 
 
 ## Components
@@ -33,3 +33,10 @@ This feature is only available in Convoy Convoy, if you would like to deploy thi
 
 ### Scheduler
 The scheduler service is responsible for triggering important periodic tasks. To avoid, duplicate jobs, there should only exist one scheduler across your deployment. See the CLI details [here](/docs/cli#scheduler)
+
+### Ingest
+This is a stateless worker server used to consume webhook events from message brokers. It constantly polls source configuration from the database and consumes events from the broker. It is not responsible for processing these events other than consuming from the broker and writing to redis to be consumed by a standard worker. See the CLI details [here](/docs/cli#ingest)
+
+## Third-Party Dependencies
+- PostgreSQL 15+
+- Redis 6+

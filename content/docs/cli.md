@@ -117,74 +117,36 @@ The login command authenticates your Convoy CLI with an API Key to give access t
 - `--api-key`: This flag specifies the API key for authenticating the CLI. This is a required parameter that must be passed when running the command.
 - `--host`: This flag specifies the host for your Convoy instance. For cloud users, the default host is `https://cli.getconvoy.io`.
 
-## Apps
+## Ingest
 
-Command: `convoy apps`
-
-### Synopsis
-
-```console[terminal]
-$ convoy apps --help
-List all your convoy cli apps
-
-Usage:
-  Convoy apps [flags]
-
-Flags:
-  -h, --help   help for apps
-
-Global Flags:
-  --config string   Configuration file for convoy (default "./convoy.json")
-  --db string       Database dsn or path to in-memory file
-  --queue string    Queue provider ("redis")
-  --redis string    Redis dsn
-```
-
-### Description
-
-The apps command returns the list of applications frmo your Convoy instance scoped to the API key provided when the login command was used.
-
-### Command Flags
-
-- `--help`: Get help on the apps command.
-
-## Listen
-
-Command: `convoy listen`
+Command: `convoy ingest`
 
 ### Synopsis
 
 ```console[terminal]
-$ convoy listen --help
-Starts a websocket client that listens to events streamed by the server
+$ convoy ingest --help
+Ingest webhook events from Pub/Sub streams
 
 Usage:
-  Convoy listen [flags]
+  Convoy ingest [flags]
 
 Flags:
-    --events string       Events types (default "*")
-    --forward-to string   The host/web server you want to forward events to
-    -h, --help            help for listen
-    --since string        Send discarded events since a timestamp (e.g. 2013-01-02T13:23:37Z) or relative time (e.g. 42m for 42 minutes)
-    --source string       The source id of the source you want to receive events from (only applies to incoming projects)
+  -h, --help           help for ingest
+      --interval int   the time interval, measured in seconds, at which the database should be polled for new pub sub sources (default 300)
 
 Global Flags:
-    --config string   Configuration file for convoy (default "./convoy.json")
-    --db string       Database dsn or path to in-memory file
-    --queue string    Queue provider ("redis")
-    --redis string    Redis dsn
+      --config string   Configuration file for convoy (default "./convoy.json")
+      --db string       Database dsn or path to in-memory file
+      --queue string    Queue provider ("redis")
+      --redis string    Redis dsn
 ```
 
 ### Description
 
-The listen command forwards events streamed from a source in your Convoy instance to a defined web server. The listen command starts a websocket client that listens to events streamed by the servcer.
 
 ### Command Flags
 
-- `--events`: Specify the events to be streamed to the web server. Defaults to all events `*` if not specified.
-- `--forward-to`: Specify the host or web server to forward events to.
-- `--since`: Specify the timeline for events to be streamed.
-- `--source`: Specify the source ID of the source you want to receive events from. This only applies to incoming projects.
+- `--interval`: The time in seconds to poll the database for changes in the source configuration.
 
 ## Stream
 
