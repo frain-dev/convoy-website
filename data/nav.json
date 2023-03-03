@@ -98,7 +98,11 @@
 		"showDropdown": false,
 		"children": [
 			{
-				"title": "Latest (v0.8)",
+				"title": "Latest (v0.9)",
+				"link": "/docs/releases/version-9"
+			},
+			{
+				"title": "v0.8",
 				"link": "/docs/releases/version-8"
 			},
 			{
@@ -106,12 +110,12 @@
 				"link": "/docs/releases/version-7"
 			},
 			{
-				"title": "v0.5",
-				"link": "/docs/releases/version-5"
-			},
-			{
 				"title": "v0.6",
 				"link": "/docs/releases/version-6"
+			},
+			{
+				"title": "v0.5",
+				"link": "/docs/releases/version-5"
 			}
 		]
 	},
