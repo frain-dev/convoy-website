@@ -8,22 +8,21 @@ order: 4
 # Configuration
 
 Convoy can be configured by using one of or a combination of the methods below:
-- Creating a `config.json` configuration file (default)
+- Creating a `convoy.json` configuration file (default)
 - Setting environment variables.
 - Setting CLI flags
 
-The order of preference when all three is used is **CLI flags** > **environment variables** > **config json** file. Values set in the cli flags will override the same config value set with either env vars of in the config file.
+The order of preference when all three is used is **CLI flags** > **environment variables** > **convoy.json** file. Values set in the cli flags will override the same config value set with either env vars of in the config file.
 
-## Creating a config JSON file
+## Configuration File
 
 An example configuration is shown below:
 
 ```json[Sample Config]
 {
-  "environment": "dev",
   "database": {
-      "type": "mongodb",
-      "dsn": "mongodb://mongo1:27017,mongo2:27017,mongo3:27017/convoy?replicaSet=myReplicaSet&readPreference=primary&ssl=false"
+      "type": "postgres",
+      "dsn": "postgres://localhost/convoy?sslmode=disable"
   },
   "queue": {
       "type": "redis",
@@ -64,7 +63,8 @@ An example configuration is shown below:
           "ssl": false,
           "ssl_cert_file": "",
           "ssl_key_file": "",
-          "port": 5005
+          "port": 5005,
+          "worker_port": 5006
       }
   },
   "auth": {
@@ -82,17 +82,19 @@ An example configuration is shown below:
 
 This section explains the role of the parameters used in configuring the Convoy instance.
 
--   `environment`: This parameter specifies the environment the Convoy instance will be running on. It is default to `development` and can be switched to `production`.
--   `database`: The parameter houses the configuration for the main data store. Currently supported databases: `mongodb`.
+-   `database` ( required ) <br /> 
+    The parameter houses the configuration for the main data store. Currently supported databases: `PostgreSQL`.
 	```json[sample]
 	{
 	  "database": {
-	    "type": "mongodb",
-	    "dsn": "mongodb://localhost:27017/convoy"
+	    "type": "postgres",
+	    "dsn": "postgres://localhost/convoy?sslmode=disable"
 	  },
 	}
 	```
--   `queue`, `cache` and `limiter`: These parameters configure a queuing backend to use. Currently supported queuing, caching and rate limiter backends: `redis`, planned queuing backends: `rabbitmq` and `sqs`.
+
+-   `queue`, `cache` and `limiter` <br />
+    These parameters are used to configure convoy's queuing backend, caching backend and rate limiting backend respectively. They all currently only support `redis` and therefore have similar configuration format. Configuration for the `queue` is `required` while the others are `optional`.
 	```json[sample]
 	{
 	   "queue": {
@@ -103,9 +105,12 @@ This section explains the role of the parameters used in configuring the Convoy 
 	   }
 	}
 	```
--   `port`: This parameter pecifies which port Convoy should run on.
--   `worker_port`: This paraneter specifies which port Convoy workers should run on.
--   `auth`: This specifies the authentication mechanism used to access Convoy's API. Convoy has two APIs; one for the UI and the other for the public API. Each API requires authentication by default.  Convoy supports two authentication mechanisms:
+
+-   `server` ( optional )  <br /> 
+    This parameter configures the settings for both the api and worker server. It specifies the port and ssl settings for the both the api and worker server. `ssl` defaults to `false`, when set `ssl_key_file` and `ssl_cert_file` must be set as well. `port` and `worker_port` are set to `5005` and `5006` by default respectively. 
+
+-   `auth` ( required ) <br /> 
+    This specifies the authentication mechanism used to access Convoy's API. Convoy has two APIs; one for the UI and the other for the public API. Each API requires authentication by default.  Convoy supports two authentication mechanisms:
 	| - `native`: Configure realm. This is used for the Public API.
 	| - `jwt`: Configure jwt. This is used for UI authentication.
 
@@ -122,7 +127,8 @@ This section explains the role of the parameters used in configuring the Convoy 
 	}
 	```
 
--   `smtp`: Convoy sends out emails for several reasons for [dead endpoints](./glossary#dead-endpoints), team invitation etc. It needs a SMTP provider to do this.
+-   `smtp` ( optional ) <br /> 
+    Convoy sends out emails for several reasons for [dead endpoints](./glossary#dead-endpoints), team invitation etc. It needs a SMTP provider to do this.
 
 	```json[sample]
 	{
@@ -136,21 +142,9 @@ This section explains the role of the parameters used in configuring the Convoy 
 		}
 	}
 	```
--   `tracer` and `new_relic`: Convoy uses [newrelic](https://newrelic.com) for tracing.
 
-	```json[sample]
-	{
-	  "tracer": {
-	    "type": "new_relic"
-	  },
-	  "new_relic": {
-	    "license_key": "012345678909876543210",
-	    "app_name": "convoy",
-	    "config_enabled": true,
-	    "distributed_tracer_enabled": true
-	  }
-	}
-	```
+- `host` ( optional ) <br /> 
+    This specifies your convoy instance host name. It is used for various things like [portal link](./manual/portal-links.md) configuration, user invitation.
 
 ## Environment Variables
 
@@ -163,8 +157,8 @@ Alternatively, you can configure Convoy using the following environment variable
 | - `PORT` | The port on which the Convoy instance will listen to. E.g., `8080`.|
 | - `WORKER_PORT` | The port on which the Convoy worker will listen to. E.g., `8081`.|
 | - `CONVOY_HOST` | The host on which the Convoy instance will be run on. E.g., `10.0.0.1`|
-| - `CONVOY_DB_TYPE` | The database type associated with the Convoy instance. MongoDB is currently the only supported database.|
-| - `CONVOY_DB_DSN` | The connection address of the database supplied earlier. Example: `mongodb://mongo:27017/convoysample`.|
+| - `CONVOY_DB_TYPE` | The database type associated with the Convoy instance. PostgreSQL is currently the only supported database.|
+| - `CONVOY_DB_DSN` | The connection address of the database supplied earlier. Example: `postgres://localhost/convoy?sslmode=disable`.|
 | - `CONVOY_LIMITER_PROVIDER` | The rate limiter provider. This is set to `redis` by default. |
 | - `CONVOY_CACHE_PROVIDER` | The cache provider for the Convoy instance. E.g.,: `redis`.|
 | - `CONVOY_QUEUE_PROVIDER` | The queue provider for the Convoy instance. E.g.,: `rabbitmq`.|
@@ -185,7 +179,6 @@ Alternatively, you can configure Convoy using the following environment variable
 | - `CONVOY_NEWRELIC_CONFIG_ENABLED` | A boolean value to set the configuration state for newrelic.|
 | - `CONVOY_NEWRELIC_DISTRIBUTED_TRACER_ENABLED` | A boolean value to set the configuration state for newrelic's tracer.|
 | - `CONVOY_REQUIRE_AUTH` | A boolean value to configure the requirement status for authentication.|
-| - `CONVOY_BASIC_AUTH_CONFIG` | THe configuration details for basic authentication.|
 | - `CONVOY_API_KEY_CONFIG` | The API key configuration value.|
 | - `CONVOY_NATIVE_REALM_ENABLED` | A boolean value to activate native realm authentication.|
 | - `CONVOY_JWT_REALM_ENABLED` | A boolean value to activate native JWT authentication.|
