@@ -20,43 +20,10 @@ An example configuration is shown below:
 
 ```json[Sample Config]
 {
+  "host": "hooks.domain.com",
   "database": {
       "type": "postgres",
       "dsn": "postgres://localhost/convoy?sslmode=disable"
-  },
-  "queue": {
-      "type": "redis",
-      "redis": {
-          "dsn": "redis://redis_server:6379"
-      }
-  },
-  "cache": {
-      "type": "redis",
-      "redis": {
-          "dsn": "redis://redis_server:6379"
-      }
-  },
-  "host": "{host}",
-  "logger": {
-      "type": "console",
-      "server_log": {
-          "level": "error"
-      }
-  },
-  "smtp": {
-      "provider": "sendgrid",
-      "url": "smtp.sendgrid.net",
-      "port": 2525,
-      "username": "apikey",
-      "password": "<api-key-from-sendgrid>",
-      "from": "support@frain.dev"
-  },
-  "search": {
-      "type": "typesense",
-      "typesense": {
-          "host": "http://typesense:8108",
-          "api_key": "convoy"
-      }
   },
   "server": {
       "http": {
@@ -65,6 +32,19 @@ An example configuration is shown below:
           "ssl_key_file": "",
           "port": 5005,
           "worker_port": 5006
+      }
+  },
+  "queue": {
+      "type": "redis",
+      "redis": {
+          "dsn": "redis://redis_server:6379"
+      }
+  },
+  "search": {
+      "type": "typesense",
+      "typesense": {
+          "host": "http://typesense:8108",
+          "api_key": "convoy"
       }
   },
   "auth": {
