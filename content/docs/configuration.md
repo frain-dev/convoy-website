@@ -110,9 +110,9 @@ This section explains the role of the parameters used in configuring the Convoy 
     This parameter configures the settings for both the api and worker server. It specifies the port and ssl settings for the both the api and worker server. `ssl` defaults to `false`, when set `ssl_key_file` and `ssl_cert_file` must be set as well. `port` and `worker_port` are set to `5005` and `5006` by default respectively. 
 
 -   `auth` ( required ) <br /> 
-    This specifies the authentication mechanism used to access Convoy's API. Convoy has two APIs; one for the UI and the other for the public API. Each API requires authentication by default.  Convoy supports two authentication mechanisms:
-	| - `native`: Configure realm. This is used for the Public API.
-	| - `jwt`: Configure jwt. This is used for UI authentication.
+    This specifies the authentication mechanism used to access Convoy's API. Convoy has two APIs; one for the UI and the other for the public API. Each API requires authentication by default.  Convoy supports two authentication mechanisms: <br />
+	 - `native`: Configure realm. This is used for the Public API.
+	 - `jwt`: Configure jwt. This is used for UI authentication.
 
 	```json[sample]
 	{
