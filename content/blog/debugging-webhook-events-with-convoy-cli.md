@@ -15,7 +15,7 @@ published_at: 2023-03-20T10:00:00.000+00:00
 ---
 
 
-# Debugging Webhook Events with Convoy CLI
+# Debugging Webhook Events with the new Convoy Client CLI
 
 ## Background
 
@@ -25,7 +25,7 @@ Convoy is the fastest open-source webhooks gateway available, provides a secure 
 
 In furthering our objective of making webhooks easier to debug, we decided to overhaul our Convoy CLI stream implementation. Our users found the former implementation not so easy to use.
 
-First pain point was the fact that we had the CLI commands in the main convoy binary. These are the CLI commands:
+First pain point was the fact that we had all the CLI streaming commands in the main convoy binary:
 
 - `login` which sets up the credentials the  CLI needs to listen for events.
 - `listen` which uses the credentials to listen for events.
