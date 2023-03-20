@@ -13,7 +13,7 @@ The Client-side Convoy CLI provides functionality that hooks into the server sid
 
 The Convoy CLI can be installed directly from your package manager or by building from the GitHub source:
 
-<convoy-cli-tab></convoy-cli-tab>
+<client-cli-tab></client-cli-tab>
 
 ## Using the CLI
 
