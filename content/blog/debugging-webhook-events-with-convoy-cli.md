@@ -1,5 +1,5 @@
 ---
-title: Debugging Webhook Events with the new Convoy CLI
+title: Debugging Webhook Events with the new Convoy Client CLI
 feature_image: debug-webhooks.png
 post_image: debug-webhooks.png
 primary_author:
@@ -10,7 +10,7 @@ tags:
 - Convoy
 - Engineering
 featured: false
-description: Debugging webhook configuration can be very tedious, many times you are required plumb together multiple tools to get it to work end to end. In this article, we explain how the new Convoy CLI tool works.
+description: Debugging webhook configuration can be very tedious, many times you are required plumb together multiple tools to get it to work end to end. In this article, we explain how the new Convoy Client CLI tool works.
 published_at: 2023-03-20T10:00:00.000+00:00
 ---
 
@@ -33,11 +33,11 @@ First pain point was the fact that we had the CLI commands in the main convoy bi
 
 The `listen` and `login` command depend on a `config.yml` file, however the `stream` command depends on the `convoy.json` configuration file as the rest of the convoy binary commands, read more [here](https://getconvoy.io/docs/cli). This is the basis of our decision to split them; we now have a [convoy-cli](https://github.com/frain-dev/convoy-cli) repository that holds the `login` and `listen` commands, the `stream` command continues to live in the main convoy binary.
 
-We have also disabled CLI streaming for `outgoing` projects while we continue develop an intuitive solution for them, for now CLI is only enabled for `incoming` projects. CLI tokens have also been deprecated, you will now be required to login with a Personal API Key
+We have also disabled CLI streaming for `outgoing` projects while we continue develop an intuitive solution for them, for now CLI is only enabled for `incoming` projects. CLI tokens have also been deprecated, you will now be required to login with a Personal API Key.
 
 ### Usage
 
-To set up your convoy-cli to listen on events in a `incoming` project, you need to first install the `convoy-cli` binary. Run the following commands:
+To set up your convoy client cli to listen on events in an `incoming` project, you need to first install the `convoy-cli` binary. Run the following commands:
 
 ```bash
 $ brew tap frain-dev/tools
@@ -91,4 +91,4 @@ The full documentation for the convoy-cli tool can be found here.
 
 ### Conclusion
 
-The Convoy CLI is a great way to debug your webhook events in your local environment without the need for tools like ngrok. This reaffirms our commitment at convoy to making webhooks ridiculously easy to handle and troubleshoot. Give it a try and give us feedback in our [slack](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ) community.
+The Convoy Client CLI is a great way to debug your webhook events in your local environment without the need for tools like ngrok. This reaffirms our commitment at convoy to making webhooks ridiculously easy to handle and troubleshoot. Give it a try and give us feedback in our [slack](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ) community.
