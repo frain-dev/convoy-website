@@ -4,7 +4,7 @@ description: "Building Convoy Client CLI from GitHub source"
 id: cli-source
 ---
 
-To build Convoy Client CLIfrom source code, you need:
+To build Convoy Client CLI from source code, you need:
 * Go [version 1.9 or greater](https://golang.org/doc/install).
 
 ```bash
