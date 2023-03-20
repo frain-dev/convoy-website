@@ -4,7 +4,7 @@
 
 		<Nuxt />
 		<!-- blog -->
-		<section class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] desktop:p-80px p-40px" v-if="showBlogPost">
+		<section class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] desktop:p-80px p-40px" v-if="!showBlogSection">
 			<div class="flex overflow-hidden">
 				<div
 					v-for="(post, index) of featurePosts"
@@ -50,6 +50,12 @@ export default {
 			this.showBlogPost = true;
 			this.startCarousel();
 		}, 1000);
+	},
+	computed: {
+		showBlogSection() {
+			const routes = ['enterprise', 'cloud'];
+			return routes.some(route => this.$route.name.includes(route)) && this.showBlogPost;
+		}
 	},
 	methods: {
 		async requestAccess() {

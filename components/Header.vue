@@ -54,25 +54,34 @@
 					"
 					:class="showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'"
 				>
-					<li class="py-14px px-20px nav-bar-break:mr-10px border-b border-b-grey-10 last-of-type:border-none nav-bar-break:border-none" v-for="link in menuItems" :key="link.name">
+					<li class="py-14px px-20px nav-bar-break:mr-10px border-b border-b-grey-10 last-of-type:border-none nav-bar-break:border-none relative" v-for="link in menuItems" :key="link.name" @click="currentRoute = link.name">
 						<nuxt-link class="text-14" v-if="link.type === 'route'" :to="link.route">{{ link.name }}</nuxt-link>
-						<a class="text-14" v-else target="_blank" rel="noopener noreferrer" :href="link.route">{{ link.name }}</a>
+						<a class="text-14" v-else-if="link.type === 'link'" target="_blank" rel="noopener noreferrer" :href="link.route">{{ link.name }}</a>
+						<template v-else>
+							<a class="text-14 flex items-center">
+								{{ link.name }}
+								<svg width="16" height="16" class="fill-primary-100">
+									<use xlink:href="#angle-down-icon"></use>
+								</svg>
+							</a>
+							<div
+								class="absolute top-[100%] min-w-[200px] w-full bg-white-100 border border-grey-10 rounded-12px shadow-default z-10 transition-all ease-in-out duration-300 h-fit"
+								v-if="currentRoute === link.name"
+							>
+								<ul>
+									<li class="py-14px px-20px border-b border-b-grey-10 last-of-type:border-none" v-for="subRoute in link.children" :key="subRoute.name" @click="currentRoute = subRoute.name">
+										<nuxt-link class="text-14" :to="subRoute.route">{{ subRoute.name }}</nuxt-link>
+									</li>
+								</ul>
+							</div>
+						</template>
 					</li>
 
 					<li class="py-14px px-20px nav-bar-break:p-0">
 						<a
 							href="https://dashboard.getconvoy.io/login"
 							target="_blank"
-							class="
-								nav-bar-break:py-8px nav-bar-break:px-24px
-								text-14
-								font-medium
-								rounded-8px
-								nav-bar-break:bg-primary-100 nav-bar-break:text-white-100
-								text-primary-100
-								flex
-								items-center
-							"
+							class="nav-bar-break:py-8px nav-bar-break:px-24px text-14 font-medium rounded-8px nav-bar-break:bg-primary-100 nav-bar-break:text-white-100 text-primary-100 flex items-center"
 						>
 							Login
 						</a>
@@ -105,6 +114,14 @@ export default {
 			showMenu: false,
 			githubStars: 0,
 			menuItems: [
+				{
+					name: 'Products',
+					type: 'dropdown',
+					children: [
+						{ name: 'Enterprise', route: '/enterprise', type: 'route' },
+						{ name: 'Cloud', route: '/cloud', type: 'route' }
+					]
+				},
 				{ name: 'Pricing', route: '/pricing', type: 'route' },
 				{ name: 'Why Convoy', route: '/#why-convoy', type: 'route' },
 				{ name: 'Docs', route: '/docs', type: 'route' },
@@ -113,7 +130,8 @@ export default {
 				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' },
 				{ name: 'Watch Demo', route: '/demo', type: 'route' }
 			],
-			hasScrolled: false
+			hasScrolled: false,
+			currentRoute: ''
 		};
 	},
 	mounted() {
