@@ -23,7 +23,7 @@ Convoy is the fastest open-source webhooks gateway available, provides a secure 
 
 ### Quick overview
 
-In furthering our objective of making webhooks easier to debug, we decided to overhaul our Convoy CLI stream implementation. Our users found the former implementation a bit difficult to use.
+In furthering our objective of making webhooks easier to debug, we decided to overhaul our Convoy CLI stream implementation. Our users found the former implementation not so easy to use.
 
 First pain point was the fact that we had the CLI commands in the main convoy binary. These are the CLI commands:
 
@@ -91,4 +91,4 @@ The full documentation for the convoy-cli tool can be found here.
 
 ### Conclusion
 
-The Convoy CLI is a great way to debug your webhook events in your local environment without the need for tools like ngrok. This reaffirms our commitment at convoy to making webhooks ridiculously easy to handle and troubleshoot. Give it a try and give us feedback in out [slack](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ) community.
+The Convoy CLI is a great way to debug your webhook events in your local environment without the need for tools like ngrok. This reaffirms our commitment at convoy to making webhooks ridiculously easy to handle and troubleshoot. Give it a try and give us feedback in our [slack](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ) community.
