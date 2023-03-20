@@ -1,0 +1,151 @@
+<template>
+    <NuxtLayout name="home">
+        <div>
+            <!-- <Header></Header> -->
+            <div class="bg-[url(assets/images/docs-bg.svg)] bg-no-repeat bg-cover h-[350px] w-full"></div>
+
+
+            <div class="max-w-[1200px] m-auto -mt-130px mb-88px">
+                <p class="text-28 font-bold text-center mb-8px text-white-100">Download Convoy</p>
+                <p class="text-white-100 max-w-[590px] m-auto text-center text-16 mb-40px">Download Convoy with your favorite package manager.</p>
+
+                <div class="bg-grey-20 rounded-8px w-fit m-auto flex flex-row mb-54px">
+                    <li class="list-none" v-for="tab of downloadTabs" :key="tab.id">
+                        <button class="rounded-6px py-12px px-8px min-w-[86px] desktop:min-w-[132px] transition-all duration-300" :class="activeTab === tab.id ? 'bg-white-100 shadow-sm' : ''" @click="switchTabs(tab.id)">
+                            <span class="text-12 tracking-[0.02em] desktop:text-14 transition-all duration-300" :class="activeTab === tab.id ? 'font-bold text-black' : 'text-grey-40'">{{ tab.label }}</span>
+                        </button>
+                    </li>
+                </div>
+
+                <section class="download bg-grey-20 rounded-4px p-24px max-w-[724px] w-full m-auto">
+                    <div v-if="activeTab == 'mac'" class="font-semibold text-14 tracking-[0.03em] uppercase text-grey-40 mb-16px">Homebrew</div>
+                    <div v-if="activeTab == 'linux'" class="font-semibold text-14 tracking-[0.03em] uppercase text-grey-40 mb-16px">Package manager</div>
+                    <div v-if="activeTab == 'window'" class="font-semibold text-14 tracking-[0.03em] uppercase text-grey-40 mb-16px">Windows binary download</div>
+                    <div v-if="activeTab == 'mac'" class="bg-black rounded-4px p-34px w-full text-white-100 flex-col flex-wrap text-12">
+                        <div>
+                            <span class="text-primary-100">$</span>
+                            <code>brew tap frain-dev/tools</code>
+                        </div>
+
+                        <div>
+                            <span class="text-primary-100">$</span>
+                            <code>brew install convoy</code>
+                        </div>
+                    </div>
+
+                    <div v-if="activeTab == 'linux'">
+                        <ul class="flex flex-row m-auto w-full mb-24px border-b border-b-grey-10">
+                            <li v-for="tab of linuxTabs" :key="tab.id" class="mr-24px !list-none last-of-type:mr-0">
+                                <button class="pb-10px flex items-center has-icon transition-all duration-300" :class="
+                                    linuxActiveTab === tab.id
+                                        ? 'relative after:bottom-0 after:h-[3px] after:w-full after:left-0 after:right-0 after:bg-primary-100 after:absolute after:rounded-tl-16px after:rounded-tr-16px'
+                                        : ''
+                                " @click="switchLinuxTabs(tab.id)">
+                                    <span class="text-14 text-left tracking-[0.02em] mobile:min-w-[80px] transition-all duration-300" :class="linuxActiveTab === tab.id ? 'font-semibold text-primary-100' : 'text-black'">
+                                        {{ tab.label }}
+                                    </span>
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div v-if="linuxActiveTab == 'ubuntu'" class="bg-black rounded-4px p-34px w-full text-white-100 flex-col flex-wrap text-12">
+                            <div>
+                                <span class="text-primary-100">$</span>
+                                <code>curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy/setup.deb.sh' | sudo -E bash</code>
+                            </div>
+                            <div>
+                                <span class="text-primary-100">$</span>
+                                <code>sudo apt install convoy</code>
+                            </div>
+                        </div>
+
+                        <div v-if="linuxActiveTab == 'cent'" class="bg-black rounded-4px p-34px w-full text-white-100 flex-col flex-wrap text-12">
+                            <div>
+                                <span class="text-primary-100">$</span>
+                                <code>curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy/setup.rpm.sh' | sudo -E bash</code>
+                            </div>
+                            <div>
+                                <span class="text-primary-100">$</span>
+                                <code>sudo yum install convoy</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end mt-26px" v-if="activeTab != 'window'">
+                        <nuxt-link to="/docs" class="font-medium text-14 text-primary-100 whitespace-nowrap underline flex items-center">
+                            View our Docs to learn more
+                            <img src="~/assets/images/angle-right-primary.svg" class="w-16px h-16px" alt="right" />
+                        </nuxt-link>
+                    </div>
+
+                    <div class="flex justify-between mt-26px" v-if="activeTab == 'window'">
+                        <div class="flex items-center">
+                            <a target="_blank" rel="noopener noreferrer" href="https://dl.cloudsmith.io/public/convoy/convoy/raw/versions/0.6.6/convoy_0.6.6_windows_amd64.tar.gz" class="font-medium text-14 text-primary-100 whitespace-nowrap underline mr-32px" download="">
+                                Amd64
+                            </a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://dl.cloudsmith.io/public/convoy/convoy/raw/versions/0.6.6/convoy_0.6.6_windows_arm64.tar.gz" class="font-medium text-14 text-primary-100 whitespace-nowrap underline" download>
+                                Arm64
+                            </a>
+                        </div>
+
+                        <nuxt-link to="/docs" class="font-medium text-14 text-primary-100 whitespace-nowrap underline flex items-center">
+                            View our Docs to learn more
+                            <img src="~/assets/images/angle-right-primary.svg" class="w-16px h-16px" alt="right" />
+                        </nuxt-link>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </NuxtLayout>
+</template>
+
+<script lang="ts" setup>
+const downloadTabs = [
+    { label: 'MacOS', id: 'mac' },
+    { label: 'Linux', id: 'linux' },
+    { label: 'Windows', id: 'window' }
+];
+const linuxTabs = [
+    { label: 'Ubuntu/Debian', id: 'ubuntu' },
+    { label: 'CentOS/RHEL ', id: 'cent' }
+];
+let value = ref(0);
+let activeTab = ref('mac');
+let linuxActiveTab = ref('ubuntu')
+
+function switchTabs(tab: string) {
+    switch (tab) {
+        case 'mac':
+            activeTab.value = 'mac';
+            break;
+        case 'linux':
+            activeTab.value = 'linux';
+            break;
+        case 'window':
+            activeTab.value = 'window';
+            break;
+        default:
+            break;
+    }
+}
+
+function switchLinuxTabs(tab: string) {
+    switch (tab) {
+        case 'ubuntu':
+            linuxActiveTab.value = 'ubuntu';
+            break;
+        case 'cent':
+            linuxActiveTab.value = 'cent';
+            break;
+        case 'home':
+            linuxActiveTab.value = 'home';
+            break;
+        default:
+            break;
+    }
+}
+
+definePageMeta({
+    layout: 'home'
+})
+</script>

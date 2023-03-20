@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './page';
+@import './font';
+@import './typography';
+@import './prism';
+
+@layer utilities {
+	.no-scrollbar::-webkit-scrollbar {
+		@apply hidden;
+	}
+	.no-scrollbar {
+		scrollbar-width: none;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none;
+	}
+}
+
+@layer base {
+	:root {
+		--color-white: 255, 255, 255;
+	}
+	h1,
+	h1 a {
+		@apply text-h1;
+	}
+	h2,
+	h2 a {
+		@apply text-h2;
+	}
+	h3,
+	h3 a {
+		@apply text-h3;
+	}
+	h4,
+	h4 a {
+		@apply text-h4;
+	}
+	h5,
+	h5 a {
+		@apply text-h5;
+	}
+	h6,
+	h6 a {
+		@apply text-h6;
+	}
+	body {
+		@apply bg-[#fafafe] text-black font-inter;
+	}
+	html {
+		@apply scroll-smooth;
+	}
+}

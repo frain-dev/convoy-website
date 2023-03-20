@@ -1,0 +1,167 @@
+.content {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply tracking-[.01em] mb-12px scroll-mt-100px;
+
+		a {
+			@apply text-black no-underline;
+		}
+	}
+
+	h1 {
+		@apply font-bold;
+	}
+
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-semibold;
+	}
+
+	& > p,
+	& > div > p {
+		@apply text-14 desktop:text-16 text-grey-80 mb-32px;
+
+		a {
+			@apply underline text-success-100 font-normal;
+		}
+	}
+	code {
+		@apply bg-grey-10 rounded-4px py-2px px-8px my-0 mx-[1px] text-12 font-menlo text-black border border-none;
+	}
+	pre {
+		code {
+			@apply border-none;
+		}
+	}
+
+	img {
+		@apply my-30px m-auto border border-grey-10 rounded-10px;
+	}
+
+	table {
+		@apply mt-20px;
+
+		td,
+		th {
+			@apply text-left;
+			@apply pr-50px;
+			@apply py-10px;
+			@apply pl-0;
+			@apply border-t;
+			@apply border-t-[#eee];
+			@apply text-14;
+		}
+
+		th {
+			@apply font-medium;
+		}
+	}
+
+	.nuxt-content-highlight {
+		@apply mt-12px;
+	}
+
+	// styles for docs content
+	&.docs {
+		h2,
+		h3,
+		h4,
+		h5,
+		h6:not(:first-of-type) {
+			@apply mt-40px;
+		}
+
+		strong {
+			@apply font-medium;
+		}
+
+		ul {
+			@apply ml-20px;
+
+			li {
+				@apply py-10px text-14 desktop:text-16 text-grey-80 first-of-type:mt-20px;
+				p {
+					@apply m-0 p-0 text-grey-80;
+				}
+			}
+		}
+
+		ol {
+			@apply ml-20px;
+
+			li {
+				@apply py-8px list-decimal text-14 desktop:text-16 text-grey-80;
+				p {
+					@apply m-0 p-0 text-grey-80;
+				}
+			}
+		}
+
+		ul,
+		li,
+		ol {
+			@apply list-[unset];
+		}
+
+		hr {
+			@apply h-0 border border-grey-10 mt-20px mb-30px;
+		}
+	}
+
+	// styles for blog content
+	&.blog {
+		ul {
+			@apply list-disc ml-20px mt-14px;
+
+			li {
+				@apply list-disc mb-16px text-14 desktop:text-16 text-grey-80;
+			}
+		}
+
+		ol {
+			@apply list-[initial] ml-20px mt-14px;
+
+			li {
+				@apply text-14 desktop:text-16 text-grey-80;
+			}
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			@apply mt-40px;
+		}
+
+		strong {
+			@apply font-bold;
+		}
+
+		blockquote {
+			@apply bg-success-500 border-success-200 border rounded-10px pt-54px px-28px pb-24px mb-32px before:absolute before:-mt-32px before:content-[url('~assets/images/bulb-text.svg')];
+
+			p {
+				@apply text-14 text-grey-80 m-0;
+			}
+		}
+
+		hr {
+			@apply h-[1px] border-none border-t-grey-10 mt-30px mb-44px;
+		}
+	}
+}
+
+.docs--side-nav {
+	ul {
+		@apply ml-20px;
+	}
+}

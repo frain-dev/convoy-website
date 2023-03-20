@@ -1,0 +1,15 @@
+footer {
+	.socials {
+		li {
+			@apply bg-white-10;
+		}
+	}
+}
+
+.socials {
+	@apply flex;
+
+	li {
+		@apply w-42px h-42px bg-grey-80 bg-opacity-10 flex items-center justify-center rounded-[50%] mr-16px last-of-type:mr-[unset];
+	}
+}
