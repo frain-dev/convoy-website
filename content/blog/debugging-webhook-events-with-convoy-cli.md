@@ -1,5 +1,5 @@
 ---
-title: Debugging Webhook Events with the New Convoy CLI
+title: Debugging Webhook Events with the new Convoy CLI
 feature_image: debug-webhooks.png
 post_image: debug-webhooks.png
 primary_author:
