@@ -8,5 +8,5 @@ Install the Convoy CLI to your Mac from brew:
 
 ```console[terminal]
 $ brew tap frain-dev/tools
-$ brew install convoy
+$ brew install convoy-cli
 ```
