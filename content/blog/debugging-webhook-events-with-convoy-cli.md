@@ -40,7 +40,7 @@ We have also disabled CLI streaming for `outgoing` projects while we continue de
 To set up your convoy-cli to listen on events in a `incoming` project, you need to first install the `convoy-cli` binary. Run the following commands:
 
 ```bash
-$ brew brew tap frain-dev/tools
+$ brew tap frain-dev/tools
 
 $ brew install convoy-cli
 ```
