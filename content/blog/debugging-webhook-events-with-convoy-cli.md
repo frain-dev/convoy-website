@@ -87,7 +87,7 @@ $ convoy-cli listen --forward-to <your-forward-address>
 
 The value you pass to the `--forward-to` flag can be any address of your choice, but this will typically be an endpoint on a local server, where you can debug your events as they come in.
 
-The full documentation for the convoy-cli tool can be found here.
+The full documentation for the convoy-cli tool can be found [here](https://getconvoy.io/docs/tools/convoy-cli).
 
 ### Conclusion
 
