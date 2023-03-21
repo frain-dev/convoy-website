@@ -1,17 +1,17 @@
 ---
-title: Convoy CLI
-description: 'Convoy CLI tool'
+title: Client CLI
+description: 'Client CLI tool'
 id: convoy-cli
 order: 1
 ---
 
-# Convoy Client CLI
+# Client CLI
 
-The Convoy Client CLI provides functionality that hooks into the server side event streaming for easy webhook debugging on your local machine.
+The Client CLI provides functionality that hooks into the server side event streaming for easy webhook debugging on your local machine.
 
-## Installing the Convoy CLI
+## Installing the Client CLI
 
-The Convoy Client CLI can be installed directly from your package manager or by building from the GitHub source:
+The Client CLI can be installed directly from your package manager or by building from the GitHub source:
 
 <client-cli-tab></client-cli-tab>
 
@@ -21,7 +21,7 @@ To view the list of the available commands at any time, just run `convoy-cli` in
 
 ```console[terminal]
 $ convoy-cli
-Convoy CLI for debugging your events locally
+Client CLI for debugging your events locally
 
 Usage:
   convoy-cli [command]
@@ -78,7 +78,7 @@ Flags:
 
 ### Description
 
-The login command authenticates your Convoy CLI with a Personal API Key to give access to your Convoy instance.
+The login command authenticates your Client CLI with a Personal API Key to give access to your Convoy instance.
 
 ### Command Flags
 

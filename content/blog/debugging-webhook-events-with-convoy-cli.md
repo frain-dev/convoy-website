@@ -1,5 +1,5 @@
 ---
-title: Debugging Webhook Events with the new Convoy Client CLI
+title: Debugging Webhook Events with the new Client CLI
 feature_image: debug-webhooks.png
 post_image: debug-webhooks.png
 primary_author:
@@ -10,13 +10,13 @@ tags:
 - Convoy
 - Engineering
 featured: false
-description: Debugging webhook configuration can be very tedious, many times you are required plumb together multiple tools to get it to work end to end. In this article, we explain how the new Convoy Client CLI tool works.
+description: Debugging webhook configuration can be very tedious, many times you are required plumb together multiple tools to get it to work end to end. In this article, we explain how the new Client CLI tool works.
 published_at: 2023-03-20T10:00:00.000+00:00
 ---
 
 ## Background
 
-Convoy is the fastest open-source webhooks gateway available, provides a secure means for engineers to send, receive and debug webhooks. Convoy provides comprehensive features such as retries, rate limiting, static IPs, circuit breaking, zero-downtime secrets upgrades and more. It's widely accepted among expanding teams and organisations that establishing shared services for synchronised teams is an effective approach to enhancing developer productivity throughout the organisation. This is one of the fundamental principles and driving forces behind the growth of platform engineering today.
+Convoy is an open-source high-performance webhooks gateway to manage millions of webhooks end-to-end. It is designed to be an highly scalable multi-tenant webhooks gateway to support multiple backend services sending and receiving webhooks. It comes baked in with several features like retries, rate limiting, circuit breaking, customer-facing webhooks dashboards, support for both sending & receiving webhooks and a lot more.
 
 ### Quick overview
 
@@ -34,7 +34,7 @@ We have also disabled CLI streaming for `outgoing` projects while we continue de
 
 ### Usage
 
-To set up your convoy client cli to listen on events in an `incoming` project, you need to first install the `convoy-cli` binary. Run the following commands:
+To set up your Client CLI to listen on events in an `incoming` project, you need to first install the `convoy-cli` binary. Run the following commands:
 
 ```bash
 $ brew tap frain-dev/tools
@@ -88,4 +88,4 @@ The full documentation for the convoy-cli tool can be found [here](https://getco
 
 ### Conclusion
 
-The Convoy Client CLI is a great way to debug your webhook events in your local environment without the need for tools like ngrok. This reaffirms our commitment at convoy to making webhooks ridiculously easy to handle and troubleshoot. Give it a try and give us feedback in our [slack](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ) community.
+The Client CLI is a great way to debug your webhook events in your local environment without the need for tools like ngrok. This reaffirms our commitment at convoy to making webhooks ridiculously easy to handle and troubleshoot. Give it a try and give us feedback in our [slack](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ) community.
