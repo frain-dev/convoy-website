@@ -75,7 +75,7 @@ export default {
 		return {
 			pages: [],
 			showMenu: false,
-			versions: ['Latest v0.8.x']
+			versions: ['Latest v0.9.x']
 		};
 	},
 	async mounted() {
