@@ -14,9 +14,6 @@ description: Debugging webhook configuration can be very tedious, many times you
 published_at: 2023-03-20T10:00:00.000+00:00
 ---
 
-
-# Debugging Webhook Events with the new Convoy Client CLI
-
 ## Background
 
 Convoy is the fastest open-source webhooks gateway available, provides a secure means for engineers to send, receive and debug webhooks. Convoy provides comprehensive features such as retries, rate limiting, static IPs, circuit breaking, zero-downtime secrets upgrades and more. It's widely accepted among expanding teams and organisations that establishing shared services for synchronised teams is an effective approach to enhancing developer productivity throughout the organisation. This is one of the fundamental principles and driving forces behind the growth of platform engineering today.
