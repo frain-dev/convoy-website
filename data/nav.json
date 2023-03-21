@@ -56,7 +56,7 @@
 		"showDropdown": false,
 		"children": [
 			{
-				"title": "Convoy Client CLI",
+				"title": "Client CLI",
 				"link": "/docs/tools/convoy-cli"
 			}
 		]
