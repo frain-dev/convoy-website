@@ -17,7 +17,7 @@ published_at: 2023-03-20T10:00:00.000+00:00
 
 Hey Friends,
 
-We re-launched our `client cli` tool with new documentation here. For the unfamiliar reader, Convoy is an open-source high-performance webhooks gateway to manage millions of webhooks end-to-end. It is designed to be a highly scalable multi-tenant webhooks gateway to support multiple backend services sending and receiving webhooks. In this article, we describe the new `client cli` and why we made these changes.
+We re-launched our `client cli` tool with new documentation [here](https://getconvoy.io/docs/tools/convoy-cli). For the unfamiliar reader, Convoy is an open-source high-performance webhooks gateway to manage millions of webhooks end-to-end. It is designed to be a highly scalable multi-tenant webhooks gateway to support multiple backend services sending and receiving webhooks. In this article, we describe the new `client cli` and why we made these changes.
 
 ### Background
 
@@ -84,4 +84,4 @@ The full documentation for the convoy-cli tool can be found [here](https://getco
 
 ### Conclusion
 
-In this article, we launched our new client side CLI and showed you how to set it up to debug webhooks locally. Sounds good for your platform? Why not try it out for yourself and give us feedback on our[slack](https://www.notion.so/Debugging-your-webhooks-with-the-Convoy-CLI-b64ac0aa11934657bd0069c8470da5a8)community!
+In this article, we launched our new client side CLI and showed you how to set it up to debug webhooks locally. Sounds good for your platform? Why not try it out for yourself and give us feedback on our [slack](https://www.notion.so/Debugging-your-webhooks-with-the-Convoy-CLI-b64ac0aa11934657bd0069c8470da5a8) community!
