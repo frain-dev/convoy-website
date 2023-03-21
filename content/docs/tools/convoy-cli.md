@@ -5,15 +5,15 @@ id: convoy-cli
 order: 1
 ---
 
-# Convoy CLI
+# Convoy Client CLI
 
-The Client-side Convoy CLI provides functionality that hooks into the server side event streaming for easy webhook debugging on your local machine.
+The Convoy Client CLI provides functionality that hooks into the server side event streaming for easy webhook debugging on your local machine.
 
-## Installing the Convoy CLI****
+## Installing the Convoy CLI
 
-The Convoy CLI can be installed directly from your package manager or by building from the GitHub source:
+The Convoy Client CLI can be installed directly from your package manager or by building from the GitHub source:
 
-<convoy-cli-tab></convoy-cli-tab>
+<client-cli-tab></client-cli-tab>
 
 ## Using the CLI
 
