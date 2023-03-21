@@ -1,7 +1,7 @@
 ---
 title: Debugging Webhook Events with the new Client CLI
-feature_image: debug-webhooks.png
-post_image: debug-webhooks.png
+feature_image: debug-webhooks-with-client-cli.png
+post_image: debug-webhooks-with-client-cli.png
 primary_author:
     name: Daniel Oluojomu
     twitter: danvixent
