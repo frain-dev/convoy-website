@@ -1,7 +1,7 @@
 ---
-title: Debugging Webhook Events with the new Convoy Client CLI
-feature_image: debug-webhooks.png
-post_image: debug-webhooks.png
+title: Debugging Webhook Events with the new Client CLI
+feature_image: debug-webhooks-with-client-cli.png
+post_image: debug-webhooks-with-client-cli.png
 primary_author:
     name: Daniel Oluojomu
     twitter: danvixent
@@ -10,34 +10,27 @@ tags:
 - Convoy
 - Engineering
 featured: false
-description: Debugging webhook configuration can be very tedious, many times you are required plumb together multiple tools to get it to work end to end. In this article, we explain how the new Convoy Client CLI tool works.
+description: Debugging webhook configuration can be very tedious, many times you are required plumb together multiple tools to get it to work end to end. In this article, we explain how the new Client CLI tool works.
 published_at: 2023-03-20T10:00:00.000+00:00
 ---
 
 
-# Debugging Webhook Events with the new Convoy Client CLI
+Hey Friends,
 
-## Background
+We re-launched our `client cli` tool with new documentation here. For the unfamiliar reader, Convoy is an open-source high-performance webhooks gateway to manage millions of webhooks end-to-end. It is designed to be a highly scalable multi-tenant webhooks gateway to support multiple backend services sending and receiving webhooks. In this article, we describe the new `client cli` and why we made these changes.
 
-Convoy is the fastest open-source webhooks gateway available, provides a secure means for engineers to send, receive and debug webhooks. Convoy provides comprehensive features such as retries, rate limiting, static IPs, circuit breaking, zero-downtime secrets upgrades and more. It's widely accepted among expanding teams and organisations that establishing shared services for synchronised teams is an effective approach to enhancing developer productivity throughout the organisation. This is one of the fundamental principles and driving forces behind the growth of platform engineering today.
+### Background
 
-### Quick overview
+In our initial implementation of a client-side CLI, we noticed two problems that weren’t very intuitive for our users and raised many questions on how to use it. Since then, we’ve decided to take a different approach to improve the UX. Let me explain the problem:
 
-In furthering our objective of making webhooks easier to debug, we decided to overhaul our Convoy CLI stream implementation. Our users found the former implementation not so easy to use.
-
-First pain point was the fact that we had all the CLI streaming commands in the main convoy binary:
-
-- `login` which sets up the credentials the  CLI needs to listen for events.
-- `listen` which uses the credentials to listen for events.
-- `stream` this starts the event streaming server
-
-The `listen` and `login` command depend on a `config.yml` file, however the `stream` command depends on the `convoy.json` configuration file as the rest of the convoy binary commands, read more [here](https://getconvoy.io/docs/cli). This is the basis of our decision to split them; we now have a [convoy-cli](https://github.com/frain-dev/convoy-cli) repository that holds the `login` and `listen` commands, the `stream` command continues to live in the main convoy binary.
-
-We have also disabled CLI streaming for `outgoing` projects while we continue develop an intuitive solution for them, for now CLI is only enabled for `incoming` projects. CLI tokens have also been deprecated, you will now be required to login with a Personal API Key.
+- In the initial implementation, we bundled the server and client program into one binary. This meant some commands like `convoy server` relied on the `convoy.json` config file while other commands like `convoy listen` relied on a different config file - `config.yml` . This wasn’t very intuitive — which command was for the server and which command was for the client? To solve this we now release two binaries `convoy` ( Our server program ) and `convoy-cli` ( Our client program )
+- Secondly, convoy is a webhooks gateway it is able to ingest webhooks from providers as well as send webhooks to consumers. To achieve this, we created two project types - `Incoming` and `Outgoing` projects. We realised that building a client-side program for the former is way easier than building for the latter. We decided to split up their implementation:
+    - For an `Incoming` project, a user can use their `personal access tokens` to authenticate against their instance and receive and debug events locally.
+    - For an `Outgoing` project, no other solution was more intuitive than `OAuth`. We decided to deprecate support for `CLI Tokens` and re-launch this when `OAuth` is ready. Please reach out to us on [slack](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ) if you’re super interested in this.
 
 ### Usage
 
-To set up your convoy client cli to listen on events in an `incoming` project, you need to first install the `convoy-cli` binary. Run the following commands:
+To set up your convoy-cli to listen on events in a `incoming` project, you need to first install the `convoy-cli` binary. Run the following commands:
 
 ```bash
 $ brew tap frain-dev/tools
@@ -91,4 +84,4 @@ The full documentation for the convoy-cli tool can be found [here](https://getco
 
 ### Conclusion
 
-The Convoy Client CLI is a great way to debug your webhook events in your local environment without the need for tools like ngrok. This reaffirms our commitment at convoy to making webhooks ridiculously easy to handle and troubleshoot. Give it a try and give us feedback in our [slack](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ) community.
+In this article, we launched our new client side CLI and showed you how to set it up to debug webhooks locally. Sounds good for your platform? Why not try it out for yourself and give us feedback on our[slack](https://www.notion.so/Debugging-your-webhooks-with-the-Convoy-CLI-b64ac0aa11934657bd0069c8470da5a8)community!
