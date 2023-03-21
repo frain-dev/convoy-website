@@ -21,7 +21,7 @@ We re-launched our `client cli` tool with new documentation [here](https://getco
 
 ### Background
 
-In our initial implementation of a client-side CLI, we noticed issue that raised some questions on the CLI being intuitive and how to use it. Since then, we decided to take a different approach to improve the UX. Shedding more light on the issues:
+In our initial implementation of a client-side CLI, we noticed some issues that raised some questions on the CLI being intuitive and how to use it. Since then, we decided to take a different approach to improve the UX. Shedding more light on the issues:
 
 - In the initial implementation, we bundled the server and client program into one binary. This meant some commands like `convoy server` relied on the `convoy.json` config file while other commands like `convoy listen` relied on a different config file - `config.yml` . This wasn’t very intuitive — which command was for the server and which command was for the client? To solve this we now release two binaries `convoy` ( Our server program ) and `convoy-cli` ( Our client program )
 - Secondly, convoy is a webhooks gateway it is able to ingest webhooks from providers as well as send webhooks to consumers. To achieve this, we created two project types - `Incoming` and `Outgoing` projects. We realised that building a client-side program for the former is way easier than building for the latter. We decided to split up their implementation:
