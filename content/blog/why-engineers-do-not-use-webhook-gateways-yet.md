@@ -47,4 +47,4 @@ On the other hand, there is a general assumption that integrating new tools can 
 
 ### Wrapping Up
 
-Do you have any unmentioned reason why you have not tried out  the Convoy webhooks gateway? Convoy is a reliable webhooks gateway for sending and receiving millions of webhook events with robust support for Retries, Rate Limiting, Static IPs, Circuit Breaking, Rolling Secrets. You can secure your payloads, scale horizontally and get endpoint failure alerts to debug faster with Convoy. You should try it out [here](https://www.notion.so/Convoy-CLI-c38b497f240a4188bc5e7000a7dcf80d).
+Do you have any unmentioned reason why you have not tried out  the Convoy webhooks gateway? Convoy is a reliable webhooks gateway for sending and receiving millions of webhook events with robust support for Retries, Rate Limiting, Static IPs, Circuit Breaking, Rolling Secrets. You can secure your payloads, scale horizontally and get endpoint failure alerts to debug faster with Convoy. You should try it out [here](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email).
