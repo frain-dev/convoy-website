@@ -84,4 +84,4 @@ The full documentation for the convoy-cli tool can be found [here](https://getco
 
 ### Conclusion
 
-In this article, we launched our new client side CLI and showed you how to set it up to debug webhooks locally. Sounds good for your platform? Why not try it out for yourself and give us feedback on our [slack](https://www.notion.so/Debugging-your-webhooks-with-the-Convoy-CLI-b64ac0aa11934657bd0069c8470da5a8) community!
+In this article, we launched our new client side CLI and showed you how to set it up to debug webhooks locally. Sounds good for your platform? Why not try it out for yourself and give us feedback on our [slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email) community!
