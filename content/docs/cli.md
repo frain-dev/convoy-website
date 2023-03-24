@@ -82,41 +82,6 @@ Global Flags:
 
 - `--redis`: This is used to specify the Redis DSN
 
-## Login
-
-Command: `convoy login`
-
-### Synopsis
-
-```console[terminal]
-$ convoy login --help
-Logs into your Convoy instance using a CLI API Key
-
-Usage:
-  Convoy login [flags]
-
-Flags:
-  --api-key string   API Key
-  -h, --help         help for login
-  --host string      Host
-
-Global Flags:
-  --config string   Configuration file for convoy (default "./convoy.json")
-  --db string       Database dsn or path to in-memory file
-  --queue string    Queue provider ("redis")
-  --redis string    Redis dsn
-```
-
-### Description
-
-The login command authenticates your Convoy CLI with an API Key to give access to your Convoy instance.
-
-### Command Flags
-
-- `--help`: Get help on the login command.
-- `--api-key`: This flag specifies the API key for authenticating the CLI. This is a required parameter that must be passed when running the command.
-- `--host`: This flag specifies the host for your Convoy instance. For cloud users, the default host is `https://cli.getconvoy.io`.
-
 ## Ingest
 
 Command: `convoy ingest`
@@ -217,41 +182,6 @@ The migrate command is responsible for running pending migrations and rolling ba
 
 - `down`: Rollback migrations.
 - `up`: Run all pending migrations
-
-## Switch
-
-Command: `convoy switch`
-
-### Synopsis
-
-```console[terminal]
-$ convoy switch --help
-Switches the current application context
-
-Usage:
-  Convoy switch [flags]
-
-Flags:
-  -h, --help          help for switch
-      --id string     Application Id
-      --name string   Application Name
-
-Global Flags:
-      --config string   Configuration file for convoy (default "./convoy.json")
-      --db string       Database dsn or path to in-memory file
-      --queue string    Queue provider ("redis")
-      --redis string    Redis dsn
-```
-
-### Description
-
-The switch command switches the active application context to a specified application.
-
-### Command Flags
-
-- `--help`: Get help on the switch command.
-- `--id`: Specify the ID of the application to be made active.
-- `--name`: Specify the name of the application to be made active.
 
 ## Config
 

@@ -52,6 +52,16 @@
 		"link": "/docs/sdk"
 	},
 	{
+		"title": "Tools",
+		"showDropdown": false,
+		"children": [
+			{
+				"title": "Client CLI",
+				"link": "/docs/tools/convoy-cli"
+			}
+		]
+	},
+	{
 		"title": "Product Manual",
 		"showDropdown": false,
 		"children": [
