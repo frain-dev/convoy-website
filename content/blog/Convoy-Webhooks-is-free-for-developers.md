@@ -9,7 +9,7 @@ primary_tag: Open Thoughts
 tags:
     - Convoy
     - Open Thoughts
-featured: true
+featured: false
 description: New Community update, developers can now Send, Receive and Manage millions of Webhooks reliably with Convoy today for $0.
 published_at: 2023-01-16T17:00:00.000+00:00
 ---
