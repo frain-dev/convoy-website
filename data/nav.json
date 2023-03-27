@@ -135,16 +135,16 @@
 		"children": [
 			{
 				"title": "Release Process",
-				"link": "/docs/releases/process"
+				"link": "/docs/resources/release-process"
+			},
+			{
+				"title": "Glossary",
+				"link": "/docs/resources/glossary"
 			}
 		]
 	},
 	{
 		"title": "FAQ",
 		"link": "/docs/faq"
-	},
-	{
-		"title": "Glossary",
-		"link": "/docs/glossary"
 	}
 ]
