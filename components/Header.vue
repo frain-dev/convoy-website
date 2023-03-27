@@ -1,24 +1,7 @@
 <template>
 	<header>
 		<nav
-			class="
-				w-full
-				m-auto
-				px-20px
-				pt-60px
-				pb-20px
-				z-50
-				fixed
-				left-[50%]
-				-translate-x-1/2
-				translate-y-0
-				nav-bar-break:pt-50px nav-bar-break:pb-12px
-				transition-all
-				duration-300
-				bg-white-100
-				shadow-[inset_0px_-3px_8px_rgba(255,255,255,0.07)]
-				backdrop-blur-[36]
-			"
+			class="w-full m-auto px-20px pt-60px pb-20px z-50 fixed left-[50%] -translate-x-1/2 translate-y-0 nav-bar-break:pt-50px nav-bar-break:pb-12px transition-all duration-300 bg-white-100 shadow-[inset_0px_-3px_8px_rgba(255,255,255,0.07)] backdrop-blur-[36]"
 		>
 			<section class="fixed top-0 left-0 bg-primary-100 w-full h-40px py-8px px-12px flex items-center justify-center font-medium text-12 text-white-100 nav-bar-break:text-14">
 				<span>Give us a star on GitHub</span>
@@ -46,15 +29,15 @@
 				</div>
 
 				<ul
-					class="
-						mobile:absolute mobile:top-104px mobile:left-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-10px mobile:min-w-[250px]
-						nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent
-						transition-all
-						duration-500
-					"
+					class="mobile:absolute mobile:top-104px mobile:left-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500"
 					:class="showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'"
 				>
-					<li class="py-14px px-20px nav-bar-break:mr-10px border-b border-b-grey-10 last-of-type:border-none nav-bar-break:border-none relative" v-for="link in menuItems" :key="link.name" @click="currentRoute = link.name">
+					<li
+						class="py-14px px-20px nav-bar-break:mr-10px border-b border-b-grey-10 last-of-type:border-none nav-bar-break:border-none relative"
+						v-for="link in menuItems"
+						:key="link.name"
+						@click="currentRoute = link.name"
+					>
 						<nuxt-link class="text-14" v-if="link.type === 'route'" :to="link.route">{{ link.name }}</nuxt-link>
 						<a class="text-14" v-else-if="link.type === 'link'" target="_blank" rel="noopener noreferrer" :href="link.route">{{ link.name }}</a>
 						<template v-else>
@@ -119,7 +102,8 @@ export default {
 					type: 'dropdown',
 					children: [
 						{ name: 'Enterprise', route: '/enterprise', type: 'route' },
-						{ name: 'Cloud', route: '/cloud', type: 'route' }
+						{ name: 'Cloud', route: '/cloud', type: 'route' },
+						{ name: 'Community', route: '/community', type: 'route' }
 					]
 				},
 				{ name: 'Pricing', route: '/pricing', type: 'route' },
