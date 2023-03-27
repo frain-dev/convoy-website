@@ -2,12 +2,12 @@
 	<div>
 		<section class="bg-[linear-gradient(248deg,#32587D_14%,#0f2a44f5_88%)]">
 			<div class="max-w-[1280px] m-auto min-h-screen flex footer:flex-wrap justify-between items-center px-20px pt-100px">
-				<div class="footer:order-2">
-					<h1 class="text-white-100 desktop:text-[56px] desktop:leading-[80px] max-w-[580px] font-bold">High-performant Webhooks Gateway</h1>
-					<p class="text-white-100 max-w-[580px] mx-auto text-18 mobile:text-14 mt-16px">
+				<div>
+					<h1 class="text-white-100 desktop:text-[56px] desktop:leading-[80px] max-w-[580px] font-bold footer:text-center">High-performant Webhooks Gateway</h1>
+					<p class="text-white-100 max-w-[580px] mx-auto text-18 mobile:text-14 mt-16px footer:text-center">
 						Manage billions of both incoming and outgoing webhook events while staying fully compliant by being in total control of your data on-premise.
 					</p>
-					<div class="flex mt-40px">
+					<div class="flex footer:justify-center mt-40px">
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
@@ -18,7 +18,7 @@
 						</a>
 					</div>
 				</div>
-				<div class="footer:order-1">
+				<div>
 					<img src="~/assets/images/enterprise.png" class="max-h-[436px]" alt="enterprise image" />
 				</div>
 			</div>
@@ -98,27 +98,7 @@
 								<input
 									id="firstname"
 									type="text"
-									class="
-										transition-all
-										duration-[.3s]
-										w-full
-										font-normal
-										text-14
-										placeholder:text-grey-40
-										text-grey-100
-										border border-primary-500
-										valid:border-primary-500
-										disabled:border-primary-500 disabled:bg-[#F7F9FC]
-										hover:bg-primary-500 hover:border-grey-20
-										focus:border-primary-100 focus:bg-white-100
-										outline-none
-										rounded-4px
-										placeholder:opacity-[.48]
-										bg-[#F7F9FC]
-										py-12px
-										px-16px
-										appearance-none
-									"
+									class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
 									v-model="requestForm.firstname"
 									required
 								/>
@@ -128,27 +108,7 @@
 								<input
 									id="lastname"
 									type="text"
-									class="
-										transition-all
-										duration-[.3s]
-										w-full
-										font-normal
-										text-14
-										placeholder:text-grey-40
-										text-grey-100
-										border border-primary-500
-										valid:border-primary-500
-										disabled:border-primary-500 disabled:bg-[#F7F9FC]
-										hover:bg-primary-500 hover:border-grey-20
-										focus:border-primary-100 focus:bg-white-100
-										outline-none
-										rounded-4px
-										placeholder:opacity-[.48]
-										bg-[#F7F9FC]
-										py-12px
-										px-16px
-										appearance-none
-									"
+									class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
 									v-model="requestForm.lastname"
 									required
 								/>
@@ -159,27 +119,7 @@
 						<input
 							id="email"
 							type="email"
-							class="
-								transition-all
-								duration-[.3s]
-								w-full
-								font-normal
-								text-14
-								placeholder:text-grey-40
-								text-grey-100
-								border border-primary-500
-								valid:border-primary-500
-								disabled:border-primary-500 disabled:bg-[#F7F9FC]
-								hover:bg-primary-500 hover:border-grey-20
-								focus:border-primary-100 focus:bg-white-100
-								outline-none
-								rounded-4px
-								placeholder:opacity-[.48]
-								bg-[#F7F9FC]
-								py-12px
-								px-16px
-								appearance-none
-							"
+							class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
 							v-model="requestForm.email"
 							required
 						/>
@@ -188,27 +128,7 @@
 						<input
 							id="org_name"
 							type="text"
-							class="
-								transition-all
-								duration-[.3s]
-								w-full
-								font-normal
-								text-14
-								placeholder:text-grey-40
-								text-grey-100
-								border border-primary-500
-								valid:border-primary-500
-								disabled:border-primary-500 disabled:bg-[#F7F9FC]
-								hover:bg-primary-500 hover:border-grey-20
-								focus:border-primary-100 focus:bg-white-100
-								outline-none
-								rounded-4px
-								placeholder:opacity-[.48]
-								bg-[#F7F9FC]
-								py-12px
-								px-16px
-								appearance-none
-							"
+							class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
 							v-model="requestForm.organisation"
 							required
 						/>
@@ -256,9 +176,6 @@ export default {
 					`https://faas-fra1-afec6ce7.doserverless.co/api/v1/web/fn-8f44e6aa-e5d6-4e31-b781-5080c050bb37/welcome-user/welcome-mail?email=${this.requestForm.email}&firstname=${this.requestForm.firstname}&lastname=${this.requestForm.lastname}&organisation=${this.requestForm.organisation}&cloud=true`
 				);
 
-				console.log('i made it!');
-				console.log(response.json());
-
 				await response.json();
 				this.isSubmitingRequestAccessForm = false;
 			} catch (error) {
@@ -268,8 +185,3 @@ export default {
 	}
 };
 </script>
-<!-- <style lang="scss" scoped>
-.enterprise-bg {
-	background: linear-gradient(248.59deg, #32587d 14.5%, rgba(15, 42, 68, 0.96) 88.54%);
-}
-</style> -->

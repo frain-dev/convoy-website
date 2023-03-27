@@ -43,7 +43,7 @@
 						<template v-else>
 							<a class="text-14 flex items-center">
 								{{ link.name }}
-								<svg width="16" height="16" class="fill-primary-100">
+								<svg width="16" height="16" class="fill-black">
 									<use xlink:href="#angle-down-icon"></use>
 								</svg>
 							</a>
@@ -87,6 +87,7 @@
 			:class="showMenu ? 'pointer-events-all opacity-100 z-[2]' : 'pointer-events-none opacity-0'"
 			@click="showMenu = !showMenu"
 		></div>
+		<div class="fixed w-screen h-screen top-0 left 0" v-if="currentRoute === 'Products'" @click="currentRoute = ''"></div>
 	</header>
 </template>
 
@@ -101,16 +102,22 @@ export default {
 					name: 'Products',
 					type: 'dropdown',
 					children: [
-						{ name: 'Enterprise', route: '/enterprise', type: 'route' },
-						{ name: 'Cloud', route: '/cloud', type: 'route' },
-						{ name: 'Community', route: '/community', type: 'route' }
+						{ name: 'Convoy Cloud', route: '/cloud', type: 'route' },
+						{ name: 'Convoy Enterprise', route: '/enterprise', type: 'route' },
+						{ name: 'Open-Source', route: '/open-source', type: 'route' }
 					]
 				},
 				{ name: 'Pricing', route: '/pricing', type: 'route' },
-				{ name: 'Why Convoy', route: '/#why-convoy', type: 'route' },
-				{ name: 'Docs', route: '/docs', type: 'route' },
-				{ name: 'Tutorials', route: '/blog?tag=Tutorial', type: 'route' },
-				{ name: 'Blog', route: '/blog', type: 'route' },
+				{
+					name: 'Resources',
+					type: 'dropdown',
+					children: [
+						{ name: 'Docs', route: '/docs', type: 'route' },
+						{ name: 'Tutorials', route: '/blog?tag=Tutorial', type: 'route' },
+						{ name: 'Blog', route: '/blog', type: 'route' },
+						{ name: 'Why Convoy', route: '/#why-convoy', type: 'route' }
+					]
+				},
 				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' },
 				{ name: 'Watch Demo', route: '/demo', type: 'route' }
 			],
