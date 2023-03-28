@@ -134,12 +134,16 @@
 		"showDropdown": false,
 		"children": [
 			{
-				"title": "Release Process",
-				"link": "/docs/resources/release-process"
-			},
-			{
 				"title": "Glossary",
 				"link": "/docs/resources/glossary"
+			},
+			{
+				"title": "Telemetry",
+				"link": "/docs/resources/telemetry"
+			},
+			{
+				"title": "Release Process",
+				"link": "/docs/resources/release-process"
 			}
 		]
 	},
