@@ -21,7 +21,7 @@ children:
      link: '/docs/manual/events-and-event-deliveries'
 ---
 
-# User Manual
+# Product Manual
 
 This document contains a description of all features, and their availability in the Community and Enterprise editions.
 

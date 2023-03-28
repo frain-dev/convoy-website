@@ -7,21 +7,18 @@ order: 1
 
 Convoy
 ======
+Convoy is an open-source high-performance webhooks gateway to manage millions of webhooks end-to-end. It is designed to be an highly scalable multi-tenant webhooks gateway to support multiple backend services sending and receiving webhooks. It comes baked in with several features like retries, rate limiting, circuit breaking, customer-facing webhooks dashboards, support for both sending & receiving webhooks and a lot more.
 
-Convoy is your one-stop tool for publishing and receiving webhooks. With our open source software, you have the flexibility to deploy the software to a location that best suites your infrastructure and ensure customer data never has to leave your infrastructure.
+## Why are we building Convoy?
+Webhooks are the defacto paradigm for building notifications on the internet. We found that APIs are quite pervasive, systems are interconnected as ever. However, there isn’t a defacto technology and tooling for handling all the naunces that comes with publishing, ingesting and debugging webhook events.
 
-## Why we're building Convoy
+We believe there should be an open-source technology to solve this problem efficiently. We believe teams shouldn't have to rewrite this infrastructure every time they need it. Webhooks are hard from endpoint management, scalable ingress and egress of webhooks traffic. Convoy is our effort at solving this problem. We are focused on truly democratising this software by being open-source. 
 
-Webhooks is the defacto paradigm for building notifications on the internet.
+## Community Edition
+Convoy Community Edition is our open-source software where to help you send, receive and manage millions of webhooks. We've designed this version to be feature rich to support the hobbyist developer and single teams managing webhooks. To see a full breakdown of the supported features see [here](https://getconvoy.io/pricing).
 
-We found that APIs are quite pervasive, systems are interconnected as ever. However, there isn’t a defacto technology and tooling for handling all the naunces that comes with publishing, ingesting and debugging webhook events.
-
-Convoy solves that and provides you with options to get started with publishing, ingesting and debugging webhook events.
+## Enterprise Edition
+Convoy Enterprise Edition is the commercial edition of our offering. It offers enterprise focused features like Advanced Role Based Access Controls, Audit Logs, etc. If Convoy will be relied upon by multiple teams in your organisation then this might be the best option for you. Please reach out to us sales@getconvoy.io
 
 ## Convoy Cloud
-
-[Convoy Cloud](https://dashboard.getconvoy.io/signup) is our SaaS solution where we manage the underlying infrastructure for you, and you can focus on publishing and receiving webhooks only.
-
-## Convoy OSS
-
-Convoy OSS is our open-source software where you manage the infrastructure by yourselves, and user data never leaves your infrastructure.
+Convoy Cloud is our SaaS solution where we manage the underlying infrastructure for you, and you can focus on publishing and receiving webhooks only.It is currently in private beta, you can join the waitlist [here](https://getconvoy.io/cloud).

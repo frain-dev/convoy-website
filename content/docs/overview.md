@@ -41,11 +41,3 @@ Incoming webhooks are webhooks received from a valid source. Convoy serves as a 
 ![Outgoing flow](/docs-assets/outgoing.png)
 
 Outgoing webhooks are webhooks sent ( dispatched ) from your infrastructure. Convoy serves as a reliable egress for sending out webhooks to your customers. Convoy’s outgoing projects allow you to dispatch webhook events to your various customer endpoints which are configured as application endpoints. Unlike traditional systems, Convoy also enables you to monitor the delivery status of a webhooks sent, retry event deliveries, apply complex filters and search through events sent at a given period, and get notifications about the health of your customer’s endpoints.
-
-## Feature comparison
-
-| Features | Incoming | Outgoing |
-| --- | --- | --- |
-| Purpose | For API consumers. In this scenario, Convoy acts as a reliable ingress for webhook events. | For API providers. In this scenario, Convoy acts as a reliable egress for webhook events. |
-| Portal | You don’t need a portal because you have access to the entire dashboard. | Each API consumer needs a portal to view their specific endpoint webhook logs. |
-| Event Sources | Events are ingested only through HTTP source URLs. | Events are ingested through REST API and PubSub systems like Amazon SQS, Google PubSub, etc. |
