@@ -41,7 +41,7 @@
 						<nuxt-link class="text-14" v-if="link.type === 'route'" :to="link.route">{{ link.name }}</nuxt-link>
 						<a class="text-14" v-else-if="link.type === 'link'" target="_blank" rel="noopener noreferrer" :href="link.route">{{ link.name }}</a>
 						<template v-else>
-							<a class="text-14 flex items-center">
+							<a class="text-14 flex items-center hover:cursor-pointer">
 								{{ link.name }}
 								<svg width="16" height="16" class="fill-black">
 									<use xlink:href="#angle-down-icon"></use>
@@ -102,9 +102,9 @@ export default {
 					name: 'Products',
 					type: 'dropdown',
 					children: [
-						{ name: 'Convoy Cloud', route: '/cloud', type: 'route' },
-						{ name: 'Convoy Enterprise', route: '/enterprise', type: 'route' },
-						{ name: 'Open-Source', route: '/open-source', type: 'route' }
+						{ name: 'Community Edition', route: '/community', type: 'route' },
+						{ name: 'Enterprise Edition', route: '/enterprise', type: 'route' },
+						{ name: 'Convoy Cloud', route: '/cloud', type: 'route' }
 					]
 				},
 				{ name: 'Pricing', route: '/pricing', type: 'route' },
@@ -112,10 +112,9 @@ export default {
 					name: 'Resources',
 					type: 'dropdown',
 					children: [
-						{ name: 'Docs', route: '/docs', type: 'route' },
-						{ name: 'Tutorials', route: '/blog?tag=Tutorial', type: 'route' },
 						{ name: 'Blog', route: '/blog', type: 'route' },
-						{ name: 'Why Convoy', route: '/#why-convoy', type: 'route' }
+						{ name: 'Docs', route: '/docs', type: 'route' },
+						{ name: 'Tutorials', route: '/blog?tag=Tutorial', type: 'route' }
 					]
 				},
 				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' },

@@ -97,20 +97,26 @@
 
 		<section class="bg-white-100 py-100px desktop:py-160px">
 			<div class="max-w-[1350px] m-auto px-20px">
-				<h1 class="text-[48px] leading-[56px] font-bold text-center">Do more with Convoy Enterprise.</h1>
+				<div class="bg-primary-500 rounded-[40px] w-fit footer:m-auto py-10px px-20px flex items-center text-14 mb-40px">
+					<div class="mr-16px w-24px h-24px rounded-50% bg-primary-100 flex justify-center items-center">
+						<img src="~/assets/images/svg/lightening.svg" alt="lightening icon" />
+					</div>
+					First choice for developers
+				</div>
+				<h1 class="text-[48px] leading-[56px] font-bold footer:text-center max-w-[600px]">Why Engineers choose Convoy</h1>
 
 				<div class="flex justify-between flex-wrap gap-6 mt-80px desktop:mt-120px">
 					<div class="desktop:max-w-[340px]">
 						<img src="~/assets/images/everything-you-need.png" class="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" alt="everything-you-need" />
-						<p class="text-14 desktop:text-20">Granular role based access control, ensuring authorized access to infrastructure for large organizations.</p>
+						<p class="text-14 desktop:text-20">Fully managed global cloud infrastructure with high availability and resilience baked in.</p>
 					</div>
 					<div class="desktop:max-w-[400px]">
 						<img src="~/assets/images/excellent-rate-limiting.png" class="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(43,214,123,0.2)]" alt="excellent-rate-limiting" />
-						<p class="text-14 desktop:text-20">Efficiently create separate environments for development, staging, and production, enabling faster iteration, and improved software delivery.</p>
+						<p class="text-14 desktop:text-20">Stay compliant by choosing the region we host and store your webhooks data.</p>
 					</div>
 					<div class="desktop:max-w-[340px]">
 						<img src="~/assets/images/transparent-pricing.png" class="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(247,227,109,0.2)]" alt="transparent-pricing" />
-						<p class="text-14 desktop:text-20">Detailed Audit Logs so your team can tracks all user actions and event calls for compliance and security purposes.</p>
+						<p class="text-14 desktop:text-20">Transparent usage-based pricing, keep costs under control by paying for what you use.</p>
 					</div>
 				</div>
 			</div>

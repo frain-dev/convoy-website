@@ -196,7 +196,7 @@ export default {
 					body: 'Provide an easy-to-use interface for your customers to view, inspect, troubleshoot issues quickly and debug events with Convoy’s App Portal. Accessible through the SDKs, you can power your custom-built UI for your users and reduce workload for your customer success team.'
 				}
 			],
-			setupSteps: ['cd convoy', 'git clone https://github.com/frain-dev/convoy.git', 'git clone https://github.com/frain-dev/convoy.git'],
+			setupSteps: ['git clone https://github.com/frain-dev/convoy.git', 'cd convoy', 'docker compose -f configs/local/docker-compose.yml up'],
 			requestForm: {
 				firstname: null,
 				lastname: null,

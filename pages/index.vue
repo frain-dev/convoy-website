@@ -71,7 +71,7 @@
 				</div>
 				Why use Convoy?
 			</div>
-			<h1 class="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto mb-80px">Convoy is the Fastest Webhooks Gateway</h1>
+			<h1 class="text-center font-bold max-w-[1040px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto mb-80px">Convoy is a high-performance open-source webhooks gateway</h1>
 
 			<div class="desktop:py-40px px-20px bg-white-100 feature-list">
 				<div
