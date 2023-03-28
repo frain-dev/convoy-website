@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<section class="bg-[linear-gradient(77deg,#36317A_-29%,#4A87C5_88%)] py-100px desktop:pt-200px desktop:pb-120px" id="home">
+		<section class="bg-[linear-gradient(77deg,#36317A_-29%,#4A87C5_88%)] pt-200px pb-100px desktop:pt-200px desktop:pb-120px" id="home">
 			<div class="max-w-[1350px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
 				<div>
 					<h1 class="text-white-100 text-32 md:text-[56px] md:leading-[80px] max-w-[680px] font-bold footer:text-center">Make Webhooks management our problem, not yours</h1>
@@ -19,6 +19,7 @@
 									type="text"
 									class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
 									v-model="requestForm.firstname"
+									placeholder="John"
 									required
 								/>
 							</div>
@@ -29,6 +30,7 @@
 									type="text"
 									class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
 									v-model="requestForm.lastname"
+									placeholder="Doe"
 									required
 								/>
 							</div>
@@ -40,15 +42,16 @@
 							type="text"
 							class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
 							v-model="requestForm.organisation"
+							placeholder="Kuda"
 							required
 						/>
 
-						<label for="use_case" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">Organisation Name</label>
+						<label for="use_case" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">Whats your use case?</label>
 						<select
 							name="use_case"
 							id="use_case"
 							v-model="requestForm.usecase"
-							class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
+							class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px"
 						>
 							<option v-for="usecase of useCases" :key="usecase" :value="usecase">
 								{{ usecase }}
@@ -221,7 +224,7 @@
 					Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time and get started today.
 				</p>
 				<a href="#home" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
-					Join the waitlist
+					Request Access
 					<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 				</a>
 			</div>

@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<section class="bg-[linear-gradient(248deg,#32587D_14%,#0f2a44f5_88%)]">
-			<div class="max-w-[1280px] m-auto flex footer:flex-wrap justify-between items-center px-20px desktop:pt-240px desktop:pb-120px">
+		<section class="bg-[linear-gradient(248deg,#32587D_14%,#0f2a44f5_88%)] pt-200px pb-100px desktop:pt-200px desktop:pb-120px">
+			<div class="max-w-[1280px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
 				<div>
 					<h1 class="text-white-100 desktop:text-[56px] desktop:leading-[80px] max-w-[580px] font-bold footer:text-center">High-performant Webhooks Gateway</h1>
 					<p class="text-white-100 max-w-[580px] mx-auto text-18 mobile:text-14 mt-16px footer:text-center">
@@ -93,6 +93,7 @@
 									type="text"
 									class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
 									v-model="requestForm.firstname"
+									placeholder="John"
 									required
 								/>
 							</div>
@@ -103,6 +104,7 @@
 									type="text"
 									class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
 									v-model="requestForm.lastname"
+									placeholder="Doe"
 									required
 								/>
 							</div>
@@ -114,6 +116,7 @@
 							type="email"
 							class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
 							v-model="requestForm.email"
+							placeholder="johndoe@email.com"
 							required
 						/>
 
@@ -123,6 +126,7 @@
 							type="text"
 							class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
 							v-model="requestForm.organisation"
+							placeholder="Kuda"
 							required
 						/>
 

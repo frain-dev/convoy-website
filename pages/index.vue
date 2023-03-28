@@ -14,10 +14,10 @@
 				<a
 					target="_blank"
 					rel="noopener noreferrer"
-					href="https://dashboard.getconvoy.io/signup"
+					href="https://github.com/frain-dev/convoy#installation-getting-started"
 					class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px"
 				>
-					Get Started For Free
+					Get Started
 				</a>
 
 				<a
@@ -200,7 +200,7 @@
 							href="https://github.com/frain-dev/convoy#installation-getting-started"
 							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
 						>
-							Get started for free
+							Get started
 							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 						</a>
 						<nuxt-link
@@ -208,7 +208,7 @@
 							to="/enterprise#requestAccess"
 							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
 						>
-							Get started for free
+							Get started
 							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 						</nuxt-link>
 						<nuxt-link
@@ -216,7 +216,7 @@
 							to="/cloud"
 							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
 						>
-							Get started for free
+							Get started
 							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 						</nuxt-link>
 					</div>

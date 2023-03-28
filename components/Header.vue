@@ -52,7 +52,7 @@
 								v-if="currentRoute === link.name"
 							>
 								<ul>
-									<li class="py-14px px-20px border-b border-b-grey-10 last-of-type:border-none" v-for="subRoute in link.children" :key="subRoute.name" @click="currentRoute = subRoute.name">
+									<li class="py-14px px-20px border-b border-b-grey-10 last-of-type:border-none" v-for="subRoute in link.children" :key="subRoute.name" @click="closeDropdown($event)">
 										<nuxt-link class="text-14" :to="subRoute.route">{{ subRoute.name }}</nuxt-link>
 									</li>
 								</ul>
@@ -138,6 +138,10 @@ export default {
 		},
 		handleScroll() {
 			this.$route.name == 'blog' || window.scrollY > 50 ? (this.hasScrolled = true) : (this.hasScrolled = false);
+		},
+		closeDropdown(e) {
+			e.stopPropagation();
+			this.currentRoute = '';
 		}
 	},
 	created() {

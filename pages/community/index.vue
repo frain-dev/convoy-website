@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<section class="bg-[linear-gradient(180deg,#2C2F3E_0%,#422F41_100%)] py-100px desktop:pt-200px desktop:pb-120px mb-100px">
+		<section class="bg-[linear-gradient(180deg,#2C2F3E_0%,#422F41_100%)] pt-200px pb-100px desktop:pt-200px desktop:pb-120px mb-100px">
 			<div class="max-w-[1350px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
 				<div>
 					<h1 class="text-white-100 text-32 md:text-[56px] md:leading-[80px] max-w-[680px] font-bold footer:text-center">Open-source Gateway for incoming and outgoing webhooks</h1>
@@ -17,7 +17,7 @@
 						</a>
 					</div>
 				</div>
-				<div class="md:bg-white-100 md:shadow-[0px_2px_4px_rgba(12,26,75,0.04),0px_4px_20px_-2px_rgba(50,50,71,0.08)] rounded-8px p-20px md:py-40px md:px-60px max-w-[565px] w-full">
+				<div class="md:bg-white-100 md:shadow-[0px_2px_4px_rgba(12,26,75,0.04),0px_4px_20px_-2px_rgba(50,50,71,0.08)] rounded-8px p-20px md:py-30px md:px-60px max-w-[565px] w-full">
 					<div class="hidden md:block rounded-10px max-w-[360px] h-8px bg-[#F5F4F5] my-30px m-auto"></div>
 					<div class="bg-[#393040] border-[0.5px] border-[#F5F4F5] rounded-4px py-12px px-14px mb-24px flex items-center justify-between text-white-100 text-14" v-for="step of setupSteps" :key="step">
 						<span>$ {{ step }}</span>
@@ -163,7 +163,7 @@
 					href="https://github.com/frain-dev/convoy#installation-getting-started"
 					class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit"
 				>
-					Get Started For Free
+					Get Started
 					<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 				</a>
 			</div>

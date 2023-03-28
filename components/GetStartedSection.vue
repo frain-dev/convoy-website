@@ -6,7 +6,7 @@
                 Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time and get started today.
             </p>
             <a target="_blank" rel="noopener noreferrer" href="https://github.com/frain-dev/convoy#installation-getting-started" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
-                Get started for free
+                Get started
                 <img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
             </a>
         </div>
