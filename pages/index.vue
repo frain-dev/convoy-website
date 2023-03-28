@@ -14,10 +14,10 @@
 				<a
 					target="_blank"
 					rel="noopener noreferrer"
-					href="https://dashboard.getconvoy.io/signup"
+					href="https://github.com/frain-dev/convoy#installation-getting-started"
 					class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px"
 				>
-					Get Started For Free
+					Get Started
 				</a>
 
 				<a
@@ -71,7 +71,7 @@
 				</div>
 				Why use Convoy?
 			</div>
-			<h1 class="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto mb-80px">Convoy is the Fastest Webhooks Gateway</h1>
+			<h1 class="text-center font-bold max-w-[1040px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto mb-80px">Convoy is a high-performance open-source webhooks gateway</h1>
 
 			<div class="desktop:py-40px px-20px bg-white-100 feature-list">
 				<div
@@ -110,25 +110,77 @@
 		<section class="py-60px desktop:py-110px">
 			<div class="max-w-[1170px] w-full m-auto px-20px">
 				<div class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] rounded-16px pt-40px px-20px pb-100px desktop:px-66px desktop:pt-50px desktop:pb-200px">
-					<div class="bg-[#4B4862] rounded-[40px] w-fit py-10px px-20px flex items-center text-14 text-white-100 mb-40px mx-auto">
-						<div class="mr-16px w-24px h-24px rounded-50% bg-success-100 flex justify-center items-center">
-							<img src="~/assets/images/svg/lightening.svg" alt="lightening icon" />
-						</div>
-						Something great
+					<div class="bg-white-16 rounded-8px w-fit m-auto flex flex-row mb-30px">
+						<li class="list-none" v-for="tab of tabs" :key="tab.id">
+							<button
+								class="rounded-6px py-12px px-8px desktop:px-60px min-w-[114px] desktop:min-w-[220px] transition-all duration-300"
+								:class="activeTab === tab.id ? 'bg-white-100 shadow-sm' : ''"
+								@click="switchTabs(tab.id)"
+							>
+								<span class="text-14 tracking-[0.02em] transition-all duration-300" :class="activeTab === tab.id ? 'font-bold text-black' : 'text-white-100'">{{ tab.label }}</span>
+							</button>
+						</li>
 					</div>
 
 					<div class="w-full min-h-[280px] h-full">
-						<div class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out">
-							<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Open Source</h1>
+						<!-- enterprise edition  -->
+						<div
+							class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out"
+							:class="activeTab === 'enterprise' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'"
+						>
+							<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Enterprise Edition</h1>
 							<p class="text-white-100 text-center text-14 desktop:text-18 mt-20px desktop:mt-16px max-w-[860px] m-auto">
-								Convoy is an open-source software that enables you to send webhook events to users, customers, and platforms reliably, securely in a scalable manner. Our software is fully
-								open-source for developers to use and deploy in their environments.
+								Send & Receive billions of webhooks while totally control your own event infrastructure and data, and staying compliant all with one platform with on-prem support .
+							</p>
+
+							<div class="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
+								<div
+									class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap"
+									v-for="feature of enterprise"
+									:key="feature"
+								>
+									<img src="~/assets/images/green_check.svg" class="mr-12px" alt="check" />
+									{{ feature }}
+								</div>
+							</div>
+						</div>
+
+						<!-- convoy cloud  -->
+						<div
+							class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out"
+							:class="activeTab === 'cloud' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'"
+						>
+							<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Convoy Cloud</h1>
+							<p class="text-white-100 text-center text-14 desktop:text-18 mt-20px desktop:mt-16px max-w-[860px] m-auto">
+								Fully managed Webhooks-as-a-service platform where you can manage millions of webhook events whether incoming or outgoing and you only pay for what you use.
+							</p>
+
+							<div class="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
+								<div
+									class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap"
+									v-for="feature of cloud"
+									:key="feature"
+								>
+									<img src="~/assets/images/green_check.svg" class="mr-12px" alt="check" />
+									{{ feature }}
+								</div>
+							</div>
+						</div>
+
+						<!-- community edition  -->
+						<div
+							class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out"
+							:class="activeTab === 'community' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'"
+						>
+							<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Community Edition</h1>
+							<p class="text-white-100 text-center text-14 desktop:text-18 mt-20px desktop:mt-16px max-w-[860px] m-auto">
+								Open-source Webhooks Gateway for managing incoming and outgoing webhooks. Ships with everything you need for securely sending and receiving events reliably.
 							</p>
 
 							<div class="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
 								<div
 									class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
-									v-for="feature of openCore"
+									v-for="feature of community"
 									:key="feature"
 								>
 									<img src="~/assets/images/green_check.svg" class="mr-12px" alt="check" />
@@ -143,14 +195,30 @@
 						<img src="~/assets/images/core.png" alt="group" class="xs:hidden max-w-[866px] desktop:w-full w-5/6 m-auto" />
 						<img src="~/assets/images/groups-img-small.png" class="hidden xs:block m-auto w-5/6" alt="group" />
 						<a
+							v-if="activeTab === 'community'"
 							target="_blank"
-							rel="noopener noreferrer"
-							href="https://dashboard.getconvoy.io/"
+							href="https://github.com/frain-dev/convoy#installation-getting-started"
 							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
 						>
-							Get started for free
+							Get started
 							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 						</a>
+						<nuxt-link
+							v-else-if="activeTab === 'enterprise'"
+							to="/enterprise#requestAccess"
+							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
+						>
+							Get started
+							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
+						</nuxt-link>
+						<nuxt-link
+							v-else
+							to="/cloud"
+							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
+						>
+							Get started
+							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
+						</nuxt-link>
 					</div>
 				</div>
 			</div>
@@ -187,20 +255,7 @@
 					<div
 						v-for="(offer, index) of offerings"
 						:key="'offer' + index"
-						class="
-							shadow-[14px_20px_24px_rgba(20,37,63,0.04)]
-							rounded-[60px]
-							flex flex-col
-							justify-center
-							items-center
-							py-20px
-							px-86px
-							h-[80px]
-							desktop:h-[98px]
-							min-w-[280px]
-							desktop:min-w-[350px]
-							mx-20px
-						"
+						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center py-20px px-86px h-[80px] desktop:h-[98px] min-w-[280px] desktop:min-w-[350px] mx-20px"
 						:class="offer.class"
 					>
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
@@ -213,20 +268,7 @@
 					<div
 						v-for="(offer, index) of offerings"
 						:key="'offer' + index"
-						class="
-							shadow-[14px_20px_24px_rgba(20,37,63,0.04)]
-							rounded-[60px]
-							flex flex-col
-							justify-center
-							items-center
-							h-[80px]
-							desktop:h-[98px]
-							min-w-[280px]
-							desktop:min-w-[350px]
-							mx-20px
-							py-20px
-							px-86px
-						"
+						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center h-[80px] desktop:h-[98px] min-w-[280px] desktop:min-w-[350px] mx-20px py-20px px-86px"
 						:class="offer.class"
 					>
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
@@ -259,11 +301,14 @@ export default {
 	data() {
 		return {
 			tabs: [
-				{ label: 'Open Source', id: 'open' },
-				{ label: 'App Portal', id: 'portal' }
+				{ label: 'Community', id: 'community' },
+				{ label: 'Enterprise', id: 'enterprise' },
+				{ label: 'Cloud', id: 'cloud' }
 			],
-			activeTab: 'open',
-			openCore: ['Team management', 'Mulitple projects', 'Debug logs and metric', 'Manage app and customers'],
+			activeTab: 'community',
+			community: ['Rate Limiting', 'Retries', 'Static IPs', 'App Portal', 'Send Millions of Events'],
+			enterprise: ['Send Billion of Events', 'Dedicated Customer Success', 'Own your data', 'On-prem Support', 'Compliant'],
+			cloud: ['Team management', 'Mulitple projects', 'Debug logs and metric', 'Manage app and customers'],
 
 			newFeatures: [
 				{
@@ -324,6 +369,11 @@ export default {
 			activeSlide: true,
 			expandImage: false
 		};
+	},
+	methods: {
+		switchTabs(tabId) {
+			this.activeTab = tabId;
+		}
 	}
 };
 </script>

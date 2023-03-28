@@ -47,25 +47,20 @@
 						</p>
 						<button class="border-none bg-none">
 							<a
-								href="https://dashboard.getconvoy.io/signup"
+								v-if="index === 0"
+								:href="plan.link"
 								target="_blank"
-								class="
-									bg-primary-100
-									text-white-100
-									py-16px
-									px-26px
-									rounded-10px
-									mt-22px
-									flex
-									items-center
-									shadow-pricing-button
-									transition-all
-									duration-300
-									hover:shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)]
-								"
+								class="bg-primary-100 text-white-100 py-16px px-26px rounded-10px mt-22px flex items-center shadow-pricing-button transition-all duration-300 hover:shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)]"
 							>
-								{{ index === 3 ? 'Contact Us' : 'Get Started' }}
+								Get Started
 							</a>
+							<nuxt-link
+								v-else
+								:to="plan.link"
+								class="bg-primary-100 text-white-100 py-16px px-26px rounded-10px mt-22px flex items-center shadow-pricing-button transition-all duration-300 hover:shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)]"
+							>
+								Get Started
+							</nuxt-link>
 						</button>
 					</div>
 				</li>
@@ -203,7 +198,7 @@ export default {
 					description: 'This is a perfect plan for starters',
 					price: '$0',
 					frequency: '/monthly',
-					link: '',
+					link: 'https://github.com/frain-dev/convoy#installation-getting-started',
 					features: ['Send up to 150,000 events, retries are free', 'Access with up to 2 users', 'Data retention for up to 3 days', 'Basic Role-Based Access Control', 'Priority developer support']
 				},
 				{
@@ -212,7 +207,7 @@ export default {
 					description: 'This is a perfect plan for startups',
 					price: '$60',
 					frequency: '/monthly',
-					link: '',
+					link: '/cloud',
 					features: ['Send up to 1.5m events, retries are free', 'Access for unlimited users', 'Data retention for up to 30 days', 'Basic Role-Based Access Control', 'Priority developer support']
 				},
 				{
@@ -221,7 +216,7 @@ export default {
 					description: 'For users who want to do more',
 					price: '$700',
 					frequency: '/monthly',
-					link: '',
+					link: '/cloud',
 					features: ['Send up to 20m events, retries are free', 'Access for unlimited users', 'Data retention for up to 3 months', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
 				},
 				{
@@ -230,7 +225,7 @@ export default {
 					description: 'For users who want to do more',
 					price: 'Custom',
 					frequency: '',
-					link: 'http://getconvoy.io/demo',
+					link: '/enterprise#requestAccess',
 					features: ['Send unlimited number of events', 'Access for unlimited users', 'Custom data retention policy', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
 				}
 			],

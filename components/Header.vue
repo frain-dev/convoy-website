@@ -1,24 +1,7 @@
 <template>
 	<header>
 		<nav
-			class="
-				w-full
-				m-auto
-				px-20px
-				pt-60px
-				pb-20px
-				z-50
-				fixed
-				left-[50%]
-				-translate-x-1/2
-				translate-y-0
-				nav-bar-break:pt-50px nav-bar-break:pb-12px
-				transition-all
-				duration-300
-				bg-white-100
-				shadow-[inset_0px_-3px_8px_rgba(255,255,255,0.07)]
-				backdrop-blur-[36]
-			"
+			class="w-full m-auto px-20px pt-60px pb-20px z-50 fixed left-[50%] -translate-x-1/2 translate-y-0 nav-bar-break:pt-50px nav-bar-break:pb-12px transition-all duration-300 bg-white-100 shadow-[inset_0px_-3px_8px_rgba(255,255,255,0.07)] backdrop-blur-[36]"
 		>
 			<section class="fixed top-0 left-0 bg-primary-100 w-full h-40px py-8px px-12px flex items-center justify-center font-medium text-12 text-white-100 nav-bar-break:text-14">
 				<span>Give us a star on GitHub</span>
@@ -46,35 +29,44 @@
 				</div>
 
 				<ul
-					class="
-						mobile:absolute mobile:top-104px mobile:left-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-10px mobile:min-w-[250px]
-						nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent
-						transition-all
-						duration-500
-					"
+					class="mobile:absolute mobile:top-104px mobile:left-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500"
 					:class="showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'"
 				>
-					<li class="py-14px px-20px nav-bar-break:mr-10px border-b border-b-grey-10 last-of-type:border-none nav-bar-break:border-none" v-for="link in menuItems" :key="link.name">
+					<li
+						class="py-14px px-20px nav-bar-break:mr-10px border-b border-b-grey-10 last-of-type:border-none nav-bar-break:border-none relative"
+						v-for="link in menuItems"
+						:key="link.name"
+						@click="currentRoute = link.name"
+					>
 						<nuxt-link class="text-14" v-if="link.type === 'route'" :to="link.route">{{ link.name }}</nuxt-link>
-						<a class="text-14" v-else target="_blank" rel="noopener noreferrer" :href="link.route">{{ link.name }}</a>
+						<a class="text-14" v-else-if="link.type === 'link'" target="_blank" rel="noopener noreferrer" :href="link.route">{{ link.name }}</a>
+						<template v-else>
+							<a class="text-14 flex items-center hover:cursor-pointer">
+								{{ link.name }}
+								<svg width="16" height="16" class="fill-black">
+									<use xlink:href="#angle-down-icon"></use>
+								</svg>
+							</a>
+							<div
+								class="absolute top-[100%] min-w-[200px] w-full bg-white-100 border border-grey-10 rounded-12px shadow-default z-10 transition-all ease-in-out duration-300 h-fit"
+								v-if="currentRoute === link.name"
+							>
+								<ul>
+									<li class="py-14px px-20px border-b border-b-grey-10 last-of-type:border-none" v-for="subRoute in link.children" :key="subRoute.name" @click="closeDropdown($event)">
+										<nuxt-link class="text-14" :to="subRoute.route">{{ subRoute.name }}</nuxt-link>
+									</li>
+								</ul>
+							</div>
+						</template>
 					</li>
 
 					<li class="py-14px px-20px nav-bar-break:p-0">
 						<a
-							href="https://dashboard.getconvoy.io/login"
+							href="https://github.com/frain-dev/convoy#installation-getting-started"
 							target="_blank"
-							class="
-								nav-bar-break:py-8px nav-bar-break:px-24px
-								text-14
-								font-medium
-								rounded-8px
-								nav-bar-break:bg-primary-100 nav-bar-break:text-white-100
-								text-primary-100
-								flex
-								items-center
-							"
+							class="nav-bar-break:py-8px nav-bar-break:px-24px text-14 font-medium rounded-8px nav-bar-break:bg-primary-100 nav-bar-break:text-white-100 text-primary-100 flex items-center"
 						>
-							Login
+							Get Started
 						</a>
 					</li>
 
@@ -95,6 +87,7 @@
 			:class="showMenu ? 'pointer-events-all opacity-100 z-[2]' : 'pointer-events-none opacity-0'"
 			@click="showMenu = !showMenu"
 		></div>
+		<div class="fixed w-screen h-screen top-0 left 0" v-if="currentRoute === 'Products'" @click="currentRoute = ''"></div>
 	</header>
 </template>
 
@@ -105,15 +98,30 @@ export default {
 			showMenu: false,
 			githubStars: 0,
 			menuItems: [
+				{
+					name: 'Products',
+					type: 'dropdown',
+					children: [
+						{ name: 'Community Edition', route: '/community', type: 'route' },
+						{ name: 'Enterprise Edition', route: '/enterprise', type: 'route' },
+						{ name: 'Convoy Cloud', route: '/cloud', type: 'route' }
+					]
+				},
 				{ name: 'Pricing', route: '/pricing', type: 'route' },
-				{ name: 'Why Convoy', route: '/#why-convoy', type: 'route' },
-				{ name: 'Docs', route: '/docs', type: 'route' },
-				{ name: 'Tutorials', route: '/blog?tag=Tutorial', type: 'route' },
-				{ name: 'Blog', route: '/blog', type: 'route' },
+				{
+					name: 'Resources',
+					type: 'dropdown',
+					children: [
+						{ name: 'Blog', route: '/blog', type: 'route' },
+						{ name: 'Docs', route: '/docs', type: 'route' },
+						{ name: 'Tutorials', route: '/blog?tag=Tutorial', type: 'route' }
+					]
+				},
 				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' },
 				{ name: 'Watch Demo', route: '/demo', type: 'route' }
 			],
-			hasScrolled: false
+			hasScrolled: false,
+			currentRoute: ''
 		};
 	},
 	mounted() {
@@ -130,6 +138,10 @@ export default {
 		},
 		handleScroll() {
 			this.$route.name == 'blog' || window.scrollY > 50 ? (this.hasScrolled = true) : (this.hasScrolled = false);
+		},
+		closeDropdown(e) {
+			e.stopPropagation();
+			this.currentRoute = '';
 		}
 	},
 	created() {
