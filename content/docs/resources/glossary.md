@@ -69,10 +69,6 @@ A replay attack occurs when an attacker intercepts a valid network payload with 
 3. Generate a signature of the concatenated string using the endpoint secret and your hashing algorithm (e.g `SHA256`)
 4. Compare the newly generated signature with the value in the signature-header, if the signatures match, check the time interval between the timestamp and the current time. In your system, set a tolerance on this time interval to prevent replay attacks.
 
-## Releases
-
-We adopt a time-based release schedule.  A new release is created on the 25th of every month, over the course of the month we ship patches and bug fixes for that release. This is a similar pattern adopted by some open-core companies we like i.e. [Gitlab](https://about.gitlab.com/releases/). Convoy adopts [SemVar v2.0.0](https://semver.org/spec/v2.0.0.html).
-
 ## Rate Limiting Endpoints
 
 While you are guaranteed you'll be able to receive events as fast as possible using convoy, your customers might not be able to handle events coming to their systems at the same rate which might cause a disruption of service on their end.  You can control the number events you want to send to an endpoint by setting a rate limit and a rate limit duration on each endpoint. The default is `5000` in `1m` i.e. 5,000 requests per minute.

@@ -130,7 +130,25 @@
 		]
 	},
 	{
-		"title": "Glossary",
-		"link": "/docs/glossary"
+		"title": "Resources",
+		"showDropdown": false,
+		"children": [
+			{
+				"title": "Glossary",
+				"link": "/docs/resources/glossary"
+			},
+			{
+				"title": "Telemetry",
+				"link": "/docs/resources/telemetry"
+			},
+			{
+				"title": "Release Process",
+				"link": "/docs/resources/release-process"
+			}
+		]
+	},
+	{
+		"title": "FAQ",
+		"link": "/docs/faq"
 	}
 ]
