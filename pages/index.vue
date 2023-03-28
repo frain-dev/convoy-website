@@ -195,14 +195,30 @@
 						<img src="~/assets/images/core.png" alt="group" class="xs:hidden max-w-[866px] desktop:w-full w-5/6 m-auto" />
 						<img src="~/assets/images/groups-img-small.png" class="hidden xs:block m-auto w-5/6" alt="group" />
 						<a
+							v-if="activeTab === 'community'"
 							target="_blank"
-							rel="noopener noreferrer"
-							href="https://dashboard.getconvoy.io/"
+							href="https://github.com/frain-dev/convoy#installation-getting-started"
 							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
 						>
 							Get started for free
 							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 						</a>
+						<nuxt-link
+							v-else-if="activeTab === 'enterprise'"
+							to="/enterprise#requestAccess"
+							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
+						>
+							Get started for free
+							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
+						</nuxt-link>
+						<nuxt-link
+							v-else
+							to="/cloud"
+							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
+						>
+							Get started for free
+							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
+						</nuxt-link>
 					</div>
 				</div>
 			</div>

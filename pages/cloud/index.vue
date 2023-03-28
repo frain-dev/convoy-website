@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<section class="bg-[linear-gradient(77deg,#36317A_-29%,#4A87C5_88%)] footer:py-100px">
-			<div class="max-w-[1350px] m-auto min-h-screen flex footer:flex-wrap justify-between items-center px-20px pt-100px">
+		<section class="bg-[linear-gradient(77deg,#36317A_-29%,#4A87C5_88%)] py-100px desktop:pt-200px desktop:pb-120px" id="home">
+			<div class="max-w-[1350px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
 				<div>
 					<h1 class="text-white-100 text-32 md:text-[56px] md:leading-[80px] max-w-[680px] font-bold footer:text-center">Make Webhooks management our problem, not yours</h1>
 					<p class="text-white-100 max-w-[660px] mx-auto text-18 mobile:text-14 mt-16px mb-40px footer:text-center">
@@ -214,15 +214,23 @@
 			</div>
 		</section>
 
-		<GetStartedSection></GetStartedSection>
+		<section class="px-20px pb-100px desktop:pb-130px">
+			<div class="mt-100px desktop:mt-130px max-w-[1000px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
+				<h1 class="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px max-w-[562px] m-auto">Start sending and receiving webhooks now, risk free</h1>
+				<p class="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">
+					Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time and get started today.
+				</p>
+				<a href="#home" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
+					Join the waitlist
+					<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
+				</a>
+			</div>
+		</section>
 	</div>
 </template>
 <script>
-import GetStartedSection from '~/components/GetStartedSection.vue';
-
 export default {
 	layout: 'home',
-	components: { GetStartedSection },
 	data() {
 		return {
 			cloudFeatures: [

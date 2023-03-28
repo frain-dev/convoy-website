@@ -1,39 +1,38 @@
 <template>
 	<div>
-		<section class="bg-[linear-gradient(180deg,#2C2F3E_0%,#422F41_100%)] footer:py-100px">
-			<div class="max-w-[1350px] m-auto min-h-screen flex footer:flex-wrap justify-between items-center px-20px pt-100px">
+		<section class="bg-[linear-gradient(180deg,#2C2F3E_0%,#422F41_100%)] py-100px desktop:pt-200px desktop:pb-120px mb-100px">
+			<div class="max-w-[1350px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
 				<div>
 					<h1 class="text-white-100 text-32 md:text-[56px] md:leading-[80px] max-w-[680px] font-bold footer:text-center">Open-source Gateway for incoming and outgoing webhooks</h1>
 					<p class="text-white-100 max-w-[660px] text-14 md:text-18 my-16px footer:text-center">
 						Everything you need to manage webhooks in one place with security, reliability and scalability already figured out from day one.
 					</p>
-					<div class="flex footer:justify-center mt-16px">
+					<div class="flex footer:justify-center mt-40px">
 						<a
 							target="_blank"
-							rel="noopener noreferrer"
-							href="https://dashboard.getconvoy.io/signup"
-							class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mb-40px"
+							href="https://github.com/frain-dev/convoy#installation-getting-started"
+							class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px"
 						>
 							Get set up in 3 minutes
 						</a>
 					</div>
 				</div>
 				<div class="md:bg-white-100 md:shadow-[0px_2px_4px_rgba(12,26,75,0.04),0px_4px_20px_-2px_rgba(50,50,71,0.08)] rounded-8px p-20px md:py-40px md:px-60px max-w-[565px] w-full">
-					<div class="hidden md:block rounded-10px max-w-[360px] h-8px bg-[#F5F4F5] my-40px m-auto"></div>
+					<div class="hidden md:block rounded-10px max-w-[360px] h-8px bg-[#F5F4F5] my-30px m-auto"></div>
 					<div class="bg-[#393040] border-[0.5px] border-[#F5F4F5] rounded-4px py-12px px-14px mb-24px flex items-center justify-between text-white-100 text-14" v-for="step of setupSteps" :key="step">
 						<span>$ {{ step }}</span>
 						<button type="button" class="bg-transparent" @click="copyCommand(step)">
 							<img src="~/assets/images/svg/copy-icon.svg" alt="copy icon" />
 						</button>
 					</div>
-					<div class="hidden md:block rounded-10px max-w-[360px] h-8px bg-[#F5F4F5] my-40px m-auto"></div>
-					<div class="hidden md:block rounded-10px max-w-[360px] h-8px bg-[#F5F4F5] my-40px m-auto"></div>
+					<div class="hidden md:block rounded-10px max-w-[360px] h-8px bg-[#F5F4F5] my-30px m-auto"></div>
+					<div class="hidden md:block rounded-10px max-w-[360px] h-8px bg-[#F5F4F5] my-30px m-auto"></div>
 				</div>
 			</div>
 		</section>
 
-		<section class="bg-white-100 px-20px mt-100px desktop:mt-160px">
-			<div class="rounded-[20px] desktop:rounded-[70px] mx-auto bg-[linear-gradient(180deg,#2C2F3E_0%,#422F41_100%)]">
+		<section class="bg-white-100 px-20px desktop:mt-160px">
+			<div class="rounded-[20px] desktop:rounded-[70px] mx-auto bg-[linear-gradient(180deg,#2C2F3E_0%,#422F41_100%)] max-w-[1350px]">
 				<div class="w-full md:bg-[url(~/assets/images/Settings.png)] bg-no-repeat bg-right desktop:bg-contain rounded-[70px] min-h-[200px] py-30px desktop:py-56px px-20px desktop:px-70px">
 					<p class="font-bold text-white-100 text-24 desktop:text-32 max-w-[690px]">Engineering teams that value efficiency use Convoy to manage webhook events.</p>
 
@@ -153,15 +152,27 @@
 			</div>
 		</section>
 
-		<GetStartedSection></GetStartedSection>
+		<section class="px-20px pb-100px desktop:pb-130px">
+			<div class="mt-100px desktop:mt-130px max-w-[1000px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
+				<h1 class="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px max-w-[562px] m-auto">Start sending and receiving webhooks now, risk free</h1>
+				<p class="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">
+					Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time and get started today.
+				</p>
+				<a
+					target="_blank"
+					href="https://github.com/frain-dev/convoy#installation-getting-started"
+					class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit"
+				>
+					Get Started For Free
+					<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
+				</a>
+			</div>
+		</section>
 	</div>
 </template>
 <script>
-import GetStartedSection from '~/components/GetStartedSection.vue';
-
 export default {
 	layout: 'home',
-	components: { GetStartedSection },
 	data() {
 		return {
 			communityFeatures: [

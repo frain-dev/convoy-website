@@ -1,21 +1,14 @@
 <template>
 	<div>
 		<section class="bg-[linear-gradient(248deg,#32587D_14%,#0f2a44f5_88%)]">
-			<div class="max-w-[1280px] m-auto min-h-screen flex footer:flex-wrap justify-between items-center px-20px pt-100px">
+			<div class="max-w-[1280px] m-auto flex footer:flex-wrap justify-between items-center px-20px desktop:pt-240px desktop:pb-120px">
 				<div>
 					<h1 class="text-white-100 desktop:text-[56px] desktop:leading-[80px] max-w-[580px] font-bold footer:text-center">High-performant Webhooks Gateway</h1>
 					<p class="text-white-100 max-w-[580px] mx-auto text-18 mobile:text-14 mt-16px footer:text-center">
 						Manage billions of both incoming and outgoing webhook events while staying fully compliant by being in total control of your data on-premise.
 					</p>
 					<div class="flex footer:justify-center mt-40px">
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href="https://dashboard.getconvoy.io/signup"
-							class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px"
-						>
-							Get Started
-						</a>
+						<a href="#requestAccess" class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px">Get Started</a>
 					</div>
 				</div>
 				<div>
@@ -24,7 +17,7 @@
 			</div>
 		</section>
 
-		<section class="bg-white-100 py-100px desktop:py-160px">
+		<section class="py-120px desktop:py-160px">
 			<div class="max-w-[1350px] m-auto px-20px">
 				<h1 class="text-[48px] leading-[56px] font-bold text-center">Do more with Convoy Enterprise.</h1>
 
@@ -45,7 +38,7 @@
 			</div>
 		</section>
 
-		<section class="bg-white-100 px-20px">
+		<section class="px-20px">
 			<div class="rounded-[20px] desktop:rounded-[70px] mx-auto bg-[linear-gradient(248deg,#32587D_14%,#0f2a44f5_88%)] max-w-[1350px]">
 				<div class="w-full md:bg-[url(~/assets/images/Settings.png)] bg-no-repeat bg-right desktop:bg-contain rounded-[70px] min-h-[200px] py-30px desktop:py-56px px-20px desktop:px-70px">
 					<p class="font-bold text-white-100 text-24 desktop:text-32 max-w-[690px]">
@@ -80,7 +73,7 @@
 			</div>
 		</section>
 
-		<section class="bg-white-100 py-80px px-20px">
+		<section class="bg-white-100 py-100px px-20px" id="requestAccess">
 			<div class="max-w-[1350px] m-auto flex flex-wrap items-center justify-between">
 				<div>
 					<h1 class="font-bold text-32 max-w-[480px] mb-60px">Enterprise-ready Webhooks Gateway</h1>
@@ -141,16 +134,24 @@
 			</div>
 		</section>
 
-		<GetStartedSection></GetStartedSection>
+		<section class="px-20px pb-100px desktop:pb-130px">
+			<div class="mt-100px desktop:mt-130px max-w-[1000px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
+				<h1 class="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px max-w-[562px] m-auto">Start sending and receiving webhooks now, risk free</h1>
+				<p class="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">
+					Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time and get started today.
+				</p>
+				<a href="#requestAccess" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
+					Join the waitlist
+					<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
+				</a>
+			</div>
+		</section>
 	</div>
 </template>
 
 <script>
-import GetStartedSection from '~/components/GetStartedSection.vue';
-
 export default {
 	layout: 'home',
-	components: { GetStartedSection },
 	data() {
 		return {
 			enterpriseFeatures: [
