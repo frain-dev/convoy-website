@@ -62,11 +62,11 @@
 
 					<li class="py-14px px-20px nav-bar-break:p-0">
 						<a
-							href="https://dashboard.getconvoy.io/login"
+							href="https://github.com/frain-dev/convoy#installation-getting-started"
 							target="_blank"
 							class="nav-bar-break:py-8px nav-bar-break:px-24px text-14 font-medium rounded-8px nav-bar-break:bg-primary-100 nav-bar-break:text-white-100 text-primary-100 flex items-center"
 						>
-							Login
+							Get Started
 						</a>
 					</li>
 
