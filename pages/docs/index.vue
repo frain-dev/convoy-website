@@ -16,7 +16,7 @@
 						We've put together a short easy to follow steps to get started with deploying Convoy to your environment and sending out webhook events in few minutes.
 					</p>
 					<div class="mb-40px">
-						<nuxt-link to="/docs/overview" class="flex items-center text-primary-100">
+						<nuxt-link to="/docs/introduction" class="flex items-center text-primary-100">
 							Read more
 							<img src="~/assets/images/arrow-circle-right.svg" class="ml-10px" alt="arrow right" />
 						</nuxt-link>
