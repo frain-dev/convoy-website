@@ -4,19 +4,15 @@
 		"link": "/docs/introduction"
 	},
 	{
-		"title": "Overview",
-		"link": "/docs/overview"
-	},
-	{
 		"title": "Getting started",
 		"showDropdown": false,
 		"children": [
 			{
-				"title": "Sending your first webhook event with Convoy",
+				"title": "Send your first webhook event",
 				"link": "/docs/getting-started/sending-webhook-example"
 			},
 			{
-				"title": "Receiving your first webhook event with Convoy",
+				"title": "Receive your first webhook event",
 				"link": "/docs/getting-started/receiving-webhook-example"
 			}
 		]

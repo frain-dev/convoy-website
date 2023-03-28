@@ -1,11 +1,11 @@
 ---
-title: Receiving Your First Webhook Event with Convoy.
+title: Receive Your First Webhook Event
 description: 'Receiving your first webhook event with Convoy via SDK and API'
 id: receiving-webhook-example
 order: 3
 ---
 
-# Receiving Your First Webhook Event With Convoy
+# Receive Your First Webhook Event
 In this guide, you'll learn how to receive your first webhook event with Convoy.
 
 ## Prerequisites

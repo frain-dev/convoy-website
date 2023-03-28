@@ -7,7 +7,7 @@ order: 1
 
 # Client CLI
 
-The Client CLI provides functionality that hooks into the server side event streaming for easy webhook debugging on your local machine.
+The Client CLI is our client-side command-line tool used to debug webhook events locally. With it, users can stream events from a Convoy server to their local server to debug events failing in production.
 
 ## Installing the Client CLI
 
