@@ -47,12 +47,20 @@
 						</p>
 						<button class="border-none bg-none">
 							<a
+								v-if="index === 0"
 								:href="plan.link"
 								target="_blank"
 								class="bg-primary-100 text-white-100 py-16px px-26px rounded-10px mt-22px flex items-center shadow-pricing-button transition-all duration-300 hover:shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)]"
 							>
-								{{ index === 3 ? 'Contact Us' : 'Get Started' }}
+								Get Started
 							</a>
+							<nuxt-link
+								v-else
+								:to="plan.link"
+								class="bg-primary-100 text-white-100 py-16px px-26px rounded-10px mt-22px flex items-center shadow-pricing-button transition-all duration-300 hover:shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)]"
+							>
+								Get Started
+							</nuxt-link>
 						</button>
 					</div>
 				</li>
@@ -199,7 +207,7 @@ export default {
 					description: 'This is a perfect plan for startups',
 					price: '$60',
 					frequency: '/monthly',
-					link: 'https://dashboard.getconvoy.io/signup',
+					link: '/cloud',
 					features: ['Send up to 1.5m events, retries are free', 'Access for unlimited users', 'Data retention for up to 30 days', 'Basic Role-Based Access Control', 'Priority developer support']
 				},
 				{
@@ -208,7 +216,7 @@ export default {
 					description: 'For users who want to do more',
 					price: '$700',
 					frequency: '/monthly',
-					link: 'https://dashboard.getconvoy.io/signup',
+					link: '/cloud',
 					features: ['Send up to 20m events, retries are free', 'Access for unlimited users', 'Data retention for up to 3 months', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
 				},
 				{

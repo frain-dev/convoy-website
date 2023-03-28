@@ -3,7 +3,7 @@
 		<section class="bg-[linear-gradient(248deg,#32587D_14%,#0f2a44f5_88%)] pt-200px pb-100px desktop:pt-200px desktop:pb-120px">
 			<div class="max-w-[1280px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
 				<div>
-					<h1 class="text-white-100 desktop:text-[56px] desktop:leading-[80px] max-w-[580px] font-bold footer:text-center">High-performant Webhooks Gateway</h1>
+					<h1 class="text-white-100 desktop:text-[56px] desktop:leading-[80px] max-w-[580px] font-bold footer:text-center">High-performance Webhooks Gateway</h1>
 					<p class="text-white-100 max-w-[580px] mx-auto text-18 mobile:text-14 mt-16px footer:text-center">
 						Manage billions of both incoming and outgoing webhook events while staying fully compliant by being in total control of your data on-premise.
 					</p>
