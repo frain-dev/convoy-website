@@ -131,7 +131,7 @@
 								target="_blank"
 								rel="noopener noreferrer"
 								href="https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email"
-								class="flex items-center py-12px desktop:py-16px px-20px desktop:px-32px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-20px xs:mr-0 shadow-sm"
+								class="flex items-center py-12px desktop:py-16px px-20px desktop:px-32px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-20px shadow-sm"
 							>
 								Join our Slack
 								<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right icon" />
