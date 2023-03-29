@@ -47,7 +47,12 @@ We wrote a full blog post on how to get started with our new cli [here](https://
 
 ### Improved Dashboard
 
-In previous releases, several aspects of our product experience wasn’t intuitive enough for our users. In this release, we worked to rethink several processes especially our onboarding where we experienced significant drop-offs.  
+In previous releases, several aspects of our product experience wasn’t intuitive enough for our users. In this release, we worked hard to rethink several pages including
+
+1. Our onboarding pages, it included several steps that weren't quite necessary; this created significant confusion and user drop-off. In this release, we've eliminated redundant steps in the onboarding process.
+
+2. Several forms had redundant fields that weren't necessary to the function. E.g. Endpoint description. In this release, we did a complete audit of our forms and improved the experience all-round. 
+
 
 ### What’s Next?
 
