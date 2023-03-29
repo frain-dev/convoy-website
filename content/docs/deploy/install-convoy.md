@@ -11,18 +11,17 @@ Convoy is made up for several components and a few third-party dependencies. To 
 ## Requirements
 - Docker 20.10.11+
 - Compose 1.29.2+
-- Linux Machine. MacBook and Windows are currently not supported.
 
-## Install Convoy
-Run the script below and follow the prompt
+## Deploy Locally
 ```bash[Bash]
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/frain-dev/convoy/main/deploy/vm-deploy.sh)"
-```
+# Get the code
+$ git clone https://github.com/frain-dev/convoy.git
 
-### Upgrading
-To upgrade to a new instance run the script below and follow the prompt.
-```bash[Bash]
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/frain-dev/convoy/main/deploy/vm-upgrade.sh)"
+# Go to the Convoy folder
+$ cd convoy
+
+# Start Services
+$ docker compose -f configs/local/docker-compose.yml up
 ```
 
 ## Default Credentials
