@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<section>
-			<div class="max-w-[1200px] min-h-[500px] mobile:min-h-[500px] desktop:min-h-[500px] w-full m-auto px-20px pt-200px">
-				<div class="bg-primary-500 rounded-8px w-fit m-auto flex flex-row mb-42px">
+			<div class="max-w-[1200px] min-h-[500px] mobile:min-h-[500px] desktop:min-h-[500px] w-full m-auto px-20px pt-160px pb-80px">
+				<div class="bg-primary-500 rounded-8px w-fit m-auto flex flex-row mb-36px">
 					<li class="list-none" v-for="tab of tabs" :key="tab.id">
 						<button
 							class="rounded-6px py-12px px-8px desktop:px-60px min-w-[129px] desktop:min-w-[260px] transition-all duration-300"
@@ -14,10 +14,10 @@
 					</li>
 				</div>
 
-				<h1 class="text-center font-bold text-32 desktop:text-[56px] desktop:leading-[80px] mb-22px max-w-[1080px] m-auto">
-					{{ activeTab === 'self' ? 'A Self-Hosted, Enterprise edition that meets your data and security requirements.' : 'A fully managed Convoy webhooks-as-a-service for your team.' }}
+				<h1 class="text-center font-bold text-32 desktop:text-[56px] desktop:leading-[80px] mb-16px max-w-[1080px] m-auto">
+					{{ activeTab === 'self' ? 'A Self-Hosted edition that meets your data and security requirements.' : 'A fully managed Convoy webhooks-as-a-service for your team.' }}
 				</h1>
-				<p class="text-center text-18 mb-100px">
+				<p class="text-center text-18">
 					{{
 						activeTab === 'self'
 							? 'All the tools you need to take control and manage your webhook events infrastructure at scale'
@@ -27,9 +27,9 @@
 			</div>
 		</section>
 
-		<section v-if="activeTab === 'self'" class="bg-white-100 py-100px">
+		<section v-if="activeTab === 'self'" class="bg-white-100 pb-120px">
 			<div class="max-w-[1210px] mx-auto px-20px grid gird-cols-1 desktop:grid-cols-2 gap-10 md:gap-20">
-				<div class="bg-[linear-gradient(77deg,#36317A_-29%,#4A87C5_88%)] rounded-10px p-40px">
+				<div class="bg-[linear-gradient(77deg,#36317A_-29%,#4A87C5_88%)] rounded-10px px-14px py-30px desktop:p-40px">
 					<div class="bg-white-100 rounded-10px px-30px py-40px mb-40px">
 						<div class="bg-primary-500 rounded-[40px] mx-auto w-fit py-10px px-20px flex items-center text-14 mb-12px">
 							<div class="mr-16px w-24px h-24px rounded-50% bg-success-100 flex justify-center items-center">
@@ -54,7 +54,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="bg-[linear-gradient(248deg,#32587D_14%,#0f2a44f5_88%)] rounded-10px p-40px">
+				<div class="bg-[linear-gradient(248deg,#32587D_14%,#0f2a44f5_88%)] rounded-10px px-14px py-30px desktop:p-40px">
 					<div class="bg-white-100 rounded-10px px-30px py-40px mb-40px">
 						<div class="bg-primary-500 rounded-[40px] mx-auto w-fit py-10px px-20px flex items-center text-14 mb-12px">
 							<div class="mr-16px w-24px h-24px rounded-50% bg-success-100 flex justify-center items-center">
@@ -84,11 +84,11 @@
 			</div>
 		</section>
 
-		<section class="py-100px desktop:pb-160px px-20px" v-else>
+		<section class="pb-100px desktop:pb-160px px-20px" v-else>
 			<div
 				class="bg-white-100 shadow-[0px_2px_4px_rgba(12,26,75,0.04),0px_4px_20px_-2px_rgba(50,50,71,0.08)] rounded-8px p-30px desktop:pt-40px desktop:pb-70px desktop:px-60px max-w-[805px] mx-auto w-full border border-primary-200"
 			>
-				<p class="font-semibold text-18 mb-42px">Join the private waitlist</p>
+				<p class="font-semibold text-18 mb-32px">Join the private waitlist</p>
 				<form @submit.prevent="requestAccess()">
 					<div class="grid grid-cols-2 gap-4">
 						<div>
@@ -219,6 +219,27 @@
 			</div>
 		</section>
 
+		<section class="px-20px py-60px desktop:py-100px">
+			<p class="text-center text-16 font-semibold mb-60px desktop:mb-90px">What people are saying about Convoy...</p>
+			<div class="px-30px flex items-start flex-nowrap gap-10 overflow-x-auto no-scrollbar justify-center">
+				<div class="bg-white-100 rounded-10px p-26px min-h-[200px] max-w-[300px] min-w-[300px]" v-for="(testimonial, index) in testimonials" :key="testimonial.author.twitter">
+					<div class="flex items-center justify-between">
+						<div class="flex items-center">
+							<img :src="require(`~/assets/images/twitter-user${index + 1}.jpeg`)" alt="avatar icon" class="mr-10px w-40px rounded-50%" />
+							<div>
+								<p class="text-12 font-medium text-grey-80">{{ testimonial.author.name }}</p>
+								<p class="text-10 text-grey-40">@{{ testimonial.author.twitter }}</p>
+							</div>
+						</div>
+						<div>
+							<img src="~/assets/images/twitter-logo-blue.svg" alt="twitter icon" />
+						</div>
+					</div>
+					<div class="mt-6px testimonial" v-html="testimonial.html"></div>
+				</div>
+			</div>
+		</section>
+
 		<section class="questions py-46px desktop:py-80px px-20px">
 			<h1 class="desktop:text-center text-grey-100 font-bold mb-50px desktop:mb-76px">Questions and Answers</h1>
 			<div class="max-w-[1000px] m-auto">
@@ -245,27 +266,6 @@
 							</p>
 						</div>
 					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="px-20px py-60px desktop:py-100px">
-			<p class="text-center text-16 font-semibold mb-60px desktop:mb-90px">What people are saying about Convoy...</p>
-			<div class="px-30px flex items-start flex-nowrap gap-10 overflow-x-auto no-scrollbar justify-center">
-				<div class="max-w-[300px] min-w-[300px]" v-for="(testimonial, index) in testimonials" :key="testimonial.author.twitter">
-					<div class="flex items-center justify-between border-dashed border-l border-l-primary-400 pl-30px">
-						<div class="flex items-center">
-							<img :src="require(`~/assets/images/twitter-user${index + 1}.jpeg`)" alt="avatar icon" class="mr-10px w-40px rounded-50%" />
-							<div>
-								<p class="text-12 font-medium text-grey-80">{{ testimonial.author.name }}</p>
-								<p class="text-10 text-grey-40">@{{ testimonial.author.twitter }}</p>
-							</div>
-						</div>
-						<div>
-							<img src="~/assets/images/twitter-logo-blue.svg" alt="twitter icon" />
-						</div>
-					</div>
-					<div class="border-dashed border-l border-l-primary-100 pl-30px mt-6px testimonial" v-html="testimonial.html"></div>
 				</div>
 			</div>
 		</section>
