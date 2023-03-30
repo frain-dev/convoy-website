@@ -5,7 +5,7 @@
 				We are backed by
 				<img src="~/assets/images/y-combinator.svg" class="ml-16px w-24px h-24px" alt="y-combinator" />
 			</div>
-			<h1 class="text-center desktop:text-[56px] desktop:leading-[80px] font-bold">Reliable Webhooks Gateway for</h1>
+			<h1 class="text-center desktop:text-[56px] desktop:leading-[80px] font-bold">Open-source Webhooks Gateway for</h1>
 			<h1 class="text-center desktop:text-[56px] desktop:leading-[80px] font-bold text-primary-100">Efficient Engineers</h1>
 			<p class="text-center max-w-[1062px] mx-auto text-18 mobile:text-14 mt-16px">
 				Securely Send, Receive and Manage millions of Webhooks Reliably with robust support for Retries, Rate Limiting, Static IPs, Circuit Breaking, Rolling Secrets and more.
