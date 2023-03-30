@@ -14,8 +14,8 @@
 					</li>
 				</div>
 
-				<h1 class="text-center font-bold text-32 desktop:text-[56px] desktop:leading-[80px] mb-16px max-w-[1080px] m-auto">
-					{{ activeTab === 'self' ? 'A Self-Hosted edition that meets your data and security requirements.' : 'A fully managed Convoy webhooks-as-a-service for your team.' }}
+				<h1 class="text-center font-bold text-32 desktop:text-[42px] desktop:leading-[48px] mb-16px max-w-[1020px] m-auto">
+					{{ activeTab === 'self' ? 'A Self-Hosted edition that meets your data and security requirements.' : 'Convoy webhooks-as-a-service, fully managed for your team.' }}
 				</h1>
 				<p class="text-center text-18">
 					{{
@@ -37,7 +37,7 @@
 							</div>
 							Self-hosted
 						</div>
-						<h1 class="text-26 md:text-32 mb-64px font-bold text-center">Free forever</h1>
+						<h1 class="text-26 md:text-24 mb-64px font-semibold text-center">Free forever</h1>
 						<nuxt-link
 							to="/enterprise#requestAccess"
 							class="bg-primary-100 shadow-sm text-white-100 whitespace-nowrap text-12 desktop:text-16 flex justify-center items-center py-12px px-24px rounded-8px mt-40px w-full"
@@ -47,7 +47,7 @@
 						</nuxt-link>
 					</div>
 					<div class="text-grey-20">
-						<h2 class="font-bold mb-20px">Community</h2>
+						<h2 class="font-semibold mb-20px">Community</h2>
 						<div class="flex items-start mb-20px" v-for="feature in communityFeatures" :key="feature">
 							<img src="~/assets/images/svg/light-lightening.svg" alt="lightening" class="mr-18px" />
 							<p class="text-18 font-light mobile:text-14 md:max-w-[542px]">{{ feature }}</p>
@@ -62,7 +62,7 @@
 							</div>
 							Self-hosted
 						</div>
-						<h1 class="text-26 md:text-32 mb-64px font-bold text-center">Starting at $1000/month</h1>
+						<h1 class="text-26 md:text-24 mb-64px font-semibold text-center">Starting at $1000/month</h1>
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
@@ -74,7 +74,7 @@
 						</a>
 					</div>
 					<div class="text-white-100">
-						<h2 class="font-bold mb-20px">Enterprise</h2>
+						<h2 class="font-semibold mb-20px">Enterprise</h2>
 						<div class="flex items-start mb-20px" v-for="feature in enterpriseFeatures" :key="feature">
 							<img src="~/assets/images/svg/light-lightening.svg" alt="lightening" class="mr-18px" />
 							<p class="text-18 font-light mobile:text-14 md:max-w-[542px]">{{ feature }}</p>
