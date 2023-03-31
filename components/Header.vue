@@ -49,10 +49,7 @@
 									<use xlink:href="#angle-down-icon"></use>
 								</svg>
 							</a>
-							<div
-								class="absolute top-[100%] min-w-[174px] w-full bg-white-100 rounded-10px shadow-dropdown z-10 transition-all ease-in-out duration-300 h-fit"
-								v-if="currentRoute === link.name"
-							>
+							<div class="absolute top-[100%] min-w-[174px] w-full bg-white-100 rounded-10px shadow-dropdown z-10 transition-all ease-in-out duration-300 h-fit" v-if="currentRoute === link.name">
 								<ul class="pl-20px pb-20px">
 									<li class="py-10px pr-20px border-b border-b-grey-20" v-for="subRoute in link.children" :key="subRoute.name" @click="closeDropdown($event)">
 										<nuxt-link class="text-12 text-grey-40 transition-all duration-300 hover:text-black" :to="subRoute.route">{{ subRoute.name }}</nuxt-link>
@@ -89,7 +86,7 @@
 			:class="showMenu ? 'pointer-events-all opacity-100 z-[2]' : 'pointer-events-none opacity-0'"
 			@click="showMenu = !showMenu"
 		></div>
-		<div class="fixed w-screen h-screen top-0 left 0" v-if="currentRoute === 'Products'" @click="currentRoute = ''"></div>
+		<div class="fixed w-screen h-screen top-0 left 0" v-if="currentRoute === 'Products' || currentRoute === 'Resources'" @click="currentRoute = ''"></div>
 	</header>
 </template>
 
