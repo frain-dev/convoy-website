@@ -313,7 +313,7 @@ export default {
 			newFeatures: [
 				{
 					img: 'send',
-					title: 'Send and Recieve webhooks',
+					title: 'Send and Receive webhooks',
 					body: 'You can both publish and receive millions of Webhooks events from any provider. Both API providers and API consumers can benefit from using Convoy',
 					featureImg: 'send-and-receive-webhooks'
 				},

@@ -419,24 +419,23 @@ export default {
 				{ label: 'Cloud', id: 'cloud' }
 			],
 			communityFeatures: [
-				'Send or Receive up to 150,000 events',
-				'Retries are free',
-				' Access with up to 2 users',
-				'Data retention for up to 3 days',
-				'Open-Source under MPL-2.0 license',
-				'App Portal Links & Static IPs',
-				'Rate Limiting & Circuit Breaking',
-				'Priority Developer Support'
+				'Unlimited Usage (Users, Events etc. )',
+				'Message Broker Integration',
+				'Customer-Facing Dashboards',
+				'Community Support',
+				'Headless API',
+				'Endpoint Management (Retries, Rate Limiting & Basic Circuit Breaking)',
+				'Google SSO (Coming Soon)'
 			],
 			enterpriseFeatures: [
-				'Community + unlimited events',
-				'Access for unlimited users',
+				'All of Community features',
+				'Role-Based Access Controls',
 				'Custom data retention policy',
-				'Detailed Audit Logs',
-				'On-premise Support',
-				'Support for Environments (dev, staging, prod)',
-				'Dedicated Customer Success',
-				'Advanced Role-Based Access Control'
+				'Multiple Environments',
+				'Technical Support with SLAs',
+				'White-Labelled Customer-Facing Dashboards',
+				'Advanced Endpoint Management ( Circuit Breaking & Rate Limiting )',
+				'OIDC & SAML SSO'
 			],
 			activeTab: 'self',
 			requestForm: {
