@@ -30,6 +30,7 @@
 		<section v-if="activeTab === 'self'" class="bg-white-100 pb-120px">
 			<div class="max-w-[1210px] mx-auto px-20px grid gird-cols-1 desktop:grid-cols-2 gap-10 md:gap-20">
 				<div class="bg-[linear-gradient(77deg,#36317A_-29%,#4A87C5_88%)] rounded-10px px-14px py-30px desktop:p-40px">
+					<h2 class="font-semibold text-center text-white-100 mb-40px">Community</h2>
 					<div class="bg-white-100 rounded-10px px-30px py-40px mb-40px">
 						<div class="bg-primary-500 rounded-[40px] mx-auto w-fit py-10px px-20px flex items-center text-14 mb-12px">
 							<div class="mr-16px w-24px h-24px rounded-50% bg-success-100 flex justify-center items-center">
@@ -47,7 +48,6 @@
 						</nuxt-link>
 					</div>
 					<div class="text-grey-20">
-						<h2 class="font-semibold mb-20px">Community</h2>
 						<div class="flex items-start mb-20px" v-for="feature in communityFeatures" :key="feature">
 							<img src="~/assets/images/svg/light-lightening.svg" alt="lightening" class="mr-18px" />
 							<p class="text-18 font-light mobile:text-14 md:max-w-[542px]">{{ feature }}</p>
@@ -55,6 +55,7 @@
 					</div>
 				</div>
 				<div class="bg-[linear-gradient(248deg,#32587D_14%,#0f2a44f5_88%)] rounded-10px px-14px py-30px desktop:p-40px">
+					<h2 class="font-semibold text-center text-white-100 mb-40px">Enterprise</h2>
 					<div class="bg-white-100 rounded-10px px-30px py-40px mb-40px">
 						<div class="bg-primary-500 rounded-[40px] mx-auto w-fit py-10px px-20px flex items-center text-14 mb-12px">
 							<div class="mr-16px w-24px h-24px rounded-50% bg-success-100 flex justify-center items-center">
@@ -74,7 +75,6 @@
 						</a>
 					</div>
 					<div class="text-white-100">
-						<h2 class="font-semibold mb-20px">Enterprise</h2>
 						<div class="flex items-start mb-20px" v-for="feature in enterpriseFeatures" :key="feature">
 							<img src="~/assets/images/svg/light-lightening.svg" alt="lightening" class="mr-18px" />
 							<p class="text-18 font-light mobile:text-14 md:max-w-[542px]">{{ feature }}</p>
@@ -144,67 +144,6 @@
 				</form>
 			</div>
 		</section>
-
-		<!-- <section class="px-50px mt-104px">
-			<ul class="grid grid-cols-[repeat(auto-fill,minmax(270px,_1fr))] max-w-[1200px] m-auto gap-x-30px gap-y-40px">
-				<li v-for="(plan, index) in plans" :key="index">
-					<div
-						class="pl-20px border-dashed border-l mb-22px"
-						:class="{ 'border-l-primary-400': index == 0, 'border-l-success-400': index == 1, 'border-l-warning-400': index == 2, 'border-l-danger-400': index == 3 }"
-					>
-						<img :src="require(`~/assets/images/${plan.id}-plan.svg`)" class="mr-16px" alt="plan icon" />
-					</div>
-					<div
-						class="pl-20px border-dashed border-l mb-22px"
-						:class="{ 'border-l-primary-100': index == 0, 'border-l-success-100': index == 1, 'border-l-warning-100': index == 2, 'border-l-danger-100': index == 3 }"
-					>
-						<h2 class="text-grey-100 text-24 font-bold">
-							{{ plan.name }}
-						</h2>
-					</div>
-					<ul
-						class="pl-32px border-dashed border-l"
-						:class="{ 'border-l-primary-400': index == 0, 'border-l-success-400': index == 1, 'border-l-warning-400': index == 2, 'border-l-danger-400': index == 3 }"
-					>
-						<li
-							class="mb-20px pl-8px"
-							:class="`${index == 0 ? 'blue-check' : ''} ${index == 1 ? 'green-check' : ''} ${index == 2 ? 'yellow-check' : ''} ${index == 3 ? 'red-check' : ''} text-14 text-grey-80 font-light`"
-							v-for="(feature, _index) in plan.features"
-							:key="_index"
-						>
-							{{ feature }}
-						</li>
-					</ul>
-					<div
-						class="pl-20px border-dashed border-l mb-32px"
-						:class="{ 'border-l-primary-100': index == 0, 'border-l-success-100': index == 1, 'border-l-warning-100': index == 2, 'border-l-danger-100': index == 3 }"
-					>
-						<p class="text-[48px] font-bold leading-[64px] mobile:text-[36px] mobile:leading-[48px]">
-							{{ plan.price }}
-							<span class="text-18 mobile:text-14 font-medium text-grey-80">{{ plan.frequency }}</span>
-						</p>
-						<button class="border-none bg-none">
-							<a
-								v-if="index === 0"
-								:href="plan.link"
-								target="_blank"
-								class="bg-primary-100 text-white-100 py-16px px-26px rounded-10px mt-22px flex items-center shadow-pricing-button transition-all duration-300 hover:shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)]"
-							>
-								Get Started
-							</a>
-							<nuxt-link
-								v-else
-								:to="plan.link"
-								class="bg-primary-100 text-white-100 py-16px px-26px rounded-10px mt-22px flex items-center shadow-pricing-button transition-all duration-300 hover:shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)]"
-							>
-								Get Started
-							</nuxt-link>
-						</button>
-					</div>
-				</li>
-			</ul>
-		</section> -->
-
 		<section class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] text-white-100 py-36px desktop:py-80px">
 			<div class="desktop:bg-[url(~/assets/images/Frame.png)] bg-no-repeat bg-right bg-contain">
 				<div class="max-w-[1200px] m-auto px-20px">
@@ -428,9 +367,8 @@ export default {
 				'Google SSO (Coming Soon)'
 			],
 			enterpriseFeatures: [
-				'All of Community features',
+				'Everything in community',
 				'Role-Based Access Controls',
-				'Custom data retention policy',
 				'Multiple Environments',
 				'Technical Support with SLAs',
 				'White-Labelled Customer-Facing Dashboards',
