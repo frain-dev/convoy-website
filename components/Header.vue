@@ -38,14 +38,19 @@
 						:key="link.name"
 						@click="currentRoute = link.name"
 					>
-						<nuxt-link class="text-14 text-grey-40 font-medium transition-all duration-300 hover:text-black" v-if="link.type === 'route'" :to="link.route">{{ link.name }}</nuxt-link>
+						<nuxt-link class="text-14 text-grey-40 font-medium transition-all duration-300 hover:text-black" exact-active-class="text-primary-100" v-if="link.type === 'route'" :to="link.route">
+							{{ link.name }}
+						</nuxt-link>
 						<a class="text-14 text-grey-40 font-medium transition-all duration-300 hover:text-black" v-else-if="link.type === 'link'" target="_blank" rel="noopener noreferrer" :href="link.route">
 							{{ link.name }}
 						</a>
 						<template v-else>
-							<a class="text-14 text-grey-40 font-medium flex items-center transition-all duration-300 hover:text-black hover:cursor-pointer group">
+							<a
+								class="text-14 font-medium flex items-center transition-all duration-300 hover:text-black hover:cursor-pointer group"
+								:class="isChildRouteActive(link.name) ? 'text-primary-100' : 'text-grey-40'"
+							>
 								{{ link.name }}
-								<svg width="16" height="16" class="fill-grey-40 transition-all duration-300 group-hover:fill-black">
+								<svg width="16" height="16" class="transition-all duration-300 group-hover:fill-black" :class="isChildRouteActive(link.name) ? 'fill-primary-100' : 'fill-grey-40 '">
 									<use xlink:href="#angle-down-icon"></use>
 								</svg>
 							</a>
@@ -141,6 +146,11 @@ export default {
 		closeDropdown(e) {
 			e.stopPropagation();
 			this.currentRoute = '';
+		},
+		isChildRouteActive(parentRoute) {
+			const childrenRoutes = this.menuItems.find(item => item.name === parentRoute)?.children;
+
+			return childrenRoutes?.some(route => this.$route.path.includes(route.route));
 		}
 	},
 	created() {
