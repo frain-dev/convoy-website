@@ -27,7 +27,8 @@ module.exports = {
 				default: '0px 2px 4px rgba(12, 26, 75, 0.04), 0px 4px 20px -2px rgba(50, 50, 71, 0.08)',
 				card: '40px 44px 81px rgba(111, 118, 138, 0.08)',
 				nav: 'inset 0px -3px 8px rgba(255, 255, 255, 0.07);',
-				'pricing-button': '0px 1px 1px rgba(22, 29, 37, 0.1), inset 0px 2px 0px rgba(255, 255, 255, 0.06);'
+				'pricing-button': '0px 1px 1px rgba(22, 29, 37, 0.1), inset 0px 2px 0px rgba(255, 255, 255, 0.06);',
+				dropdown: '0px 8px 16px rgba(12, 26, 75, 0.1), 0px 20px 24px rgba(20, 37, 63, 0.06)'
 			},
 			fontFamily: {
 				menlo: ['Menlo Regular', ...defaultTheme.fontFamily.sans],

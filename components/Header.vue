@@ -1,7 +1,7 @@
 <template>
 	<header>
 		<nav
-			class="w-full m-auto px-20px pt-60px pb-20px z-50 fixed left-[50%] -translate-x-1/2 translate-y-0 nav-bar-break:pt-50px nav-bar-break:pb-12px transition-all duration-300 bg-white-100 shadow-[inset_0px_-3px_8px_rgba(255,255,255,0.07)] backdrop-blur-[36]"
+			class="w-full m-auto px-20px pt-60px pb-20px z-50 fixed left-[50%] -translate-x-1/2 translate-y-0 nav-bar-break:pt-50px nav-bar-break:pb-12px transition-all duration-300 bg-white-100 shadow-nav backdrop-blur-[18]"
 		>
 			<section class="fixed top-0 left-0 bg-primary-100 w-full h-40px py-8px px-12px flex items-center justify-center font-medium text-12 text-white-100 nav-bar-break:text-14">
 				<span>Give us a star on GitHub</span>
@@ -38,22 +38,24 @@
 						:key="link.name"
 						@click="currentRoute = link.name"
 					>
-						<nuxt-link class="text-14" v-if="link.type === 'route'" :to="link.route">{{ link.name }}</nuxt-link>
-						<a class="text-14" v-else-if="link.type === 'link'" target="_blank" rel="noopener noreferrer" :href="link.route">{{ link.name }}</a>
+						<nuxt-link class="text-14 text-grey-40 font-medium transition-all duration-300 hover:text-black" v-if="link.type === 'route'" :to="link.route">{{ link.name }}</nuxt-link>
+						<a class="text-14 text-grey-40 font-medium transition-all duration-300 hover:text-black" v-else-if="link.type === 'link'" target="_blank" rel="noopener noreferrer" :href="link.route">
+							{{ link.name }}
+						</a>
 						<template v-else>
-							<a class="text-14 flex items-center hover:cursor-pointer">
+							<a class="text-14 text-grey-40 font-medium flex items-center transition-all duration-300 hover:text-black hover:cursor-pointer group">
 								{{ link.name }}
-								<svg width="16" height="16" class="fill-black">
+								<svg width="16" height="16" class="fill-grey-40 transition-all duration-300 group-hover:fill-black">
 									<use xlink:href="#angle-down-icon"></use>
 								</svg>
 							</a>
 							<div
-								class="absolute top-[100%] min-w-[200px] w-full bg-white-100 border border-grey-10 rounded-12px shadow-default z-10 transition-all ease-in-out duration-300 h-fit"
+								class="absolute top-[100%] min-w-[174px] w-full bg-white-100 rounded-10px shadow-dropdown z-10 transition-all ease-in-out duration-300 h-fit"
 								v-if="currentRoute === link.name"
 							>
-								<ul>
-									<li class="py-14px px-20px border-b border-b-grey-10 last-of-type:border-none" v-for="subRoute in link.children" :key="subRoute.name" @click="closeDropdown($event)">
-										<nuxt-link class="text-14" :to="subRoute.route">{{ subRoute.name }}</nuxt-link>
+								<ul class="pl-20px pb-20px">
+									<li class="py-10px pr-20px border-b border-b-grey-20" v-for="subRoute in link.children" :key="subRoute.name" @click="closeDropdown($event)">
+										<nuxt-link class="text-12 text-grey-40 transition-all duration-300 hover:text-black" :to="subRoute.route">{{ subRoute.name }}</nuxt-link>
 									</li>
 								</ul>
 							</div>
