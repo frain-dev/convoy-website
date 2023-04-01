@@ -50,20 +50,40 @@
 					<ul class="flex items-center list-none mt-38px">
 						<li class="mr-12px">
 							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
-								<img src="~/assets/images/buycoins.svg" alt="buycoins logo" />
+								<img src="~/assets/images/hailify-logo.svg" alt="hailify logo" />
 							</a>
 						</li>
 						<li class="mr-12px">
 							<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
-								<img src="~/assets/images/getwallets.svg" alt="getwallets logo" />
+								<img src="~/assets/images/piggyvest.svg" alt="piggyvest logo" />
 							</a>
 						</li>
 						<li class="mr-12px">
 							<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
+								<img src="~/assets/images/Catlog.svg" alt="dojah logo" />
+							</a>
+						</li>
+						<li class="mr-12px">
+							<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
+								<img src="~/assets/images/payourse.svg" class="mt-4px" alt="termii logo" />
+							</a>
+						</li>
+						<li class="mr-12px hidden desktop:block">
+							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
+								<img src="~/assets/images/buycoins.svg" alt="buycoins logo" />
+							</a>
+						</li>
+						<li class="mr-12px hidden desktop:block">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
+								<img src="~/assets/images/getwallets.svg" alt="getwallets logo" />
+							</a>
+						</li>
+						<li class="mr-12px hidden desktop:block">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
 								<img src="~/assets/images/dojah.svg" alt="dojah logo" />
 							</a>
 						</li>
-						<li class="">
+						<li class="mr-12px hidden desktop:block">
 							<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
 								<img src="~/assets/images/termii.svg" alt="termii logo" />
 							</a>
