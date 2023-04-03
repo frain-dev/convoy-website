@@ -63,16 +63,14 @@
 							</div>
 							Self-hosted
 						</div>
-						<h1 class="text-26 md:text-24 mb-64px font-semibold text-center">Starting at $500/month</h1>
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href="https://github.com/frain-dev/convoy#installation-getting-started"
+						<h1 class="text-26 md:text-24 mb-64px font-semibold text-center">Reach out to us</h1>
+						<button
+							@click="showEnterpriseForm = true"
 							class="bg-primary-100 shadow-sm text-white-100 whitespace-nowrap text-12 desktop:text-16 flex justify-center items-center py-12px px-24px rounded-8px mt-40px w-full"
 						>
-							Get started
+							Contact Sales
 							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
-						</a>
+						</button>
 					</div>
 					<div class="text-white-100">
 						<div class="flex items-start mb-20px" v-for="feature in enterpriseFeatures" :key="feature">
@@ -85,63 +83,8 @@
 		</section>
 
 		<section class="pb-100px desktop:pb-160px px-20px" v-else>
-			<div
-				class="bg-white-100 shadow-[0px_2px_4px_rgba(12,26,75,0.04),0px_4px_20px_-2px_rgba(50,50,71,0.08)] rounded-8px p-30px desktop:pt-40px desktop:pb-70px desktop:px-60px max-w-[805px] mx-auto w-full border border-primary-200"
-			>
-				<p class="font-semibold text-18 mb-32px">Join the private waitlist</p>
-				<form @submit.prevent="requestAccess()">
-					<div class="grid grid-cols-2 gap-6">
-						<div>
-							<label for="firstname" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">First Name</label>
-							<input
-								id="firstname"
-								type="text"
-								class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
-								v-model="requestForm.firstname"
-								placeholder="John"
-								required
-							/>
-						</div>
-						<div>
-							<label for="lastname" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">Last Name</label>
-							<input
-								id="lastname"
-								type="text"
-								class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
-								v-model="requestForm.lastname"
-								placeholder="Doe"
-								required
-							/>
-						</div>
-					</div>
-
-					<label for="org_name" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">Organisation Name</label>
-					<input
-						id="org_name"
-						type="text"
-						class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
-						v-model="requestForm.organisation"
-						placeholder="Kuda"
-						required
-					/>
-
-					<label for="use_case" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">Whats your use case?</label>
-					<select
-						name="use_case"
-						id="use_case"
-						v-model="requestForm.usecase"
-						class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px"
-					>
-						<option v-for="usecase of useCases" :key="usecase" :value="usecase">
-							{{ usecase }}
-						</option>
-					</select>
-					<p class="text-12 text-grey-60 italic font-light mt-10px">Let us know what how you will be using Convoy.</p>
-
-					<button type="submit" :disabled="isSubmitingRequestAccessForm" class="py-16px px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 w-full mt-24px">
-						Sign up for early access
-					</button>
-				</form>
+			<div class="max-w-[805px] mx-auto w-full">
+				<CloudWaitlist></CloudWaitlist>
 			</div>
 		</section>
 		<section class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] text-white-100 py-36px desktop:py-80px">
@@ -224,6 +167,14 @@
 				</a>
 			</div>
 		</section>
+
+		<!-- sales modal  -->
+		<div v-if="showEnterpriseForm" @click="showEnterpriseForm = false" class="fixed h-screen w-screen top-0 right-0 bottom-0 z-50 bg-black bg-opacity-60"></div>
+		<div v-if="showEnterpriseForm" class="fixed w-full shadow z-[60] h-fit top-[50%] left-[50%] -translate-x-2/4 -translate-y-2/4 rounded-[16px] max-w-[600px] mx-auto">
+			<div class="w-full">
+				<EnterpriseWaitlist @requestAccess="showEnterpriseForm = false"></EnterpriseWaitlist>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -383,7 +334,8 @@ export default {
 				organisation: null
 			},
 			useCases: ['Work', 'Personal projects'],
-			isSubmitingRequestAccessForm: false
+			isSubmitingRequestAccessForm: false,
+			showEnterpriseForm: false
 		};
 	},
 	head() {
