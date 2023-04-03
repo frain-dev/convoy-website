@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<section class="bg-[linear-gradient(180deg,#2C2F3E_0%,#422F41_100%)] pt-200px pb-100px desktop:pt-200px desktop:pb-120px mb-100px">
+		<section class="bg-[linear-gradient(180deg,#2C2F3E_0%,#422F41_100%)] pt-200px pb-100px desktop:pt-250px desktop:pb-150px mb-100px">
 			<div class="max-w-[1350px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
 				<div>
 					<h1 class="text-white-100 text-32 md:text-[56px] md:leading-[80px] max-w-[680px] font-bold footer:text-center">Open-source Gateway for incoming and outgoing webhooks</h1>

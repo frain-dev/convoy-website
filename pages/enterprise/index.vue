@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<section class="bg-[linear-gradient(248deg,#32587D_14%,#0f2a44f5_88%)] pt-200px pb-100px desktop:pt-200px desktop:pb-120px">
+		<section class="bg-[linear-gradient(248deg,#32587D_14%,#0f2a44f5_88%)] pt-200px pb-100px desktop:pt-250px desktop:pb-150px">
 			<div class="max-w-[1280px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
 				<div>
 					<h1 class="text-white-100 desktop:text-[56px] desktop:leading-[80px] max-w-[580px] font-bold footer:text-center">High-performance Webhooks Gateway</h1>

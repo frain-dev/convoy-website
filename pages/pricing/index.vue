@@ -90,7 +90,7 @@
 			>
 				<p class="font-semibold text-18 mb-32px">Join the private waitlist</p>
 				<form @submit.prevent="requestAccess()">
-					<div class="grid grid-cols-2 gap-4">
+					<div class="grid grid-cols-2 gap-6">
 						<div>
 							<label for="firstname" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">First Name</label>
 							<input
