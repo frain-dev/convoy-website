@@ -63,7 +63,7 @@
 							</div>
 							Self-hosted
 						</div>
-						<h1 class="text-26 md:text-24 mb-64px font-semibold text-center">Starting at $1000/month</h1>
+						<h1 class="text-26 md:text-24 mb-64px font-semibold text-center">Starting at $500/month</h1>
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
