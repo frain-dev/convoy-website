@@ -38,23 +38,23 @@
 
 					<ul class="flex items-center list-none mt-38px">
 						<li class="mr-12px">
-							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.drivehailify.com/">
 								<img src="~/assets/images/hailify-logo.svg" alt="hailify logo" />
 							</a>
 						</li>
 						<li class="mr-12px">
-							<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.piggyvest.com/">
 								<img src="~/assets/images/piggyvest.svg" alt="piggyvest logo" />
 							</a>
 						</li>
 						<li class="mr-12px">
-							<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
-								<img src="~/assets/images/Catlog.svg" alt="dojah logo" />
+							<a target="_blank" rel="noopener noreferrer" href="https://www.catlog.shop/">
+								<img src="~/assets/images/catlog.svg" alt="catlog logo" />
 							</a>
 						</li>
 						<li class="mr-12px">
-							<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
-								<img src="~/assets/images/payourse.svg" class="mt-4px" alt="termii logo" />
+							<a target="_blank" rel="noopener noreferrer" href="https://www.payourse.com/">
+								<img src="~/assets/images/payourse.svg" class="mt-4px" alt="payourse logo" />
 							</a>
 						</li>
 						<li class="mr-12px hidden desktop:block">

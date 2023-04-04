@@ -8,7 +8,12 @@
 						Manage billions of both incoming and outgoing webhook events while staying fully compliant by being in total control of your data on-premise.
 					</p>
 					<div class="flex footer:justify-center mt-40px">
-						<a href="#requestAccess" class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 text-center mr-24px xs:mr-0 xs:mb-20px xs:w-full">Get Started</a>
+						<a
+							href="#requestAccess"
+							class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 text-center mr-24px xs:mr-0 xs:mb-20px xs:w-full"
+						>
+							Get Started
+						</a>
 					</div>
 				</div>
 				<div>
@@ -49,23 +54,23 @@
 
 					<ul class="flex items-center list-none mt-38px">
 						<li class="mr-12px">
-							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.drivehailify.com/">
 								<img src="~/assets/images/hailify-logo.svg" alt="hailify logo" />
 							</a>
 						</li>
 						<li class="mr-12px">
-							<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.piggyvest.com/">
 								<img src="~/assets/images/piggyvest.svg" alt="piggyvest logo" />
 							</a>
 						</li>
 						<li class="mr-12px">
-							<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
-								<img src="~/assets/images/Catlog.svg" alt="dojah logo" />
+							<a target="_blank" rel="noopener noreferrer" href="https://www.catlog.shop/">
+								<img src="~/assets/images/catlog.svg" alt="catlog logo" />
 							</a>
 						</li>
 						<li class="mr-12px">
-							<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
-								<img src="~/assets/images/payourse.svg" class="mt-4px" alt="termii logo" />
+							<a target="_blank" rel="noopener noreferrer" href="https://www.payourse.com/">
+								<img src="~/assets/images/payourse.svg" class="mt-4px" alt="payourse logo" />
 							</a>
 						</li>
 						<li class="mr-12px hidden desktop:block">
