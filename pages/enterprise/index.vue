@@ -65,7 +65,7 @@
 						</li>
 						<li class="mr-12px">
 							<a target="_blank" rel="noopener noreferrer" href="https://www.catlog.shop/">
-								<img src="~/assets/images/catlog.svg" alt="catlog logo" />
+								<img src="~/assets/images/Catlog.svg" alt="catlog logo" />
 							</a>
 						</li>
 						<li class="mr-12px">
