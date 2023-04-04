@@ -15,14 +15,14 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					href="https://github.com/frain-dev/convoy#installation-getting-started"
-					class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px"
+					class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 text-center font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px xs:w-[90vw]"
 				>
 					Get Started
 				</a>
 
 				<a
 					href="/demo"
-					class="py-12px px-28px text-14 font-medium rounded-8px bg-[linear-gradient(0deg,#F6F7F9_0%,#FFFFFF_100%)] text-primary-100 border border-primary-500 flex items-center text-center"
+					class="py-12px px-28px text-14 font-medium rounded-8px bg-[linear-gradient(0deg,#F6F7F9_0%,#FFFFFF_100%)] text-primary-100 border border-primary-500 flex items-center justify-center text-center xs:w-[90vw]"
 				>
 					<img src="~/assets/images/svg/play-circle.svg" class="mr-10px w-24px h-24px" alt="y-combinator" />
 					Play 2 mins Demo

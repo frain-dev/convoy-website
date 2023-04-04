@@ -46,7 +46,7 @@
 						</a>
 						<template v-else>
 							<a
-								class="text-14 font-medium flex items-center transition-all duration-300 hover:text-black hover:cursor-pointer group"
+								class="text-14 font-medium flex items-center justify-between transition-all duration-300 hover:text-black hover:cursor-pointer group"
 								:class="isChildRouteActive(link.name) ? 'text-primary-100' : 'text-grey-40'"
 							>
 								{{ link.name }}
@@ -54,9 +54,17 @@
 									<use xlink:href="#angle-down-icon"></use>
 								</svg>
 							</a>
-							<div class="absolute top-[100%] min-w-[174px] w-full bg-white-100 rounded-10px shadow-dropdown z-10 transition-all ease-in-out duration-300 h-fit" v-if="currentRoute === link.name">
-								<ul class="pl-20px pb-20px">
-									<li class="py-10px pr-20px border-b border-b-grey-20" v-for="subRoute in link.children" :key="subRoute.name" @click="closeDropdown($event)">
+							<div
+								class="nav-bar-break:absolute nav-bar-break:top-[100%] nav-bar-break:min-w-[174px] w-full bg-white-100 rounded-10px nav-bar-break:shadow-dropdown nav-bar-break:z-10 transition-all ease-in-out duration-300 nav-bar-break:h-fit"
+								v-if="currentRoute === link.name"
+							>
+								<ul class="nav-bar-break:pl-20px nav-bar-break:pb-20px">
+									<li
+										class="py-10px nav-bar-break:pr-20px nav-bar-break:border-b nav-bar-break:border-b-grey-20"
+										v-for="subRoute in link.children"
+										:key="subRoute.name"
+										@click="closeDropdown($event)"
+									>
 										<nuxt-link class="text-12 text-grey-40 transition-all duration-300 hover:text-black" :to="subRoute.route">{{ subRoute.name }}</nuxt-link>
 									</li>
 								</ul>
@@ -146,6 +154,7 @@ export default {
 		closeDropdown(e) {
 			e.stopPropagation();
 			this.currentRoute = '';
+			this.showMenu = false;
 		},
 		isChildRouteActive(parentRoute) {
 			const childrenRoutes = this.menuItems.find(item => item.name === parentRoute)?.children;

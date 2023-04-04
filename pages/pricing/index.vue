@@ -171,7 +171,7 @@
 		<!-- sales modal  -->
 		<div v-if="showEnterpriseForm" @click="showEnterpriseForm = false" class="fixed h-screen w-screen top-0 right-0 bottom-0 z-50 bg-black bg-opacity-60"></div>
 		<div v-if="showEnterpriseForm" class="fixed w-full shadow z-[60] h-fit top-[50%] left-[50%] -translate-x-2/4 -translate-y-2/4 rounded-[16px] max-w-[600px] mx-auto">
-			<div class="w-full">
+			<div class="w-full px-20px">
 				<EnterpriseWaitlist @requestAccess="showEnterpriseForm = false"></EnterpriseWaitlist>
 			</div>
 		</div>

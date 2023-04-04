@@ -8,7 +8,7 @@
 						Manage billions of both incoming and outgoing webhook events while staying fully compliant by being in total control of your data on-premise.
 					</p>
 					<div class="flex footer:justify-center mt-40px">
-						<a href="#requestAccess" class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px">Get Started</a>
+						<a href="#requestAccess" class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 text-center mr-24px xs:mr-0 xs:mb-20px xs:w-full">Get Started</a>
 					</div>
 				</div>
 				<div>

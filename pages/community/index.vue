@@ -11,7 +11,7 @@
 						<a
 							target="_blank"
 							href="https://github.com/frain-dev/convoy#installation-getting-started"
-							class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px"
+							class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 text-center mr-24px xs:mr-0 xs:mb-20px xs:w-full"
 						>
 							Get set up in 3 minutes
 						</a>
@@ -133,7 +133,7 @@
 						<div class="flex justify-end">
 							<button
 								@click="subscribeToNewsletter()"
-								class="flex items-center py-12px desktop:py-16px px-38px desktop:px-42px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 xs:mb-20px shadow-sm"
+								class="flex items-center justify-center py-12px desktop:py-16px px-38px desktop:px-42px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 xs:mb-20px shadow-sm xs:w-full"
 								:disabled="isSubmittingEmailForNewsletter"
 							>
 								{{ subscribeButtonText }}

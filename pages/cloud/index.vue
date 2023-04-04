@@ -145,7 +145,7 @@
 						<div class="flex justify-end">
 							<button
 								@click="subscribeToNewsletter()"
-								class="flex items-center py-12px desktop:py-16px px-38px desktop:px-42px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 xs:mb-20px shadow-sm"
+								class="flex items-center justify-center py-12px desktop:py-16px px-38px desktop:px-42px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 xs:mb-20px shadow-sm xs:w-full"
 								:disabled="isSubmittingEmailForNewsletter"
 							>
 								{{ subscribeButtonText }}
