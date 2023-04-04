@@ -15,14 +15,14 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					href="https://github.com/frain-dev/convoy#installation-getting-started"
-					class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px"
+					class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 text-center font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px xs:w-[90vw]"
 				>
 					Get Started
 				</a>
 
 				<a
 					href="/demo"
-					class="py-12px px-28px text-14 font-medium rounded-8px bg-[linear-gradient(0deg,#F6F7F9_0%,#FFFFFF_100%)] text-primary-100 border border-primary-500 flex items-center text-center"
+					class="py-12px px-28px text-14 font-medium rounded-8px bg-[linear-gradient(0deg,#F6F7F9_0%,#FFFFFF_100%)] text-primary-100 border border-primary-500 flex items-center justify-center text-center xs:w-[90vw]"
 				>
 					<img src="~/assets/images/svg/play-circle.svg" class="mr-10px w-24px h-24px" alt="y-combinator" />
 					Play 2 mins Demo
@@ -40,21 +40,41 @@
 
 				<ul class="flex items-center list-none mt-38px">
 					<li class="mr-12px">
+						<a target="_blank" rel="noopener noreferrer" href="https://www.drivehailify.com/">
+							<img src="~/assets/images/hailify-logo.svg" alt="hailify logo" />
+						</a>
+					</li>
+					<li class="mr-12px">
+						<a target="_blank" rel="noopener noreferrer" href="https://www.piggyvest.com/">
+							<img src="~/assets/images/piggyvest.svg" alt="piggyvest logo" />
+						</a>
+					</li>
+					<li class="mr-12px">
+						<a target="_blank" rel="noopener noreferrer" href="https://www.catlog.shop/">
+							<img src="~/assets/images/Catlog.svg" alt="catlog logo" />
+						</a>
+					</li>
+					<li class="mr-12px">
+						<a target="_blank" rel="noopener noreferrer" href="https://www.payourse.com/">
+							<img src="~/assets/images/payourse.svg" class="mt-4px" alt="payourse logo" />
+						</a>
+					</li>
+					<li class="mr-12px hidden desktop:block">
 						<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
 							<img src="~/assets/images/buycoins.svg" alt="buycoins logo" />
 						</a>
 					</li>
-					<li class="mr-12px">
+					<li class="mr-12px hidden desktop:block">
 						<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
 							<img src="~/assets/images/getwallets.svg" alt="getwallets logo" />
 						</a>
 					</li>
-					<li class="mr-12px">
+					<li class="mr-12px hidden desktop:block">
 						<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
 							<img src="~/assets/images/dojah.svg" alt="dojah logo" />
 						</a>
 					</li>
-					<li class="">
+					<li class="mr-12px hidden desktop:block">
 						<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
 							<img src="~/assets/images/termii.svg" alt="termii logo" />
 						</a>
@@ -313,7 +333,7 @@ export default {
 			newFeatures: [
 				{
 					img: 'send',
-					title: 'Send and Recieve webhooks',
+					title: 'Send and Receive webhooks',
 					body: 'You can both publish and receive millions of Webhooks events from any provider. Both API providers and API consumers can benefit from using Convoy',
 					featureImg: 'send-and-receive-webhooks'
 				},

@@ -8,61 +8,8 @@
 						Reliable Webhooks Gateway with everything you need in one place including multi-region deployment, high availability and autoscaling.
 					</p>
 				</div>
-				<div class="bg-white-100 shadow-[0px_2px_4px_rgba(12,26,75,0.04),0px_4px_20px_-2px_rgba(50,50,71,0.08)] rounded-8px p-30px desktop:py-40px desktop:px-60px max-w-[565px] w-full">
-					<p class="font-semibold text-18 mb-42px">Join the private waitlist</p>
-					<form @submit.prevent="requestAccess()">
-						<div class="grid grid-cols-2 gap-4">
-							<div>
-								<label for="firstname" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">First Name</label>
-								<input
-									id="firstname"
-									type="text"
-									class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
-									v-model="requestForm.firstname"
-									placeholder="John"
-									required
-								/>
-							</div>
-							<div>
-								<label for="lastname" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">Last Name</label>
-								<input
-									id="lastname"
-									type="text"
-									class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
-									v-model="requestForm.lastname"
-									placeholder="Doe"
-									required
-								/>
-							</div>
-						</div>
-
-						<label for="org_name" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">Organisation Name</label>
-						<input
-							id="org_name"
-							type="text"
-							class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
-							v-model="requestForm.organisation"
-							placeholder="Kuda"
-							required
-						/>
-
-						<label for="use_case" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">Whats your use case?</label>
-						<select
-							name="use_case"
-							id="use_case"
-							v-model="requestForm.usecase"
-							class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px"
-						>
-							<option v-for="usecase of useCases" :key="usecase" :value="usecase">
-								{{ usecase }}
-							</option>
-						</select>
-						<p class="text-12 text-grey-60 italic font-light mt-10px">Let us know what how you will be using Convoy.</p>
-
-						<button type="submit" :disabled="isSubmitingRequestAccessForm" class="py-16px px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 w-full mt-24px">
-							Sign up for early access
-						</button>
-					</form>
+				<div class="max-w-[565px]">
+					<CloudWaitlist></CloudWaitlist>
 				</div>
 			</div>
 		</section>
@@ -74,21 +21,41 @@
 
 					<ul class="flex items-center list-none mt-38px">
 						<li class="mr-12px">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.drivehailify.com/">
+								<img src="~/assets/images/hailify-logo.svg" alt="hailify logo" />
+							</a>
+						</li>
+						<li class="mr-12px">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.piggyvest.com/">
+								<img src="~/assets/images/piggyvest.svg" alt="piggyvest logo" />
+							</a>
+						</li>
+						<li class="mr-12px">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.catlog.shop/">
+								<img src="~/assets/images/Catlog.svg" alt="catlog logo" />
+							</a>
+						</li>
+						<li class="mr-12px">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.payourse.com/">
+								<img src="~/assets/images/payourse.svg" class="mt-4px" alt="payourse logo" />
+							</a>
+						</li>
+						<li class="mr-12px hidden desktop:block">
 							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
 								<img src="~/assets/images/buycoins.svg" alt="buycoins logo" />
 							</a>
 						</li>
-						<li class="mr-12px">
+						<li class="mr-12px hidden desktop:block">
 							<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
 								<img src="~/assets/images/getwallets.svg" alt="getwallets logo" />
 							</a>
 						</li>
-						<li class="mr-12px">
+						<li class="mr-12px hidden desktop:block">
 							<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
 								<img src="~/assets/images/dojah.svg" alt="dojah logo" />
 							</a>
 						</li>
-						<li class="">
+						<li class="mr-12px hidden desktop:block">
 							<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
 								<img src="~/assets/images/termii.svg" alt="termii logo" />
 							</a>
@@ -110,15 +77,15 @@
 
 				<div class="flex justify-between flex-wrap gap-6 mt-80px desktop:mt-120px">
 					<div class="desktop:max-w-[340px]">
-						<img src="~/assets/images/everything-you-need.png" class="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" alt="everything-you-need" />
+						<img src="~/assets/images/fully-managed.png" class="mb-16px h-48px rounded-10px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" alt="everything-you-need" />
 						<p class="text-14 desktop:text-20">Fully managed global cloud infrastructure with high availability and resilience baked in.</p>
 					</div>
 					<div class="desktop:max-w-[400px]">
-						<img src="~/assets/images/excellent-rate-limiting.png" class="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(43,214,123,0.2)]" alt="excellent-rate-limiting" />
-						<p class="text-14 desktop:text-20">Stay compliant by choosing the region we host and store your webhooks data.</p>
+						<img src="~/assets/images/stay-compliant.png" class="mb-16px h-48px rounded-10px shadow-[0px_22px_24px_rgba(43,214,123,0.2)]" alt="excellent-rate-limiting" />
+						<p class="text-14 desktop:text-20 max-w-[333px]">Stay compliant by choosing the region we host and store your webhooks data.</p>
 					</div>
 					<div class="desktop:max-w-[340px]">
-						<img src="~/assets/images/transparent-pricing.png" class="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(247,227,109,0.2)]" alt="transparent-pricing" />
+						<img src="~/assets/images/transparent-usage.png" class="mb-16px h-48px rounded-10px shadow-[0px_22px_24px_rgba(247,227,109,0.2)]" alt="transparent-pricing" />
 						<p class="text-14 desktop:text-20">Transparent usage-based pricing, keep costs under control by paying for what you use.</p>
 					</div>
 				</div>
@@ -178,7 +145,7 @@
 						<div class="flex justify-end">
 							<button
 								@click="subscribeToNewsletter()"
-								class="flex items-center py-12px desktop:py-16px px-38px desktop:px-42px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 xs:mb-20px shadow-sm"
+								class="flex items-center justify-center py-12px desktop:py-16px px-38px desktop:px-42px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 xs:mb-20px shadow-sm xs:w-full"
 								:disabled="isSubmittingEmailForNewsletter"
 							>
 								{{ subscribeButtonText }}
@@ -265,35 +232,14 @@ export default {
 					]
 				}
 			],
-			requestForm: {
-				firstname: null,
-				lastname: null,
-				usecase: null,
-				organisation: null
-			},
-			isSubmitingRequestAccessForm: false,
 			isSubmittingEmailForNewsletter: false,
 			activeSlide: true,
 			expandImage: false,
 			subscribeButtonText: 'Subscribe',
-			earlyAccessEmail: '',
-			useCases: ['Work', 'Personal projects']
+			earlyAccessEmail: ''
 		};
 	},
 	methods: {
-		async requestAccess() {
-			this.isSubmitingRequestAccessForm = true;
-			try {
-				const response = await fetch(
-					`https://faas-fra1-afec6ce7.doserverless.co/api/v1/web/fn-8f44e6aa-e5d6-4e31-b781-5080c050bb37/welcome-user/welcome-mail?usecase=${this.requestForm.usecase}&firstname=${this.requestForm.firstname}&lastname=${this.requestForm.lastname}&organisation=${this.requestForm.organisation}&cloud=true`
-				);
-
-				await response.json();
-				this.isSubmitingRequestAccessForm = false;
-			} catch (error) {
-				this.isSubmitingRequestAccessForm = false;
-			}
-		},
 		async subscribeToNewsletter() {
 			this.isSubmittingEmailForNewsletter = true;
 			try {

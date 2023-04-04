@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<section class="bg-[linear-gradient(180deg,#2C2F3E_0%,#422F41_100%)] pt-200px pb-100px desktop:pt-200px desktop:pb-120px mb-100px">
+		<section class="bg-[linear-gradient(180deg,#2C2F3E_0%,#422F41_100%)] pt-200px pb-100px desktop:pt-250px desktop:pb-150px mb-100px">
 			<div class="max-w-[1350px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
 				<div>
 					<h1 class="text-white-100 text-32 md:text-[56px] md:leading-[80px] max-w-[680px] font-bold footer:text-center">Open-source Gateway for incoming and outgoing webhooks</h1>
@@ -11,7 +11,7 @@
 						<a
 							target="_blank"
 							href="https://github.com/frain-dev/convoy#installation-getting-started"
-							class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px"
+							class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 text-center mr-24px xs:mr-0 xs:mb-20px xs:w-full"
 						>
 							Get set up in 3 minutes
 						</a>
@@ -38,21 +38,41 @@
 
 					<ul class="flex items-center list-none mt-38px">
 						<li class="mr-12px">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.drivehailify.com/">
+								<img src="~/assets/images/hailify-logo.svg" alt="hailify logo" />
+							</a>
+						</li>
+						<li class="mr-12px">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.piggyvest.com/">
+								<img src="~/assets/images/piggyvest.svg" alt="piggyvest logo" />
+							</a>
+						</li>
+						<li class="mr-12px">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.catlog.shop/">
+								<img src="~/assets/images/Catlog.svg" alt="catlog logo" />
+							</a>
+						</li>
+						<li class="mr-12px">
+							<a target="_blank" rel="noopener noreferrer" href="https://www.payourse.com/">
+								<img src="~/assets/images/payourse.svg" class="mt-4px" alt="payourse logo" />
+							</a>
+						</li>
+						<li class="mr-12px hidden desktop:block">
 							<a target="_blank" rel="noopener noreferrer" href="https://buycoins.africa/">
 								<img src="~/assets/images/buycoins.svg" alt="buycoins logo" />
 							</a>
 						</li>
-						<li class="mr-12px">
+						<li class="mr-12px hidden desktop:block">
 							<a target="_blank" rel="noopener noreferrer" href="https://www.getwallets.co/">
 								<img src="~/assets/images/getwallets.svg" alt="getwallets logo" />
 							</a>
 						</li>
-						<li class="mr-12px">
+						<li class="mr-12px hidden desktop:block">
 							<a target="_blank" rel="noopener noreferrer" href="https://www.dojah.io/">
 								<img src="~/assets/images/dojah.svg" alt="dojah logo" />
 							</a>
 						</li>
-						<li class="">
+						<li class="mr-12px hidden desktop:block">
 							<a target="_blank" rel="noopener noreferrer" href="https://termii.com/">
 								<img src="~/assets/images/termii.svg" alt="termii logo" />
 							</a>
@@ -113,7 +133,7 @@
 						<div class="flex justify-end">
 							<button
 								@click="subscribeToNewsletter()"
-								class="flex items-center py-12px desktop:py-16px px-38px desktop:px-42px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 xs:mb-20px shadow-sm"
+								class="flex items-center justify-center py-12px desktop:py-16px px-38px desktop:px-42px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 xs:mb-20px shadow-sm xs:w-full"
 								:disabled="isSubmittingEmailForNewsletter"
 							>
 								{{ subscribeButtonText }}
