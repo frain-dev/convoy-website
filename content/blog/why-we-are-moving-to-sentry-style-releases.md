@@ -1,5 +1,5 @@
 ---
-title: Why we're moving away from Prometheus Style Release Strategy to Sentry Style Release Strategy
+title: Why we’ve adopted Sentry Style Release Strategy
 feature_image: sentry-release-strategy.png
 post_image: sentry-release-strategy.png
 primary_author:
