@@ -1,5 +1,5 @@
 ---
-title: Why we’ve adopted Sentry Style Release Strategy
+title: Why we adopted Sentry Style Release Strategy
 feature_image: sentry-release-strategy.png
 post_image: sentry-release-strategy.png
 primary_author:
