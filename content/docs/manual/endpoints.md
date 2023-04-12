@@ -15,7 +15,7 @@ An endpoint is a specific destination that can receive webhook events. An endpoi
 ### Endpoint State
 An endpoint can have any of the states below:
 1. `Active`: This state means the endpoint is responding normally, and Convoy will continue to send events to it.
-2. `Inactive`: This means the endpoint has consecutively failed to process events. In this state, all new events will be set to the `Discarded` state and **will not be sent** to the endpoint. To re-activate the endpoint -- retry any failed or discarded event delivery, if it's successful, the endpoint will be set to `active`. Then you can batch retry all failed events that weren't processed while the endpoint was `inactive`.
+2. `Inactive`: This means the endpoint has consecutively failed to process events. In this state, all new events will be set to the `Discarded` state and **will not be sent** to the endpoint. To re-activate the endpoint -- retry any failed or discarded event delivery, if it's successful, the endpoint will be set to `Active`. Then you can batch retry all failed events that weren't processed while the endpoint was `Inactive`.
 3. `Paused`: In this state, the endpoint has been manually disabled to stop receiving events. All new events will be set to the `Discarded` state and **will not be sent** to the endpoint. To re-activate the endpoint, un-pause the endpoint and it will be set to `active`.
 
 ### Zero Downtime Key Rotation
