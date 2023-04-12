@@ -17,7 +17,7 @@ An endpoint can have any of the states below:
 1. `Active`: This state means the endpoint is responding normally, and Convoy will continue to send events to it.
 2. `Inactive`: This means the endpoint has consecutively failed to process events. In this state, all new events will be set to the `Discarded` state and **will not be sent** to the endpoint. To re-activate the endpoint -- retry any failed or discarded event delivery, if it's successful, the endpoint will be set to `active`. Then you can batch retry all failed events that weren't processed while the endpoint was `inactive`.
 3. `Paused`: In this state, the endpoint has been manually disabled to stop receiving events. All new events will be set to the `Discarded` state and **will not be sent** to the endpoint. To re-activate the endpoint, un-pause the endpoint and it will be set to `active`.
-4. `Pending`: This state indicates that the endpoint was previously `inactive` and a failed or discarded event delivery is being resent to the endpoint. If successful, the endpoint will be set to `active`.
+4. `Pending`: This state indicates that the endpoint was previously `Inactive` and a failed or discarded event delivery is being resent to the endpoint. If successful, the endpoint will be set to `Active`.
 
 ### Zero Downtime Key Rotation
 Because webhooks rely on a shared secret that needs to be rotated periodically to be kept safe, convoy ships with a mechanism for zero downtime key rotation. This can be trigger from both the API -- [this endpoint](https://convoy.readme.io/reference/put_api-v1-projects-projectid-endpoints-endpointid-expire-secret) and the dashboard, see below:
