@@ -70,7 +70,7 @@ The following are parameters that can be configured on a project.
 | Disable Failing Endpoint 	|     Boolean     	|                                             	|        False       	|
 
 
-**Note: Setting the Project's Disable Failing Endpoint config to `False` will automatically set all the endpoints that are not in the `paused` state for that project to the `active` state.**
+**Note: Setting the Project's Disable Failing Endpoint config to `False` will automatically set all the endpoints for that project with an `inactive` or `pending` state to an `active` state.**
 
 ### Retention policies
 
