@@ -69,6 +69,9 @@ The following are parameters that can be configured on a project.
 |           Limit          	|     Integer     	|                                             	|          5         	|
 | Disable Failing Endpoint 	|     Boolean     	|                                             	|        False       	|
 
+
+**Note: Setting the Project's Disable Failing Endpoint config to `False` will automatically set all the endpoints for that project with an `inactive` or `pending` state to an `active` state.**
+
 ### Retention policies
 
 Convoy uses retention policies to preserve webhook events sent from your Convoy application or received to your Convoy application. The default period for retaining webhook events is set to **30 days**.
