@@ -13,9 +13,10 @@ Endpoints
 An endpoint is a specific destination that can receive webhook events. An endpoint can be configured with `http_timeout`. Endpoints can be managed over the API and the dashboard.
 
 ### Endpoint State
-An endpoint can be in either of two states: `active` or `inactive`. The `active` state means the endpoint is responding normally, and Convoy will continue to send events to it. The `inactive` state, on the other hand means the endpoint has consecutively failed to process events. In this state, all new events will be set to the `Discarded` state and **will not be sent** to the endpoint.
-
-To re-activate the endpoint -- retry any failed or discarded event delivery, if it's successfully, the endpoint will be set to `active`. Then you can batch retry all failed events that weren't processed while the endpoint was `inactive`.
+An endpoint can have any of the states below:
+1. `Active`: This state means the endpoint is responding normally, and Convoy will continue to send events to it.
+2. `Inactive`: This means the endpoint has consecutively failed to process events. In this state, all new events will be set to the `Discarded` state and **will not be sent** to the endpoint. To re-activate the endpoint -- retry any failed or discarded event delivery, if it's successfully, the endpoint will be set to `active`. Then you can batch retry all failed events that weren't processed while the endpoint was `inactive`.
+3. `Paused`: In this state, the endpoint has been manually disabled to stop receiving events. In this state, all new events will be set to the `Discarded` state and **will not be sent** to the endpoint. To re-activate the endpoint, unpause the endpoint and it will be set to `active`.
 
 ### Zero Downtime Key Rotation
 Because webhooks rely on a shared secret that needs to be rotated periodically to be kept safe, convoy ships with a mechanism for zero downtime key rotation. This can be trigger from both the API -- [this endpoint](https://convoy.readme.io/reference/put_api-v1-projects-projectid-endpoints-endpointid-expire-secret) and the dashboard, see below:
