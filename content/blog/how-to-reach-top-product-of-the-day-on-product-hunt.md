@@ -13,7 +13,7 @@ featured: false
 description: How to get your product launch to the frontpage of Product Hunt as Top 10 Product of the Day
 published_at: 2023-04-18T18:00:00.000+00:00
 ---
-TL;DR: A couple of weeks ago, we had a launch on Product Hunt, it was a fun experience and in this blog I will share what we found, what we did and all about how we managed to get to the Top 10 product list of the day competing with a lot of shiny hot AI tools in March.
+A couple of weeks ago, we had a launch on Product Hunt, it was a fun experience and in this blog I will share what we found, what we did and all about how we managed to get to the Top 10 product list of the day competing with a lot of shiny hot AI tools in March.
 
 ## Before Launch day ⏰
 
