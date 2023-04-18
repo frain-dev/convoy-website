@@ -15,7 +15,7 @@ published_at: 2023-04-18T18:00:00.000+00:00
 ---
 A couple of weeks ago, we had a launch on Product Hunt, it was a fun experience and in this blog I will share what we found, what we did and all about how we managed to get to the Top 10 product list of the day competing with a lot of shiny hot AI tools in March.
 
-## Before Launch day ⏰
+## Before Launch day
 
 ![Convoy Star History Screenshot](/blog-assets/before.png)
 
@@ -49,7 +49,7 @@ Timing is everything on Product Hunt. Launch your product during a time when the
 
 We took our time to draft straight-to-the-point messaging for the launch post, the first maker comment and the tagline. [Convoy](http://getconvoy.io) is a reliable webhooks gateway for engineers that value efficiency. We also made sure to visually show and reinforce our value proposition, in a slideshow manner which Product Hunt lets you do. We also saw that a good percentage of products hunted by Michael that got to Top 10 animated their logos, so we did so too.
 
-## On Launch day 🚀
+## On Launch day
 
 Now that we have everything from blobs of texts to share with our community members, to the ones to share on social media and to our investors and even with the YC community, we were [ready to launch](https://www.producthunt.com/products/convoy-3#convoy-4).
 
