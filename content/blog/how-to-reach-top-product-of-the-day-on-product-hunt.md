@@ -13,31 +13,28 @@ featured: false
 description: How to get your product launch to the frontpage of Product Hunt as Top 10 Product of the Day
 published_at: 2023-04-18T18:00:00.000+00:00
 ---
-A couple of weeks ago, we had a launch on Product Hunt, it was a fun experience and in this blog I will share what we found, what we did and all about how we managed to get to the Top 10 product list of the day competing with a lot of shiny hot AI tools in March.
+Recently, we had a successful launch on Product Hunt, and in this blog, I will share with you what we did, what we learned, and how we achieved the top 10 product list of the day, despite the competition from the numerous shiny AI tools in March.
 
 ## Before Launch day
 
 ![Convoy Star History Screenshot](/blog-assets/before.png)
 
-We had done a launch a year ago when we started the Convoy journey, so for [this launch](https://www.producthunt.com/products/convoy-3#convoy-4), we wanted to do more research and find out better ways to hit our goal which was to get to top 5 product of the day. Here are a few things we found out from other people who have had success with Product Hunt launches and documented their experiences:
+We had done a launch a year ago when we started the Convoy journey, so for [this launch](https://www.producthunt.com/products/convoy-3#convoy-4), we researched and found better ways to achieve our goal of getting to the top 5 products of the day, based on other people's success stories on Product Hunt. Here are some of our findings:
 
 ## Build a strong community
 
-The power of your personal network and that of your team should not be underestimated. Reach out to friends, family, and colleagues to upvote and share your product on Product Hunt. You can also leverage communities on social media platforms like Twitter and LinkedIn to expand your reach. Building a community around your product can help increase engagement and generate buzz.
+First, we discovered the power of building a strong community around your product. Leveraging your personal network and that of your team can increase engagement and generate buzz. We also found that social media platforms like Twitter and LinkedIn can be used to expand your reach.
 
 ## Follow active Product Hunt users
 
-Following active Product Hunt users is a valuable strategy to help you reach the Top 10 Product of the Day. Active users are early adopters who are enthusiastic about discovering new products. By following them, they can get notified about your launches in their mailbox, generating buzz and increasing engagement. Additionally, active users are more likely to upvote and share your product, increasing visibility on the platform. Though finding active PH users isn't always easy, we were able to find some who followed back and upvoted.
+Second, following active Product Hunt users is an effective way to reach the top 10 products of the day. These early adopters are enthusiastic about discovering new products, and by following them, they can get notified about your launches, generating buzz and increasing engagement. Additionally, active users are more likely to upvote and share your product, increasing visibility on the platform. Though finding active PH users isn't always easy, we were able to find some who followed back and upvoted.
 
 ## Get a popular Hunter
 
 ![Convoy Star History Screenshot](/blog-assets/hunter.png)
 
-On Product Hunt, a hunter is someone who submits new products to the platform. They can be individuals or companies with a trusted reputation within the community. Hunters do not necessarily have to be the builders of the products; product owners are called makers on Product Hunt, and they can also hunt their own products.
-
-Since you can follow people or companies on PH, hunters can grow a massive following and become influencers of sorts. If a popular hunter submits your product, it can greatly increase your chances of success on Product Hunt, giving your product more visibility and credibility.
-
-We talked to our investor, YC, and Michael Seibel agreed to hunt us, which is one of the perks of being in the YC community. Michael has hunted hundreds of products on Product Hunt, especially in the devtools category, which Convoy is a part of.
+Third, a popular hunter can significantly increase your chances of success on Product Hunt. Hunters are individuals or companies with a trusted reputation within the community who submit new products to the platform. Product owners, also known as makers on Product Hunt, can also hunt their products. Popular hunters can become influencers, growing a massive following, and significantly boosting the visibility and credibility of your product. 
+Our investor, YC, helped us get Michael Seibel to hunt us, who has hunted hundreds of products on Product Hunt, especially in the devtools category, which Convoy is a part of.
 
 ## Launch by 12am PT
 
@@ -55,9 +52,7 @@ Now that we have everything from blobs of texts to share with our community memb
 
 ## When did we launch?
 
-We took some time to study our hunter’s hunting history and we saw that the products he hunted on Wednesdays did better than products hunted on any other day of the week, so we chose a Wednesday. This might be completely different from what you find online about what day to launch, I think the best answer is, it depends, so have fun with it. 
-
-We chose and stuck to the time we had already read so much about, 12am PT, that was 8am in London (GMT) and so we were up and ready to share the news with everyone we knew.
+We launched on a Wednesday at 12 am PT, as our hunter's hunting history showed that products launched on Wednesdays did better than those launched on any other day of the week. We chose and stuck to the time we had already read so much about, and we were ready to share the news with everyone we knew.
 
 ## Leveraging Community and Investor Networks
 
@@ -77,4 +72,4 @@ This was the primary job of the day, we encouraged people to leave comments afte
 
 ![Convoy Star History Screenshot](/blog-assets/result.png)
 
-All of these got us to [Product #7 of the day](https://www.producthunt.com/products/convoy-3#convoy-4) and 39th product of the week. Compared to our last launch, we saw a 42% increase in upvotes and a 67% increase in comments. Our project on GitHub received more stars, and we consider this launch to be a success. We are grateful to all members of the Convoy community and everyone who made this launch possible. Although we fell two positions short of our goal of reaching the Top 5 products of the day, we saw massive improvements and will share the lessons we learned about Product Hunt launches in another blog post soon.
+All of these got us to [Product #7 of the day](https://www.producthunt.com/products/convoy-3#convoy-4) and 39th product of the week. Compared to our last launch, we saw a 42% increase in upvotes and a 67% increase in comments. Our [project on GitHub](https://github.com/frain-dev/convoy) received more stars, and we consider this launch to be a success. We are grateful to all members of the Convoy community and everyone who made this launch possible. Although we fell two positions short of our goal of reaching the Top 5 products of the day, we saw massive improvements and will share the lessons we learned about Product Hunt launches in another blog post soon.
