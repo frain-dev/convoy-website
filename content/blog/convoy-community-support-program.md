@@ -11,7 +11,7 @@ tags:
     - Open Thoughts
 featured: false
 description: Announcing the Convoy Community support program to get more people to know about Convoy and encourage community engagement.
-published_at: 2023-02-24T18:00:00.000+00:00
+published_at: 2023-04-28T17:00:00.000+00:00
 ---
 Hello, there!
 
