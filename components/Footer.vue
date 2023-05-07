@@ -18,7 +18,7 @@
 							<a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/company/convoy-webhooks/"><img src="~/assets/images/linkedin.svg" alt="linkedin logo" /></a>
 						</li>
 						<li>
-							<a target="_blank" rel="noopener noreferrer" href="mailto:info@frain.dev"><img src="~/assets/images/mail-icon.svg" alt="mail logo" /></a>
+							<a target="_blank" rel="noopener noreferrer" href="mailto:sales@convoy.io"><img src="~/assets/images/mail-icon.svg" alt="mail logo" /></a>
 						</li>
 						<li>
 							<a target="_blank" rel="noopener noreferrer" href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
