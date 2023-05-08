@@ -47,7 +47,7 @@ what follows is an interactive session where you are asked to:
 
 After these, the database will be deployed, copy and save your credentials as the output suggests. In a few moments, you will need to attach this Postgres deployment to your Convoy app.
 
-![output from creating a fly postgres instance](/blog-assets/static-ip-of-an-outbound-request.jpg)
+![output from creating a fly postgres instance](/blog-assets/output-from-creating-a-fly-postgres-instance.png)
 
 ### - Deploy Redis: 
 Similar to fly Postgres, you can automatically create a [Redis](https://fly.io/docs/reference/redis/) database on fly.io without having to manually configure and run a Redis application. But this is done only with the Fly CLI tool, so open up your terminal once again and run the command below to get started:
@@ -70,7 +70,7 @@ After your Redis database is ready, your connection URL will be printed out, cop
 
 ### - Deploy Typesense
 
-Typesense is another dependency of Convoy, hence you need to run at least an instance of it before deploying convoy. In this guide you'll run the `typesense/typesense:0.24.0` image of typesense. Unlike the Postgres and Redis databases that you deployed earlier, you will need to create a configuration file named `fly.toml` in order to deploy Typesense. All fly.io apps are configured via a `fly.toml` file, except the fly Postgres and Redis by Upstash databases that are automatically provisioned via the Fly CLI. But this config file also gets automatically generated when you launch an application with the `flyctl launch` command, after which you can manually edit it to fit your configuration needs.
+Typesense is another dependency of Convoy; hence you need to set it up before deploying Convoy. You can either sign up for [Typesense Cloud](https://cloud.typesense.org/?_ga=2.205470544.1514660043.1683562022-2138331833.1683064090) or run your own Typesense instance. For the sake of this guide, we'll go for the latter; we would run the `typesense/typesense:0.24.0` image of typesense. Unlike the Postgres and Redis databases that you deployed earlier, you will need to create a configuration file named `fly.toml` in order to deploy Typesense. All fly.io apps are configured via a `fly.toml` file, except the fly Postgres and Redis by Upstash databases that are automatically provisioned via the Fly CLI. But this config file also gets automatically generated when you launch an application with the `flyctl launch` command, after which you can manually edit it to fit your configuration needs.
 
 To get started deploying Typesense, launch an app with the following command and respond with **No** when asked if you would like to set up a Postgres database, a Redis database, or if you would like to deploy now:
 
@@ -192,7 +192,7 @@ Go on to change any other part of the configuration to your desired value or add
 
 If successful, your Convoy application should be live on fly.io. The terminal output should include a link to visit your app, it should redirect you to the convoy login page as seen here:
 
-![convoy login page](static/blog-assets/convoy-login-page.png)
+![convoy login page](/blog-assets/convoy-login-page.png)
 
 Login with the credentials:
 
