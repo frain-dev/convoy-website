@@ -30,7 +30,7 @@ Fly.io has an offering called "Fly Postgres", it's not the same as a managed Pos
 To create fly Postgres, run the following command on your fly.io authenticated machine:
 
 ```
-fly postgres create
+$ fly postgres create
 ```
 
 what follows is an interactive session where you are asked to:
@@ -53,7 +53,7 @@ After these, the database will be deployed, copy and save your credentials as th
 Similar to fly Postgres, you can automatically create a [Redis](https://fly.io/docs/reference/redis/) database on fly.io without having to manually configure and run a Redis application. But this is done only with the Fly CLI tool, so open up your terminal once again and run the command below to get started:
 
 ```
-flyctl redis create
+$ flyctl redis create
 ```
 
 Just as with the Postgres creation terminal session, provide the desired answers to the configuration questions asked:
@@ -70,12 +70,12 @@ After your Redis database is ready, your connection URL will be printed out, cop
 
 ### - Deploy Typesense
 
-Typesense is another dependency of Convoy; hence you need to set it up before deploying Convoy. You can either sign up for [Typesense Cloud](https://cloud.typesense.org/?_ga=2.205470544.1514660043.1683562022-2138331833.1683064090) or run your own Typesense instance. For the sake of this guide, we'll go for the latter; we would run the `typesense/typesense:0.24.0` image of typesense. Unlike the Postgres and Redis databases that you deployed earlier, you will need to create a configuration file named `fly.toml` in order to deploy Typesense. All fly.io apps are configured via a `fly.toml` file, except the fly Postgres and Redis by Upstash databases that are automatically provisioned via the Fly CLI. But this config file also gets automatically generated when you launch an application with the `flyctl launch` command, after which you can manually edit it to fit your configuration needs.
+To enhance the search experience on Convoy, we suggest making use of Typesense. You can either sign up for [Typesense Cloud](https://cloud.typesense.org/?_ga=2.205470544.1514660043.1683562022-2138331833.1683064090) or run your own Typesense instance. For the sake of this guide, we'll go for the latter; we would run the `typesense/typesense:0.24.0` image of typesense. Unlike the Postgres and Redis databases that you deployed earlier, you will need to create a configuration file named `fly.toml` in order to deploy Typesense. All fly.io apps are configured via a `fly.toml` file, except the fly Postgres and Redis by Upstash databases that are automatically provisioned via the Fly CLI. But this config file also gets automatically generated when you launch an application with the `flyctl launch` command, after which you can manually edit it to fit your configuration needs.
 
 To get started deploying Typesense, launch an app with the following command and respond with **No** when asked if you would like to set up a Postgres database, a Redis database, or if you would like to deploy now:
 
 ```
-fly launch --image typesense/typesense:0.24.0
+$ fly launch --image typesense/typesense:0.24.0
 ```
 Confirm that a fly.toml file has been created on the directory that you ran this command on.
 
@@ -84,12 +84,14 @@ The next step is to create a [flycast](https://fly.io/docs/reference/private-net
 To create the IP, run the next command on the same directory where you have your Typesene `fly.toml` file.
 
 ```
-fly ips allocate-v6 --private
+$ fly ips allocate-v6 --private
 ```
 
 At this point edit your Typesense config file to match the following code: 
 
 ```
+# fly.toml
+
 app = "typesense-for-convoy"
 primary_region = "mad"
 
@@ -114,7 +116,7 @@ If you copied the above code, remember to change your app name from `typesense-f
 Now that your config file is ready, deploy Typesense by running:
 
 ```
-flyctl deploy
+$ flyctl deploy
 ```
 
 When the deployment is done, you can confirm that you have Typesense running in the organization you deployed in on your fly.io dashboard. 
@@ -123,16 +125,16 @@ When the deployment is done, you can confirm that you have Typesense running in 
 
 ## Deploy Convoy
 
-Deploy a version of Convoy. In this guide we deployed version `0.9.2` with the image `docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:v0.9.2`. To start change into a new directory, or delete the `fly.toml` in your current directory (you can also leave .... fly will ask you if ...).  As with when you deployed Typesense, launch an app for Convoy and respond with **No** when asked if you would like to set up a Postgresql database, a Redis database, or if you would like to deploy now. Do that with the following command:
+Deploy a version of Convoy. In this guide, we deploy version `23.05.1` with the image `docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:v23.05.1`. To start, change into a new directory, or delete the `fly.toml` in your current directory. As with when you deployed Typesense, launch an app for Convoy and respond with **No** when asked if you would like to set up a Postgresql database, a Redis database, or if you would like to deploy now. Do that with the following command:
 
 ```
-fly launch --image docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:v0.9.2
+$ fly launch --image docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:v23.05.1
 ```
 
 Now that you have an app launched for Convoy, attach the Postgres database that you created before to this app with:
 
 ```
-flyctl postgres attach --app convoy convoy-pg-data
+$ flyctl postgres attach --app convoy convoy-pg-data
 ```
 
 Change `convoy` to the name you have given your convoy app, and `convoy-pg-data` to the name of your Postgres app.
@@ -142,11 +144,13 @@ Copy and save the new connection URL printed out from attaching your database, t
 Edit your convoy fly.toml file to properly configure Convoy for deployment. The content should match the toml code below:
 
 ```
+# fly.toml
+
 app = "convoy"
 primary_region = "mad"
 
 [build]
-  image = "docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:v0.9.2"
+  image = "docker.cloudsmith.io/convoy/convoy/frain-dev/convoy:v23.05.1"
 
 [processes]
 web = "/start.sh"
@@ -205,6 +209,6 @@ And confirm that convoy works as expected. If it does, you have successfully dep
 
 After successful deployment, you are ready to start sending and receiving webhook requests. Depending on your needs, you might want to [scale your application](https://fly.io/docs/apps/scale-machine/) or [deploy to other regions](https://fly.io/docs/apps/scale-count/#scale-an-app-s-regions) closer to your customers or partners.
 
-You might also want to explore other ways to deploy Convoy. Did you know that convoy has helm charts? You might want to try deploying with this too and give us feedback in the [community](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ) concerning your experience.  Lastly, if you decide to rather have Convoy manage the whole infrastructure while you focus on your core business, then you're welcome to try [Convoy Cloud](https://dashboard.getconvoy.io/signup).
+You might also want to explore other ways to deploy Convoy. Did you know that convoy has [helm charts](https://github.com/frain-dev/helm-charts)? You might want to try deploying with this too and give us feedback in the [community](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ) concerning your experience.  Lastly, if you decide to rather have Convoy manage the whole infrastructure while you focus on your core business, then you're welcome to try [Convoy Cloud](https://dashboard.getconvoy.io/signup).
 
 
