@@ -1,20 +1,22 @@
 ---
-title: Convoy Helm Chart v1.0.0: What's New?
-feature_image: [insert image here]
-post_image: [insert image here]
+title: Convoy Helm Chart v1.0
+feature_image: convoy-helm-charts.png
+post_image: convoy-helm-charts.png
 primary_author:
-name: Obinna Odirionye
-twitter: odirionyeo
+    name: Obinna Odirionye
+    twitter: odirionyeo
 primary_tag: Product Update
 tags:
-- Convoy
-- Product Update
+    - Convoy
+    - Product Update
 featured: false
 description: Convoy Helm Chart v1.0.0 is our latest release including so many exciting features - Documentation, DX Improvements, and so much more. In this blog post, we share these updates and what you can expect from Convoy Helm Chart v1.1.0
-
+published_at: 2023-05-12T18:30:00.000+00:00
 ---
 
-Hey, If you are reading this article, it means you want to see some of the exciting new things we added and have deprecated. Before diving in, Let's talk about Convoy and the components inside the Helm Chart.
+Hey there, 
+
+If you are reading this article, it means you want to see some of the exciting new things we added and have deprecated. Before diving in, Let's talk about Convoy and the components inside the Helm Chart.
 
 Convoy is an Open Source Webhooks Gateway. For both incoming & outgoing events. In the Convoy Helm Chart, we have five components, namely:
 
@@ -30,11 +32,10 @@ Convoy is an Open Source Webhooks Gateway. For both incoming & outgoing events. 
 
 Tip: Convoy uses Redis for Queueing, Rate limiting, and Caching, while PostgreSQL is the Database. You can learn more [here](https://getconvoy.io/docs/deploy/architecture/#components)
 
-
 ## New features
 
 ### Documentation
-Prior to v1, we had no documentation about how to tweak the configuration inside our chart; any developer could install it, but most times, we developers love to tune something to our specific needs, and we have rollout our documentation which should enable more folks to run Convoy on Kubernetes.
+Prior to v1, we had no documentation about how to tweak the configuration inside our chart; any developer could install it, but most times, we developers love to tune something to our specific needs, and we have rollout our [documentation](https://github.com/frain-dev/helm-charts#convoy) which should enable more folks to run Convoy on Kubernetes.
 
 ### Security
 We all know how dangerous it can be to expose secrets without encrypting them; we used config maps for handling configurations, and they revealed specific credentials in plain text. In v1, We now use Kubernetes secrets, and yes, we know Kubernetes secrets are encoded, but you can use any of your favorite tools like [Sops](https://fluxcd.io/flux/guides/mozilla-sops/) or [External secrets](https://github.com/external-secrets/external-secrets) for much better security. We got rid of *convoy.json*.
