@@ -21,6 +21,8 @@ Convoy v0.9 was a major release from our previous versions. We officially switch
 ## Changelog
 The changelogs for this minor release version and any maintenance versions are listed below.
 
+- [Convoy version v0.9.2](https://github.com/frain-dev/convoy/releases/tag/v0.9.2)
+- [Convoy version v0.9.1](https://github.com/frain-dev/convoy/releases/tag/v0.9.1)
 - [Convoy version v0.9.0](https://github.com/frain-dev/convoy/releases/tag/v0.9.0)
 - [Convoy version v0.9.0-rc.3](https://github.com/frain-dev/convoy/releases/tag/v0.9.0-rc.3)
 - [Convoy version v0.9.0-rc.2](https://github.com/frain-dev/convoy/releases/tag/v0.9.0-rc.2)
