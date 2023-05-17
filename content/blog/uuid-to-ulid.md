@@ -1,5 +1,7 @@
 ---
 title: We switched Convoy's ID format from UUIDv4 to ULID
+feature_image: uuid-to-ulid.png
+post_image: uuid-to-ulid.png
 primary_author:
     name: Raymond Tukpe
     twitter: rtukpe
@@ -24,7 +26,7 @@ Both our users on cloud and users that self-host will be affected and I have out
 3. All new resources will use the new ULID format.
 4. Pagination for new resources like event and event-deliveries will live along-side the older records and will bubble up, so over time you would start seeing only resources with new IDs.
 5. You can create new versions of existing resources to preserve pagination accuracy (we are working on adding search to all relevant pages, so you don't necessarily have to do this if you are looking for a resource).
-6. Search will not be affected, events that have been indexed and not deleted (due to retention policy will still be available). 
+6. Search will not be affected, events that have been indexed and not deleted (due to retention policy) will still be available. 
 
 ## Self-Hosted Users
 1. All of the above apply
