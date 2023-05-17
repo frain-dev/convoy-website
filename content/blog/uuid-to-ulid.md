@@ -16,7 +16,7 @@ description: UUIDv4 and ULID are both types of unique identifiers that can be us
 With our release of `v0.9.x` and `v23.05.x`, we migrated our datastore from MongoDB to Postgres, we decided to change our ID format.
 
 # What does this mean for you and your data?
-At Convoy we strive to make sure that our software is backwards compatible and that little effort is required on your part, so your workloads can operate while we move things around internally. We ensure that the contract we keep with our API is never broken. In this case, we unfortunately had to make the change, so we as a company and Convoy as a product could evolve into a version of the vision that we have.
+At Convoy, we strive to make sure that our software is backwards compatible and that little effort is required on your part, so your workloads can operate while we move things around internally. We ensure that the contract we keep with our API is never broken. In this case, we unfortunately had to make the change, so we as a company and Convoy as a product could evolve into a version of the vision that we have.
 
 Both our users on cloud and users that self-host will be affected and I have outlined below what each set of users will experience and how they can work around it.
 
@@ -24,7 +24,7 @@ Both our users on cloud and users that self-host will be affected and I have out
 1. Your old resources will all still use the old UUIDv4 format.
 2. Pagination for all old resources will break; they might be out of order since UUIDv4 isn't lexicographically sortable
 3. All new resources will use the new ULID format.
-4. Pagination for new resources like event and event-deliveries will live along-side the older records and will bubble up, so over time you would start seeing only resources with new IDs.
+4. Pagination for new resources like event and event-deliveries will live along-side the older records and will bubble up, when the retention policy kicks in those older ones will be deleted, and you would start seeing only resources with new IDs.
 5. You can create new versions of existing resources to preserve pagination accuracy (we are working on adding search to all relevant pages, so you don't necessarily have to do this if you are looking for a resource).
 6. Search will not be affected, events that have been indexed and not deleted (due to retention policy) will still be available. 
 
