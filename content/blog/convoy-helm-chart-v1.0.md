@@ -114,8 +114,8 @@ metadata:
   name: {{ include "convoy-migrate.fullname". }}
   annotations:
     "helm.sh/hook": post-install,post-upgrade
-    helm.sh/hook-weight: "0"
-    "helm.sh/hook-delete-policy": hook-succeeded
+    "helm.sh/hook-weight": "0"
+    "helm.sh/hook-delete-policy": before-hook-creation
 ```
 
 `"helm.sh/hook": post-install,post-upgrade` and  `helm.sh/hook-weight: "0"` allows the job to run after an installation or upgrade, which means Redis and Postgres will kick off, and the migrate will run, but this takes us back to the initial problem which was to avoid the `CrashLoopBackOff` of the other components
