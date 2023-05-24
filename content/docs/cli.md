@@ -21,38 +21,45 @@ To view the list of the available commands at any time, just run `convoy` in you
 
 ```console[terminal]
 $ convoy
-Fast & reliable webhooks service
+High Performance Webhooks Gateway
 
 Usage:
   Convoy [command]
 
 Available Commands:
-  apps        List all your convoy cli apps
   completion  generate the autocompletion script for the specified shell
   config      config outputs your instances computed configuration
   help        Help about any command
-  listen      Starts a websocket client that listens to events streamed by the server
-  login       Logs into your Convoy instance using a CLI API Key
+  ingest      Ingest webhook events from Pub/Sub streams
   migrate     Convoy migrations
   retry       retry event deliveries with a particular status in a timeframe
-  scheduler   schedule a periodic task.
+  scheduler   scheduler runs periodic tasks
   server      Start the HTTP server
-  stream      Start a websocket server to pipe events to another convoy instance
-  switch      Switches the current application context
+  stream      Start a websocket server to pipe events to a convoy cli instance
   version     Print the version
   worker      Start worker instance
-  
-Flags:
-    --config string   Configuration file for convoy (default "./convoy.json")
-    --db string       Database dsn or path to in-memory file
-    -h, --help        help for Convoy
-    --queue string    Queue provider ("redis" or "in-memory")
-    --redis string    Redis dsn
-    -v, --version     version for Convoy
 
+Flags:
+      --config string           Configuration file for convoy (default "./convoy.json")
+      --db-database string      Database Database
+      --db-host string          Database Host
+      --db-options string       Database Options
+      --db-password string      Database Password
+      --db-port int             Database Port
+      --db-scheme string        Database Scheme
+      --db-type string          Database provider
+      --db-username string      Database Username
+  -h, --help                    help for Convoy
+      --redis-database string   Redis database
+      --redis-host string       Redis Host
+      --redis-password string   Redis Password
+      --redis-port int          Redis Port
+      --redis-scheme string     Redis Scheme
+      --redis-username string   Redis Username
+  -v, --version                 version for Convoy
 ```
 
-To get help for any specific command, pass the `-h` flag to the relevant subcommand. For example, to get help about the worker subcommand
+To get help for any specific command, pass the `-h` flag to the relevant subcommand. For example, to get help about the `worker` sub-command run  `convoy worker -h`
 
 ```console[terminal]
 $ convoy worker -h
@@ -62,25 +69,46 @@ Usage:
   Convoy worker [flags]
 
 Flags:
-  -h, --help             help for worker
-  --worker-port uint32   Worker port (default 5006)
+  -h, --help                 help for worker
+      --log-level string     scheduler log level (default "error")
+      --worker-port uint32   Worker port (default 5006)
 
 Global Flags:
-  --config string   Configuration file for convoy (default "./convoy.json")
-  --db string       Database dsn or path to in-memory file
-  --queue string    Queue provider ("redis" or "in-memory")
-  --redis string    Redis dsn
+      --config string           Configuration file for convoy (default "./convoy.json")
+      --db-database string      Database Database
+      --db-host string          Database Host
+      --db-options string       Database Options
+      --db-password string      Database Password
+      --db-port int             Database Port
+      --db-scheme string        Database Scheme
+      --db-type string          Database provider
+      --db-username string      Database Username
+      --redis-database string   Redis database
+      --redis-host string       Redis Host
+      --redis-password string   Redis Password
+      --redis-port int          Redis Port
+      --redis-scheme string     Redis Scheme
+      --redis-username string   Redis Username
+
 ```
 
 ### Command Flags
 
-- `--config`: This is the path to the configuration file for the instance. Defaults to `./convoy.json`
-
-- `--db`: This is used to specify the database DSN. Either MongoDB’s DSN or the path to the directory for the on-disk database.
-
-- `--queue`: This is used to specify the queuing backend to use. Either `redis` or `in-memory`.
-
-- `--redis`: This is used to specify the Redis DSN
+- `--config`: This is the path to the configuration file for the instance. Defaults to `./convoy.json`.
+- `--db-type`: This is used to specify the database type. Defaults to `postgres`.
+- `--db-scheme`: This is used to specify the database URI scheme. Defaults to `postgres`, some cloud providers might set it to `postgresql`.
+- `--db-host`: This is used to specify the database server host. Defaults to `localhost`.
+- `--db-username`: This is used to specify the database type. Defaults to `postgres`.
+- `--db-password`: This is used to specify the database password. Defaults to `postgres`.
+- `--db-database`: This is used to specify the database where all the schemas would be created, you should create it before running Convoy. Defaults to `convoy`.
+- `--db-port`: This is used to specify the database server port. Defaults to `5432`.
+- `--db-options`: This is used to specify the database connection options. Defaults to `sslmode=disable&connect_timeout=30`.
+- `--redis-scheme`: This is used to specify the redis URI scheme. Defaults to `redis`, some cloud providers might set it to `rediss`, `redis-socket` or `redis-sentinel`.
+- `--redis-host`: This is used to specify the redis server host. Defaults to `localhost`
+- `--redis-database`: This is used to specify the redis database. Defaults to `""` which is the same as db `0`.
+- `--redis-password`: This is used to specify the redis password. Defaults to `""`.
+- `--redis-port`: This is used to specify the redis port. Defaults to `6379`.
+- `--redis-username`: This is used to specify the redis username. Defaults to `""`.
 
 ## Ingest
 
@@ -100,10 +128,21 @@ Flags:
       --interval int   the time interval, measured in seconds, at which the database should be polled for new pub sub sources (default 300)
 
 Global Flags:
-      --config string   Configuration file for convoy (default "./convoy.json")
-      --db string       Database dsn or path to in-memory file
-      --queue string    Queue provider ("redis")
-      --redis string    Redis dsn
+      --config string           Configuration file for convoy (default "./convoy.json")
+      --db-database string      Database Database
+      --db-host string          Database Host
+      --db-options string       Database Options
+      --db-password string      Database Password
+      --db-port int             Database Port
+      --db-scheme string        Database Scheme
+      --db-type string          Database provider
+      --db-username string      Database Username
+      --redis-database string   Redis database
+      --redis-host string       Redis Host
+      --redis-password string   Redis Password
+      --redis-port int          Redis Port
+      --redis-scheme string     Redis Scheme
+      --redis-username string   Redis Username
 ```
 
 ### Description
@@ -120,21 +159,34 @@ Command: `convoy stream`
 ### Synopsis
 
 ```console[terminal]
-$ convoy migrate --help
-Start a websocket server to pipe events to another convoy instance
+$ convoy stream --help
+Start a websocket server to pipe events to a convoy cli instance
 
 Usage:
   Convoy stream [flags]
 
 Flags:
   -h, --help                 help for stream
+      --log-level string     stream log level (default "error")
       --socket-port uint32   Socket port (default 5008)
 
 Global Flags:
-      --config string   Configuration file for convoy (default "./convoy.json")
-      --db string       Database dsn or path to in-memory file
-      --queue string    Queue provider ("redis")
-      --redis string    Redis dsn
+      --config string           Configuration file for convoy (default "./convoy.json")
+      --db-database string      Database Database
+      --db-host string          Database Host
+      --db-options string       Database Options
+      --db-password string      Database Password
+      --db-port int             Database Port
+      --db-scheme string        Database Scheme
+      --db-type string          Database provider
+      --db-username string      Database Username
+      --redis-database string   Redis database
+      --redis-host string       Redis Host
+      --redis-password string   Redis Password
+      --redis-port int          Redis Port
+      --redis-scheme string     Redis Scheme
+      --redis-username string   Redis Username
+
 ```
 
 ### Description
@@ -159,6 +211,7 @@ Usage:
   Convoy migrate [command]
 
 Available Commands:
+  create      creates a new migration file
   down        Rollback migrations
   up          Run all pending migrations
 
@@ -166,12 +219,22 @@ Flags:
   -h, --help   help for migrate
 
 Global Flags:
-      --config string   Configuration file for convoy (default "./convoy.json")
-      --db string       Database dsn or path to in-memory file
-      --queue string    Queue provider ("redis")
-      --redis string    Redis dsn
+      --config string           Configuration file for convoy (default "./convoy.json")
+      --db-database string      Database Database
+      --db-host string          Database Host
+      --db-options string       Database Options
+      --db-password string      Database Password
+      --db-port int             Database Port
+      --db-scheme string        Database Scheme
+      --db-type string          Database provider
+      --db-username string      Database Username
+      --redis-database string   Redis database
+      --redis-host string       Redis Host
+      --redis-password string   Redis Password
+      --redis-port int          Redis Port
+      --redis-scheme string     Redis Scheme
+      --redis-username string   Redis Username
 
-Use "Convoy migrate [command] --help" for more information about a command.
 ```
 
 ### Description
@@ -200,10 +263,22 @@ Flags:
   -h, --help   help for config
 
 Global Flags:
-      --config string   Configuration file for convoy (default "./convoy.json")
-      --db string       Database dsn or path to in-memory file
-      --queue string    Queue provider ("redis")
-      --redis string    Redis dsn
+      --config string           Configuration file for convoy (default "./convoy.json")
+      --db-database string      Database Database
+      --db-host string          Database Host
+      --db-options string       Database Options
+      --db-password string      Database Password
+      --db-port int             Database Port
+      --db-scheme string        Database Scheme
+      --db-type string          Database provider
+      --db-username string      Database Username
+      --redis-database string   Redis database
+      --redis-host string       Redis Host
+      --redis-password string   Redis Password
+      --redis-port int          Redis Port
+      --redis-scheme string     Redis Scheme
+      --redis-username string   Redis Username
+
 ```
 
 ### Description
@@ -232,15 +307,14 @@ Aliases:
 
 Flags:
       --api-auth string            API-Key authentication credentials
-      --auth                       Require authentication
-      --base-url string            Base Url - Used for the app portal
       --basic-auth string          Basic authentication credentials
       --cache string               Cache Provider ("redis" or "in-memory") (default "redis")
       --disable-endpoint           Disable all application endpoints
       --env string                 Convoy environment (default "development")
   -h, --help                       help for server
+      --host string                Host - The application host name
       --limiter string             Rate limiter provider ("redis" or "in-memory") (default "redis")
-      --log-level string           Log level (default "info")
+      --log-level string           Log level (default "error")
       --logger string              Logger (default "info")
       --max-response-size uint     Max response size
       --multi-tenant               Start convoy in single- or multi-tenant mode
@@ -250,10 +324,13 @@ Flags:
       --new-relic-key string       NewRelic application license key
       --new-relic-tracer-enabled   Enable new-relic distributed tracer
       --port uint32                Server port
+      --promaddr string            Prometheus dsn
+      --proxy string               HTTP Proxy
       --replay-attacks             Enable feature to prevent replay attacks
       --retry-interval uint        Endpoint retry interval
       --retry-limit uint           Endpoint retry limit
       --retry-strategy string      Endpoint retry strategy
+      --searcher string            Searcher
       --sentry string              Sentry DSN
       --signature-hash string      Application signature hash
       --signature-header string    Application signature header
@@ -267,14 +344,27 @@ Flags:
       --ssl                        Configure SSL
       --ssl-cert-file string       SSL certificate file
       --ssl-key-file string        SSL key file
-  -w, --with-workers               Should run workers (default true)
+      --typesense-api-key string   Typesense Api Key
+      --typesense-host string      Typesense Host
       --worker-port uint32         Worker port
 
 Global Flags:
-      --config string   Configuration file for convoy (default "./convoy.json")
-      --db string       Database dsn or path to in-memory file
-      --queue string    Queue provider ("redis" or "in-memory")
-      --redis string    Redis dsn
+      --config string           Configuration file for convoy (default "./convoy.json")
+      --db-database string      Database Database
+      --db-host string          Database Host
+      --db-options string       Database Options
+      --db-password string      Database Password
+      --db-port int             Database Port
+      --db-scheme string        Database Scheme
+      --db-type string          Database provider
+      --db-username string      Database Username
+      --redis-database string   Redis database
+      --redis-host string       Redis Host
+      --redis-password string   Redis Password
+      --redis-port int          Redis Port
+      --redis-scheme string     Redis Scheme
+      --redis-username string   Redis Username
+
 ```
 
 ### Description
@@ -285,36 +375,7 @@ The server command runs convoy’s REST API. The REST API is the primary entry p
 
 - `--port`: This flag specifies the port number the server listens on. This is a required parameter that must be configured from one of the configuration sources.
 
-- `--auth`: This flag specifies if the REST API will require authentication or not. If `true` you have to configure either`--api-auth` or `--basic-auth` or both.
-
-- `--api-auth`: This flag specifies an array of `API Key` authentication credentials. E.g.
-
-```json[json]
-[
-	{
-		"api_key": "api-key",
-		"role": {
-			"type": "super_user",
-			"groups": ["group-name"]
-		}
-	}
-]
-```
-
-- `--basic-auth`: This flag specifies an array of `Basic Auth` authentication credentials. E.g.
-
-```json[json]
-[
-	{
-		"username": "username",
-		"password": "password",
-		"role": {
-			"type": "super_user",
-			"groups": ["group-name"]
-		}
-	}
-]
-```
+- `--auth`: This flag specifies if the REST API will require authentication or not. It is enabled by default
 
 - `--multi-tenant`: This flag specifies the mode the instance is running. It’s a boolean flag. When set to `true` . The server will only receive events but not run workers in the background. It is expected that you will run `convoy worker` as a different process to consume event deliveries off the queue. Defaults to `false`.
 
@@ -370,10 +431,21 @@ Flags:
       --worker-port uint32   Worker port (default 5006)
 
 Global Flags:
-      --config string   Configuration file for convoy (default "./convoy.json")
-      --db string       Database dsn or path to in-memory file
-      --queue string    Queue provider ("redis" or "in-memory")
-      --redis string    Redis dsn
+      --config string           Configuration file for convoy (default "./convoy.json")
+      --db-database string      Database Database
+      --db-host string          Database Host
+      --db-options string       Database Options
+      --db-password string      Database Password
+      --db-port int             Database Port
+      --db-scheme string        Database Scheme
+      --db-type string          Database provider
+      --db-username string      Database Username
+      --redis-database string   Redis database
+      --redis-host string       Redis Host
+      --redis-password string   Redis Password
+      --redis-port int          Redis Port
+      --redis-scheme string     Redis Scheme
+      --redis-username string   Redis Username
 ```
 
 ### Description
@@ -407,10 +479,21 @@ Flags:
       --time string     Time interval
 
 Global Flags:
-      --config string   Configuration file for convoy (default "./convoy.json")
-      --db string       Database dsn or path to in-memory file
-      --queue string    Queue provider ("redis" or "in-memory")
-      --redis string    Redis dsn
+      --config string           Configuration file for convoy (default "./convoy.json")
+      --db-database string      Database Database
+      --db-host string          Database Host
+      --db-options string       Database Options
+      --db-password string      Database Password
+      --db-port int             Database Port
+      --db-scheme string        Database Scheme
+      --db-type string          Database provider
+      --db-username string      Database Username
+      --redis-database string   Redis database
+      --redis-host string       Redis Host
+      --redis-password string   Redis Password
+      --redis-port int          Redis Port
+      --redis-scheme string     Redis Scheme
+      --redis-username string   Redis Username
 ```
 
 ### Description
@@ -442,10 +525,21 @@ Flags:
       --port uint32       port to serve Metrics (default 5007)
 
 Global Flags:
-      --config string   Configuration file for convoy (default "./convoy.json")
-      --db string       Database dsn or path to in-memory file
-      --queue string    Queue provider ("redis" or "in-memory")
-      --redis string    Redis dsn
+      --config string           Configuration file for convoy (default "./convoy.json")
+      --db-database string      Database Database
+      --db-host string          Database Host
+      --db-options string       Database Options
+      --db-password string      Database Password
+      --db-port int             Database Port
+      --db-scheme string        Database Scheme
+      --db-type string          Database provider
+      --db-username string      Database Username
+      --redis-database string   Redis database
+      --redis-host string       Redis Host
+      --redis-password string   Redis Password
+      --redis-port int          Redis Port
+      --redis-scheme string     Redis Scheme
+      --redis-username string   Redis Username
 ```
 
 ### Description
