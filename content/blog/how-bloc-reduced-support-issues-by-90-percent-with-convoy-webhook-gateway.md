@@ -5,10 +5,10 @@ post_image: banner1.png
 primary_author:
     name: Lotanna Nwose
     twitter: viclotana
-primary_tag: Open Thoughts
+primary_tag: Customer Stories
 tags:
     - Convoy
-    - Open Thoughts
+    - Customer Stories
 featured: false
 description: Bloc's Customer Story, how using Convoy helped the Engineering team to rreceive less and less support issues by providing their customers access to easily audit and debug their events themselves using Convoy Portal Links.
 published_at: 2023-05-25T17:00:00.000+00:00
