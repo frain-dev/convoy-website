@@ -15,7 +15,7 @@ published_at: 2023-05-25T17:00:00.000+00:00
 ---
 ## About Bloc
 
-Bloc is a fintech infrastructure company and is considered one of the biggest Banking-as-a-Service (BAAS) platforms in the African fintech space. In 2021, it processed more than $30 million with just one of its bill payment services. Recently, Bloc [acquired another fintech](https://disrupt-africa.com/2022/07/14/nigerian-fintech-infrastructure-startup-bloc-acquires-payments-company-orchestrate/) infrastructure company called Orchestrate, which now operates as a service provided by Bloc.
+[Bloc](https://www.blochq.io) is a fintech infrastructure company and is considered one of the biggest Banking-as-a-Service (BAAS) platforms in the African fintech space. In 2021, it processed more than $30 million with just one of its bill payment services. Recently, Bloc [acquired another fintech](https://disrupt-africa.com/2022/07/14/nigerian-fintech-infrastructure-startup-bloc-acquires-payments-company-orchestrate/) infrastructure company called Orchestrate, which now operates as a service provided by Bloc.
 
 Startups, small and medium-sized enterprises, and large organizations use Bloc's suite of banking and payment tools and APIs to accept payments, send money, attract new customers, create revenue streams, and efficiently manage their business online.
 
