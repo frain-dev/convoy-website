@@ -10,7 +10,7 @@ tags:
     - Convoy
     - Customer Stories
 featured: false
-description: Bloc's Customer Story, how using Convoy helped the Engineering team to rreceive less and less support issues by providing their customers access to easily audit and debug their events themselves using Convoy Portal Links.
+description: Bloc's Customer Story, how using Convoy helped the Engineering team to receive less and less support issues by providing their customers access to easily audit and debug their events themselves using Convoy Portal Links.
 published_at: 2023-05-25T17:00:00.000+00:00
 ---
 ## About Bloc
