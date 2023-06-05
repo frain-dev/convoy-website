@@ -1,5 +1,5 @@
 ---
-title: Using Convoy to debug webhook events 80% faster than with Pubsub
+title: Debuging webhook events 80% faster than with Pubsub
 feature_image: piggyvest.png
 post_image: piggyvest.png
 primary_author:
