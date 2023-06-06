@@ -1,5 +1,5 @@
 ---
-title: Deploying Convoy To Fly
+title: Deploying Convoy To Fly | The Webhooks Blog
 feature_image: deploying-convoy-to-fly.png
 post_image: deploying-convoy-to-fly.png
 primary_author:
@@ -12,7 +12,7 @@ tags:
     - Tutorials
 featured: false
 description: After running and testing Convoy on a local machine, the next step is to host it on actual servers. In this blog post, see how you can deploy Convoy on Fly.io.
-published_at: 2023-05-05T09:00:00.000+00:00
+published_at: 2023-06-06T17:00:00.000+00:00
 ---
 
 
