@@ -10,7 +10,7 @@ tags:
     - Convoy
     - Customer Stories
 featured: false
-description: Piggyvest's Customer Story, how using Convoy helped the Engineering team to debug webhook events 80 percent faster than when they used Google Pubsub.
+description: Piggyvest's Customer Story, how using Convoy helped the Engineering team to debug webhook events 80 percent faster than when they used Google Pubsub. 
 published_at: 2023-06-07T17:00:00.000+00:00
 ---
 ### Managing Fintech Products with millions of users
