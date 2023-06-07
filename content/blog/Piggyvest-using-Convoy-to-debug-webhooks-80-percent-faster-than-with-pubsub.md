@@ -1,14 +1,14 @@
 ---
 title: Debuging webhook events 80% faster than with Pubsub
-feature_image: piggy-story-copy.jpg
-post_image: piggy-story-copy.jpg
+feature_image: piggy-story.png
+post_image: piggy-story.png
 primary_author:
     name: Lotanna Nwose
     twitter: viclotana
-primary_tag: Product Update
+primary_tag: Customer Stories
 tags:
     - Convoy
-    - Engineering
+    - Customer Stories
 featured: false
 description: Piggyvest's Customer Story, how using Convoy helped the Engineering team to debug webhook events 80 percent faster than when they used Google Pubsub.
 published_at: 2023-06-07T17:00:00.000+00:00
