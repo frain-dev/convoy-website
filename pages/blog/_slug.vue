@@ -177,12 +177,12 @@ export default {
 				{
 					hid: 'og:image',
 					property: 'og:image',
-					content: 'https://getconvoy.io/post-images/' + this.blogPageData.post_image
+					content: 'https://getconvoy.io/feature-images/' + this.blogPageData.feature_image
 				},
 				{
 					hid: 'twitter:image',
 					property: 'twitter:image',
-					content: 'https://getconvoy.io/post-images/' + this.blogPageData.post_image
+					content: 'https://getconvoy.io/feature-images/' + this.blogPageData.feature_image
 				},
 				{
 					hid: 'twitter:url',
@@ -220,7 +220,7 @@ export default {
 					"dateModified": "${this.blogPageData.updatedAt}",
 					"image": {
 						"@type": "ImageObject",
-						"url": "https://getconvoy.io/post-images/${this.blogPageData.post_image}",
+						"url": "https://getconvoy.io/feature-images/${this.blogPageData.feature_image}",
 						"width": 882,
 						"height": 346
 					},
