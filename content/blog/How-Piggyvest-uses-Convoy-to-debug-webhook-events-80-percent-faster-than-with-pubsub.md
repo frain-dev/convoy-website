@@ -4,7 +4,7 @@ feature_image: piggy-story.png
 post_image: piggy-story.png
 primary_author:
     name: Raymond Tukpe
-    twitter: rtukpe
+    twitter: viclotana
 primary_tag: Product Update
 tags:
     - Convoy
