@@ -1,5 +1,5 @@
 ---
-title: Debuging webhook events 80% faster than with Pubsub
+title: Debugging webhook events 80% faster with Convoy
 feature_image: piggy-story.png
 post_image: piggy-story.png
 primary_author:
@@ -10,7 +10,7 @@ tags:
     - Convoy
     - Customer Stories
 featured: false
-description: Piggyvest's Customer Story, how using Convoy helped the Engineering team to debug webhook events 80 percent faster than when they used Google Pubsub.
+description: Piggyvest's Customer Story, how using Convoy helped the Engineering team to debug webhook events 80 percent faster than when they used Google Pubsub. 
 published_at: 2023-06-07T17:00:00.000+00:00
 ---
 ### Managing Fintech Products with millions of users
@@ -29,7 +29,7 @@ Additionally, browsing through logs at this level across multiple products was v
 
 ### Moving from Google Pubsub to Convoy
 
-Ikechukwu was introduced to Convoy by a friend, who had heard about some of the challenges faced by the engineering team. After discovering Convoy, they quickly switched from using Pubsub to using Convoy to manage their entire events infrastructure. This move has given them access to granular payload details on every event, which is a big improvement over the summaries provided by Google Pubsub.
+Ikechukwu was introduced to Convoy by a friend, who had heard about some of the challenges faced by the engineering team. After discovering Convoy, they switched from using Pubsub to using Convoy to manage their entire events infrastructure. This move has given them access to granular payload details on every event, which is a big improvement over the summaries provided by Google Pubsub.
 
 “I remember we started integrating it almost immediately because we had been on the lookout for a webhook aggregator that will take away a lot of our debugging stress for a while.” -  Timothy, Engineer at Piggyvest
 
