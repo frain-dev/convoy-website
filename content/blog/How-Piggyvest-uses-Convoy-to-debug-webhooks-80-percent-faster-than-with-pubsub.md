@@ -1,7 +1,7 @@
 ---
 title: Debuging webhook events 80% faster than with Pubsub
-feature_image: piggy-story-copy.png
-post_image: piggy-story-copy.png
+feature_image: piggy-story-copy.jpg
+post_image: piggy-story-copy.jpg
 primary_author:
     name: Lotanna Nwose
     twitter: viclotana
