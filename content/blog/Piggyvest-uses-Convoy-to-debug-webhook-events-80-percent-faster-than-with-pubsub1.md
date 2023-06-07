@@ -8,7 +8,7 @@ primary_author:
 primary_tag: Customer Stories
 tags:
     - Convoy
-    - Customer Stories
+    - Customer Stories 
 featured: false
 description: Piggyvest's Customer Story, how using Convoy helped the Engineering team to debug webhook events 80 percent faster than when they used Google Pubsub.
 published_at: 2023-06-06T17:00:00.000+00:00
