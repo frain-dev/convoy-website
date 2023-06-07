@@ -1,7 +1,7 @@
 ---
 title: Debuging webhook events 80% faster than with Pubsub
-feature_image: uuid-to-ulid.png
-post_image: uuid-to-ulid.png
+feature_image: piggy-story.png
+post_image: piggy-story.png
 primary_author:
     name: Raymond Tukpe
     twitter: rtukpe
