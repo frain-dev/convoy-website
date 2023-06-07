@@ -15,7 +15,7 @@ published_at: 2023-06-07T17:00:00.000+00:00
 ---
 ### Managing Fintech Products with millions of users
 
-[Piggyvest](https://www.piggyvest.com), arguably the largest Wealthtech company in Sub-Saharan Africa with over 4 million customers, [paid out $480m](https://www.thecable.ng/piggyvest-we-paid-out-over-n240bn-to-customers-in-2021) to 3.5 million of its customers in 2021 and is on a mission to help Africans achieve their financial goals. The entity also provides a couple of other products, including [Pocket with over 2 million customers](https://pocketapp.com) and, [Patronize](https://patronize.co) for business owners.
+[Piggyvest](https://www.piggyvest.com), arguably the largest Wealthtech company in Sub-Saharan Africa with over 4 million customers, [have now paid out over $1bn](https://www.thecable.ng/piggyvest-we-paid-out-over-n240bn-to-customers-in-2021) to their customers since inception is on a mission to help Africans achieve their financial goals. The entity also provides a couple of other products, including [Pocket with over 2 million customers](https://pocketapp.com) and, [Patronize](https://patronize.co) for business owners.
 
 Millions of events are sent and received daily from all Piggyvest customer interactions. The engineering team is responsible for ensuring that these systems work seamlessly and as expected.
 
