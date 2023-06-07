@@ -177,12 +177,12 @@ export default {
 				{
 					hid: 'og:image',
 					property: 'og:image',
-					content: 'https://getconvoy.io/feature-images/' + this.blogPageData.feature_image
+					content: 'https://getconvoy.io/blog-socials/' + this.blogPageData.feature_image
 				},
 				{
 					hid: 'twitter:image',
 					property: 'twitter:image',
-					content: 'https://getconvoy.io/feature-images/' + this.blogPageData.feature_image
+					content: 'https://getconvoy.io/blog-socials/' + this.blogPageData.feature_image
 				},
 				{
 					hid: 'twitter:url',
@@ -220,9 +220,9 @@ export default {
 					"dateModified": "${this.blogPageData.updatedAt}",
 					"image": {
 						"@type": "ImageObject",
-						"url": "https://getconvoy.io/feature-images/${this.blogPageData.feature_image}",
-						"width": 882,
-						"height": 346
+						"url": "https://getconvoy.io/blog-socials/${this.blogPageData.feature_image}",
+						"width": 1200,
+						"height": 627
 					},
 					"keywords": "Convoy,convoy,webhooks gateway,webhooks service,webhook infrastructure,sending webhooks,receiving webhooks,webhooks provider,webhooks as a service,open-source webhooks,api gateway",
 					"description": "${this.blogPageData.description}",
