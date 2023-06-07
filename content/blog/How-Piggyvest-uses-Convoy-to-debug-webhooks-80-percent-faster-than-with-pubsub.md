@@ -1,9 +1,9 @@
 ---
 title: Debuging webhook events 80% faster than with Pubsub
-feature_image: piggy-story.png
-post_image: piggy-story.png
+feature_image: piggy-story-copy.png
+post_image: piggy-story-copy.png
 primary_author:
-    name: Raymond Tukpe
+    name: Lotanna Nwose
     twitter: viclotana
 primary_tag: Product Update
 tags:
