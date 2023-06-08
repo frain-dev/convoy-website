@@ -32,7 +32,7 @@ Endpoint authentication is a scenario where the endpoint owner needs to specify 
 ![Endpoint authentication](/docs-assets/endpoint-auth.png)
 
 ### Endpoint Owner ID
-Endpoint Owner ID is a unique ID for identifying a group of endpoints. It is useful for fanning out an event to multiple endpoints and creating portal link for multiple endpoints.
+Endpoint Owner ID is a unique ID for identifying a group of endpoints. It is useful for fanning out an event to multiple endpoints and creating portal link for multiple endpoints. It is typically set by you, the user and should have meaningful significance within your internal systems, serving the purpose of logically grouping endpoints.
 
 ![Endpoint Owner ID](/docs-assets/endpoint-owner-id.png)
 
