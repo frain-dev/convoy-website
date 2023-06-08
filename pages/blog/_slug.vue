@@ -33,7 +33,11 @@
 					<p class="mb-8px text-14 text-grey-80">Share to:</p>
 					<ul class="socials">
 						<li class="!w-32px !h-32px">
-							<a rel="noopener noreferrer" :href="'https://twitter.com/intent/tweet/?text=' + blogPageData.title + '%20from%20@getconvoy&url=https://getconvoy.io/blog/' + blogPageData.slug + '&via=getconvoy'" target="_blank">
+							<a
+								rel="noopener noreferrer"
+								:href="'https://twitter.com/intent/tweet/?text=' + blogPageData.title + '%20from%20@getconvoy&url=https://getconvoy.io/blog/' + blogPageData.slug + '&via=getconvoy'"
+								target="_blank"
+							>
 								<img src="~/assets/images/twitter-grey-icon.svg" alt="twitter logo" />
 							</a>
 						</li>
@@ -82,12 +86,32 @@ export default {
 			return { blogPageData };
 		}
 	},
+	methods: {
+		getBlogTitle() {
+			let blogTitle = '';
+			switch (this.blogPageData.primary_tag) {
+				case 'Customer Stories':
+					blogTitle = `Customer Stories: ${this.blogPageData.title}`;
+					break;
+				case 'News':
+					blogTitle = `Convoy Announcements: ${this.blogPageData.title}`;
+					break;
+				case 'Library Content':
+					blogTitle = `${this.blogPageData.title} | The Webhooks Library`;
+					break;
+				default:
+					blogTitle = `${this.blogPageData.title} | The Webhooks Blog`;
+					break;
+			}
+			return blogTitle;
+		}
+	},
 	mounted() {
 		Prism.highlightAll();
 	},
 	head() {
 		return {
-			title: this.blogPageData.title,
+			title: this.getBlogTitle(),
 			__dangerouslyDisableSanitizers: ['meta', 'script'],
 			meta: [
 				{ hid: 'description', name: 'description', content: this.blogPageData.description },
@@ -119,9 +143,9 @@ export default {
 				{
 					hid: 'apple-mobile-web-app-title',
 					name: 'apple-mobile-web-app-title',
-					content: this.blogPageData.title
+					content: this.getBlogTitle()
 				},
-				{ hid: 'og:title', name: 'og:title', content: this.blogPageData.title },
+				{ hid: 'og:title', name: 'og:title', content: this.getBlogTitle() },
 				{ hid: 'og:site_name', name: 'og:site_name', content: 'Convoy' },
 				{ hid: 'og:type', name: 'og:type', content: 'article' },
 				{
@@ -152,7 +176,7 @@ export default {
 				{
 					hid: 'twitter:title',
 					name: 'twitter:title',
-					content: this.blogPageData.title
+					content: this.getBlogTitle()
 				},
 				{
 					hid: 'twitter:card',
@@ -167,7 +191,7 @@ export default {
 				{
 					hid: 'twitter:text:title',
 					name: 'twitter:text:title',
-					content: this.blogPageData.title
+					content: this.getBlogTitle()
 				},
 				{
 					hid: 'twitter:description',
@@ -214,7 +238,7 @@ export default {
 						"url": "http://twitter.com/${this.blogPageData.primary_author.twitter}",
 						"sameAs": []
 					},
-					"headline": "${this.blogPageData.title}",
+					"headline": "${this.getBlogTitle()}",
 					"url": "https://getconvoy.io/blog/${this.blogPageData.slug}",
 					"datePublished": "${this.blogPageData.published_at}",
 					"dateModified": "${this.blogPageData.updatedAt}",
