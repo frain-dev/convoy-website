@@ -33,11 +33,7 @@
 					<p class="mb-8px text-14 text-grey-80">Share to:</p>
 					<ul class="socials">
 						<li class="!w-32px !h-32px">
-							<a
-								rel="noopener noreferrer"
-								:href="'https://twitter.com/intent/tweet/?text=' + blogPageData.title + '%20from%20@getconvoy&url=https://getconvoy.io/blog/' + blogPageData.slug + '&via=getconvoy'"
-								target="_blank"
-							>
+							<a rel="noopener noreferrer" :href="'https://twitter.com/intent/tweet/?text=' + blogPageData.title + '%20from%20@getconvoy&url=https://getconvoy.io/blog/' + blogPageData.slug + '&via=getconvoy'" target="_blank">
 								<img src="~/assets/images/twitter-grey-icon.svg" alt="twitter logo" />
 							</a>
 						</li>
@@ -106,6 +102,7 @@ export default {
 	head() {
 		return {
 			title: this.blogPageData.metaTitle,
+
 			__dangerouslyDisableSanitizers: ['meta', 'script'],
 			meta: [
 				{ hid: 'description', name: 'description', content: this.blogPageData.description },
