@@ -60,7 +60,7 @@
 			</div>
 		</div>
 
-		<div v-if="posts" class="max-w-[970px] w-full m-auto px-20px desktop:mt-130px">
+		<div class="max-w-[970px] w-full m-auto px-20px desktop:mt-130px">
 			<h1 class="font-bold">More Posts</h1>
 			<div class="mt-32px justify-center desktop:grid desktop:grid-cols-2 desktop:gap-48px">
 				<Post v-for="(post, index) in posts" :key="index" :post="post" />
