@@ -122,7 +122,7 @@ export default {
 				{
 					hid: 'twitter:data1',
 					name: 'twitter:data1',
-					content: this.blogPageData?.primary_author?.name
+					content: this.blogPageData.primary_author.name
 				},
 				{
 					hid: 'twitter:label2',
@@ -165,7 +165,7 @@ export default {
 				{
 					hid: 'article:publisher',
 					name: 'article:publisher',
-					content: 'http://twitter.com/' + this.blogPageData?.primary_author?.twitter
+					content: 'http://twitter.com/' + this.blogPageData.primary_author.twitter
 				},
 				{
 					hid: 'twitter:title',
@@ -228,8 +228,8 @@ export default {
 					},
 					"author": {
 						"@type": "Person",
-						"name": "${this.blogPageData?.primary_author?.name}",
-						"url": "http://twitter.com/${this.blogPageData?.primary_author?.twitter}",
+						"name": "${this.blogPageData.primary_author.name}",
+						"url": "http://twitter.com/${this.blogPageData.primary_author.twitter}",
 						"sameAs": []
 					},
 					"headline": "${this.blogPageData.metaTitle}",
