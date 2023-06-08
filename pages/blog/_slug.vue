@@ -76,6 +76,20 @@ export default {
 			const blogPageData = await $content('blog/' + params.slug).fetch();
 			const posts = await $content('blog').limit(2).sortBy('published_at', 'asc').fetch();
 			blogPageData.readingTime = Math.ceil(blogPageData.readingTime / (1000 * 60));
+			switch (blogPageData.primary_tag) {
+				case 'Customer Stories':
+					blogPageData['metaTitle'] = `Customer Stories: ${blogPageData.title}`;
+					break;
+				case 'News':
+					blogPageData['metaTitle'] = `Convoy Announcements: ${blogPageData.title}`;
+					break;
+				case 'Library Content':
+					blogPageData['metaTitle'] = `${blogPageData.title} | The Webhooks Library`;
+					break;
+				default:
+					blogPageData['metaTitle'] = `${blogPageData.title} | The Webhooks Blog`;
+					break;
+			}
 			return { blogPageData, posts };
 		} catch (error) {
 			const blogPageData = await $content('404').fetch();
@@ -87,7 +101,8 @@ export default {
 	},
 	head() {
 		return {
-			title: this.blogPageData.title,
+			title: this.blogPageData.metaTitle,
+
 			__dangerouslyDisableSanitizers: ['meta', 'script'],
 			meta: [
 				{ hid: 'description', name: 'description', content: this.blogPageData.description },
@@ -119,9 +134,9 @@ export default {
 				{
 					hid: 'apple-mobile-web-app-title',
 					name: 'apple-mobile-web-app-title',
-					content: this.blogPageData.title
+					content: this.blogPageData.metaTitle
 				},
-				{ hid: 'og:title', name: 'og:title', content: this.blogPageData.title },
+				{ hid: 'og:title', name: 'og:title', content: this.blogPageData.metaTitle },
 				{ hid: 'og:site_name', name: 'og:site_name', content: 'Convoy' },
 				{ hid: 'og:type', name: 'og:type', content: 'article' },
 				{
@@ -152,7 +167,7 @@ export default {
 				{
 					hid: 'twitter:title',
 					name: 'twitter:title',
-					content: this.blogPageData.title
+					content: this.blogPageData.metaTitle
 				},
 				{
 					hid: 'twitter:card',
@@ -167,7 +182,7 @@ export default {
 				{
 					hid: 'twitter:text:title',
 					name: 'twitter:text:title',
-					content: this.blogPageData.title
+					content: this.blogPageData.metaTitle
 				},
 				{
 					hid: 'twitter:description',
@@ -177,12 +192,12 @@ export default {
 				{
 					hid: 'og:image',
 					property: 'og:image',
-					content: 'https://getconvoy.io/blog-socials/' + this.blogPageData.feature_image
+					content: 'https://getconvoy.io/feature-images/' + this.blogPageData.feature_image
 				},
 				{
 					hid: 'twitter:image',
 					property: 'twitter:image',
-					content: 'https://getconvoy.io/blog-socials/' + this.blogPageData.feature_image
+					content: 'https://getconvoy.io/feature-images/' + this.blogPageData.feature_image
 				},
 				{
 					hid: 'twitter:url',
@@ -214,15 +229,15 @@ export default {
 						"url": "http://twitter.com/${this.blogPageData.primary_author.twitter}",
 						"sameAs": []
 					},
-					"headline": "${this.blogPageData.title}",
+					"headline": "${this.blogPageData.metaTitle}",
 					"url": "https://getconvoy.io/blog/${this.blogPageData.slug}",
 					"datePublished": "${this.blogPageData.published_at}",
 					"dateModified": "${this.blogPageData.updatedAt}",
 					"image": {
 						"@type": "ImageObject",
-						"url": "https://getconvoy.io/blog-socials/${this.blogPageData.feature_image}",
-						"width": 1200,
-						"height": 627
+						"url": "https://getconvoy.io/feature-images/${this.blogPageData.feature_image}",
+						"width": 882,
+						"height": 346
 					},
 					"keywords": "Convoy,convoy,webhooks gateway,webhooks service,webhook infrastructure,sending webhooks,receiving webhooks,webhooks provider,webhooks as a service,open-source webhooks,api gateway",
 					"description": "${this.blogPageData.description}",
