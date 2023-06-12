@@ -5,10 +5,10 @@ post_image: launch-week.png
 primary_author:
     name: Lotanna Nwose
     twitter: viclotana
-primary_tag: Open Thoughts
+primary_tag: News
 tags:
     - Convoy
-    - Open Thoughts
+    - News
 featured: false
 description: Announcing the first Convoy Launch Week, for everyday we release new products and features and end with a community call on Friday.
 published_at: 2023-06-12T17:30:00.000+00:00
