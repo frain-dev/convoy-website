@@ -1,5 +1,5 @@
 ---
-title: Announcing Convoy Launch Week
+title: Introducing Convoy Launch Week
 feature_image: launch-week.png
 post_image: launch-week.png
 primary_author:
