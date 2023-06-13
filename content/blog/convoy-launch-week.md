@@ -9,7 +9,7 @@ primary_tag: News
 tags:
     - Convoy
     - News
-featured: false
+featured: true
 description: Announcing the first Convoy Launch Week, for everyday we release new products and features and end with a community call on Friday.
 published_at: 2023-06-12T17:30:00.000+00:00
 ---
