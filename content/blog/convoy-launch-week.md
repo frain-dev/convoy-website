@@ -16,7 +16,7 @@ published_at: 2023-06-12T17:30:00.000+00:00
 ![Convoy Launch Week Banner](/post-images/launch-week.png)
 ## Our very first Launch Week
 
-This quarter, we are doing things a little differently. We're proud to announce our first Launch Week from June 26th to June 30th, 2023. It will be five days of launching new features/products every day of that week. [Register here to be notified about Launch Week](https://www.notion.so/77c4d803ae914ecaae0215b8bb53c721?pvs=21). 
+This quarter, we are doing things a little differently. We're proud to announce our first Launch Week from June 26th to June 30th, 2023. It will be five days of launching new features/products every day of that week. [Register here to be notified about Launch Week](https://launchweek.getconvoy.io). 
 
 ## Why Launch Week
 
