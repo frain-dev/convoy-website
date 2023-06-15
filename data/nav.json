@@ -26,6 +26,14 @@
 		"link": "/docs/configuration"
 	},
 	{
+		"title": "Forward Proxies",
+		"showDropdown": false,
+		"children": [
+			{
+			}
+		]
+	},
+	{
 		"title": "Deployment",
 		"showDropdown": false,
 		"children": [
