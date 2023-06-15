@@ -1,4 +1,20 @@
-# **What are Webhooks? A Complete Guide**
+---
+title: What are Webhooks?
+feature_image: what-are-webhooks.png
+post_image: what-are-webhooks.png
+primary_author:
+    name: Adams Adebayo
+    twitter: olodocoder
+primary_tag: Open Thoughts
+tags:
+    - Convoy
+    - Open Thoughts
+featured: false
+description: Curious about webhooks? Dive into this article to understand what webhooks are, how they work, and how they can revolutionize your data integration process.
+published_at: 2023-06-19T17:00:00.000+00:00
+---
+
+# What are Webhooks? A Complete Guide
 
 Communication is critical in programming, just like it is for humans. Both software and hardware applications communicate with other entities to perform correctly and efficiently. From a browser communicating with the server to return a correct response to the user to home security systems getting the user's preference settings from the cloud to perform the necessary task after detecting a break-in.
 
