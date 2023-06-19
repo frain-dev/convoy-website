@@ -33,7 +33,7 @@
 					:class="showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'"
 				>
 					<li
-						class="py-14px px-20px nav-bar-break:mr-10px border-b border-b-grey-10 last-of-type:border-none nav-bar-break:border-none relative"
+						class="py-14px px-12px border-b border-b-new.primary-25 last-of-type:border-none nav-bar-break:border-none relative"
 						v-for="link in menuItems"
 						:key="link.name"
 						@click="currentRoute = link.name"
@@ -72,23 +72,23 @@
 						</template>
 					</li>
 
-					<li class="py-14px px-20px flex items-center nav-bar-break:pr-0">
+					<li class="py-14px px-12px flex items-center nav-bar-break:pr-0 nav-bar-break:pl-40px">
 						<a
 							href="https://dashboard.getconvoy.io/login"
 							target="_blank"
-							class="p-10px text-14 mr-16px font-medium rounded-8px nav-bar-break:bg-new.primary-25 nav-bar-break:text-new.primary-400 text-new.primary-400 flex items-center"
+							class="nav-bar-break:px-10px py-10px text-14 mr-16px font-medium rounded-8px nav-bar-break:bg-new.primary-25 nav-bar-break:text-new.primary-400 text-new.primary-400 flex items-center"
 						>
 							Sign In
 						</a>
+						<div class="block nav-bar-break:hidden h-18px w-[1px] bg-new.primary-25 mx-12px"></div>
 						<a
-							href="https://github.com/frain-dev/convoy#installation-getting-started"
+							href="https://dashboard.getconvoy.io/"
 							target="_blank"
 							class="px-14px py-10px text-14 font-medium rounded-8px nav-bar-break:bg-primary-100 nav-bar-break:text-white-100 text-primary-100 flex items-center"
 						>
 							Start your project
 						</a>
 					</li>
-
 				</ul>
 				<a href="https://github.com/frain-dev/convoy" class="block nav-bar-break:hidden">
 					<img src="~/assets/images/github-logo.svg" alt="github logo" />
