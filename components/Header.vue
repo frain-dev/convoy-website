@@ -72,21 +72,23 @@
 						</template>
 					</li>
 
-					<li class="py-14px px-20px nav-bar-break:p-0">
+					<li class="py-14px px-20px flex items-center nav-bar-break:pr-0">
+						<a
+							href="https://dashboard.getconvoy.io/login"
+							target="_blank"
+							class="p-10px text-14 mr-16px font-medium rounded-8px nav-bar-break:bg-new.primary-25 nav-bar-break:text-new.primary-400 text-new.primary-400 flex items-center"
+						>
+							Sign In
+						</a>
 						<a
 							href="https://github.com/frain-dev/convoy#installation-getting-started"
 							target="_blank"
-							class="nav-bar-break:py-8px nav-bar-break:px-24px text-14 font-medium rounded-8px nav-bar-break:bg-primary-100 nav-bar-break:text-white-100 text-primary-100 flex items-center"
+							class="px-14px py-10px text-14 font-medium rounded-8px nav-bar-break:bg-primary-100 nav-bar-break:text-white-100 text-primary-100 flex items-center"
 						>
 							Start your project
 						</a>
 					</li>
 
-					<li>
-						<a href="https://github.com/frain-dev/convoy">
-							<img src="~/assets/images/github-logo.svg" alt="github logo" />
-						</a>
-					</li>
 				</ul>
 				<a href="https://github.com/frain-dev/convoy" class="block nav-bar-break:hidden">
 					<img src="~/assets/images/github-logo.svg" alt="github logo" />
