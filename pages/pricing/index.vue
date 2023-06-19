@@ -1,92 +1,75 @@
 <template>
 	<div>
-		<section>
-			<div class="max-w-[1200px] min-h-[500px] mobile:min-h-[500px] desktop:min-h-[500px] w-full m-auto px-20px pt-160px pb-80px">
-				<div class="bg-primary-500 rounded-8px w-fit m-auto flex flex-row mb-36px">
-					<li class="list-none" v-for="tab of tabs" :key="tab.id">
-						<button
-							class="rounded-6px py-12px px-8px desktop:px-60px min-w-[129px] desktop:min-w-[260px] transition-all duration-300"
-							:class="activeTab === tab.id ? 'bg-primary-100 shadow-sm' : ''"
-							@click="switchTabs(tab.id)"
-						>
-							<span class="text-14 tracking-[0.02em] transition-all duration-300" :class="activeTab === tab.id ? 'font-semibold text-white-100' : 'text-black'">{{ tab.label }}</span>
-						</button>
-					</li>
-				</div>
+		<section class="pt-160px px-20px">
+			<h1 class="text-center font-bold text-32 desktop:text-[42px] desktop:leading-[48px] mb-16px max-w-[1020px] m-auto">Usage Pricing, no surprises.</h1>
+			<p class="text-center text-new.gray-600 text-16 max-w-[561px] m-auto mb-66px">
+				All the tools you need to take control and manage your webhook events infrastructure, from your hubby project to scale.
+			</p>
 
-				<h1 class="text-center font-bold text-32 desktop:text-[42px] desktop:leading-[48px] mb-16px max-w-[1020px] m-auto">
-					{{ activeTab === 'self' ? 'A Self-Hosted edition that meets your data and security requirements.' : 'Convoy webhooks-as-a-service, fully managed for your team.' }}
-				</h1>
-				<p class="text-center text-18">
-					{{
-						activeTab === 'self'
-							? 'All the tools you need to take control and manage your webhook events infrastructure at scale'
-							: 'Convoy SAAS with multi-region deployment, high availability and autoscaling all in one intuitive platform.'
-					}}
-				</p>
-			</div>
-		</section>
-
-		<section v-if="activeTab === 'self'" class="bg-white-100 pb-120px">
-			<div class="max-w-[1210px] mx-auto px-20px grid gird-cols-1 desktop:grid-cols-2 gap-10 md:gap-20">
-				<div class="bg-[linear-gradient(77deg,#36317A_-29%,#4A87C5_88%)] rounded-10px px-14px py-30px desktop:p-40px">
-					<h2 class="font-semibold text-center text-white-100 mb-40px">Community</h2>
-					<div class="bg-white-100 rounded-10px px-30px py-40px mb-40px">
-						<div class="bg-primary-500 rounded-[40px] mx-auto w-fit py-10px px-20px flex items-center text-14 mb-12px">
-							<div class="mr-16px w-24px h-24px rounded-50% bg-success-100 flex justify-center items-center">
-								<img src="~/assets/images/svg/lightening.svg" alt="lightening icon" />
+			<div class="px-20px max-w-[1248px] w-full m-auto">
+				<div class="grid grid-cols-1 tab:grid-cols-2 md:grid-cols-3 gap-24px items-end">
+					<div class="rounded-16px border border-new.primary-50 bg-white-100 shadow-default" :class="`${i === 1 ? '' : 'md:max-h-[912px]'}`" v-for="(plan, i) of plans" :key="i">
+						<div :class="`${i === 1 ? 'bg-new.success-50 pb-24px rounded-tl-16px rounded-tr-16px' : ''} px-32px pt-32px`">
+							<div class="flex items-center mb-24px">
+								<img :src="require(`~/assets/images/${plan.id}-plan.svg`)" :alt="`${plan.id} plan`" class="mr-16px" />
+								<div>
+									<p class="text-16 text-new.gray-800">For</p>
+									<h1 class="text-new.gray-800 font-bold">{{ plan.name }}</h1>
+								</div>
 							</div>
-							Self-hosted
+							<p class="text-new.gray-600 text-12">{{ plan.subText }}</p>
+							<hr :class="`${i === 1 ? 'border-new.success-100' : 'border-new.primary-25'} border-t my-24px`" />
+							<div :class="`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`">Usage based price</div>
+							<p class="flex items-center">
+								<span class="text-36 font-bold">{{ plan.price }}</span>
+								<span class="text-18 text-new.gray-600 ml-10px">/ monthly</span>
+							</p>
 						</div>
-						<h1 class="text-26 md:text-24 mb-64px font-semibold text-center">Free forever</h1>
-						<nuxt-link
-							to="/enterprise#requestAccess"
-							class="bg-primary-100 shadow-sm text-white-100 whitespace-nowrap text-12 desktop:text-16 flex justify-center items-center py-12px px-24px rounded-8px mt-40px w-full"
-						>
-							Get started
-							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
-						</nuxt-link>
-					</div>
-					<div class="text-grey-20">
-						<div class="flex items-start mb-20px" v-for="feature in communityFeatures" :key="feature">
-							<img src="~/assets/images/svg/light-lightening.svg" alt="lightening" class="mr-18px" />
-							<p class="text-18 font-light mobile:text-14 md:max-w-[542px]">{{ feature }}</p>
-						</div>
-					</div>
-				</div>
-				<div class="bg-[linear-gradient(248deg,#32587D_14%,#0f2a44f5_88%)] rounded-10px px-14px py-30px desktop:p-40px">
-					<h2 class="font-semibold text-center text-white-100 mb-40px">Enterprise</h2>
-					<div class="bg-white-100 rounded-10px px-30px py-40px mb-40px">
-						<div class="bg-primary-500 rounded-[40px] mx-auto w-fit py-10px px-20px flex items-center text-14 mb-12px">
-							<div class="mr-16px w-24px h-24px rounded-50% bg-success-100 flex justify-center items-center">
-								<img src="~/assets/images/svg/lightening.svg" alt="lightening icon" />
+						<div :class="`${i === 1 ? 'pt-24px' : ''} px-32px pb-32px`">
+							<hr v-if="i !== 1" class="border-t border-new.primary-25 my-24px" />
+							<div :class="`${i === 1 ? 'h-[414px] md:h-[510px]' : 'h-[414px] md:h-[470px]'}`">
+								<p class="text-12 text-new.gray-400 mb-16px">{{ plan.preText }}</p>
+								<div class="flex items-start mb-10px" v-for="(feature, index) in plan.features" :key="index">
+									<img src="~/assets/images/svg/checkmark-icon.svg" alt="checkmark icon" class="mr-16px mt-6px" />
+									<p class="text-12 text-new.gray-600 md:max-w-[542px]">{{ feature }}</p>
+								</div>
 							</div>
-							Self-hosted
-						</div>
-						<h1 class="text-26 md:text-24 mb-64px font-semibold text-center">Reach out to us</h1>
-						<button
-							@click="showEnterpriseForm = true"
-							class="bg-primary-100 shadow-sm text-white-100 whitespace-nowrap text-12 desktop:text-16 flex justify-center items-center py-12px px-24px rounded-8px mt-40px w-full"
-						>
-							Contact Sales
-							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
-						</button>
-					</div>
-					<div class="text-white-100">
-						<div class="flex items-start mb-20px" v-for="feature in enterpriseFeatures" :key="feature">
-							<img src="~/assets/images/svg/light-lightening.svg" alt="lightening" class="mr-18px" />
-							<p class="text-18 font-light mobile:text-14 md:max-w-[542px]">{{ feature }}</p>
+
+							<p class="text-10 text-new.gray-400 mb-16px">Additional cost may applied for usage beyond these limits</p>
+							<button
+								class="bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)] rounded-10px p-16px w-full flex items-center justify-center text-white-100 text-14"
+							>
+								Start your project
+								<img src="~/assets/images/arrow-right-icon.svg" alt="arrow right icon" class="ml-12px" />
+							</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="pb-100px desktop:pb-160px px-20px" v-else>
-			<div class="max-w-[805px] mx-auto w-full">
-				<CloudWaitlist></CloudWaitlist>
+		<section class="max-w-[1248px] w-full m-auto px-20px mt-68px mb-160px">
+			<div class="bg-white-100 border border-new.primary-50 rounded-16px shadow-default p-32px flex flex-wrap gap-x-40px">
+				<div class="min-w-[300px]">
+					<h1 class="text-24 font-bold text-new.gray-800 mb-24px">Enterprise</h1>
+					<p class="text-12 text-new.gray-600 max-w-[307px] mb-24px">For large scale products and teams with heavier events loads.</p>
+					<button @click="showEnterpriseForm = true" class="bg-new.gray-100 rounded-6px px-16px py-12px text-new.gray-800 text-14 mb-30px md:mb-0">Contact Us</button>
+				</div>
+				<div class="min-w-[300px]">
+					<div class="flex items-start mb-10px" v-for="(feature, index) in enterpriseFeatures.slice(0, 4)" :key="index">
+						<img src="~/assets/images/svg/checkmark-icon.svg" alt="checkmark icon" class="mr-16px mt-6px" />
+						<p class="text-12 text-new.gray-600 md:max-w-[542px]">{{ feature }}</p>
+					</div>
+				</div>
+				<div class="min-w-[300px]">
+					<div class="flex items-start mb-10px" v-for="(feature, index) in enterpriseFeatures.slice(4, 8)" :key="index">
+						<img src="~/assets/images/svg/checkmark-icon.svg" alt="checkmark icon" class="mr-16px mt-6px" />
+						<p class="text-12 text-new.gray-600 md:max-w-[542px]">{{ feature }}</p>
+					</div>
+				</div>
 			</div>
 		</section>
+
 		<section class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] text-white-100 py-36px desktop:py-80px">
 			<div class="desktop:bg-[url(~/assets/images/Frame.png)] bg-no-repeat bg-right bg-contain">
 				<div class="max-w-[1200px] m-auto px-20px">
@@ -191,33 +174,56 @@ export default {
 					price: '$0',
 					frequency: '/monthly',
 					link: 'https://github.com/frain-dev/convoy#installation-getting-started',
-					features: ['Send up to 150,000 events, retries are free', 'Access with up to 2 users', 'Data retention for up to 3 days', 'Basic Role-Based Access Control', 'Priority developer support']
+					subText: 'This is a perfect plan for starters and hobby projects',
+					tagClass: 'bg-new.primary-25 text-new.primary-400',
+					preText: 'You’ll get started with:',
+					features: [
+						'Up to 200,000 events monthly',
+						'Automated event retries',
+						'Customizable event headers',
+						'Basic debugging',
+						'Basic circuit breaking',
+						'Message broker integration',
+						'Payload event filtering',
+						'Rate limit: 10 events/sec',
+						'7 days data retention',
+						'Cloud and open-source deployment usage option',
+						'SSO: G-Suite',
+						'Community support'
+					]
 				},
 				{
 					name: 'Growth',
 					id: 'growth',
 					description: 'This is a perfect plan for startups',
-					price: '$60',
+					price: '$40',
 					frequency: '/monthly',
 					link: '/cloud',
-					features: ['Send up to 1.5m events, retries are free', 'Access for unlimited users', 'Data retention for up to 30 days', 'Basic Role-Based Access Control', 'Priority developer support']
+					subText: 'This is a perfect plan for growing startups, aiming to scale',
+					tagClass: 'bg-new.success-100 text-new.success-400',
+					preText: 'Everything in developer plan, plus:',
+					features: [
+						'Unlimited events',
+						'Advanced debugging',
+						'Advanced circuit breaking',
+						'Shared forward proxy integration',
+						'Rate limit: 300 events/sec',
+						'Role based access control',
+						'30 days data retention',
+						'Dedicated email support'
+					]
 				},
+
 				{
 					name: 'Scale',
 					id: 'scale',
 					description: 'For users who want to do more',
-					price: '$700',
-					frequency: '/monthly',
-					link: '/cloud',
-					features: ['Send up to 20m events, retries are free', 'Access for unlimited users', 'Data retention for up to 3 months', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
-				},
-				{
-					name: 'Enterprise',
-					id: 'enterprise',
-					description: 'For users who want to do more',
-					price: 'Custom',
+					price: '$150',
 					frequency: '',
 					link: '/enterprise#requestAccess',
+					subText: 'We meet you at your point of scale and join you further',
+					tagClass: 'bg-new.warning-50 text-new.warning-400',
+					preText: 'Everything in growth plan, plus:',
 					features: ['Send unlimited number of events', 'Access for unlimited users', 'Custom data retention policy', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
 				}
 			],
@@ -318,13 +324,14 @@ export default {
 				'Google SSO (Coming Soon)'
 			],
 			enterpriseFeatures: [
-				'Everything in community',
-				'Role-Based Access Controls',
-				'Multiple Environments',
-				'Technical Support with SLAs',
-				'White-Labelled Customer-Facing Dashboards',
-				'Advanced Endpoint Management ( Circuit Breaking & Rate Limiting )',
-				'OIDC & SAML SSO'
+				'Dedicated forward proxy integration',
+				'Rate limit: Custom',
+				'Custom data retention period',
+				'SSO: ODIC and SAML',
+				'Audit logs',
+				'Dedicated email, slack and phone support',
+				'Advanced role based permission with custom roles',
+				'Cloud or on-prem deployment options'
 			],
 			activeTab: 'self',
 			requestForm: {
@@ -409,7 +416,10 @@ export default {
 <style lang="scss" scoped>
 .plans {
 	.grid {
-		grid-template-columns: repeat(auto-fill, minmax(310px, 310px));
+		grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
+		@media (max-width: 1024px) {
+			grid-template-columns: repeat(auto-fill, minmax(310px, 310px));
+		}
 	}
 }
 

@@ -78,7 +78,7 @@
 							target="_blank"
 							class="nav-bar-break:py-8px nav-bar-break:px-24px text-14 font-medium rounded-8px nav-bar-break:bg-primary-100 nav-bar-break:text-white-100 text-primary-100 flex items-center"
 						>
-							Get Started
+							Start your project
 						</a>
 					</li>
 

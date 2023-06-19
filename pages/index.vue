@@ -5,7 +5,7 @@
 				We are backed by
 				<img src="~/assets/images/y-combinator.svg" class="ml-16px w-24px h-24px" alt="y-combinator" />
 			</div>
-			<h1 class="text-center desktop:text-[56px] desktop:leading-[80px] font-bold">Open-source Webhooks Gateway for</h1>
+			<h1 class="text-center desktop:text-[56px] desktop:leading-[80px] font-bold">Reliable open-source webhooks for</h1>
 			<h1 class="text-center desktop:text-[56px] desktop:leading-[80px] font-bold text-primary-100">Efficient Engineers</h1>
 			<p class="text-center max-w-[1062px] mx-auto text-18 mobile:text-14 mt-16px">
 				Securely Send, Receive and Manage millions of Webhooks Reliably with robust support for Retries, Rate Limiting, Static IPs, Circuit Breaking, Rolling Secrets and more.
@@ -17,16 +17,16 @@
 					href="https://github.com/frain-dev/convoy#installation-getting-started"
 					class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 text-center font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px xs:w-[90vw]"
 				>
-					Get Started
+					Start your webhooks project
 				</a>
 
-				<a
-					href="/demo"
-					class="py-12px px-28px text-14 font-medium rounded-8px bg-[linear-gradient(0deg,#F6F7F9_0%,#FFFFFF_100%)] text-primary-100 border border-primary-500 flex items-center justify-center text-center xs:w-[90vw]"
+				<nuxt-link
+					to="/docs"
+					class="py-12px px-28px text-14 font-medium rounded-8px bg-new.primary-25 text-new.primary-400 border border-new.primary-50 flex items-center justify-center text-center xs:w-[90vw]"
 				>
-					<img src="~/assets/images/svg/play-circle.svg" class="mr-10px w-24px h-24px" alt="y-combinator" />
-					Play 2 mins Demo
-				</a>
+					<img src="~/assets/images/svg/documentation.svg" class="mr-10px w-16px h-16px" alt="document icon" />
+					Documentation
+				</nuxt-link>
 			</div>
 		</section>
 
@@ -321,11 +321,11 @@ export default {
 	data() {
 		return {
 			tabs: [
+				{ label: 'Cloud', id: 'cloud' },
 				{ label: 'Community', id: 'community' },
-				{ label: 'Enterprise', id: 'enterprise' },
-				{ label: 'Cloud', id: 'cloud' }
+				{ label: 'Enterprise', id: 'enterprise' }
 			],
-			activeTab: 'community',
+			activeTab: 'cloud',
 			community: ['Rate Limiting', 'Retries', 'Static IPs', 'App Portal', 'Send Millions of Events'],
 			enterprise: ['Send Billion of Events', 'Dedicated Customer Success', 'Own your data', 'On-prem Support', 'Compliant'],
 			cloud: ['Team management', 'Mulitple projects', 'Debug logs and metric', 'Manage app and customers'],
