@@ -33,7 +33,7 @@
 					:class="showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'"
 				>
 					<li
-						class="py-14px px-12px border-b border-b-new.primary-25 last-of-type:border-none nav-bar-break:border-none relative"
+						class="py-14px nav-bar-break:py-8px px-12px border-b border-b-new.primary-25 last-of-type:border-none nav-bar-break:border-none relative"
 						v-for="link in menuItems"
 						:key="link.name"
 						@click="currentRoute = link.name"
@@ -72,7 +72,7 @@
 						</template>
 					</li>
 
-					<li class="py-14px px-12px flex items-center nav-bar-break:pr-0 nav-bar-break:pl-40px">
+					<li class="py-14px nav-bar-break:py-8px px-12px flex items-center nav-bar-break:pr-0 nav-bar-break:pl-40px">
 						<a
 							href="https://dashboard.getconvoy.io/login"
 							target="_blank"
@@ -132,7 +132,6 @@ export default {
 					]
 				},
 				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' },
-				{ name: 'Watch Demo', route: '/demo', type: 'route' }
 			],
 			hasScrolled: false,
 			currentRoute: ''

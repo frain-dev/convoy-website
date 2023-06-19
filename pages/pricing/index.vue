@@ -40,7 +40,7 @@
 								target="_blank"
 								rel="noopener noreferrer"
 								href="https://dashboard.getconvoy.io/"
-								class="bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)] rounded-10px p-16px w-full flex items-center justify-center text-white-100 text-14"
+								class="bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px w-full flex items-center justify-center text-white-100 text-14"
 							>
 								Start your project
 								<img src="~/assets/images/arrow-right-icon.svg" alt="arrow right icon" class="ml-12px" />
