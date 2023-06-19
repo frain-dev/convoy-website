@@ -13,13 +13,13 @@ featured: false
 description: Payourse Customer story about how they use Convoy to help their customers who integrate their products manage their event infrastructure efficiently.
 published_at: 2023-06-16T17:00:00.000+00:00
 ---
-[Payourse](https://www.payourse.com) is a web3 company that is on a mission to accelerate access to crypto by providing the tools and infrastructure that make it easier, faster and cheaper for people to build user-friendly crypto products. Backed by the web3 giant Celo and Y Combinator in the winter batch of 2022, with a growing customer base this team is also behind [Coinprofile](https://coinprofile.com) and [Simpa](https://www.payourse.com/simpa).
+[Payourse](https://www.payourse.com) is a web3 company that is on a mission to accelerate access to crypto by providing the tools and infrastructure that make it easier, faster and cheaper for people to build user-friendly crypto products. Backed by the web3 giant [Celo](https://celo.org) and [Y Combinator](https://www.ycombinator.com/companies/payourse) in the winter batch of 2022, with a growing customer base this team is also behind [Coinprofile](https://coinprofile.com) and [Simpa](https://www.payourse.com/simpa).
 
 I spoke to Hakeem Orewole, Payourse’s CTO about how things were before and how they found out about and started using Convoy.
 
 ## Event Management can be hard
 
-The notification management part of working with multiple clients and businesses that integrate Payourse products was challenging. Hakeem confirmed that sometimes it was difficult to track and fix webhook notification issues because they were usually not sure if the issues occurred on Payourse’s service or on their clients’ service. Accountability as it relates to SLAs was sometimes not easy to enforce seeing as the source of some issues was not easily determined.
+The notification management part of working with multiple clients and businesses that integrate Payourse products was challenging. Hakeem confirmed that sometimes it was difficult to track and fix webhook notification issues because they were usually unsure if the issues occurred on Payourse’s service or their clients’ service. Accountability, as it relates to SLAs, was sometimes not easy to enforce, as the source of some issues was not easily determined.
 
 ## Portal Links to the rescue
 
