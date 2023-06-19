@@ -1,20 +1,20 @@
 <template>
 	<div>
-		<section class="pt-160px px-20px">
+		<section class="pt-214px px-20px">
 			<h1 class="text-center font-bold text-32 desktop:text-[42px] desktop:leading-[48px] mb-16px max-w-[1020px] m-auto">Usage Pricing, no surprises.</h1>
 			<p class="text-center text-new.gray-600 text-16 max-w-[561px] m-auto mb-66px">
 				All the tools you need to take control and manage your webhook events infrastructure, from your hubby project to scale.
 			</p>
 
-			<div class="px-20px max-w-[1248px] w-full m-auto">
+			<div class="max-w-[1248px] w-full m-auto">
 				<div class="grid grid-cols-1 tab:grid-cols-2 md:grid-cols-3 gap-24px items-end">
 					<div class="rounded-16px border border-new.primary-50 bg-white-100 shadow-default" :class="`${i === 1 ? '' : 'md:max-h-[912px]'}`" v-for="(plan, i) of plans" :key="i">
-						<div :class="`${i === 1 ? 'bg-new.success-50 pb-24px rounded-tl-16px rounded-tr-16px' : ''} px-32px pt-32px`">
+						<div :class="`${i === 1 ? 'bg-new.success-50 pb-24px rounded-tl-16px rounded-tr-16px' : ''} px-24px md:px-32px pt-24px md:pt-32px`">
 							<div class="flex items-center mb-24px">
 								<img :src="require(`~/assets/images/${plan.id}-plan.svg`)" :alt="`${plan.id} plan`" class="mr-16px" />
 								<div>
 									<p class="text-16 text-new.gray-800">For</p>
-									<h1 class="text-new.gray-800 font-bold">{{ plan.name }}</h1>
+									<h1 class="text-24 text-new.gray-800 font-bold">{{ plan.name }}</h1>
 								</div>
 							</div>
 							<p class="text-new.gray-600 text-12">{{ plan.subText }}</p>
@@ -25,7 +25,7 @@
 								<span class="text-18 text-new.gray-600 ml-10px">/ monthly</span>
 							</p>
 						</div>
-						<div :class="`${i === 1 ? 'pt-24px' : ''} px-32px pb-32px`">
+						<div :class="`${i === 1 ? 'pt-24px' : ''} px-24px md:px-32px pb-24px md:pb-32px`">
 							<hr v-if="i !== 1" class="border-t border-new.primary-25 my-24px" />
 							<div :class="`${i === 1 ? 'h-[414px] md:h-[510px]' : 'h-[414px] md:h-[470px]'}`">
 								<p class="text-12 text-new.gray-400 mb-16px">{{ plan.preText }}</p>
@@ -35,21 +35,24 @@
 								</div>
 							</div>
 
-							<p class="text-10 text-new.gray-400 mb-16px">Additional cost may applied for usage beyond these limits</p>
-							<button
+							<p class="text-10 text-new.gray-400 mb-16px">Additional cost may apply for usage beyond these limits</p>
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href="https://dashboard.getconvoy.io/"
 								class="bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-[0px_1px_1px_rgba(22,29,37,0.1),inset_0px_2px_0px_rgba(255,255,255,0.06)] rounded-10px p-16px w-full flex items-center justify-center text-white-100 text-14"
 							>
 								Start your project
 								<img src="~/assets/images/arrow-right-icon.svg" alt="arrow right icon" class="ml-12px" />
-							</button>
+							</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="max-w-[1248px] w-full m-auto px-20px mt-68px mb-160px">
-			<div class="bg-white-100 border border-new.primary-50 rounded-16px shadow-default p-32px flex flex-wrap gap-x-40px">
+		<section class="max-w-[1288px] w-full m-auto px-20px mt-68px mb-160px">
+			<div class="w-full bg-white-100 border border-new.primary-50 rounded-16px shadow-default p-24px md:p-32px flex flex-wrap gap-x-40px">
 				<div class="min-w-[300px]">
 					<h1 class="text-24 font-bold text-new.gray-800 mb-24px">Enterprise</h1>
 					<p class="text-12 text-new.gray-600 max-w-[307px] mb-24px">For large scale products and teams with heavier events loads.</p>
@@ -153,9 +156,9 @@
 
 		<!-- sales modal  -->
 		<div v-if="showEnterpriseForm" @click="showEnterpriseForm = false" class="fixed h-screen w-screen top-0 right-0 bottom-0 z-50 bg-black bg-opacity-60"></div>
-		<div v-if="showEnterpriseForm" class="fixed w-full shadow z-[60] h-fit top-[50%] left-[50%] -translate-x-2/4 -translate-y-2/4 rounded-[16px] max-w-[600px] mx-auto">
-			<div class="w-full px-20px">
-				<EnterpriseWaitlist @requestAccess="showEnterpriseForm = false"></EnterpriseWaitlist>
+		<div v-if="showEnterpriseForm" class="fixed w-full px-20px md:px-0 z-[60] h-fit top-[50%] left-[50%] -translate-x-2/4 -translate-y-2/4 rounded-[16px] max-w-[600px] mx-auto">
+			<div class="w-full shadow-sm">
+				<CloudWaitlist @requestAccess="showEnterpriseForm = false"></CloudWaitlist>
 			</div>
 		</div>
 	</div>
