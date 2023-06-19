@@ -24,7 +24,7 @@ Start smokcscreen by running:
 smokescreen --listen-port <your-desired-proxy-port>
 ```
 
-In your convoy.json file, you need to specify the url to smokerscreen as your proxy value:
+In your convoy.json file, you need to specify the url to smokescreen as your proxy value:
 
 ```json
 "server": {
@@ -40,10 +40,38 @@ In your convoy.json file, you need to specify the url to smokerscreen as your pr
 
 For more extensive documentation of Smokescreen's configuration see [here](https://github.com/stripe/smokescreen).
 
-## Benefits of Using Smokescreen as a Forward Proxy
+## Access Control Lists (ACLs)
 
-By leveraging Smokescreen as a forward proxy for Convoy, you can take advantage of the following benefits:
+Smokescreen allows you to specify access control lists, these help prevent IP spoofing attacks.
 
-- Enhanced security: Smokescreen provides robust security features, including traffic encryption, IP whitelisting, and authentication mechanisms.
-- Advanced request handling: Smokescreen allows you to apply custom rules, modify headers, and perform request transformations to optimize the flow of webhooks.
-- Analytics and monitoring: Smokescreen offers detailed analytics and monitoring capabilities, allowing you to gain insights into webhook traffic and performance.
+```yaml
+---
+version: v1
+services:
+  - name: enforce-dummy-srv
+    project: usersec
+    action: enforce
+    allowed_domains:
+      - example1.com
+      - example2.com
+      - deny1.com # overrides global deny list
+
+  - name: report-dummy-srv
+    project: security
+    action: report
+    allowed_domains:
+      - example3.com
+
+global_allow_list:
+  - goodexample1.com
+  - goodexample2.com
+  - goodexample3.com
+  - conflictingexample.com
+
+global_deny_list:
+  - deny1.com
+  - deny2.com
+  - conflictingexample.com
+```
+The `enforce` action makes smokescreen strictly follow the defined rule, as opposed to `report` which allows the rule to be broken with a warning.
+For more extensive documentation of Smokescreen's configuration see [here](https://github.com/stripe/smokescreen).
