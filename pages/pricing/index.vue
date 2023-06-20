@@ -19,7 +19,7 @@
 							</div>
 							<p class="text-new.gray-600 text-12">{{ plan.subText }}</p>
 							<hr :class="`${i === 1 ? 'border-new.success-100' : 'border-new.primary-25'} border-t my-24px`" />
-							<div :class="`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`">Usage based price</div>
+							<div :class="`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`">{{ i === 0 ? 'Usage based price' : 'Starts with' }}</div>
 							<p class="flex items-center">
 								<span class="text-36 font-bold">{{ plan.price }}</span>
 								<span class="text-18 text-new.gray-600 ml-10px">/ monthly</span>
