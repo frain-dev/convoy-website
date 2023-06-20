@@ -8,7 +8,7 @@
 
 			<div class="max-w-[1248px] w-full m-auto">
 				<div class="grid grid-cols-1 tab:grid-cols-2 md:grid-cols-3 gap-24px items-end">
-					<div class="rounded-16px border border-new.primary-50 bg-white-100 shadow-default" :class="`${i === 1 ? '' : 'md:max-h-[912px]'}`" v-for="(plan, i) of plans" :key="i">
+					<div class="rounded-16px border border-new.primary-50 bg-white-100 shadow-default" :class="`${i === 1 ? '' : 'md:max-h-[912px] md:min-h-[742px]'}`" v-for="(plan, i) of plans" :key="i">
 						<div :class="`${i === 1 ? 'bg-new.success-50 pb-24px rounded-tl-16px rounded-tr-16px' : ''} px-24px md:px-32px pt-24px md:pt-32px`">
 							<div class="flex items-center mb-24px">
 								<img :src="require(`~/assets/images/${plan.id}-plan.svg`)" :alt="`${plan.id} plan`" class="mr-16px" />
@@ -19,7 +19,8 @@
 							</div>
 							<p class="text-new.gray-600 text-12">{{ plan.subText }}</p>
 							<hr :class="`${i === 1 ? 'border-new.success-100' : 'border-new.primary-25'} border-t my-24px`" />
-							<div :class="`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`">{{ i === 0 ? 'Usage based price' : 'Starts with' }}</div>
+							<div v-if="i !== 0" :class="`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`">Starts with</div>
+
 							<p class="flex items-center">
 								<span class="text-36 font-bold">{{ plan.price }}</span>
 								<span class="text-18 text-new.gray-600 ml-10px">/ monthly</span>
@@ -27,7 +28,7 @@
 						</div>
 						<div :class="`${i === 1 ? 'pt-24px' : ''} px-24px md:px-32px pb-24px md:pb-32px`">
 							<hr v-if="i !== 1" class="border-t border-new.primary-25 my-24px" />
-							<div :class="`${i === 1 ? 'h-[414px] md:h-[510px]' : 'h-[414px] md:h-[470px]'}`">
+							<div :class="`${i === 1 ? 'h-[244px] md:h-[340px]' : 'h-[244px] md:h-[300px]'}`">
 								<p class="text-12 text-new.gray-400 mb-16px">{{ plan.preText }}</p>
 								<div class="flex items-start mb-10px" v-for="(feature, index) in plan.features" :key="index">
 									<img src="~/assets/images/svg/checkmark-icon.svg" alt="checkmark icon" class="mr-16px mt-6px" />
@@ -35,7 +36,7 @@
 								</div>
 							</div>
 
-							<p class="text-10 text-new.gray-400 mb-16px">Additional cost may apply for usage beyond these limits</p>
+							<p :class="i === 0 ? 'mt-28px' : ''" class="text-10 text-new.gray-400 mb-16px">Additional cost may apply for usage beyond these limits</p>
 							<a
 								target="_blank"
 								rel="noopener noreferrer"
@@ -54,18 +55,18 @@
 		<section class="max-w-[1288px] w-full m-auto px-20px mt-68px mb-160px">
 			<div class="w-full bg-white-100 border border-new.primary-50 rounded-16px shadow-default p-24px md:p-32px flex flex-wrap gap-x-40px">
 				<div class="min-w-[300px]">
-					<h1 class="text-24 font-bold text-new.gray-800 mb-24px">Enterprise</h1>
+					<h1 class="text-24 font-bold text-new.gray-800 mb-12px">Enterprise</h1>
 					<p class="text-12 text-new.gray-600 max-w-[307px] mb-24px">For large scale products and teams with heavier events loads.</p>
 					<button @click="showEnterpriseForm = true" class="bg-new.gray-100 rounded-6px px-16px py-12px text-new.gray-800 text-14 mb-30px md:mb-0">Contact Us</button>
 				</div>
 				<div class="min-w-[300px]">
-					<div class="flex items-start mb-10px" v-for="(feature, index) in enterpriseFeatures.slice(0, 5)" :key="index">
+					<div class="flex items-start mb-10px" v-for="(feature, index) in enterpriseFeatures.slice(0, 4)" :key="index">
 						<img src="~/assets/images/svg/checkmark-icon.svg" alt="checkmark icon" class="mr-16px mt-6px" />
 						<p class="text-12 text-new.gray-600 md:max-w-[542px]">{{ feature }}</p>
 					</div>
 				</div>
 				<div class="min-w-[300px]">
-					<div class="flex items-start mb-10px" v-for="(feature, index) in enterpriseFeatures.slice(5, 9)" :key="index">
+					<div class="flex items-start mb-10px" v-for="(feature, index) in enterpriseFeatures.slice(4, 6)" :key="index">
 						<img src="~/assets/images/svg/checkmark-icon.svg" alt="checkmark icon" class="mr-16px mt-6px" />
 						<p class="text-12 text-new.gray-600 md:max-w-[542px]">{{ feature }}</p>
 					</div>
@@ -182,17 +183,11 @@ export default {
 					preText: 'You’ll get started with:',
 					features: [
 						'Capped at 200,000 events monthly',
-						'Automated event retries',
-						'Customizable event headers',
-						'Basic debugging',
-						'Basic circuit breaking',
-						'Message broker integration',
-						'Payload event filtering',
-						'Rate limit: 10 events/sec',
-						'7 days data retention',
-						'Cloud and open-source deployment usage option',
-						'SSO: G-Suite',
-						'Community support'
+						'1 user',
+						'2 projects',
+						'3 days retention',
+						'Endpoint Management: Retries & Rate Limiting',
+						'Message Broker Integration (Google PubSub & Amazon SQS)'
 					]
 				},
 				{
@@ -205,16 +200,7 @@ export default {
 					subText: 'This is a perfect plan for growing startups, aiming to scale',
 					tagClass: 'bg-new.success-100 text-new.success-400',
 					preText: 'Everything in developer plan, plus:',
-					features: [
-						'Unlimited events at $50/million events',
-						'Advanced debugging',
-						'Advanced circuit breaking',
-						'Shared forward proxy integration',
-						'Rate limit: 300 events/sec',
-						'Role based access control',
-						'30 days data retention',
-						'Dedicated email support'
-					]
+					features: ['Unlimited events at $50/million events', '5 users', '10 projects', '30 days retention', 'Rate limit: 300 events/sec', 'Shared Static IPs']
 				},
 
 				{
@@ -227,7 +213,7 @@ export default {
 					subText: 'We meet you at your point of scale and join you further',
 					tagClass: 'bg-new.warning-50 text-new.warning-400',
 					preText: 'Everything in growth plan, plus:',
-					features: ['Unlimited events at $45/million events', 'Access for unlimited users', 'Custom data retention policy', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
+					features: ['Unlimited events at $45/million events', 'Unlimited users', 'Unlimited projects', '90 days retention', 'Role-Based Access Controls', 'Dedicated Static IPs']
 				}
 			],
 			features: [
@@ -328,14 +314,11 @@ export default {
 			],
 			enterpriseFeatures: [
 				'Unlimited events at $40/million events',
-				'Dedicated forward proxy integration',
-				'Rate limit: Custom',
-				'Custom data retention period',
-				'SSO: ODIC and SAML',
-				'Audit logs',
-				'Dedicated email, slack and phone support',
-				'Advanced role based permission with custom roles',
-				'Cloud or on-prem deployment options'
+				'Custom retention policy',
+				'SSO & SAML',
+				'Audit Logs',
+				'Dedicated Technical Support',
+				'Deployment Options: Cloud, Dedicated Cluster, On-prem Cluster'
 			],
 			activeTab: 'self',
 			requestForm: {
