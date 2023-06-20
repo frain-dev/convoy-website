@@ -5,10 +5,10 @@ post_image: practical-webhooks-use-cases.png
 primary_author:
     name: Adams Adebayo
     twitter: olodocoder
-primary_tag: Open Thoughts
+primary_tag: Webhooks Library
 tags:
     - Convoy
-    - Open Thoughts
+    - Webhooks Library
 featured: false
 description: Find out how webhooks empower organizations to automate repetitive tasks, integrate diverse systems, achieve unparalleled workflow efficiency and much more.
 published_at: 2023-06-20T17:00:00.000+00:00
