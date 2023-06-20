@@ -59,13 +59,13 @@
 					<button @click="showEnterpriseForm = true" class="bg-new.gray-100 rounded-6px px-16px py-12px text-new.gray-800 text-14 mb-30px md:mb-0">Contact Us</button>
 				</div>
 				<div class="min-w-[300px]">
-					<div class="flex items-start mb-10px" v-for="(feature, index) in enterpriseFeatures.slice(0, 4)" :key="index">
+					<div class="flex items-start mb-10px" v-for="(feature, index) in enterpriseFeatures.slice(0, 5)" :key="index">
 						<img src="~/assets/images/svg/checkmark-icon.svg" alt="checkmark icon" class="mr-16px mt-6px" />
 						<p class="text-12 text-new.gray-600 md:max-w-[542px]">{{ feature }}</p>
 					</div>
 				</div>
 				<div class="min-w-[300px]">
-					<div class="flex items-start mb-10px" v-for="(feature, index) in enterpriseFeatures.slice(4, 8)" :key="index">
+					<div class="flex items-start mb-10px" v-for="(feature, index) in enterpriseFeatures.slice(5, 9)" :key="index">
 						<img src="~/assets/images/svg/checkmark-icon.svg" alt="checkmark icon" class="mr-16px mt-6px" />
 						<p class="text-12 text-new.gray-600 md:max-w-[542px]">{{ feature }}</p>
 					</div>
@@ -181,7 +181,7 @@ export default {
 					tagClass: 'bg-new.primary-25 text-new.primary-400',
 					preText: 'You’ll get started with:',
 					features: [
-						'Up to 200,000 events monthly',
+						'Capped at 200,000 events monthly',
 						'Automated event retries',
 						'Customizable event headers',
 						'Basic debugging',
@@ -206,7 +206,7 @@ export default {
 					tagClass: 'bg-new.success-100 text-new.success-400',
 					preText: 'Everything in developer plan, plus:',
 					features: [
-						'Unlimited events',
+						'Unlimited events at $50/million events',
 						'Advanced debugging',
 						'Advanced circuit breaking',
 						'Shared forward proxy integration',
@@ -227,7 +227,7 @@ export default {
 					subText: 'We meet you at your point of scale and join you further',
 					tagClass: 'bg-new.warning-50 text-new.warning-400',
 					preText: 'Everything in growth plan, plus:',
-					features: ['Send unlimited number of events', 'Access for unlimited users', 'Custom data retention policy', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
+					features: ['Unlimited events at $45/million events', 'Access for unlimited users', 'Custom data retention policy', 'Advanced Role-Based Access Control', 'Dedicated Customer Success']
 				}
 			],
 			features: [
@@ -327,6 +327,7 @@ export default {
 				'Google SSO (Coming Soon)'
 			],
 			enterpriseFeatures: [
+				'Unlimited events at $40/million events',
 				'Dedicated forward proxy integration',
 				'Rate limit: Custom',
 				'Custom data retention period',
