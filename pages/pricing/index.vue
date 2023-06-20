@@ -200,7 +200,7 @@ export default {
 					subText: 'This is a perfect plan for growing startups, aiming to scale',
 					tagClass: 'bg-new.success-100 text-new.success-400',
 					preText: 'Everything in developer plan, plus:',
-					features: ['Unlimited events at $50/million events', '5 users', '10 projects', '30 days retention', 'Rate limit: 300 events/sec', 'Shared Static IPs']
+					features: ['Unlimited events at $50/million events', '5 users', '10 projects', '30 days retention', 'Shared Static IPs']
 				},
 
 				{
