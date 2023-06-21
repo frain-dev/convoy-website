@@ -24,7 +24,11 @@
 		--color-white: 255, 255, 255;
 	}
 	body {
-		@apply text-grey-80;
+		@apply text-grey-80 overflow-x-hidden;
+
+		& > div {
+			@apply overflow-x-hidden;
+		}
 	}
 	h1 {
 		@apply text-h1;
