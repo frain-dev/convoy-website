@@ -169,9 +169,12 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="bg-[#082B91] bg-opacity-[0.07] w-11/12 h-220px desktop:h-270px rounded-b-16px m-auto relative">
 					<div class="absolute left-1/2 -translate-x-1/2 -top-100px xs:-top-70px desktop:-top-200px w-full">
-						<img src="~/assets/images/core.png" alt="group" class="xs:hidden max-w-[866px] desktop:w-full w-5/6 m-auto" />
+						<div class="md:max-h-320px max-h-[218px] overflow-hidden rounded-16px w-fit mx-auto">
+							<img src="~/assets/images/groups-img-small.png" alt="group" class="xs:hidden max-w-[866px] desktop:w-full w-5/6 m-auto" />
+						</div>
 						<img src="~/assets/images/groups-img-small.png" class="hidden xs:block m-auto w-5/6" alt="group" />
 						<a v-if="activeTab === 'community'" target="_blank" href="https://github.com/frain-dev/convoy#installation-getting-started" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
 							Get started
