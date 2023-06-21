@@ -5,9 +5,9 @@ post_image: understanding-webhook-subscriptions-in-convoy.png
 primary_author:
     name: Amarachi Aso
     twitter: AsoAmarachi
-primary_tag: Webhook Subscriptions
+primary_tag: Webhooks Library
 tags:
-    - Webhook Subscriptions
+    - Webhooks Library
     - Convoy
 featured: false
 description: Find out what Webhook Subscriptions are, the features that are available to you when creating a webhook subscription, and how to use them together to manage event routing in a convoy project.
