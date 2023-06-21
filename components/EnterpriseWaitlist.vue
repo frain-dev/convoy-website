@@ -4,22 +4,22 @@
 		<form @submit.prevent="requestAccess()">
 			<div class="grid grid-cols-2 gap-4">
 				<div>
-					<label for="firstname" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">First Name</label>
+					<label for="firstname" class="w-full font-medium text-12 text-new.gray-400 mb-8px mt-18px flex items-center justify-between">First Name</label>
 					<input
 						id="firstname"
 						type="text"
-						class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
+						class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-new.gray-300 text-grey-100 border border-new.primary-25 valid:border-new.primary-25 disabled:border-new.primary-25 disabled:bg-white-100 hover:border-new.primary-50 focus:border-new.primary-400 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-white-100 py-12px px-16px appearance-none"
 						v-model="requestForm.firstname"
 						placeholder="John"
 						required
 					/>
 				</div>
 				<div>
-					<label for="lastname" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">Last Name</label>
+					<label for="lastname" class="w-full font-medium text-12 text-new.gray-400 mb-8px mt-18px flex items-center justify-between">Last Name</label>
 					<input
 						id="lastname"
 						type="text"
-						class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
+						class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-new.gray-300 text-grey-100 border border-new.primary-25 valid:border-new.primary-25 disabled:border-new.primary-25 disabled:bg-white-100 hover:border-new.primary-50 focus:border-new.primary-400 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-white-100 py-12px px-16px appearance-none"
 						v-model="requestForm.lastname"
 						placeholder="Doe"
 						required
@@ -27,37 +27,36 @@
 				</div>
 			</div>
 
-			<label for="email" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">Work Email</label>
+			<label for="email" class="w-full font-medium text-12 text-new.gray-400 mb-8px mt-18px flex items-center justify-between">Work Email</label>
 			<input
 				id="email"
 				type="email"
-				class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
+				class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-new.gray-300 text-grey-100 border border-new.primary-25 valid:border-new.primary-25 disabled:border-new.primary-25 disabled:bg-white-100 hover:border-new.primary-50 focus:border-new.primary-400 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-white-100 py-12px px-16px appearance-none"
 				v-model="requestForm.email"
 				placeholder="johndoe@email.com"
 				required
 			/>
 
-			<label for="org_name" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">Organisation Name</label>
+			<label for="org_name" class="w-full font-medium text-12 text-new.gray-400 mb-8px mt-18px flex items-center justify-between">Organisation Name</label>
 			<input
 				id="org_name"
 				type="text"
-				class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none"
+				class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-new.gray-300 text-grey-100 border border-new.primary-25 valid:border-new.primary-25 disabled:border-new.primary-25 disabled:bg-white-100 hover:border-new.primary-50 focus:border-new.primary-400 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-white-100 py-12px px-16px appearance-none"
 				v-model="requestForm.organisation"
 				placeholder="Kuda"
 				required
 			/>
 
-			<label for="use_case" class="w-full font-medium text-12 text-grey-40 mb-8px mt-18px flex items-center justify-between">Whats your use case?</label>
-			<select
-				name="use_case"
-				id="use_case"
-				v-model="requestForm.usecase"
-				class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px"
-			>
-				<option v-for="usecase of useCases" :key="usecase" :value="usecase">
-					{{ usecase }}
-				</option>
-			</select>
+			<div v-if="showAdditionalInfo">
+				<label for="use_case" class="w-full font-medium text-12 text-new.gray-400 mb-8px mt-18px flex items-center justify-between">Whats your use case?</label>
+				<textarea
+					name="use_case"
+					id="use_case"
+					rows="3"
+					class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-new.gray-300 text-grey-100 border border-new.primary-25 valid:border-new.primary-25 disabled:border-new.primary-25 disabled:bg-white-100 hover:border-new.primary-50 focus:border-new.primary-400 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-white-100 py-12px px-16px"
+					v-model="requestForm.additionalInfo"
+				></textarea>
+			</div>
 
 			<button type="submit" :disabled="isSubmitingRequestAccessForm" class="py-16px px-42px text-14 font-medium rounded-8px bg-primary-100 text-white-100 w-full mt-24px">Request Access</button>
 		</form>
@@ -65,6 +64,7 @@
 </template>
 <script>
 export default {
+	props: { showAdditionalInfo: Boolean },
 	data() {
 		return {
 			requestForm: {
@@ -72,7 +72,7 @@ export default {
 				lastname: null,
 				email: null,
 				organisation: null,
-				usecase: null
+				additionalInfo: null
 			},
 			isSubmitingRequestAccessForm: false,
 			useCases: ['Work', 'Personal projects']
@@ -85,7 +85,7 @@ export default {
 				const response = await fetch(
 					`https://faas-fra1-afec6ce7.doserverless.co/api/v1/web/fn-8f44e6aa-e5d6-4e31-b781-5080c050bb37/welcome-user/welcome-mail?email=${this.requestForm.email}&firstname=${
 						this.requestForm.firstname
-					}&lastname=${this.requestForm.lastname}&organisation=${this.requestForm.organisation}${this.requestForm.usecase ? '&usecase=' + this.requestForm.usecase : ''}&enterprise=true`
+					}&lastname=${this.requestForm.lastname}&organisation=${this.requestForm.organisation}${this.requestForm.additionalInfo ? '&usecase=' + this.requestForm.additionalInfo : ''}&enterprise=true`
 				);
 
 				await response.json();
