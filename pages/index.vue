@@ -11,19 +11,11 @@
 				Securely Send, Receive and Manage millions of Webhooks Reliably with robust support for Retries, Rate Limiting, Static IPs, Circuit Breaking, Rolling Secrets and more.
 			</p>
 			<div class="flex justify-center xs:flex-col mt-40px">
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="https://github.com/frain-dev/convoy#installation-getting-started"
-					class="py-12px desktop:py-16px px-38px desktop:px-42px text-14 text-center font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px xs:w-[90vw]"
-				>
+				<a target="_blank" rel="noopener noreferrer" href="https://dashboard.getconvoy.io/signup" class="py-12px desktop:py-16px px-38px shadow-lg hover:shadow-xl transition-all duration-300 desktop:px-24px text-14 text-center font-medium rounded-8px bg-primary-100 text-white-100 mr-24px xs:mr-0 xs:mb-20px xs:w-[90vw]">
 					Start your webhooks project
 				</a>
 
-				<nuxt-link
-					to="/docs"
-					class="py-12px px-28px text-14 font-medium rounded-8px bg-new.primary-25 text-new.primary-400 border border-new.primary-50 flex items-center justify-center text-center xs:w-[90vw]"
-				>
+				<nuxt-link to="/docs" class="py-12px px-28px text-14 font-medium rounded-8px bg-new.primary-25 text-new.primary-400 border border-new.primary-50 flex items-center justify-center text-center xs:w-[90vw]">
 					<img src="~/assets/images/svg/documentation.svg" class="mr-10px w-16px h-16px" alt="document icon" />
 					Documentation
 				</nuxt-link>
@@ -94,11 +86,7 @@
 			<h1 class="text-center font-bold max-w-[1040px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto mb-80px">Convoy is a high-performance open-source webhooks gateway</h1>
 
 			<div class="desktop:py-40px px-20px bg-white-100 feature-list">
-				<div
-					class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto mb-140px feature gap-x-20 gap-y-10"
-					v-for="(feature, index) of newFeatures.slice(0, 3)"
-					:key="'feature' + index"
-				>
+				<div class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto mb-140px feature gap-x-20 gap-y-10" v-for="(feature, index) of newFeatures.slice(0, 3)" :key="'feature' + index">
 					<div class="order-2 desktop:order-1 px-20px xs:px-10px desktop:px-0">
 						<img :src="require(`~/assets/images/${feature.img}.png`)" :alt="feature.feature" class="w-48px h-48px mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" />
 						<h3 class="font-semibold text-26 mb-16px">{{ feature.title }}</h3>
@@ -109,11 +97,7 @@
 					</div>
 				</div>
 
-				<div
-					class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto mb-140px feature gap-x-20 gap-y-10"
-					v-for="(feature, index) of newFeatures.slice(3, 6)"
-					:key="'feature-b' + index"
-				>
+				<div class="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto mb-140px feature gap-x-20 gap-y-10" v-for="(feature, index) of newFeatures.slice(3, 6)" :key="'feature-b' + index">
 					<div class="md:max-w-[658px] tab:max-w-[450px] tab:mr-20px">
 						<img :src="require(`~/assets/images/${feature.featureImg}.png`)" :alt="feature.featureImg" class="object-contain" />
 					</div>
@@ -132,11 +116,7 @@
 				<div class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] rounded-16px pt-40px px-20px pb-100px desktop:px-66px desktop:pt-50px desktop:pb-200px">
 					<div class="bg-white-16 rounded-8px w-fit m-auto flex flex-row mb-30px">
 						<li class="list-none" v-for="tab of tabs" :key="tab.id">
-							<button
-								class="rounded-6px py-12px px-8px desktop:px-60px min-w-[114px] desktop:min-w-[220px] transition-all duration-300"
-								:class="activeTab === tab.id ? 'bg-white-100 shadow-sm' : ''"
-								@click="switchTabs(tab.id)"
-							>
+							<button class="rounded-6px py-12px px-8px desktop:px-60px min-w-[114px] desktop:min-w-[220px] transition-all duration-300" :class="activeTab === tab.id ? 'bg-white-100 shadow-sm' : ''" @click="switchTabs(tab.id)">
 								<span class="text-14 tracking-[0.02em] transition-all duration-300" :class="activeTab === tab.id ? 'font-bold text-black' : 'text-white-100'">{{ tab.label }}</span>
 							</button>
 						</li>
@@ -144,21 +124,14 @@
 
 					<div class="w-full min-h-[280px] h-full">
 						<!-- enterprise edition  -->
-						<div
-							class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out"
-							:class="activeTab === 'enterprise' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'"
-						>
+						<div class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out" :class="activeTab === 'enterprise' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'">
 							<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Enterprise Edition</h1>
 							<p class="text-white-100 text-center text-14 desktop:text-18 mt-20px desktop:mt-16px max-w-[860px] m-auto">
 								Send & Receive billions of webhooks while totally control your own event infrastructure and data, and staying compliant all with one platform with on-prem support .
 							</p>
 
 							<div class="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
-								<div
-									class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap"
-									v-for="feature of enterprise"
-									:key="feature"
-								>
+								<div class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap" v-for="feature of enterprise" :key="feature">
 									<img src="~/assets/images/green_check.svg" class="mr-12px" alt="check" />
 									{{ feature }}
 								</div>
@@ -166,21 +139,14 @@
 						</div>
 
 						<!-- convoy cloud  -->
-						<div
-							class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out"
-							:class="activeTab === 'cloud' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'"
-						>
+						<div class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out" :class="activeTab === 'cloud' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'">
 							<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Convoy Cloud</h1>
 							<p class="text-white-100 text-center text-14 desktop:text-18 mt-20px desktop:mt-16px max-w-[860px] m-auto">
 								Fully managed Webhooks-as-a-service platform where you can manage millions of webhook events whether incoming or outgoing and you only pay for what you use.
 							</p>
 
 							<div class="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
-								<div
-									class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap"
-									v-for="feature of cloud"
-									:key="feature"
-								>
+								<div class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap" v-for="feature of cloud" :key="feature">
 									<img src="~/assets/images/green_check.svg" class="mr-12px" alt="check" />
 									{{ feature }}
 								</div>
@@ -188,21 +154,14 @@
 						</div>
 
 						<!-- community edition  -->
-						<div
-							class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out"
-							:class="activeTab === 'community' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'"
-						>
+						<div class="flex flex-col items-center justify-center transition-all duration-500 ease-in-out" :class="activeTab === 'community' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'">
 							<h1 class="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Community Edition</h1>
 							<p class="text-white-100 text-center text-14 desktop:text-18 mt-20px desktop:mt-16px max-w-[860px] m-auto">
 								Open-source Webhooks Gateway for managing incoming and outgoing webhooks. Ships with everything you need for securely sending and receiving events reliably.
 							</p>
 
 							<div class="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
-								<div
-									class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
-									v-for="feature of community"
-									:key="feature"
-								>
+								<div class="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit" v-for="feature of community" :key="feature">
 									<img src="~/assets/images/green_check.svg" class="mr-12px" alt="check" />
 									{{ feature }}
 								</div>
@@ -214,28 +173,15 @@
 					<div class="absolute left-1/2 -translate-x-1/2 -top-100px xs:-top-70px desktop:-top-200px w-full">
 						<img src="~/assets/images/core.png" alt="group" class="xs:hidden max-w-[866px] desktop:w-full w-5/6 m-auto" />
 						<img src="~/assets/images/groups-img-small.png" class="hidden xs:block m-auto w-5/6" alt="group" />
-						<a
-							v-if="activeTab === 'community'"
-							target="_blank"
-							href="https://github.com/frain-dev/convoy#installation-getting-started"
-							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
-						>
+						<a v-if="activeTab === 'community'" target="_blank" href="https://github.com/frain-dev/convoy#installation-getting-started" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
 							Get started
 							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 						</a>
-						<nuxt-link
-							v-else-if="activeTab === 'enterprise'"
-							to="/enterprise#requestAccess"
-							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
-						>
+						<nuxt-link v-else-if="activeTab === 'enterprise'" to="/enterprise#requestAccess" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
 							Get started
 							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 						</nuxt-link>
-						<nuxt-link
-							v-else
-							to="/cloud"
-							class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit"
-						>
+						<nuxt-link v-else to="/cloud" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
 							Get started
 							<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 						</nuxt-link>
@@ -272,12 +218,7 @@
 		<section>
 			<div class="slideshow">
 				<div class="firstSlide">
-					<div
-						v-for="(offer, index) of offerings"
-						:key="'offer' + index"
-						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center py-20px px-86px h-[80px] desktop:h-[98px] min-w-[280px] desktop:min-w-[350px] mx-20px"
-						:class="offer.class"
-					>
+					<div v-for="(offer, index) of offerings" :key="'offer' + index" class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center py-20px px-86px h-[80px] desktop:h-[98px] min-w-[280px] desktop:min-w-[350px] mx-20px" :class="offer.class">
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
 						<p class="text-16">{{ offer.offer }}</p>
 					</div>
@@ -285,12 +226,7 @@
 			</div>
 			<div class="slideshow">
 				<div class="secondSlide">
-					<div
-						v-for="(offer, index) of offerings"
-						:key="'offer' + index"
-						class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center h-[80px] desktop:h-[98px] min-w-[280px] desktop:min-w-[350px] mx-20px py-20px px-86px"
-						:class="offer.class"
-					>
+					<div v-for="(offer, index) of offerings" :key="'offer' + index" class="shadow-[14px_20px_24px_rgba(20,37,63,0.04)] rounded-[60px] flex flex-col justify-center items-center h-[80px] desktop:h-[98px] min-w-[280px] desktop:min-w-[350px] mx-20px py-20px px-86px" :class="offer.class">
 						<img :src="require(`~/assets/images/svg/${offer.img}.svg`)" class="w-24px mb-10px" alt="feature icon" />
 						<p class="text-16">{{ offer.offer }}</p>
 					</div>
@@ -298,11 +234,7 @@
 			</div>
 		</section>
 
-		<section
-			class="fixed top-0 left-0 w-screen h-screen bg-[#fafafe] transition-all duration-500"
-			:class="expandImage ? 'visible animate-slideup opacity-100 z-[100000]' : 'invisible animate-slidedown opacity-0'"
-			@click="expandImage = false"
-		>
+		<section class="fixed top-0 left-0 w-screen h-screen bg-[#fafafe] transition-all duration-500" :class="expandImage ? 'visible animate-slideup opacity-100 z-[100000]' : 'invisible animate-slidedown opacity-0'" @click="expandImage = false">
 			<div class="flex justify-center items-center h-full max-w-[2000px] m-auto">
 				<img src="~/assets/images/2nd-illustration.png" class="w-full" alt="infrastructure" />
 			</div>

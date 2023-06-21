@@ -8,45 +8,43 @@
 
 			<div class="max-w-[1248px] w-full m-auto">
 				<div class="grid grid-cols-1 tab:grid-cols-2 md:grid-cols-3 gap-24px items-end">
-					<div class="rounded-16px border border-new.primary-50 bg-white-100 shadow-default" :class="`${i === 1 ? '' : 'md:max-h-[912px] md:min-h-[742px]'}`" v-for="(plan, i) of plans" :key="i">
-						<div :class="`${i === 1 ? 'bg-new.success-50 pb-24px rounded-tl-16px rounded-tr-16px' : ''} px-24px md:px-32px pt-24px md:pt-32px`">
-							<div class="flex items-center mb-24px">
-								<img :src="require(`~/assets/images/${plan.id}-plan.svg`)" :alt="`${plan.id} plan`" class="mr-16px" />
-								<div>
-									<p class="text-16 text-new.gray-800">For</p>
-									<h1 class="text-24 text-new.gray-800 font-bold">{{ plan.name }}</h1>
+					<div class="rounded-16px border border-new.primary-50 bg-white-100 shadow-default pb-24px flex justify-between flex-col" :class="`${i === 1 ? '' : 'md:max-h-[912px] md:min-h-[742px]'}`" v-for="(plan, i) of plans" :key="i">
+						<div>
+							<div :class="`${i === 1 ? 'bg-new.success-50 pb-24px rounded-tl-16px rounded-tr-16px' : ''} px-24px md:px-32px pt-24px md:pt-32px`">
+								<div class="flex items-center mb-24px">
+									<img :src="require(`~/assets/images/${plan.id}-plan.svg`)" :alt="`${plan.id} plan`" class="mr-16px" />
+									<div>
+										<p class="text-16 text-new.gray-800">For</p>
+										<h1 class="text-24 text-new.gray-800 font-bold">{{ plan.name }}</h1>
+									</div>
 								</div>
-							</div>
-							<p class="text-new.gray-600 text-12">{{ plan.subText }}</p>
-							<hr :class="`${i === 1 ? 'border-new.success-100' : 'border-new.primary-25'} border-t my-24px`" />
-							<div v-if="i !== 0" :class="`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`">Starts with</div>
 
-							<p class="flex items-center">
-								<span class="text-36 font-bold">{{ plan.price }}</span>
-								<span class="text-18 text-new.gray-600 ml-10px">/ monthly</span>
-							</p>
-						</div>
-						<div :class="`${i === 1 ? 'pt-24px' : ''} px-24px md:px-32px pb-24px md:pb-32px`">
-							<hr v-if="i !== 1" class="border-t border-new.primary-25 my-24px" />
-							<div :class="`${i === 1 ? 'h-[244px] md:h-[340px]' : 'h-[244px] md:h-[300px]'}`">
-								<p class="text-12 text-new.gray-400 mb-16px">{{ plan.preText }}</p>
-								<div class="flex items-start mb-10px" v-for="(feature, index) in plan.features" :key="index">
-									<img src="~/assets/images/svg/checkmark-icon.svg" alt="checkmark icon" class="mr-16px mt-6px" />
-									<p class="text-12 text-new.gray-600 md:max-w-[542px]">{{ feature }}</p>
-								</div>
+								<p class="text-new.gray-600 text-12">{{ plan.subText }}</p>
+								<hr :class="`${i === 1 ? 'border-new.success-100' : 'border-new.primary-25'} border-t my-24px`" />
+								<div v-if="i !== 0" :class="`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`">Starts with</div>
+
+								<p class="flex items-center">
+									<span class="text-36 font-bold">{{ plan.price }}</span>
+									<span class="text-18 text-new.gray-600 ml-10px">/ monthly</span>
+								</p>
 							</div>
 
-							<p :class="i === 0 ? 'mt-28px' : ''" class="text-10 text-new.gray-400 mb-16px">Additional cost may apply for usage beyond these limits</p>
-							<a
-								target="_blank"
-								rel="noopener noreferrer"
-								href="https://dashboard.getconvoy.io/"
-								class="bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px w-full flex items-center justify-center text-white-100 text-14"
-							>
-								Start your project
-								<img src="~/assets/images/arrow-right-icon.svg" alt="arrow right icon" class="ml-12px" />
-							</a>
+							<div :class="`${i === 1 ? 'pt-24px' : ''} px-24px md:px-32px pb-24px md:pb-32px`">
+								<hr v-if="i !== 1" class="border-t border-new.primary-25 my-24px" />
+								<div :class="`${i === 1 ? 'h-[244px] md:h-[340px]' : 'h-[244px] md:h-[300px]'}`">
+									<p class="text-12 text-new.gray-400 mb-16px">{{ plan.preText }}</p>
+									<div class="flex items-start mb-10px" v-for="(feature, index) in plan.features" :key="index">
+										<img src="~/assets/images/svg/checkmark-icon.svg" alt="checkmark icon" class="mr-16px mt-6px" />
+										<p class="text-12 text-new.gray-600 md:max-w-[542px]">{{ feature }}</p>
+									</div>
+								</div>
+							</div>
 						</div>
+
+						<a target="_blank" rel="noopener noreferrer" href="https://dashboard.getconvoy.io/signup" class="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px flex items-center justify-center text-white-100 text-14">
+							Start your project
+							<img src="~/assets/images/arrow-right-icon.svg" alt="arrow right icon" class="ml-12px" />
+						</a>
 					</div>
 				</div>
 			</div>
@@ -75,8 +73,8 @@
 		</section>
 
 		<section class="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] text-white-100 py-36px desktop:py-80px">
-			<div class="desktop:bg-[url(~/assets/images/Frame.png)] bg-no-repeat bg-right bg-contain">
-				<div class="max-w-[1200px] m-auto px-20px">
+			<div class="flex max-w-[1288px] mx-auto relative px-20px">
+				<div class="max-w-[1200px] md:m-0 m-auto">
 					<h2 class="text-32 font-bold mb-46px desktop:mb-76px">Available on all plans</h2>
 					<ul class="max-w-[523px]">
 						<li class="list-check pb-6px mb-26px flex items-start" v-for="(feature, index) in features" :key="index">
@@ -84,6 +82,9 @@
 							{{ feature }}
 						</li>
 					</ul>
+				</div>
+				<div class="md:block hidden max-w-[708px] right-[-200px] absolute">
+					<img src="~/assets/images/Frame.png" alt="">
 				</div>
 			</div>
 		</section>
@@ -143,12 +144,7 @@
 			<div class="mt-100px desktop:mt-50px max-w-[1000px] w-full m-auto bg-[url(~/assets/images/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
 				<h1 class="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px desktop:mb-16px">Need something else?</h1>
 				<p class="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">Get in touch with us today to find out how best we can support your business and work needs.</p>
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="https://calendly.com/d/d6k-jw2-wgj/convoy-user-demo"
-					class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit"
-				>
+				<a target="_blank" rel="noopener noreferrer" href="https://calendly.com/d/d6k-jw2-wgj/convoy-user-demo" class="bg-primary-100 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 					Contact Sales
 					<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right" />
 				</a>
@@ -404,6 +400,7 @@ export default {
 .plans {
 	.grid {
 		grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
+
 		@media (max-width: 1024px) {
 			grid-template-columns: repeat(auto-fill, minmax(310px, 310px));
 		}
