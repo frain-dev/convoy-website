@@ -30,6 +30,8 @@
 		"showDropdown": false,
 		"children": [
 			{
+				"title": "Smokescreen",
+				"link": "/docs/forward-proxies/smokescreen"
 			}
 		]
 	},
