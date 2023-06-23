@@ -104,6 +104,10 @@
 					{
 						"title": "Smokescreen",
 						"link": "/docs/forward-proxies/smokescreen"
+					},
+					{
+						"title": "Nginx",
+						"link": "/docs/forward-proxies/nginx"
 					}
 				]
 			}

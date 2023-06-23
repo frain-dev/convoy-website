@@ -1,7 +1,7 @@
 ---
 title: Configuring Stripe's Smokescreen as a forward proxy for Convoy
 description: 'Convoy with Forward Proxies'
-id: tutorial
+id: forward-proxies
 order: 1
 ---
 
