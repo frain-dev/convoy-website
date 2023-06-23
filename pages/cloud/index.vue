@@ -1,17 +1,34 @@
 <template>
 	<div>
-		<section class="bg-[linear-gradient(77deg,#36317A_-29%,#4A87C5_88%)] pt-200px pb-100px desktop:pt-200px desktop:pb-120px" id="home">
-			<div class="max-w-[1350px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
-				<div>
-					<h1 class="text-white-100 text-32 md:text-[56px] md:leading-[80px] max-w-[680px] font-bold footer:text-center">Make Webhooks management our problem, not yours</h1>
-					<p class="text-white-100 max-w-[660px] mx-auto text-18 mobile:text-14 mt-16px mb-40px footer:text-center">
-						Reliable Webhooks Gateway with everything you need in one place including multi-region deployment, high availability and autoscaling.
-					</p>
-				</div>
-				<div class="max-w-[565px]">
-					<CloudWaitlist></CloudWaitlist>
-				</div>
+		<section class="bg-[linear-gradient(77deg,#36317A_-29%,#4A87C5_88%)] pt-200px pb-100px desktop:pt-200px desktop:pb-280px flex flex-col desktop:justify-center desktop:items-center px-20px" id="home">
+			<div class="bg-primary-500 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
+				We are backed by
+				<img src="~/assets/images/y-combinator.svg" class="ml-16px w-24px h-24px" alt="y-combinator" />
 			</div>
+			<h1 class="desktop:text-center text-new.gray-25 text-32 desktop:text-[56px] desktop:leading-[80px] font-bold max-w-[841px]">Make Webhooks management our problem, not yours</h1>
+
+			<p class="desktop:text-center text-new.gray-25 max-w-[841px] mx-auto text-18 mobile:text-14 mt-16px">
+				Reliable Webhooks Gateway with everything you need in one place including multi-region deployment, high availability and autoscaling.
+			</p>
+			<div class="flex desktop:justify-center xs:flex-col mt-40px">
+				<a
+					target="_blank"
+					rel="noopener noreferrer"
+					href="https://dashboard.getconvoy.io/signup"
+					class="py-12px desktop:py-16px px-38px shadow-lg hover:shadow-xl transition-all duration-300 desktop:px-24px text-14 text-center font-medium rounded-8px bg-white-100 text-new.gray-800 mr-24px xs:mr-0 xs:mb-20px xs:w-[90vw]"
+				>
+					Start your webhooks project
+				</a>
+
+				<nuxt-link to="/docs" class="py-12px px-28px text-14 font-medium rounded-8px bg-transparent text-new.gray-25 border border-new.gray-25 flex items-center justify-center text-center xs:w-[90vw]">
+					<img src="~/assets/images/svg/documentation-white.svg" class="mr-10px w-16px h-16px" alt="document icon" />
+					Documentation
+				</nuxt-link>
+			</div>
+		</section>
+		
+		<section class="mx-auto max-w-[1090px] px-20px -mt-180px hidden desktop:block">
+			<img src="~/assets/images/cloud.png" alt="cloud image">
 		</section>
 
 		<section class="bg-white-100 px-20px mt-100px desktop:mt-160px">
@@ -78,15 +95,15 @@
 				<div class="flex justify-between flex-wrap gap-6 mt-80px desktop:mt-120px">
 					<div class="desktop:max-w-[340px]">
 						<img src="~/assets/images/fully-managed.png" class="mb-16px h-48px rounded-10px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" alt="everything-you-need" />
-						<p class="text-14 desktop:text-20">Fully managed global cloud infrastructure with high availability and resilience baked in.</p>
+						<p class="text-14 desktop:text-18">Fully managed global cloud infrastructure with high availability and resilience baked in.</p>
 					</div>
 					<div class="desktop:max-w-[400px]">
 						<img src="~/assets/images/stay-compliant.png" class="mb-16px h-48px rounded-10px shadow-[0px_22px_24px_rgba(43,214,123,0.2)]" alt="excellent-rate-limiting" />
-						<p class="text-14 desktop:text-20 max-w-[333px]">Stay compliant by choosing the region we host and store your webhooks data.</p>
+						<p class="text-14 desktop:text-18 max-w-[333px]">Stay compliant by choosing the region we host and store your webhooks data.</p>
 					</div>
 					<div class="desktop:max-w-[340px]">
 						<img src="~/assets/images/transparent-usage.png" class="mb-16px h-48px rounded-10px shadow-[0px_22px_24px_rgba(247,227,109,0.2)]" alt="transparent-pricing" />
-						<p class="text-14 desktop:text-20">Transparent usage-based pricing, keep costs under control by paying for what you use.</p>
+						<p class="text-14 desktop:text-18">Transparent usage-based pricing, keep costs under control by paying for what you use.</p>
 					</div>
 				</div>
 			</div>
@@ -106,7 +123,7 @@
 					<h3 class="font-semibold text-26 mb-40px">{{ feature.title }}</h3>
 					<div class="flex items-start mb-18px" v-for="feat in feature.features" :key="feat">
 						<img src="~/assets/images/svg/light-lightening.svg" alt="lightening" class="mr-18px" />
-						<p class="text-18 font-light mobile:text-14 md:max-w-[542px]">
+						<p class="text-16 text-new.gray-600 mobile:text-14 md:max-w-[542px]">
 							{{ feat }}
 						</p>
 					</div>
