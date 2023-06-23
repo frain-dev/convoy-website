@@ -26,14 +26,6 @@
 		"link": "/docs/configuration"
 	},
 	{
-		"title": "Forward Proxies",
-		"showDropdown": false,
-		"children": [
-			{
-			}
-		]
-	},
-	{
 		"title": "Deployment",
 		"showDropdown": false,
 		"children": [
@@ -104,6 +96,16 @@
 			{
 				"title": "Static IPs",
 				"link": "/docs/manual/static-ips"
+			},
+			{
+				"title": "Forward Proxies",
+				"showDropdown": false,
+				"children": [
+					{
+						"title": "Smokescreen",
+						"link": "/docs/forward-proxies/smokescreen"
+					}
+				]
 			}
 		]
 	},
