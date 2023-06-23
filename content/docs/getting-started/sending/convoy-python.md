@@ -19,7 +19,7 @@ convoy = Convoy({"api_key":"your_api_key", "project_id": "your_project_id"})
 In the event you're using a self-hosted convoy instance, you can define the `uri` as part of what is passed into tbe convoy's constructor.
 
 ```python[example]
-convoy = Convoy({ "api_key": 'your_api_key', "uri": 'self-hosted-instance',"project_id": "your_project_id" })
+convoy = Convoy({ "api_key": "your_api_key", "uri": "self-hosted-instance","project_id": "your_project_id" })
 ```
 
 ## Create an Endpoint
