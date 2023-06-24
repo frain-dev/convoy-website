@@ -75,7 +75,8 @@ export default {
 				usecase: null,
 				organisation: null
 			},
-			isSubmitingRequestAccessForm: false
+			isSubmitingRequestAccessForm: false,
+			useCases: ['Work', 'Personal projects']
 		};
 	},
 	methods: {
