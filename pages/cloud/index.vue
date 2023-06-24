@@ -11,12 +11,7 @@
 				Reliable Webhooks Gateway with everything you need in one place including multi-region deployment, high availability and autoscaling.
 			</p>
 			<div class="flex desktop:justify-center xs:flex-col mt-40px">
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href="https://dashboard.getconvoy.io/signup"
-					class="py-12px desktop:py-16px px-38px shadow-lg hover:shadow-xl transition-all duration-300 desktop:px-24px text-14 text-center font-medium rounded-8px bg-white-100 text-new.gray-800 mr-24px xs:mr-0 xs:mb-20px xs:w-[90vw]"
-				>
+				<a target="_blank" rel="noopener noreferrer" href="https://dashboard.getconvoy.io/signup" class="py-12px desktop:py-16px px-38px shadow-lg hover:shadow-xl transition-all duration-300 desktop:px-24px text-14 text-center font-medium rounded-8px bg-white-100 text-new.gray-800 mr-24px xs:mr-0 xs:mb-20px xs:w-[90vw]">
 					Start your webhooks project
 				</a>
 
@@ -26,12 +21,14 @@
 				</nuxt-link>
 			</div>
 		</section>
-		
-		<section class="mx-auto max-w-[1090px] px-20px -mt-180px hidden desktop:block">
-			<img src="~/assets/images/cloud.png" alt="cloud image">
+
+		<section class="bg-white-100 px-20px hidden desktop:block min-h-[500px]">
+			<div class="mx-auto max-w-[1400px] relative">
+				<img src="~/assets/images/cloud.png" alt="cloud image" class=" -mt-180px absolute">
+			</div>
 		</section>
 
-		<section class="bg-white-100 px-20px mt-100px desktop:mt-160px">
+		<section class="bg-white-100 px-20px pt-120px desktop:pt-160px">
 			<div class="rounded-[20px] desktop:rounded-[70px] mx-auto bg-[linear-gradient(77deg,#36317A_-29%,#4A87C5_88%)] max-w-[1350px]">
 				<div class="w-full md:bg-[url(~/assets/images/Settings.png)] bg-no-repeat bg-right desktop:bg-contain rounded-[70px] min-h-[200px] py-30px desktop:py-56px px-20px desktop:px-70px">
 					<p class="font-bold text-white-100 text-24 desktop:text-32 max-w-[690px]">Engineering teams that value efficiency use Convoy to manage webhook events.</p>
@@ -94,16 +91,16 @@
 
 				<div class="flex justify-between flex-wrap gap-6 mt-80px desktop:mt-120px">
 					<div class="desktop:max-w-[340px]">
-						<img src="~/assets/images/fully-managed.png" class="mb-16px h-48px rounded-10px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" alt="everything-you-need" />
-						<p class="text-14 desktop:text-18">Fully managed global cloud infrastructure with high availability and resilience baked in.</p>
+						<img src="~/assets/images/fully-managed.png" class="mb-24px h-48px rounded-10px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]" alt="everything-you-need" />
+						<p class="text-14 desktop:text-18 text-new.gray-600">Fully managed global cloud infrastructure with high availability and resilience baked in.</p>
 					</div>
 					<div class="desktop:max-w-[400px]">
-						<img src="~/assets/images/stay-compliant.png" class="mb-16px h-48px rounded-10px shadow-[0px_22px_24px_rgba(43,214,123,0.2)]" alt="excellent-rate-limiting" />
-						<p class="text-14 desktop:text-18 max-w-[333px]">Stay compliant by choosing the region we host and store your webhooks data.</p>
+						<img src="~/assets/images/stay-compliant.png" class="mb-24px h-48px rounded-10px shadow-[0px_22px_24px_rgba(43,214,123,0.2)]" alt="excellent-rate-limiting" />
+						<p class="text-14 desktop:text-18 max-w-[333px] text-new.gray-600">Stay compliant by choosing the region we host and store your webhooks data.</p>
 					</div>
 					<div class="desktop:max-w-[340px]">
-						<img src="~/assets/images/transparent-usage.png" class="mb-16px h-48px rounded-10px shadow-[0px_22px_24px_rgba(247,227,109,0.2)]" alt="transparent-pricing" />
-						<p class="text-14 desktop:text-18">Transparent usage-based pricing, keep costs under control by paying for what you use.</p>
+						<img src="~/assets/images/transparent-usage.png" class="mb-24px h-48px rounded-10px shadow-[0px_22px_24px_rgba(247,227,109,0.2)]" alt="transparent-pricing" />
+						<p class="text-14 desktop:text-18 text-new.gray-600">Transparent usage-based pricing, keep costs under control by paying for what you use.</p>
 					</div>
 				</div>
 			</div>
@@ -151,20 +148,11 @@
 						<h3 class="font-bold mb-10px">Subscribe to our newsletter</h3>
 						<p class="text-16 mb-44px">We are constantly innovating, join the companies staying on top of Convoy updates.</p>
 
-						<input
-							id="email"
-							type="email"
+						<input id="email" type="email"
 							class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-new.gray-300 text-grey-100 border border-new.primary-25 valid:border-new.primary-25 disabled:border-new.primary-25 disabled:bg-white-100 hover:border-new.primary-50 focus:border-new.primary-400 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-white-100 py-12px px-16px mb-20px"
-							v-model="earlyAccessEmail"
-							placeholder="Email address"
-							required
-						/>
+							v-model="earlyAccessEmail" placeholder="Email address" required />
 						<div class="flex justify-end">
-							<button
-								@click.prevent="subscribeToNewsletter()"
-								class="flex items-center justify-center py-12px desktop:py-16px px-38px desktop:px-42px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 xs:mb-20px shadow-sm xs:w-full"
-								:disabled="isSubmittingEmailForNewsletter"
-							>
+							<button @click.prevent="subscribeToNewsletter()" class="flex items-center justify-center py-12px desktop:py-16px px-38px desktop:px-42px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 xs:mb-20px shadow-sm xs:w-full" :disabled="isSubmittingEmailForNewsletter">
 								{{ subscribeButtonText }}
 								<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right icon" />
 							</button>
@@ -176,22 +164,12 @@
 						<h3 class="font-bold mb-10px">Join our developer community</h3>
 						<p class="text-16 desktop:h-116px">Convoy is open source. Follow us on Twitter, star our Github repo and join our Slack community!</p>
 						<div class="flex items-center mt-20px xs:mb-20px">
-							<a
-								target="_blank"
-								rel="noopener noreferrer"
-								href="https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email"
-								class="flex items-center py-12px desktop:py-16px px-20px desktop:px-32px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-20px shadow-sm"
-							>
+							<a target="_blank" rel="noopener noreferrer" href="https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email" class="flex items-center py-12px desktop:py-16px px-20px desktop:px-32px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 mr-20px shadow-sm">
 								Join our Slack
 								<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right icon" />
 							</a>
 
-							<a
-								target="_blank"
-								rel="noopener noreferrer"
-								href="https://github.com/frain-dev/convoy"
-								class="flex items-center py-12px desktop:py-16px whitespace-nowrap text-14 font-medium rounded-8px text-primary-100"
-							>
+							<a target="_blank" rel="noopener noreferrer" href="https://github.com/frain-dev/convoy" class="flex items-center py-12px desktop:py-16px whitespace-nowrap text-14 font-medium rounded-8px text-primary-100">
 								Star our Github
 								<img src="~/assets/images/svg/github.svg" class="ml-12px" alt="github icon" />
 							</a>
