@@ -16,9 +16,9 @@ published_at: 2023-06-26T10:00:00.000+00:00
 
 [![Introducing Convoy Playground](/blog-assets/playground-video-img.png)](https://www.youtube.com/watch?v=boRhKgQYIDM)
 
-Welcome to day one of Convoy Launch week! Today, we're introducing Convoy Playground!
+Welcome to day one of Convoy Launch week! Today, we're introducing [Convoy Playground](https://playground.getconoy.io)!
 
-With Convoy Playground, we’re taking a step further towards ensuring that integrating and sending webhook events is ridiculously easy for every engineer and engineering team, providing as many resources as possible, required at any level.
+With [Convoy Playground](https://playground.getconoy.io), we’re taking a step further towards ensuring that integrating and sending webhook events is ridiculously easy for every engineer and engineering team, providing as many resources as possible, required at any level.
 
 Our goal with Convoy Playground is simple: creating a resource for engineers to easily test their webhook integrations end to end; completely powered by Convoy.
 
