@@ -1,14 +1,14 @@
 ---
 title: Access Control & Advanced Portal Links
 feature_image: access-portals-and-advanced-portal-links-wide.png
-post_image: access-portals-and-advanced-portal-links-wide.png
+post_image: access-portals-and-advanced-portal-links.png
 primary_author:
-name: Daniel Oluojomu
-twitter: danvixent
+    name: Daniel Oluojomu
+    twitter: danvixent
 primary_tag: Product Update
 tags:
-- Convoy
-- Product Update
+    - Convoy
+    - Product Update
 featured: false
 description: Welcome to day 3 of Convoy Launch week! We are thrilled to unveil two exciting features, Access Controls & Advanced Portal Links, that will elevate your experience with Convoy. In this article, we will delve into these groundbreaking features and explore the immense value they bring to Convoy's offering. Whether you're a developer seeking flexibility and efficiency or a user craving seamless access to event data, these features are designed to revolutionize the way you and your customers interact with Convoy.
 
