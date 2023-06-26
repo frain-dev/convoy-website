@@ -16,7 +16,7 @@ published_at: 2023-06-26T10:00:00.000+00:00
 
 ![Introducing Convoy Playground](/blog-socials/introducing-convoy-playground.png)
 
-Welcome to day 2 of Convoy Launch week! Today, we're introducing Convoy Playground!
+Welcome to day one of Convoy Launch week! Today, we're introducing Convoy Playground!
 
 With Convoy Playground, we’re taking a step further towards ensuring that integrating and sending webhook events is ridiculously easy for every engineer and engineering team, providing as many resources as possible, required at any level.
 
