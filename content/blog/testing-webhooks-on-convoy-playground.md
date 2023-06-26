@@ -14,7 +14,7 @@ description: With Convoy Playground, we’re taking a step further towards ensur
 published_at: 2023-06-26T10:00:00.000+00:00
 ---
 
-![Introducing Convoy Playground](/blog-socials/introducing-convoy-playground.png)
+[![Introducing Convoy Playground](/blog-assets/playground-video-img.png)](https://www.youtube.com/watch?v=boRhKgQYIDM)
 
 Welcome to day one of Convoy Launch week! Today, we're introducing Convoy Playground!
 
