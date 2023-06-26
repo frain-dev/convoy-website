@@ -9,14 +9,16 @@ primary_tag: News
 tags:
     - Convoy
     - News
-featured: true
+featured: false
 description: Announcing the first Convoy Launch Week, for everyday we release new products and features and end with a community call on Friday.
 published_at: 2023-06-12T17:30:00.000+00:00
 ---
+
 ![Convoy Launch Week Banner](/post-images/launch-week.png)
+
 ## Our very first Launch Week
 
-This quarter, we are doing things a little differently. We're proud to announce our first Launch Week from June 26th to June 30th, 2023. It will be five days of launching new features/products every day of that week. [Register here to be notified about Launch Week](https://launchweek.getconvoy.io). 
+This quarter, we are doing things a little differently. We're proud to announce our first Launch Week from June 26th to June 30th, 2023. It will be five days of launching new features/products every day of that week. [Register here to be notified about Launch Week](https://launchweek.getconvoy.io).
 
 ## Why Launch Week
 
@@ -36,7 +38,7 @@ With Launch Week, we want to begin announcing features in the roadmap that we pl
 
 ### Involving the Community
 
-As you may already know, the community is at the core of everything we do at Convoy, we are constantly seeking ways to involve our customers and the community in our product releases. To that end, we plan to hold Q&A and AMA sessions on the community call on the last day and have on-stage conversations with community members. 
+As you may already know, the community is at the core of everything we do at Convoy, we are constantly seeking ways to involve our customers and the community in our product releases. To that end, we plan to hold Q&A and AMA sessions on the community call on the last day and have on-stage conversations with community members.
 
 ### Content Creation
 
