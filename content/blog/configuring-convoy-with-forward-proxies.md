@@ -17,7 +17,7 @@ published_at: 2023-06-27T13:00:00.000+00:00
 
 # Introduction
 
-Welcome to Day 2 of Convoy's Launch week! Over the months we have been working on a bunch of quality of life improvements and guides which would make it easy for you to deploy Convoy to your production environments faster. In this article, we will delve into how you can deploy Convoy with our update helm charts to Kubernetes and how can you configure Convoy with a forward proxy for added security benefits.
+Welcome to Day 2 of Convoy's Launch week! Over the months we have been working on a bunch of quality of life improvements and guides which would make it easy for you to deploy Convoy to your production environments faster. In this article, we will delve into how you can deploy Convoy with our updated helm charts to Kubernetes and how can you configure Convoy with a forward proxy for added security benefits.
 
 # Forward proxies
 
