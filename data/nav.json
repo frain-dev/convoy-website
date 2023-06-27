@@ -98,6 +98,10 @@
 				"link": "/docs/manual/static-ips"
 			},
 			{
+				"title": "Idempotency",
+				"link": "/docs/manual/idempotency"
+			},
+			{
 				"title": "Forward Proxies",
 				"showDropdown": false,
 				"children": [
