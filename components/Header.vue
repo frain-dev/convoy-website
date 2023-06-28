@@ -88,7 +88,7 @@ export default {
 						{ name: 'Enterprise Edition', route: '/enterprise', type: 'route' },
 						{ name: 'Convoy Cloud', route: '/cloud', type: 'route' },
 						{ name: 'Convoy Playground', route: 'https://playground.getconvoy.io', type: 'external' },
-						{ name: 'NoHooks', route: 'https://nohooks.io', type: 'external' },
+						{ name: 'Nohooks', route: 'https://nohooks.io', type: 'external' },
 					]
 				},
 				{ name: 'Pricing', route: '/pricing', type: 'route' },
