@@ -98,6 +98,10 @@
 				"link": "/docs/manual/static-ips"
 			},
 			{
+				"title": "Meta Events",
+				"link": "/docs/manual/meta-events"
+			},
+			{
 				"title": "Idempotency",
 				"link": "/docs/manual/idempotency"
 			},
