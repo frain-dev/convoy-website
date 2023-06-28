@@ -1,6 +1,6 @@
 ---
-title: Launching Webhook Idempotency
-description: Welcome to day 2 of Convoy Launch week! We are thrilled to unveil Webhook Idempotency in Convoy, we believe that this feature will enrich your experience with Convoy. In this article, we will delve into how you can leverage Convoy to handle idempotent requests from your existing webhook providers and also send Idempotent webhooks to your API consumers.
+title: Idempotency
+description: How to configure Idempotency
 id: idempotency
 order: 8
 ---
@@ -23,12 +23,12 @@ request.body.<field-in-body>
 
 For request header key:
 ```text
-request.header.<field-in-body>
+request.header.<header-name>
 ```
 
 For request query param key:
 ```text
-request.query.<field-in-body>
+request.query.<query-param-name>
 ```
 
 Using the key(s) you provide convoy will generate a SHA256 checksum, and use it to check for duplicates, this same key will be sent to your endpoint which can also be used to de-duplicate events. Any duplicate event will be marked as a duplicate and be discarded.
