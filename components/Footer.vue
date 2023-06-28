@@ -76,7 +76,7 @@ export default {
 			footerLinks: [
 				{
 					title: 'Product',
-					links: [{ name: 'Features', link: '/#features' }, { name: 'Open Source', link: 'http://github.com/frain-dev/convoy', isExternal: true }, { name: 'Cloud', link: 'https://dashboard.getconvoy.io/login', isExternal: true }, { name: 'Convoy Playground', link: 'https://playground.getconvoy.io', isExternal: true },  { name: 'NoHooks', link: 'https://nohooks.io', isExternal: true }]
+					links: [{ name: 'Features', link: '/#features' }, { name: 'Open Source', link: 'http://github.com/frain-dev/convoy', isExternal: true }, { name: 'Cloud', link: 'https://dashboard.getconvoy.io/login', isExternal: true }, { name: 'Convoy Playground', link: 'https://playground.getconvoy.io', isExternal: true },  { name: 'Nohooks', link: 'https://nohooks.io', isExternal: true }]
 				},
 				{
 					title: 'Community',
