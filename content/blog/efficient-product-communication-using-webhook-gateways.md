@@ -31,7 +31,7 @@ For a product like this, the event delivery infrastructure has to be very solid,
 
 ## The “Progress” Pitch
 
-At the time Convoy was using MongoDB as a primary datastore and that lacked a good schema and data migration tool for self-hosted users. For us, this reduced our velocity to ship new features without fear of breaking customers’ deployment. For Maple Billing, who used Postgres, this meant they were not as keen to integrate Convoy. A couple of weeks later we migrated our datastore to PostgreSQL and they integrated Convoy****.****
+At the time Convoy was using MongoDB as a primary datastore and that lacked a good schema and data migration tool for self-hosted users. For us, this reduced our velocity to ship new features without fear of breaking customers’ deployment. For Maple Billing, who used Postgres, this meant they were not as keen to integrate Convoy. A couple of weeks later we migrated our datastore to PostgreSQL and they integrated Convoy.
 
 >[Read about the Convoy 0.9 Release here](https://getconvoy.io/blog/convoy-0.9)
 
