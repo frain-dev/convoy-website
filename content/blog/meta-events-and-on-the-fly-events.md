@@ -12,7 +12,7 @@ tags:
     - Launch Week
 featured: false
 description: Welcome to day 4 of Convoy Launch week! We are thrilled to unveil On-The-Fly events and Meta events, these features will enrich your webhook experience with Convoy. In this article, we will delve into how we’ve simplified the integration process with Convoy providing just a single API endpoint to help you get started with sending events. We also added Meta events, a feature that provides you with Webhook notifications for specific events happening within your Convoy project.
-published_at: 2023-03-29T10:00:00.000+00:00
+published_at: 2023-06-29T10:00:00.000+00:00
 ---
 
 ## Introduction
