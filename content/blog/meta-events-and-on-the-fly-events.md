@@ -90,7 +90,7 @@ With the addition of the On-The-Fly Event API, you can now do all that in one ca
 
 ![on-the-fly-event-new.png](/blog-assets/on-the-fly-event-new.png)
 
-Convoy will implicitly create the endpoint, create the subscription and then dispatch the event. If an endpoint with the same target url already exists, then Convoy will update all other parameters and endpoint configuration with your provided data. This brings flexibility for use cases where endpoint data is expected to change frequently, allowing their workflow to be more efficient.
+Convoy will implicitly create the endpoint, create the subscription and then dispatch the event. If an endpoint with the same target url already exists, then Convoy will update all other parameters and endpoint configuration with your provided data. This brings flexibility for use cases where endpoint data is expected to change frequently, allowing their workflow to be more efficient. For the subscription, if the subscription config is absent from the request body, default configuration will be applied when the subscription is created newly. If the subscription already exists, the supplied config in the request body will be used as if in an `upsert` operation.
 
 This feature enables developers to dynamically define and update endpoint information on the fly, providing greater adaptability in their applications. In a dynamic environment or rapidly evolving system, this feature becomes invaluable. Developers can easily modify endpoint information as needed through a single call, ensuring that the endpoint data in Convoy remains up to date.
 
