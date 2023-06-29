@@ -1,8 +1,6 @@
 <template>
 	<header>
-		<nav
-			class="w-full m-auto px-20px pt-60px pb-20px z-50 fixed left-[50%] -translate-x-1/2 translate-y-0 nav-bar-break:pt-50px nav-bar-break:pb-12px transition-all duration-300 bg-white-100 shadow-nav backdrop-blur-[18]"
-		>
+		<nav class="w-full m-auto px-20px pt-60px pb-20px z-50 fixed left-[50%] -translate-x-1/2 translate-y-0 nav-bar-break:pt-50px nav-bar-break:pb-12px transition-all duration-300 bg-white-100 shadow-nav backdrop-blur-[18]">
 			<section class="fixed top-0 left-0 bg-primary-100 w-full h-40px py-8px px-12px flex items-center justify-center font-medium text-12 text-white-100 nav-bar-break:text-14">
 				<span>Give us a star on GitHub</span>
 				<a class="h-20px w-20px mx-12px hover:cursor-pointer" target="_blank" rel="noopener noreferrer" href="https://github.com/frain-dev/convoy">
@@ -28,16 +26,8 @@
 					</nuxt-link>
 				</div>
 
-				<ul
-					class="mobile:absolute mobile:top-104px mobile:left-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500"
-					:class="showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'"
-				>
-					<li
-						class="py-14px px-20px nav-bar-break:mr-10px border-b border-b-grey-10 last-of-type:border-none nav-bar-break:border-none relative"
-						v-for="link in menuItems"
-						:key="link.name"
-						@click="currentRoute = link.name"
-					>
+				<ul class="mobile:absolute mobile:top-104px mobile:left-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500" :class="showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'">
+					<li class="py-14px nav-bar-break:py-8px px-12px border-b border-b-new.primary-25 last-of-type:border-none nav-bar-break:border-none relative" v-for="link in menuItems" :key="link.name" @click="currentRoute = link.name">
 						<nuxt-link class="text-14 text-grey-40 font-medium transition-all duration-300 hover:text-black" exact-active-class="text-primary-100" v-if="link.type === 'route'" :to="link.route">
 							{{ link.name }}
 						</nuxt-link>
@@ -45,60 +35,40 @@
 							{{ link.name }}
 						</a>
 						<template v-else>
-							<a
-								class="text-14 font-medium flex items-center justify-between transition-all duration-300 hover:text-black hover:cursor-pointer group"
-								:class="isChildRouteActive(link.name) ? 'text-primary-100' : 'text-grey-40'"
-							>
+							<a class="text-14 font-medium flex items-center justify-between transition-all duration-300 hover:text-black hover:cursor-pointer group" :class="isChildRouteActive(link.name) ? 'text-primary-100' : 'text-grey-40'">
 								{{ link.name }}
 								<svg width="16" height="16" class="transition-all duration-300 group-hover:fill-black" :class="isChildRouteActive(link.name) ? 'fill-primary-100' : 'fill-grey-40 '">
 									<use xlink:href="#angle-down-icon"></use>
 								</svg>
 							</a>
-							<div
-								class="nav-bar-break:absolute nav-bar-break:top-[100%] nav-bar-break:min-w-[174px] w-full bg-white-100 rounded-10px nav-bar-break:shadow-dropdown nav-bar-break:z-10 transition-all ease-in-out duration-300 nav-bar-break:h-fit"
-								v-if="currentRoute === link.name"
-							>
+							<div class="nav-bar-break:absolute nav-bar-break:top-[100%] nav-bar-break:min-w-[198px] w-fit bg-white-100 rounded-10px nav-bar-break:shadow-dropdown nav-bar-break:z-10 transition-all ease-in-out duration-300 nav-bar-break:h-fit" v-if="currentRoute === link.name">
 								<ul class="nav-bar-break:pl-20px nav-bar-break:pb-20px">
-									<li
-										class="py-10px nav-bar-break:pr-20px nav-bar-break:border-b nav-bar-break:border-b-grey-20"
-										v-for="subRoute in link.children"
-										:key="subRoute.name"
-										@click="closeDropdown($event)"
-									>
-										<nuxt-link class="text-12 text-grey-40 transition-all duration-300 hover:text-black" :to="subRoute.route">{{ subRoute.name }}</nuxt-link>
+									<li class="py-10px nav-bar-break:pr-20px nav-bar-break:border-b nav-bar-break:border-b-grey-20" v-for="subRoute in link.children" :key="subRoute.name" @click="closeDropdown($event)">
+										<nuxt-link class="text-12 text-grey-40 transition-all duration-300 hover:text-black" v-if="subRoute.type === 'route'" :to="subRoute.route">{{ subRoute.name }}</nuxt-link>
+										<a class="text-12 text-grey-40 transition-all duration-300 hover:text-black flex items-center" v-else target="_blank" rel="no-referrer" :href="subRoute.route">{{ subRoute.name }} <span class="px-8px bg-new.primary-25 text-new.primary-400 ml-8px rounded-12px text-10">new</span></a>
 									</li>
 								</ul>
 							</div>
 						</template>
 					</li>
 
-					<li class="py-14px px-20px nav-bar-break:p-0">
-						<a
-							href="https://github.com/frain-dev/convoy#installation-getting-started"
-							target="_blank"
-							class="nav-bar-break:py-8px nav-bar-break:px-24px text-14 font-medium rounded-8px nav-bar-break:bg-primary-100 nav-bar-break:text-white-100 text-primary-100 flex items-center"
-						>
-							Get Started
+					<li class="py-14px nav-bar-break:py-8px px-12px flex items-center nav-bar-break:pr-0 nav-bar-break:pl-40px">
+						<a href="https://dashboard.getconvoy.io/login" target="_blank" class="nav-bar-break:px-10px py-10px text-14 mr-16px font-medium rounded-8px nav-bar-break:bg-new.primary-25 nav-bar-break:text-new.primary-400 text-new.primary-400 flex items-center">
+							Sign In
 						</a>
-					</li>
-
-					<li>
-						<a href="https://github.com/frain-dev/convoy">
-							<img src="~/assets/images/github-logo.svg" alt="github logo" />
+						<div class="block nav-bar-break:hidden h-18px w-[1px] bg-new.primary-25 mx-12px"></div>
+						<a href="https://dashboard.getconvoy.io/signup" target="_blank" class="px-14px py-10px text-14 font-medium rounded-8px nav-bar-break:bg-primary-100 nav-bar-break:text-white-100 text-primary-100 flex items-center">
+							Start your project
 						</a>
 					</li>
 				</ul>
-				<a href="https://github.com/frain-dev/convoy" class="block nav-bar-break:hidden">
-					<img src="~/assets/images/github-logo.svg" alt="github logo" />
+				<a href="https://dashboard.getconvoy.io/login" target="_blank" class="px-20px py-8px text-10 font-medium rounded-8px bg-primary-100 text-white-100 block nav-bar-break:hidden whitespace-nowrap">
+					Get Started
 				</a>
 			</div>
 		</nav>
 
-		<div
-			class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-10 backdrop-blur-[25px] transition-all duration-500"
-			:class="showMenu ? 'pointer-events-all opacity-100 z-[2]' : 'pointer-events-none opacity-0'"
-			@click="showMenu = !showMenu"
-		></div>
+		<div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-10 backdrop-blur-[25px] transition-all duration-500" :class="showMenu ? 'pointer-events-all opacity-100 z-[2]' : 'pointer-events-none opacity-0'" @click="showMenu = !showMenu"></div>
 		<div class="fixed w-screen h-screen top-0 left 0" v-if="currentRoute === 'Products' || currentRoute === 'Resources'" @click="currentRoute = ''"></div>
 	</header>
 </template>
@@ -116,7 +86,9 @@ export default {
 					children: [
 						{ name: 'Community Edition', route: '/community', type: 'route' },
 						{ name: 'Enterprise Edition', route: '/enterprise', type: 'route' },
-						{ name: 'Convoy Cloud', route: '/cloud', type: 'route' }
+						{ name: 'Convoy Cloud', route: '/cloud', type: 'route' },
+						{ name: 'Convoy Playground', route: 'https://playground.getconvoy.io', type: 'external' },
+						{ name: 'Nohooks', route: 'https://nohooks.io', type: 'external' },
 					]
 				},
 				{ name: 'Pricing', route: '/pricing', type: 'route' },
@@ -129,8 +101,7 @@ export default {
 						{ name: 'Tutorials', route: '/blog?tag=Tutorial', type: 'route' }
 					]
 				},
-				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' },
-				{ name: 'Watch Demo', route: '/demo', type: 'route' }
+				{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' }
 			],
 			hasScrolled: false,
 			currentRoute: ''
@@ -146,7 +117,7 @@ export default {
 				const response = await fetch('https://api.github.com/repos/frain-dev/convoy');
 				const data = await response.json();
 				this.githubStars = data.stargazers_count;
-			} catch (_error) {}
+			} catch (_error) { }
 		},
 		handleScroll() {
 			this.$route.name == 'blog' || window.scrollY > 50 ? (this.hasScrolled = true) : (this.hasScrolled = false);

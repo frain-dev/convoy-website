@@ -76,7 +76,7 @@ export default {
 			footerLinks: [
 				{
 					title: 'Product',
-					links: [{ name: 'Features', link: '/#features' }, { name: 'Open Source', link: 'http://github.com/frain-dev/convoy', isExternal: true }, { name: 'Cloud', link: 'https://dashboard.getconvoy.io/login', isExternal: true }, { name: 'Roadmap', link: 'https://github.com/orgs/frain-dev/projects/3/views/1', isExternal: true }]
+					links: [{ name: 'Features', link: '/#features' }, { name: 'Open Source', link: 'http://github.com/frain-dev/convoy', isExternal: true }, { name: 'Cloud', link: 'https://dashboard.getconvoy.io/login', isExternal: true }, { name: 'Convoy Playground', link: 'https://playground.getconvoy.io', isExternal: true },  { name: 'Nohooks', link: 'https://nohooks.io', isExternal: true }]
 				},
 				{
 					title: 'Community',
@@ -84,7 +84,7 @@ export default {
 				},
 				{
 					title: 'Resources',
-					links: [{ name: 'API Reference', link: 'https://convoy.readme.io/', isExternal: true }, { name: 'Documentation', link: '/docs', isExternal: false }, { name: 'Status Page', link: 'https://convoy.statuspage.io', isExternal: true }]
+					links: [{ name: 'API Reference', link: 'https://convoy.readme.io/', isExternal: true }, { name: 'Documentation', link: '/docs', isExternal: false }, { name: 'Watch Demo', link: '/demo', isExternal: false }, { name: 'Status Page', link: 'https://convoy.statuspage.io', isExternal: true }, { name: 'Roadmap', link: 'https://github.com/orgs/frain-dev/projects/3/views/1', isExternal: true }]
 				},
 				{
 					title: 'Company',

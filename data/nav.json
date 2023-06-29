@@ -96,6 +96,28 @@
 			{
 				"title": "Static IPs",
 				"link": "/docs/manual/static-ips"
+			},
+			{
+				"title": "Meta Events",
+				"link": "/docs/manual/meta-events"
+			},
+			{
+				"title": "Idempotency",
+				"link": "/docs/manual/idempotency"
+			},
+			{
+				"title": "Forward Proxies",
+				"showDropdown": false,
+				"children": [
+					{
+						"title": "Smokescreen",
+						"link": "/docs/forward-proxies/smokescreen"
+					},
+					{
+						"title": "Nginx",
+						"link": "/docs/forward-proxies/nginx"
+					}
+				]
 			}
 		]
 	},

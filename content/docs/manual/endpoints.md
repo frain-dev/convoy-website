@@ -31,6 +31,11 @@ Endpoint authentication is a scenario where the endpoint owner needs to specify 
 
 ![Endpoint authentication](/docs-assets/endpoint-auth.png)
 
+### Endpoint Owner ID
+Endpoint Owner ID is a unique ID for identifying a group of endpoints. It is useful for fanning out an event to multiple endpoints and creating portal link for multiple endpoints. It is typically set by you, the user and should have meaningful significance within your internal systems, serving the purpose of logically grouping endpoints.
+
+![Endpoint Owner ID](/docs-assets/endpoint-owner-id.png)
+
 ### Portal Links
 
 A [Portal Link](/docs/manual/portal-link) is used to generate a customer-facing dashboard to display information on an endpoint's event deliveries. The portal link serves as a medium to quickly generate portals for users to review and debug events from a publisher. You can generate one time links via the dashboard or long-use links to be embedded in your dashboards via the API. To learn more, click [here](/docs/manual/portal-link)

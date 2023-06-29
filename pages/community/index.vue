@@ -116,7 +116,7 @@
 
 				<h1 class="text-white-100 text-[40px] leading-[60px] font-bold mb-80px mt-10px max-w-[880px] footer:text-center">Connect with the Convoy community across all our platforms</h1>
 				<div class="grid grid-cols-1 tab:grid-cols-2 md:grid-cols-3 gap-5 flex-wrap">
-					<div class="bg-white-100 rounded-10px p-40px md:col-span-2">
+					<form class="bg-white-100 rounded-10px p-40px md:col-span-2" @submit.prevent="subscribeToNewsletter()">
 						<img src="~/assets/images/svg/subscribe.svg" class="mb-20px" alt="subscribe icon" />
 
 						<h3 class="font-bold mb-10px">Subscribe to our newsletter</h3>
@@ -125,14 +125,14 @@
 						<input
 							id="email"
 							type="email"
-							class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-grey-40 text-grey-100 border border-primary-500 valid:border-primary-500 disabled:border-primary-500 disabled:bg-[#F7F9FC] hover:bg-primary-500 hover:border-grey-20 focus:border-primary-100 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-[#F7F9FC] py-12px px-16px appearance-none mb-20px"
+							class="transition-all duration-[.3s] w-full font-normal text-14 placeholder:text-new.gray-300 text-grey-100 border border-new.primary-25 valid:border-new.primary-25 disabled:border-new.primary-25 disabled:bg-white-100 hover:border-new.primary-50 focus:border-new.primary-400 focus:bg-white-100 outline-none rounded-4px placeholder:opacity-[.48] bg-white-100 py-12px px-16px mb-20px"
 							v-model="earlyAccessEmail"
 							placeholder="Email address"
 							required
 						/>
 						<div class="flex justify-end">
 							<button
-								@click="subscribeToNewsletter()"
+								@click.prevent="subscribeToNewsletter()"
 								class="flex items-center justify-center py-12px desktop:py-16px px-38px desktop:px-42px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-100 text-white-100 xs:mb-20px shadow-sm xs:w-full"
 								:disabled="isSubmittingEmailForNewsletter"
 							>
@@ -140,7 +140,7 @@
 								<img src="~/assets/images/arrow-right-icon.svg" class="ml-12px" alt="arrow right icon" />
 							</button>
 						</div>
-					</div>
+					</form>
 					<div class="bg-white-100 rounded-10px p-40px">
 						<img src="~/assets/images/svg/join-slack.svg" class="mb-20px" alt="subscribe icon" />
 
