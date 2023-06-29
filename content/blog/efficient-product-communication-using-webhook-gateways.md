@@ -1,5 +1,5 @@
 ---
-title: Building great relationships with your Customers with Webhook Gateways
+title: Efficient product communication using Webhook Gateways
 feature_image: maple.png
 post_image: maple.png
 primary_author:
