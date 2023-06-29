@@ -1,6 +1,6 @@
 ---
 title: Access Control & Advanced Portal Links
-feature_image: access-portals-and-advanced-portal-links-wide.png
+feature_image: access-portals-and-advanced-portal-links.png
 post_image: access-portals-and-advanced-portal-links.png
 primary_author:
     name: Daniel Oluojomu
@@ -10,14 +10,14 @@ tags:
     - Convoy
     - Product Update
 featured: false
-description: Welcome to day 3 of Convoy Launch week! We are thrilled to unveil two exciting features, Access Controls & Advanced Portal Links, that will elevate your experience with Convoy. In this article, we will delve into these groundbreaking features and explore the immense value they bring to Convoy's offering. Whether you're a developer seeking flexibility and efficiency or a user craving seamless access to event data, these features are designed to revolutionize the way you and your customers interact with Convoy.
+description: Welcome to day 5 of Convoy Launch week! We are thrilled to unveil two exciting features, Access Controls & Advanced Portal Links, that will elevate your experience with Convoy. In this article, we will delve into these groundbreaking features and explore the immense value they bring to Convoy's offering. Whether you're a developer seeking flexibility and efficiency or a user craving seamless access to event data, these features are designed to revolutionize the way you and your customers interact with Convoy.
 
 published_at: 2023-03-29T16:00:00.000+00:00
 ---
 
 ## Introduction
 
-Welcome to day 3 of Convoy Launch week! We are thrilled to unveil two exciting features that will elevate your experience with Convoy:
+Welcome to day 5 of Convoy Launch week! We are thrilled to unveil two exciting features that will elevate your experience with Convoy:
 
 1. Access Control
 2. Advanced Portal Links
@@ -50,4 +50,4 @@ We're thrilled about the potential impact of Advanced Portal Links. It's all abo
 
 ### Conclusion
 
-We’re committed to increasing the efficiency and productivity of both you and your customers in managing your events, that’s why we’re launching new features everyday this week! This is just day 3, 2 more days to go! Stay tuned for more updates. Interested in giving convoy a go? Join our community slack [here](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email) and give us feedback!
+We’re committed to increasing the efficiency and productivity of both you and your customers in managing your events, that’s why we’re launching new features everyday this week!. Interested in giving convoy a go? Join our community slack [here](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email) and give us feedback!
