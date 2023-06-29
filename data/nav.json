@@ -102,6 +102,10 @@
 				"link": "/docs/manual/meta-events"
 			},
 			{
+				"title": "Idempotency",
+				"link": "/docs/manual/idempotency"
+			},
+			{
 				"title": "Forward Proxies",
 				"showDropdown": false,
 				"children": [
