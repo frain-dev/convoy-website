@@ -12,7 +12,7 @@ tags:
 featured: false
 description: Welcome to day 5 of Convoy Launch week! We are thrilled to unveil two exciting features, Access Controls & Advanced Portal Links, that will elevate your experience with Convoy. In this article, we will delve into these groundbreaking features and explore the immense value they bring to Convoy's offering. Whether you're a developer seeking flexibility and efficiency or a user craving seamless access to event data, these features are designed to revolutionize the way you and your customers interact with Convoy.
 
-published_at: 2023-03-29T16:00:00.000+00:00
+published_at: 2023-06-30T11:30:00.000+00:00
 ---
 
 ## Introduction
