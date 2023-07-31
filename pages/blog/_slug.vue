@@ -83,7 +83,7 @@ export default {
 				case 'News':
 					blogPageData['metaTitle'] = `Convoy Announcements: ${blogPageData.title}`;
 					break;
-				case 'Library Content':
+				case 'Webhooks Library':
 					blogPageData['metaTitle'] = `${blogPageData.title} | The Webhooks Library`;
 					break;
 				default:

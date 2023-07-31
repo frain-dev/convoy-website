@@ -9,7 +9,7 @@ primary_tag: Open Thoughts
 tags:
     - Convoy
     - Open Thoughts
-featured: true
+featured: false
 description: A webhook gateway is a webhook management tool that sits between a webhooks provider and webhooks consumer. It acts as a reverse proxy for webhooks. It can be deployed by both the API provider that sends webhooks and the consumer that receives webhooks to handle webhook events multiplexing and de-multiplexing respectively. 
 published_at: 2023-01-23T18:00:00.000+00:00
 ---

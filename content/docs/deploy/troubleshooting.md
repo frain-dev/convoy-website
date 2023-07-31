@@ -11,11 +11,11 @@ This page contains fixes for some of the known installation and usage errors enc
 
 ## Docker and Docker Compose
 
-If you have any issues deploying Convoy with either Docker of Docker compose, please reach out in the [Slack channel](https://app.slack.com/client/T02JMPNCYNP).
+If you have any issues deploying Convoy with either Docker or Docker compose, please reach out in the [Slack channel](https://app.slack.com/client/T02JMPNCYNP).
 
 
 ### Redis instance fails to connect. 
-In this situation, ensure that your redis connection string is in the format:
+In this situation, ensure that your Redis connection string is in the format:
 
 ```
 redis://username:password@host:port
