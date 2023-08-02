@@ -1,7 +1,7 @@
 ---
 title: How to Implement Webhooks
-feature_image: 
-post_image: 
+feature_image: how-to-implement-webhooks.png
+post_image: how-to-implement-webhooks.png
 primary_author:
     name: Adams Adebayo
     twitter: olodocoder
