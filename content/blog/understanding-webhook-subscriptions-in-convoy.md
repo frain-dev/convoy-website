@@ -11,7 +11,7 @@ tags:
     - Convoy
 featured: false
 description: Find out what Webhook Subscriptions are, the features that are available to you when creating a webhook subscription, and how to use them together to manage event routing in a convoy project.
-published_at: 2023-05-23T09:00:00.000+00:00
+published_at: 2023-08-02T09:00:00.000+00:00
 ---
 
 ## Introduction
