@@ -20,7 +20,7 @@ In the ever-evolving landscape of web development and data integration, the need
 
 In this comprehensive guide, we will delve into the concept of Webhooks, their significance in web development and explore the step-by-step process of implementing Webhooks effectively. Whether you're a seasoned developer seeking to expand your toolkit or a newcomer eager to grasp the intricacies of Webhooks, this article will equip you with the knowledge and practical know-how to harness the full potential of this transformative technology.
 
-> If you're new to the world of webhooks, check out our [detailed guide](getconvoy.com/blog/) on what webhooks are and why they are the go-to communication mechanism for major technology companies like GitHub, Stripe, Shopify, and many others.
+> If you're new to the world of webhooks, check out our [detailed guide](https://www.getconvoy.io/blog/what-are-webhooks/) on what webhooks are and why they are the go-to communication mechanism for major technology companies like GitHub, Stripe, Shopify, and many others.
 
 Let's explore how to implement webhooks in the following sections.
 
