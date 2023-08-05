@@ -1,7 +1,7 @@
 ---
-title: "Webhooks Security Vulnerabilities: How to Spot and Prevent them"
-feature_image: understanding-webhook-subscriptions-in-convoy.png
-post_image: understanding-webhook-subscriptions-in-convoy.png
+title: "Webhooks Security Vulnerabilities: How to Spot and Prevent Them"
+feature_image: 
+post_image: 
 primary_author:
     name: Amarachi Aso
     twitter: AsoAmarachi
@@ -34,7 +34,7 @@ Making webhooks idempotent is a good effective way to protect a webhook consumer
 
 It is your job to decide the best way to create unique identifiers for each webhook request. A number of options exist to choose from. One of the options is to assign a randomly generated UUID to each request sent out, however, the flaw with this method is that when a webhook consumer purges their webhook log after some time has passed, the purged webhooks would again pass for valid webhook request if replayed. In light of this, a better option would include adding the current timestamp on the webhooks to use serve as a unique identifier or to use a hash of the payload and the timestamp.
 
-It is possible to get one thing or the other wrong when implementing idempotency, or working with idempotent webhook messages. A HackerOne bug report found [here](https://hackerone.com/reports/996540) describes a security loophole on [RBKmoney](https://rbk.money/) that is vulnerable to replay attacks even though the webhook publisher--Apple Pay in this case-- has put in place measures for idempotency: An Apple pay device generates cryptogram for every transaction, but a fraudulent user could still reuse a previously generated cryptogram to make several payments in the future, and this is because the consumer of this cryptogram fails to check for idempotency during payment. The example shows that both API providers and their customers play a part in preventing a replay attack.
+It is possible to get one thing or the other wrong when implementing idempotency, or working with idempotent webhook messages. A HackerOne bug report found [here](https://hackerone.com/reports/996540) describes a security loophole on [RBKmoney](https://rbk.money/) that is vulnerable to replay attacks even though the webhook publisher—Apple Pay in this case—has put in place measures for idempotency: An Apple pay device generates cryptogram for every transaction, but a fraudulent user could still reuse a previously generated cryptogram to make several payments in the future, and this is because the consumer of this cryptogram fails to check for idempotency during payment. The example shows that both API providers and their customers play a part in preventing a replay attack.
 
 
 ## Server-side request forgery (SSRF) (senders)
@@ -57,7 +57,7 @@ MITM which stands for "Man-in-the-Middle," refers to a type of cyberattack where
 
 To launch a MITM attack, the perpetrator first gains access to the network through means such as deploying a rogue Wi-Fi hotspot, exploiting vulnerable points on a Wi-Fi router, or even  IP spoofing and other advanced techniques. Once an attacker gains entry into a communication network, they can decrypt the message being transmitted and steal information, alter the content of the message, or divert traffic to a different destination.
 
-![image illustrating MITM](/blog-assets/MITM-illustration.png)
+![image illustrating MITM attack](/blog-assets/MITM-illustration.png)
 
 A security vulnerability found on [Shopify](https://hackerone.com/reports/423467) allowed a malicious merchant to take over the communication protocol between a point-of-sale application and the customer end eventually permitting the merchant or malicious actor to intercept and change the content of a customers cart, Change the amount a customer has tipped, etc.
 
@@ -89,7 +89,7 @@ It is most beneficial to have a strategy in place to mitigate a DDoS attack even
 
 ### The Best Webhook Security Strategy
 
-So far the most practical ways to prevent specific security vulnerabilities that are common to webhooks have been discussed. But Several security vulnerabilities prevention techniques should be put in place at the same time to give a webhook system several layers of security, this means that all the techniques highlighted in this article should be implemented where it applies to you whether as a webhook provider or a consumer. As a consumer a rule that can help your team keep their feet on the ground as regards security is to treat security as though the other party--the webhook provider-- does not care at all, and all the securing is on you to do. As a provider, the rule would be to treat security as though a single loophole that causes a security breach will cost you your business (it literarily can).
+So far the most practical ways to prevent specific security vulnerabilities that are common to webhooks have been discussed. But Several security vulnerabilities prevention techniques should be put in place at the same time to give a webhook system several layers of security, this means that all the techniques highlighted in this article should be implemented where it applies to you whether as a webhook provider or a consumer. As a consumer a rule that can help your team keep their feet on the ground as regards security is to treat security as though the other party—the webhook provider—does not care at all, and all the securing is on you to do. As a provider, the rule would be to treat security as though a single loophole that causes a security breach will cost you your business (it literarily can).
 
 Absolute Security is almost impossible to attain, however, webhook systems can be made as secure as possible when security best practices are followed.
 
