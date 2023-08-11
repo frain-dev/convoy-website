@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./scss/fonts";
+@import "./scss/prism";
+@import '~prismjs/plugins/toolbar/prism-toolbar.css';
+
+:root {
+  --color-white: 255, 255, 255;
+}
+html {
+  @apply scroll-smooth;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  @apply hidden;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+}
