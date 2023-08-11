@@ -1,0 +1,155 @@
+[
+  {
+    "title": "Introduction",
+    "link": "/docs/introduction"
+  },
+  {
+    "title": "Getting started",
+    "showDropdown": false,
+    "children": [
+      {
+        "title": "Send event",
+        "link": "/docs/getting-started/sending-webhook-example"
+      },
+      {
+        "title": "Receive event",
+        "link": "/docs/getting-started/receiving-webhook-example"
+      }
+    ]
+  },
+  {
+    "title": "Product Manual",
+    "showDropdown": false,
+    "children": [
+      {
+        "title": "Overview",
+        "link": "/docs/manual/overview"
+      },
+      {
+        "title": "Organizations and Projects",
+        "link": "/docs/manual/organizations-and-projects"
+      },
+      {
+        "title": "Endpoints",
+        "link": "/docs/manual/endpoints"
+      },
+      {
+        "title": "Signatures",
+        "link": "/docs/manual/signatures"
+      },
+      {
+        "title": "Sources",
+        "link": "/docs/manual/sources"
+      },
+      {
+        "title": "Subscriptions",
+        "link": "/docs/manual/subscriptions"
+      },
+      {
+        "title": "Event and Event Deliveries",
+        "link": "/docs/manual/events-and-event-deliveries"
+      },
+      {
+        "title": "Portal Links",
+        "link": "/docs/manual/portal-links"
+      },
+      {
+        "title": "Static IPs",
+        "link": "/docs/manual/static-ips"
+      }
+    ]
+  },
+
+  {
+    "title": "Configurations",
+    "link": "/docs/configuration"
+  },
+
+  {
+    "title": "Deployment",
+    "showDropdown": false,
+    "children": [
+      {
+        "title": "Architecture",
+        "link": "/docs/deploy/architecture"
+      },
+      {
+        "title": "Install Convoy",
+        "link": "/docs/deploy/install-convoy"
+      },
+      {
+        "title": "Troubleshooting",
+        "link": "/docs/deploy/troubleshooting"
+      }
+    ]
+  },
+  {
+    "title": "CLI",
+    "link": "/docs/cli"
+  },
+  
+
+  {
+    "title": "SDK",
+    "link": "/docs/sdk"
+  },
+  {
+    "title": "Tools",
+    "showDropdown": false,
+    "children": [
+      {
+        "title": "Client CLI",
+        "link": "/docs/tools/convoy-cli"
+      }
+    ]
+  },
+
+  {
+    "title": "Release Notes",
+    "showDropdown": false,
+    "children": [
+      {
+        "title": "Latest (v0.9)",
+        "link": "/docs/releases/version-9"
+      },
+      {
+        "title": "v0.8",
+        "link": "/docs/releases/version-8"
+      },
+      {
+        "title": "v0.7",
+        "link": "/docs/releases/version-7"
+      },
+      {
+        "title": "v0.6",
+        "link": "/docs/releases/version-6"
+      },
+      {
+        "title": "v0.5",
+        "link": "/docs/releases/version-5"
+      }
+    ]
+  },
+  {
+    "title": "Resources",
+    "showDropdown": false,
+    "children": [
+      {
+        "title": "Glossary",
+        "link": "/docs/resources/glossary"
+      },
+      {
+        "title": "Telemetry",
+        "link": "/docs/resources/telemetry"
+      },
+      {
+        "title": "Release Process",
+        "link": "/docs/resources/release-process"
+      }
+    ]
+  },
+  {
+    "title": "FAQs",
+    "link": "/docs/faq"
+  }
+]
