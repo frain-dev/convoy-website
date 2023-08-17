@@ -10,11 +10,11 @@ tags:
     - Convoy
     - Open Thoughts
 featured: true
-description: Why did we choose to build as an open-source project? In this article, I share our beliefs about open source and why it's important to us. Enjoy 🎉
+description: Why did we choose to build Convoy as an open-source project? In this article, I share our beliefs about open source and why it's important to us. Enjoy 🎉
 published_at: 2023-08-16T16:00:00.000+00:00
 ---
 
-Two weeks ago, we had a YC open-source founders event at the new YC office. A common question in these types of events is, “Why open source?”. It was the first question the moderator asked all the panellists, and sure, they all gave great answers!  Fun fact: I met an open-source founder, and she said: we all just like open-source and try to justify it with something-something data privacy. 😂 And it dawned on me that I hadn’t put in writing the answer to this question for Convoy, so here you go. 
+Two weeks ago, we had a [YC](https://www.ycombinator.com/) open-source founders event at the new YC office. A common question in these types of events is, “Why open source?”. It was the first question the moderator asked all the panellists, and sure, they all gave great answers!  Fun fact: I met an open-source founder, and she said: we all just like open-source and try to justify it with something-something data privacy. 😂 And it dawned on me that I hadn’t put in writing the answer to this question for Convoy, so here you go. 
 
 Disclaimer: This post might include subjective opinions you may not completely agree with, but it’s our why. Ready, set, let’s go. 
 
