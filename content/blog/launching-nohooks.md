@@ -10,8 +10,8 @@ tags:
     - Convoy
     - Engineering
     - Product Update
-featured: true
-description: 
+featured: false
+description: Nohooks is a service that offers webhooks functionality even on platforms that do not have native webhooks support. With Nohooks, developers can receive real-time notifications of events from the list of supported apps like DigitalOcean, Render and Notion.
 published_at: 2023-06-28T10:00:00.000+00:00
 ---
 
