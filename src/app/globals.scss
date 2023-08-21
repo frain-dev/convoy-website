@@ -2,23 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./scss/fonts";
-@import "./scss/prism";
+@import './scss/fonts';
+@import './scss/prism';
 @import '~prismjs/plugins/toolbar/prism-toolbar.css';
 
 :root {
-  --color-white: 255, 255, 255;
+	--color-white: 255, 255, 255;
 }
 html {
-  @apply scroll-smooth;
+	@apply scroll-smooth;
 }
 
 .no-scrollbar::-webkit-scrollbar {
-  @apply hidden;
+	@apply hidden;
 }
 .no-scrollbar {
-  scrollbar-width: none;
+	scrollbar-width: none;
 }
 .no-scrollbar {
-  -ms-overflow-style: none;
+	-ms-overflow-style: none;
+}
+
+.active {
+	@apply transition-all duration-300 relative after:bottom-0 after:h-[3px] after:w-full after:left-0 after:right-0 after:bg-primary-400 after:absolute after:rounded-tl-16px after:rounded-tr-16px;
+
+	span {
+		@apply font-semibold text-primary-400 transition-all duration-300;
+	}
+}
+
+.slideshow {
+	height: 150px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	transform: translate3d(0, 0, 0);
+	white-space: nowrap;
+
+	.firstSlide {
+		animation: moveSlideshow 100s linear infinite;
+		display: flex;
+		width: calc(350px * 7);
+
+		&:hover {
+			-webkit-animation-play-state: paused;
+			-moz-animation-play-state: paused;
+			-o-animation-play-state: paused;
+			animation-play-state: paused;
+		}
+	}
+
+	.secondSlide {
+		animation: moveSlideshow 80s linear infinite -20s;
+		display: flex;
+		width: calc(350px * 7);
+
+		&:hover {
+			-webkit-animation-play-state: paused;
+			-moz-animation-play-state: paused;
+			-o-animation-play-state: paused;
+			animation-play-state: paused;
+		}
+	}
+}
+
+@keyframes moveSlideshow {
+	0% {
+		transform: translateX(0%);
+	}
+
+	100% {
+		transform: translateX(calc(-350px * 7));
+	}
+}
+
+
+.testimonial {
+	p {
+		@apply text-10 text-gray-800;
+		a {
+			@apply text-primary-400;
+		}
+	}
 }
