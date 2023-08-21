@@ -7,8 +7,6 @@ order: 4
 
 # Subscriptions
 
-## Subscriptions
-
 Subscriptions are conduits through which events are routed from a source to a destination (endpoint) in Convoy. In addition to defining how to deliver events, subscriptions can be used to specify what retry strategy to use, how many times you should receive alerts for failing event attempts and if the subscription should trigger a circuit breaker when an endpoint is returning an error multiple times in a row. They represent the core of event routing for both Incoming and Outgoing events.
 
 ## How Event Routing Works?

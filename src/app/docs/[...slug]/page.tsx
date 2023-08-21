@@ -26,17 +26,7 @@ export async function generateStaticParams() {
 	const docPaths = await glob('**/*.md', {
 		cwd: DOCS_DIR
 	});
-	let slugs: any[] = [];
 	const docPathsArray = Array.from(docPaths);
-	docPathsArray.forEach((postPath: any) => {
-		if (path.basename(postPath, path.extname(postPath)) === 'introduction') {
-			slugs.push({
-				firts: path.basename(postPath, path.extname(postPath)),
-				second: [postPath.split('/').length > 1 ? postPath.split('/').reverse().pop() : '', path.basename(postPath, path.extname(postPath))],
-				third: postPath
-			});
-		}
-	});
 	return docPathsArray.map((postPath: any) => {
 		return {
 			slug: [postPath.split('/').length > 1 ? postPath.split('/').reverse().pop() : '', path.basename(postPath, path.extname(postPath))]
@@ -73,7 +63,7 @@ function extractHeadings(node: any, sections: any[] = []) {
 			}
 		}
 
-		if (node.children) {
+		if (node.children && node.name !== 'Tab') {
 			for (const child of node.children) {
 				extractHeadings(child, sections);
 			}
@@ -90,13 +80,13 @@ export default async function DocsTemplate({ params }: PageProps) {
   
 	return (
 		<>
-			<div className="docs flex">
-				<div className="max-w-[876px] w-full py-50px px-24px desktop-min:px-100px">
+			<div className="docs flex justify-center">
+				<div className="max-w-[876px] w-full py-50px tab-min:px-24px px-100px">
 					{Markdoc.renderers.react(content, React, { components })}
-
 					<DocFooter></DocFooter>
 				</div>
-				<div className="hidden desktop:max-w-[247px] w-full desktop:py-50px desktop:sticky desktop:top-0 desktop:h-fit desktop:block">
+				
+				<div className="hidden desktop-min:max-w-[247px] w-full desktop-min:py-50px sticky top-0 h-fit desktop-min:block">
 					<Contents tableOfContents={tableOfContents} />
 				</div>
 			</div>

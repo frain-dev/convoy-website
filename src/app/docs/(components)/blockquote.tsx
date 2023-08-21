@@ -18,7 +18,7 @@ export default function BlockQuote({ children }: BlockQuoteProps) {
         />
         Pro-Tip
       </div>
-      <p className="text-14 text-gray-600">{children}</p>
+      <div className="text-14 text-gray-600">{children}</div>
     </div>
   );
 }

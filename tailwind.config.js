@@ -19,7 +19,8 @@ module.exports = {
 		extend: {
 			spacing: customSpacing(),
 			boxShadow: {
-				layout: '0px 30px 40px 0px rgba(20, 37, 63, 0.08), 0px 16px 16px 0px rgba(12, 26, 75, 0.05), 0px 16px 16px 0px rgba(12, 26, 75, 0.06)'
+				layout: '0px 30px 40px 0px rgba(20, 37, 63, 0.08), 0px 16px 16px 0px rgba(12, 26, 75, 0.05), 0px 16px 16px 0px rgba(12, 26, 75, 0.06)',
+				default: '0px 2px 4px rgba(12, 26, 75, 0.04), 0px 4px 20px -2px rgba(50, 50, 71, 0.08)'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(white 10%, #fafafe78)'
@@ -31,7 +32,17 @@ module.exports = {
 		screens: {
 			desktop: { min: '1024px' },
 			'desktop-min': { min: '1248px' },
-			tab: { max: '768px' }
+			"tab-min": { max: '768px' },
+			'index-animation-min': { min: '1405px' },
+			'index-animation-max': { min: '2087px' },
+			// desktop: { min: '880px' },
+			'nav-bar-break': { min: '1055px' },
+			md: { min: '1288px' },
+			'md-max': { max: '1288px' },
+			mobile: { max: '1054px' },
+			footer: { max: '630px' },
+			xs: { max: '425px' },
+			tab: { max: '1287px', min: '880px' }
 		},
 		borderRadius: {
 			'4px': '4px',

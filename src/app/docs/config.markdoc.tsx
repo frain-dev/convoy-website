@@ -4,6 +4,9 @@ import DocLink from './(components)/link';
 import BlockQuote from './(components)/blockquote';
 import DocImage from './(components)/image';
 import CodeBlock from './(components)/codeblock';
+import { Tag } from '@markdoc/markdoc';
+import { Tabs } from './(components)/tabs';
+import { Tab } from './(components)/tab';
 
 const config: Config = {
 	nodes: {
@@ -69,7 +72,25 @@ const config: Config = {
 			}
 		}
 	},
-	tags: {}
+	tags: {
+		tabs: {
+			render: 'Tabs',
+			attributes: {},
+			transform(nodes: any, config: any) {
+				const labels = nodes.children.map((item: any) => item.attributes.label);
+				return new Tag(this.render, { labels }, nodes.transformChildren(config));
+			}
+		},
+
+		tab: {
+			render: 'Tab',
+			attributes: {
+				label: {
+					type: String
+				}
+			}
+		}
+	}
 };
 
 const components = {
@@ -101,7 +122,9 @@ const components = {
 	CodeBlock,
 	Code: ({ content }: any) => {
 		return <code className="text-12 text-gray-800 bg-grey-20 font-menlo rounded-4px py-2px px-8px">{content}</code>;
-	}
+	},
+	Tabs,
+	Tab
 };
 
 export { config, components };

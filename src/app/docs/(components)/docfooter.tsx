@@ -1,9 +1,38 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useRef, useState } from 'react';
 
 export default function DocFooter() {
 	const pathname = usePathname();
+	const [submittingEmail, setIsSubmittingEmail] = useState(false);
+	const inputRef = useRef(null);
+
+	const subscribeToNewsletter = async (event: any) => {
+		event.preventDefault();
+		setIsSubmittingEmail(true);
+		try {
+			const response = await fetch('/.netlify/functions/subscribe', {
+				method: 'POST',
+				mode: 'cors',
+				cache: 'no-cache',
+				credentials: 'same-origin',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				redirect: 'follow',
+				referrerPolicy: 'no-referrer',
+				body: JSON.stringify({
+					email:  inputRef.current !== null ? inputRef.current['value'] : ''
+				})
+			});
+			await response.json();
+			setIsSubmittingEmail(false);
+		} catch (error) {
+			setIsSubmittingEmail(false);
+		}
+	};
+
 	return (
 		<div>
 			<div className="flex items-center justify-between">
@@ -22,22 +51,24 @@ export default function DocFooter() {
 				{/* <div class="font-light">Updated at { pageData.updatedAt | date }</div> */}
 			</div>
 
-			<div className="bg-gray-800 bg-no-repeat bg-contain bg-right-top p-24px mt-32px rounded-8px mb-100px">
+			<div className="bg-gray-800 bg-[url(/static/doc-footer.png)] bg-no-repeat bg-contain bg-right-top p-24px mt-32px rounded-8px mb-100px">
 				<h4 className="text-white-100 text-18 font-semibold mb-12px">Don't miss anything.</h4>
 				<p className="text-12 text-white-100 max-w-[463px] w-full">
 					Subscribe to the Convoy Newsletter find tutorials and tools that will help you grow as a developer and scale your project or business, and see interesting
 					topics.
 				</p>
 
-				<form className="border border-gray-800 bg-white-100 flex p-10px rounded-4px items-center max-w-[460px] w-full mt-20px mb-46px">
+				<form className="border border-gray-800 bg-white-100 flex p-10px rounded-8px items-center max-w-[460px] w-full mt-20px mb-46px" onSubmit={subscribeToNewsletter}>
 					<input
 						type="email"
 						id="email"
-						placeholder="Your email"
+						ref={inputRef}
+						placeholder="Enter your email"
 						aria-label="Email"
-						className="bg-transparent focus:outline-none focus:border-none w-full text-16 text-gray-800"
+						className="bg-transparent focus:outline-none focus:border-none w-full text-14 text-gray-800 "
+						required
 					/>
-					<button className="flex items-center text-primary-400 text-14">
+					<button className="flex items-center text-primary-400 text-14" type="submit" disabled={submittingEmail}>
 						Subscribe
 						<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-16px">
 							<path

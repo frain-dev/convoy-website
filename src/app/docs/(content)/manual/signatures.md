@@ -5,8 +5,7 @@ id: signatures
 order: 6
 ---
 
-Signatures
-==========
+# Signatures
 
 Webhook signatures are strings used to verify the validity of a webhook event sent to Convoy. This signature is passed as header values in the format: `X-Convoy-Signature`.
 

@@ -13,7 +13,74 @@ The Client CLI is our client-side command-line tool used to debug webhook events
 
 The Client CLI can be installed directly from your package manager or by building from the GitHub source:
 
-<client-cli-tab></client-cli-tab>
+{% tabs %}
+
+{% tab label="Mac" %}
+
+Install the Convoy CLI to your Mac from brew:
+
+```console[terminal]
+$ brew tap frain-dev/tools
+$ brew install convoy-cli
+```
+
+{% /tab %}
+
+{% tab label="Linux" %}
+
+The installation procedures for Linux is split into two:
+
+-   Ubuntu and Debain users
+-   CentOS and RHEL users
+
+### Ubuntu and Debian OS
+
+Install the Convoy Client CLI from apt repository:
+
+```console[terminal]
+$ curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy-cli/setup.deb.sh' | sudo -E bash
+$ sudo apt install convoy-cli
+```
+
+### CentOS and RHEL OS
+
+Install the Convoy Client CLI using yum:
+
+```console[terminal]
+$ curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy-cli/setup.rpm.sh' | sudo -E bash
+$ sudo yum install convoy-cli
+```
+
+{% /tab %}
+
+{% tab label="Windows" %}
+To install Convoy on Windows, download the binary applicable to your machine:
+
+-   [Download for AMD64](https://dl.cloudsmith.io/public/convoy/convoy-cli/raw/versions/0.1.0/convoy-cli_0.1.0_windows_amd64.tar.gz)
+-   [Download for ARM64](https://dl.cloudsmith.io/public/convoy/convoy-cli/raw/versions/0.1.0/convoy-cli_0.1.0_windows_arm64.tar.gz)
+    {% /tab %}
+
+{% tab label="Source" %}
+
+To build Convoy Client CLI from source code, you need:
+
+-   Go [version 1.9 or greater](https://golang.org/doc/install).
+
+```bash
+$ git clone https://github.com/frain-dev/convoy-cli.git && cd convoy-cli
+$ make install
+```
+
+Verify the build by running the command below:
+
+```console[terminal]
+$ convoy-cli -v
+
+convoy-cli version v0.1.0
+```
+
+{% /tab %}
+{% /tabs %}
 
 ## Using the CLI
 
@@ -82,9 +149,9 @@ The login command authenticates your Client CLI with a Personal API Key to give 
 
 ### Command Flags
 
-- `--help`: Get help on the login command.
-- `--api-key`: This flag specifies the Personal API key for authenticating the CLI. This is a required parameter that must be passed when running the command.
-- `--host`: This flag specifies the host for your Convoy instance. For cloud users, the default host is `https://cli.getconvoy.io`.
+-   `--help`: Get help on the login command.
+-   `--api-key`: This flag specifies the Personal API key for authenticating the CLI. This is a required parameter that must be passed when running the command.
+-   `--host`: This flag specifies the host for your Convoy instance. For cloud users, the default host is `https://cli.getconvoy.io`.
 
 ## Logout
 
@@ -109,7 +176,7 @@ The logout command logs out of your Convoy instance
 
 ### Command Flags
 
-- `--help`: Get help on the logout command.
+-   `--help`: Get help on the logout command.
 
 ## Listen
 
@@ -136,7 +203,8 @@ Flags:
 The listen command forwards events streamed from a source in your Convoy instance to a defined web server. The listen command starts a websocket client that listens to events streamed by the servcer.
 
 ### Command Flags
-- `--help`: Help for listen
-- `--forward-to`: The host/web server you want to forward events to.
-- `--since`: Send discarded events since a timestamp (e.g. 2013-01-02T13:23:37Z) or relative time (e.g. 42m for 42 minutes).
-- `--source-name`: The name of the source you want to receive events from (only applies to incoming projects).
+
+-   `--help`: Help for listen
+-   `--forward-to`: The host/web server you want to forward events to.
+-   `--since`: Send discarded events since a timestamp (e.g. 2013-01-02T13:23:37Z) or relative time (e.g. 42m for 42 minutes).
+-   `--source-name`: The name of the source you want to receive events from (only applies to incoming projects).
