@@ -107,7 +107,7 @@ export default function Home() {
 
 					<Link
 						href="/docs"
-						className="py-12px px-28px text-14 font-medium rounded-8px bg-new.primary-25 text-new.primary-400 border border-new.primary-50 flex items-center justify-center text-center xs:w-[90vw]">
+						className="py-12px px-28px text-14 font-medium rounded-8px bg-primary-25 text-primary-400 border border-primary-50 flex items-center justify-center text-center xs:w-[90vw]">
 						<Image src="/svg/documentation.svg" height={16} width={16} className="mr-10px" alt="document icon" />
 						Documentation
 					</Link>
@@ -284,7 +284,7 @@ export default function Home() {
 								<div className="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
 									{cloudFeatures.map(feature => (
 										<div
-											className="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap"
+											className="bg-white-16 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap"
 											key={feature}>
 											<Image src={GreenCheckIcon} className="mr-12px" alt="check" />
 											{feature}
@@ -307,7 +307,7 @@ export default function Home() {
 								<div className="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
 									{communityFeatures.map(feature => (
 										<div
-											className="bg-white-10 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
+											className="bg-white-16 pl-12px pr-50px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
 											key={feature}>
 											<Image src={GreenCheckIcon} className="mr-12px" alt="check" />
 											{feature}

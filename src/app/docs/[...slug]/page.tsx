@@ -3,13 +3,13 @@ import path from 'path';
 import fs from 'fs';
 import Markdoc from '@markdoc/markdoc';
 import React from 'react';
-import Contents from '../(components)/content';
+import Contents from '../components/content';
 import matter from 'gray-matter';
 import { Metadata } from 'next';
 import { components, config } from '../config.markdoc';
-import DocFooter from '../(components)/docfooter';
+import DocFooter from '../components/docfooter';
 
-const DOCS_PATH = 'src/app/docs/(content)';
+const DOCS_PATH = 'src/app/docs/documentation';
 const DOCS_DIR = path.join(process.cwd(), DOCS_PATH);
 
 type Params = {
@@ -44,7 +44,7 @@ async function getMarkdownContent(slug: any) {
 	const filePath = path.join(DOCS_DIR, joinedSlug + '.md');
 	const source = fs.readFileSync(filePath, 'utf-8');
 	const matterResult = matter(source);
-	const { title, type } = matterResult.data;
+	const { title } = matterResult.data;
 	const ast = Markdoc.parse(source);
 	const content = Markdoc.transform(ast, config);
 	return { content, title };
@@ -76,8 +76,7 @@ function extractHeadings(node: any, sections: any[] = []) {
 export default async function DocsTemplate({ params }: PageProps) {
 	const { content } = await getMarkdownContent(params.slug);
 	const tableOfContents = extractHeadings(content);
-  
-  
+
 	return (
 		<>
 			<div className="docs flex justify-center">
@@ -85,7 +84,7 @@ export default async function DocsTemplate({ params }: PageProps) {
 					{Markdoc.renderers.react(content, React, { components })}
 					<DocFooter></DocFooter>
 				</div>
-				
+
 				<div className="hidden desktop-min:max-w-[247px] w-full desktop-min:py-50px sticky top-0 h-fit desktop-min:block">
 					<Contents tableOfContents={tableOfContents} />
 				</div>

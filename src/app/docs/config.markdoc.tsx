@@ -1,12 +1,13 @@
 import { Config } from '@markdoc/markdoc';
-import Heading from './(components)/heading';
-import DocLink from './(components)/link';
-import BlockQuote from './(components)/blockquote';
-import DocImage from './(components)/image';
-import CodeBlock from './(components)/codeblock';
+import Heading from './components/heading';
+import DocLink from './components/link';
+import BlockQuote from './components/blockquote';
+import DocImage from './components/image';
+import CodeBlock from './components/codeblock';
 import { Tag } from '@markdoc/markdoc';
-import { Tabs } from './(components)/tabs';
-import { Tab } from './(components)/tab';
+import { Tabs } from './components/tabs';
+import { Tab } from './components/tab';
+import Accordion from './components/accordion';
 
 const config: Config = {
 	nodes: {
@@ -89,6 +90,14 @@ const config: Config = {
 					type: String
 				}
 			}
+		},
+		accordion: {
+			render: 'Accordion',
+			attributes: {
+				title: {
+					type: String
+				}
+			}
 		}
 	}
 };
@@ -102,7 +111,7 @@ const components = {
 		return <strong className="font-semibold">{children}</strong>;
 	},
 	List: ({ children }: any) => {
-		return <ul className="mb-20px list-disc">{children}</ul>;
+		return <ol className="list-[unset] mb-20px ml-16px">{children}</ol>;
 	},
 	Item: ({ children }: any) => {
 		return <li className="text-14 text-gray-600 mb-8px">{children}</li>;
@@ -124,7 +133,8 @@ const components = {
 		return <code className="text-12 text-gray-800 bg-grey-20 font-menlo rounded-4px py-2px px-8px">{content}</code>;
 	},
 	Tabs,
-	Tab
+	Tab,
+	Accordion
 };
 
 export { config, components };

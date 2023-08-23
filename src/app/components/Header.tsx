@@ -141,7 +141,7 @@ export default function Header() {
 													<ul className="nav-bar-break:pl-20px nav-bar-break:pb-20px">
 														{link.children?.map(subRoute => (
 															<li
-																className="py-10px nav-bar-break:pr-20px nav-bar-break:border-b nav-bar-break:border-b-gray-50"
+																className="py-10px nav-bar-break:pr-20px nav-bar-break:border-b nav-bar-break:border-b-gray-100"
 																v-for="subRoute in link.children"
 																key={subRoute.name}
 																onClick={event => {
@@ -201,7 +201,8 @@ export default function Header() {
 					showMenu ? 'pointer-events-all opacity-100 z-[2]' : 'pointer-events-none opacity-0'
 				}`}
 				onClick={() => setShowMenu(!showMenu)}></div>
-			{currentRoute === 'Products' || (currentRoute === 'Resources' && <div className="fixed w-screen h-screen top-0 left 0" onClick={() => setCurrentRoute('')}></div>)}
+
+			{(currentRoute === 'Products' || currentRoute === 'Resources') && <div className="fixed w-screen h-screen top-0 left 0" onClick={() => setCurrentRoute('')}></div>}
 		</header>
 	);
 }
