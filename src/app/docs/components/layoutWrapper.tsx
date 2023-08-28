@@ -44,7 +44,7 @@ export const LayoutProvider = ({ children }: any) => {
 										</button>
 
 										<Link href="/docs">
-											<Image src="/convoy.svg" alt="Convoy Logo" width={128} height={22} priority />
+											<Image src="/svg/convoy.svg" alt="Convoy Logo" width={128} height={22} priority />
 										</Link>
 									</div>
 
@@ -52,19 +52,19 @@ export const LayoutProvider = ({ children }: any) => {
 
 									<div className="flex items-center justify-between mt-22px">
 										<button className="bg-transparent flex items-center text-10 text-gray-600">
-											<Image className="mr-8px" src="/github.svg" alt="Github Logo" width={14} height={14} priority />
+											<Image className="mr-8px" src="/svg/github.svg" alt="Github Logo" width={14} height={14} priority />
 											Star on Github
 										</button>
 										<button className="bg-transparent flex items-center text-10 text-gray-600">
-											<Image className="mr-8px" src="/slack.svg" alt="Slack Logo" width={11} height={11} priority />
+											<Image className="mr-8px" src="/svg/slack.svg" alt="Slack Logo" width={11} height={11} priority />
 											Join our Community
 										</button>
 									</div>
 
 									<button className="flex items-center text-gray-500 text-14 mt-40px w-full">
-										<Image className="mr-8px" src="/link.svg" alt="Link icon" width={18} height={18} priority />
+										<Image className="mr-8px" src="/svg/link.svg" alt="Link icon" width={18} height={18} priority />
 										API Reference
-										<Image className="ml-auto" src="/arrow-top-right.svg" alt="Arrow top right icon" width={12} height={12} priority />
+										<Image className="ml-auto" src="/svg/arrow-top-right.svg" alt="Arrow top right icon" width={12} height={12} priority />
 									</button>
 
 									<div className="h-[1px] w-full bg-primary-25 my-40px"></div>
@@ -115,7 +115,7 @@ export const LayoutProvider = ({ children }: any) => {
 									onClick={() => setShowMenu(!showMenu)}>
 									<Image src="/doc-icons/collapse.svg" alt="collapse icon" width={12} height={12} priority />
 								</button>
-								<Image className="ml-10px" src="/convoy.svg" alt="Convoy Logo" width={128} height={22} priority />
+								<Image className="ml-10px" src="/svg/convoy.svg" alt="Convoy Logo" width={128} height={22} priority />
 							</div>
 							<div className="h-screen desktop-min:max-w-[1200px] desktop-min:w-full desktop-min:mr-[max(0px,calc((100vw-(268px+1200px))/2))] overflow-y-auto no-scrollbar">
 								{children}

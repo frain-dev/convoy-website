@@ -3,7 +3,6 @@ import path from 'path';
 import fs from 'fs';
 import Markdoc from '@markdoc/markdoc';
 import React from 'react';
-// import TableOfContents from "../(blog.components)/table.of.contents";
 import matter from 'gray-matter';
 import { Metadata } from 'next';
 import { components, config } from '../config.markdoc';
@@ -47,14 +46,13 @@ async function getMarkdownContent(slug: string | undefined) {
 	const readTime = getReadTime(content);
 	const ast = Markdoc.parse(source);
 	const blogContent = Markdoc.transform(ast, config);
-	const blogData = { ...data, readTime };
+	const blogData = { ...data, readTime, slug };
 	console.log('blogs ', postPathsArray);
 	return { blogContent, blogData };
 }
 
 export default async function BlogPost({ params }: PageProps) {
 	const { blogContent, blogData } = await getMarkdownContent(params.slug);
-	blogData['slug'] = blogData.title.replaceAll(' ', '-').toLowerCase();
 
 	return (
 		<>

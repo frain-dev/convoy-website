@@ -38,7 +38,7 @@ export default function SearchInput() {
 	return (
 		<>
 			<button type="button" className="group border border-grey-20 bg-white-100 py-6px px-8px rounded-4px w-full flex items-center" onClick={onOpen}>
-				<Image src="/search.svg" alt="Search icon" width={12} height={12} priority />
+				<Image src="/svg/search.svg" alt="Search icon" width={12} height={12} priority />
 				{modifierKey && (
 					<kbd className="ml-auto hidden font-medium text-slate-400 dark:text-slate-500 md:block">
 						<kbd className="font-sans">{modifierKey}</kbd>

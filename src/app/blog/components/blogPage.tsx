@@ -4,7 +4,6 @@ import Image from 'next/image';
 import formatDate from '../../../lib/formatDate';
 
 export default function BlogPage({ blogData, children }: any) {
-	console.log(blogData);
 	return (
 		<div className="m-auto px-0 pt-200px">
 			<div className="max-w-[780px] w-full m-auto px-20px desktop:p-0">
