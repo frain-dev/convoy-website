@@ -7,7 +7,7 @@ export default function Post({ postData }: any) {
 	const [img, setImgSrc] = useState(`/post-images/${postData.post_image}`);
 	return (
 		<>
-			<div className="w-full bg-white-100 rounded-8px p-10px shadow-card mobile:mb-48px">
+			<div className="w-full bg-white-100 rounded-12px p-10px shadow-card mobile:mb-48px">
 				<div className="rounded-4px mb-20px w-full overflow-hidden backdrop-blur-[3.4767px] h-fit desktop:h-170px desktop:mb-40px">
 					<Image fill src={img ? img : '/static/convoy.png'} onError={() => setImgSrc('/static/convoy.png')} className="rounded-4px w-full -z-10" alt="post image" />
 				</div>

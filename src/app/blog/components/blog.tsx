@@ -57,9 +57,9 @@ export default function Blog({ articles }: any) {
 				<div className="m-auto pb-0 flex justify-between pt-0">
 					<aside className="w-240px hidden desktop:sticky desktop:top-150px desktop:block desktop:pl-20px desktop:pr-32px">
 						<ul className="p-0">
-							<h6 className="font-bold text-gray-800 mb-18px">CATEGORIES {searchParams}</h6>
+							<h6 className="font-bold text-gray-800 mb-18px">CATEGORIES</h6>
 							{tags.map((tag, i) => (
-								<li key={i} className="font-semibold text-14 mb-30px text-gray-600">
+								<li key={i} className="font-medium text-14 mb-30px text-gray-500">
 									<Link href={tag !== 'All Posts' ? '/blog?tag=' + tag : '/blog'}>{tag}</Link>
 								</li>
 							))}

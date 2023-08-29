@@ -6,7 +6,7 @@ export default function FeaturedPost({ postData }: any) {
 		<div>
 			<div
 				className="
-                rounded-[11px]
+                rounded-12px
                 shadow-card
                 max-w-[970px]
                 bg-white-100
@@ -53,7 +53,7 @@ export default function FeaturedPost({ postData }: any) {
 				</div>
 
 				<div className="w-full desktop:w-380px desktop:right-0 desktop:bottom-0 desktop:mt-0">
-					<img src={`/feature-images/${postData.feature_image}`} className="rounded-bl-10px w-full rounded-br-[11px]" alt="featured post img" />
+					<img src={`/feature-images/${postData.feature_image}`} className="rounded-bl-12px w-full rounded-br-12px" alt="featured post img" />
 				</div>
 			</div>
 		</div>

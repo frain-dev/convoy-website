@@ -1,11 +1,12 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import formatDate from '../../../lib/formatDate';
+import formatDate from '@/lib/formatDate';
+import Post from './post';
 
-export default function BlogPage({ blogData, children }: any) {
+export default function BlogPage({ posts, blogData, children }: any) {
 	return (
-		<div className="m-auto px-0 pt-200px">
+		<div className="m-auto px-0 pt-200px pb-140px">
 			<div className="max-w-[780px] w-full m-auto px-20px desktop:p-0">
 				<div className="flex w-full flex-col desktop:flex-row desktop:items-center desktop:justify-between">
 					<div className="font-medium text-14 text-grey-80">
@@ -28,7 +29,7 @@ export default function BlogPage({ blogData, children }: any) {
 
 				<h3 className="font-bold text-black mt-16px mb-40px desktop:mt-30px desktop:mb-26px desktop:text-[48px] desktop:leading-[58px]">{blogData.title}</h3>
 
-				<div className="flex items-end justify-between mb-56px desktop:mb-44px" v-if="blogData.slug !== '404'">
+				<div className="flex items-end justify-between mb-56px desktop:mb-44px">
 					<Link href={`${blogData.primary_author.twitter ? 'http://twitter.com/' + blogData.primary_author.twitter : ''}`} className="flex items-start">
 						<div className="w-40px h-40px rounded-[50%] mr-16px overflow-hidden flex items-center bg-[#f5f5f5]">
 							<Image src={`/profile-images/${blogData.primary_author.name}.png`} width={42} height={42} className="rounded-100px mr-12px" alt="author image" />
@@ -66,6 +67,15 @@ export default function BlogPage({ blogData, children }: any) {
 
 				<div className="mb-130px">
 					<main className="max-w-[780px] w-full">{children}</main>
+				</div>
+			</div>
+
+			<div className="max-w-[970px] w-full m-auto px-20px desktop:mt-130px">
+				<h1 className="font-bold">More Posts</h1>
+				<div className="mt-32px justify-center desktop:grid desktop:grid-cols-2 desktop:gap-48px">
+					{posts.map((post, i) => (
+						<Post postData={post} key={i}></Post>
+					))}
 				</div>
 			</div>
 		</div>

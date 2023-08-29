@@ -13,7 +13,7 @@
 	@apply scroll-smooth;
 }
 body {
-	@apply bg-[#fafafe];
+	@apply bg-[#fafafe] font-inter;
 }
 .no-scrollbar::-webkit-scrollbar {
 	@apply hidden;

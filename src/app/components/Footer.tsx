@@ -90,27 +90,27 @@ export default function Footer() {
 								<p className="text-14 mb-24px">2261 Market Street, San Francisco, CA 94114</p>
 
 								<ul className="socials flex">
-									<li className="w-42px h-42px bg-gray-800 bg-opacity-10 flex items-center justify-center rounded-[50%] mr-16px">
+									<li className="w-42px h-42px bg-white-8  flex items-center justify-center rounded-[50%] mr-16px">
 										<Link href="https://github.com/frain-dev/convoy">
 											<Image src={GithubIcon} alt="github logo" />
 										</Link>
 									</li>
-									<li className="w-42px h-42px bg-gray-800 bg-opacity-10 flex items-center justify-center rounded-[50%] mr-16px">
+									<li className="w-42px h-42px bg-white-8  flex items-center justify-center rounded-[50%] mr-16px">
 										<Link href="https://www.linkedin.com/company/convoy-webhooks/">
 											<Image src={LinkedInIcon} alt="linkedin logo" />
 										</Link>
 									</li>
-									<li className="w-42px h-42px bg-gray-800 bg-opacity-10 flex items-center justify-center rounded-[50%] mr-16px">
+									<li className="w-42px h-42px bg-white-8  flex items-center justify-center rounded-[50%] mr-16px">
 										<Link href="mailto:sales@convoy.io">
 											<Image src={MailIcon} alt="mail logo" />
 										</Link>
 									</li>
-									<li className="w-42px h-42px bg-gray-800 bg-opacity-10 flex items-center justify-center rounded-[50%] mr-16px">
+									<li className="w-42px h-42px bg-white-8  flex items-center justify-center rounded-[50%] mr-16px">
 										<Link href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
 											<Image src={SlackIcon} alt="slack logo" />
 										</Link>
 									</li>
-									<li className="w-42px h-42px bg-gray-800 bg-opacity-10 flex items-center justify-center rounded-[50%]">
+									<li className="w-42px h-42px bg-white-8  flex items-center justify-center rounded-[50%]">
 										<Link href="https://twitter.com/getconvoy">
 											<Image src={TwitterIcon} alt="twitter logo" />
 										</Link>
@@ -144,7 +144,7 @@ export default function Footer() {
 							))}
 						</nav>
 
-						<div className="border-b border-b-white-10 flex justify-end pb-40px">
+						<div className="border-b border-b-white-8 flex justify-end pb-40px">
 							<div className="w-full p-0 desktop:max-w-[430px] desktop:flex-row desktop:justify-around desktop:items-center">
 								<div className="flex justify-between items-center w-full m-0">
 									<div className="order-1">

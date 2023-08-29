@@ -10,6 +10,7 @@ import TermiiIcon from '../../../public/svg/termii.svg';
 import HailifyIcon from '../../../public/svg/hailify-logo.svg';
 import BuycoinsIcon from '../../../public/svg/buycoins.svg';
 import ArrowRightIcon from '../../../public/svg/arrow-right-icon.svg';
+import EnterpriseWaitlist from '../components/EnterpriseWaitList';
 
 export default function Enterprise() {
 	const enterpriseFeatures = [
@@ -146,7 +147,9 @@ export default function Enterprise() {
 							</div>
 						))}
 					</div>
-					<div className="max-w-[566px]">{/* <EnterpriseWaitlist></EnterpriseWaitlist> */}</div>
+					<div className="max-w-[566px]">
+						<EnterpriseWaitlist></EnterpriseWaitlist>
+					</div>
 				</div>
 			</section>
 

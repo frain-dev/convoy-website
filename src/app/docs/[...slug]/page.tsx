@@ -1,53 +1,21 @@
-import { glob } from 'glob';
-import path from 'path';
-import fs from 'fs';
 import Markdoc from '@markdoc/markdoc';
 import React from 'react';
 import Contents from '../components/content';
-import matter from 'gray-matter';
 import { Metadata } from 'next';
 import { components, config } from '../config.markdoc';
 import DocFooter from '../components/docfooter';
-
-const DOCS_PATH = 'src/app/docs/documentation';
-const DOCS_DIR = path.join(process.cwd(), DOCS_PATH);
-
-type Params = {
-	slug: string[];
-};
+import getDocumentation from '@/lib/getDocumentation';
 
 type PageProps = {
-	params: Params;
+	params: {
+		slug: string[];
+	};
 };
 
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-	const docPaths = await glob('**/*.md', {
-		cwd: DOCS_DIR
-	});
-	const docPathsArray = Array.from(docPaths);
-	return docPathsArray.map((postPath: any) => {
-		return {
-			slug: [postPath.split('/').length > 1 ? postPath.split('/').reverse().pop() : '', path.basename(postPath, path.extname(postPath))]
-		};
-	});
-}
-
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-	const { title } = await getMarkdownContent(params.slug);
-	return { title: title };
-}
-
-async function getMarkdownContent(slug: any) {
-	const joinedSlug = slug.join('/');
-	const filePath = path.join(DOCS_DIR, joinedSlug + '.md');
-	const source = fs.readFileSync(filePath, 'utf-8');
-	const matterResult = matter(source);
-	const { title } = matterResult.data;
-	const ast = Markdoc.parse(source);
-	const content = Markdoc.transform(ast, config);
-	return { content, title };
+	const joinedSlug = params.slug.join('/');
+	const { title } = await getDocumentation(joinedSlug);
+	return { title };
 }
 
 function extractHeadings(node: any, sections: any[] = []) {
@@ -74,14 +42,17 @@ function extractHeadings(node: any, sections: any[] = []) {
 }
 
 export default async function DocsTemplate({ params }: PageProps) {
-	const { content } = await getMarkdownContent(params.slug);
-	const tableOfContents = extractHeadings(content);
+	const joinedSlug = params.slug.join('/');
+	const { content } = await getDocumentation(joinedSlug);
+	const ast = Markdoc.parse(content);
+	const docContent = Markdoc.transform(ast, config);
+	const tableOfContents = extractHeadings(docContent);
 
 	return (
 		<>
-			<div className="docs flex justify-center">
+			<div className="flex justify-center">
 				<div className="max-w-[876px] w-full py-50px tab-min:px-24px px-100px">
-					{Markdoc.renderers.react(content, React, { components })}
+					{Markdoc.renderers.react(docContent, React, { components })}
 					<DocFooter></DocFooter>
 				</div>
 
