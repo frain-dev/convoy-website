@@ -1,7 +1,10 @@
+'use client';
 import formatDate from '@/lib/formatDate';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function FeaturedPost({ postData }: any) {
+	const [showFallBackImg, setShowFallBackImg] = useState(false);
 	return (
 		<div>
 			<div
@@ -21,7 +24,7 @@ export default function FeaturedPost({ postData }: any) {
 						<div className="font-medium text-14">{formatDate(postData.published_at)}</div>
 					</div>
 
-					<Link href={'/blog/' + postData.slug}>
+					<Link href={`/blog/${postData.slug}`}>
 						<h3 className="desktop:text-32 text-26 font-bold mb-16px">{postData.title}</h3>
 					</Link>
 
@@ -53,7 +56,12 @@ export default function FeaturedPost({ postData }: any) {
 				</div>
 
 				<div className="w-full desktop:w-380px desktop:right-0 desktop:bottom-0 desktop:mt-0">
-					<img src={`/feature-images/${postData.feature_image}`} className="rounded-bl-12px w-full rounded-br-12px" alt="featured post img" />
+					<img
+						src={showFallBackImg ? '/static/convoy.png' : `/feature-images/${postData.feature_image}`}
+						onError={() => setShowFallBackImg(true)}
+						className="rounded-bl-12px w-full rounded-br-12px"
+						alt="featured post img"
+					/>
 				</div>
 			</div>
 		</div>
