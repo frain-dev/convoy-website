@@ -2,8 +2,7 @@
 import Image from 'next/image';
 import SearchInput from '@/app/components/SearchInput';
 import Link from 'next/link';
-import data from '../../data/nav.json';
-import Button from '@/app/components/Button';
+import data from '../data/nav.json';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
