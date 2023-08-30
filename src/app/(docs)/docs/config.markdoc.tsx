@@ -1,6 +1,5 @@
 import { Config } from '@markdoc/markdoc';
 import Heading from './components/heading';
-import DocLink from './components/link';
 import BlockQuote from './components/blockquote';
 import DocImage from './components/image';
 import CodeBlock from './components/codeblock';
@@ -27,7 +26,7 @@ const config: Config = {
 			render: 'BlockQuote'
 		},
 		link: {
-			render: 'DocLink',
+			render: 'Link',
 			attributes: {
 				href: {
 					type: String
@@ -125,7 +124,13 @@ const components = {
 	Td: ({ children }: any) => {
 		return <td className="pr-50px py-10px border-t border-primary-50 text-14 text-gray-500 text-left font-normal">{children}</td>;
 	},
-	DocLink,
+	Link: ({ href, children }: any) => {
+		return (
+			<a target="_blank" href={href} className="text-14 text-success-400 underline">
+				{children}
+			</a>
+		);
+	},
 	BlockQuote,
 	DocImage,
 	CodeBlock,

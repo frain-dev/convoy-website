@@ -19,7 +19,6 @@ export default function Contents({ tableOfContents }: any) {
 	}, []);
 
 	const onScroll = useCallback(() => {
-		console.log('fsds ');
 		if (tableOfContents.length === 0) return;
 		let headings = getHeadings(tableOfContents);
 		let top = window.scrollY;
@@ -41,16 +40,10 @@ export default function Contents({ tableOfContents }: any) {
 	useEffect(() => {
 		const docTemplate = document.querySelector('#DocTemplate');
 
-		const handleScroll = ({ target }) => {
-			console.log(target.scrollTop);
-		};
+		docTemplate?.addEventListener('scroll', onScroll, false);
 
-		docTemplate?.addEventListener('scroll', handleScroll, false);
-		console.log(docTemplate);
-
-		// onScroll();
 		return () => {
-			docTemplate?.removeEventListener('scroll', handleScroll);
+			docTemplate?.removeEventListener('scroll', onScroll);
 		};
 	}, [getHeadings, tableOfContents]);
 
