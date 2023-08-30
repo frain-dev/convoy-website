@@ -7,7 +7,80 @@ import { getPosts } from '@/lib/getPosts';
 
 export const metadata: Metadata = {
 	title: 'Convoy',
-	description: 'Convoy Documentation and Website'
+	description: 'Convoy Documentation and Website',
+	image: 'https://getconvoy.io/static/convoy.png',
+	openGraph: {
+		title: 'Webhooks Gateway for sending and receiving webhooks - Convoy',
+		description:
+			'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
+		url: 'https://getconvoy.io/',
+		type: 'website',
+		image: {
+			url: 'https://getconvoy.io/static/convoy.png',
+			width: '437',
+			height: '182',
+			type: 'img/png',
+			alt: 'Convoy Logo'
+		}
+	},
+	twitter: {
+		title: 'Webhooks Gateway for sending and receiving webhooks - Convoy',
+		url: 'https://getconvoy.io/',
+		creator: '@getconvoy',
+		image: {
+			url: 'https://getconvoy.io/static/convoy.png',
+			alt: 'Convoy Logo'
+		},
+		site: '@getconvoy',
+		description:
+			'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
+		card: 'summary_large_image'
+	},
+	viewport: {
+		width: 'device-width',
+		initialScale: 1
+	},
+	robots: {
+		index: false,
+		follow: true
+	},
+	keywords: [
+		'webhooks',
+		'webhook',
+		'webhooks gateway',
+		'webhook gateway',
+		'sending webhooks',
+		'receiving webhooks',
+		'webhooks as a service',
+		'open-source webhooks',
+		'free webhook',
+		'secure webhooks',
+		'webhooks api',
+		'incoming webhooks',
+		'convoy webhooks',
+		'kafta',
+		'platform engineering',
+		'api gateway',
+		'webhooks service',
+		'webhooks provider',
+		'webhooks infrastructure',
+		'opensource webhooks',
+		'opensource',
+		'low code',
+		'github webhook',
+		'stripe webhook',
+		'webhook url',
+		'webhook endpoint',
+		'zapier webhook',
+		'web hook',
+		'endpoint',
+		'API',
+		'cloud',
+		'cloud-native'
+	],
+	alternates: {
+		canonical: 'https://getconvoy.io'
+	}
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

@@ -15,6 +15,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 	const article = await getPost(params.slug);
 	return {
 		title: article?.title,
+		metadataBase: new URL(`https://getconvoy.io/blog/${article?.slug}`),
+		alternates: {
+			canonical: '/',
+			types: {
+				'application/rss+xml': 'https://getconvoy.io/blog/rss'
+			}
+		},
 		openGraph: {
 			title: article?.title,
 			site_name: 'Convoy',
