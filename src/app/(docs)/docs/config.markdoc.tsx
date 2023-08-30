@@ -105,7 +105,7 @@ const config: Config = {
 const components = {
 	Heading,
 	Paragraph: ({ children }: any) => {
-		return <div className="text-14 text-gray-500 leading-[1.9rem] font-normal mb-50px">{children}</div>;
+		return <div className="text-14 text-gray-600 leading-[1.9rem] font-light mb-16px">{children}</div>;
 	},
 	Strong: ({ children }: any) => {
 		return <strong className="font-semibold">{children}</strong>;
@@ -130,7 +130,7 @@ const components = {
 	DocImage,
 	CodeBlock,
 	Code: ({ content }: any) => {
-		return <code className="text-12 text-gray-800 bg-grey-20 font-menlo rounded-4px py-2px px-8px">{content}</code>;
+		return <code className="text-12 text-gray-800 bg-grey-20 font-menlo rounded-12px py-2px px-8px">{content}</code>;
 	},
 	Tabs,
 	Tab,
