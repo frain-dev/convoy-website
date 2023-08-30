@@ -14,8 +14,8 @@ type PageProps = {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const joinedSlug = params.slug.join('/');
-	const { title } = await getDocumentation(joinedSlug);
-	return { title };
+	const documentation = await getDocumentation(joinedSlug);
+	return { title: documentation?.title };
 }
 
 function extractHeadings(node: any, sections: any[] = []) {
@@ -43,15 +43,15 @@ function extractHeadings(node: any, sections: any[] = []) {
 
 export default async function DocsTemplate({ params }: PageProps) {
 	const joinedSlug = params.slug.join('/');
-	const { content } = await getDocumentation(joinedSlug);
-	const ast = Markdoc.parse(content);
+	const documentation = await getDocumentation(joinedSlug);
+	const ast = Markdoc.parse(documentation?.content);
 	const docContent = Markdoc.transform(ast, config);
 	const tableOfContents = extractHeadings(docContent);
 
 	return (
 		<>
 			<div className="flex justify-center gap-100px max-w-[1023px] mx-auto px-24px">
-				<div className="max-w-[676px] w-full pt-50px h-screen" id="DocTemplate">
+				<div className="max-w-[676px] w-full pt-50px" id="DocTemplate">
 					{Markdoc.renderers.react(docContent, React, { components })}
 					<DocFooter></DocFooter>
 				</div>

@@ -12,14 +12,13 @@ type PageProps = {
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-	const { title } = await getPost(params.slug);
-	return { title };
+	const article = await getPost(params.slug);
+	return { title: article?.title };
 }
 
 export default async function BlogPost({ params }: PageProps) {
-	const { title, primary_tag, readTime, published_at, primary_author, slug, content } = await getPost(params.slug);
-	const blogData = { title, primary_tag, readTime, published_at, primary_author, slug };
-	const ast = Markdoc.parse(content);
+	const post = await getPost(params.slug);
+	const ast = Markdoc.parse(post?.content);
 	const blogContent = Markdoc.transform(ast, config);
 
 	const latestArticles = await getPosts();
@@ -27,9 +26,11 @@ export default async function BlogPost({ params }: PageProps) {
 
 	return (
 		<>
-			<BlogPage posts={posts.slice(0, 2)} blogData={blogData}>
-				{Markdoc.renderers.react(blogContent, React, { components })}
-			</BlogPage>
+			<div>
+				<BlogPage posts={posts.slice(0, 2)} blogData={post}>
+					{Markdoc.renderers.react(blogContent, React, { components })}
+				</BlogPage>
+			</div>
 		</>
 	);
 }

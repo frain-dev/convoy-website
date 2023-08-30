@@ -149,7 +149,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 					</div>
 
 					<div className="bg-white shadow-layout w-full relative">
-						<div className="h-screen desktop-min:max-w-[1200px] desktop-min:w-full desktop-min:mr-[max(0px,calc((100vw-(268px+1200px))/2))] overflow-y-auto no-scrollbar">
+						<div className="h-screen desktop-min:max-w-[1200px] desktop-min:w-full desktop-min:mr-[max(0px,calc((100vw-(268px+1200px))/2))] overflow-y-auto no-scrollbar" id="docPage">
 							<div className="flex desktop:hidden items-center p-16px shadow-sm">
 								<button
 									className="px-0 py-0 border border-grey-10 bg-white-100 rounded-100px w-30px h-30px flex items-center justify-center"

@@ -22,7 +22,7 @@ export default function Contents({ tableOfContents }: any) {
 		if (tableOfContents.length === 0) return;
 		let headings = getHeadings(tableOfContents);
 		let top = window.scrollY;
-		let current = headings[0].title;
+		let current = headings[0]?.title;
 		for (let heading of headings) {
 			if (top >= heading.top) {
 				current = heading.title;
@@ -38,24 +38,20 @@ export default function Contents({ tableOfContents }: any) {
 	};
 
 	useEffect(() => {
-		const docTemplate = document.querySelector('#DocTemplate');
-
-		docTemplate?.addEventListener('scroll', onScroll, false);
+		const doc = document.querySelector('#docPage');
+		doc?.addEventListener('scroll', onScroll);
 
 		return () => {
-			docTemplate?.removeEventListener('scroll', onScroll);
+			doc?.removeEventListener('scroll', onScroll);
 		};
-	}, [getHeadings, tableOfContents]);
+	}, []);
 
 	return (
 		<div>
 			<p className="text-gray-500 text-14">On this page</p>
 			<ul className="mt-24px border-l border-primary-50">
 				{tableOfContents.map((content: any, index: number) => (
-					<li
-						key={index}
-						className={`mb-16px -ml-[1px] pl-24px ${isLinkActive(content.title) ? 'border-l border-success-400' : ''}`}
-						onClick={() => setCurrentSection(content.title)}>
+					<li key={index} className={`mb-16px -ml-[1px] pl-24px ${isLinkActive(content.title) ? 'border-l border-success-400' : ''}`}>
 						<Link href={`#${content.title}`} className={`text-14  ${isLinkActive(content.title) ? 'text-success-400' : 'text-gray-500'}`}>
 							{content.title}
 						</Link>

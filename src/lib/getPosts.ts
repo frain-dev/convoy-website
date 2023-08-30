@@ -3,6 +3,16 @@ import path from 'path';
 import matter from 'gray-matter';
 import getReadTime from './read-time';
 
+type PostProps = {
+	title: string;
+	primary_tag: string;
+	readTime: any;
+	published_at: any;
+	primary_author: any;
+	slug: string;
+	content: any;
+};
+
 const fetchPostsAndPostContent = async () => {
 	const posts = await fs.readdir('src/app/(main)/blog/articles');
 
@@ -16,7 +26,7 @@ const fetchPostsAndPostContent = async () => {
 				const { data, content } = matter(postContent);
 				const readTime = getReadTime(content);
 
-				return { ...data, readTime, slug, content };
+				return { ...data, readTime, slug, content } as PostProps;
 			})
 	);
 };
@@ -32,9 +42,7 @@ const getPosts = async () => {
 const getPost = async paramsSlug => {
 	const posts = await getPosts();
 	const filteredPost = posts.find(post => post.slug === paramsSlug);
-	const { title, primary_tag, readTime, published_at, primary_author, slug, content } = filteredPost;
-
-	return { title, primary_tag, readTime, published_at, primary_author, slug, content };
+	return filteredPost;
 };
 
 export { getPost, getPosts };
