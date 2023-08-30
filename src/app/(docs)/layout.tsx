@@ -68,7 +68,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 
 								<div className="h-[1px] w-full bg-primary-25 mt-30px"></div>
 
-								<Link href="https://convoy.readme.io/" className="flex items-center text-gray-500 text-14 my-16px w-full">
+								<Link href="https://convoy.readme.io/" className="flex items-center text-gray-500 text-12 my-16px w-full">
 									API Reference
 									<Image className="ml-10px" src="/svg/arrow-top-right.svg" alt="Arrow top right icon" width={12} height={12} />
 								</Link>
@@ -80,7 +80,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 										<li className="mb-34px" key={i}>
 											{item.children && (
 												<button
-													className={`flex items-center text-14 transition-all duration-300 ${
+													className={`flex items-center text-12 transition-all duration-300 ${
 														isChildRouteActive(item.title) ? 'text-primary-400' : 'text-gray-500'
 													} `}
 													onClick={() => showChildren(item.title)}>
@@ -105,7 +105,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 											{!item.children && (
 												<Link
 													href={item.link}
-													className={`flex justify-items-center text-14 ${item.link === pathname ? 'text-primary-400' : 'text-gray-500'} `}>
+													className={`flex justify-items-center text-12 ${item.link === pathname ? 'text-primary-400' : 'text-gray-500'} `}>
 													<svg
 														width="18"
 														height="18"
@@ -128,7 +128,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 												<ul className={`mt-24px border-l-2 border-primary-50 transition-all duration-300`}>
 													{item.children.map((subItem, index) => (
 														<li className={`mb-24px -ml-2px ${currentDoc == subItem.title ? 'border-l-2 border-primary-400' : ''}`} key={index}>
-															<Link href={subItem.link} onClick={() => setCurrentDoc(subItem.link)} className="text-14 text-gray-400 pl-24px font-light">
+															<Link href={subItem.link} onClick={() => setCurrentDoc(subItem.link)} className="text-12 text-gray-400 pl-24px font-light">
 																{subItem.title}
 															</Link>
 														</li>

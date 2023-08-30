@@ -50,13 +50,13 @@ export default async function DocsTemplate({ params }: PageProps) {
 
 	return (
 		<>
-			<div className="flex justify-center gap-100px max-w-[1023px] mx-auto pt-50px px-24px">
-				<div className="max-w-[676px] w-full">
+			<div className="flex justify-center gap-100px max-w-[1023px] mx-auto px-24px">
+				<div className="max-w-[676px] w-full pt-50px">
 					{Markdoc.renderers.react(docContent, React, { components })}
 					<DocFooter></DocFooter>
 				</div>
 
-				<div className="hidden max-w-[247px] w-full sticky top-0 h-fit doc-tab:block">
+				<div className="hidden max-w-[247px] w-full sticky top-0 h-fit doc-tab:block pt-50px">
 					<Contents tableOfContents={tableOfContents} />
 				</div>
 			</div>

@@ -12,7 +12,7 @@ export function Tabs({ labels, children }: any) {
 	return (
 		<TabContext.Provider value={currentTab}>
 			{labels && labels.length && (
-				<ul role="tablist" className="flex flex-row m-auto w-full mt-32px mb-24px border-b border-b-grey-10">
+				<ul role="tablist" className="flex flex-row m-auto w-full mt-32px mb-24px border-b border-b-grey-10 overflow-x-auto">
 					{labels.map((label: string) => (
 						<li key={label} className="mr-24px !list-none last-of-type:mr-0">
 							<button role="tab" className={`pb-10px ${currentTab === label ? 'active' : ''}`} aria-selected={label === currentTab} onClick={() => setCurrentTab(label)}>
