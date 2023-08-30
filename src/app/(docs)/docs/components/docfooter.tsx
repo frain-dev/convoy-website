@@ -35,8 +35,8 @@ export default function DocFooter() {
 
 	return (
 		<div>
-			<div className="flex items-center justify-between">
-				<Link href={`https://github.com/frain-dev/convoy-website/tree/main/content${pathname}.md`} className="flex items-center underline text-success-400 mobile:mb-20px">
+			<div className="flex items-center justify-between mt-50px pb-32px border-b border-primary-25 mb-32px">
+				<Link href={`https://github.com/frain-dev/convoy-website/tree/main/content${pathname}.md`} className="flex items-center underline text-success-400 text-12 mobile:mb-20px">
 					<span>Contribute to this doc in Github</span>
 					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-10px">
 						<g>
