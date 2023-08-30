@@ -6,7 +6,7 @@ order: 3
 ---
 
 
-## Endpoints
+# Endpoints
 
 An endpoint is a specific destination that can receive webhook events. An endpoint can be configured with `http_timeout`. Endpoints can be managed over the API and the dashboard.
 
