@@ -13,7 +13,7 @@ In this guide, you'll learn how to deploy your first webhook event with Convoy. 
 
 {% tab label="Javascript" %}
 
-### Install Client
+## Install Client
 
 Install convoy.js with:
 
@@ -21,7 +21,7 @@ Install convoy.js with:
 $ npm install convoy.js
 ```
 
-### Configure
+## Configure
 
 ```js[example]
 const { Convoy } = require("convoy.js");
@@ -45,7 +45,7 @@ const convoy = new Convoy({
 
 Now that your client has been configured, create a convoy application.
 
-### Create an Endpoint
+## Create an Endpoint
 
 ```js[example]
 try {
@@ -64,7 +64,7 @@ try {
 
 The next step is to create a subscription to the webhook source. Subscriptions are the conduit through which events are routed from a source to a destination on Convoy.
 
-### Subscribe for Events
+## Subscribe for Events
 
 ```js[example]
 try {
@@ -81,7 +81,7 @@ try {
 
 With the subscription in place, you're set to send an event.
 
-### Send an Event
+## Send an Event
 
 To send an event, you'll need the `uid` from the endpoint you created earlier.
 
@@ -106,14 +106,14 @@ try {
 }
 ```
 
-### Cheers! 🎉
+## Cheers! 🎉
 
 You have successfully created a Convoy application to send events to your configured endpoint.
 {% /tab %}
 
 {% tab label="Python" %}
 
-### Install Client
+## Install Client
 
 Install convoy-python with:
 
@@ -121,7 +121,7 @@ Install convoy-python with:
 $ pip install convoy-python
 ```
 
-### Configure
+## Configure
 
 ```python[example]
 from convoy import Convoy
@@ -134,7 +134,7 @@ In the event you're using a self-hosted convoy instance, you can define the `uri
 convoy = Convoy({ "api_key": 'your_api_key', "uri": 'self-hosted-instance',"project_id": "your_project_id" })
 ```
 
-### Create an Endpoint
+## Create an Endpoint
 
 An endpoint represents a target URL to receive events.
 
@@ -150,7 +150,7 @@ endpointData = {
 endpoint_id = response["data"]["uid"]
 ```
 
-### Subscribe for Events
+## Subscribe for Events
 
 After creating an endpoint, we need to subscribe the endpoint to events.
 
@@ -163,7 +163,7 @@ subscription_data = {
 (response, status) = convoy.subscription.create({}, subscription_data)
 ```
 
-### Send an Event
+## Send an Event
 
 To send an event, you'll need the `uid` we created in the earlier section.
 
@@ -184,14 +184,14 @@ eventData = {
 (response, status) = convoy.event.create({}, eventData)
 ```
 
-### Cheers! 🎉
+## Cheers! 🎉
 
 You have successfully created a Convoy application to send events to your configured endpoint.
 {% /tab %}
 
 {% tab label="PHP" %}
 
-### Install Client
+## Install Client
 
 Install convoy-php, with:
 
@@ -199,7 +199,7 @@ Install convoy-php, with:
 $ composer require frain/convoy symfony/http-client nyholm/psr7
 ```
 
-### Configure
+## Configure
 
 ```php[example]
 use Convoy\Convoy;
@@ -222,7 +222,7 @@ $convoy = new Convoy([
 ]);
 ```
 
-### Create an Endpoint
+## Create an Endpoint
 
 ```php[example]
 $endpointData = [
@@ -238,7 +238,7 @@ $endpointId = $response['data']['uid'];
 
 The next step is to create a subscription to the webhook source. Subscriptions are the conduit through which events are routed from a source to a destination on Convoy.
 
-### Subscribe for Events
+## Subscribe for Events
 
 ```php[example]
 $subscriptionData = [
@@ -251,7 +251,7 @@ $response = $convoy->subscriptions()->create($subscriptionData);
 
 With the subscription in place, you're set to send an event.
 
-### Send an Event
+## Send an Event
 
 To send an event, you'll need the `uid` from the application you created earlier.
 
@@ -272,14 +272,14 @@ $eventData = [
 $response = $convoy->events()->create($eventData);
 ```
 
-### Cheers! 🎉
+## Cheers! 🎉
 
 You have successfully created a Convoy application to send events to your configured endpoint.
 {% /tab %}
 
 {% tab label="Ruby" %}
 
-### Install Client
+## Install Client
 
 Install convoy.rb with:
 
@@ -287,7 +287,7 @@ Install convoy.rb with:
 $ gem install convoy.rb
 ```
 
-### Configure
+## Configure
 
 To configure your client, provide your `api_key` and `project_id`, see below:
 
@@ -299,7 +299,7 @@ Convoy.api_key = "CO.M0aBe..."
 Convoy.project_id = "23b1..."
 ```
 
-### Create an Endpoint
+## Create an Endpoint
 
 An endpoint represents a target URL to receive webhook events. You should create one endpoint per user/business or whatever scope works well for you.
 
@@ -315,7 +315,7 @@ endpoint = Convoy::Endpoint.new(
 endpoint_response = endpoint.save
 ```
 
-### Subscribe for Events
+## Subscribe for Events
 
 After creating an endpoint, we need to subscribe the endpoint to events.
 
@@ -330,7 +330,7 @@ subscription = Convoy::Subscription.new(
 subscription_response = subscription.save
 ```
 
-### Send an Event
+## Send an Event
 
 To send an event, you'll need to pass the `uid` from the endpoint we created earlier.
 
@@ -350,14 +350,14 @@ event = Convoy::Event.new(
 event_response = event.save
 ```
 
-### Cheers! 🎉
+## Cheers! 🎉
 
 You have successfully created a Convoy application to send events to your configured endpoint.
 {% /tab %}
 
 {% tab label="Golang" %}
 
-### Install Client
+## Install Client
 
 Install convoy-go, with:
 
@@ -365,7 +365,7 @@ Install convoy-go, with:
 $ go get github.com/frain-dev/convoy-go
 ```
 
-### Configure
+## Configure
 
 ```go[example]
 import (
@@ -395,7 +395,7 @@ In the event you're using a self hosted convoy instance, you can define the url 
    })
 ```
 
-### Create an Endpoint
+## Create an Endpoint
 
 ```go[example]
 endpoint, err := c.Endpoints.Create(app.UID, &Convoy.CreateEndpointRequest{
@@ -410,7 +410,7 @@ endpoint, err := c.Endpoints.Create(app.UID, &Convoy.CreateEndpointRequest{
 
 The next step is to create a subscription to the webhook source. Subscriptions are the conduit through which events are routed from a source to a destination on Convoy.
 
-### Subscribe for Events
+## Subscribe for Events
 
 ```go[example]
 subscription, err := c.Subscriptions.Create(&Convoy.CreateSubscriptionRequest{
@@ -425,7 +425,7 @@ subscription, err := c.Subscriptions.Create(&Convoy.CreateSubscriptionRequest{
 
 With the subscription in place, you're set to send an event.
 
-### Send an Event
+## Send an Event
 
 To send an event, you'll need the `uid` from the application you created earlier.
 
@@ -441,7 +441,7 @@ event, err := c.Events.Create(&convoy.CreateEventRequest{
 	}
 ```
 
-### Cheers! 🎉
+## Cheers! 🎉
 
 You have successfully created a Convoy application to send events to your configured endpoint.
 {% /tab %}
@@ -449,7 +449,7 @@ You have successfully created a Convoy application to send events to your config
 {% tab label="cURL" %}
 Sending webhooks with the API does not require a client setup like the SDKs. The API key retrieved from your dashboard will be added to the Authorization header and the project ID will be added to the request URL.
 
-### Create an Endpoint
+## Create an Endpoint
 
 An endpoint is a specific destination that can receive webhook events. Once you create an endpoint, you'll receive a `uid` as part of the response that you should save and supply in subsequent API calls to perform other requests such as creating an event.
 
@@ -469,7 +469,7 @@ curl --request POST \
 
 The next step is to create a subscription to the webhook source. Subscriptions are the conduit through which events are routed from a source to a destination on Convoy.
 
-### Subscribe for Events
+## Subscribe for Events
 
 ```console[example]
 curl --request POST \
@@ -484,7 +484,7 @@ curl --request POST \
 
 With the subscription in place, you're set to send an event.
 
-### Send an Event
+## Send an Event
 
 To send an event, you'll need the `uid` from the application you created earlier.
 
@@ -507,7 +507,7 @@ curl --request POST \
 }'
 ```
 
-### Cheers! 🎉
+## Cheers! 🎉
 
 You have successfully created a Convoy application to send events to your configured endpoint.
 

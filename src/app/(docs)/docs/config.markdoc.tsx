@@ -105,7 +105,7 @@ const config: Config = {
 const components = {
 	Heading,
 	Paragraph: ({ children }: any) => {
-		return <div className="text-14 text-gray-600 leading-[1.9rem] font-light mb-16px">{children}</div>;
+		return <p className="text-12 text-gray-600 leading-7 font-light mb-16px">{children}</p>;
 	},
 	Strong: ({ children }: any) => {
 		return <strong className="font-semibold">{children}</strong>;
@@ -114,7 +114,7 @@ const components = {
 		return <ol className="list-[unset] mb-20px ml-16px">{children}</ol>;
 	},
 	Item: ({ children }: any) => {
-		return <li className="text-14 text-gray-500 mb-8px">{children}</li>;
+		return <li className="text-12 text-gray-500 mb-8px">{children}</li>;
 	},
 	Table: ({ children }: any) => {
 		return <table className="my-20px">{children}</table>;
