@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import { components, config } from '../config.markdoc';
 import DocFooter from '../components/docfooter';
 import getDocumentation from '@/lib/getDocumentation';
+import DocPage from '../components/docpage';
 
 type PageProps = {
 	params: {
@@ -50,8 +51,9 @@ export default async function DocsTemplate({ params }: PageProps) {
 
 	return (
 		<>
-			<div className="flex justify-center gap-100px max-w-[1023px] mx-auto px-24px">
-				<div className="max-w-[676px] w-full pt-50px">
+			<DocPage docContent={content} tableOfContents={tableOfContents}></DocPage>
+			{/* <div className="flex justify-center gap-100px max-w-[1023px] mx-auto px-24px">
+				<div className="max-w-[676px] w-full pt-50px h-screen" id="DocTemplate">
 					{Markdoc.renderers.react(docContent, React, { components })}
 					<DocFooter></DocFooter>
 				</div>
@@ -59,7 +61,7 @@ export default async function DocsTemplate({ params }: PageProps) {
 				<div className="hidden max-w-[247px] w-full sticky top-0 h-fit doc-tab:block pt-50px">
 					<Contents tableOfContents={tableOfContents} />
 				</div>
-			</div>
+			</div> */}
 		</>
 	);
 }

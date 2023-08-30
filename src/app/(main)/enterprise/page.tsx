@@ -82,44 +82,44 @@ export default function Enterprise() {
 
 						<ul className="flex items-center list-none mt-38px">
 							<li className="mr-12px">
-								<Link href="https://www.drivehailify.com/">
+								<a target="_blank" href="https://www.drivehailify.com/">
 									<Image src={HailifyIcon} alt="hailify logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px">
-								<Link href="https://www.piggyvest.com/">
+								<a target="_blank" href="https://www.piggyvest.com/">
 									<Image src={PiggyvestIcon} alt="piggyvest logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px">
-								<Link href="https://www.catlog.shop/">
+								<a target="_blank" href="https://www.catlog.shop/">
 									<Image src={CatlogIcon} alt="catlog logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px">
-								<Link href="https://www.payourse.com/">
+								<a target="_blank" href="https://www.payourse.com/">
 									<Image src={PayourseIcon} className="mt-4px" alt="payourse logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
-								<Link href="https://buycoins.africa/">
+								<a target="_blank" href="https://buycoins.africa/">
 									<Image src={BuycoinsIcon} alt="buycoins logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
-								<Link href="https://www.getwallets.co/">
+								<a target="_blank" href="https://www.getwallets.co/">
 									<Image src={GetWalletsIcon} alt="getwallets logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
-								<Link href="https://www.dojah.io/">
+								<a target="_blank" href="https://www.dojah.io/">
 									<Image src={DojahIcon} alt="dojah logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
-								<Link href="https://termii.com/">
+								<a target="_blank" href="https://termii.com/">
 									<Image src={TermiiIcon} alt="termii logo" />
-								</Link>
+								</a>
 							</li>
 						</ul>
 					</div>

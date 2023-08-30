@@ -127,8 +127,12 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 											{item.children && (
 												<ul className={`mt-24px border-l-2 border-primary-50 transition-all duration-300`}>
 													{item.children.map((subItem, index) => (
-														<li className={`mb-24px -ml-2px ${currentDoc == subItem.title ? 'border-l-2 border-primary-400' : ''}`} key={index}>
-															<Link href={subItem.link} onClick={() => setCurrentDoc(subItem.link)} className="text-12 text-gray-400 pl-24px font-light">
+														<li
+															className={`mb-24px -ml-2px transition-all duration-400 text-12 text-gray-400  ${
+																pathname.includes(subItem.link) ? 'border-l-2 border-primary-400 text-primary-400 font-normal' : 'text-gray-400 font-light'
+															}`}
+															key={index}>
+															<Link href={subItem.link} onClick={() => setCurrentDoc(subItem.link)} className="pl-24px">
 																{subItem.title}
 															</Link>
 														</li>
@@ -145,15 +149,15 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 					<div className="bg-white shadow-layout w-full relative">
 						<div className="h-screen desktop-min:max-w-[1200px] desktop-min:w-full desktop-min:mr-[max(0px,calc((100vw-(268px+1200px))/2))] overflow-y-auto no-scrollbar">
 							<div className="flex desktop:hidden items-center p-16px shadow-sm">
-							<button
-								className="px-0 py-0 border border-grey-10 bg-white-100 rounded-100px w-30px h-30px flex items-center justify-center"
-								onClick={() => setShowMenu(!showMenu)}>
-								<Image src="/doc-icons/collapse.svg" alt="collapse icon" width={12} height={12} priority />
-							</button>
-							<Image className="ml-10px" src="/svg/convoy.svg" alt="Convoy Logo" width={110} height={22} priority />
-						</div>
-						
-						{children}
+								<button
+									className="px-0 py-0 border border-grey-10 bg-white-100 rounded-100px w-30px h-30px flex items-center justify-center"
+									onClick={() => setShowMenu(!showMenu)}>
+									<Image src="/doc-icons/collapse.svg" alt="collapse icon" width={12} height={12} priority />
+								</button>
+								<Image className="ml-10px" src="/svg/convoy.svg" alt="Convoy Logo" width={110} height={22} priority />
+							</div>
+
+							{children}
 						</div>
 					</div>
 				</div>

@@ -60,11 +60,12 @@ export default function Cloud() {
 					Reliable Webhooks Gateway with everything you need in one place including multi-region deployment, high availability and autoscaling.
 				</p>
 				<div className="flex desktop:justify-center xs:flex-col mt-40px">
-					<Link
+					<a
+						target="_blank"
 						href="https://dashboard.getconvoy.io/signup"
 						className="py-12px desktop:py-16px px-38px shadow-lg hover:shadow-xl transition-all duration-300 desktop:px-24px text-14 text-center font-medium rounded-8px bg-white-100 text-gray-800 mr-24px xs:mr-0 xs:mb-20px xs:w-[90vw]">
 						Start your webhooks project
-					</Link>
+					</a>
 
 					<Link
 						href="/docs"
@@ -90,44 +91,44 @@ export default function Cloud() {
 
 						<ul className="flex items-center list-none mt-38px">
 							<li className="mr-12px">
-								<Link href="https://www.drivehailify.com/">
+								<a target="_blank" href="https://www.drivehailify.com/">
 									<Image src={HailifyIcon} alt="hailify logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px">
-								<Link href="https://www.piggyvest.com/">
+								<a target="_blank" href="https://www.piggyvest.com/">
 									<Image src={PiggyvestIcon} alt="piggyvest logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px">
-								<Link href="https://www.catlog.shop/">
+								<a target="_blank" href="https://www.catlog.shop/">
 									<Image src={CatlogIcon} alt="catlog logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px">
-								<Link href="https://www.payourse.com/">
+								<a target="_blank" href="https://www.payourse.com/">
 									<Image src={PayourseIcon} className="mt-4px" alt="payourse logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
-								<Link href="https://buycoins.africa/">
+								<a target="_blank" href="https://buycoins.africa/">
 									<Image src={BuycoinsIcon} alt="buycoins logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
-								<Link href="https://www.getwallets.co/">
+								<a target="_blank" href="https://www.getwallets.co/">
 									<Image src={GetWalletsIcon} alt="getwallets logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
-								<Link href="https://www.dojah.io/">
+								<a target="_blank" href="https://www.dojah.io/">
 									<Image src={DojahIcon} alt="dojah logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
-								<Link href="https://termii.com/">
+								<a target="_blank" href="https://termii.com/">
 									<Image src={TermiiIcon} alt="termii logo" />
-								</Link>
+								</a>
 							</li>
 						</ul>
 					</div>

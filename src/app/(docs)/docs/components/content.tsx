@@ -18,7 +18,8 @@ export default function Contents({ tableOfContents }: any) {
 		});
 	}, []);
 
-	const onScroll = () => {
+	const onScroll = useCallback(() => {
+		console.log('fsds ');
 		if (tableOfContents.length === 0) return;
 		let headings = getHeadings(tableOfContents);
 		let top = window.scrollY;
@@ -31,17 +32,25 @@ export default function Contents({ tableOfContents }: any) {
 			}
 		}
 		setCurrentSection(current);
-	};
+	}, []);
 
 	const isLinkActive = (title: string) => {
 		return currentSection === title;
 	};
 
 	useEffect(() => {
-		window.addEventListener('scroll', onScroll, { passive: true });
-		onScroll();
+		const docTemplate = document.querySelector('#DocTemplate');
+
+		const handleScroll = ({ target }) => {
+			console.log(target.scrollTop);
+		};
+
+		docTemplate?.addEventListener('scroll', handleScroll, false);
+		console.log(docTemplate);
+
+		// onScroll();
 		return () => {
-			window.removeEventListener('scroll', onScroll);
+			docTemplate?.removeEventListener('scroll', handleScroll);
 		};
 	}, [getHeadings, tableOfContents]);
 
@@ -52,7 +61,8 @@ export default function Contents({ tableOfContents }: any) {
 				{tableOfContents.map((content: any, index: number) => (
 					<li
 						key={index}
-						className={`mb-16px -ml-[1px] pl-24px ${isLinkActive(content.title) ? 'border-l border-success-400' : ''}`}>
+						className={`mb-16px -ml-[1px] pl-24px ${isLinkActive(content.title) ? 'border-l border-success-400' : ''}`}
+						onClick={() => setCurrentSection(content.title)}>
 						<Link href={`#${content.title}`} className={`text-14  ${isLinkActive(content.title) ? 'text-success-400' : 'text-gray-500'}`}>
 							{content.title}
 						</Link>

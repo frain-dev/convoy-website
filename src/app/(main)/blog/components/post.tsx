@@ -1,15 +1,14 @@
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Post({ postData }: any) {
-	const [img, setImgSrc] = useState(`/post-images/${postData.post_image}`);
+	const [showFallBackImg, setShowFallBackImg] = useState(false);
 	return (
 		<>
 			<div className="w-full bg-white-100 rounded-12px p-10px shadow-card mobile:mb-48px">
 				<div className="rounded-4px mb-20px w-full overflow-hidden backdrop-blur-[3.4767px] h-fit desktop:h-170px desktop:mb-40px">
-					<Image fill src={img ? img : '/static/convoy.png'} onError={() => setImgSrc('/static/convoy.png')} className="rounded-4px w-full -z-10" alt="post image" />
+					<img src={showFallBackImg ? '/static/convoy.png' : `/post-images/${postData.post_image}`} onError={() => setShowFallBackImg(true)} className="rounded-4px w-full -z-10" alt="post image" />
 				</div>
 				<div className="rounded-2px font-medium text-14 text-primary-400 uppercase">{postData.tag}</div>
 

@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import ArrowRightIcon from '../../../public/svg/arrow-right-icon.svg';
-import AngleDownIcon from '../../../public/svg/angle-down-black-icon.svg';
-import PricingImage from '../../../public/static/Frame.png';
+import ArrowRightIcon from '../../../../public/svg/arrow-right-icon.svg';
+import AngleDownIcon from '../../../../public/svg/angle-down-black-icon.svg';
+import PricingImage from '../../../../public/static/Frame.png';
 import { useState } from 'react';
 
 export default function Pricing() {

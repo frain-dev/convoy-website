@@ -70,11 +70,12 @@ export default function Community() {
 							Everything you need to manage webhooks in one place with security, reliability and scalability already figured out from day one.
 						</p>
 						<div className="flex footer:justify-center mt-40px">
-							<Link
+							<a
+								target="_blank"
 								href="https://github.com/frain-dev/convoy#installation-getting-started"
 								className="py-12px desktop:py-16px px-38px desktop:px-42px text-14 font-medium rounded-8px bg-primary-400 text-white-100 text-center mr-24px xs:mr-0 xs:mb-20px xs:w-full">
 								Get set up in 3 minutes
-							</Link>
+							</a>
 						</div>
 					</div>
 					<div className="md:bg-white-100 md:shadow-[0px_2px_4px_rgba(12,26,75,0.04),0px_4px_20px_-2px_rgba(50,50,71,0.08)] rounded-8px p-20px md:py-30px md:px-60px max-w-[565px] w-full">
@@ -105,44 +106,44 @@ export default function Community() {
 
 						<ul className="flex items-center list-none mt-38px">
 							<li className="mr-12px">
-								<Link href="https://www.drivehailify.com/">
+								<a target="_blank" href="https://www.drivehailify.com/">
 									<Image src={HailifyIcon} alt="hailify logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px">
-								<Link href="https://www.piggyvest.com/">
+								<a target="_blank" href="https://www.piggyvest.com/">
 									<Image src={PiggyvestIcon} alt="piggyvest logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px">
-								<Link href="https://www.catlog.shop/">
+								<a target="_blank" href="https://www.catlog.shop/">
 									<Image src={CatlogIcon} alt="catlog logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px">
-								<Link href="https://www.payourse.com/">
+								<a target="_blank" href="https://www.payourse.com/">
 									<Image src={PayourseIcon} className="mt-4px" alt="payourse logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
-								<Link href="https://buycoins.africa/">
+								<a target="_blank" href="https://buycoins.africa/">
 									<Image src={BuycoinsIcon} alt="buycoins logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
-								<Link href="https://www.getwallets.co/">
+								<a target="_blank" href="https://www.getwallets.co/">
 									<Image src={GetWalletsIcon} alt="getwallets logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
-								<Link href="https://www.dojah.io/">
+								<a target="_blank" href="https://www.dojah.io/">
 									<Image src={DojahIcon} alt="dojah logo" />
-								</Link>
+								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
-								<Link href="https://termii.com/">
+								<a target="_blank" href="https://termii.com/">
 									<Image src={TermiiIcon} alt="termii logo" />
-								</Link>
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -211,12 +212,13 @@ export default function Community() {
 						Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time
 						and get started today.
 					</p>
-					<Link
+					<a
+						target="_blank"
 						href="https://github.com/frain-dev/convoy#installation-getting-started"
 						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Get Started
 						<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right" />
-					</Link>
+					</a>
 				</div>
 			</section>
 		</main>

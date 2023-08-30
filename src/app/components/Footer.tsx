@@ -91,29 +91,29 @@ export default function Footer() {
 
 								<ul className="socials flex">
 									<li className="w-42px h-42px bg-white-8  flex items-center justify-center rounded-[50%] mr-16px">
-										<Link href="https://github.com/frain-dev/convoy">
+										<a target="_blank" href="https://github.com/frain-dev/convoy">
 											<Image src={GithubIcon} alt="github logo" />
-										</Link>
+										</a>
 									</li>
 									<li className="w-42px h-42px bg-white-8  flex items-center justify-center rounded-[50%] mr-16px">
-										<Link href="https://www.linkedin.com/company/convoy-webhooks/">
+										<a target="_blank" href="https://www.linkedin.com/company/convoy-webhooks/">
 											<Image src={LinkedInIcon} alt="linkedin logo" />
-										</Link>
+										</a>
 									</li>
 									<li className="w-42px h-42px bg-white-8  flex items-center justify-center rounded-[50%] mr-16px">
-										<Link href="mailto:sales@convoy.io">
+										<a target="_blank" href="mailto:sales@convoy.io">
 											<Image src={MailIcon} alt="mail logo" />
-										</Link>
+										</a>
 									</li>
 									<li className="w-42px h-42px bg-white-8  flex items-center justify-center rounded-[50%] mr-16px">
-										<Link href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
+										<a target="_blank" href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
 											<Image src={SlackIcon} alt="slack logo" />
-										</Link>
+										</a>
 									</li>
 									<li className="w-42px h-42px bg-white-8  flex items-center justify-center rounded-[50%]">
-										<Link href="https://twitter.com/getconvoy">
+										<a target="_blank" href="https://twitter.com/getconvoy">
 											<Image src={TwitterIcon} alt="twitter logo" />
-										</Link>
+										</a>
 									</li>
 								</ul>
 							</div>
@@ -134,9 +134,9 @@ export default function Footer() {
 												</Link>
 											)}
 											{link.isExternal && (
-												<Link href={link.link} className="text-14 font-normal mb-16px block footer:pl-4px">
+												<a target="_blank" href={link.link} className="text-14 font-normal mb-16px block footer:pl-4px">
 													{link.name}
-												</Link>
+												</a>
 											)}
 										</li>
 									))}
