@@ -5,7 +5,9 @@ import getReadTime from './read-time';
 
 type PostProps = {
 	title: string;
+	description: string;
 	primary_tag: string;
+	feature_image: string;
 	readTime: any;
 	published_at: any;
 	primary_author: any;

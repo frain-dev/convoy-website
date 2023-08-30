@@ -13,7 +13,37 @@ type PageProps = {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const article = await getPost(params.slug);
-	return { title: article?.title };
+	return {
+		title: article?.title,
+		openGraph: {
+			title: article?.title,
+			site_name: 'Convoy',
+			type: 'article',
+			description: article?.description,
+			url: `https://getconvoy.io/blog/${article?.slug}`,
+			image: 'https://getconvoy.io/feature-images/' + article?.feature_image
+		},
+		twitter: {
+			title: article?.title,
+			card: 'summary_large_image',
+			url: `https://getconvoy.io/blog/${article?.slug}`,
+			text: {
+				title: article?.title
+			},
+			image: 'https://getconvoy.io/feature-images/' + article?.feature_image,
+			description: article?.description,
+			label1: 'Written by',
+			label2: 'Filed under',
+			data1: article?.primary_author.name,
+			data2: 'Convoy'
+		},
+		article: {
+			tag: article?.primary_tag,
+			published_time: article?.published_at,
+			publisher: 'http://twitter.com/' + article?.primary_author.twitter
+		},
+		'apple-mobile-web-app-title': article?.title
+	};
 }
 
 export default async function BlogPost({ params }: PageProps) {
