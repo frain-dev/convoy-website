@@ -6,8 +6,8 @@ import BlogSlide from '../components/BlogSlide';
 import { getPosts } from '@/lib/getPosts';
 
 export const metadata: Metadata = {
-	title: 'Convoy Documentation',
-	description: 'Convoy Documentation'
+	title: 'Convoy',
+	description: 'Convoy Documentation and Website'
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

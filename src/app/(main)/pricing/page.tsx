@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import Image from 'next/image';
 import ArrowRightIcon from '../../../../public/svg/arrow-right-icon.svg';
 import AngleDownIcon from '../../../../public/svg/angle-down-black-icon.svg';
@@ -328,8 +327,8 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 						<div>
 							{questions.slice(0, 5).map((question, index) => (
 								<div className="mb-16px" key={index}>
-									<a
-										className="flex items-center text-16 font-semibold justify-between mb-16px hover:cursor-pointer"
+									<button
+										className="flex items-center text-16 font-semibold justify-between mb-16px w-full"
 										onClick={() => setOpenQuestion(question.question)}>
 										{question.question}
 										<Image
@@ -337,7 +336,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 											alt="angle down icon"
 											className={`transition-all duration-300 ${openQuestion === question.question ? 'rotate-180' : ''}`}
 										/>
-									</a>
+									</button>
 									<p className={`text-14 text-grey-40 transition-all duration-300 ${openQuestion === question.question ? 'h-full' : 'max-h-0 overflow-hidden'}`}>
 										{question.answer}
 									</p>
@@ -347,8 +346,8 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 						<div>
 							{questions.slice(5, 9).map((question, index) => (
 								<div className="mb-16px" key={index}>
-									<a
-										className="flex items-center text-16 font-semibold justify-between mb-16px hover:cursor-pointer"
+									<button
+										className="flex items-center text-16 font-semibold justify-between mb-16px w-full"
 										onClick={() => setOpenQuestion(question.question)}>
 										{question.question}
 										<Image
@@ -356,7 +355,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 											alt="angle down icon"
 											className={`transition-all duration-300 ${openQuestion === question.question ? 'rotate-180' : ''}`}
 										/>
-									</a>
+									</button>
 									<p className={`text-14 text-grey-40 transition-all duration-300 ${openQuestion === question.question ? 'h-full' : 'max-h-0 overflow-hidden'}`}>
 										{question.answer}
 									</p>
@@ -373,12 +372,13 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 					<p className="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">
 						Get in touch with us today to find out how best we can support your business and work needs.
 					</p>
-					<Link
+					<a
+						target="_blank"
 						href="https://calendly.com/d/d6k-jw2-wgj/convoy-user-demo"
 						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Contact Sales
 						<Image src={ArrowRightIcon} className="ml-12px" alt="arrow icon right" />
-					</Link>
+					</a>
 				</div>
 			</section>
 
