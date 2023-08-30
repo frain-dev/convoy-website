@@ -1,16 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import DocsBanner from '../../../public/svg/doc-banner.svg';
+import DocsBanner from '../../../../public/svg/doc-banner.svg';
 
 export default function DocsIndex() {
-    
 	return (
 		<main>
-			<header className="bg-[url(/svg/docs-bg.svg)] bg-no-repeat bg-cover h-[450px] w-full"></header>
-
-			<div className="max-w-[1200px] m-auto -mt-270px py-0 px-20px">
-				<p className="text-28 font-bold text-center mb-8px text-white-100">Convoy Documentation</p>
-				<p className="text-white-100 max-w-[590px] m-auto text-center text-16 mb-40px">
+			<div className="max-w-[1200px] m-auto py-0 px-20px mt-50px">
+				<p className="text-h2 font-semibold text-center mb-8px">Convoy Documentation</p>
+				<p className=" max-w-[655px] m-auto text-center text-14 mb-40px">
 					Find the guides, samples, and references you need to use Convoy to start sending out and receiving webhook events as fast as possible.
 				</p>
 

@@ -105,7 +105,7 @@ const config: Config = {
 const components = {
 	Heading,
 	Paragraph: ({ children }: any) => {
-		return <div className="text-14 text-gray-600 leading-7 mb-20px">{children}</div>;
+		return <div className="text-14 text-gray-500 leading-[1.9rem] font-normal mb-50px">{children}</div>;
 	},
 	Strong: ({ children }: any) => {
 		return <strong className="font-semibold">{children}</strong>;
@@ -114,16 +114,16 @@ const components = {
 		return <ol className="list-[unset] mb-20px ml-16px">{children}</ol>;
 	},
 	Item: ({ children }: any) => {
-		return <li className="text-14 text-gray-600 mb-8px">{children}</li>;
+		return <li className="text-14 text-gray-500 mb-8px">{children}</li>;
 	},
 	Table: ({ children }: any) => {
 		return <table className="my-20px">{children}</table>;
 	},
 	Th: ({ children }: any) => {
-		return <th className="pr-50px py-10px border-t border-primary-50 text-14 text-gray-600 whitespace-nowrap text-left font-semibold">{children}</th>;
+		return <th className="pr-50px py-10px border-t border-primary-50 text-14 text-gray-500 whitespace-nowrap text-left font-semibold">{children}</th>;
 	},
 	Td: ({ children }: any) => {
-		return <td className="pr-50px py-10px border-t border-primary-50 text-14 text-gray-600 text-left font-normal">{children}</td>;
+		return <td className="pr-50px py-10px border-t border-primary-50 text-14 text-gray-500 text-left font-normal">{children}</td>;
 	},
 	DocLink,
 	BlockQuote,

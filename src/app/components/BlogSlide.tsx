@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import FeaturedPost from '../blog/components/featuredPost';
+import FeaturedPost from '../(main)/blog/components/featuredPost';
 
 export default function BlogSlide({ featurePosts }: any) {
 	const [count, setCount] = useState(0);

@@ -55,7 +55,11 @@ module.exports = {
 			mobile: { max: '1054px' },
 			footer: { max: '630px' },
 			xs: { max: '425px' },
-			tab: { max: '1287px', min: '880px' }
+			tab: { max: '1287px', min: '880px' },
+			// 
+
+
+			'doc-tab': { min: '768px'}
 		},
 		borderRadius: {
 			'2px': '2px',
@@ -172,7 +176,7 @@ module.exports = {
 				8: 'rgba(var(--color-white), 0.08)',
 				4: 'rgba(var(--color-white), 0.04)'
 			},
-			'light-blue': '#fafafe',
+			'light-blue': '#F8FBFF',
 			transparent: 'transparent'
 		}
 	},

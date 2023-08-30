@@ -1,16 +1,16 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import DojahIcon from '../../../public/svg/dojah.svg';
-import CatlogIcon from '../../../public/svg/Catlog.svg';
-import GetWalletsIcon from '../../../public/svg/getwallets.svg';
-import PayourseIcon from '../../../public/svg/payourse.svg';
-import PiggyvestIcon from '../../../public/svg/piggyvest.svg';
-import TermiiIcon from '../../../public/svg/termii.svg';
-import HailifyIcon from '../../../public/svg/hailify-logo.svg';
-import BuycoinsIcon from '../../../public/svg/buycoins.svg';
-import ArrowRightIcon from '../../../public/svg/arrow-right-icon.svg';
-import Subscribe from '../components/Subscribe';
+import DojahIcon from '../../../../public/svg/dojah.svg';
+import CatlogIcon from '../../../../public/svg/Catlog.svg';
+import GetWalletsIcon from '../../../../public/svg/getwallets.svg';
+import PayourseIcon from '../../../../public/svg/payourse.svg';
+import PiggyvestIcon from '../../../../public/svg/piggyvest.svg';
+import TermiiIcon from '../../../../public/svg/termii.svg';
+import HailifyIcon from '../../../../public/svg/hailify-logo.svg';
+import BuycoinsIcon from '../../../../public/svg/buycoins.svg';
+import ArrowRightIcon from '../../../../public/svg/arrow-right-icon.svg';
+import Subscribe from '../../components/Subscribe';
 
 export default function Community() {
 	const setupSteps = ['git clone https://github.com/frain-dev/convoy.git', 'cd convoy', 'docker compose -f configs/local/docker-compose.yml up'];

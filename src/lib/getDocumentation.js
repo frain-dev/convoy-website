@@ -21,7 +21,7 @@ const getFiles = async (dir, files = []) => {
 };
 
 const fetchAllDocumentation = async () => {
-	const docs = await getFiles('src/app/docs/documentation');
+	const docs = await getFiles('src/app/(docs)/docs/documentation');
 
 	return Promise.all(
 		docs.map(async file => {
@@ -37,7 +37,7 @@ const fetchAllDocumentation = async () => {
 
 const getDocumentation = async paramSlug => {
 	const docs = await fetchAllDocumentation();
-	const filteredDoc = docs.find(doc => doc.slug === paramSlug);
+	const filteredDoc = docs.find(doc => doc.slug === `documentation/${paramSlug}`);
 	const { title, slug, content } = filteredDoc;
 	return { title, slug, content };
 };

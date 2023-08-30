@@ -4,13 +4,13 @@ import matter from 'gray-matter';
 import getReadTime from './read-time';
 
 const fetchPostsAndPostContent = async () => {
-	const posts = await fs.readdir('src/app/blog/articles');
+	const posts = await fs.readdir('src/app/(main)/blog/articles');
 
 	return Promise.all(
 		posts
 			.filter(file => path.extname(file) === '.md')
 			.map(async file => {
-				const filePath = `src/app/blog/articles/${file}`;
+				const filePath = `src/app/(main)/blog/articles/${file}`;
 				const postContent = await fs.readFile(filePath, 'utf8');
 				const slug = path.basename(filePath, path.extname(filePath));
 				const { data, content } = matter(postContent);

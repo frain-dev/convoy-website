@@ -1,5 +1,10 @@
 [
 	{
+		"title": "Home",
+		"link": "/docs/",
+		"icon": "introduction"
+	},
+	{
 		"title": "Introduction",
 		"link": "/docs/introduction",
 		"icon": "introduction"
