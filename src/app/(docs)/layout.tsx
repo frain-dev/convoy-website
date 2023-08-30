@@ -105,7 +105,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 											{!item.children && (
 												<Link
 													href={item.link}
-													className={`flex justify-items-center text-12 ${item.link === pathname ? 'text-primary-400' : 'text-gray-500'} `}>
+													className={`flex justify-items-center transition-all duration-300 text-12 ${item.link === pathname ? 'text-primary-400' : 'text-gray-500'} `}>
 													<svg
 														width="18"
 														height="18"

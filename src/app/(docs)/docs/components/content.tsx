@@ -51,8 +51,8 @@ export default function Contents({ tableOfContents }: any) {
 			<p className="text-gray-500 text-14">On this page</p>
 			<ul className="mt-24px border-l border-primary-50">
 				{tableOfContents.map((content: any, index: number) => (
-					<li key={index} className={`mb-16px -ml-[1px] pl-24px ${isLinkActive(content.title) ? 'border-l border-success-400' : ''}`}>
-						<Link href={`#${content.title}`} className={`text-14  ${isLinkActive(content.title) ? 'text-success-400' : 'text-gray-500'}`}>
+					<li key={index} className={`mb-16px -ml-[1px] transition-all pl-24px ${isLinkActive(content.title) ? 'border-l border-success-400' : ''}`}>
+						<Link href={`#${content.title}`} className={`text-12 transition-all font-medium ${isLinkActive(content.title) ? 'text-success-400' : 'text-gray-500'}`}>
 							{content.title}
 						</Link>
 					</li>
