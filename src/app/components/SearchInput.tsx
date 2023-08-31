@@ -8,8 +8,8 @@ import Image from 'next/image';
 import '@docsearch/css';
 
 const docSearchConfig = {
-	appId: 'R2IYF7ETH7',
-	apiKey: '599cec31baffa4868cae4e79f180729b',
+	appId: process.env.NEXT_PUBLIC_SEARCH_APP_ID || '',
+	apiKey: process.env.NEXT_PUBLIC_API_KEY || '',
 	indexName: 'docsearch'
 };
 
