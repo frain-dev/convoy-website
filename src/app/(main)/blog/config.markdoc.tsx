@@ -99,7 +99,7 @@ const components = {
 		);
 	},
 	Table: ({ children }: any) => {
-		return <table className="mt-20px">{children}</table>;
+		return <table className="mt-20px mb-32px">{children}</table>;
 	},
 	Th: ({ children }: any) => {
 		return <th className="pr-50px pl-0 py-10px border-t border-primary-50 text-14 text-gray-600 whitespace-nowrap text-left font-medium">{children}</th>;
