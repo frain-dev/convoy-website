@@ -1,8 +1,7 @@
-import { MetadataRoute } from 'next';
-import data from 'data/nav.json';
+import data from './data/nav.json';
 import { getAllRoutes, getPosts } from '@/lib/getPosts';
 
-export default async function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(){
 	const URL = 'https://getconvoy.io';
 
 	const getDocRoutes = () => {

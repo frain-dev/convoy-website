@@ -8,29 +8,31 @@ import { getPosts } from '@/lib/getPosts';
 export const metadata: Metadata = {
 	title: 'Convoy',
 	description: 'Convoy Documentation and Website',
-	image: 'https://getconvoy.io/static/convoy.png',
 	openGraph: {
 		title: 'Webhooks Gateway for sending and receiving webhooks - Convoy',
 		description:
 			'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
 		url: 'https://getconvoy.io/',
 		type: 'website',
-		image: {
-			url: 'https://getconvoy.io/static/convoy.png',
-			width: '437',
-			height: '182',
-			type: 'img/png',
-			alt: 'Convoy Logo'
-		}
+		images: [
+			{
+				url: 'https://getconvoy.io/static/convoy.png',
+				width: 437,
+				height: 182,
+				type: 'img/png',
+				alt: 'Convoy Logo'
+			}
+		]
 	},
 	twitter: {
 		title: 'Webhooks Gateway for sending and receiving webhooks - Convoy',
-		url: 'https://getconvoy.io/',
 		creator: '@getconvoy',
-		image: {
-			url: 'https://getconvoy.io/static/convoy.png',
-			alt: 'Convoy Logo'
-		},
+		images: [
+			{
+				url: 'https://getconvoy.io/static/convoy.png',
+				alt: 'Convoy Logo'
+			}
+		],
 		site: '@getconvoy',
 		description:
 			'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',

@@ -10,9 +10,21 @@ type PostProps = {
 	feature_image: string;
 	readTime: any;
 	published_at: any;
-	primary_author: any;
+	primary_author: {
+		name: string;
+		twitter: string;
+	};
 	slug: string;
 	content: any;
+};
+
+const fetchContent = async (filePath: string) => {
+	const postContent = await fs.readFile(filePath, 'utf8');
+	const slug = path.basename(filePath, path.extname(filePath));
+	const { data, content } = matter(postContent);
+	const readTime = getReadTime(content);
+
+	return { ...data, readTime, slug, content } as PostProps;
 };
 
 const fetchPostsAndPostContent = async () => {
@@ -23,12 +35,9 @@ const fetchPostsAndPostContent = async () => {
 			.filter(file => path.extname(file) === '.md')
 			.map(async file => {
 				const filePath = `src/app/(main)/blog/articles/${file}`;
-				const postContent = await fs.readFile(filePath, 'utf8');
-				const slug = path.basename(filePath, path.extname(filePath));
-				const { data, content } = matter(postContent);
-				const readTime = getReadTime(content);
+				const post: PostProps = await fetchContent(filePath);
 
-				return { ...data, readTime, slug, content } as PostProps;
+				return post;
 			})
 	);
 };
@@ -49,9 +58,9 @@ const getPosts = async () => {
 };
 
 const getPost = async paramsSlug => {
-	const posts = await getPosts();
-	const filteredPost = posts.find(post => post.slug === paramsSlug);
-	return filteredPost;
+	const filePath = `src/app/(main)/blog/articles/${paramsSlug}.md`;
+	const post: PostProps = await fetchContent(filePath);
+	return post;
 };
 
 export { getPost, getPosts, getAllRoutes };

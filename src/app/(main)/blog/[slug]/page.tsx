@@ -11,11 +11,26 @@ type PageProps = {
 	};
 };
 
+type PostProps = {
+	title: string;
+	description: string;
+	primary_tag: string;
+	feature_image: string;
+	readTime: any;
+	published_at: any;
+	primary_author: {
+		name: string;
+		twitter: string;
+	};
+	slug: string;
+	content: any;
+};
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-	const article = await getPost(params.slug);
+	const article: PostProps = await getPost(params.slug);
 	return {
-		title: article?.title,
-		metadataBase: new URL(`https://getconvoy.io/blog/${article?.slug}`),
+		title: article.title,
+		metadataBase: new URL(`https://getconvoy.io/blog/${article.slug}`),
 		alternates: {
 			canonical: '/',
 			types: {
@@ -23,31 +38,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 			}
 		},
 		openGraph: {
-			title: article?.title,
-			site_name: 'Convoy',
+			title: article.title,
+			siteName: 'Convoy',
 			type: 'article',
-			description: article?.description,
-			url: `https://getconvoy.io/blog/${article?.slug}`,
-			image: 'https://getconvoy.io/feature-images/' + article?.feature_image,
-			tag: article?.primary_tag,
-			published_time: article?.published_at,
-			publisher: 'http://twitter.com/' + article?.primary_author.twitter
+			description: article.description,
+			url: `https://getconvoy.io/blog/${article.slug}`,
+			images: ['https://getconvoy.io/feature-images/' + article.feature_image],
+			tags: article.primary_tag,
+			publishedTime: article.published_at,
+			authors: ['http://twitter.com/' + article.primary_author.twitter]
 		},
 		twitter: {
-			title: article?.title,
+			title: article.title,
 			card: 'summary_large_image',
-			url: `https://getconvoy.io/blog/${article?.slug}`,
-			text: {
-				title: article?.title
-			},
-			image: 'https://getconvoy.io/feature-images/' + article?.feature_image,
-			description: article?.description,
-			label1: 'Written by',
-			label2: 'Filed under',
-			data1: article?.primary_author.name,
-			data2: 'Convoy'
-		},
-		'apple-mobile-web-app-title': article?.title
+			images: { url: 'https://getconvoy.io/feature-images/' + article.feature_image, alt: article.feature_image },
+			description: article.description,
+			creator: `@${article.primary_author.name}`
+		}
 	};
 }
 
