@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 
 type DocProps = {
 	title: string;
+	description: string;
 	content: any;
 	slug: string;
 };
@@ -42,9 +43,10 @@ const fetchAllDocumentation = async () => {
 };
 
 const getDocumentation = async paramSlug => {
-	const docs = await fetchAllDocumentation();
-	const filteredDoc = docs.find(doc => doc.slug === `documentation/${paramSlug}`);
-	return filteredDoc;
+	const filePath = `src/app/(docs)/docs/documentation/${paramSlug}.md`
+	const docContent = await fs.readFileSync(filePath, 'utf-8');
+	const { data, content } = matter(docContent);
+	return { ...data, slug: paramSlug, content } as DocProps;
 };
 
 export default getDocumentation;
