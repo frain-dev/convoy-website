@@ -22,7 +22,7 @@ module.exports = {
 				layout: '0px 30px 40px 0px rgba(20, 37, 63, 0.08), 0px 16px 16px 0px rgba(12, 26, 75, 0.05), 0px 16px 16px 0px rgba(12, 26, 75, 0.06)',
 				default: '0px 2px 4px rgba(12, 26, 75, 0.04), 0px 4px 20px -2px rgba(50, 50, 71, 0.08)',
 				card: '40px 44px 81px rgba(111, 118, 138, 0.08)',
-				nav: 'inset 0px -3px 8px rgba(255, 255, 255, 0.07);',
+				nav: 'inset 0px -3px 8px rgba(255, 255, 255, 0.07);'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(white 10%, #fafafe78)'
@@ -48,14 +48,14 @@ module.exports = {
 			'tab-min': { max: '768px' },
 			'index-animation-min': { min: '1405px' },
 			'index-animation-max': { min: '2087px' },
-			// desktop: { min: '880px' },
 			'nav-bar-break': { min: '1055px' },
 			md: { min: '1288px' },
 			'md-max': { max: '1288px' },
 			mobile: { max: '1054px' },
 			footer: { max: '630px' },
 			xs: { max: '425px' },
-			tab: { max: '1287px', min: '880px' }
+			tab: { max: '1287px', min: '880px' },
+			'doc-tab': { min: '768px' }
 		},
 		borderRadius: {
 			'2px': '2px',
@@ -116,7 +116,7 @@ module.exports = {
 				800: '#05603A,',
 				900: '#054F31,'
 			},
-			error: {
+			danger: {
 				25: '#FFFBFA',
 				50: '#FEF3F2',
 				100: '#FEE4E2',
@@ -153,7 +153,9 @@ module.exports = {
 				600: '#475467',
 				700: '#344054',
 				800: '#1D2939',
-				900: '#101828'
+				900: '#101828',
+				normal: 'var(--gray-normal)',
+				strong: 'var(--gray-strong)'
 			},
 			grey: {
 				100: '#000624',
@@ -172,7 +174,7 @@ module.exports = {
 				8: 'rgba(var(--color-white), 0.08)',
 				4: 'rgba(var(--color-white), 0.04)'
 			},
-			'light-blue': '#fafafe',
+			'light-blue': '#F8FBFF',
 			transparent: 'transparent'
 		}
 	},
