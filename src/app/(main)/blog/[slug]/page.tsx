@@ -28,7 +28,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 			type: 'article',
 			description: article?.description,
 			url: `https://getconvoy.io/blog/${article?.slug}`,
-			image: 'https://getconvoy.io/feature-images/' + article?.feature_image
+			image: 'https://getconvoy.io/feature-images/' + article?.feature_image,
+			tag: article?.primary_tag,
+			published_time: article?.published_at,
+			publisher: 'http://twitter.com/' + article?.primary_author.twitter
 		},
 		twitter: {
 			title: article?.title,
@@ -43,11 +46,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 			label2: 'Filed under',
 			data1: article?.primary_author.name,
 			data2: 'Convoy'
-		},
-		article: {
-			tag: article?.primary_tag,
-			published_time: article?.published_at,
-			publisher: 'http://twitter.com/' + article?.primary_author.twitter
 		},
 		'apple-mobile-web-app-title': article?.title
 	};

@@ -33,6 +33,13 @@ const fetchPostsAndPostContent = async () => {
 	);
 };
 
+const getAllRoutes = async () => {
+	const excluded = ['layout.tsx', 'page.tsx'];
+	const mainDir = await fs.readdir('src/app/(main)');
+	const mainRoutes = mainDir.filter(item => !excluded.includes(item)).map(route => `/${route}`);
+	return mainRoutes;
+};
+
 const getPosts = async () => {
 	const posts = await fetchPostsAndPostContent();
 	posts.sort((a, b) => {
@@ -47,4 +54,4 @@ const getPost = async paramsSlug => {
 	return filteredPost;
 };
 
-export { getPost, getPosts };
+export { getPost, getPosts, getAllRoutes };

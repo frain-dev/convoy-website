@@ -14,7 +14,7 @@ export default function Blog({ articles }: any) {
 	const [currentTag, setCurrentTag] = useState('All Posts');
 	const [showCategories, setShowCategories] = useState(false);
 	const tags = ['All Posts', 'Product Update', 'News', 'Engineering', 'Tutorial', 'Open Thoughts', 'Customer Stories'];
-
+	
 	const subscribeToNewsletter = async (event: any) => {
 		event.preventDefault();
 		setIsSubmittingEmail(true);
