@@ -21,14 +21,14 @@ export default function Post({ postData }: any) {
 					</div>
 					<div className="mx-10px desktop:mx-16px mt-18px mb-26px flex flex-col flex-wrap justify-between desktop:items-end desktop:flex-row">
 						<a
-							href={`${postData.primary_author.twitter ? 'http://twitter.com/' + postData.primary_author.twitter : ''}`}
+							href={`${postData.primary_author?.twitter ? 'http://twitter.com/' + postData.primary_author?.twitter : ''}`}
 							target="_blank"
 							className="flex items-start mb-40px desktop:mb-[unset]">
 							<div className="w-40px h-40px rounded-50% mr-16px overflow-hidden flex items-center bg-grey-20">
-								<img src={`/profile-images/${postData.primary_author.name}.png`} className="w-full mr-12px rounded-[50%]" alt="author imge" />
+								<img src={`/profile-images/${postData.primary_author?.name}.png`} className="w-full mr-12px rounded-[50%]" alt="author imge" />
 							</div>
 							<div>
-								<h5 className="font-medium mb-4px text-primary-400 text-14">{postData.primary_author.name}</h5>
+								<h5 className="font-medium mb-4px text-primary-400 text-14">{postData.primary_author?.name}</h5>
 								<p className="text-14 text-grey-80">Convoy</p>
 							</div>
 						</a>
