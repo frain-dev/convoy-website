@@ -58,7 +58,7 @@ export default async function DocsTemplate({ params }: PageProps) {
 	return (
 		<>
 			<div className="flex justify-center gap-100px max-w-[1023px] mx-auto px-24px">
-				<div className="max-w-[676px] w-full pt-50px" id="DocTemplate">
+				<div className="max-w-[628px] w-full pt-50px" id="DocTemplate">
 					{Markdoc.renderers.react(docContent, React, { components })}
 					{!documentation.isError && <DocFooter></DocFooter>}
 				</div>
