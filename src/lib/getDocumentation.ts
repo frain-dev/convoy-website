@@ -7,6 +7,7 @@ type DocProps = {
 	description: string;
 	content: any;
 	slug: string;
+	isError?: boolean;
 };
 
 const getFiles = async (dir, files: string[] = []) => {
@@ -27,26 +28,35 @@ const getFiles = async (dir, files: string[] = []) => {
 	return files;
 };
 
-const fetchAllDocumentation = async () => {
+const fetchDocSlugs = async () => {
 	const docs = await getFiles('src/app/(docs)/docs/documentation');
 
 	return Promise.all(
 		docs.map(async (file: string) => {
-			const subFolders = file.split('/').slice(4, -1);
+			const subFolders = file.split('/').slice(5, -1);
 			const slugArray = [...subFolders, path.basename(file, path.extname(file))];
-			const slug = slugArray.join('/');
-			const docContent = await fs.readFileSync(file, 'utf-8');
-			const { data, content } = matter(docContent);
-			return { ...data, slug, content } as DocProps;
+			return { slugArray };
 		})
 	);
 };
 
-const getDocumentation = async paramSlug => {
-	const filePath = `src/app/(docs)/docs/documentation/${paramSlug}.md`
+const fetchDocContent = async (filePath: string) => {
 	const docContent = await fs.readFileSync(filePath, 'utf-8');
 	const { data, content } = matter(docContent);
-	return { ...data, slug: paramSlug, content } as DocProps;
+	const isError = filePath.includes('404');
+	return { ...data, content, isError } as DocProps;
 };
 
-export default getDocumentation;
+const getDocumentation = async paramSlug => {
+	try {
+		const filePath = `src/app/(docs)/docs/documentation/${paramSlug}.md`;
+		const docContent = await fetchDocContent(filePath);
+		return { ...docContent, slug: paramSlug };
+	} catch {
+		const filePath = `src/app/(docs)/docs/documentation/404.md`;
+		const docContent = await fetchDocContent(filePath);
+		return { ...docContent, slug: '404' };
+	}
+};
+
+export { getDocumentation, fetchDocSlugs };
