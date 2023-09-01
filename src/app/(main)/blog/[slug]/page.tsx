@@ -24,38 +24,51 @@ type PostProps = {
 	};
 	slug: string;
 	content: any;
+	isError?: boolean;
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const article: PostProps = await getPost(params.slug);
-	return {
-		title: article.title,
-		metadataBase: new URL(`https://getconvoy.io/blog/${article.slug}`),
-		alternates: {
-			canonical: '/',
-			types: {
-				'application/rss+xml': 'https://getconvoy.io/blog/rss'
+	if (article.isError) {
+		return {
+			title: article.title
+		};
+	} else
+		return {
+			title: article.title,
+			metadataBase: new URL(`https://getconvoy.io/blog/${article.slug}`),
+			alternates: {
+				canonical: '/',
+				types: {
+					'application/rss+xml': 'https://getconvoy.io/blog/rss'
+				}
+			},
+			openGraph: {
+				title: article.title,
+				siteName: 'Convoy',
+				type: 'article',
+				description: article.description,
+				url: `https://getconvoy.io/blog/${article.slug}`,
+				images: ['https://getconvoy.io/feature-images/' + article.feature_image],
+				tags: article.primary_tag,
+				publishedTime: article.published_at,
+				authors: ['http://twitter.com/' + article.primary_author.twitter]
+			},
+			twitter: {
+				title: article.title,
+				card: 'summary_large_image',
+				images: { url: 'https://getconvoy.io/feature-images/' + article.feature_image, alt: article.feature_image },
+				description: article.description,
+				creator: `@${article.primary_author.name}`
 			}
-		},
-		openGraph: {
-			title: article.title,
-			siteName: 'Convoy',
-			type: 'article',
-			description: article.description,
-			url: `https://getconvoy.io/blog/${article.slug}`,
-			images: ['https://getconvoy.io/feature-images/' + article.feature_image],
-			tags: article.primary_tag,
-			publishedTime: article.published_at,
-			authors: ['http://twitter.com/' + article.primary_author.twitter]
-		},
-		twitter: {
-			title: article.title,
-			card: 'summary_large_image',
-			images: { url: 'https://getconvoy.io/feature-images/' + article.feature_image, alt: article.feature_image },
-			description: article.description,
-			creator: `@${article.primary_author.name}`
-		}
-	};
+		};
+}
+
+export async function generateStaticParams() {
+	const blogs = await getPosts();
+	return blogs.map(blog => {
+		return { slug: blog.slug };
+	});
 }
 
 export default async function BlogPost({ params }: PageProps) {
@@ -64,7 +77,7 @@ export default async function BlogPost({ params }: PageProps) {
 	const blogContent = Markdoc.transform(ast, config);
 
 	const latestArticles = await getPosts();
-	const posts = latestArticles.filter(post => post.slug !== params.slug);
+	const posts = latestArticles.filter(post => post.slug !== params.slug && !post.isError);
 
 	return (
 		<>

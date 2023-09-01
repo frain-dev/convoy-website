@@ -16,6 +16,7 @@ type PostProps = {
 	};
 	slug: string;
 	content: any;
+	isError?: boolean;
 };
 
 const fetchContent = async (filePath: string) => {
@@ -23,9 +24,10 @@ const fetchContent = async (filePath: string) => {
 	const slug = path.basename(filePath, path.extname(filePath));
 	const { data, content } = matter(postContent);
 	const readTime = getReadTime(content);
-
-	return { ...data, readTime, slug, content } as PostProps;
+	const isError = filePath.includes('404');
+	return { ...data, readTime, slug, content, isError } as PostProps;
 };
+
 
 const fetchPostsAndPostContent = async () => {
 	const posts = await fs.readdir('src/app/(main)/blog/articles');
@@ -58,9 +60,15 @@ const getPosts = async () => {
 };
 
 const getPost = async paramsSlug => {
-	const filePath = `src/app/(main)/blog/articles/${paramsSlug}.md`;
-	const post: PostProps = await fetchContent(filePath);
-	return post;
+	try {
+		const filePath = `src/app/(main)/blog/articles/${paramsSlug}.md`;
+		const post: PostProps = await fetchContent(filePath);
+		return post;
+	} catch {
+		const filePath = `src/app/(main)/blog/articles/404.md`;
+		const post: PostProps = await fetchContent(filePath);
+		return post;
+	}
 };
 
 export { getPost, getPosts, getAllRoutes };
