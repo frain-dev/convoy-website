@@ -7,30 +7,26 @@ import BlogSlide from '../components/BlogSlide';
 import { getPosts } from '@/lib/getPosts';
 
 export const metadata: Metadata = {
+	metadataBase: new URL('https://getconvoy.io'),
 	title: 'Convoy',
 	description: 'Convoy Documentation and Website',
+	alternates: {
+		canonical: '/'
+	},
 	openGraph: {
 		title: 'Webhooks Gateway for sending and receiving webhooks - Convoy',
 		description:
 			'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
 		url: 'https://getconvoy.io/',
 		type: 'website',
-		images: [
-			{
-				url: 'https://getconvoy.io/static/convoy.png',
-				width: 437,
-				height: 182,
-				type: 'img/png',
-				alt: 'Convoy Logo'
-			}
-		]
+		images: '/static/convoy.png'
 	},
 	twitter: {
 		title: 'Webhooks Gateway for sending and receiving webhooks - Convoy',
 		creator: '@getconvoy',
 		images: [
 			{
-				url: 'https://getconvoy.io/static/convoy.png',
+				url: '/static/convoy.png',
 				alt: 'Convoy Logo'
 			}
 		],
@@ -80,10 +76,7 @@ export const metadata: Metadata = {
 		'API',
 		'cloud',
 		'cloud-native'
-	],
-	alternates: {
-		canonical: 'https://getconvoy.io'
-	}
+	]
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
