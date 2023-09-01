@@ -13,6 +13,7 @@ type PageProps = {
 
 type PostProps = {
 	title: string;
+	metaTitle: string;
 	description: string;
 	primary_tag: string;
 	feature_image: string;
@@ -29,13 +30,14 @@ type PostProps = {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const article: PostProps = await getPost(params.slug);
+	
 	if (article.isError) {
 		return {
 			title: article.title
 		};
 	} else
 		return {
-			title: article.title,
+			title: article.metaTitle,
 			metadataBase: new URL(`https://getconvoy.io/blog/${article.slug}`),
 			alternates: {
 				canonical: '/',
@@ -44,7 +46,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 				}
 			},
 			openGraph: {
-				title: article.title,
+				title: article.metaTitle,
 				siteName: 'Convoy',
 				type: 'article',
 				description: article.description,
@@ -55,7 +57,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 				authors: ['http://twitter.com/' + article.primary_author.twitter]
 			},
 			twitter: {
-				title: article.title,
+				title: article.metaTitle,
 				card: 'summary_large_image',
 				images: { url: 'https://getconvoy.io/feature-images/' + article.feature_image, alt: article.feature_image },
 				description: article.description,

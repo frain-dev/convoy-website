@@ -5,6 +5,7 @@ import getReadTime from './read-time';
 
 type PostProps = {
 	title: string;
+	metaTitle: string;
 	description: string;
 	primary_tag: string;
 	feature_image: string;
@@ -27,7 +28,6 @@ const fetchContent = async (filePath: string) => {
 	const isError = filePath.includes('404');
 	return { ...data, readTime, slug, content, isError } as PostProps;
 };
-
 
 const fetchPostsAndPostContent = async () => {
 	const posts = await fs.readdir('src/app/(main)/blog/articles');
@@ -63,6 +63,20 @@ const getPost = async paramsSlug => {
 	try {
 		const filePath = `src/app/(main)/blog/articles/${paramsSlug}.md`;
 		const post: PostProps = await fetchContent(filePath);
+		switch (post.primary_tag) {
+			case 'Customer Stories':
+				post['metaTitle'] = `Customer Stories: ${post.title}`;
+				break;
+			case 'News':
+				post['metaTitle'] = `Convoy Announcements: ${post.title}`;
+				break;
+			case 'Webhooks Library':
+				post['metaTitle'] = `${post.title} | The Webhooks Library`;
+				break;
+			default:
+				post['metaTitle'] = `${post.title} | The Webhooks Blog`;
+				break;
+		}
 		return post;
 	} catch {
 		const filePath = `src/app/(main)/blog/articles/404.md`;
