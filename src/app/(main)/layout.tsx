@@ -88,13 +88,13 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	const featurePosts = await getPosts();
-
+	const filteredArticles = featurePosts.filter(article => !article.isError);
 	return (
 		<html lang="en" style={{ scrollBehavior: 'smooth' }}>
 			<body suppressHydrationWarning={true}>
 				<Header></Header>
 				{children}
-				<BlogSlide featurePosts={featurePosts.slice(0, 7)}></BlogSlide>
+				<BlogSlide featurePosts={filteredArticles.slice(0, 7)}></BlogSlide>
 				<Footer></Footer>
 
 				<svg display="none" className="hidden">

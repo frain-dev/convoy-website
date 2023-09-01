@@ -4,13 +4,20 @@ import Contents from '../components/content';
 import { Metadata } from 'next';
 import { components, config } from '../config.markdoc';
 import DocFooter from '../components/docfooter';
-import getDocumentation from '@/lib/getDocumentation';
+import { getDocumentation, fetchDocSlugs } from '@/lib/getDocumentation';
 
 type PageProps = {
 	params: {
 		slug: string[];
 	};
 };
+
+export async function generateStaticParams() {
+	const docSlugs = await fetchDocSlugs();
+	return docSlugs.map(doc => {
+		return { slug: doc.slugArray };
+	});
+}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const joinedSlug = params.slug.join('/');
@@ -51,14 +58,16 @@ export default async function DocsTemplate({ params }: PageProps) {
 	return (
 		<>
 			<div className="flex justify-center gap-100px max-w-[1023px] mx-auto px-24px">
-				<div className="max-w-[676px] w-full pt-50px" id="DocTemplate">
+				<div className="max-w-[628px] w-full pt-50px" id="DocTemplate">
 					{Markdoc.renderers.react(docContent, React, { components })}
-					<DocFooter></DocFooter>
+					{!documentation.isError && <DocFooter></DocFooter>}
 				</div>
 
-				<div className="hidden max-w-[247px] w-full sticky top-0 h-fit doc-tab:block pt-50px">
-					<Contents tableOfContents={tableOfContents} />
-				</div>
+				{!documentation.isError && (
+					<div className="hidden max-w-[247px] w-full sticky top-0 h-fit doc-tab:block pt-50px">
+						<Contents tableOfContents={tableOfContents} />
+					</div>
+				)}
 			</div>
 		</>
 	);
