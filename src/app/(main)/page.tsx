@@ -94,7 +94,7 @@ export default function Home() {
 				</div>
 				<h1 className="text-center desktop:text-[56px] desktop:leading-[80px] font-bold">Open-source Webhooks Gateway for</h1>
 				<h1 className="text-center desktop:text-[56px] desktop:leading-[80px] font-bold text-primary-400">Efficient Engineers</h1>
-				<p className="text-center max-w-[1062px] mx-auto text-18 mobile:text-14 mt-16px">
+				<p className="text-center max-w-[950px] mx-auto text-16 leading-8 mobile:text-14 mt-16px text-gray-600">
 					Securely Send, Receive and Manage millions of Webhooks Reliably with robust support for Retries, Rate Limiting, Static IPs, Circuit Breaking, Rolling Secrets
 					and more.
 				</p>
@@ -181,7 +181,8 @@ export default function Home() {
 					</div>
 					Why use Convoy?
 				</div>
-				<h1 className="text-center font-bold max-w-[1040px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto mb-80px">
+
+				<h1 className="text-center font-bold max-w-[1040px] text-[46px] text-gray-800 desktop:leading-[58px] mt-16px mx-auto mb-80px">
 					Convoy is a high-performance open-source webhooks gateway
 				</h1>
 
@@ -196,10 +197,10 @@ export default function Home() {
 									height={48}
 									className="mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]"
 								/>
-								<h3 className="font-semibold text-26 mb-16px">{feature.title}</h3>
-								<p className="text-20 font-light mobile:text-14 min-h-[72px] md:max-w-[542px]">{feature.body}</p>
+								<h3 className="font-semibold text-20 mb-16px">{feature.title}</h3>
+								<p className="text-14 leading-7 font-light mobile:text-14 max-w-[500px] text-gray-500">{feature.body}</p>
 							</div>
-							<div className="md:max-w-[658px] tab:max-w-[450px] tab:ml-20px order-1 desktop:order-2">
+							<div className="md:max-w-[500px] tab:max-w-[470px] tab:ml-20px order-1 desktop:order-2">
 								<img src={`/static/${feature.featureImg}.png`} alt={`${feature.featureImg} image`} className="object-contain" />
 							</div>
 						</div>
@@ -207,7 +208,7 @@ export default function Home() {
 
 					{newFeatures.slice(0, 3).map((feature, i) => (
 						<div className="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto mb-140px feature gap-x-20 gap-y-10" key={i}>
-							<div className="md:max-w-[658px] tab:max-w-[450px] tab:mr-20px">
+							<div className="md:max-w-[500px] tab:max-w-[470px] tab:mr-20px">
 								<img src={`/static/${feature.featureImg}.png`} alt={`${feature.featureImg} image`} className="object-contain" />
 							</div>
 							<div className="px-20px xs:px-10px desktop:px-0">
@@ -218,8 +219,8 @@ export default function Home() {
 									height={48}
 									className="mb-32px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]"
 								/>
-								<h3 className="font-semibold mb-16px text-26">{feature.title}</h3>
-								<p className="text-20 mobile:text-14 font-light min-h-[72px] md:max-w-[542px]">{feature.body}</p>
+								<h3 className="font-semibold mb-16px text-20">{feature.title}</h3>
+								<p className="text-14 leading-7 font-light mobile:text-14 max-w-[500px] text-gray-500">{feature.body}</p>
 							</div>
 						</div>
 					))}
@@ -254,15 +255,15 @@ export default function Home() {
 									activeTab === 'enterprise' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'
 								}`}>
 								<h1 className="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Enterprise Edition</h1>
-								<p className="text-white-100 text-center text-14 desktop:text-18 mt-20px desktop:mt-16px max-w-[860px] m-auto">
+								<p className="text-white-100 text-center text-14 leading-7 desktop:mt-16px max-w-[860px] m-auto">
 									Send & Receive billions of webhooks while totally control your own event infrastructure and data, and staying compliant all with one platform
 									with on-prem support .
 								</p>
 
-								<div className="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
+								<div className="flex justify-center desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
 									{enterpriseFeatures.map((feature, i) => (
 										<div
-											className="bg-white-16 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap"
+											className="bg-white-16 pl-12px pr-16px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-12 font-medium whitespace-nowrap"
 											key={i}>
 											<Image src={GreenCheckIcon} className="mr-12px" alt="check" />
 											{feature}
@@ -277,15 +278,15 @@ export default function Home() {
 									activeTab === 'cloud' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'
 								}`}>
 								<h1 className="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Convoy Cloud</h1>
-								<p className="text-white-100 text-center text-14 desktop:text-18 mt-20px desktop:mt-16px max-w-[860px] m-auto">
+								<p className="text-white-100 text-center text-14 leading-7 mt-20px desktop:mt-16px max-w-[860px] m-auto">
 									Fully managed Webhooks-as-a-service platform where you can manage millions of webhook events whether incoming or outgoing and you only pay for
 									what you use.
 								</p>
 
-								<div className="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
+								<div className="flex justify-center desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
 									{cloudFeatures.map(feature => (
 										<div
-											className="bg-white-16 pl-12px pr-40px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-14 font-medium w-fit whitespace-nowrap"
+											className="bg-white-16 pl-12px pr-16px py-8px rounded-6px mr-24px last-of-type:mr-0 flex items-center text-white-100 text-12 font-medium w-fit whitespace-nowrap"
 											key={feature}>
 											<Image src={GreenCheckIcon} className="mr-12px" alt="check" />
 											{feature}
@@ -299,16 +300,16 @@ export default function Home() {
 								className={`flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${
 									activeTab === 'community' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'
 								}`}>
-								<h1 className="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Community Edition</h1>
-								<p className="text-white-100 text-center text-14 desktop:text-18 mt-20px desktop:mt-16px max-w-[860px] m-auto">
+								<h1 className="text-32 desktop:leading-[60px] text-white-100 font-bold text-center">Community Edition</h1>
+								<p className="text-white-100 text-center text-14 leading-7 mt-20px desktop:mt-16px max-w-[860px] m-auto">
 									Open-source Webhooks Gateway for managing incoming and outgoing webhooks. Ships with everything you need for securely sending and receiving
 									events reliably.
 								</p>
 
-								<div className="flex justify-start desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
+								<div className="flex justify-center desktop:justify-center m-auto mobile:overflow-x-scroll mobile:scroll-smooth no-scrollbar mt-30px desktop:mt-40px w-full">
 									{communityFeatures.map(feature => (
 										<div
-											className="bg-white-16 pl-12px pr-50px desktop:px-12px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-14 font-medium w-fit"
+											className="bg-white-16 pl-12px pr-16px py-8px rounded-6px mr-24px last-of-type:mr-0 whitespace-nowrap flex items-center text-white-100 text-12 font-medium w-fit"
 											key={feature}>
 											<Image src={GreenCheckIcon} className="mr-12px" alt="check" />
 											{feature}
@@ -330,7 +331,7 @@ export default function Home() {
 								<a
 									target="_blank"
 									href="https://github.com/frain-dev/convoy#installation-getting-started"
-									className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
+									className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
 									Get started
 									<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right" />
 								</a>
@@ -338,7 +339,7 @@ export default function Home() {
 							{activeTab === 'enterprise' && (
 								<Link
 									href="/enterprise#requestAccess"
-									className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
+									className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
 									Get started
 									<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right" />
 								</Link>
@@ -346,7 +347,7 @@ export default function Home() {
 							{activeTab === 'cloud' && (
 								<Link
 									href="/cloud"
-									className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
+									className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 font-medium flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
 									Get started
 									<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right" />
 								</Link>
@@ -424,17 +425,17 @@ export default function Home() {
 
 			<section className="px-20px pb-100px desktop:pb-130px">
 				<div className="mt-100px desktop:mt-130px max-w-[1000px] w-full m-auto bg-[url(/static/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
-					<h1 className="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px max-w-[562px] m-auto">
+					<h1 className="text-32 text-white-100 font-bold tracking-[0.02em] text-center mb-24px max-w-[562px] m-auto">
 						Start sending and receiving webhooks now, risk free
 					</h1>
-					<p className="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">
+					<p className="text-center text-14 leading-7 text-white-100 max-w-[806px] m-auto">
 						Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time
 						and get started today.
 					</p>
 					<a
 						target="_blank"
 						href="https://github.com/frain-dev/convoy#installation-getting-started"
-						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
+						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Get started
 						<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right" />
 					</a>

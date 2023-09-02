@@ -8,31 +8,37 @@ export default function Post({ postData }: any) {
 		<>
 			<div className="w-full bg-white-100 rounded-12px p-10px shadow-card mobile:mb-48px">
 				<div className="rounded-4px mb-20px w-full overflow-hidden backdrop-blur-[3.4767px] h-fit desktop:h-170px desktop:mb-40px">
-					<img src={showFallBackImg ? '/static/convoy.png' : `/post-images/${postData.post_image}`} onError={() => setShowFallBackImg(true)} className="rounded-4px w-full -z-10" alt="post image" />
+					<img
+						src={showFallBackImg ? '/static/convoy.png' : `/post-images/${postData.post_image}`}
+						onError={() => setShowFallBackImg(true)}
+						className="rounded-4px w-full -z-10"
+						alt="post image"
+					/>
 				</div>
 				<div className="rounded-2px font-medium text-14 text-primary-400 uppercase">{postData.tag}</div>
 
 				<div className="flex flex-col justify-between min-h-[270px]">
 					<div>
 						<Link href={`/blog/${postData.slug}`}>
-							<h3 className="text-24 font-bold mx-10px desktop:mx-16px mb-16px overflow-hidden text-ellipsis">{postData.title}</h3>
+							<h3 className="text-20 font-bold mx-10px desktop:mx-16px mb-24px overflow-hidden text-ellipsis">{postData.title}</h3>
 						</Link>
-						<p className="text-16 font-light text-gray-500 mb-20px mx-10px desktop:mx-16px h-96px overflow-hidden text-ellipsis">{postData.description}</p>
+						<p className="text-14 leading-7 font-light text-gray-500 mb-20px mx-10px desktop:mx-16px h-96px overflow-hidden text-ellipsis">{postData.description}</p>
 					</div>
-					<div className="mx-10px desktop:mx-16px mt-18px mb-26px flex flex-col flex-wrap justify-between desktop:items-end desktop:flex-row">
+					<div className="mx-10px desktop:mx-16px mt-18px mb-26px flex justify-between items-center">
 						<a
 							href={`${postData.primary_author?.twitter ? 'http://twitter.com/' + postData.primary_author?.twitter : ''}`}
 							target="_blank"
-							className="flex items-start mb-40px desktop:mb-[unset]">
+							className="flex items-start desktop:mb-[unset]">
 							<div className="w-40px h-40px rounded-50% mr-16px overflow-hidden flex items-center bg-grey-20">
 								<img src={`/profile-images/${postData.primary_author?.name}.png`} className="w-full mr-12px rounded-[50%]" alt="author imge" />
 							</div>
 							<div>
-								<h5 className="font-medium mb-4px text-primary-400 text-14">{postData.primary_author?.name}</h5>
-								<p className="text-14 text-grey-80">Convoy</p>
+								<h5 className="font-medium mb-4px text-primary-400 text-12">{postData.primary_author?.name}</h5>
+								<p className="text-12 text-grey-80">Convoy</p>
 							</div>
 						</a>
-						<Link href={`/blog/${postData.slug}`} className="flex items-center text-primary-400 font-medium text-14">
+
+						<Link href={`/blog/${postData.slug}`} className="flex items-center text-primary-400 font-medium text-12">
 							Read More
 							<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-6px">
 								<path

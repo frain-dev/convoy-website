@@ -149,11 +149,12 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 			answer: 'Yes, on Convoy Cloud, customer data will leave your infrastructure, however we make use of AES256 to securely store all customer and event data such that nobody not even us can access it. Event data is stored in the database in an encrypted format, but we index parts of it so you can search through them on your dashboard. Reach us at engineering@getconvoy.io if you have any concerns.'
 		}
 	];
+
 	return (
 		<main>
 			<section className="pt-214px px-20px">
-				<h1 className="text-center font-bold text-32 desktop:text-[42px] desktop:leading-[48px] mb-16px max-w-[1020px] m-auto">Usage Pricing, no surprises.</h1>
-				<p className="text-center text-gray-600 text-16 max-w-[561px] m-auto mb-66px">
+				<h1 className="text-center font-bold text-32 desktop:text-[42px] desktop:leading-[48px] mb-24px max-w-[1020px] m-auto">Usage Pricing, no surprises.</h1>
+				<p className="text-center text-gray-600 text-14 max-w-[561px] m-auto mb-66px">
 					All the tools you need to take control and manage your webhook events infrastructure, from your hubby project to scale.
 				</p>
 
@@ -257,9 +258,9 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 						<h2 className="text-32 font-bold mb-46px desktop:mb-76px">Available on all plans</h2>
 						<ul className="max-w-[523px]">
 							{features.map(feature => (
-								<li className="list-check pb-6px mb-26px flex items-start" key={feature}>
+								<li className="list-check pb-6px mb-26px flex items-center text-14 leading-8" key={feature}>
 									<div className="h-24px w-24px mr-24px">
-										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path
 												opacity="0.15"
 												fillRule="evenodd"
@@ -327,9 +328,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 						<div>
 							{questions.slice(0, 5).map((question, index) => (
 								<div className="mb-16px" key={index}>
-									<button
-										className="flex items-center text-16 font-semibold justify-between mb-16px w-full"
-										onClick={() => setOpenQuestion(question.question)}>
+									<button className="flex items-center text-16 font-semibold justify-between mb-16px w-full" onClick={() => setOpenQuestion(question.question)}>
 										{question.question}
 										<Image
 											src={AngleDownIcon}
@@ -346,9 +345,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 						<div>
 							{questions.slice(5, 9).map((question, index) => (
 								<div className="mb-16px" key={index}>
-									<button
-										className="flex items-center text-16 font-semibold justify-between mb-16px w-full"
-										onClick={() => setOpenQuestion(question.question)}>
+									<button className="flex items-center text-16 font-semibold justify-between mb-16px w-full" onClick={() => setOpenQuestion(question.question)}>
 										{question.question}
 										<Image
 											src={AngleDownIcon}
@@ -369,13 +366,13 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 			<section className="px-20px pb-100px desktop:pb-130px">
 				<div className="mt-100px desktop:mt-50px max-w-[1000px] w-full m-auto bg-[url(/static/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
 					<h1 className="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px desktop:mb-16px">Need something else?</h1>
-					<p className="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">
+					<p className="text-center text-14 text-white-100 max-w-[806px] m-auto">
 						Get in touch with us today to find out how best we can support your business and work needs.
 					</p>
 					<a
 						target="_blank"
 						href="https://calendly.com/d/d6k-jw2-wgj/convoy-user-demo"
-						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
+						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-14 font-medium flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Contact Sales
 						<Image src={ArrowRightIcon} className="ml-12px" alt="arrow icon right" />
 					</a>

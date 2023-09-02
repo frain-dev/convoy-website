@@ -86,8 +86,8 @@ export default function Footer() {
 									<Image src="/svg/logo.svg" height={29} width={110} alt="logo" />
 								</div>
 
-								<h4 className="mt-22px text-16 font-semibold mb-10px">Address</h4>
-								<p className="text-14 mb-24px">2261 Market Street, San Francisco, CA 94114</p>
+								<h4 className="mt-22px text-14 font-semibold mb-10px">Address</h4>
+								<p className="text-12 mb-24px">2261 Market Street, San Francisco, CA 94114</p>
 
 								<ul className="socials flex">
 									<li className="w-42px h-42px bg-white-8  flex items-center justify-center rounded-[50%] mr-16px">
@@ -120,7 +120,7 @@ export default function Footer() {
 
 							{footerLinks.map((section, index) => (
 								<ul key={index} className="group">
-									<h3 className="text-16 footer:border-b footer:border-b-white-24 group-hover:footer:mb-0 footer:pb-8px font-semibold footer:font-normal mb-20px flex items-center justify-between">
+									<h3 className="text-14 footer:border-b footer:border-b-white-24 group-hover:footer:mb-0 footer:pb-8px font-semibold footer:font-normal mb-20px flex items-center justify-between">
 										{section.title}
 										<img src="/svg/angle-down-icon.svg" alt="accordion icon" className="invisible footer:visible" />
 									</h3>
@@ -129,12 +129,12 @@ export default function Footer() {
 											key={i}
 											className="footer:h-0 footer:overflow-hidden group-hover:footer:h-fit footer:bg-white-8 group-hover:footer:first-of-type:pt-20px group-hover:footer:last-of-type:mb-12px">
 											{!link.isExternal && (
-												<Link href={link.link} className="text-14 font-normal mb-16px block footer:pl-4px">
+												<Link href={link.link} className="text-12 font-normal mb-16px block footer:pl-4px">
 													{link.name}
 												</Link>
 											)}
 											{link.isExternal && (
-												<a target="_blank" href={link.link} className="text-14 font-normal mb-16px block footer:pl-4px">
+												<a target="_blank" href={link.link} className="text-12 font-normal mb-16px block footer:pl-4px">
 													{link.name}
 												</a>
 											)}
@@ -148,7 +148,7 @@ export default function Footer() {
 							<div className="w-full p-0 desktop:max-w-[430px] desktop:flex-row desktop:justify-around desktop:items-center">
 								<div className="flex justify-between items-center w-full m-0">
 									<div className="order-1">
-										<p className="text-14 text-left mt-24px">No spam! Just articles, events, and talks.</p>
+										<p className="text-12 text-left mt-24px">No spam! Just articles, events, and talks.</p>
 									</div>
 									<img src="/gif/mailbox.gif" className="w-124px order-2" alt="mailbox animation" />
 								</div>
@@ -176,7 +176,7 @@ export default function Footer() {
 							</div>
 						</div>
 
-						<p className="mt-24px text-left desktop:text-right">Copyright {currentYear}, All Rights Reserved</p>
+						<p className="mt-24px text-left desktop:text-right text-12">Copyright {currentYear}, All Rights Reserved</p>
 					</div>
 				</footer>
 			)}

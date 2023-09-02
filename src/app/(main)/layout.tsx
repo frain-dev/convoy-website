@@ -86,7 +86,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 		<html lang="en" style={{ scrollBehavior: 'smooth' }}>
 			<body suppressHydrationWarning={true}>
 				<Header></Header>
+
 				{children}
+
 				<BlogSlide featurePosts={filteredArticles.slice(0, 7)}></BlogSlide>
 				<Footer></Footer>
 
