@@ -55,7 +55,7 @@ export default function Header() {
 	return (
 		<header>
 			{!pathname.includes('/docs/') && (
-				<nav className="w-full m-auto px-20px pt-60px pb-20px z-50 fixed left-[50%] -translate-x-1/2 translate-y-0 nav-bar-break:pt-50px nav-bar-break:pb-12px transition-all duration-300 bg-white-100 shadow-nav backdrop-blur-[18]">
+				<nav className="w-full m-auto px-20px pt-60px pb-20px z-50 fixed left-[50%] -translate-x-1/2 translate-y-0 nav-bar-break:pt-50px nav-bar-break:pb-12px transition-all duration-300 bg-white-100 shadow">
 					<section className="fixed top-0 left-0 bg-primary-400 w-full h-40px py-8px px-12px flex items-center justify-center font-medium text-12 text-white-100 nav-bar-break:text-14">
 						<span>Give us a star on GitHub</span>
 						<a className="h-20px w-20px mx-12px hover:cursor-pointer" target="_blank" href="https://github.com/frain-dev/convoy">
@@ -109,14 +109,14 @@ export default function Header() {
 									{link.type === 'route' && link.route && (
 										<Link
 											className={`text-14 font-medium transition-all duration-300 hover:text-gray-800 ${
-												pathname == link.route ? 'text-primary-400' : 'text-gray-600'
+												pathname == link.route ? 'text-primary-400' : 'text-gray-500'
 											}`}
 											href={link.route}>
 											{link.name}
 										</Link>
 									)}
 									{link.type === 'link' && link.route && (
-										<a className="text-14 text-gray-600 font-medium transition-all duration-300 hover:text-black" target="_blank" href={link.route}>
+										<a className="text-14 text-gray-500 font-medium transition-all duration-300 hover:text-black" target="_blank" href={link.route}>
 											{link.name}
 										</a>
 									)}
@@ -124,20 +124,20 @@ export default function Header() {
 										<div>
 											<a
 												className={`text-14 font-medium flex items-center justify-between transition-all duration-300 hover:text-black hover:cursor-pointer group ${
-													isChildRouteActive(link.name) ? 'text-primary-400' : 'text-gray-600'
+													isChildRouteActive(link.name) ? 'text-primary-400' : 'text-gray-500'
 												}`}>
 												{link.name}
 												<svg
 													width="16"
 													height="16"
 													className={`transition-all duration-300 group-hover:fill-black ${
-														isChildRouteActive(link.name) ? 'fill-primary-400' : 'fill-gray-600 '
+														isChildRouteActive(link.name) ? 'fill-primary-400' : 'fill-gray-500 '
 													}`}>
 													<use xlinkHref="#angle-down-icon"></use>
 												</svg>
 											</a>
 											{currentRoute === link.name && (
-												<div className="nav-bar-break:absolute nav-bar-break:top-[100%] nav-bar-break:min-w-[198px] w-fit bg-white-100 rounded-10px nav-bar-break:shadow-dropdown nav-bar-break:z-10 transition-all ease-in-out duration-300 nav-bar-break:h-fit">
+												<div className="nav-bar-break:absolute nav-bar-break:top-[100%] shadow nav-bar-break:min-w-[198px] w-fit bg-white-100 rounded-10px nav-bar-break:shadow-dropdown nav-bar-break:z-10 transition-all ease-in-out duration-300 nav-bar-break:h-fit">
 													<ul className="nav-bar-break:pl-20px nav-bar-break:pb-20px">
 														{link.children?.map(subRoute => (
 															<li
@@ -150,14 +150,14 @@ export default function Header() {
 																	setShowMenu(false);
 																}}>
 																{subRoute.type === 'route' && (
-																	<Link className="text-12 text-gray-600 transition-all duration-300 hover:text-black" href={subRoute.route}>
+																	<Link className="text-12 text-gray-500 transition-all duration-300 hover:text-black" href={subRoute.route}>
 																		{subRoute.name}
 																	</Link>
 																)}
 
 																{subRoute.type !== 'route' && (
 																	<a
-																		className="text-12 text-gray-600 transition-all duration-300 hover:text-black flex items-center"
+																		className="text-12 text-gray-500 transition-all duration-300 hover:text-black flex items-center"
 																		target="_blank"
 																		href={subRoute.route}>
 																		{subRoute.name}

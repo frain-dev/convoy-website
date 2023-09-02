@@ -9,8 +9,8 @@ export default function Subscribe() {
 	const [submittingEmail, setIsSubmittingEmail] = useState(false);
 	const inputRef = useRef(null);
 
-	const subscribeToNewsletter = async (event:any) => {
-        event.preventDefault()
+	const subscribeToNewsletter = async (event: any) => {
+		event.preventDefault();
 		setIsSubmittingEmail(true);
 		try {
 			const response = await fetch('/.netlify/functions/subscribe', {
@@ -24,7 +24,7 @@ export default function Subscribe() {
 				redirect: 'follow',
 				referrerPolicy: 'no-referrer',
 				body: JSON.stringify({
-					email:  inputRef.current !== null ? inputRef.current['value'] : ''
+					email: inputRef.current !== null ? inputRef.current['value'] : ''
 				})
 			});
 			await response.json();
@@ -38,8 +38,8 @@ export default function Subscribe() {
 			<form className="bg-white-100 rounded-10px p-40px md:col-span-2" onSubmit={subscribeToNewsletter}>
 				<Image src={SubscribeIcon} className="mb-20px" alt="subscribe icon" />
 
-				<h3 className="font-bold mb-10px">Subscribe to our newsletter</h3>
-				<p className="text-16 mb-44px">We are constantly innovating, join the companies staying on top of Convoy updates.</p>
+				<h3 className="font-semibold mb-10px text-gray-600">Subscribe to our newsletter</h3>
+				<p className="text-14 text-gray-500 max-w-[400px] mb-44px">We are constantly innovating, join the companies staying on top of Convoy updates.</p>
 
 				<input
 					id="email"
@@ -52,12 +52,13 @@ export default function Subscribe() {
 				<div className="flex justify-end">
 					<button
 						type="submit"
-						className="flex items-center justify-center py-12px desktop:py-16px px-38px desktop:px-42px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-400 text-white-100 xs:mb-20px shadow-sm xs:w-full">
+						className="flex items-center justify-center py-12px px-16px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-400 text-white-100 xs:mb-20px shadow-sm xs:w-full">
 						Subscribe
 						<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right icon" />
 					</button>
 				</div>
 			</form>
+
 			<div className="bg-white-100 rounded-10px p-40px">
 				<div className="mb-20px">
 					<svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,12 +70,12 @@ export default function Subscribe() {
 					</svg>
 				</div>
 
-				<h3 className="font-bold mb-10px">Join our developer community</h3>
-				<p className="text-16 desktop:h-116px">Convoy is open source. Follow us on Twitter, star our Github repo and join our Slack community!</p>
-				<div className="flex items-center mt-20px xs:mb-20px">
+				<h3 className="font-semibold mb-10px">Join our developer community</h3>
+				<p className="text-14 text-gray-500 mb-106px">Convoy is open source. Follow us on Twitter, star our Github repo and join our Slack community!</p>
+				<div className="flex items-center justify-between mt-20px xs:mb-20px">
 					<Link
 						href="https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email"
-						className="flex items-center py-12px desktop:py-16px px-20px desktop:px-32px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-400 text-white-100 mr-20px shadow-sm">
+						className="flex items-center py-12px px-16px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-400 text-white-100 mr-20px shadow-sm">
 						Join our Slack
 						<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right icon" />
 					</Link>

@@ -10,14 +10,14 @@ export default function BlogPage({ posts, blogData, children }: any) {
 			<div className="max-w-[780px] w-full m-auto px-20px desktop:p-0">
 				{!blogData.isError && (
 					<div className="flex w-full flex-col desktop:flex-row desktop:items-center desktop:justify-between">
-						<div className="font-medium text-14 text-grey-80">
+						<div className="font-medium text-12 text-grey-80">
 							<Link href="/blog">Blog</Link>
 
 							<span className="mx-16px">|</span>
-							<span className="text-primary-400">{blogData.primary_tag}</span>
+							<span className="text-primary-400 text-12">{blogData.primary_tag}</span>
 						</div>
 
-						<div className="font-medium text-14 flex items-center mt-16px desktop:mt-0">
+						<div className="font-medium text-12 flex items-center mt-16px desktop:mt-0 text-gray-600">
 							{blogData.readTime} min read
 							<span className="mx-6px mb-2px">
 								<svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,22 +28,25 @@ export default function BlogPage({ posts, blogData, children }: any) {
 						</div>
 					</div>
 				)}
-				<h3 className="font-bold text-black mt-16px mb-40px desktop:mt-30px desktop:mb-26px desktop:text-[48px] desktop:leading-[58px]">{blogData.title}</h3>
+				<h3 className="font-bold text-gray-800 mt-16px mb-40px desktop:mt-30px desktop:mb-26px desktop:text-[34px] desktop:leading-[58px]">{blogData.title}</h3>
 
 				{!blogData.isError && (
-					<div className="flex items-end justify-between mb-56px desktop:mb-44px">
-						<a target="_blank" href={`${blogData.primary_author?.twitter ? 'http://twitter.com/' + blogData.primary_author?.twitter : ''}`} className="flex items-start">
+					<div className="flex items-end justify-between mb-30px">
+						<a
+							target="_blank"
+							href={`${blogData.primary_author?.twitter ? 'http://twitter.com/' + blogData.primary_author?.twitter : ''}`}
+							className="flex items-start">
 							<div className="w-40px h-40px rounded-[50%] mr-16px overflow-hidden flex items-center bg-[#f5f5f5]">
 								<Image src={`/profile-images/${blogData.primary_author.name}.png`} width={42} height={42} className="rounded-100px mr-12px" alt="author image" />
 							</div>
 							<div>
-								<h6 className="font-semibold text-primary-400 mb-2px">{blogData.primary_author.name}</h6>
-								<p className="font-normal text-14 mb-6px text-grey-80">{blogData.primary_author.meta_title} Convoy</p>
+								<h6 className="font-semibold text-primary-400 mb-2px text-12">{blogData.primary_author.name}</h6>
+								<p className="font-normal text-12 mb-6px text-grey-80">{blogData.primary_author.meta_title} Convoy</p>
 							</div>
 						</a>
 
 						<div>
-							<p className="mb-8px text-14 text-grey-80">Share to:</p>
+							<p className="mb-8px text-12 text-grey-80">Share to:</p>
 							<ul className="flex">
 								<li className="w-32px h-32px bg-grey-80 bg-opacity-10 flex items-center justify-center rounded-[50%] mr-16px">
 									<Link

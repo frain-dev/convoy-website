@@ -66,7 +66,7 @@ export default function Community() {
 						<h1 className="text-white-100 text-32 md:text-[56px] md:leading-[80px] max-w-[680px] font-bold footer:text-center">
 							Open-source Gateway for incoming and outgoing webhooks
 						</h1>
-						<p className="text-white-100 max-w-[660px] text-14 md:text-18 my-16px footer:text-center">
+						<p className="text-white-100 max-w-[660px] text-16 mobile:text-14 leading-9 my-16px footer:text-center">
 							Everything you need to manage webhooks in one place with security, reliability and scalability already figured out from day one.
 						</p>
 						<div className="flex footer:justify-center mt-40px">
@@ -78,6 +78,7 @@ export default function Community() {
 							</a>
 						</div>
 					</div>
+
 					<div className="md:bg-white-100 md:shadow-[0px_2px_4px_rgba(12,26,75,0.04),0px_4px_20px_-2px_rgba(50,50,71,0.08)] rounded-8px p-20px md:py-30px md:px-60px max-w-[565px] w-full">
 						<div className="hidden md:block rounded-10px max-w-[360px] h-8px bg-[#F5F4F5] my-30px m-auto"></div>
 						{setupSteps.map(step => (
@@ -100,7 +101,7 @@ export default function Community() {
 			<section className="bg-white-100 px-20px desktop:mt-160px">
 				<div className="rounded-[20px] desktop:rounded-[70px] mx-auto bg-[linear-gradient(180deg,#2C2F3E_0%,#422F41_100%)] max-w-[1350px]">
 					<div className="w-full md:bg-[url(/static/Settings.png)] bg-no-repeat bg-right desktop:bg-contain rounded-[70px] min-h-[200px] py-30px desktop:py-56px px-20px desktop:px-70px">
-						<p className="font-bold text-white-100 text-24 desktop:text-32 max-w-[690px]">
+						<p className="font-bold text-white-100 text-24 desktop:text-30 max-w-[690px]">
 							Engineering teams that value efficiency use Convoy to manage webhook events.
 						</p>
 
@@ -173,8 +174,8 @@ export default function Community() {
 								<img src={`/svg/${feature.img}.svg`} className="mr-14px" alt={feature.title} />
 
 								<div>
-									<h2 className="font-bold mb-12px desktop:mb-24px footer:text-14">{feature.title}</h2>
-									<p className="text-12 desktop:text-18 text-gray-600">{feature.body}</p>
+									<h2 className="font-bold mb-12px desktop:mb-24px text-gray-600 text-20">{feature.title}</h2>
+									<p className="text-14 text-gray-500 leading-7">{feature.body}</p>
 								</div>
 							</div>
 						))}
@@ -205,17 +206,17 @@ export default function Community() {
 
 			<section className="px-20px pb-100px desktop:pb-130px">
 				<div className="mt-100px desktop:mt-130px max-w-[1000px] w-full m-auto bg-[url(/static/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
-					<h1 className="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px max-w-[562px] m-auto">
+					<h1 className="text-30 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px max-w-[562px] m-auto">
 						Start sending and receiving webhooks now, risk free
 					</h1>
-					<p className="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">
+					<p className="text-center text-14 text-white-100 max-w-[756px] m-auto">
 						Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time
 						and get started today.
 					</p>
 					<a
 						target="_blank"
 						href="https://github.com/frain-dev/convoy#installation-getting-started"
-						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
+						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 font-medium flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Get Started
 						<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right" />
 					</a>

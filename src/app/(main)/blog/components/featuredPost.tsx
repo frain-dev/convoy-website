@@ -9,7 +9,7 @@ export default function FeaturedPost({ postData }: any) {
 		<div>
 			<div
 				className="
-                rounded-12px
+                rounded-[20px]
                 shadow-card
                 max-w-[970px]
                 bg-white-100
@@ -18,32 +18,29 @@ export default function FeaturedPost({ postData }: any) {
                 px-12px
                 desktop:pl-56px desktop:pt-26px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
                 mobile:mb-48px">
-				<div className="desktop:max-w-[470px] p-10px">
+				<div className="desktop:max-w-[470px] p-10px pr-24px">
 					<div className="flex justify-between items-center mb-24px">
-						<div className="py-2px px-16px bg-[#0747a6] bg-opacity-10 rounded-2px font-medium text-14 text-primary-400 uppercase">FEATURED</div>
-						<div className="font-medium text-14">{formatDate(postData.published_at)}</div>
+						<div className="py-2px px-16px bg-[#0747a6] bg-opacity-10 rounded-2px font-medium text-12 text-primary-400 uppercase">FEATURED</div>
+						<div className="font-medium text-12">{formatDate(postData.published_at)}</div>
 					</div>
 
 					<Link href={`/blog/${postData.slug}`}>
-						<h3 className="desktop:text-32 text-26 font-bold mb-16px">{postData.title}</h3>
+						<h3 className="text-26 font-bold mb-16px">{postData.title}</h3>
 					</Link>
 
-					<p className="font-light text-gray-500 text-16 mb-16px overflow-hidden text-ellipsis">{postData.description}</p>
+					<p className="font-light text-gray-500 text-14 mb-50px overflow-hidden text-ellipsis">{postData.description}</p>
 
-					<div className="flex flex-col flex-wrap my-26px desktop:items-end desktop:flex-row desktop:justify-between">
-						<a
-							href={postData.primary_author.twitter ? 'http://twitter.com/' + postData.primary_author.twitter : ''}
-							target="_blank"
-							className="flex items-start mb-40px desktop:mb-0">
+					<div className="flex flex-wrap my-26px desktop:items-end items-center justify-between">
+						<a href={postData.primary_author.twitter ? 'http://twitter.com/' + postData.primary_author.twitter : ''} target="_blank" className="flex items-start">
 							<div className="w-40px h-40px rounded-[50%] mr-16px overflow-hidden flex items-center">
 								<img src={`/profile-images/${postData.primary_author.name}.png`} className="w-full mr-12px rounded-[50%]" alt="author imge" />
 							</div>
 							<div>
-								<h5 className="font-medium mb-4px">{postData.primary_author.name}</h5>
-								<p className="text-14 text-grey-80">Convoy</p>
+								<h5 className="font-medium mb-4px text-12">{postData.primary_author.name}</h5>
+								<p className="text-12 text-grey-80">Convoy</p>
 							</div>
 						</a>
-						<Link href={'/blog/' + postData.slug} className="flex items-center text-primary-400 font-medium text-14">
+						<Link href={'/blog/' + postData.slug} className="flex items-center text-primary-400 font-medium text-12">
 							Read More
 							<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-6px">
 								<path

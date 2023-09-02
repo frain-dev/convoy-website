@@ -56,7 +56,7 @@ export default function Cloud() {
 					Make Webhooks management our problem, not yours
 				</h1>
 
-				<p className="desktop:text-center text-gray-25 max-w-[841px] mx-auto text-18 mobile:text-14 mt-16px">
+				<p className="desktop:text-center text-gray-25 max-w-[800px] mx-auto text-16 mobile:text-14 mt-16px leading-7">
 					Reliable Webhooks Gateway with everything you need in one place including multi-region deployment, high availability and autoscaling.
 				</p>
 				<div className="flex desktop:justify-center xs:flex-col mt-40px">
@@ -148,7 +148,7 @@ export default function Cloud() {
 						</div>
 						First choice for developers
 					</div>
-					<h1 className="text-[48px] leading-[56px] font-bold footer:text-center max-w-[600px]">Why Engineers choose Convoy</h1>
+					<h1 className="text-[48px] leading-[56px] font-bold footer:text-center max-w-[600px] text-gray-800">Why Engineers choose Convoy</h1>
 
 					<div className="flex justify-between flex-wrap gap-6 mt-80px desktop:mt-120px">
 						<div className="desktop:max-w-[340px]">
@@ -159,7 +159,7 @@ export default function Cloud() {
 								className="mb-24px rounded-10px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]"
 								alt="everything-you-need"
 							/>
-							<p className="text-14 desktop:text-18 text-gray-600">Fully managed global cloud infrastructure with high availability and resilience baked in.</p>
+							<p className="text-14 leading-8 text-gray-600">Fully managed global cloud infrastructure with high availability and resilience baked in.</p>
 						</div>
 						<div className="desktop:max-w-[400px]">
 							<Image
@@ -169,7 +169,7 @@ export default function Cloud() {
 								className="mb-24px rounded-10px shadow-[0px_22px_24px_rgba(43,214,123,0.2)]"
 								alt="excellent-rate-limiting"
 							/>
-							<p className="text-14 desktop:text-18 max-w-[333px] text-gray-600">Stay compliant by choosing the region we host and store your webhooks data.</p>
+							<p className="text-14 leading-8 max-w-[333px] text-gray-600">Stay compliant by choosing the region we host and store your webhooks data.</p>
 						</div>
 						<div className="desktop:max-w-[340px]">
 							<Image
@@ -179,7 +179,7 @@ export default function Cloud() {
 								className="mb-24px rounded-10px shadow-[0px_22px_24px_rgba(247,227,109,0.2)]"
 								alt="transparent-pricing"
 							/>
-							<p className="text-14 desktop:text-18 text-gray-600">Transparent usage-based pricing, keep costs under control by paying for what you use.</p>
+							<p className="text-14 leading-8 text-gray-600">Transparent usage-based pricing, keep costs under control by paying for what you use.</p>
 						</div>
 					</div>
 				</div>
@@ -197,7 +197,7 @@ export default function Cloud() {
 					</div>
 					Straight-forward pricing, complete peace of mind
 				</div>
-				<h1 className="text-center font-bold max-w-[840px] desktop:text-[48px] desktop:leading-[58px] mt-16px mx-auto mb-80px desktop:mb-198px">
+				<h1 className="text-center font-bold max-w-[840px] desktop:text-[42px] desktop:leading-[58px] mt-16px mx-auto mb-80px desktop:mb-198px text-gray-800">
 					One powerful gateway for all your webhooks.
 				</h1>
 
@@ -206,7 +206,7 @@ export default function Cloud() {
 						<div className={`order-2 px-20px xs:px-10px desktop:px-0 ${index === 1 ? 'desktop:order-2' : 'desktop:order-1'}`}>
 							<h3 className="font-semibold text-26 mb-40px">{feature.title}</h3>
 							{feature.features.map(feat => (
-								<div className="flex items-start mb-18px" key={feat}>
+								<div className="flex items-center mb-34px" key={feat}>
 									<div className="mr-18px">
 										<svg width="38" height="37" viewBox="0 0 38 37" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<rect x="0.5" y="0.5" width="37" height="36" rx="18" fill="#EDF2F7" />
@@ -217,7 +217,7 @@ export default function Cloud() {
 											/>
 										</svg>
 									</div>
-									<p className="text-16 text-gray-600 mobile:text-14 md:max-w-[542px]">{feat}</p>
+									<p className="text-14 text-gray-600 md:max-w-[542px]">{feat}</p>
 								</div>
 							))}
 						</div>
@@ -251,16 +251,16 @@ export default function Cloud() {
 
 			<section className="px-20px pb-100px desktop:pb-130px">
 				<div className="mt-100px desktop:mt-130px max-w-[1000px] w-full m-auto bg-[url(/static/cta.png)] bg-no-repeat bg-cover bg-top bg-blend-normal bg-[#422F41] rounded-16px py-56px px-20px">
-					<h1 className="text-32 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px max-w-[562px] m-auto">
+					<h1 className="text-30 desktop:text-[40px] text-white-100 font-bold tracking-[0.02em] text-center mb-20px max-w-[562px] m-auto">
 						Start sending and receiving webhooks now, risk free
 					</h1>
-					<p className="text-center text-14 desktop:text-18 text-white-100 max-w-[806px] m-auto">
+					<p className="text-center text-14 text-white-100 max-w-[756px] m-auto leading-7">
 						Convoy provides you with fast, secure and reliable webhooks infrastructure so you can focus on building the actual tech. Save yourself some engineering time
 						and get started today.
 					</p>
 					<Link
 						href="#home"
-						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 desktop:text-18 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
+						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-14 font-medium flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Request Access
 						<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right icon" />
 					</Link>

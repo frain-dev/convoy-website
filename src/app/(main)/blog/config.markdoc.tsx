@@ -73,7 +73,7 @@ const config: Config = {
 const components = {
 	Heading,
 	Paragraph: ({ children }: any) => {
-		return <div className="text-14 desktop:text-16 text-grey-80 mb-32px">{children}</div>;
+		return <p className="text-14 leading-7 text-gray-500 mb-32px">{children}</p>;
 	},
 	Strong: ({ children }: any) => {
 		return <strong className="font-semibold">{children}</strong>;
