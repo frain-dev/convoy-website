@@ -155,6 +155,7 @@ module.exports = {
 				800: '#1D2939',
 				900: '#101828',
 				normal: 'var(--gray-normal)',
+				light: 'var(--gray-light)',
 				strong: 'var(--gray-strong)'
 			},
 			grey: {

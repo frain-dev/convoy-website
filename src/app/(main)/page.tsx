@@ -92,8 +92,8 @@ export default function Home() {
 					We are backed by
 					<Image src="/svg/y-combinator.svg" width={24} height={24} className="ml-16px" alt="y-combinator" />
 				</div>
-				<h1 className="text-center desktop:text-[56px] desktop:leading-[80px] font-bold">Open-source Webhooks Gateway for</h1>
-				<h1 className="text-center desktop:text-[56px] desktop:leading-[80px] font-bold text-primary-400">Efficient Engineers</h1>
+				<h1 className="text-center desktop:text-[50px] desktop:leading-[80px] font-bold">Open-source Webhooks Gateway for</h1>
+				<h1 className="text-center desktop:text-[50px] desktop:leading-[80px] font-bold text-primary-400">Efficient Engineers</h1>
 				<p className="text-center max-w-[950px] mx-auto text-16 leading-8 mobile:text-14 mt-16px text-gray-600">
 					Securely Send, Receive and Manage millions of Webhooks Reliably with robust support for Retries, Rate Limiting, Static IPs, Circuit Breaking, Rolling Secrets
 					and more.

@@ -10,6 +10,7 @@
 	--color-white: 255, 255, 255;
 	--gray-strong: #101828;
 	--gray-normal: #475467;
+	--gray-light: #667085;
 }
 
 // @media (prefers-color-scheme: dark) {
@@ -17,6 +18,7 @@
 // 		--color-white: 255, 255, 255;
 // 		--gray-strong: #ffffff;
 // 		--gray-normal: #ffffff;
+//		--gray-light: #D0D5DD;
 // 	}
 // }
 
@@ -124,11 +126,11 @@ h6 {
 	background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(88deg, rgba(237, 242, 247, 1) 40%, rgba(254, 200, 75, 1) 100%) border-box;
 }
 .border-red {
-	background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(88deg, rgba(237, 242, 247, 1) 40%, rgba(253,162,155,1) 100%) border-box;
+	background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(88deg, rgba(237, 242, 247, 1) 40%, rgba(253, 162, 155, 1) 100%) border-box;
 }
 .border-green {
-	background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(88deg, rgba(237, 242, 247, 1) 40%, rgba(169,239,197,1) 100%) border-box;
+	background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(88deg, rgba(237, 242, 247, 1) 40%, rgba(169, 239, 197, 1) 100%) border-box;
 }
 .border-black {
-	background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(88deg, rgba(237, 242, 247, 1) 40%, rgba(102,112,133,1) 100%) border-box;
+	background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(88deg, rgba(237, 242, 247, 1) 40%, rgba(102, 112, 133, 1) 100%) border-box;
 }
