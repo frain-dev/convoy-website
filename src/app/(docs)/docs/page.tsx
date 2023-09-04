@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import DocsBanner from '../../../../public/svg/doc-banner.svg';
 
 export default function DocsIndex() {
 	const sections = [
@@ -62,16 +60,12 @@ export default function DocsIndex() {
 				</p>
 
 				<div className="max-w-[844px] w-full mx-auto">
-					<div className="flex mobile:flex-wrap gap-32px">
+					<div className="flex flex-wrap gap-32px">
 						{sections.slice(0, 2).map((section, i) => (
-							<div
-								className={`rounded-12px border border-transparent p-16px w-full ${section.class} ${
-									i === 0 ? 'max-w-[500px]' : 'max-w-[310px]'
-								} mobile:max-w-[unset]`}
-								key={i}>
+							<div className={`rounded-12px border p-16px w-full border-primary-50 ${i === 0 ? 'max-w-[500px]' : 'max-w-[310px]'} mobile:max-w-[unset]`} key={i}>
 								<h5 className="text-gray-normal font-semibold">{section.title}</h5>
-								<p className="text-gray-normal mt-16px text-12 min-h-[40px] mb-30px">{section.description}</p>
-								<Link href={section.link} className={`rounded-8px p-10px text-10 flex items-center w-fit ${section.buttonClass}`}>
+								<p className="text-gray-light mt-16px text-12 min-h-[40px] mb-30px">{section.description}</p>
+								<Link href={section.link} className={`rounded-8px p-10px text-10 flex items-center shadow w-fit ${section.buttonClass}`}>
 									Read More
 									<span className="ml-10px">
 										<svg width="18" height="18" className={`mr-8px transition-all duration-300 ${section.iconStroke} `}>
@@ -84,11 +78,11 @@ export default function DocsIndex() {
 					</div>
 					<div className="flex flex-wrap gap-32px mt-32px mb-50px">
 						{sections.slice(2, 6).map((section, i) => (
-							<div className={`rounded-12px border border-transparent p-16px max-w-[406px] mobile:max-w-[unset] w-full ${section.class}`} key={i}>
+							<div className={`rounded-12px border p-16px max-w-[406px] mobile:max-w-[unset] w-full  border-primary-50`} key={i}>
 								<h5 className="text-gray-normal font-semibold">{section.title}</h5>
-								<p className="text-gray-normal mt-16px text-12 min-h-[60px] mb-30px">{section.description}</p>
+								<p className="text-gray-light mt-16px text-12 min-h-[60px] mb-30px">{section.description}</p>
 								{i === 3 && (
-									<a target="_blank" href={section.link} className={`rounded-8px p-10px text-10 flex items-center w-fit ${section.buttonClass}`}>
+									<a target="_blank" href={section.link} className={`rounded-8px p-10px text-10 flex items-center w-fit shadow ${section.buttonClass}`}>
 										Read More
 										<span className="ml-10px">
 											<svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,7 +95,7 @@ export default function DocsIndex() {
 									</a>
 								)}
 								{i !== 3 && (
-									<Link href={section.link} className={`rounded-8px p-10px text-10 flex items-center w-fit ${section.buttonClass}`}>
+									<Link href={section.link} className={`rounded-8px p-10px text-10 flex items-center w-fit shadow ${section.buttonClass}`}>
 										Read More
 										<span className="ml-10px">
 											<svg width="18" height="18" className={`mr-8px transition-all duration-300 ${section.iconStroke} `}>

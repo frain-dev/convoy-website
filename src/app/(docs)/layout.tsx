@@ -80,11 +80,11 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 									{data.map((item, i) => (
 										<li className="mb-34px" key={i}>
 											{item.children && (
-												<button
-													className={`flex items-center text-12 transition-all duration-300 ${
+												<Link
+													href={item.children[0].link}
+													className={`flex justify-items-center transition-all duration-300 text-12 ${
 														isChildRouteActive(item.title) ? 'text-primary-400' : 'text-gray-500'
-													} `}
-													onClick={() => showChildren(item.title)}>
+													} `}>
 													<svg
 														width="18"
 														height="18"
@@ -101,7 +101,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 													</svg>
 													{item.icon === 'introduction'}
 													{item.title}
-												</button>
+												</Link>
 											)}
 											{!item.children && (
 												<Link

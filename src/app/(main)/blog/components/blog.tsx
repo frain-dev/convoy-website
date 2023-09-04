@@ -14,7 +14,7 @@ export default function Blog({ articles }: any) {
 	const [currentTag, setCurrentTag] = useState('All Posts');
 	const [showCategories, setShowCategories] = useState(false);
 	const tags = ['All Posts', 'Product Update', 'News', 'Engineering', 'Tutorial', 'Open Thoughts', 'Customer Stories'];
-	
+
 	const subscribeToNewsletter = async (event: any) => {
 		event.preventDefault();
 		setIsSubmittingEmail(true);
@@ -53,13 +53,13 @@ export default function Blog({ articles }: any) {
 	}, [searchParams]);
 	return (
 		<>
-			<div className="pt-150px pb-100px max-w-[1237px] w-full m-auto">
+			<div className="pt-150px pb-100px max-w-[1300px] w-full m-auto">
 				<div className="m-auto pb-0 flex justify-between pt-0">
 					<aside className="w-240px hidden desktop:sticky desktop:top-150px desktop:block desktop:pl-20px desktop:pr-32px">
 						<ul className="p-0">
 							<h6 className="font-bold text-gray-800 mb-18px">CATEGORIES</h6>
 							{tags.map((tag, i) => (
-								<li key={i} className="font-medium text-14 mb-30px text-gray-500">
+								<li key={i} className="font-medium text-12 mb-30px text-gray-500">
 									<Link href={tag !== 'All Posts' ? '/blog?tag=' + tag : '/blog'}>{tag}</Link>
 								</li>
 							))}
