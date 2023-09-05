@@ -22,7 +22,7 @@ export default function Post({ postData }: any) {
 						<Link href={`/blog/${postData.slug}`}>
 							<h3 className="text-20 font-bold mx-10px desktop:mx-16px mb-24px overflow-hidden text-ellipsis">{postData.title}</h3>
 						</Link>
-						<p className="text-14 leading-7 font-light text-gray-500 mb-20px mx-10px desktop:mx-16px h-96px overflow-hidden text-ellipsis">{postData.description}</p>
+						<p className="text-14 leading-7 font-light text-gray-500 mb-20px mx-10px desktop:mx-16px h-120px overflow-hidden text-ellipsis">{postData.description}</p>
 					</div>
 					<div className="mx-10px desktop:mx-16px mt-18px mb-26px flex justify-between items-center">
 						<a
@@ -30,7 +30,7 @@ export default function Post({ postData }: any) {
 							target="_blank"
 							className="flex items-start desktop:mb-[unset]">
 							<div className="w-40px h-40px rounded-50% mr-16px overflow-hidden flex items-center bg-grey-20">
-								<img src={`/profile-images/${postData.primary_author?.name}.png`} className="w-full mr-12px rounded-[50%]" alt="author imge" />
+								<img src={`/profile-images/${postData.primary_author?.name}.png`} className="w-full mr-12px rounded-[50%]" alt={postData.primary_author?.name} />
 							</div>
 							<div>
 								<h5 className="font-medium mb-4px text-primary-400 text-12">{postData.primary_author?.name}</h5>
