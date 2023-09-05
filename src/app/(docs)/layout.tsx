@@ -1,7 +1,7 @@
 'use client';
 import '../globals.scss';
 import Image from 'next/image';
-import SearchInput from '@/app/components/SearchInput';
+import SearchInput from './docs/components/SearchInput';
 import Link from 'next/link';
 import data from '../data/nav.json';
 import { useState } from 'react';
@@ -52,7 +52,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 									</Link>
 								</div>
 
-								{/* <SearchInput /> */}
+								<SearchInput />
 
 								<div className="flex items-center gap-16px mt-22px">
 									<Link href="https://github.com/frain-dev/convoy" className="bg-transparent flex items-center text-12 text-gray-600">
