@@ -36,8 +36,8 @@ export default function BlogPage({ posts, blogData, children }: any) {
 							target="_blank"
 							href={`${blogData.primary_author?.twitter ? 'http://twitter.com/' + blogData.primary_author?.twitter : ''}`}
 							className="flex items-start">
-							<div className="w-40px h-40px rounded-[50%] mr-16px overflow-hidden flex items-center bg-[#f5f5f5]">
-								<Image src={`/profile-images/${blogData.primary_author.name}.png`} width={42} height={42} className="rounded-100px mr-12px" alt="author image" />
+							<div className="w-40px h-40px rounded-50% mr-16px overflow-hidden flex items-center bg-grey-20">
+								<img src={`/profile-images/${blogData.primary_author?.name}.png`} className="w-full mr-12px rounded-[50%]" alt={blogData.primary_author?.name} />
 							</div>
 							<div>
 								<h6 className="font-semibold text-primary-400 mb-2px text-12">{blogData.primary_author.name}</h6>

@@ -1,7 +1,7 @@
 'use client';
 import '../globals.scss';
 import Image from 'next/image';
-import SearchInput from '@/app/components/SearchInput';
+import SearchInput from './docs/components/SearchInput';
 import Link from 'next/link';
 import data from '../data/nav.json';
 import { useState } from 'react';
