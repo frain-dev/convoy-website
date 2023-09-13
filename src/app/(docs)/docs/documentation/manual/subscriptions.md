@@ -162,10 +162,25 @@ These filters match events based on arithmetic operators. For example, the filte
 }
 ```
 
+#### Array positional filters
+
+These filters match events with payloads that are array either in the root or nested.
+
+```json[$. filter]
+{
+    "$.venues.$.lagos": "lekki"
+}
+```
+
+![Array positional $. filter](/docs-assets/subscription-array-positional-filter.png)
+
+**NB:** Convoy only supports filters with arrays nested up to 3 levels i.e. `$.a.$.b.$.c.$.e` will throw an error
+
 Here's full list of the supported filters:
 | Operator | Supported Type | Description |
 | --- | --- | --- |
 | none | all | Match all |
+| $. | array | Match an array value |
 | $gte | number | Greater than or equal to |
 | $gt | number | Greater than |
 | $lt | number | Less than |
