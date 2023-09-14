@@ -5,8 +5,7 @@ id: forward-proxies
 order: 1
 ---
 
-Configuring Stripe's Smokescreen as a Forward Proxy for Convoy
-==============================================================
+# Configuring Stripe's Smokescreen as a Forward Proxy for Convoy
 
 Stripe's Smokescreen is a powerful tool that can be used as a forward proxy for Convoy, it can be used to achieve Static IPs for your outbound webhook events.
 
@@ -20,7 +19,7 @@ To configure Smokescreen as a forward proxy for Convoy, follow the steps [here](
 
 Start smokcscreen by running:
 
-```shell
+```bash
 smokescreen --listen-port <your-desired-proxy-port>
 ```
 

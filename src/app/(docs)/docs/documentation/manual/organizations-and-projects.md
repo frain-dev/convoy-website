@@ -1,6 +1,6 @@
 ---
 title: Organizations and Projects
-description: "Describe Projects in Convoy"
+description: 'Describe Projects in Convoy'
 id: organizations-and-projects
 order: 10
 ---
@@ -23,7 +23,7 @@ To switch between organizations, open the current organization's settings, or cr
 
 ### Adding new members
 
-In the Community Edition, all users are super users, so all users can invite other team members.
+In the Community Edition, all users are super users, so all users can invite other team members. 
 
 > Before doing this, ensure you have your SMTP configuration set up.
 
@@ -33,42 +33,44 @@ To add a new team member, visit the **teams** page at the top middle of the page
 
 ![Add new teammate](/docs-assets/new-teammate.png)
 
+
 Once the invite is sent, the user will get an email with an invitation link to join the new project. An invitation token is valid for **2 weeks** after which you'd need to generate a new one.
 
 ## Projects
 
 A [project](https://dashboard.getconvoy.io/projects) is a hierarchical namespace for all core resources within Convoy. All events, applications, endpoints, subscriptions and all other critical configurations belong to a project and a project belongs to an organisation.
 
-There are two types of projects; Incoming and Outgoing projects.
+There are two types of projects; Incoming and Outgoing projects. 
 
 ![Incoming and outgoing projects](/docs-assets/in-and-out-projects.png)
-
 ### Incoming project
-
 An incoming project is designed to receive webhooks from third-party party sources like Github, Twilio, Stripe etc. and even custom sources based on any form of verification. It was designed for API consumers.
 
 ### Outgoing project
 
-An outgoing project is designed to publish webhooks to users' endpoints. It is designed for API providers.
+An outgoing project is designed to publish webhooks to users' endpoints. It is designed for API providers. 
 
 ### Configure a Project
 
 ![Project configurations](/docs-assets/project-config.png)
 
 The following are parameters that can be configured on a project.
-| Config | Type | Supported Values | Default |
-|:------------------------: |:---------------: |:-------------------------------------------: |:------------------: |
-| **Signature Details** | | | |
-| Header | String | | X-Convoy-Signature |
-| Hash | String | | SHA512 |
-| **Retry Logic** | | | |
-| Mechanism | String | Linear time retry, Exponential time backoff | Linear time retry |
-| Duration | Duration String | | 5s |
-| Limit | Integer | | 5 |
-| **Rate Limit** | | | |
-| Duration | Duration String | | 5s |
-| Limit | Integer | | 5 |
-| Disable Failing Endpoint | Boolean | | False |
+|          Config          	|       Type      	|               Supported Values              	|       Default      	|
+|:------------------------:	|:---------------:	|:-------------------------------------------:	|:------------------:	|
+|   **Signature Details**  	|                 	|                                             	|                    	|
+|          Header          	|      String     	|                                             	| X-Convoy-Signature 	|
+|           Hash           	|      String     	|                                             	|       SHA512       	|
+|      **Retry Logic**     	|                 	|                                             	|                    	|
+|         Mechanism        	|      String     	| Linear time retry, Exponential time backoff 	|  Linear time retry 	|
+|         Duration         	| Duration String 	|                                             	|         5s         	|
+|           Limit          	|     Integer     	|                                             	|          5         	|
+|      **Rate Limit**      	|                 	|                                             	|                    	|
+|         Duration         	| Duration String 	|                                             	|         5s         	|
+|           Limit          	|     Integer     	|                                             	|          5         	|
+| Disable Failing Endpoint 	|     Boolean     	|                                             	|        False       	|
+
+
+**Note: Setting the Project's Disable Failing Endpoint config to `False` will automatically set all the endpoints for that project with an `inactive` or `pending` state to an `active` state.**
 
 ### Retention policies
 
@@ -85,6 +87,5 @@ All these configurations act as sensible defaults for all subscriptions in a pro
 ### Multiple Projects
 
 There are several practical ways of using projects:
-
 1. **A project per environment:** You can decide to test your integration with a development or staging environment, before going live to a production environment to keep data separate.
 2. **A project per product:** If you have several projects, you can scope them differently on Convoy too.

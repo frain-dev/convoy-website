@@ -5,8 +5,8 @@ id: forward-proxies
 order: 2
 ---
 
-Configuring Nginx as a Forward Proxy for Convoy
-==============================================================
+# Configuring Nginx as a Forward Proxy for Convoy
+
 Nginx is a fast HTTP Proxy Server. It is usually used as a reverse proxy, but it can also serve as a forward proxy.
 
 ## Configuring Nginx as a Forward Proxy

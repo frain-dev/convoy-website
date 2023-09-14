@@ -150,9 +150,9 @@ The login command authenticates your Client CLI with a Personal API Key to give 
 
 ### Command Flags
 
--   `--help`: Get help on the login command.
--   `--api-key`: This flag specifies the Personal API key for authenticating the CLI. This is a required parameter that must be passed when running the command.
--   `--host`: This flag specifies the host for your Convoy instance. For cloud users, the default host is `https://cli.getconvoy.io`.
+- `--help`: Get help on the login command.
+- `--api-key`: This flag specifies the Personal API key for authenticating the CLI. This is a required parameter that must be passed when running the command.
+- `--host`: This flag specifies the host for your Convoy instance. For cloud users, the default host is `https://cli.getconvoy.io`.
 
 ## Logout
 
@@ -177,7 +177,7 @@ The logout command logs out of your Convoy instance
 
 ### Command Flags
 
--   `--help`: Get help on the logout command.
+- `--help`: Get help on the logout command.
 
 ## Listen
 
@@ -204,8 +204,7 @@ Flags:
 The listen command forwards events streamed from a source in your Convoy instance to a defined web server. The listen command starts a websocket client that listens to events streamed by the servcer.
 
 ### Command Flags
-
--   `--help`: Help for listen
--   `--forward-to`: The host/web server you want to forward events to.
--   `--since`: Send discarded events since a timestamp (e.g. 2013-01-02T13:23:37Z) or relative time (e.g. 42m for 42 minutes).
--   `--source-name`: The name of the source you want to receive events from (only applies to incoming projects).
+- `--help`: Help for listen
+- `--forward-to`: The host/web server you want to forward events to.
+- `--since`: Send discarded events since a timestamp (e.g. 2013-01-02T13:23:37Z) or relative time (e.g. 42m for 42 minutes).
+- `--source-name`: The name of the source you want to receive events from (only applies to incoming projects).
