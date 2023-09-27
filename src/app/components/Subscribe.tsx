@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRef, useState } from 'react';
 import ArrowRightIcon from '../../../public/svg/arrow-right-icon.svg';
 import SubscribeIcon from '../../../public/svg/subscribe.svg';
+import { useToaster } from '@/hooks/notification';
 
 export default function Subscribe() {
 	const [submittingEmail, setIsSubmittingEmail] = useState(false);
@@ -28,8 +29,10 @@ export default function Subscribe() {
 				})
 			});
 			await response.json();
+			useToaster({ message: 'Email submitted successfully', style: 'success' });
 			setIsSubmittingEmail(false);
 		} catch (error) {
+			useToaster({ message: 'An error occured, please try again', style: 'danger' });
 			setIsSubmittingEmail(false);
 		}
 	};
@@ -52,6 +55,7 @@ export default function Subscribe() {
 				<div className="flex justify-end">
 					<button
 						type="submit"
+						disabled={submittingEmail}
 						className="flex items-center justify-center py-12px px-16px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-400 text-white-100 xs:mb-20px shadow-sm xs:w-full">
 						Subscribe
 						<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right icon" />
