@@ -1,10 +1,14 @@
 'use client';
 import { useState } from 'react';
+import { useToaster } from '@/hooks/notification';
 
-export default function EnterpriseWaitlist() {
+interface Props {
+	submitEnterPriseForm: Function;
+}
+export default function EnterpriseWaitlist(props: Props) {
 	const [isSubmitingRequestAccessForm, setIsSubmitingRequestAccessForm] = useState(false);
 	const [form, setFormData] = useState({ firstname: '', lastname: '', email: '', organisation: '', usecase: '' });
-	
+
 	const requestAccess = async (event: any) => {
 		event.preventDefault();
 
@@ -17,8 +21,12 @@ export default function EnterpriseWaitlist() {
 			);
 
 			await response.json();
+
+			useToaster({ message: 'Form submitted successfully', style: 'success' });
+			props.submitEnterPriseForm();
 			setIsSubmitingRequestAccessForm(false);
 		} catch (error) {
+			useToaster({ message: 'An error occured, please try again', style: 'danger' });
 			setIsSubmitingRequestAccessForm(false);
 		}
 	};
