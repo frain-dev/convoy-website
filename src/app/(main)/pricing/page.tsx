@@ -3,11 +3,13 @@ import Image from 'next/image';
 import ArrowRightIcon from '../../../../public/svg/arrow-right-icon.svg';
 import AngleDownIcon from '../../../../public/svg/angle-down-black-icon.svg';
 import PricingImage from '../../../../public/static/Frame.png';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import EnterpriseWaitlist from '@/app/components/EnterpriseWaitList';
+import Toast from '@/app/components/Toast';
 
 export default function Pricing() {
-	const [showEnterprise, setShowEnterprise] = useState(false);
 	const [openQuestion, setOpenQuestion] = useState('Will you match the price of another platform?');
+	const enterpriseModal = useRef<HTMLDialogElement>(null);
 
 	const plans = [
 		{
@@ -150,6 +152,11 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 		}
 	];
 
+	const closeDialog = event => {
+		const dialogWrapper = event.target;
+		if (dialogWrapper === event.currentTarget) enterpriseModal.current?.close();
+	};
+
 	return (
 		<main>
 			<section className="pt-214px px-20px">
@@ -225,7 +232,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 					<div className="min-w-[300px]">
 						<h1 className="text-24 font-bold text-gray-800 mb-12px">Enterprise</h1>
 						<p className="text-12 text-gray-600 max-w-[307px] mb-24px">For large scale products and teams with heavier events loads.</p>
-						<button onClick={() => setShowEnterprise(true)} className="bg-gray-100 rounded-6px px-16px py-12px text-gray-800 text-14 mb-30px md:mb-0">
+						<button onClick={() => enterpriseModal.current?.showModal()} className="bg-gray-100 rounded-6px px-16px py-12px text-gray-800 text-14 mb-30px md:mb-0">
 							Contact Us
 						</button>
 					</div>
@@ -379,12 +386,10 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 				</div>
 			</section>
 
-			{showEnterprise && <div onClick={() => setShowEnterprise(false)} className="fixed h-screen w-screen top-0 right-0 bottom-0 z-50 bg-black bg-opacity-60"></div>}
-			{showEnterprise && (
-				<div className="fixed w-full px-20px md:px-0 z-[60] h-fit top-[50%] left-[50%] -translate-x-2/4 -translate-y-2/4 rounded-[16px] max-w-[600px] mx-auto">
-					<div className="w-full shadow-sm">{/* <EnterpriseWaitlist @requestAccess="showEnterpriseForm = false" showAdditionalInfo></EnterpriseWaitlist> */}</div>
-				</div>
-			)}
+			<dialog ref={enterpriseModal} onClick={event => closeDialog(event)} className="backdrop:backdrop-blur-md rounded-8px">
+				<EnterpriseWaitlist submitEnterPriseForm={() => enterpriseModal.current?.close()}></EnterpriseWaitlist>
+				<Toast></Toast>
+			</dialog>
 		</main>
 	);
 }
