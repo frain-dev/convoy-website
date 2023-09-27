@@ -8,6 +8,7 @@ import MailIcon from '../../../public/svg/mail-icon.svg';
 import TwitterIcon from '../../../public/svg/twitter-icon.svg';
 import LinkedInIcon from '../../../public/svg/linkedin.svg';
 import { usePathname } from 'next/navigation';
+import { useToaster } from '@/hooks/notification';
 
 export default function Footer() {
 	const [submittingEmail, setIsSubmittingEmail] = useState(false);
@@ -70,8 +71,10 @@ export default function Footer() {
 				})
 			});
 			await response.json();
+			useToaster({ message: 'Email submitted successfully', style: 'success' });
 			setIsSubmittingEmail(false);
 		} catch (error) {
+			useToaster({ message: 'An error occured, please try again', style: 'danger' });
 			setIsSubmittingEmail(false);
 		}
 	};
@@ -169,7 +172,7 @@ export default function Footer() {
 										ref={inputRef}
 										className="w-full bg-transparent border-none outline-none text-white-100 placeholder:text-white-100"
 									/>
-									<button className="text-16 font-semibold bg-transparent border-none">
+									<button className="text-16 font-semibold bg-transparent border-none" disabled={submittingEmail}>
 										<img src="/svg/send-primary-icon.svg" alt="send icon" />
 									</button>
 								</form>
