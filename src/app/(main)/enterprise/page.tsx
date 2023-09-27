@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
 import EnterpriseImage from '../../../../public/static/enterprise.png';
@@ -161,7 +162,10 @@ export default function Enterprise() {
 						))}
 					</div>
 					<div className="max-w-[566px]">
-						<EnterpriseWaitlist></EnterpriseWaitlist>
+						<EnterpriseWaitlist
+							submitEnterPriseForm={() => {
+								return;
+							}}></EnterpriseWaitlist>
 					</div>
 				</div>
 			</section>
