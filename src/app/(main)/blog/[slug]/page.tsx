@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 				type: 'article',
 				description: article.description,
 				url: `https://getconvoy.io/blog/${article.slug}`,
-				images: ['https://getconvoy.io/feature-images/' + article.feature_image],
+				images: ['https://getconvoy.io/blog-socials/' + article.feature_image],
 				tags: article.primary_tag,
 				publishedTime: article.published_at,
 				authors: ['http://twitter.com/' + article.primary_author.twitter]
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 			twitter: {
 				title: article.metaTitle,
 				card: 'summary_large_image',
-				images: { url: 'https://getconvoy.io/feature-images/' + article.feature_image, alt: article.feature_image },
+				images: { url: 'https://getconvoy.io/blog-socials/' + article.feature_image, alt: article.feature_image },
 				description: article.description,
 				creator: `@${article.primary_author.name}`
 			}
