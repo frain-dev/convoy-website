@@ -1,7 +1,7 @@
 ---
 title: "Webhook Security Vulnerabilities: How to Spot and Prevent Them"
-feature_image:
-post_image:
+feature_image: how-to-spot-and-prevent-webhooks-security-vulnerabilities.png
+post_image: how-to-spot-and-prevent-webhooks-security-vulnerabilities.png
 primary_author:
     name: Amarachi Aso
     twitter: AsoAmarachi
