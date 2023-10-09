@@ -27,6 +27,7 @@ Usage:
   Convoy [command]
 
 Available Commands:
+  bootstrap   bootstrap creates a new user account
   completion  generate the autocompletion script for the specified shell
   config      config outputs your instances computed configuration
   help        Help about any command
@@ -55,60 +56,12 @@ Flags:
       --redis-password string   Redis Password
       --redis-port int          Redis Port
       --redis-scheme string     Redis Scheme
+      --redis-type string       Redis provider
       --redis-username string   Redis Username
   -v, --version                 version for Convoy
 ```
 
 To get help for any specific command, pass the `-h` flag to the relevant subcommand. For example, to get help about the `worker` sub-command run  `convoy worker -h`
-
-```console[terminal]
-$ convoy worker -h
-Start worker instance
-
-Usage:
-  Convoy worker [flags]
-
-Flags:
-  -h, --help                 help for worker
-      --log-level string     scheduler log level (default "error")
-      --worker-port uint32   Worker port (default 5006)
-
-Global Flags:
-      --config string           Configuration file for convoy (default "./convoy.json")
-      --db-database string      Database Database
-      --db-host string          Database Host
-      --db-options string       Database Options
-      --db-password string      Database Password
-      --db-port int             Database Port
-      --db-scheme string        Database Scheme
-      --db-type string          Database provider
-      --db-username string      Database Username
-      --redis-database string   Redis database
-      --redis-host string       Redis Host
-      --redis-password string   Redis Password
-      --redis-port int          Redis Port
-      --redis-scheme string     Redis Scheme
-      --redis-username string   Redis Username
-
-```
-
-### Command Flags
-
-- `--config`: This is the path to the configuration file for the instance. Defaults to `./convoy.json`.
-- `--db-type`: This is used to specify the database type. Defaults to `postgres`.
-- `--db-scheme`: This is used to specify the database URI scheme. Defaults to `postgres`, some cloud providers might set it to `postgresql`.
-- `--db-host`: This is used to specify the database server host. Defaults to `localhost`.
-- `--db-username`: This is used to specify the database type. Defaults to `postgres`.
-- `--db-password`: This is used to specify the database password. Defaults to `postgres`.
-- `--db-database`: This is used to specify the database where all the schemas would be created, you should create it before running Convoy. Defaults to `convoy`.
-- `--db-port`: This is used to specify the database server port. Defaults to `5432`.
-- `--db-options`: This is used to specify the database connection options. Defaults to `sslmode=disable&connect_timeout=30`.
-- `--redis-scheme`: This is used to specify the redis URI scheme. Defaults to `redis`, some cloud providers might set it to `rediss`, `redis-socket` or `redis-sentinel`.
-- `--redis-host`: This is used to specify the redis server host. Defaults to `localhost`
-- `--redis-database`: This is used to specify the redis database. Defaults to `""` which is the same as db `0`.
-- `--redis-password`: This is used to specify the redis password. Defaults to `""`.
-- `--redis-port`: This is used to specify the redis port. Defaults to `6379`.
-- `--redis-username`: This is used to specify the redis username. Defaults to `""`.
 
 ## Ingest
 
@@ -151,6 +104,55 @@ Global Flags:
 ### Command Flags
 
 - `--interval`: The time in seconds to poll the database for changes in the source configuration.
+
+
+## Bootstrap
+
+Command: `convoy bootstrap`
+
+### Synopsis
+
+```console[terminal]
+$ convoy bootstrap --help
+bootstrap creates a new user account
+
+Usage:
+  Convoy bootstrap [flags]
+
+Flags:
+      --email string        Email
+      --first-name string   Email (default "admin")
+      --format string       Output Format (default "json")
+  -h, --help                help for bootstrap
+      --last-name string    Email (default "admin")
+
+Global Flags:
+      --config string           Configuration file for convoy (default "./convoy.json")
+      --db-database string      Database Database
+      --db-host string          Database Host
+      --db-options string       Database Options
+      --db-password string      Database Password
+      --db-port int             Database Port
+      --db-scheme string        Database Scheme
+      --db-type string          Database provider
+      --db-username string      Database Username
+      --redis-database string   Redis database
+      --redis-host string       Redis Host
+      --redis-password string   Redis Password
+      --redis-port int          Redis Port
+      --redis-scheme string     Redis Scheme
+      --redis-type string       Redis provider
+      --redis-username string   Redis Username
+```
+
+### Description
+
+The bootstrap creates a new user account.
+
+### Command Flags
+
+- `--help`: Get help on the bootstrap command.
+
 
 ## Stream
 
@@ -322,7 +324,7 @@ Flags:
       --new-relic-app string       NewRelic application name
       --new-relic-config-enabled   Enable new-relic config
       --new-relic-key string       NewRelic application license key
-      --new-relic-tracer-enabled   Enable new-relic distributed tracer
+      **--new-relic-**tracer-enabled   Enable new-relic distributed tracer
       --port uint32                Server port
       --promaddr string            Prometheus dsn
       --proxy string               HTTP Proxy
@@ -334,13 +336,6 @@ Flags:
       --sentry string              Sentry DSN
       --signature-hash string      Application signature hash
       --signature-header string    Application signature header
-      --smtp-from string           Sender email address
-      --smtp-password string       SMTP authentication password
-      --smtp-port uint32           Server port
-      --smtp-provider string       SMTP provider
-      --smtp-reply-to string       Email address to reply to
-      --smtp-url string            SMTP provider URL
-      --smtp-username string       SMTP authentication username
       --ssl                        Configure SSL
       --ssl-cert-file string       SSL certificate file
       --ssl-key-file string        SSL key file
@@ -391,20 +386,6 @@ The server command runs convoy’s REST API. The REST API is the primary entry p
 
 - `--sentry`: This flag specifies the DSN to push telemetry data to sentry.
 
-- `--smtp-provider`: This flag specifies the name of the SMTP provider. While this isn’t necessary for smtp configuration, it is used to provider rich log.
-
-- `--smtp-from`: This specifies the sender’s email address when sending notification emails.
-
-- `--smtp-url`: This specifies the smtp servers’ url. You should lookup the providers’ documentation on how to specify this flag.
-
-- `--smtp-port`: This specifies the smtp servers’ port. You should lookup the providers’ documentation o how to specify this flag.
-
-- `--smtp-reply-to`: This specifies the email to use as reply-to in notification emails sent.
-
-- `--smtp-username`: This specifies the username for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
-
-- `--smtp-password`: This specifies the password for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
-
 - `--ssl`: This specifies if the server should run with `ssl` enabled. If true, then you must specify two other flags `--ssl-cert-file` and `--ssl-key-file`.
 
 - `--ssl-cert-file`: This is a path to the SSL certificate file. If specified and `ssl` is set to `false`; nothing happens.
@@ -427,8 +408,20 @@ Usage:
   Convoy worker [flags]
 
 Flags:
-  -h, --help                 help for worker
-      --worker-port uint32   Worker port (default 5006)
+  -h, --help                       help for worker
+      --log-level string           scheduler log level
+      --new-relic-app string       NewRelic application name
+      --new-relic-config-enabled   Enable new-relic config
+      --new-relic-key string       NewRelic application license key
+      --new-relic-tracer-enabled   Enable new-relic distributed tracer
+      --smtp-from string           Sender email address
+      --smtp-password string       SMTP authentication password
+      --smtp-provider string       SMTP provider
+      --smtp-reply-to string       Email address to reply to
+      --smtp-ssl                   Enable SMTP SSL
+      --smtp-url string            SMTP provider URL
+      --smtp-username string       SMTP authentication username
+      --worker-port uint32         Worker port (default 5006)
 
 Global Flags:
       --config string           Configuration file for convoy (default "./convoy.json")
@@ -455,9 +448,15 @@ The worker command is used when running convoy in the micro-services mode. It do
 This command requires all Global configurations to be set either through the CLI or the configuration file. This is because the workers need to connect to both the database and the queues to perform its duty.
 
 ### Command Flags
-
+- `--smtp-provider`: This flag specifies the name of the SMTP provider. While this isn’t necessary for smtp configuration, it is used to provider rich log.
+- `--smtp-from`: This specifies the sender’s email address when sending notification emails.
+- `--smtp-url`: This specifies the smtp servers’ url. You should lookup the providers’ documentation on how to specify this flag.
+- `--smtp-port`: This specifies the smtp servers’ port. You should lookup the providers’ documentation o how to specify this flag.
+- `--smtp-reply-to`: This specifies the email to use as reply-to in notification emails sent.
+- `--smtp-username`: This specifies the username for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
+- `--smtp-password`: This specifies the password for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
+- `--smtp-ssl`: This specifies if ssl should be used in the smtp protocol for sending emails.
 - `--help`: Get help on the worker command.
-
 - `--worker-port`: Specify the worker server’s port. Defaults to `5006` if not specified.
 
 ## Retry
