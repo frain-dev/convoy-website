@@ -105,6 +105,55 @@ Global Flags:
 
 - `--interval`: The time in seconds to poll the database for changes in the source configuration.
 
+
+## Bootstrap
+
+Command: `convoy bootstrap`
+
+### Synopsis
+
+```console[terminal]
+$ convoy bootstrap --help
+bootstrap creates a new user account
+
+Usage:
+  Convoy bootstrap [flags]
+
+Flags:
+      --email string        Email
+      --first-name string   Email (default "admin")
+      --format string       Output Format (default "json")
+  -h, --help                help for bootstrap
+      --last-name string    Email (default "admin")
+
+Global Flags:
+      --config string           Configuration file for convoy (default "./convoy.json")
+      --db-database string      Database Database
+      --db-host string          Database Host
+      --db-options string       Database Options
+      --db-password string      Database Password
+      --db-port int             Database Port
+      --db-scheme string        Database Scheme
+      --db-type string          Database provider
+      --db-username string      Database Username
+      --redis-database string   Redis database
+      --redis-host string       Redis Host
+      --redis-password string   Redis Password
+      --redis-port int          Redis Port
+      --redis-scheme string     Redis Scheme
+      --redis-type string       Redis provider
+      --redis-username string   Redis Username
+```
+
+### Description
+
+The bootstrap creates a new user account.
+
+### Command Flags
+
+- `--help`: Get help on the bootstrap command.
+
+
 ## Stream
 
 Command: `convoy stream`
