@@ -13,7 +13,75 @@ Convoy ships with a very easy-to-use command-line interface (CLI). Refer to the 
 
 The Convoy CLI can be installed directly from your package manager or by building from the GitHub source:
 
-<cli-tab></cli-tab>
+{% tabs %}
+{% tab label="Mac" %}
+Install the Convoy CLI to your Mac from brew:
+
+```console[terminal]
+$ brew tap frain-dev/tools
+$ brew install convoy
+```
+
+{% /tab %}
+
+{% tab label="Linux" %}
+
+The installation procedures for Linux is split into two:
+
+-   Ubuntu and Debain users
+-   CentOS and RHEL users
+
+### Ubuntu and Debain OS
+
+Install the Convoy CLI from apt repository:
+
+```console[terminal]
+$ curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy/setup.deb.sh' | sudo -E bash
+$ sudo apt install convoy
+```
+
+### CentOS and RHEL OS
+
+Install the Convoy CLI using yum:
+
+```console[terminal]
+$ curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy/setup.rpm.sh' | sudo -E bash
+$ sudo yum install convoy
+```
+
+{% /tab %}
+
+{% tab label="Windows" %}
+
+To install Convoy on Windows, download the binary applicable to your machine:
+
+-   [Download for AMD64](https://dl.cloudsmith.io/public/convoy/convoy/raw/versions/0.6.6/convoy_0.6.6_windows_amd64.tar.gz)
+-   [Download for ARM64](https://dl.cloudsmith.io/public/convoy/convoy/raw/versions/0.6.6/convoy_0.6.6_windows_arm64.tar.gz)
+
+{% /tab %}
+
+{% tab label="Source" %}
+
+To build Convoy from source code, you need:
+
+-   Go [version 1.16 or greater](https://golang.org/doc/install).
+-   NodeJS [version 14.17 or greater](https://nodejs.org).
+-   Npm [version 6 or greater](https://npmjs.com).
+
+```bash
+$ git clone https://github.com/frain-dev/convoy.git && cd convoy
+$ make build
+```
+
+Verify the build by running the command below:
+
+```console[terminal]
+$ convoy -v
+Convoy version v0.6.0
+```
+
+{% /tab %}
+{% /tabs %}
 
 ## Using the CLI
 
@@ -61,7 +129,7 @@ Flags:
   -v, --version                 version for Convoy
 ```
 
-To get help for any specific command, pass the `-h` flag to the relevant subcommand. For example, to get help about the `worker` sub-command run  `convoy worker -h`
+To get help for any specific command, pass the `-h` flag to the relevant subcommand. For example, to get help about the `worker` sub-command run `convoy worker -h`
 
 ## Ingest
 
@@ -100,11 +168,9 @@ Global Flags:
 
 ### Description
 
-
 ### Command Flags
 
-- `--interval`: The time in seconds to poll the database for changes in the source configuration.
-
+-   `--interval`: The time in seconds to poll the database for changes in the source configuration.
 
 ## Bootstrap
 
@@ -151,8 +217,7 @@ The bootstrap creates a new user account.
 
 ### Command Flags
 
-- `--help`: Get help on the bootstrap command.
-
+-   `--help`: Get help on the bootstrap command.
 
 ## Stream
 
@@ -197,7 +262,7 @@ The stream command starts a websocket server to pipe events to another convoy in
 
 ### Command Flags
 
-- `--help`: Get help on the stream command.
+-   `--help`: Get help on the stream command.
 
 ## Migrate
 
@@ -245,8 +310,8 @@ The migrate command is responsible for running pending migrations and rolling ba
 
 ### Command Flags
 
-- `down`: Rollback migrations.
-- `up`: Run all pending migrations
+-   `down`: Rollback migrations.
+-   `up`: Run all pending migrations
 
 ## Config
 
@@ -289,7 +354,7 @@ The config command outputs the configuration for your active instances.
 
 ### Command Flags
 
-- `--help`: Get help on the config worker.
+-   `--help`: Get help on the config worker.
 
 ## Server
 
@@ -368,31 +433,31 @@ The server command runs convoy’s REST API. The REST API is the primary entry p
 
 ### Command Flags
 
-- `--port`: This flag specifies the port number the server listens on. This is a required parameter that must be configured from one of the configuration sources.
+-   `--port`: This flag specifies the port number the server listens on. This is a required parameter that must be configured from one of the configuration sources.
 
-- `--auth`: This flag specifies if the REST API will require authentication or not. It is enabled by default
+-   `--auth`: This flag specifies if the REST API will require authentication or not. It is enabled by default
 
-- `--multi-tenant`: This flag specifies the mode the instance is running. It’s a boolean flag. When set to `true` . The server will only receive events but not run workers in the background. It is expected that you will run `convoy worker` as a different process to consume event deliveries off the queue. Defaults to `false`.
+-   `--multi-tenant`: This flag specifies the mode the instance is running. It’s a boolean flag. When set to `true` . The server will only receive events but not run workers in the background. It is expected that you will run `convoy worker` as a different process to consume event deliveries off the queue. Defaults to `false`.
 
-- `--max-response-size`: This flag specifies the maximum response in bytes of the endpoint’s payload to store. This configuration only affects the default group.
+-   `--max-response-size`: This flag specifies the maximum response in bytes of the endpoint’s payload to store. This configuration only affects the default group.
 
-- `--native`: This flag specifies if the `native` realm should be enabled. You can read more about the native realm [here](insert-link) It is a boolean flag. Defaults to `false`.
+-   `--native`: This flag specifies if the `native` realm should be enabled. You can read more about the native realm [here](insert-link) It is a boolean flag. Defaults to `false`.
 
-- `--disable-endpoint`: This flag specifies the `disable-endpoint` configuration for the default group for convoy instances running in non-multi tenant mode.Defaults to `false`.
+-   `--disable-endpoint`: This flag specifies the `disable-endpoint` configuration for the default group for convoy instances running in non-multi tenant mode.Defaults to `false`.
 
-- `--signature-hash`: This flag specifies the hash algorithm for the default group for convoy instances running in non-multi tenant mode.
+-   `--signature-hash`: This flag specifies the hash algorithm for the default group for convoy instances running in non-multi tenant mode.
 
-- `--signature-header`: This flag specifies the HTTP header for the default group for convoy instances running in non-multi tenant mode.
+-   `--signature-header`: This flag specifies the HTTP header for the default group for convoy instances running in non-multi tenant mode.
 
-- `--sentry`: This flag specifies the DSN to push telemetry data to sentry.
+-   `--sentry`: This flag specifies the DSN to push telemetry data to sentry.
 
-- `--ssl`: This specifies if the server should run with `ssl` enabled. If true, then you must specify two other flags `--ssl-cert-file` and `--ssl-key-file`.
+-   `--ssl`: This specifies if the server should run with `ssl` enabled. If true, then you must specify two other flags `--ssl-cert-file` and `--ssl-key-file`.
 
-- `--ssl-cert-file`: This is a path to the SSL certificate file. If specified and `ssl` is set to `false`; nothing happens.
+-   `--ssl-cert-file`: This is a path to the SSL certificate file. If specified and `ssl` is set to `false`; nothing happens.
 
-- `--ssl-key-file`: This is a path to the SSL key file. If specified and `ssl` is set to `false`; nothing happens.
+-   `--ssl-key-file`: This is a path to the SSL key file. If specified and `ssl` is set to `false`; nothing happens.
 
-- `--with-workers`: This specifies if the server should run in monolith mode. This means both the server and worker will be run in the same process. Defaults to `true` if not specified.
+-   `--with-workers`: This specifies if the server should run in monolith mode. This means both the server and worker will be run in the same process. Defaults to `true` if not specified.
 
 ## Worker
 
@@ -448,16 +513,17 @@ The worker command is used when running convoy in the micro-services mode. It do
 This command requires all Global configurations to be set either through the CLI or the configuration file. This is because the workers need to connect to both the database and the queues to perform its duty.
 
 ### Command Flags
-- `--smtp-provider`: This flag specifies the name of the SMTP provider. While this isn’t necessary for smtp configuration, it is used to provider rich log.
-- `--smtp-from`: This specifies the sender’s email address when sending notification emails.
-- `--smtp-url`: This specifies the smtp servers’ url. You should lookup the providers’ documentation on how to specify this flag.
-- `--smtp-port`: This specifies the smtp servers’ port. You should lookup the providers’ documentation o how to specify this flag.
-- `--smtp-reply-to`: This specifies the email to use as reply-to in notification emails sent.
-- `--smtp-username`: This specifies the username for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
-- `--smtp-password`: This specifies the password for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
-- `--smtp-ssl`: This specifies if ssl should be used in the smtp protocol for sending emails.
-- `--help`: Get help on the worker command.
-- `--worker-port`: Specify the worker server’s port. Defaults to `5006` if not specified.
+
+-   `--smtp-provider`: This flag specifies the name of the SMTP provider. While this isn’t necessary for smtp configuration, it is used to provider rich log.
+-   `--smtp-from`: This specifies the sender’s email address when sending notification emails.
+-   `--smtp-url`: This specifies the smtp servers’ url. You should lookup the providers’ documentation on how to specify this flag.
+-   `--smtp-port`: This specifies the smtp servers’ port. You should lookup the providers’ documentation o how to specify this flag.
+-   `--smtp-reply-to`: This specifies the email to use as reply-to in notification emails sent.
+-   `--smtp-username`: This specifies the username for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
+-   `--smtp-password`: This specifies the password for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
+-   `--smtp-ssl`: This specifies if ssl should be used in the smtp protocol for sending emails.
+-   `--help`: Get help on the worker command.
+-   `--worker-port`: Specify the worker server’s port. Defaults to `5006` if not specified.
 
 ## Retry
 
@@ -501,9 +567,9 @@ At core, convoy is an asynchronous messaging service. It relies on message broke
 
 ### Command Flags
 
-- `--status`: This is used to specify the status of event delivery to re-queue.
+-   `--status`: This is used to specify the status of event delivery to re-queue.
 
-- `--time`: This is used to specify how far in the past to look for event deliveries. It accepts a duration string. Duration strings are like integers followed by a time unit. E.g. `1h`, `300ms`, or `2h45m` etc.
+-   `--time`: This is used to specify how far in the past to look for event deliveries. It accepts a duration string. Duration strings are like integers followed by a time unit. E.g. `1h`, `300ms`, or `2h45m` etc.
 
 ## Scheduler
 
@@ -547,6 +613,6 @@ The scheduler runs as an automated `retrier`. It performs the same duty as `conv
 
 ### Command Flags
 
-- `--export-spec`: This is used to specify how far in the past to look for event deliveries. It accepts a duration string. Duration strings are like integers followed by a time unit. E.g. `1h`, `300ms`, or `2h45m` etc.
+-   `--export-spec`: This is used to specify how far in the past to look for event deliveries. It accepts a duration string. Duration strings are like integers followed by a time unit. E.g. `1h`, `300ms`, or `2h45m` etc.
 
-- `--port`: This is the port where the metrics from the scheduler serves the metrics and has a default port of `5007`.
+-   `--port`: This is the port where the metrics from the scheduler serves the metrics and has a default port of `5007`.
