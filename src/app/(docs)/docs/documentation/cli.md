@@ -89,7 +89,14 @@ Global Flags:
       --redis-port int          Redis Port
       --redis-scheme string     Redis Scheme
       --redis-username string   Redis Username
-
+      --smtp-from string        Sender email address
+      --smtp-password string    SMTP authentication password
+      --smtp-port uint32        Server port
+      --smtp-provider string    SMTP provider
+      --smtp-reply-to string    Email address to reply to
+      --smtp-url string         SMTP provider URL
+      --smtp-ssl                Enable SMTP SSL
+      --smtp-username string    SMTP authentication username
 ```
 
 ### Command Flags
@@ -109,6 +116,14 @@ Global Flags:
 - `--redis-password`: This is used to specify the redis password. Defaults to `""`.
 - `--redis-port`: This is used to specify the redis port. Defaults to `6379`.
 - `--redis-username`: This is used to specify the redis username. Defaults to `""`.
+- `--smtp-provider`: This flag specifies the name of the SMTP provider. While this isn’t necessary for smtp configuration, it is used to provider rich log.
+- `--smtp-from`: This specifies the sender’s email address when sending notification emails.
+- `--smtp-url`: This specifies the smtp servers’ url. You should lookup the providers’ documentation on how to specify this flag.
+- `--smtp-port`: This specifies the smtp servers’ port. You should lookup the providers’ documentation o how to specify this flag.
+- `--smtp-reply-to`: This specifies the email to use as reply-to in notification emails sent.
+- `--smtp-username`: This specifies the username for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
+- `--smtp-password`: This specifies the password for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
+- `--smtp-ssl`: This specifies if ssl should be used in the smtp protocol for sending emails.
 
 ## Ingest
 
@@ -334,13 +349,6 @@ Flags:
       --sentry string              Sentry DSN
       --signature-hash string      Application signature hash
       --signature-header string    Application signature header
-      --smtp-from string           Sender email address
-      --smtp-password string       SMTP authentication password
-      --smtp-port uint32           Server port
-      --smtp-provider string       SMTP provider
-      --smtp-reply-to string       Email address to reply to
-      --smtp-url string            SMTP provider URL
-      --smtp-username string       SMTP authentication username
       --ssl                        Configure SSL
       --ssl-cert-file string       SSL certificate file
       --ssl-key-file string        SSL key file
@@ -390,20 +398,6 @@ The server command runs convoy’s REST API. The REST API is the primary entry p
 - `--signature-header`: This flag specifies the HTTP header for the default group for convoy instances running in non-multi tenant mode.
 
 - `--sentry`: This flag specifies the DSN to push telemetry data to sentry.
-
-- `--smtp-provider`: This flag specifies the name of the SMTP provider. While this isn’t necessary for smtp configuration, it is used to provider rich log.
-
-- `--smtp-from`: This specifies the sender’s email address when sending notification emails.
-
-- `--smtp-url`: This specifies the smtp servers’ url. You should lookup the providers’ documentation on how to specify this flag.
-
-- `--smtp-port`: This specifies the smtp servers’ port. You should lookup the providers’ documentation o how to specify this flag.
-
-- `--smtp-reply-to`: This specifies the email to use as reply-to in notification emails sent.
-
-- `--smtp-username`: This specifies the username for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
-
-- `--smtp-password`: This specifies the password for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
 
 - `--ssl`: This specifies if the server should run with `ssl` enabled. If true, then you must specify two other flags `--ssl-cert-file` and `--ssl-key-file`.
 
