@@ -74,7 +74,7 @@ export default function Footer() {
 			useToaster({ message: 'Email submitted successfully', style: 'success' });
 			setIsSubmittingEmail(false);
 		} catch (error) {
-			useToaster({ message: 'An error occured, please try again', style: 'danger' });
+			useToaster({ message: 'An error occurred, please try again', style: 'danger' });
 			setIsSubmittingEmail(false);
 		}
 	};
@@ -104,7 +104,7 @@ export default function Footer() {
 										</a>
 									</li>
 									<li className="w-42px h-42px bg-white-8  flex items-center justify-center rounded-[50%] mr-16px">
-										<a target="_blank" href="mailto:sales@convoy.io">
+										<a target="_blank" href="mailto:sales@getconvoy.io">
 											<Image src={MailIcon} alt="mail logo" />
 										</a>
 									</li>
