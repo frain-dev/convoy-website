@@ -102,10 +102,10 @@ const components = {
 		return <table className="mt-20px mb-32px">{children}</table>;
 	},
 	Th: ({ children }: any) => {
-		return <th className="pr-50px pl-0 py-10px border-t border-primary-50 text-14 text-gray-600 whitespace-nowrap text-left font-medium">{children}</th>;
+		return <th className="pr-20px pl-0 py-10px border-t border-primary-50 text-14 text-gray-600 whitespace-nowrap text-left font-medium">{children}</th>;
 	},
 	Td: ({ children }: any) => {
-		return <td className="pr-50px pl-0 py-10px border-t border-primary-50 text-14 text-gray-600 text-left font-normal">{children}</td>;
+		return <td className="pr-20px pl-0 py-10px border-t border-primary-50 text-14 text-gray-600 text-left font-normal">{children}</td>;
 	},
 	Code: ({ content }: any) => {
 		return <code className="text-12 text-gray-800 bg-grey-20 font-menlo rounded-4px py-2px px-8px my-0 mx-[1px]">{content}</code>;

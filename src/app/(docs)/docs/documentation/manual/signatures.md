@@ -74,9 +74,10 @@ If the signature is a simple signature, the signature string is returned unproce
 ### Step 2: Create a new signature string
 
 Now, we need to generate our own signature. To do this, using a HMAC library of your choice (most languages provide functions in the standard library for this purpose) create a digest with the following:
-- A shared secret.
-- Encoding: `base64` or `hex`.
-- Request Payload. If it's an advanced signature, payload should be a concatenated string of the timestamp and the request payload delimited by `,`. It should look like: `{timestamp},{payload}`
+
+-   A shared secret.
+-   Encoding: `base64` or `hex`.
+-   Request Payload. If it's an advanced signature, payload should be a concatenated string of the timestamp and the request payload delimited by `,`. It should look like: `{timestamp},{payload}`
 
 ### Step 3: Verify Timestamp (Optional)
 
@@ -88,19 +89,23 @@ Compare the signatures from the request header to the signature computed from th
 
 ### Caveat: Ensuring exact JSON payload match
 
-- **Ordering** <br />
+-   **Ordering** -
     According to the [JSON RFC 4627](https://www.ietf.org/rfc/rfc4627.txt). JSON objects are an unordered collection, see below:
+
     ```bash
     An object is an unordered collection of zero or more name/value
     pairs, where a name is a string and a value is a string, number,
     boolean, null, object, or array.
     ```
+
     With this the order shouldn't matter, but if you decide to switch the key ordering for any reason, the resulting hash would be different. You should process as received.
 
-- **Whitespaces** <br />
+-   **Whitespaces** -
     To eliminate any ambiguities in the structure of the payload used to generate the signature across languages and stacks. Convoy strips out all whitespace characters from the payload to generate the hash. See the following examples to know what's correct:
 
-    ```json[❌ Wrong]
+    ```json
+    ❌ Wrong
+
     {
       "event": {
         "id": "5ac64822-4adc-4fda-ade0-410becf0de4f",
@@ -117,14 +122,18 @@ Compare the signatures from the request header to the signature computed from th
     }
     ```
 
-    ```json[❌ Wrong]
+    ```json
+    ❌ Wrong
+
     {\n  \"event\": {\n    \"id\": \"5ac64822-4adc-4fda-ade0-410becf0de4f\",\n    \"event_type\": \"incident.priority_updated\",\n    \"resource_type\": \"incident\",\n    \"occurred_at\": \"2020-10-02T18:45:22.169Z\",\n    \"agent\": {\n      \"id\": \"PLH1HKV\",\n      \"self\": \"https://api.pagerduty.com/users/PLH1HKV\",\n      \"summary\": \"Tenex Engineer\",\n      \"type\": \"user_reference\"\n    }\n  }\n}
     ```
 
-    ```json[✅ Correct]
+    ```json
+    ✅ Correct
+
     {"event":{"id":"5ac64822-4adc-4fda-ade0-410becf0de4f","event_type":"incident.priority_updated","resource_type":"incident","occurred_at":"2020-10-02T18:45:22.169Z","agent":{"id":"PLH1HKV","self":"https://api.pagerduty.com/users/PLH1HKV","summary":"Tenex Engineer","type":"user_reference"}}}
     ```
 
 ## References
 
-- [Generating Stripe-like Webhook Signatures](https://getconvoy.io/blog/generating-stripe-like-webhook-signatures/)
+-   [Generating Stripe-like Webhook Signatures](https://getconvoy.io/blog/generating-stripe-like-webhook-signatures/)
