@@ -104,7 +104,7 @@ const config: Config = {
 const components = {
 	Heading,
 	Paragraph: ({ children }: any) => {
-		return <p className="text-12 text-gray-600 leading-7 font-light mb-16px">{children}</p>;
+		return <p className="text-14 text-gray-600 leading-7 font-light mb-16px">{children}</p>;
 	},
 	Strong: ({ children }: any) => {
 		return <strong className="font-semibold">{children}</strong>;
@@ -119,10 +119,10 @@ const components = {
 		return <table className="my-20px">{children}</table>;
 	},
 	Th: ({ children }: any) => {
-		return <th className="pr-50px py-10px border-t border-primary-50 text-14 text-gray-500 whitespace-nowrap text-left font-semibold">{children}</th>;
+		return <th className="pr-20px py-10px border-t border-primary-50 text-12 leading-7 text-gray-500 whitespace-nowrap text-left font-semibold">{children}</th>;
 	},
 	Td: ({ children }: any) => {
-		return <td className="pr-50px py-10px border-t border-primary-50 text-14 text-gray-500 text-left font-normal">{children}</td>;
+		return <td className="pr-20px py-10px border-t border-primary-50 text-12 leading-7 text-gray-500 text-left font-normal">{children}</td>;
 	},
 	Link: ({ href, children }: any) => {
 		return (
