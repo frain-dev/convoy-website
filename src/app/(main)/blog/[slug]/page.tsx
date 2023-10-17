@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { components, config } from '../config.markdoc';
 import BlogPage from '../components/blogPage';
 import { getPost, getPosts } from '@/lib/getPosts';
+import './style.scss';
 
 type PageProps = {
 	params: {
@@ -30,7 +31,7 @@ type PostProps = {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const article: PostProps = await getPost(params.slug);
-	
+
 	if (article.isError) {
 		return {
 			title: article.title
