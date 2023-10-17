@@ -26,7 +26,7 @@ First, let’s set up Firebase, our event source.
 
 To create a Firebase Cloud Function, you need to install the Firebase CLI tool by running the command below in your terminal:
 
-```console[terminal]
+```bash[terminal]
 $ npm install -g firebase-tools
 ```
 
@@ -38,7 +38,7 @@ Next, we’ll use the Firebase CLI tool to run the cloud function setup wizard t
 
 After this setup, you should have some files created automatically for you in the following structure:
 
-```console[Project structure]
+```bash[Project structure]
 myproject
  +- .firebaserc    # Hidden file that helps you quickly switch between
  |                 # projects with `firebase use`
@@ -80,7 +80,7 @@ Proceeding from the create project modal, you’ll be prompted with a project se
 
 4. In your newly created project folder, setup npm and install the Convoy SDK, see the reference commands below:
 
-```console[terminal]
+```bash[terminal]
 $ npm init
 $ npm install convoy.js
 ```
@@ -209,7 +209,7 @@ Now we’re good to go to write our cloud function.
 
 3. With that done, the next step is to install Convoy in our function folder; we’ll use the Convoy Javascript SDK for this.
 
-    ```console[terminal]
+    ```bash[terminal]
     npm install convoy.js
     ```
 
@@ -286,7 +286,7 @@ Now we’re good to go to write our cloud function.
 
     With the Convoy configuration in place, run the command below to test the function locally:
 
-    ```console[terminal]
+    ```bash[terminal]
     $ firebase emulators:start
     ```
 

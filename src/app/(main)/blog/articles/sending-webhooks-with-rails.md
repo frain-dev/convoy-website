@@ -55,7 +55,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
 
 1. Project Setup
 
-    ```console[terminal]
+    ```bash[terminal]
     rails new convoy-todo-api && cd convoy-todo-api
     ```
 
@@ -246,13 +246,13 @@ It’s time to publish your first webhook!
 
 1. To begin, we start our rails app
 
-    ```console[terminal]
+    ```bash[terminal]
     $ rails s
     ```
 
 2. Second, we create an endpoint with the cURL command below:
 
-    ```console[terminal]
+    ```bash[terminal]
     $ curl --request POST \
     	--url "localhost:3000/endpoints" \
     	-H "Content-Type: application/json" \
@@ -264,7 +264,7 @@ It’s time to publish your first webhook!
 
 3. Finally, we create a Todo item, that in turn generates the webhook item. Let's use the cURL command below:
 
-    ```console[terminal]
+    ```bash[terminal]
     curl --request POST \
       --url "localhost:3000/todos' \
       -H 'Content-Type: application/json' \

@@ -46,7 +46,7 @@ Next, create an application for the project. You can do this via API with the fo
 }
 ```
 
-```console[terminal]
+```bash[terminal]
 $ curl \
     --request POST \
     --data @app.json \
@@ -84,7 +84,7 @@ Now that we have the application all set up, let’s create an endpoint:
 }
 ```
 
-```console[terminal]
+```bash[terminal]
 $ curl \
     --request POST \
     --data @endpoint.json \
@@ -125,7 +125,7 @@ Next, we are to create a source, select the `Ingestion HTTP` source type, and af
 
 As with creating a Project, this can also be done via API:
 
-```console[Sample Payload]
+```bash[Sample Payload]
 {
   "name": "github-source",
   "type": "http",
@@ -138,7 +138,7 @@ As with creating a Project, this can also be done via API:
 }
 ```
 
-```console[terminal]
+```bash[terminal]
 $ curl \
     --request POST \
     --data @source.json \
@@ -167,7 +167,7 @@ Likewise, you can create a subscription via the API:
 }
 ```
 
-```console[terminal]
+```bash[terminal]
 $ curl \
     --request POST \
     --data @subscription.json \
@@ -197,7 +197,7 @@ Follow the instructions [here](https://docs.github.com/en/authentication/keeping
 
 With this token we can subscribe to our source URL to receive events from GitHub by running the following command:
 
-```console[terminal]
+```bash[terminal]
 $ curl \
   -X POST \
   -H "Accept: application/vnd.github+json" \
