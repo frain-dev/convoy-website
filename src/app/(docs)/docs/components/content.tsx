@@ -24,7 +24,7 @@ export default function Contents({ tableOfContents }: any) {
 		let top = window.scrollY;
 		let current = headings[0]?.title;
 		for (let heading of headings) {
-			if (top >= heading.top) {
+			if (top >= heading?.top) {
 				current = heading.title;
 			} else {
 				break;
