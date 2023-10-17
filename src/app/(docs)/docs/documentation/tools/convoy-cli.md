@@ -19,7 +19,7 @@ The Client CLI can be installed directly from your package manager or by buildin
 
 Install the Convoy CLI to your Mac from brew:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ brew tap frain-dev/tools
 $ brew install convoy-cli
 ```
@@ -37,7 +37,7 @@ The installation procedures for Linux is split into two:
 
 Install the Convoy Client CLI from apt repository:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy-cli/setup.deb.sh' | sudo -E bash
 $ sudo apt install convoy-cli
 ```
@@ -46,7 +46,7 @@ $ sudo apt install convoy-cli
 
 Install the Convoy Client CLI using yum:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy-cli/setup.rpm.sh' | sudo -E bash
 $ sudo yum install convoy-cli
 ```
@@ -74,7 +74,7 @@ $ make install
 
 Verify the build by running the command below:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy-cli -v
 
 convoy-cli version v0.1.0
@@ -87,7 +87,7 @@ convoy-cli version v0.1.0
 
 To view the list of the available commands at any time, just run `convoy-cli` in your terminal with no arguments:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy-cli
 Client CLI for debugging your events locally
 
@@ -111,7 +111,7 @@ Use "convoy-cli [command] --help" for more information about a command.
 
 To get help for any specific command, pass the `-h` flag to the relevant subcommand. For example, to get help about the worker subcommand
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy-cli project -h
 Switch, List or Refresh projects
 
@@ -131,7 +131,7 @@ Command: `convoy-cli login`
 
 ### Synopsis
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy-cli login --help
 Logs into your Convoy instance using a Personal API Key
 
@@ -160,7 +160,7 @@ Command: `convoy-cli logout`
 
 ### Synopsis
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy-cli logout
 Logs out of your Convoy instance
 
@@ -185,7 +185,7 @@ Command: `convoy-cli listen`
 
 ### Synopsis
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy listen --help
 Starts a websocket client that listens to events streamed by the server
 

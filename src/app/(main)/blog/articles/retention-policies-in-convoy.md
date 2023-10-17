@@ -69,7 +69,7 @@ Convoy supports two destinations for exported webhooks data:
 
 You can install Convoy using the docker image:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ docker run \
 	-p 5005:5005 \
 	--name convoy-server \
@@ -88,7 +88,7 @@ We need to create a few things to test retention policies. We need
 
 We need a user access token to create an organization and a project, so we will login via the API to get an access token. The returned `access_token` will be used to authenticate subsequent requests.
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl --location --request POST 'http://localhost:5005/ui/auth/login' \
 	--header 'Content-Type: application/json' \
 	--data-raw '{
@@ -99,7 +99,7 @@ $ curl --location --request POST 'http://localhost:5005/ui/auth/login' \
 
 Create a new organization and copy the returned organization `uid`, we will use it when creating the project.
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl --location --request POST 'http://localhost:5005/ui/organisations' \
 	--header 'Authorization: Bearer ACCESS_TOKEN' \
 	--header 'Content-Type: application/json' \
@@ -113,7 +113,7 @@ Next we create a project with the retention policy configured. We configure the 
 -   MongoDB: All db documents before the retention date will be hard deleted from the database
 -   Typesense: All indexed events before the retention date would be deleted
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl --location --request \
 	POST 'http://localhost:5005/ui/organisations/{org_id}/groups' \
 	--header 'Authorization: Bearer ACCESS_TOKEN' \
@@ -132,7 +132,7 @@ $ curl --location --request \
 
 Next, we will configure the export destination, add this block to you config file.
 
-```yaml[configuration file]
+```yaml {% file="configuration file" %}
 {
   "storage_policy": {
     "on_prem": {
@@ -153,7 +153,7 @@ Next, we will configure the export destination, add this block to you config fil
 
 This will export your events to a file on the running virtual machine. You need to ensure that Convoy has the user privileges to write to the folder so creating the folder and granting Convoy the permissions ahead of time would be necessary.
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl --location --request PUT 'http://localhost:5005/ui/configuration' \
 --header 'Authorization: Bearer ACCESS_TOKEN' \
 --header 'Content-Type: application/json' \
@@ -171,7 +171,7 @@ $ curl --location --request PUT 'http://localhost:5005/ui/configuration' \
 
 You can export your events to any S3 compatible storage service. We would cover setting this up in a different post.
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl --location --request PUT 'http://localhost:5005/ui/configuration' \
 	--header 'Authorization: Bearer ACCESS_TOKEN' \
 	--header 'Content-Type: application/json' \
@@ -196,7 +196,7 @@ Convoy’s cron jobs run in a separate process which is called the `scheduler`. 
 
 For this demo we will start the scheduler using this command
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy scheduler --export-spec "@every 2m"
 ```
 
