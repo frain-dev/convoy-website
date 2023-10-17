@@ -271,19 +271,19 @@ $response = $convoy->events()->create($eventData);
 
 Add this line to your application's Gemfile:
 
-```console {% file="terminal" %}
+```bash {% file="terminal" %}
 $ gem 'convoy'
 ```
 
 And then execute:
 
-```console {% file="terminal" %}
+```bash {% file="terminal" %}
 $ bundle install
 ```
 
 Or install it yourself as:
 
-```console {% file="terminal" %}
+```bash {% file="terminal" %}
 $ gem install convoy
 ```
 

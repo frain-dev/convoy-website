@@ -55,7 +55,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
 
 1. Project Setup
 
-    ```console[terminal]
+    ```bash[terminal]
     $ mkdir fastapi-todo-convoy && cd fastapi-todo-convoy
     $ python3 -m venv venv
     $ touch .env {config,api,events}.py
@@ -63,7 +63,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
 
     Activate virtual environment
 
-    ```console[terminal]
+    ```bash[terminal]
     $ source venv/bin/activate
     $ pip install fastapi uvicorn pydantic[dotenv]
     $ pip freeze > requirements.txt
@@ -71,7 +71,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
 
     Install Convoy:
 
-    ```console[terminal]
+    ```bash[terminal]
     $ pip install git+ssh://git@github.com/frain-dev/convoy-python
     ```
 
@@ -254,13 +254,13 @@ It’s time to publish your first webhook!
 
 1. To begin, we start our FastAPI app
 
-    ```console[terminal]
+    ```bash[terminal]
     $ uvicorn api:app --host 0.0.0.0 --port 8080 --reload
     ```
 
 2. Second, we create an endpoint with the cURL command below:
 
-    ```console[terminal]
+    ```bash[terminal]
     curl -X 'POST' \
     'http://0.0.0.0:8080/endpoint' \
     -H 'accept: application/json' \
@@ -275,13 +275,13 @@ It’s time to publish your first webhook!
 
     The API returns a successful response:
 
-    ```console[terminal]
+    ```bash[terminal]
     {"Endpoint ID":"da6c42b5-2a51-478c-ad5e-53097c0f61cb"}
     ```
 
 3. Finally, we create a Todo item, that in turn generates the webhook item. Let's use the cURL command below:
 
-    ```console[terminal]
+    ```bash[terminal]
     curl -X 'POST' \
     'http://0.0.0.0:8080/todo?endpoint=0299d5b3-b8b6-4b8d-b421-e5acd080c72e' \
     -H 'accept: application/json' \
@@ -294,7 +294,7 @@ It’s time to publish your first webhook!
 
     The API returns a successful response:
 
-    ```console[terminal]
+    ```bash[terminal]
     {"data":["Todo added."]}
     ```
 

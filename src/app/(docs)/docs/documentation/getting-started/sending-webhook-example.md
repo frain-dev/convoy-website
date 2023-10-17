@@ -453,7 +453,7 @@ Sending webhooks with the API does not require a client setup like the SDKs. The
 
 An endpoint is a specific destination that can receive webhook events. Once you create an endpoint, you'll receive a `uid` as part of the response that you should save and supply in subsequent API calls to perform other requests such as creating an event.
 
-```console {% file="terminal" %}
+```bash {% file="terminal" %}
 curl --request POST \
   --url https://dashboard.getconvoy.io/api/v1/projects/<project-id>/endpoints \
   --header 'Authorization: Bearer <api-key>' \
@@ -471,7 +471,7 @@ The next step is to create a subscription to the webhook source. Subscriptions a
 
 ## Subscribe for Events
 
-```console {% file="example" %}
+```bash {% file="example" %}
 curl --request POST \
   --url https://dashboard.getconvoy.io/api/v1/projects/<project-id>/subscriptions \
   --header 'Authorization: Bearer <api-key>' \
@@ -488,7 +488,7 @@ With the subscription in place, you're set to send an event.
 
 To send an event, you'll need the `uid` from the application you created earlier.
 
-```terminal {% file="console" %}
+```bash {% file="console" %}
 curl --request POST \
   --url https://dashboard.getconvoy.io/api/v1/projects/<project-id>/events \
   --header 'Authorization: Bearer <api-key>' \
