@@ -57,7 +57,7 @@ Your outgoing project is now ready to start sending webhook requests. We would t
 
 Construct the following request to make on your terminal replacing `<host>`, `<your-project-id>`, `<project-api-key>` and, `<endpoint-id>` with their actual values:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl --request POST \
   --url <host>/api/v1/projects/<your-project-id>/events \
   --header 'Authorization: Bearer <project-api-key>' \
@@ -78,7 +78,7 @@ In the above request, the value of `event_type` is set to *user.updated*, but we
 
 Trigger a second request, this time changing the event type to *user.created*:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl --request POST \
   --url <host>/api/v1/projects/<your-project-id>/events \
   --header 'Authorization: Bearer <project-api-key>' \
@@ -136,7 +136,7 @@ Test the filter to ensure that the sample data is accepted by the filter and Sav
 
 Use the below POST request to publish an event targeted at the second endpoint, again replacing `<host>`, `<your-project-id>`, `<project-api-key>` and, `<second-endpoint-id>` with their actual values.
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl --request POST \
   --url <host>/api/v1/projects/<your-project-id>/events \
   --header 'Authorization: Bearer <project-api-key>' \
@@ -159,7 +159,7 @@ The above should create a successful event delivery. You can change the value of
 Webhook Fan-out refers to a technique used to dispatch webhooks events to multiple endpoints at a go. This makes it possible for webhook consumers to provide multiple endpoints where they need the same events to be received. Starting from `v0.8` Convoy introduced a new mechanism for webhook fan-out. To fan out events to multiple endpoints, the event needs to be published using the [/events/fanout](https://convoy.readme.io/reference/post_v1-projects-projectid-events-fanout) endpoint. There's also a new field on the endpoint object--`owner_id`, this field is used to identify endpoints as belonging to the same entity. To enable the two endpoints that we have created to receive events sent through the convoy API `/events/fanout` endpoint, we need to update the endpoints to assign them an owner id of the same value. Use the following request template to update each of the endpoints:
 
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl --request PUT \
     --url <host>/api/v1/projects/<your-project-id>/endpoints/<endpoint-id> \
     --header 'Authorization: Bearer <project-api-key>' \

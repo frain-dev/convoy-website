@@ -21,13 +21,13 @@ Simple webhook signatures are used to validate the webhook sent. The validation 
 
 An example simple signature is:
 
-```[example]
+```{% file="example" %}
 X-Convoy-Signature: 6ffbb59b2300aae63f272406069a9788598b792a944a07aba816edb039989a39
 ```
 
 An example request header with a simple signature sent to Convoy:
 
-```json[Sample header]
+```json {% file="Sample header" %}
 {
     Content-Type: "application/json",
     X-Convoy-Signature: "6ffbb59b2300aae63f272406069a9788598b792a944a07aba816edb039989a39"
@@ -38,7 +38,7 @@ An example request header with a simple signature sent to Convoy:
 
 Unlike simple signatures, advanced signatures are equipped with timestamps. Example:
 
-```[example]
+```{% file="example" %}
 X-Convoy-Signature:
 t=1492774577,
 v1=ansdoj213e98jqd928u3eudh239eu2j9d2jd8ejd238eu23ei2d9j23e8u23eue3,
@@ -48,7 +48,7 @@ v0=6ffbb59b2300aae63f272406069a9788598b792a944a07aba816edb039989a39
 
 An example header with the advanced signature is:
 
-```json[Advanced signature header]
+```json {% file="Advanced signature header" %}
 {
     Content-Type: "application/json",
     X-Convoy-Signature: "t=1492774577,v1=ansdoj213e98jqd928u3eudh239eu2j9d2jd8ejd238eu23ei2d9j23e8u23eue3v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd,v0=6ffbb59b2300aae63f272406069a9788598b792a944a07aba816edb039989a39"
@@ -103,35 +103,37 @@ Compare the signatures from the request header to the signature computed from th
 -   **Whitespaces** -
     To eliminate any ambiguities in the structure of the payload used to generate the signature across languages and stacks. Convoy strips out all whitespace characters from the payload to generate the hash. See the following examples to know what's correct:
 
-    ```json
-    ❌ Wrong
-
+    ```json {% file="❌ Wrong" %}
     {
-      "event": {
-        "id": "5ac64822-4adc-4fda-ade0-410becf0de4f",
-        "event_type": "incident.priority_updated",
-        "resource_type": "incident",
-        "occurred_at": "2020-10-02T18:45:22.169Z",
-        "agent": {
-          "id": "PLH1HKV",
-          "self": "https://api.pagerduty.com/users/PLH1HKV",
-          "summary": "Tenex Engineer",
-          "type": "user_reference"
-        }
-      }
+    	"event": {
+    		"id": "5ac64822-4adc-4fda-ade0-410becf0de4f",
+    		"event_type": "incident.priority_updated",
+    		"resource_type": "incident",
+    		"occurred_at": "2020-10-02T18:45:22.169Z",
+    		"agent": {
+    			"id": "PLH1HKV",
+    			"self": "https://api.pagerduty.com/users/PLH1HKV",
+    			"summary": "Tenex Engineer",
+    			"type": "user_reference"
+    		}
+    	}
     }
     ```
 
-    ```json
-    ❌ Wrong
-
+    ```json {% file="❌ Wrong" %}
     {\n  \"event\": {\n    \"id\": \"5ac64822-4adc-4fda-ade0-410becf0de4f\",\n    \"event_type\": \"incident.priority_updated\",\n    \"resource_type\": \"incident\",\n    \"occurred_at\": \"2020-10-02T18:45:22.169Z\",\n    \"agent\": {\n      \"id\": \"PLH1HKV\",\n      \"self\": \"https://api.pagerduty.com/users/PLH1HKV\",\n      \"summary\": \"Tenex Engineer\",\n      \"type\": \"user_reference\"\n    }\n  }\n}
     ```
 
-    ```json
-    ✅ Correct
-
-    {"event":{"id":"5ac64822-4adc-4fda-ade0-410becf0de4f","event_type":"incident.priority_updated","resource_type":"incident","occurred_at":"2020-10-02T18:45:22.169Z","agent":{"id":"PLH1HKV","self":"https://api.pagerduty.com/users/PLH1HKV","summary":"Tenex Engineer","type":"user_reference"}}}
+    ```json {% file="✅ Correct" %}
+    {
+    	"event": {
+    		"id": "5ac64822-4adc-4fda-ade0-410becf0de4f",
+    		"event_type": "incident.priority_updated",
+    		"resource_type": "incident",
+    		"occurred_at": "2020-10-02T18:45:22.169Z",
+    		"agent": { "id": "PLH1HKV", "self": "https://api.pagerduty.com/users/PLH1HKV", "summary": "Tenex Engineer", "type": "user_reference" }
+    	}
+    }
     ```
 
 ## References

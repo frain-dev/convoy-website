@@ -1,10 +1,10 @@
 'use client';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRef, useState } from 'react';
 
 export default function DocFooter() {
 	const pathname = usePathname();
+	const docPath = pathname.replace('/docs/', '');
 	const [submittingEmail, setIsSubmittingEmail] = useState(false);
 	const inputRef = useRef(null);
 
@@ -23,7 +23,7 @@ export default function DocFooter() {
 				redirect: 'follow',
 				referrerPolicy: 'no-referrer',
 				body: JSON.stringify({
-					email:  inputRef.current !== null ? inputRef.current['value'] : ''
+					email: inputRef.current !== null ? inputRef.current['value'] : ''
 				})
 			});
 			await response.json();
@@ -36,7 +36,10 @@ export default function DocFooter() {
 	return (
 		<div>
 			<div className="flex items-center justify-end mt-50px pb-32px border-b border-primary-25 mb-32px">
-				<a target="_blank" href={`https://github.com/frain-dev/convoy-docs/tree/main/src/app/docs/documentation${pathname}.md`} className="flex items-center underline text-success-400 text-12 mobile:mb-20px">
+				<a
+					target="_blank"
+					href={`https://github.com/frain-dev/convoy-website/tree/main/src/app/(docs)/docs/documentation/${docPath}.md`}
+					className="flex items-center underline text-success-400 text-12 mobile:mb-20px">
 					<span>Contribute to this doc in Github</span>
 					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-10px">
 						<g>
@@ -47,7 +50,6 @@ export default function DocFooter() {
 						</g>
 					</svg>
 				</a>
-
 			</div>
 
 			<div className="bg-gray-800 bg-[url(/static/doc-footer.png)] bg-no-repeat bg-contain bg-right-top p-24px mt-32px rounded-8px mb-100px">
