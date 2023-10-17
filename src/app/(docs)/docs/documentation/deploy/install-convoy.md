@@ -13,7 +13,7 @@ Convoy is made up for several components and a few third-party dependencies. To 
 - Compose 1.29.2+
 
 ## Deploy Locally
-```bash[Bash]
+```bash {% file="Bash" %}
 # Get the code
 $ git clone https://github.com/frain-dev/convoy.git
 

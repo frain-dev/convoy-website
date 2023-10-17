@@ -37,7 +37,7 @@ Simple filters directly match keys to values, and they can be nested. They can a
 
 This filter is used to validate simple JSON webhook payloads.
 
-```json[Simple object match filter]
+```json  {% file="Simple object match filter" %}
 {
 	"event_type": "created"
 }
@@ -49,7 +49,7 @@ This filter is used to validate simple JSON webhook payloads.
 
 This filter is used to validate nested webhook payloads.
 
-```json[Nested object match filter]
+```json {% file="Nested object match filter" %}
 {
 	"event": {
 		"type": "created"
@@ -61,7 +61,7 @@ This filter is used to validate nested webhook payloads.
 
 #### Array contains match
 
-```json[Array contains match]
+```json {% file="Array contains match" %}
 {
 	"dish": {
 		"ingredients": "rice"
@@ -79,7 +79,7 @@ Complex filters contain more logic such as logical operators and special operato
 
 This filter matches event which directly does not match the event type in the webhook payload.
 
-```json[$neq filter]
+```json {% file="$neq filter" %}
 {
     "event": {
         "$neq": "created"
@@ -93,7 +93,7 @@ This filter matches event which directly does not match the event type in the we
 
 This filter is used to match multiple conditions defined in the schema.
 
-```json[$or filter]
+```json {% file="$or filter" %}
 {
   "$or": [
     {
@@ -106,7 +106,7 @@ This filter is used to match multiple conditions defined in the schema.
 }
 ```
 
-```json[$and filter]
+```json {% file="$and filter" %}
 {
   "$and": [
     {
@@ -134,7 +134,7 @@ This filter is used to match multiple conditions defined in the schema.
 
 This filter is used to match keys where the value can be a range of values. It can be used in place of `$or` if you are comparing on the same field. The opposite of this operator `$nin` can be used to match keys where the value is not in a range of values.
 
-```json[$in filter]
+```json {% file="$in filter" %}
 {
 	"event": {
 		"$in": [ "created", "deleted"]
@@ -154,7 +154,7 @@ This filter is used to match keys where the value can be a range of values. It c
 
 These filters match events based on arithmetic operators. For example, the filter below will match all events where the age is greater than 1. The operators supported are `$gt`, `$gte`, `$lt`, `$lte`
 
-```json[Artihmetic filter]
+```json {% file="Arithmetic filter" %}
 {
     "age": {
         "$gt": 1
@@ -166,7 +166,7 @@ These filters match events based on arithmetic operators. For example, the filte
 
 These filters match events with payloads that are array either in the root or nested.
 
-```json[$. filter]
+```json {% file="$. filter" %}
 {
     "$.venues.$.lagos": "lekki"
 }
