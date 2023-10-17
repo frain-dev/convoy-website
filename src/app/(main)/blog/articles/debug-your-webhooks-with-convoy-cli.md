@@ -44,7 +44,7 @@ We need to create a `CLI key`. `CLI keys` are access tokens that are scoped to o
 
 Copy the generated key and proceed to your terminal to register the application. You can do this by running `convoy login`.
 
-```bash[terminal]
+```bash {% file="terminal" %}
 $ convoy login --host "https://cli.getconvoy.io" --api-key "API_KEY"
 ```
 
@@ -54,7 +54,7 @@ $ convoy login --host "https://cli.getconvoy.io" --api-key "API_KEY"
 
 To start listening to events we will need to run the `listen` command, passing the source and host where you want the events to be forwarded to. This will tail events sending them to both our device and the endpoint as they are received by the configured source.
 
-```bash[terminal]
+```bash {% file="terminal" %}
 # only tail events as they come in
 $ convoy listen --source="f9116a91-b9d5-4a68-b5b0-75a4c115469a" \
 	--forward-to "https://webhook.site/2f1adc9b-1e2b-4809-bd42-3022be6eb3fa" 
@@ -80,7 +80,7 @@ Events dashboard showing discarded events
 
 Using the listen command, we can chose to tail events as they come in or fetch past events which were sent while the device was offline. To fetch past events, we can replay all the discarded event deliveries by passing either a date string or a valid ISO date timestamp to the `--since` flag when running the listen command.
 
-```bash[terminal]
+```bash {% file="terminal" %}
 # replay all discarded events since the last 12 hours
 # and tail events as they come in
 $ convoy listen --source="f9116a91-b9d5-4a68-b5b0-75a4c115469a" \

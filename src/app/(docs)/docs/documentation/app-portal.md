@@ -21,7 +21,7 @@ You can embed the `convoy-app.js` sdk into your client application through any o
 
 - Installing the `convoy-app.js` node module
 
-```bash[terminal]
+```bash {% file="terminal" %}
 $ npm i convoy-app.js
 ```
 
@@ -64,7 +64,7 @@ export class ConvoyExampleClass {
 
 You can use the SDK to load app portal within your client platform
 
-```js[example]
+```js {% file="example" %}
 convoy.initAppPortal();
 // You can optionally pass a DOM selector string, convoy-app uses #convoy-app by default
 convoy.initAppPortal('#convoy-app');
@@ -75,7 +75,7 @@ convoy.initAppPortal('#convoy-app');
 
 You can use the SDK to load a modal that renders a form for your users to create subscription
 
-```js[example]
+```js {% file="example" %}
 convoy.createSubscription();
 // You can optionally pass a DOM selector string, convoy-app uses #convoy-create-sub by default
 convoy.createSubscription('#convoy-create-sub');
@@ -86,7 +86,7 @@ convoy.createSubscription('#convoy-create-sub');
 
 You can use the SDK to get the app's events
 
-```js[example]
+```js {% file="example" %}
 try {
     const response = await convoy.events.all();
 } catch (error) {
@@ -104,7 +104,7 @@ try {
 ### Event Deliveries
 
 You can use the SDK to get the app's event deliveries
-```js[example]
+```js {% file="example" %}
 try {
     const response = await convoy.eventDeliveries.all();
 } catch (error) {
@@ -157,7 +157,7 @@ try {
 
 You can use the SDK to get the app's subscription
 
-```js[example]
+```js {% file="example" %}
 try {
     const response = await convoy.subscriptions.all();
 } catch (error) {

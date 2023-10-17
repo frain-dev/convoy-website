@@ -26,7 +26,7 @@ First, let’s set up Firebase, our event source.
 
 To create a Firebase Cloud Function, you need to install the Firebase CLI tool by running the command below in your terminal:
 
-```bash[terminal]
+```bash {% file="terminal" %}
 $ npm install -g firebase-tools
 ```
 
@@ -38,7 +38,7 @@ Next, we’ll use the Firebase CLI tool to run the cloud function setup wizard t
 
 After this setup, you should have some files created automatically for you in the following structure:
 
-```bash[Project structure]
+```bash {% file="Project Structure" %}
 myproject
  +- .firebaserc    # Hidden file that helps you quickly switch between
  |                 # projects with `firebase use`
@@ -80,21 +80,21 @@ Proceeding from the create project modal, you’ll be prompted with a project se
 
 4. In your newly created project folder, setup npm and install the Convoy SDK, see the reference commands below:
 
-```bash[terminal]
+```bash {% file="terminal" %}
 $ npm init
 $ npm install convoy.js
 ```
 
 5. Now we have Convoy.js installed, create an `index.js` file and config with your auth credentials (remember the token you copied and saved somewhere after creating your project?), see sample configuration below:
 
-```js[index.js]
+```js {% file="index.js" %}
 const { Convoy } = require('convoy.js');
 const convoy = new Convoy({ api_key: 'your_api_key' })
 ```
 
 In the event you're using a self-hosted Convoy instance, you can define the URL as part of what is passed into Convoy's constructor.
 
-```js[index.js]
+```js {% file="index.js" %}
 const convoy = new Convoy({ api_key: 'your_api_key', uri: 'self-hosted-instance' })
 ```
 
@@ -104,7 +104,7 @@ const convoy = new Convoy({ api_key: 'your_api_key', uri: 'self-hosted-instance'
 
         Let’s create an app with the SDK:
 
-        ```js[index.js]
+        ```js {% file="index.js" %}
         function createApp() {
           try {
             const appData = { name: "my_app", support_email: "support@myapp.com" };
@@ -121,7 +121,7 @@ const convoy = new Convoy({ api_key: 'your_api_key', uri: 'self-hosted-instance'
 
         Next, we add an endpoint to our newly created app:
 
-        ```js[index.js]
+        ```js {% file="index.js" %}
         function createAppEndpoint(appId) {
           try {
             const endpointData = {
@@ -147,7 +147,7 @@ const convoy = new Convoy({ api_key: 'your_api_key', uri: 'self-hosted-instance'
 
         You can subscribe an application endpoint to specific event types, think of it like this: you can subscribe `payment.success`, `payment.failed` and other payment-related events to `../web/payment` endpoint and invoice-related events like `invoice.created`, `invoice.processing`, etc. to `../web/invoice` endpoint.
 
-        ```js[index.js]
+        ```js {% file="index.js" %}
         function createSubscription(endpointId, appId) {
             try {
             const subscriptionData = {
@@ -186,7 +186,7 @@ Now we’re good to go to write our cloud function.
 
 1. In the `index.js` file in our function folder, we’ll import two critical firebase modules as shown below:
 
-    ```js[index.js]
+    ```js {% file="index.js" %}
     // The Cloud Functions for Firebase SDK to create Cloud Functions and set up triggers.
     const functions = require('firebase-functions');
 
@@ -197,7 +197,7 @@ Now we’re good to go to write our cloud function.
 
 2. Next, create our cloud function that listens to a Firestore DB update:
 
-    ```js[index.js]
+    ```js {% file="index.js" %}
     exports.webhook = functions.firestore.document('/events/{documentId}')
         .onCreate((snap, context) => {
           // Grab the current value of what was written to Firestore.
@@ -209,13 +209,13 @@ Now we’re good to go to write our cloud function.
 
 3. With that done, the next step is to install Convoy in our function folder; we’ll use the Convoy Javascript SDK for this.
 
-    ```bash[terminal]
+    ```bash {% file="terminal" %}
     npm install convoy.js
     ```
 
 4. With that done, we can now import the Convoy SDK into our function.
 
-    ```js[index.js]
+    ```js {% file="index.js" %}
     const { Convoy } = require('convoy.js');
     // your_api_key is the token gotten from the Convoy project created earlier
     const convoy = new Convoy({ api_key: 'your_api_key' })
@@ -233,7 +233,7 @@ Now we’re good to go to write our cloud function.
 
 5. Lastly, we want to check the data added to our events collection, pick the required details and send out an event:
 
-    ```js[index.js]
+    ```js {% file="index.js" %}
     const { Convoy } = require('convoy.js');
     // your_api_key is the token gotten from the Convoy project created earlier
     const convoy = new Convoy({ api_key: 'your_api_key' })
@@ -268,7 +268,7 @@ Now we’re good to go to write our cloud function.
 
     The above code snippet is assuming that the data payload added to the events collection looks like this:
 
-    ```json[Sample payload]
+    ```json {% file="Sample Payload" %}
     {
       "app_id": "3774387-...",
       "event_type": "payment.success",
@@ -286,7 +286,7 @@ Now we’re good to go to write our cloud function.
 
     With the Convoy configuration in place, run the command below to test the function locally:
 
-    ```bash[terminal]
+    ```bash {% file="terminal" %}
     $ firebase emulators:start
     ```
 

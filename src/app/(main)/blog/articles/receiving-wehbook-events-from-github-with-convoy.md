@@ -38,7 +38,7 @@ A Convoy application represents a user's application trying to receive webhooks 
 
 Next, create an application for the project. You can do this via API with the following commands:
 
-```json[Sample Application Payload]
+```json {% file="Sample Application Payload" %}
 {
   "name": "Github-app",
   "support_email": "your-app-support@email.com",
@@ -46,7 +46,7 @@ Next, create an application for the project. You can do this via API with the fo
 }
 ```
 
-```bash[terminal]
+```bash {% file="terminal" %}
 $ curl \
     --request POST \
     --data @app.json \
@@ -57,7 +57,7 @@ $ curl \
 
 The cURL request returns a similar response to this:
 
-```json[terminal]
+```json {% file="terminal" %}
 {
 	"status": true,
 	"message": "App created successfully",
@@ -76,7 +76,7 @@ The application ID is stored under the `uid` key. Store the value of the applica
 
 Now that we have the application all set up, let’s create an endpoint:
 
-```json[Sample Endpoint Payload]
+```json {% file="Sample Endpoint Payload" %}
 {
   "url": "<your-endpoint-url>",
   "http_timeout": "10s",
@@ -84,7 +84,7 @@ Now that we have the application all set up, let’s create an endpoint:
 }
 ```
 
-```bash[terminal]
+```bash {% file="terminal" %}
 $ curl \
     --request POST \
     --data @endpoint.json \
@@ -95,7 +95,7 @@ $ curl \
 
 The cURL request above returns a response similar to this:
 
-```json[terminal]
+```json {% file="terminal" %}
 {
 	"status": true,
 	"message": "App endpoint created successfully",
@@ -125,7 +125,7 @@ Next, we are to create a source, select the `Ingestion HTTP` source type, and af
 
 As with creating a Project, this can also be done via API:
 
-```bash[Sample Payload]
+```bash {% file="Sample Payload" %}
 {
   "name": "github-source",
   "type": "http",
@@ -138,7 +138,7 @@ As with creating a Project, this can also be done via API:
 }
 ```
 
-```bash[terminal]
+```bash {% file="terminal" %}
 $ curl \
     --request POST \
     --data @source.json \
@@ -157,7 +157,7 @@ On the UI, just select the source, app, and endpoint you previously created.
 
 Likewise, you can create a subscription via the API:
 
-```json[Sample subscription Payload]
+```json {% file="Sample Subscription Payload" %}
 {
   "name": "github-sub",
   "type": "http",
@@ -167,7 +167,7 @@ Likewise, you can create a subscription via the API:
 }
 ```
 
-```bash[terminal]
+```bash {% file="terminal" %}
 $ curl \
     --request POST \
     --data @subscription.json \
@@ -197,7 +197,7 @@ Follow the instructions [here](https://docs.github.com/en/authentication/keeping
 
 With this token we can subscribe to our source URL to receive events from GitHub by running the following command:
 
-```bash[terminal]
+```bash {% file="terminal" %}
 $ curl \
   -X POST \
   -H "Accept: application/vnd.github+json" \
