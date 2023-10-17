@@ -36,7 +36,7 @@ First, we have to create two endpoints with the same `owner_id` , you can think 
 
 For the first endpoint:
 
-```json[Sample Payload]
+```json {% file="Sample Payload" %}
 {
   "description": "test-endpoint-1",
   "owner_id": "<your-owner-id>",
@@ -46,7 +46,7 @@ For the first endpoint:
 }
 ```
 
-```bash[Bash]
+```bash {% file="Bash" %}
 $ curl \
     --request POST \
     --data @endpoint-1.json \
@@ -86,7 +86,7 @@ $ curl \
 
 For the second endpoint:
 
-```json[Sample Payload]
+```json {% file="Sample Payload" %}
 {
   "description": "test-endpoint-2",
   "owner_id": "<your-owner-id>",
@@ -96,7 +96,7 @@ For the second endpoint:
 }
 ```
 
-```bash[Bash]
+```bash {% file="Bash" %}
 $ curl \
     --request POST \
     --data @endpoint-2.json \
@@ -138,14 +138,14 @@ $ curl \
 
 Now we have to create subscriptions for each endpoint.
 
-```json[Sample Payload]
+```json {% file="Sample Payload" %}
 {
   "endpoint_id": "<your-endpoint-id>",
   "name": "test-sub-1"
 }
 ```
 
-```bash[Bash]
+```bash {% file="Bash" %}
 $ curl \
     --request POST \
     --data @subscription-1.json \
@@ -181,7 +181,7 @@ Repeat the same for the second subscription.
 
 Now let us publish an event with the type to our endpoints. We’ll specify the `owner_id` we used for both endpoints, this allows convoy to dispatch the event to both endpoints.
 
-```json[Sample Payload]
+```json {% file="Sample Payload" %}
 {
   "owner_id": "<your-owner-id>",
   "data": {
@@ -191,7 +191,7 @@ Now let us publish an event with the type to our endpoints. We’ll specify the 
 }
 ```
 
-```bash[Bash]
+```bash {% file="Bash" %}
 $ curl \
     --request POST \
     --data @event.json \

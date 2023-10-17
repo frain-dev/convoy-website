@@ -56,7 +56,8 @@ To ingest events using Google PubSub, follow the steps outlined below:
    Supply your `Project ID`, `Topic Name`, `Subscription` and upload your service account json key.
 6. **Send Events**
    We write `JSON` events into the queue with the following format:
-    ```json[Sample Payload]
+   
+    ```json {% file="Sample Payload" %}
      {
        "endpoint_id": "01GTBP6SX313EZN6X3QE29CW6Z",
        "event_type": "compliance.completed",
@@ -85,7 +86,8 @@ To ingest events using Amazon SQS, follow the steps outlined below:
    Supply your `Access Key`, `Secret Key`, `Queue Name` and `Default Region`.
 5. **Send Events**
    We write `JSON` events into the queue with the following format:
-    ```json[Sample Payload]
+
+    ```json {% file="Sample Payload" %}
      {
        "endpoint_id": "01GTBP6SX313EZN6X3QE29CW6Z",
        "event_type": "compliance.completed",

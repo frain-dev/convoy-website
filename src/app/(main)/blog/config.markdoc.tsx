@@ -1,7 +1,7 @@
 import { Config } from '@markdoc/markdoc';
 import Link from 'next/link';
 import Heading from './components/heading';
-import CodeBlock from './components/codeBlock';
+import CodeBlock from '@/app/(docs)/docs/components/codeblock';
 
 const config: Config = {
 	nodes: {
@@ -61,7 +61,7 @@ const config: Config = {
 				language: {
 					type: String
 				},
-				title: {
+				file: {
 					type: String
 				}
 			}

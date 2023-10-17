@@ -17,7 +17,7 @@ The Convoy CLI can be installed directly from your package manager or by buildin
 {% tab label="Mac" %}
 Install the Convoy CLI to your Mac from brew:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ brew tap frain-dev/tools
 $ brew install convoy
 ```
@@ -35,7 +35,7 @@ The installation procedures for Linux is split into two:
 
 Install the Convoy CLI from apt repository:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy/setup.deb.sh' | sudo -E bash
 $ sudo apt install convoy
 ```
@@ -44,7 +44,7 @@ $ sudo apt install convoy
 
 Install the Convoy CLI using yum:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ curl -1sLf 'https://dl.cloudsmith.io/public/convoy/convoy/setup.rpm.sh' | sudo -E bash
 $ sudo yum install convoy
 ```
@@ -75,7 +75,7 @@ $ make build
 
 Verify the build by running the command below:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy -v
 Convoy version v0.6.0
 ```
@@ -87,7 +87,7 @@ Convoy version v0.6.0
 
 To view the list of the available commands at any time, just run `convoy` in your terminal with no arguments:
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy
 High Performance Webhooks Gateway
 
@@ -137,7 +137,7 @@ Command: `convoy ingest`
 
 ### Synopsis
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy ingest --help
 Ingest webhook events from Pub/Sub streams
 
@@ -178,7 +178,7 @@ Command: `convoy bootstrap`
 
 ### Synopsis
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy bootstrap --help
 bootstrap creates a new user account
 
@@ -225,7 +225,7 @@ Command: `convoy stream`
 
 ### Synopsis
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy stream --help
 Start a websocket server to pipe events to a convoy cli instance
 
@@ -270,7 +270,7 @@ Command: `convoy migrate`
 
 ### Synopsis
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy migrate --help
 Convoy migrations
 
@@ -319,7 +319,7 @@ Command: `convoy config`
 
 ## Synopsis
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy config -h
 config outputs your instances computed configuration
 
@@ -362,7 +362,7 @@ Command: `convoy server`
 
 ### Synopsis
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy server --help
 Start the HTTP server
 
@@ -465,7 +465,7 @@ Command: `convoy worker`
 
 ### Synopsis
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy worker -h
 Start worker instance
 
@@ -531,7 +531,7 @@ Command: `convoy retry`
 
 ### Synopsis
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy retry -h
 retry event deliveries with a particular status in a timeframe
 
@@ -577,7 +577,7 @@ Command: `convoy scheduler`
 
 ### Synopsis
 
-```console[terminal]
+```bash {% file="terminal" %}
 $ convoy scheduler -h
 requeue event deliveries in the background with a scheduler.
 

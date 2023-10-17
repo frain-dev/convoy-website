@@ -94,7 +94,7 @@ You can benefit from all these features by using Convoy. Let’s implement them 
     
 - Create Endpoint
     
-    ```json[Sample Payload]
+    ```json {% file="Sample Payload" %}
     {
       "advanced_signatures": true,
       "description": "string",
@@ -103,7 +103,7 @@ You can benefit from all these features by using Convoy. Let’s implement them 
     }
     ```
     
-    ```bash[Bash]
+    ```bash {% file="Bash" %}
     $ curl \
         --request POST \
         --data @endpoint.json \
@@ -143,13 +143,13 @@ You can benefit from all these features by using Convoy. Let’s implement them 
     
 - Expire Secret
     
-    ```json[Sample Payload]
+    ```json {% file="Sample Payload" %}
     {
     	"expiration": 2
     }
     ```
     
-    ```bash[Bash]
+    ```bash {% file="Bash" %}
     $ curl \
         --request PUT \
         --data @expire.json \
@@ -198,7 +198,7 @@ You can benefit from all these features by using Convoy. Let’s implement them 
     
 - Create Subscription
     
-    ```json[Sample Payload]
+    ```json {% file="Sample Payload" %}
     {
       "name": "webhooks consumer subscription",
       "endpoint_id": "{insert-endpoint-id}",
@@ -221,7 +221,7 @@ You can benefit from all these features by using Convoy. Let’s implement them 
      }
     ```
     
-    ```bash[Bash]
+    ```bash {% file="Bash" %}
     $ curl \
         --request POST \
         --data @subscription.json \
@@ -268,7 +268,7 @@ You can benefit from all these features by using Convoy. Let’s implement them 
     
 - Send Event.
     
-    ```json[Sample Payload]
+    ```json {% file="Sample Payload" %}
     {
     	"endpoint_id": "b2d6e2f4-9c9d-40d0-8cce-daafcc47dd3a",
     	"event_type": "incident.priority_updated",
@@ -305,7 +305,7 @@ You can benefit from all these features by using Convoy. Let’s implement them 
     }
     ```
     
-    ```bash[Bash]
+    ```bash {% file="Bash" %}
     $ curl \
         --request POST \
         --data @event.json \

@@ -60,6 +60,9 @@ const config: Config = {
 			attributes: {
 				language: {
 					type: String
+				},
+				file: {
+					type: String
 				}
 			}
 		},

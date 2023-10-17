@@ -55,7 +55,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
 
 1. Project Setup
 
-    ```console[terminal]
+    ```bash {% file="terminal" %}
     $ mkdir flask-todo-convoy && cd flask-todo-convoy
     $ python3 -m venv venv
     $ touch .env {config,api,events}.py
@@ -63,7 +63,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
 
     Activate virtual environment
 
-    ```console[terminal]
+    ```bash {% file="terminal" %}
     $ source venv/bin/activate
     $ pip install Flask uvicorn python-dotenv
     $ pip freeze > requirements.txt
@@ -71,20 +71,20 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
 
     Install Convoy:
 
-    ```console[terminal]
+    ```bash {% file="terminal" %}
     $ pip install git+ssh://git@github.com/frain-dev/convoy-python
     ```
 
     Configure your environment variables in a `.env` file:
 
-    ```dotenv[.env]
+    ```bash {% file=".env" %}
     CONVOY_API_KEY=<your-api-key>
     CONVOY_PROJECT_ID=<your-project-id>
     ```
 
 2. Define events & configuration
 
-    ```python[events.py]
+    ```python {% file="events.py" %}
     events = {
         "ping": {
             "event": "ping",
@@ -115,7 +115,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
 
     Configuration:
 
-    ```python[config.py]
+    ```python {% file="config.py" %}
     from os import environ
     from dotenv import load_dotenv
 
@@ -129,7 +129,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
 
     Start by adding the imports and a Convoy instance:
 
-    ```python[api.py]
+    ```python {% file="api.py" %}
     from convoy import Convoy
     from flask import Flask, request
     from events import events
@@ -144,7 +144,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
 
     Add the code for the endpoints API:
 
-    ```python[api.py | Endpoints API]
+    ```python {% file="api.py | Endpoints API" %}
     @app.route("/endpoint", methods=["POST"])
     def create_endpoint():
             endpoint_body = request.json
@@ -175,7 +175,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
 
     Add the function that publishes webhooks:
 
-    ```python[api.py]
+    ```python {% file="api.py" %}
     def send_webhook_event(event_type: str, endpoint: str):
         event = {
             "endpoint_id": endpoint,
@@ -189,7 +189,7 @@ Every time we `create`, `update` and `delete` a todo item, we would generate the
 
 4. Todos API
 
-    ```python[api.py | Todos API]
+    ```python {% file="api.py | Todos API" %}
     @app.route("/todo", methods=["GET"])
     def get_todos() -> dict:
         endpoint_id = request.args.get("endpoint")
@@ -262,13 +262,13 @@ It’s time to publish your first webhook!
 
 1. To begin, we start our Flask app
 
-    ```console[terminal]
+    ```bash {% file="terminal" %}
     $ flask api.py
     ```
 
 2. Second, we create an endpoint with the cURL command below:
 
-    ```console[terminal]
+    ```bash {% file="terminal" %}
     curl -X 'POST' \
     'http://0.0.0.0:8080/endpoint' \
     -H 'accept: application/json' \
@@ -283,13 +283,13 @@ It’s time to publish your first webhook!
 
     The API returns a successful response:
 
-    ```console[terminal]
+    ```bash {% file="terminal" %}
     {"Endpoint ID":"da6c42b5-2a51-478c-ad5e-53097c0f61cb"}
     ```
 
 3. Finally, we create a Todo item, that in turn generates the webhook item. Let's use the cURL command below:
 
-    ```console[terminal]
+    ```bash {% file="terminal" %}
      curl -X 'POST' \
     'http://0.0.0.0:8080/todo?endpoint=da6c42b5-2a51-478c-ad5e-53097c0f61cb' \
     -H 'accept: application/json' \
@@ -302,7 +302,7 @@ It’s time to publish your first webhook!
 
     The API returns a successful response:
 
-    ```console[terminal]
+    ```bash {% file="terminal" %}
     {"data":["Todo added."]}
     ```
 
