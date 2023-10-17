@@ -23,9 +23,7 @@ To switch between organizations, open the current organization's settings, or cr
 
 ### Adding new members
 
-In the Community Edition, all users are super users, so all users can invite other team members. 
-
-> Before doing this, ensure you have your SMTP configuration set up.
+In the Community Edition, all users are superusers, so all users can invite other team members. 
 
 ![Team page](/docs-assets/team-page.png)
 
