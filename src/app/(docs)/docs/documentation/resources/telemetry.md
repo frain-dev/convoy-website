@@ -20,7 +20,7 @@ All telemetry data are collected and stored securely on [Mixpanel](https://mixpa
 
 ## How do I opt out?
 To opt of telemetry, set the `CONVOY_ANALYTICS_ENABLED` environment variable to false or add the following section to your `convoy.json`
-```json[Sample Config]
+```json {% file="Sample Config" %}
 {
  "analytics": {
   "is_enabled" false

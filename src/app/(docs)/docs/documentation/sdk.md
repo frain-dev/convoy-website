@@ -19,7 +19,7 @@ This page introduces you to the SDKs as well as demonstrate the steps involved i
 
 Install convoy.js with
 
-```bash[terminal]
+```bash {% file="terminal" %}
 $ npm install convoy.js
 ```
 
@@ -27,20 +27,20 @@ $ npm install convoy.js
 
 Next, require the `convoy` module and setup with your auth credentials.
 
-```js[example]
+```js {% file="example" %}
 const { Convoy } = require("convoy.js");
 const convoy = new Convoy({ api_key: "your_api_key" });
 ```
 
 The SDK also supports authenticating via Basic Auth by defining your username and password.
 
-```js[example]
+```js {% file="example" %}
 const convoy = new Convoy({ username: "default", password: "default" });
 ```
 
 In the event you're using a self hosted convoy instance, you can define the url as part of what is passed into convoy's constructor.
 
-```js[example]
+```js {% file="example" %}
 const convoy = new Convoy({
   api_key: "your_api_key",
   uri: "self-hosted-instance",
@@ -49,7 +49,7 @@ const convoy = new Convoy({
 
 ### Create an Endpoint
 
-```js[example]
+```js {% file="example" %}
 try {
   const endpointData = {
     url: "https://0d87-102-89-2-172.ngrok.io",
@@ -66,7 +66,7 @@ try {
 
 ## Create a subscription
 
-```js[example]
+```js {% file="example" %}
 try {
   const subscriptionData = {
     "name": "event-sub",
@@ -84,7 +84,7 @@ With the subscription in place, you're set to send an event.
 
 ### Sending an Event
 
-```js[example]
+```js {% file="example" %}
 try {
   const eventData = {
     endpoint_id: endpointId,
@@ -115,14 +115,14 @@ $ pip install convoy-python
 ```
 
 ## Configure
-```python[example]
+```python {% file="example" %}
 from convoy import Convoy
 convoy = Convoy({"api_key":"your_api_key", "project_id": "your_project_id"})
 ```
 
 In the event you're using a self-hosted convoy instance, you can define the `uri` as part of what is passed into tbe convoy's constructor.
 
-```python[example]
+```python {% file="example" %}
 convoy = Convoy({ "api_key": 'your_api_key', "uri": 'self-hosted-instance',"project_id": "your_project_id" })
 ```
 
@@ -130,7 +130,7 @@ convoy = Convoy({ "api_key": 'your_api_key', "uri": 'self-hosted-instance',"proj
 
 An endpoint represents a target URL to receive events.
 
-```python[Create endpoint]
+```python {% file="Create endpoint" %}
 endpointData = {
     "url": "https://0d87-102-89-2-172.ngrok.io",
     "description": "Default Endpoint",
@@ -145,7 +145,7 @@ endpoint_id = response["data"]["uid"]
 ## Create a Subscription
 After creating an endpoint, we need to subscribe the endpoint to events. 
 
-```python[Create subscription]
+```python {% file="Create subscription" %}
 subscription_data = {
   "endpoint_id": endpoint_id
   "name": "New subscription"
@@ -158,7 +158,7 @@ subscription_data = {
 
 To send an event, you'll need the `uid` we created in the earlier section.
 
-```python[Create event]
+```python {% file="Create event" %}
 eventData = {
     "endpoint_id": endpoint_id,
     "event_type": "payment.success",
@@ -188,7 +188,7 @@ To install the package, you will need to be using Composer in your project.
 
 To get started quickly,
 
-```bash[terminal]
+```bash {% file="terminal" %}
 $ composer require frain/convoy symfony/http-client nyholm/psr7
 ```
 
@@ -196,7 +196,7 @@ $ composer require frain/convoy symfony/http-client nyholm/psr7
 
 Next, import the `convoy` module and setup with your auth credentials.
 
-```php[example]
+```php {% file="example" %}
 use Convoy\Convoy;
 
 $convoy = new Convoy(["api_key" => "your_api_key"]);
@@ -204,13 +204,13 @@ $convoy = new Convoy(["api_key" => "your_api_key"]);
 
 The SDK also supports authenticating via Basic Auth by defining your username and password.
 
-```php[example]
+```php {% file="example" %}
 $convoy = new Convoy(["username" => "default", "password" => "default"]);
 ```
 
 In the event you're using a self hosted convoy instance, you can define the url as part of what is passed into convoy's constructor.
 
-```php[example]
+```php {% file="example" %}
 $convoy = new Convoy([
     "api_key" => "your_api_key",
     "uri" => "self-hosted-instance"
@@ -219,7 +219,7 @@ $convoy = new Convoy([
 
 ### Create an Endpoint
 
-```php[example]
+```php {% file="example" %}
 $endpointData = [
     "url" => "https://0d87-102-89-2-172.ngrok.io",
     "description" => "Default Endpoint",
@@ -232,7 +232,7 @@ $response = $convoy->endpoints()->create($appId, $endpointData);
 
 ### Create a Subscription
 
-```php[example]
+```php {% file="example" %}
 $subscriptionData = [
     "name" => "event-sub",
     "endpoint_id" => $endpointId
@@ -247,7 +247,7 @@ With the subscription in place, you're set to send an event.
 
 To send an event, you'll need the `uid` from the application we created earlier.
 
-```php[example]
+```php {% file="example" %}
 $eventData = [
     "endpoint_id" => $endpointId,
     "event_type" => "payment.success",
@@ -271,19 +271,19 @@ $response = $convoy->events()->create($eventData);
 
 Add this line to your application's Gemfile:
 
-```console[terminal]
+```console {% file="terminal" %}
 $ gem 'convoy'
 ```
 
 And then execute:
 
-```console[terminal]
+```console {% file="terminal" %}
 $ bundle install
 ```
 
 Or install it yourself as:
 
-```console[terminal]
+```console {% file="terminal" %}
 $ gem install convoy
 ```
 
@@ -352,12 +352,12 @@ event_response = event.save
 
 Install convoy-go with
 
-```bash[terminal]
+```bash {% file="terminal" %}
 $ go get github.com/frain-dev/convoy-go
 ```
 
 ## Configure
-```go[example]
+```go {% file="example" %}
 import (
     convoy "github.com/frain-dev/convoy-go"
 )
@@ -369,7 +369,7 @@ import (
 
 The SDK also supports authenticating via Basic Auth by providing your username and password
 
-```go[example]
+```go {% file="example" %}
   c := convoy.New(convoy.Options{
       APIUsername: "default",
       APIPassword: "default",
@@ -378,7 +378,7 @@ The SDK also supports authenticating via Basic Auth by providing your username a
 
 In the event you're using a self hosted convoy instance, you can define the url as part of what is passed into the `convoy.Options` struct
 
-```go[example]
+```go {% file="example" %}
    c := convoy.New(convoy.Options{
        APIKey: "your_api_key",
        APIEndpoint: "self-hosted-instance",
@@ -387,7 +387,7 @@ In the event you're using a self hosted convoy instance, you can define the url 
 
 ## Create an Endpoint
 
-```go[example]
+```go {% file="example" %}
 endpoint, err := c.Endpoints.Create(app.UID, &Convoy.CreateEndpointRequest{
     URL: "http://localhost:8081",
     Description: "Some description",
@@ -400,7 +400,7 @@ endpoint, err := c.Endpoints.Create(app.UID, &Convoy.CreateEndpointRequest{
 
 ## Create a Subscription
 
-```go[example]
+```go {% file="example" %}
 subscription, err := c.Subscriptions.Create(&Convoy.CreateSubscriptionRequest{
     Name: "<subscription name>"
     EndpointID: "<endpoint-id>"
@@ -417,7 +417,7 @@ With the subscription in place, you're set to send an event.
 
 To send an event, you'll need the `uid` from the application we created earlier.
 
-```go[example]
+```go {% file="example" %}
 event, err := c.Events.Create(&convoy.CreateEventRequest{
         EndpointID: endpoint.UID,
 		EventType: "test.customer.event",

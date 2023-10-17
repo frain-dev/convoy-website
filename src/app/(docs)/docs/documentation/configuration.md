@@ -19,7 +19,7 @@ The order of preference when all three is used is **CLI flags** > **environment 
 
 An example configuration is shown below:
 
-```json[Sample Config]
+```json {% file="Sample Config" %}
 {
   "host": "hooks.domain.com",
   "database": {
@@ -60,7 +60,7 @@ This section explains the role of the parameters used in configuring the Convoy 
 -   `database` ( required ) -
     The parameter houses the configuration for the main data store. Currently supported databases: `PostgreSQL`.
 
-    ```json[sample]
+    ```json {% file="sample" %}
     {
       "database": {
         "host": "localhost",
@@ -76,7 +76,7 @@ This section explains the role of the parameters used in configuring the Convoy 
 -   `redis` -
     These parameters are used to configure convoy's queuing backend, **caching backend** and **rate limiting backend** respectively.
 
-    ```json[sample]
+    ```json {% file="sample" %}
     {
         "redis": {
           "port": 6379,
@@ -95,7 +95,7 @@ This section explains the role of the parameters used in configuring the Convoy 
     -   `native`: Configure realm. This is used for the Public API.
     -   `jwt`: Configure jwt. This is used for UI authentication.
 
-    ```json[sample]
+    ```json {% file="sample" %}
     {
       "auth": {
         "native": {
@@ -111,7 +111,7 @@ This section explains the role of the parameters used in configuring the Convoy 
 -   `smtp` ( optional ) -
     Convoy sends out emails for several reasons for [dead endpoints](./resources/glossary#dead-endpoints), team invitation etc. It needs a SMTP provider to do this.
 
-    ```json[sample]
+    ```json {% file="sample" %}
     {
         "smtp": {
     		"provider": "sendgrid",
