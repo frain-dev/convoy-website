@@ -39,8 +39,6 @@ export default function Contents({ tableOfContents }: any) {
 	};
 
 	useEffect(() => {
-		console.log(tableOfContents);
-		console.log(contents);
 		const doc = document.querySelector('#docPage');
 		doc?.addEventListener('scroll', onScroll);
 
