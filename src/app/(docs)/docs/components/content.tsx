@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function Contents({ tableOfContents }: any) {
-	const [currentSection, setCurrentSection] = useState(tableOfContents[0]?.title);
+	const contents = tableOfContents.map(({ title, level }, i) => ({ title, level, index: i }));
+	const [currentSection, setCurrentSection] = useState(contents[0]);
 
 	const getHeadings = useCallback((tableOfContents: any) => {
 		return tableOfContents.map((content: any) => {
@@ -20,12 +21,12 @@ export default function Contents({ tableOfContents }: any) {
 
 	const onScroll = useCallback(() => {
 		if (tableOfContents.length === 0) return;
-		let headings = getHeadings(tableOfContents);
+		let headings = getHeadings(contents);
 		let top = window.scrollY;
-		let current = headings[0]?.title;
+		let current = headings[0];
 		for (let heading of headings) {
 			if (top >= heading?.top) {
-				current = heading.title;
+				current = heading;
 			} else {
 				break;
 			}
@@ -33,11 +34,13 @@ export default function Contents({ tableOfContents }: any) {
 		setCurrentSection(current);
 	}, []);
 
-	const isLinkActive = (title: string) => {
-		return currentSection === title;
+	const isLinkActive = (content: any) => {
+		return currentSection.title === content.title && currentSection.index === content.index;
 	};
 
 	useEffect(() => {
+		console.log(tableOfContents);
+		console.log(contents);
 		const doc = document.querySelector('#docPage');
 		doc?.addEventListener('scroll', onScroll);
 
@@ -50,10 +53,10 @@ export default function Contents({ tableOfContents }: any) {
 		<div>
 			<p className="text-gray-500 text-14">On this page</p>
 			<ul className="mt-24px border-l border-primary-50">
-				{tableOfContents.map((content: any, index: number) => (
-					<li key={index} className={`mb-16px -ml-[1px] transition-all pl-24px ${isLinkActive(content.title) ? 'border-l border-success-400' : ''}`}>
-						<Link href={`#${content.title}`} className={`text-12 transition-all font-medium ${isLinkActive(content.title) ? 'text-success-400' : 'text-gray-500'}`}>
-							{content.title}
+				{contents.map((content: any, index: number) => (
+					<li key={index} className={`mb-16px -ml-[1px] transition-all pl-24px ${isLinkActive(content) ? 'border-l border-success-400' : ''}`}>
+						<Link href={`#${content.title}`} className={`text-12 transition-all font-medium ${isLinkActive(content) ? 'text-success-400' : 'text-gray-500'} `}>
+							<span className={`${content.level > 2 ? 'ml-16px inline-block' : ''}`}>{content.title}</span>
 						</Link>
 					</li>
 				))}
