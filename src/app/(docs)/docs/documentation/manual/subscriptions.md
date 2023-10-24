@@ -242,6 +242,20 @@ These filters match events with payloads that are array either in the root or ne
 
 ![Array positional $. filter](/docs-assets/subscription-array-positional-filter.png)
 
+#### Regex filters
+
+These filters match events with payloads that match the supplied regex.
+
+```json {% file="Regex filters" %}
+{
+    "event_type": {
+        "$regex": "^es_[a-zA-Z]+$"
+    }
+}
+```
+
+![Regex filter](/docs-assets/subscription-regex-filter.png)
+
 **NB:** Convoy only supports filters with arrays nested up to 3 levels i.e. `$.a.$.b.$.c.$.e` will throw an error
 
 Here's a full list of the supported filters:
@@ -261,6 +275,7 @@ Here's a full list of the supported filters:
 |   $or    |     array of conditions      |       matches an array of conditions        |
 |   $and   |     array of conditions      |       matches an array of conditions        |
 |  $exist  |            array             |           checks if a key exists            |
+|  $regex  |            string            |         checks if the regex matches         |
 
 
 
