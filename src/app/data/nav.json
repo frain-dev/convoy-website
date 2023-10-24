@@ -53,10 +53,6 @@
 				"link": "/docs/manual/portal-links"
 			},
 			{
-				"title": "Static IPs",
-				"link": "/docs/manual/static-ips"
-			},
-			{
 				"title": "Meta Events",
 				"link": "/docs/manual/meta-events"
 			},
@@ -72,6 +68,10 @@
 		"icon": "forward-proxies",
 		"showDropdown": false,
 		"children": [
+			{
+				"title": "Static IPs",
+				"link": "/docs/forward-proxies/static-ips"
+		  },
 			{
 				"title": "Smokescreen",
 				"link": "/docs/forward-proxies/smokescreen"
