@@ -57,23 +57,24 @@ Outgoing projects are designed for use API providers, they are used to send wehb
 ![Project configurations](/docs-assets/project-config.png)
 
 The following are parameters that can be configured on a project.
-|         Config          	|       Type      	|               Supported Values              	|       Default      	|
-|:------------------------:	|:---------------:	|:-------------------------------------------:	|:------------------:	|
-|   **Signature Details**  	|                 	|                                             	|                    	|
-|          Header          	|      String     	|                                             	| X-Convoy-Signature 	|
-|           Hash           	|      String     	|                                             	|       SHA512       	|
-|      **Retry Logic**     	|                 	|                                             	|                    	|
-|         Mechanism        	|      String     	| Linear time retry, Exponential time backoff 	|  Linear time retry 	|
-|         Duration         	| Duration String 	|                                             	|         5s         	|
-|           Limit          	|     Integer     	|                                             	|          5         	|
-|      **Rate Limit**      	|                 	|                                             	|                    	|
-|         Duration         	| Duration String 	|                                             	|         5s         	|
-|           Limit          	|     Integer     	|                                             	|          5         	|
-|      **Others**           |                	|                                             	|                   	|
-| Disable Failing Endpoint 	|     Boolean     	|                                             	|        False       	|
-|    Retention Policy 	    | Duration String   |                                               |   720h (30 days)     	|
-|     Search Policy 	    | Duration String   |                                               |   720h (30 days)      |
-|     Enable Meta Events 	| Boolean           |                                               |        False          |
+
+|          Config           |      Type       |              Supported Values               |      Default       |
+|:-------------------------:|:---------------:|:-------------------------------------------:|:------------------:|
+|   **Signature Details**   |                 |                                             |                    |
+|          Header           |     String      |                                             | X-Convoy-Signature |
+|           Hash            |     String      |                                             |       SHA512       |
+|      **Retry Logic**      |                 |                                             |                    |
+|         Mechanism         |     String      | Linear time retry, Exponential time backoff | Linear time retry  |
+|         Duration          | Duration String |                                             |         5s         |
+|           Limit           |     Integer     |                                             |         5          |
+|      **Rate Limit**       |                 |                                             |                    |
+|         Duration          | Duration String |                                             |         5s         |
+|           Limit           |     Integer     |                                             |         5          |
+|        **Others**         |                 |                                             |                    |
+| Disable Failing Endpoint  |     Boolean     |                                             |       False        |
+|     Retention Policy      | Duration String |                                             |   720h (30 days)   |
+|       Search Policy       | Duration String |                                             |   720h (30 days)   |
+|    Enable Meta Events     |     Boolean     |                                             |       False        |
 
 
 
