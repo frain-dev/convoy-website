@@ -13,7 +13,7 @@ The Events log dashboard represent all webhook events pushed to Convoy. They do 
 ## Event delivery
 An event delivery is the combination of an endpoint and an event. For both incoming and outgoing webhooks project, an event can generate multiple event deliveries depending on the subscriptions. An event delivery can have any of the states below:
 1. `Scheduled`: In this state, the event delivery has been enqueued to the message broker, but a worker node is yet to pick it up for delivery.
-2. `Processing`: In this state, the event delivery has been retrieved from the message broker by a worker node, and the event is on it's way out.
+2. `Processing`: In this state, the event delivery has been retrieved from the message broker by a worker node, and the event is on its way out.
 3. `Success`: In this state, the event delivery delivered successfully. Here, the `Retry` button becomes `Force Retry`. This is used to retry a successful event in case of a false positive. 
 4. `Retry`:  In this state, the event delivery previously failed and the automatic retries have kicked in. Here, Convoy will continue to retry till the max attempts is reached.
 5. `Failed`: In this state, the event delivery has reached the maximum amount of automatic retries and failed to deliver the event or the endpoint failed to acknowledge delivery. Here, the `Retry` button becomes to active to trigger manual retries.
@@ -35,9 +35,8 @@ You can filter events and event deliveries by date, time, status and endpoints r
 ![convoy event filter](/docs-assets/event-filter.png)
 
 ### Event search
-
-When properly configured with a search backend, Convoy indexes the entire webhook payload this enables you to search the entire payload for any value in any field. This enables you to drill down the issue faster than ever and find the impacted customer and offending endpoints.
-![convoy event search](/docs-assets/event-search.png)
+Every hour Convoy tokenizes the entire webhook payload this enables you to search (using full-text search) the entire payload for any value in any field which enables you debug issues faster. Search tokens are retained till they are deleted at the end of the search retention period.
+![convoy event search](/docs-assets/convoy-events-search.gif)
 
 
 ### Convoy CLI

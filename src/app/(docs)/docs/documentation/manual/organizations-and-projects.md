@@ -11,9 +11,9 @@ Convoy provides the tools to properly categorise your data. These tools are orga
 
 ## Organisations
 
-An organisation is the highest level namespace within a Convoy instance. It comprises several projects. Ideally, this should map to a real-world organisation or some form of high-level grouping.
+An organisation is the highest level namespace within a Convoy instance. It contains several projects. Ideally, this should map to a real-world organisation or some form of high-level grouping.
 
-As a new user, an organization can be created by clicking on the **Create Organisation** on the dashboard:
+As a new user, an organization can be created by clicking on the **Create Organization** on the dashboard:
 
 ![Create organization](/docs-assets/create-org-dashboard.png)
 
@@ -23,9 +23,7 @@ To switch between organizations, open the current organization's settings, or cr
 
 ### Adding new members
 
-In the Community Edition, all users are super users, so all users can invite other team members. 
-
-> Before doing this, ensure you have your SMTP configuration set up.
+In the Community Edition, all users are superusers, so all users can invite other team members. 
 
 ![Team page](/docs-assets/team-page.png)
 
@@ -36,6 +34,10 @@ To add a new team member, visit the **teams** page at the top middle of the page
 
 Once the invite is sent, the user will get an email with an invitation link to join the new project. An invitation token is valid for **2 weeks** after which you'd need to generate a new one.
 
+![Copy Teammate Invite Link](/docs-assets/copy-teammate-invite-link.png "Copy Teammate Invite Link")
+
+After you create the invite, you can copy the invite link.
+
 ## Projects
 
 A [project](https://dashboard.getconvoy.io/projects) is a hierarchical namespace for all core resources within Convoy. All events, applications, endpoints, subscriptions and all other critical configurations belong to a project and a project belongs to an organisation.
@@ -44,18 +46,18 @@ There are two types of projects; Incoming and Outgoing projects.
 
 ![Incoming and outgoing projects](/docs-assets/in-and-out-projects.png)
 ### Incoming project
-An incoming project is designed to receive webhooks from third-party party sources like Github, Twilio, Stripe etc. and even custom sources based on any form of verification. It was designed for API consumers.
+Incoming projects are designed for use by API consumers, they act as proxy and store for all the webhook events received from numerous third parties like GitHub, Twilio, Stripe etc., and even custom sources which require a certain form of verification. They support a number of handy features like webhook event type filtering, payload filtering and payload transformations.
 
 ### Outgoing project
 
-An outgoing project is designed to publish webhooks to users' endpoints. It is designed for API providers. 
+Outgoing projects are designed for use API providers, they are used to send wehbook events to a consumer endpoint. Events can be sent using the HTTP API or via message brokers which include Google PubSub, Amazon SQS and Apache Kafka after which Convoy will dispatch them to the respective endpoints.
 
 ### Configure a Project
 
 ![Project configurations](/docs-assets/project-config.png)
 
 The following are parameters that can be configured on a project.
-|          Config          	|       Type      	|               Supported Values              	|       Default      	|
+|         Config          	|       Type      	|               Supported Values              	|       Default      	|
 |:------------------------:	|:---------------:	|:-------------------------------------------:	|:------------------:	|
 |   **Signature Details**  	|                 	|                                             	|                    	|
 |          Header          	|      String     	|                                             	| X-Convoy-Signature 	|
@@ -67,7 +69,12 @@ The following are parameters that can be configured on a project.
 |      **Rate Limit**      	|                 	|                                             	|                    	|
 |         Duration         	| Duration String 	|                                             	|         5s         	|
 |           Limit          	|     Integer     	|                                             	|          5         	|
+|      **Others**           |                	|                                             	|                   	|
 | Disable Failing Endpoint 	|     Boolean     	|                                             	|        False       	|
+|    Retention Policy 	    | Duration String   |                                               |   720h (30 days)     	|
+|     Search Policy 	    | Duration String   |                                               |   720h (30 days)      |
+|     Enable Meta Events 	| Boolean           |                                               |        False          |
+
 
 
 **Note: Setting the Project's Disable Failing Endpoint config to `False` will automatically set all the endpoints for that project with an `inactive` or `pending` state to an `active` state.**
