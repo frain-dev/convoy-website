@@ -6,7 +6,7 @@ import Post from './post';
 
 export default function BlogPage({ posts, blogData, children }: any) {
 	return (
-		<div className="m-auto px-0 pt-200px pb-140px">
+		<div className="m-auto px-0 pt-200px mobile:pt-150px pb-140px">
 			<div className="max-w-[780px] w-full m-auto px-20px desktop:p-0">
 				{!blogData.isError && (
 					<div className="flex w-full flex-col desktop:flex-row desktop:items-center desktop:justify-between">

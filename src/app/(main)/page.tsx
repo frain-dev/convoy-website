@@ -90,7 +90,7 @@ export default function Home() {
 			<section className="max-w-[1062] flex flex-col justify-center items-center pt-220px pb-100px desktop:pb-236px px-20px">
 				<div className="bg-primary-25 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 					We are backed by
-					<Image src="/svg/y-combinator.svg" width={24} height={24} className="ml-16px" alt="y-combinator" />
+					<Image src="/svg/y-combinator.svg" width={24} height={24} className="ml-16px w-24px" alt="y-combinator" />
 				</div>
 				<h1 className="text-center desktop:text-[50px] desktop:leading-[80px] font-bold">Open-source Webhooks Gateway for</h1>
 				<h1 className="text-center desktop:text-[50px] desktop:leading-[80px] font-bold text-primary-400">Efficient Engineers</h1>
@@ -109,7 +109,7 @@ export default function Home() {
 					<Link
 						href="/docs"
 						className="py-12px px-28px text-14 font-medium rounded-8px bg-primary-25 text-primary-400 border border-primary-50 flex items-center justify-center text-center xs:w-[90vw]">
-						<Image src="/svg/documentation.svg" height={16} width={16} className="mr-10px" alt="document icon" />
+						<Image src="/svg/documentation.svg" height={16} width={16} className="mr-10px w-16px" alt="document icon" />
 						Documentation
 					</Link>
 				</div>

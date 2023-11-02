@@ -137,7 +137,7 @@ export default function Cloud() {
 
 			<section className="bg-white-100 py-100px desktop:py-160px">
 				<div className="max-w-[1350px] m-auto px-20px">
-					<div className="bg-primary-25 rounded-[40px] w-fit footer:m-auto py-10px px-20px flex items-center text-14 mb-40px">
+					<div className="bg-primary-25 rounded-[40px] w-fit footer:m-auto py-10px px-20px flex items-center text-14">
 						<div className="mr-16px w-24px h-24px rounded-100px bg-primary-400 flex justify-center items-center">
 							<svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
@@ -148,7 +148,7 @@ export default function Cloud() {
 						</div>
 						First choice for developers
 					</div>
-					<h1 className="text-[48px] leading-[56px] font-bold footer:text-center max-w-[600px] text-gray-800">Why Engineers choose Convoy</h1>
+					<h1 className="text-[48px] leading-[56px] mobile:text-36 font-bold footer:text-center max-w-[600px] text-gray-800 mt-40px">Why Engineers choose Convoy</h1>
 
 					<div className="flex justify-between flex-wrap gap-6 mt-80px desktop:mt-120px">
 						<div className="desktop:max-w-[340px]">
@@ -156,7 +156,7 @@ export default function Cloud() {
 								src="/static/fully-managed.png"
 								height={48}
 								width={48}
-								className="mb-24px rounded-10px shadow-[0px_22px_24px_rgba(65,111,244,0.2)]"
+								className="mb-24px rounded-10px shadow-[0px_22px_24px_rgba(65,111,244,0.2)] w-48px"
 								alt="everything-you-need"
 							/>
 							<p className="text-14 leading-8 text-gray-600">Fully managed global cloud infrastructure with high availability and resilience baked in.</p>
@@ -166,7 +166,7 @@ export default function Cloud() {
 								src="/static/stay-compliant.png"
 								height={48}
 								width={48}
-								className="mb-24px rounded-10px shadow-[0px_22px_24px_rgba(43,214,123,0.2)]"
+								className="mb-24px rounded-10px shadow-[0px_22px_24px_rgba(43,214,123,0.2)] w-48px"
 								alt="excellent-rate-limiting"
 							/>
 							<p className="text-14 leading-8 max-w-[333px] text-gray-600">Stay compliant by choosing the region we host and store your webhooks data.</p>
@@ -176,7 +176,7 @@ export default function Cloud() {
 								src="/static/transparent-usage.png"
 								height={48}
 								width={48}
-								className="mb-24px rounded-10px shadow-[0px_22px_24px_rgba(247,227,109,0.2)]"
+								className="mb-24px rounded-10px shadow-[0px_22px_24px_rgba(247,227,109,0.2)] w-48px"
 								alt="transparent-pricing"
 							/>
 							<p className="text-14 leading-8 text-gray-600">Transparent usage-based pricing, keep costs under control by paying for what you use.</p>
