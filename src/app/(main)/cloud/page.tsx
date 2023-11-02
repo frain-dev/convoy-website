@@ -50,7 +50,7 @@ export default function Cloud() {
 				id="home">
 				<div className="bg-primary-25 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 					We are backed by
-					<Image src="/svg/y-combinator.svg" width={24} height={24} className="ml-16px" alt="y-combinator" />
+					<Image src="/svg/y-combinator.svg" width={24} height={24} className="ml-16px w-24px" alt="y-combinator" />
 				</div>
 				<h1 className="desktop:text-center text-gray-25 text-32 desktop:text-[56px] desktop:leading-[80px] font-bold max-w-[841px]">
 					Make Webhooks management our problem, not yours
@@ -70,7 +70,7 @@ export default function Cloud() {
 					<Link
 						href="/docs"
 						className="py-12px px-28px text-14 font-medium rounded-8px bg-transparent text-gray-25 border border-gray-25 flex items-center justify-center text-center xs:w-[90vw]">
-						<Image src="/svg/documentation.svg" height={16} width={16} className="mr-10px" alt="document icon" />
+						<Image src="/svg/documentation.svg" height={16} width={16} className="mr-10px w-16px" alt="document icon" />
 						Documentation
 					</Link>
 				</div>
