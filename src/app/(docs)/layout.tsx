@@ -48,7 +48,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 									</button>
 
 									<Link href="/docs">
-										<Image src="/svg/convoy.svg" alt="Convoy Logo" width={128} height={22} priority />
+										<Image src="/svg/convoy.svg" alt="Convoy Logo" width={128} height={22} priority className="w-128px" />
 									</Link>
 								</div>
 
@@ -56,13 +56,13 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 
 								<div className="flex items-center gap-16px mt-22px">
 									<Link href="https://github.com/frain-dev/convoy" className="bg-transparent flex items-center text-12 text-gray-600">
-										<Image className="mr-8px" src="/svg/github.svg" alt="Github Logo" width={14} height={14} priority />
+										<Image className="mr-8px w-14px" src="/svg/github.svg" alt="Github Logo" width={14} height={14} priority />
 										Github
 									</Link>
 									<Link
 										href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ"
 										className="bg-transparent flex items-center text-12 text-gray-600">
-										<Image className="mr-8px" src="/svg/slack.svg" alt="Slack Logo" width={11} height={11} priority />
+										<Image className="mr-8px w-10px" src="/svg/slack.svg" alt="Slack Logo" width={11} height={11} priority />
 										Community
 									</Link>
 								</div>
@@ -71,7 +71,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 
 								<Link href="https://convoy.readme.io/" className="flex items-center text-gray-500 text-12 my-16px w-full">
 									API Reference
-									<Image className="ml-10px" src="/svg/arrow-top-right.svg" alt="Arrow top right icon" width={12} height={12} />
+									<Image className="ml-10px w-12px" src="/svg/arrow-top-right.svg" alt="Arrow top right icon" width={12} height={12} />
 								</Link>
 
 								<div className="h-[1px] w-full bg-primary-25 mb-30px"></div>
@@ -142,9 +142,9 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 								<button
 									className="px-0 py-0 border border-grey-10 bg-white-100 rounded-100px w-30px h-30px flex items-center justify-center"
 									onClick={() => setShowMenu(!showMenu)}>
-									<Image src="/doc-icons/collapse.svg" alt="collapse icon" width={12} height={12} priority />
+									<Image src="/doc-icons/collapse.svg" alt="collapse icon" width={12} height={12} priority className="w-12px" />
 								</button>
-								<Image className="ml-10px" src="/svg/convoy.svg" alt="Convoy Logo" width={110} height={22} priority />
+								<Image className="ml-10px w-110px" src="/svg/convoy.svg" alt="Convoy Logo" width={110} height={22} priority />
 							</div>
 
 							{children}
