@@ -93,7 +93,7 @@ export default function Header() {
 
 						<div className="ml-40px nav-bar-break:w-fit nav-bar-break:ml-0">
 							<Link href="/">
-								<Image src="/svg/convoy-logo.svg" height={29} width={110} alt="logo" className="mobile:max-w-[100px]" />
+								<Image src="/svg/convoy-logo.svg" height={29} width={110} alt="logo" quality="70" />
 							</Link>
 						</div>
 
@@ -193,7 +193,7 @@ export default function Header() {
 						<a
 							target="_blank"
 							href="https://dashboard.getconvoy.io/login"
-							className="px-20px py-8px text-10 font-medium rounded-8px bg-primary-400 text-white-100 block nav-bar-break:hidden whitespace-nowrap">
+							className="px-20px py-8px text-10 font-medium rounded-8px bg-primary-400 text-white-100 block nav-bar-break:hidden whitespace-nowrap xs:hidden">
 							Get Started
 						</a>
 					</div>
