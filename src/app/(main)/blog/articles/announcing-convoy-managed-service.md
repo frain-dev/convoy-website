@@ -20,7 +20,7 @@ It’s been a minute since we wrote a product announcement, but yes, we’ve bee
 
 Convoy is the world’s most advanced webhooks gateway with several features like retries, rate limiting, circuit breaking, transformations, etc. While all these features are great and are available in Convoy Community Edition. Many teams want to use Convoy without the burden of managing the infrastructure and not sacrificing security and availability. Hence, we are launching a new Cloud platform — multi-tenant, fully SOC2 compliant, and highly available across multiple regions.
 
-[]()
+![Create a cluster](/blog-assets/creating-cluster.gif)
 
 Let’s talk about why this release is exciting.
 
