@@ -213,11 +213,11 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 											</div>
 										</div>
 
-										<p className="text-gray-600 text-12 max-w-[307px]">{plan.description}</p>
+										<p className="text-gray-600 text-12 max-w-[336px]">{plan.description}</p>
 
 										<hr className={`${i === 1 ? 'border-success-100' : 'border-primary-25'} border-t my-24px`} />
 
-										{i === 1 && <div className={`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`}>Starts with</div>}
+										{i === 1 && <div className={`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`}>Starts at</div>}
 
 										{i === 1 && (
 											<>
@@ -266,10 +266,10 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 										{i !== 1 && <p className="flex items-center text-18 font-medium text-gray-600">{plan.price}</p>}
 									</div>
 
-									<div className={`${i === 1 ? 'pt-24px' : ''} px-24px md:px-32px pb-24px md:pb-32px`}>
+									<div className={`${i === 1 ? 'pt-8px' : ''} px-24px md:px-32px pb-24px md:pb-32px`}>
 										{i !== 1 && <hr className="border-t border-primary-25 my-24px" />}
 
-										<div className={`${i === 1 ? 'h-[244px] md:h-[340px]' : 'h-[244px] md:h-[300px]'}`}>
+										<div className={`${i === 1 ? 'h-[244px] md:h-[240px]' : 'h-[244px] md:h-[300px]'}`}>
 											<p className="text-12 text-gray-400 mb-16px">{plan.preText}</p>
 											{plan.features.map((feature, index) => (
 												<div className="flex items-start mb-10px" key={index}>
@@ -287,7 +287,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 									</div>
 								</div>
 
-								<p className="text-10 mb-16px text-gray-400 mx-24px">Additional cost may apply for usage beyond these limits</p>
+								<p className={`text-10 text-gray-400 mx-24px ${i === 2 ? 'mb-16px md:-mb-6px' : 'mb-16px'}`}>Additional cost may apply for usage beyond these limits</p>
 
 								{i !== 1 && (
 									<button
