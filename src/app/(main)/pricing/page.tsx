@@ -3,68 +3,75 @@ import Image from 'next/image';
 import ArrowRightIcon from '../../../../public/svg/arrow-right-icon.svg';
 import AngleDownIcon from '../../../../public/svg/angle-down-black-icon.svg';
 import PricingImage from '../../../../public/static/Frame.png';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import EnterpriseWaitlist from '@/app/components/EnterpriseWaitList';
 import Toast from '@/app/components/Toast';
 
 export default function Pricing() {
 	const [openQuestion, setOpenQuestion] = useState('Will you match the price of another platform?');
+	const [selectedPlan, setSelectedPlan] = useState(1);
+	const [rangeBg, setRangeBg] = useState('bg-gray-200');
 	const enterpriseModal = useRef<HTMLDialogElement>(null);
 
 	const plans = [
 		{
-			name: 'Developer',
+			name: 'Shared',
 			id: 'developer',
-			description: 'This is a perfect plan for starters',
-			price: '$0',
+			description: 'It’s great for development and hobbyists. Not suitable for production workloads due to variable performance.',
+			price: 'Coming soon',
 			frequency: '/monthly',
 			link: 'https://github.com/frain-dev/convoy#installation-getting-started',
 			subText: 'This is a perfect plan for starters and hobby projects',
 			tagClass: 'bg-primary-25 text-primary-400',
 			preText: 'You’ll get started with:',
-			features: [
-				'Capped at 200,000 events monthly',
-				'1 user',
-				'2 projects',
-				'3 days retention',
-				'Endpoint Management: Retries & Rate Limiting',
-				'Message Broker Integration (Google PubSub & Amazon SQS)'
-			]
+			features: ['99.9% Availability.', 'Shared Resources.', 'Community Support.']
 		},
 		{
-			name: 'Growth',
+			name: 'Dedicated',
 			id: 'growth',
-			description: 'This is a perfect plan for startups',
+			description: 'It’s great for teams seeking a scalable and production-ready cluster for reliable webhooks management.',
 			price: '$40',
 			frequency: '/monthly',
 			link: '/cloud',
 			subText: 'This is a perfect plan for growing startups, aiming to scale',
 			tagClass: 'bg-success-100 text-success-400',
-			preText: 'Everything in developer plan, plus:',
-			features: ['Unlimited events at $50/million events', '5 users', '10 projects', '30 days retention', 'Shared Static IPs']
+			preText: '',
+			features: [
+				'SOC 2',
+				'Static IPs.',
+				'Premium Support.',
+				'99.99% Availability.',
+				'Basic Access Control.',
+				'Dedicated Resources.',
+				'Multi-region - US & EU.',
+				'Up to 90 Days retention.'
+			]
 		},
 
 		{
-			name: 'Scale',
+			name: 'Enterprise',
 			id: 'scale',
-			description: 'For users who want to do more',
-			price: '$150',
+			description: 'We meet you at your point of scale and join you further',
+			price: 'Custom Pricing',
 			frequency: '',
 			link: '/enterprise#requestAccess',
 			subText: 'We meet you at your point of scale and join you further',
 			tagClass: 'bg-warning-50 text-warning-400',
-			preText: 'Everything in growth plan, plus:',
-			features: ['Unlimited events at $45/million events', 'Unlimited users', 'Unlimited projects', '90 days retention', 'Role-Based Access Controls', 'Dedicated Static IPs']
+			preText: '',
+			features: ['VPC Peering & Private Networking', '99.999% Availability.', 'Advanced Access Control.', 'Dedicated Support.']
 		}
 	];
 
-	const enterpriseFeatures = [
-		'Unlimited events at $40/million events',
-		'Custom retention policy',
-		'SSO & SAML',
-		'Audit Logs',
-		'Dedicated Technical Support',
-		'Deployment Options: Cloud, Dedicated Cluster, On-prem Cluster'
+	const dedicatedPlans = [
+		{ id: 1, name: 'CC-30', price: 99, value: 50 },
+		{ id: 2, name: 'CC-50', price: 350, value: 375 },
+		{ id: 3, name: 'CC-70', price: 1000, value: 2000 }
+	];
+
+	const notes = [
+		'Retention defaults to 7 Days, if you’d like to increase, please reach out to us, we can help.',
+		'If you don’t see a workload that adequately fits your scenario, please don’t hesitate to reach out.',
+		'Ingress throughput differs from Egress throughput. The information specified above is ingress.'
 	];
 
 	const features = [
@@ -157,6 +164,30 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 		if (dialogWrapper === event.currentTarget) enterpriseModal.current?.close();
 	};
 
+	const getBackground = () => {
+		let background = 'bg-gray-200';
+		switch (selectedPlan) {
+			case 1:
+				background = 'bg-gray-200';
+				break;
+			case 2:
+				background = 'bg-gradient-to-r from-success-200 from-50% to-gray-200 to-50%';
+				break;
+			case 3:
+				background = 'bg-success-200';
+				break;
+			default:
+				background = 'bg-gray-200';
+				break;
+		}
+
+		setRangeBg(background);
+	};
+
+	useEffect(() => {
+		getBackground();
+	}, [selectedPlan]);
+
 	return (
 		<main>
 			<section className="pt-214px px-20px">
@@ -178,25 +209,67 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 										<div className="flex items-center mb-24px">
 											<img src={`/svg/${plan.id}-plan.svg`} alt={`${plan.id} plan`} className="mr-16px" />
 											<div>
-												<p className="text-16 text-gray-800">For</p>
 												<h1 className="text-24 text-gray-800 font-bold">{plan.name}</h1>
 											</div>
 										</div>
 
-										<p className="text-gray-600 text-12">{plan.subText}</p>
-										<hr className={`${i === 1 ? 'border-success-100' : 'border-primary-25'} border-t my-24px`} />
-										{i !== 0 && <div className={`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`}>Starts with</div>}
+										<p className="text-gray-600 text-12 max-w-[336px]">{plan.description}</p>
 
-										<p className="flex items-center">
-											<span className="text-36 font-bold">{plan.price}</span>
-											<span className="text-18 text-gray-600 ml-10px">/ monthly</span>
-										</p>
+										<hr className={`${i === 1 ? 'border-success-100' : 'border-primary-25'} border-t my-24px`} />
+
+										{i === 1 && <div className={`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`}>Starts at</div>}
+
+										{i === 1 && (
+											<>
+												{dedicatedPlans.map(item => (
+													<div key={item.id}>
+														{item.id === selectedPlan && (
+															<p className="flex items-center">
+																<span className="text-36 font-bold">${item.price}</span>
+																<span className="text-18 text-gray-600 ml-10px">/ monthly</span>
+															</p>
+														)}
+													</div>
+												))}
+											</>
+										)}
+
+										{i === 1 && (
+											<>
+												<input
+													id="rangeSelector"
+													type="range"
+													min={1}
+													max={3}
+													defaultValue={selectedPlan}
+													onChange={event => {
+														setSelectedPlan(Number(event?.target?.value));
+													}}
+													className={`w-full h-2px mb-6 ${rangeBg} appearance-none cursor-pointer transition-all duration-200 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-16px [&::-webkit-slider-thumb]:w-16px [&::-webkit-slider-thumb]:rounded-100px [&::-webkit-slider-thumb]:bg-white-100 [&::-webkit-slider-thumb]:shadow-[0px_2px_2px_rgba(0,0,0,0.06)]`}
+												/>
+
+												{dedicatedPlans.map(item => (
+													<div key={item.id}>
+														{item.id === selectedPlan && (
+															<div className="flex items-center gap-10px">
+																<div className="text-12 font-medium text-success-400 flex justify-center items-center px-8px bg-success-100 rounded-22px">
+																	{item.name}
+																</div>
+																<span className="text-12 text-gray-500">Throughput: {item.value}/second</span>
+															</div>
+														)}
+													</div>
+												))}
+											</>
+										)}
+
+										{i !== 1 && <p className="flex items-center text-18 font-medium text-gray-600">{plan.price}</p>}
 									</div>
 
-									<div className={`${i === 1 ? 'pt-24px' : ''} px-24px md:px-32px pb-24px md:pb-32px`}>
+									<div className={`${i === 1 ? 'pt-8px' : ''} px-24px md:px-32px pb-24px md:pb-32px`}>
 										{i !== 1 && <hr className="border-t border-primary-25 my-24px" />}
 
-										<div className={`${i === 1 ? 'h-[244px] md:h-[340px]' : 'h-[244px] md:h-[300px]'}`}>
+										<div className={`${i === 1 ? 'h-[244px] md:h-[240px]' : 'h-[244px] md:h-[300px]'}`}>
 											<p className="text-12 text-gray-400 mb-16px">{plan.preText}</p>
 											{plan.features.map((feature, index) => (
 												<div className="flex items-start mb-10px" key={index}>
@@ -214,13 +287,32 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 									</div>
 								</div>
 
-								<a
-									target="_blank"
-									href="https://dashboard.getconvoy.io/signup"
-									className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px flex items-center justify-center text-white-100 text-14">
-									Start your project
-									<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px" />
-								</a>
+								<p className={`text-10 text-gray-400 mx-24px ${i === 2 ? 'mb-16px md:-mb-6px' : 'mb-16px'}`}>Additional cost may apply for usage beyond these limits</p>
+
+								{i !== 1 && (
+									<button
+										className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px flex items-center justify-center text-white-100 text-14"
+										disabled={i == 0}
+										onClick={() => enterpriseModal.current?.showModal()}>
+										{i == 0 && <span>Coming soon</span>}
+										{i === 2 && (
+											<>
+												Contact Us
+												<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px" />
+											</>
+										)}
+									</button>
+								)}
+
+								{i === 1 && (
+									<a
+										target="_blank"
+										href="https://cloud.getconvoy.io/signup"
+										className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px flex items-center justify-center text-white-100 text-14">
+										Start your project
+										<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px" />
+									</a>
+								)}
 							</div>
 						))}
 					</div>
@@ -228,33 +320,23 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 			</section>
 
 			<section className="max-w-[1288px] w-full m-auto px-20px mt-68px mb-160px">
-				<div className="w-full bg-white-100 border border-primary-50 rounded-16px shadow-default p-24px md:p-32px flex flex-wrap gap-x-40px">
+				<div className="w-full bg-white-100 border border-primary-50 rounded-16px shadow-default p-24px md:p-32px">
 					<div className="min-w-[300px]">
-						<h1 className="text-24 font-bold text-gray-800 mb-12px">Enterprise</h1>
-						<p className="text-12 text-gray-600 max-w-[307px] mb-24px">For large scale products and teams with heavier events loads.</p>
-						<button onClick={() => enterpriseModal.current?.showModal()} className="bg-gray-100 rounded-6px px-16px py-12px text-gray-800 text-14 mb-30px md:mb-0">
+						<h1 className="text-24 font-bold text-gray-800 mb-24px">Notes</h1>
+
+						{notes.map((feature, index) => (
+							<div className="flex items-start mb-10px" key={index}>
+								<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-16px mt-6px">
+									<path d="M0.580256 4.33949L1.78196 3.13352L3.75497 5.07244L8.13139 0.713068L9.34162 1.91903L3.75497 7.47585L0.580256 4.33949Z" fill="#477DB3" />
+								</svg>
+								<p className="text-12 text-gray-600 md:max-w-[562px]">{feature}</p>
+							</div>
+						))}
+						<button
+							onClick={() => enterpriseModal.current?.showModal()}
+							className="bg-gray-100 rounded-6px px-16px py-12px text-gray-800 text-14 mb-30px md:mb-0 mt-24px">
 							Contact Us
 						</button>
-					</div>
-					<div className="min-w-[300px]">
-						{enterpriseFeatures.slice(0, 4).map((feature, index) => (
-							<div className="flex items-start mb-10px" key={index}>
-								<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-16px mt-6px">
-									<path d="M0.580256 4.33949L1.78196 3.13352L3.75497 5.07244L8.13139 0.713068L9.34162 1.91903L3.75497 7.47585L0.580256 4.33949Z" fill="#477DB3" />
-								</svg>
-								<p className="text-12 text-gray-600 md:max-w-[542px]">{feature}</p>
-							</div>
-						))}
-					</div>
-					<div className="min-w-[300px]">
-						{enterpriseFeatures.slice(4, 6).map((feature, index) => (
-							<div className="flex items-start mb-10px" key={index}>
-								<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-16px mt-6px">
-									<path d="M0.580256 4.33949L1.78196 3.13352L3.75497 5.07244L8.13139 0.713068L9.34162 1.91903L3.75497 7.47585L0.580256 4.33949Z" fill="#477DB3" />
-								</svg>
-								<p className="text-12 text-gray-600 md:max-w-[542px]">{feature}</p>
-							</div>
-						))}
 					</div>
 				</div>
 			</section>
