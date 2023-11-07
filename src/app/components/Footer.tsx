@@ -22,7 +22,7 @@ export default function Footer() {
 			links: [
 				{ name: 'Features', link: '/#features' },
 				{ name: 'Open Source', link: 'http://github.com/frain-dev/convoy', isExternal: true },
-				{ name: 'Cloud', link: 'https://dashboard.getconvoy.io/login', isExternal: true },
+				{ name: 'Cloud', link: 'https://cloud.getconvoy.io/login', isExternal: true },
 				{ name: 'Convoy Playground', link: 'https://playground.getconvoy.io', isExternal: true },
 				{ name: 'Nohooks', link: 'https://nohooks.io', isExternal: true }
 			]
