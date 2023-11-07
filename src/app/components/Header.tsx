@@ -91,9 +91,9 @@ export default function Header() {
 							)}
 						</button>
 
-						<div className="ml-50px w-4/5 nav-bar-break:w-fit nav-bar-break:ml-0">
+						<div className="ml-40px nav-bar-break:w-fit nav-bar-break:ml-0">
 							<Link href="/">
-								<Image src="/svg/convoy-logo.svg" height={29} width={110} alt="logo" />
+								<Image src="/svg/convoy-logo.svg" height={29} width={110} alt="logo" quality="70" />
 							</Link>
 						</div>
 
@@ -137,7 +137,7 @@ export default function Header() {
 												</svg>
 											</a>
 											{currentRoute === link.name && (
-												<div className="nav-bar-break:absolute nav-bar-break:top-[100%] shadow nav-bar-break:min-w-[198px] w-fit bg-white-100 rounded-10px nav-bar-break:shadow-dropdown nav-bar-break:z-10 transition-all ease-in-out duration-300 nav-bar-break:h-fit">
+												<div className="nav-bar-break:absolute nav-bar-break:top-[100%] nav-bar-break:shadow nav-bar-break:min-w-[198px] w-fit bg-white-100 rounded-10px nav-bar-break:shadow-dropdown nav-bar-break:z-10 transition-all ease-in-out duration-300 nav-bar-break:h-fit">
 													<ul className="nav-bar-break:pl-20px nav-bar-break:pb-20px">
 														{link.children?.map(subRoute => (
 															<li
@@ -193,7 +193,7 @@ export default function Header() {
 						<a
 							target="_blank"
 							href="https://cloud.getconvoy.io/login"
-							className="px-20px py-8px text-10 font-medium rounded-8px bg-primary-400 text-white-100 block nav-bar-break:hidden whitespace-nowrap">
+							className="px-20px py-8px text-10 font-medium rounded-8px bg-primary-400 text-white-100 block nav-bar-break:hidden whitespace-nowrap xs:hidden">
 							Get Started
 						</a>
 					</div>
