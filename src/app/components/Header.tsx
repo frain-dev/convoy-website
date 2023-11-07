@@ -177,14 +177,14 @@ export default function Header() {
 							<li className="py-14px nav-bar-break:py-8px px-12px flex items-center nav-bar-break:pr-0 nav-bar-break:pl-40px">
 								<a
 									target="_blank"
-									href="https://dashboard.getconvoy.io/login"
+									href="https://cloud.getconvoy.io/login"
 									className="nav-bar-break:px-10px py-10px text-14 mr-16px font-medium rounded-8px nav-bar-break:bg-primary-25 nav-bar-break:text-primary-400 text-primary-400 flex items-center">
 									Sign In
 								</a>
 								<div className="block nav-bar-break:hidden h-18px w-[1px] bg-primary-25 mx-12px"></div>
 								<a
 									target="_blank"
-									href="https://dashboard.getconvoy.io/signup"
+									href="https://cloud.getconvoy.io/signup"
 									className="px-14px py-10px text-14 font-medium rounded-8px nav-bar-break:bg-primary-400 nav-bar-break:text-white-100 text-primary-400 flex items-center">
 									Start your project
 								</a>
@@ -192,7 +192,7 @@ export default function Header() {
 						</ul>
 						<a
 							target="_blank"
-							href="https://dashboard.getconvoy.io/login"
+							href="https://cloud.getconvoy.io/login"
 							className="px-20px py-8px text-10 font-medium rounded-8px bg-primary-400 text-white-100 block nav-bar-break:hidden whitespace-nowrap xs:hidden">
 							Get Started
 						</a>
