@@ -86,7 +86,7 @@ export default function Footer() {
 						<nav className="flex justify-between flex-wrap pb-42px footer:block">
 							<div className="mobile:w-full mobile:mb-40px">
 								<div>
-									<Image src="/svg/logo.svg" height={29} width={110} alt="logo" />
+									<Image src="/svg/logo.svg" height={29} width={110} alt="logo" className="w-110px" />
 								</div>
 
 								<h4 className="mt-22px text-14 font-semibold mb-10px">Address</h4>
@@ -125,7 +125,7 @@ export default function Footer() {
 								<ul key={index} className="group">
 									<h3 className="text-14 footer:border-b footer:border-b-white-24 group-hover:footer:mb-0 footer:pb-8px font-semibold footer:font-normal mb-20px flex items-center justify-between">
 										{section.title}
-										<img src="/svg/angle-down-icon.svg" alt="accordion icon" className="invisible footer:visible" />
+										<img src="/svg/angle-down-icon.svg" alt="accordion icon" className="invisible footer:visible w-16px" />
 									</h3>
 									{section.links.map((link, i) => (
 										<li
