@@ -9,8 +9,8 @@ primary_tag: Product Update
 tags:
   - Convoy
   - Product Update
-featured: false
-description: Why did we choose to build Convoy as an open-source project? In this article, I share our beliefs about open source and why it's important to us. Enjoy 🎉
+featured: true
+description: Presenting Convoy's all-new cloud platform. Tailored to simplify webhooks management like never before, Join us as we unveil our exciting new cloud offering featuring dedicated instances, expanded regional availability, competitive pricing, and uncompromising compliance with our latest offering.
 published_at: 2023-11-06T17:00:00.000+00:00
 ---
 
