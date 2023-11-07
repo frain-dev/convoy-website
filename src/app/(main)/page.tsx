@@ -101,7 +101,7 @@ export default function Home() {
 				<div className="flex justify-center xs:flex-col mt-40px">
 					<a
 						target="_blank"
-						href="https://dashboard.getconvoy.io/signup"
+						href="https://cloud.getconvoy.io/signup"
 						className="py-12px desktop:py-16px px-38px shadow-lg hover:shadow-xl transition-all duration-300 desktop:px-24px text-14 text-center font-medium rounded-8px bg-primary-400 text-white-100 mr-24px xs:mr-0 xs:mb-20px xs:w-[90vw]">
 						Start your webhooks project
 					</a>
