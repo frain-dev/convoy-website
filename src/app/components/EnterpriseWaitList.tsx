@@ -19,8 +19,9 @@ export default function EnterpriseWaitlist(props: Props) {
 					form.firstname
 				}&lastname=${form.lastname}&organisation=${form.organisation}${form.usecase ? '&usecase=' + form.usecase : ''}&enterprise=true`
 			);
-
 			await response.json();
+
+			setFormData({ firstname: '', lastname: '', email: '', organisation: '', usecase: '' });
 
 			useToaster({ message: 'Form submitted successfully', style: 'success' });
 			props.submitEnterPriseForm();
@@ -117,7 +118,7 @@ export default function EnterpriseWaitlist(props: Props) {
 					type="submit"
 					disabled={isSubmitingRequestAccessForm}
 					className="py-16px px-42px text-14 font-medium rounded-8px bg-primary-400 text-white-100 w-full mt-24px">
-					Request Access
+					Request Access{isSubmitingRequestAccessForm ? '...' : ''}
 				</button>
 			</form>
 		</div>
