@@ -15,12 +15,13 @@ export default function EnterpriseWaitlist(props: Props) {
 		setIsSubmitingRequestAccessForm(true);
 		try {
 			const response = await fetch(
-				`https://faas-fra1-afec6ce7.doserverless.co/api/v1/web/fn-8f44e6aa-e5d6-4e31-b781-5080c050bb37/welcome-user/welcome-mail?email=${form.email}&firstname=${
+				`https://faas-lon1-917a94a7.doserverless.co/api/v1/web/fn-b514218c-7859-476f-9054-4b199b46d397/axios/user-details?email=${form.email}&firstname=${
 					form.firstname
 				}&lastname=${form.lastname}&organisation=${form.organisation}${form.usecase ? '&usecase=' + form.usecase : ''}&enterprise=true`
 			);
-
 			await response.json();
+
+			setFormData({ firstname: '', lastname: '', email: '', organisation: '', usecase: '' });
 
 			useToaster({ message: 'Form submitted successfully', style: 'success' });
 			props.submitEnterPriseForm();
@@ -117,7 +118,7 @@ export default function EnterpriseWaitlist(props: Props) {
 					type="submit"
 					disabled={isSubmitingRequestAccessForm}
 					className="py-16px px-42px text-14 font-medium rounded-8px bg-primary-400 text-white-100 w-full mt-24px">
-					Request Access
+					Request Access{isSubmitingRequestAccessForm ? '...' : ''}
 				</button>
 			</form>
 		</div>
