@@ -399,7 +399,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 							</div>
 						</div>
 
-						<section className="max-w-[1288px] w-full m-auto px-20px mt-68px mb-160px">
+						<section className="max-w-[1248px] w-full m-auto mt-68px mb-160px">
 							<div className="w-full bg-white-100 border border-primary-50 rounded-16px shadow-default p-24px md:p-32px">
 								<div className="min-w-[300px] xs:min-w-[unset]">
 									<h1 className="text-24 font-bold text-gray-800 mb-24px">Notes</h1>
@@ -492,9 +492,9 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 						</div>
 
 						<div className="rounded-8px mt-100px">
-							<table className="w-full border-collapse">
+							<table className="w-full border-separate border-spacing-0">
 								<tr>
-									<td className="!p-0 !mx-0"></td>
+									<td></td>
 									<td className="border-l border-t border-primary-50 rounded-tl-8px text-center bg-primary-25 py-16px xs:py-10px">
 										<h5 className="font-semibold xs:text-14 text-gray-600">Community</h5>
 										<p className="text-14 xs:text-10 text-gray-600 mt-10px">Free</p>
@@ -505,11 +505,14 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 									</td>
 								</tr>
 								{comparedPlans.map((plan, i) => (
-									<tr className={`even:bg-primary-25 border-x last-of-type:border-b border-primary-50 group ${i === 0 ? 'border-t rounded-8px ' : ''}`} key={i}>
-										<td className="p-16px xs:p-10px text-12 text-gray-600 group-last:rounded-8px border-primary-50 :border-t">
+									<tr className={`even:bg-primary-25 group ${i === 0 ? 'border-t rounded-8px ' : ''}`} key={i}>
+										<td
+											className={`p-16px xs:p-10px text-12 text-gray-600 border-primary-50 border-l group-last:border-b group-last:rounded-bl-8px ${
+												i === 0 ? 'border-t rounded-tl-8px' : ''
+											}`}>
 											<div>{plan.name}</div>
 										</td>
-										<td className="p-16px xs:p-10px text-12 text-gray-600 border-x border-x-primary-50 border-primary-50 :border-t">
+										<td className={`p-16px xs:p-10px text-12 text-gray-600 border-x border-primary-50 group-last:border-b ${i === 0 ? 'border-t' : ''}`}>
 											<div className="flex justify-center">
 												{plan.community ? plan.community : ''}
 												{!plan.community && (
@@ -525,7 +528,10 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 												)}
 											</div>
 										</td>
-										<td className="p-16px xs:p-10px text-12 text-gray-600 border-primary-50 :border-t">
+										<td
+											className={`p-16px xs:p-10px text-12 text-gray-600 border-primary-50 border-r group-last:border-b group-last:rounded-br-8px ${
+												i === 0 ? 'border-t' : ''
+											}`}>
 											<div className="flex justify-center">
 												{plan.enterprise ? plan.enterprise : ''}
 												{!plan.enterprise && (
