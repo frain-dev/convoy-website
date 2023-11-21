@@ -9,7 +9,8 @@ import Toast from '@/app/components/Toast';
 
 export default function Pricing() {
 	const [openQuestion, setOpenQuestion] = useState('Will you match the price of another platform?');
-	const [selectedPlan, setSelectedPlan] = useState(1);
+	const [selectedPlanId, setSelectedPlanId] = useState(1);
+	const [selectedPlan, setSelectedPlan] = useState<{ id: number; name: string; price: number; value: number }>({ id: 1, name: 'CC-30', price: 99, value: 50 });
 	const [rangeBg, setRangeBg] = useState('bg-gray-200');
 	const enterpriseModal = useRef<HTMLDialogElement>(null);
 
@@ -166,7 +167,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 
 	const getBackground = () => {
 		let background = 'bg-gray-200';
-		switch (selectedPlan) {
+		switch (selectedPlanId) {
 			case 1:
 				background = 'bg-gray-200';
 				break;
@@ -185,8 +186,10 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 	};
 
 	useEffect(() => {
+		const planSelected = dedicatedPlans.find(plan => plan.id === selectedPlanId);
+		if (planSelected) setSelectedPlan(planSelected);
 		getBackground();
-	}, [selectedPlan]);
+	}, [selectedPlanId]);
 
 	return (
 		<main>
@@ -223,7 +226,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 											<>
 												{dedicatedPlans.map(item => (
 													<div key={item.id}>
-														{item.id === selectedPlan && (
+														{item.id === selectedPlanId && (
 															<p className="flex items-center">
 																<span className="text-36 font-bold">${item.price}</span>
 																<span className="text-18 text-gray-600 ml-10px">/ monthly</span>
@@ -241,16 +244,16 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 													type="range"
 													min={1}
 													max={3}
-													defaultValue={selectedPlan}
+													defaultValue={selectedPlanId}
 													onChange={event => {
-														setSelectedPlan(Number(event?.target?.value));
+														setSelectedPlanId(Number(event?.target?.value));
 													}}
 													className={`w-full h-2px mb-6 ${rangeBg} appearance-none cursor-pointer transition-all duration-200 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-16px [&::-webkit-slider-thumb]:w-16px [&::-webkit-slider-thumb]:rounded-100px [&::-webkit-slider-thumb]:bg-white-100 [&::-webkit-slider-thumb]:shadow-[0px_2px_2px_rgba(0,0,0,0.06)]`}
 												/>
 
 												{dedicatedPlans.map(item => (
 													<div key={item.id}>
-														{item.id === selectedPlan && (
+														{item.id === selectedPlanId && (
 															<div className="flex items-center gap-10px">
 																<div className="text-12 font-medium text-success-400 flex justify-center items-center px-8px bg-success-100 rounded-22px">
 																	{item.name}
@@ -287,7 +290,9 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 									</div>
 								</div>
 
-								<p className={`text-10 text-gray-400 mx-24px ${i === 2 ? 'mb-16px md:-mb-6px' : 'mb-16px'}`}>Additional cost may apply for usage beyond these limits</p>
+								<p className={`text-10 text-gray-400 mx-24px ${i === 2 ? 'mb-16px md:-mb-6px' : 'mb-16px'}`}>
+									Additional cost may apply for usage beyond these limits
+								</p>
 
 								{i !== 1 && (
 									<button
@@ -307,7 +312,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 								{i === 1 && (
 									<a
 										target="_blank"
-										href="https://cloud.getconvoy.io/signup"
+										href={`https://cloud.getconvoy.io/signup${selectedPlan ? `?selectedPlan=${selectedPlan.name}` : ''}`}
 										className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px flex items-center justify-center text-white-100 text-14">
 										Start your project
 										<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px" />
