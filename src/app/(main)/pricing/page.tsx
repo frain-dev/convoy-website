@@ -6,9 +6,11 @@ import PricingImage from '../../../../public/static/Frame.png';
 import { useEffect, useRef, useState } from 'react';
 import EnterpriseWaitlist from '@/app/components/EnterpriseWaitList';
 import Toast from '@/app/components/Toast';
+import Tooltip from '@/app/components/Tooltip';
 
 export default function Pricing() {
 	const [openQuestion, setOpenQuestion] = useState('Will you match the price of another platform?');
+	const [activeTab, setActiveTab] = useState('cloud');
 	const [selectedPlanId, setSelectedPlanId] = useState(1);
 	const [selectedPlan, setSelectedPlan] = useState<{ id: number; name: string; price: number; value: number }>({ id: 1, name: 'CC-30', price: 99, value: 50 });
 	const [rangeBg, setRangeBg] = useState('bg-gray-200');
@@ -61,6 +63,75 @@ export default function Pricing() {
 			preText: '',
 			features: ['VPC Peering & Private Networking', '99.999% Availability.', 'Advanced Access Control.', 'Dedicated Support.']
 		}
+	];
+
+	const selfHostedPlans = [
+		{
+			name: 'Community',
+			id: 'community',
+			description: 'Convoy Community Edition is designed for hobbyist developers and small teams',
+			price: 'Free',
+			link: 'https://github.com/frain-dev/convoy#installation-getting-started',
+
+			preText: 'Best for developers that:',
+			features: [
+				'Have basic workloads, generally anything below 10 million events per month is considered basic.',
+				'Do not require advanced customizations their focus is to deliver webhooks reliably.',
+				'Do not require advanced access controls. They most likely comprise of one team.'
+			]
+		},
+		{
+			name: 'Enterprise',
+			id: 'scale',
+			description: 'Convoy Enterprise Edition is designed for larger teams where there exist at least a DevOps or Platform team.',
+			price: 'Custom Pricing',
+			link: 'https://github.com/frain-dev/convoy#installation-getting-started',
+
+			preText: 'Best for companies that:',
+			features: [
+				'Have high-performance workloads. This can grow to hundreds of millions of events.',
+				'Require Advanced customisations to completely white-label the experience.',
+				'DevOps team will deploy a gateway to support multiple teams — Advanced Access Controls is needed.',
+				'At their scale, technical support with SLA will be desirous.'
+			]
+		}
+	];
+
+	const comparedPlans = [
+		{ name: 'Dashboard', community: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Portal Links', community: 'Basic', enterprise: 'Advanced', tooltipContent: 'Use our JS SDK to build a custom dashboard' },
+		{ name: 'Idempotent Keys', community: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'White-Label Headers', community: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Message Brokers', community: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Endpoint Management', community: 'true', enterprise: 'true', tooltipContent: 'Retries. rate limiting, timeouts & circuit breaking' },
+		{
+			name: 'Static IPs',
+			community: 'Basic',
+			enterprise: 'Advanced',
+			tooltipContent: 'Route webhooks through forward proxies to deliver statis egress IPs.The advanced set up includes a load balancer for HA setups.'
+		},
+		{ name: 'Webhook Subscriptions', community: 'true', enterprise: 'true', tooltipContent: 'Includes advanced techniques for filtering webhooks, besides event types.' },
+		{ name: 'Automatic Webhooks Documentation (Coming Soon)', community: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Functions & Transformations', community: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Multi-tenancy', community: 'false', enterprise: 'true', tooltipContent: 'Organise teams and projects into separate organisations' },
+		{ name: 'SSO & SAML (Coming Soon)', community: 'false', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Audit Logs (Coming Soon)', community: 'false', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Role-Based Access Control', community: 'false', enterprise: 'true', tooltipContent: '' },
+		{
+			name: 'Technical Support Channels',
+			community: 'Licensed to Convoy',
+			enterprise: 'Dedicated Support',
+			tooltipContent: 'Enterprise users receive priority with our engineers'
+		},
+		{ name: 'KMS Integration', community: 'false', enterprise: 'true', tooltipContent: 'Store sensitive keys in any KMS of your choie - Vault, AWS KMS etc.' },
+		// { name: 'Environments (Coming Soon)', community: '', enterprise: '', tooltipContent: 'Organise projects into environments - development, production.' },
+		{ name: 'License', community: 'MPL 2.0', enterprise: 'Licensed to Convoy', tooltipContent: '' },
+		{ name: 'Price', community: '$0', enterprise: 'Starts at $500/month', tooltipContent: '' }
+	];
+
+	const tabs = [
+		{ label: 'Cloud', id: 'cloud' },
+		{ label: 'Self Hosted', id: 'selfHosted' }
 	];
 
 	const dedicatedPlans = [
@@ -199,151 +270,327 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 					All the tools you need to take control and manage your webhook events infrastructure, from your hubby project to scale.
 				</p>
 
-				<div className="max-w-[1248px] w-full m-auto">
-					<div className="grid grid-cols-1 tab:grid-cols-2 md:grid-cols-3 gap-24px items-end">
-						{plans.map((plan, i) => (
-							<div
-								className={`rounded-16px border border-primary-50 bg-white-100 shadow-default pb-24px flex justify-between flex-col ${
-									i === 1 ? '' : 'md:max-h-[912px] md:min-h-[742px]'
+				<div className="bg-primary-25 rounded-8px w-fit m-auto flex flex-row mb-30px">
+					{tabs.map(tab => (
+						<li className="list-none" key={tab.id}>
+							<button
+								className={`rounded-6px py-12px px-8px desktop:px-40px min-w-[114px] desktop:min-w-[140px] transition-all duration-300 ${
+									activeTab === tab.id ? 'bg-primary-400 shadow-sm' : ''
 								}`}
-								key={i}>
-								<div>
-									<div className={`${i === 1 ? 'bg-success-50 pb-24px rounded-tl-16px rounded-tr-16px' : ''} px-24px md:px-32px pt-24px md:pt-32px`}>
-										<div className="flex items-center mb-24px">
-											<img src={`/svg/${plan.id}-plan.svg`} alt={`${plan.id} plan`} className="mr-16px" />
-											<div>
-												<h1 className="text-24 text-gray-800 font-bold">{plan.name}</h1>
+								onClick={() => setActiveTab(tab.id)}>
+								<span className={`text-14 tracking-[0.02em] transition-all duration-300 ${activeTab === tab.id ? 'font-bold text-white-100' : 'text-gray-600'}`}>
+									{tab.label}
+								</span>
+							</button>
+						</li>
+					))}
+				</div>
+
+				{activeTab === 'cloud' && (
+					<>
+						<div className="max-w-[1248px] w-full m-auto">
+							<div className="grid grid-cols-1 tab:grid-cols-2 md:grid-cols-3 gap-24px items-end">
+								{plans.map((plan, i) => (
+									<div
+										className={`rounded-16px border border-primary-50 bg-white-100 shadow-default pb-24px flex justify-between flex-col ${
+											i === 1 ? '' : 'md:max-h-[912px] md:min-h-[742px]'
+										}`}
+										key={i}>
+										<div>
+											<div className={`${i === 1 ? 'bg-success-50 pb-24px rounded-tl-16px rounded-tr-16px' : ''} px-24px md:px-32px pt-24px md:pt-32px`}>
+												<div className="flex items-center mb-24px">
+													<img src={`/svg/${plan.id}-plan.svg`} alt={`${plan.id} plan`} className="mr-16px" />
+													<div>
+														<h1 className="text-24 xs:text-20 text-gray-800 font-bold">{plan.name}</h1>
+													</div>
+												</div>
+
+												<p className="text-gray-600 text-12 max-w-[336px]">{plan.description}</p>
+
+												<hr className={`${i === 1 ? 'border-success-100' : 'border-primary-25'} border-t my-24px`} />
+
+												{i === 1 && <div className={`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`}>Starts at</div>}
+
+												{i === 1 && (
+													<>
+														{dedicatedPlans.map(item => (
+															<div key={item.id}>
+																{item.id === selectedPlanId && (
+																	<p className="flex items-center">
+																		<span className="text-36 font-bold">${item.price}</span>
+																		<span className="text-18 text-gray-600 ml-10px">/ monthly</span>
+																	</p>
+																)}
+															</div>
+														))}
+													</>
+												)}
+
+												{i === 1 && (
+													<>
+														<input
+															id="rangeSelector"
+															type="range"
+															min={1}
+															max={3}
+															defaultValue={selectedPlanId}
+															onChange={event => {
+																setSelectedPlanId(Number(event?.target?.value));
+															}}
+															className={`w-full h-2px mb-6 ${rangeBg} appearance-none cursor-pointer transition-all duration-200 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-16px [&::-webkit-slider-thumb]:w-16px [&::-webkit-slider-thumb]:rounded-100px [&::-webkit-slider-thumb]:bg-white-100 [&::-webkit-slider-thumb]:shadow-[0px_2px_2px_rgba(0,0,0,0.06)]`}
+														/>
+
+														{dedicatedPlans.map(item => (
+															<div key={item.id}>
+																{item.id === selectedPlanId && (
+																	<div className="flex items-center gap-10px">
+																		<div className="text-12 font-medium text-success-400 flex justify-center items-center px-8px bg-success-100 rounded-22px">
+																			{item.name}
+																		</div>
+																		<span className="text-12 text-gray-500">Throughput: {item.value}/second</span>
+																	</div>
+																)}
+															</div>
+														))}
+													</>
+												)}
+
+												{i !== 1 && <p className="flex items-center text-18 xs:text-16 font-medium text-gray-600">{plan.price}</p>}
+											</div>
+
+											<div className={`${i === 1 ? 'pt-8px' : ''} px-24px md:px-32px pb-24px md:pb-32px`}>
+												{i !== 1 && <hr className="border-t border-primary-25 my-24px" />}
+
+												<div className={`${i === 1 ? 'h-[244px] md:h-[240px]' : 'h-[244px] md:h-[300px]'}`}>
+													<p className="text-12 text-gray-400 mb-16px">{plan.preText}</p>
+													{plan.features.map((feature, index) => (
+														<div className="flex items-start mb-10px" key={index}>
+															<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-16px mt-6px">
+																<path
+																	d="M0.580256 4.33949L1.78196 3.13352L3.75497 5.07244L8.13139 0.713068L9.34162 1.91903L3.75497 7.47585L0.580256 4.33949Z"
+																	fill="#477DB3"
+																/>
+															</svg>
+
+															<p className="text-12 text-gray-600 md:max-w-[542px]">{feature}</p>
+														</div>
+													))}
+												</div>
 											</div>
 										</div>
 
-										<p className="text-gray-600 text-12 max-w-[336px]">{plan.description}</p>
+										<p className={`text-10 text-gray-400 mx-24px ${i === 2 ? 'mb-16px md:-mb-6px' : 'mb-16px'}`}>
+											Additional cost may apply for usage beyond these limits
+										</p>
 
-										<hr className={`${i === 1 ? 'border-success-100' : 'border-primary-25'} border-t my-24px`} />
-
-										{i === 1 && <div className={`${plan.tagClass} py-2px px-4px rounded-22px mb-10px w-fit text-10`}>Starts at</div>}
-
-										{i === 1 && (
-											<>
-												{dedicatedPlans.map(item => (
-													<div key={item.id}>
-														{item.id === selectedPlanId && (
-															<p className="flex items-center">
-																<span className="text-36 font-bold">${item.price}</span>
-																<span className="text-18 text-gray-600 ml-10px">/ monthly</span>
-															</p>
-														)}
-													</div>
-												))}
-											</>
+										{i !== 1 && (
+											<button
+												className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14"
+												disabled={i == 0}
+												onClick={() => enterpriseModal.current?.showModal()}>
+												{i == 0 && <span>Coming soon</span>}
+												{i === 2 && (
+													<>
+														Contact Us
+														<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
+													</>
+												)}
+											</button>
 										)}
 
 										{i === 1 && (
-											<>
-												<input
-													id="rangeSelector"
-													type="range"
-													min={1}
-													max={3}
-													defaultValue={selectedPlanId}
-													onChange={event => {
-														setSelectedPlanId(Number(event?.target?.value));
-													}}
-													className={`w-full h-2px mb-6 ${rangeBg} appearance-none cursor-pointer transition-all duration-200 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-16px [&::-webkit-slider-thumb]:w-16px [&::-webkit-slider-thumb]:rounded-100px [&::-webkit-slider-thumb]:bg-white-100 [&::-webkit-slider-thumb]:shadow-[0px_2px_2px_rgba(0,0,0,0.06)]`}
-												/>
-
-												{dedicatedPlans.map(item => (
-													<div key={item.id}>
-														{item.id === selectedPlanId && (
-															<div className="flex items-center gap-10px">
-																<div className="text-12 font-medium text-success-400 flex justify-center items-center px-8px bg-success-100 rounded-22px">
-																	{item.name}
-																</div>
-																<span className="text-12 text-gray-500">Throughput: {item.value}/second</span>
-															</div>
-														)}
-													</div>
-												))}
-											</>
+											<a
+												target="_blank"
+												href={`https://cloud.getconvoy.io/signup${selectedPlan ? `?selectedPlan=${selectedPlan.name}` : ''}`}
+												className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14">
+												Start your project
+												<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px " />
+											</a>
 										)}
-
-										{i !== 1 && <p className="flex items-center text-18 font-medium text-gray-600">{plan.price}</p>}
 									</div>
+								))}
+							</div>
+						</div>
 
-									<div className={`${i === 1 ? 'pt-8px' : ''} px-24px md:px-32px pb-24px md:pb-32px`}>
-										{i !== 1 && <hr className="border-t border-primary-25 my-24px" />}
+						<section className="max-w-[1248px] w-full m-auto mt-68px mb-160px">
+							<div className="w-full bg-white-100 border border-primary-50 rounded-16px shadow-default p-24px md:p-32px">
+								<div className="min-w-[300px] xs:min-w-[unset]">
+									<h1 className="text-24 font-bold text-gray-800 mb-24px">Notes</h1>
 
-										<div className={`${i === 1 ? 'h-[244px] md:h-[240px]' : 'h-[244px] md:h-[300px]'}`}>
-											<p className="text-12 text-gray-400 mb-16px">{plan.preText}</p>
-											{plan.features.map((feature, index) => (
-												<div className="flex items-start mb-10px" key={index}>
-													<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-16px mt-6px">
-														<path
-															d="M0.580256 4.33949L1.78196 3.13352L3.75497 5.07244L8.13139 0.713068L9.34162 1.91903L3.75497 7.47585L0.580256 4.33949Z"
-															fill="#477DB3"
-														/>
-													</svg>
+									{notes.map((feature, index) => (
+										<div className="flex items-start mb-10px" key={index}>
+											<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-16px mt-6px">
+												<path
+													d="M0.580256 4.33949L1.78196 3.13352L3.75497 5.07244L8.13139 0.713068L9.34162 1.91903L3.75497 7.47585L0.580256 4.33949Z"
+													fill="#477DB3"
+												/>
+											</svg>
+											<p className="text-12 text-gray-600 md:max-w-[562px]">{feature}</p>
+										</div>
+									))}
+									<button
+										onClick={() => enterpriseModal.current?.showModal()}
+										className="bg-gray-100 rounded-6px px-16px py-12px text-gray-800 text-14 mb-30px md:mb-0 mt-24px">
+										Contact Us
+									</button>
+								</div>
+							</div>
+						</section>
+					</>
+				)}
 
-													<p className="text-12 text-gray-600 md:max-w-[542px]">{feature}</p>
+				{activeTab === 'selfHosted' && (
+					<div className="m-auto max-w-[1000px] mb-160px">
+						<div className="flex flex-wrap items-center justify-center gap-60px">
+							{selfHostedPlans.map((plan, i) => (
+								<div className={`rounded-16px border border-primary-50 bg-white-100 shadow-default pb-24px flex justify-between flex-col max-w-[400px]`} key={i}>
+									<div>
+										<div className={`${i === 0 ? 'bg-primary-25  rounded-tl-16px rounded-tr-16px' : ''} px-24px md:px-32px pt-24px md:pt-32px pb-24px`}>
+											<div className="flex items-center mb-24px">
+												<img src={`/svg/${plan.id}-plan.svg`} alt={`${plan.id} plan`} className="mr-16px" />
+												<div>
+													<h1 className="text-24 text-gray-800 font-bold">{plan.name}</h1>
 												</div>
-											))}
+											</div>
+
+											<p className="text-gray-600 text-12 max-w-[336px]">{plan.description}</p>
+
+											<hr className={`${i === 0 ? 'border-primary-100' : 'border-primary-25'} border-t my-24px`} />
+
+											<p className="flex items-center text-18 font-medium text-gray-600">{plan.price}</p>
+										</div>
+
+										<div className={`px-24px md:px-32px pb-24px md:pb-32px`}>
+											{i === 1 && <hr className="border-primary-25 border-t" />}
+											<div className={`min-h-[244px] md:min-h-[300px] pt-24px`}>
+												<p className="text-12 text-gray-400 mb-16px">{plan.preText}</p>
+												{plan.features.map((feature, index) => (
+													<div className="flex items-start mb-10px" key={index}>
+														<div>
+															<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-16px mt-6px">
+																<path
+																	d="M0.580256 4.33949L1.78196 3.13352L3.75497 5.07244L8.13139 0.713068L9.34162 1.91903L3.75497 7.47585L0.580256 4.33949Z"
+																	fill="#477DB3"
+																/>
+															</svg>
+														</div>
+
+														<p className="text-12 text-gray-600 md:max-w-[542px]">{feature}</p>
+													</div>
+												))}
+											</div>
 										</div>
 									</div>
+
+									{i === 1 && (
+										<button
+											className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14"
+											onClick={() => enterpriseModal.current?.showModal()}>
+											Contact Us
+											<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
+										</button>
+									)}
+
+									{i === 0 && (
+										<a
+											target="_blank"
+											href="https://github.com/frain-dev/convoy#installation-getting-started"
+											className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14">
+											Start your project
+											<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
+										</a>
+									)}
 								</div>
+							))}
+						</div>
 
-								<p className={`text-10 text-gray-400 mx-24px ${i === 2 ? 'mb-16px md:-mb-6px' : 'mb-16px'}`}>
-									Additional cost may apply for usage beyond these limits
-								</p>
+						<div className="rounded-8px mt-100px">
+							<table className="w-full border-separate border-spacing-0">
+								<tr>
+									<td></td>
+									<td className="border-l border-t border-primary-50 rounded-tl-8px text-center bg-primary-25 py-16px xs:py-10px">
+										<h5 className="font-semibold xs:text-14 text-gray-600">Community</h5>
+										<p className="text-14 xs:text-10 text-gray-600 mt-10px">Free</p>
+									</td>
+									<td className="border-r border-t border-primary-50 rounded-tr-8px text-center bg-primary-25 py-16px xs:py-10px">
+										<h5 className="font-semibold xs:text-14 text-gray-600">Enterprise</h5>
+										<p className="text-14 xs:text-10 text-gray-600 mt-10px">Custom Pricing</p>
+									</td>
+								</tr>
+								{comparedPlans.map((plan, i) => (
+									<tr className={`even:bg-primary-25 group ${i === 0 ? 'border-t rounded-8px ' : ''}`} key={i}>
+										<td
+											className={`p-16px xs:p-10px text-12 text-gray-600 border-primary-50 border-l group-last:border-b group-last:rounded-bl-8px ${
+												i === 0 ? 'border-t rounded-tl-8px' : ''
+											}`}>
+											<div className="text-left">
+												<span>{plan.name}</span>
+												{plan.tooltipContent && (
+													<Tooltip
+														tooltipToggle={
+															<div className="inline-flex align-text-bottom ml-4px">
+																<svg width="12" height="12" className="fill-gray-600">
+																	<use xlinkHref="#info-icon"></use>
+																</svg>
+															</div>
+														}>
+														{plan.tooltipContent}
+													</Tooltip>
+												)}
+											</div>
+										</td>
+										<td className={`p-16px xs:p-10px text-12 text-gray-600 border-x border-primary-50 group-last:border-b ${i === 0 ? 'border-t' : ''}`}>
+											<div className="flex justify-center">
+												{plan.community !== 'true' && plan.community !== 'false' && <span>{plan.community}</span>}
 
-								{i !== 1 && (
-									<button
-										className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px flex items-center justify-center text-white-100 text-14"
-										disabled={i == 0}
-										onClick={() => enterpriseModal.current?.showModal()}>
-										{i == 0 && <span>Coming soon</span>}
-										{i === 2 && (
-											<>
-												Contact Us
-												<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px" />
-											</>
-										)}
-									</button>
-								)}
-
-								{i === 1 && (
-									<a
-										target="_blank"
-										href={`https://cloud.getconvoy.io/signup${selectedPlan ? `?selectedPlan=${selectedPlan.name}` : ''}`}
-										className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px flex items-center justify-center text-white-100 text-14">
-										Start your project
-										<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px" />
-									</a>
-								)}
-							</div>
-						))}
+												{plan.community === 'true' && (
+													<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path
+															d="M1.5 5.60352L4.146 8.24952C4.19245 8.29608 4.24762 8.33302 4.30837 8.35823C4.36911 8.38343 4.43423 8.39641 4.5 8.39641C4.56577 8.39641 4.63089 8.38343 4.69163 8.35823C4.75238 8.33302 4.80755 8.29608 4.854 8.24952L11.5 1.60352"
+															stroke="#475467"
+															strokeWidth="1.5"
+															strokeLinecap="round"
+															strokeLinejoin="round"
+														/>
+													</svg>
+												)}
+												{plan.community === 'false' && (
+													<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+													</svg>
+												)}
+											</div>
+										</td>
+										<td
+											className={`p-16px xs:p-10px text-12 text-gray-600 border-primary-50 border-r group-last:border-b group-last:rounded-br-8px ${
+												i === 0 ? 'border-t' : ''
+											}`}>
+											<div className="flex justify-center">
+												{plan.enterprise !== 'true' && plan.enterprise !== 'false' && <span>{plan.enterprise}</span>}
+												{plan.enterprise === 'true' && (
+													<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path
+															d="M1.5 5.60352L4.146 8.24952C4.19245 8.29608 4.24762 8.33302 4.30837 8.35823C4.36911 8.38343 4.43423 8.39641 4.5 8.39641C4.56577 8.39641 4.63089 8.38343 4.69163 8.35823C4.75238 8.33302 4.80755 8.29608 4.854 8.24952L11.5 1.60352"
+															stroke="#475467"
+															strokeWidth="1.5"
+															strokeLinecap="round"
+															strokeLinejoin="round"
+														/>
+													</svg>
+												)}
+												{plan.enterprise === 'false' && (
+													<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+													</svg>
+												)}
+											</div>
+										</td>
+									</tr>
+								))}
+							</table>
+						</div>
 					</div>
-				</div>
-			</section>
-
-			<section className="max-w-[1288px] w-full m-auto px-20px mt-68px mb-160px">
-				<div className="w-full bg-white-100 border border-primary-50 rounded-16px shadow-default p-24px md:p-32px">
-					<div className="min-w-[300px]">
-						<h1 className="text-24 font-bold text-gray-800 mb-24px">Notes</h1>
-
-						{notes.map((feature, index) => (
-							<div className="flex items-start mb-10px" key={index}>
-								<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-16px mt-6px">
-									<path d="M0.580256 4.33949L1.78196 3.13352L3.75497 5.07244L8.13139 0.713068L9.34162 1.91903L3.75497 7.47585L0.580256 4.33949Z" fill="#477DB3" />
-								</svg>
-								<p className="text-12 text-gray-600 md:max-w-[562px]">{feature}</p>
-							</div>
-						))}
-						<button
-							onClick={() => enterpriseModal.current?.showModal()}
-							className="bg-gray-100 rounded-6px px-16px py-12px text-gray-800 text-14 mb-30px md:mb-0 mt-24px">
-							Contact Us
-						</button>
-					</div>
-				</div>
+				)}
 			</section>
 
 			<section className="bg-gradient-to-br from-[#2c2f3e] to-[#422f41] text-white-100 py-36px desktop:py-80px overflow-x-hidden">
@@ -422,7 +669,9 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 						<div>
 							{questions.slice(0, 5).map((question, index) => (
 								<div className="mb-16px" key={index}>
-									<button className="flex items-center text-16 font-semibold justify-between mb-16px w-full" onClick={() => setOpenQuestion(question.question)}>
+									<button
+										className="flex items-center text-16 font-semibold justify-between text-left mb-16px w-full"
+										onClick={() => setOpenQuestion(question.question)}>
 										{question.question}
 										<Image
 											src={AngleDownIcon}
@@ -439,7 +688,9 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 						<div>
 							{questions.slice(5, 9).map((question, index) => (
 								<div className="mb-16px" key={index}>
-									<button className="flex items-center text-16 font-semibold justify-between mb-16px w-full" onClick={() => setOpenQuestion(question.question)}>
+									<button
+										className="flex items-center text-16 font-semibold justify-between text-left mb-16px w-full"
+										onClick={() => setOpenQuestion(question.question)}>
 										{question.question}
 										<Image
 											src={AngleDownIcon}
@@ -468,7 +719,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 						href="https://calendly.com/d/d6k-jw2-wgj/convoy-user-demo"
 						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-14 font-medium flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Contact Sales
-						<Image src={ArrowRightIcon} className="ml-12px" alt="arrow icon right" />
+						<Image src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow icon right" />
 					</a>
 				</div>
 			</section>
