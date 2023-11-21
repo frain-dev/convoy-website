@@ -119,8 +119,8 @@ export default function Pricing() {
 	];
 
 	const tabs = [
+		{ label: 'Cloud', id: 'cloud' },
 		{ label: 'Self Hosted', id: 'selfHosted' },
-		{ label: 'Cloud', id: 'cloud' }
 	];
 
 	const dedicatedPlans = [
@@ -625,7 +625,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 						<div>
 							{questions.slice(0, 5).map((question, index) => (
 								<div className="mb-16px" key={index}>
-									<button className="flex items-center text-16 font-semibold justify-between mb-16px w-full" onClick={() => setOpenQuestion(question.question)}>
+									<button className="flex items-center text-16 font-semibold justify-between text-left mb-16px w-full" onClick={() => setOpenQuestion(question.question)}>
 										{question.question}
 										<Image
 											src={AngleDownIcon}
@@ -642,7 +642,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 						<div>
 							{questions.slice(5, 9).map((question, index) => (
 								<div className="mb-16px" key={index}>
-									<button className="flex items-center text-16 font-semibold justify-between mb-16px w-full" onClick={() => setOpenQuestion(question.question)}>
+									<button className="flex items-center text-16 font-semibold justify-between text-left mb-16px w-full" onClick={() => setOpenQuestion(question.question)}>
 										{question.question}
 										<Image
 											src={AngleDownIcon}
