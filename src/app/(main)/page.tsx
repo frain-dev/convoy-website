@@ -333,7 +333,7 @@ export default function Home() {
 									href="https://github.com/frain-dev/convoy#installation-getting-started"
 									className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
 									Get started
-									<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right" />
+									<Image src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow right" />
 								</a>
 							)}
 							{activeTab === 'enterprise' && (
@@ -341,7 +341,7 @@ export default function Home() {
 									href="/enterprise#requestAccess"
 									className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 font-semibold flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
 									Get started
-									<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right" />
+									<Image src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow right" />
 								</Link>
 							)}
 							{activeTab === 'cloud' && (
@@ -349,7 +349,7 @@ export default function Home() {
 									href="/cloud"
 									className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 font-medium flex items-center py-12px px-24px rounded-8px mt-32px w-fit">
 									Get started
-									<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right" />
+									<Image src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow right" />
 								</Link>
 							)}
 						</div>
@@ -437,7 +437,7 @@ export default function Home() {
 						href="https://github.com/frain-dev/convoy#installation-getting-started"
 						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Get started
-						<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right" />
+						<Image src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow right" />
 					</a>
 				</div>
 			</section>
