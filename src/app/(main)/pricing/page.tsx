@@ -98,32 +98,32 @@ export default function Pricing() {
 
 	const comparedPlans = [
 		{ name: 'Dashboard', community: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'Portal Links [1]', community: 'Basic', enterprise: 'Advanced', tooltipContent: 'Use our JS SDK to build a custom dashboard' },
+		{ name: 'Portal Links', community: 'Basic', enterprise: 'Advanced', tooltipContent: 'Use our JS SDK to build a custom dashboard' },
 		{ name: 'Idempotent Keys', community: 'true', enterprise: 'true', tooltipContent: '' },
 		{ name: 'White-Label Headers', community: 'true', enterprise: 'true', tooltipContent: '' },
 		{ name: 'Message Brokers', community: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'Endpoint Management [3]', community: 'true', enterprise: 'true', tooltipContent: 'Retries. rate limiting, timeouts & circuit breaking' },
+		{ name: 'Endpoint Management', community: 'true', enterprise: 'true', tooltipContent: 'Retries. rate limiting, timeouts & circuit breaking' },
 		{
-			name: 'Static IPs [4]',
+			name: 'Static IPs',
 			community: 'Basic',
 			enterprise: 'Advanced',
 			tooltipContent: 'Route webhooks through forward proxies to deliver statis egress IPs.The advanced set up includes a load balancer for HA setups.'
 		},
-		{ name: 'Webhook Subscriptions [5]', community: 'true', enterprise: 'true', tooltipContent: 'Includes advanced techniques for filtering webhooks, besides event types.' },
+		{ name: 'Webhook Subscriptions', community: 'true', enterprise: 'true', tooltipContent: 'Includes advanced techniques for filtering webhooks, besides event types.' },
 		{ name: 'Automatic Webhooks Documentation (Coming Soon)', community: 'true', enterprise: 'true', tooltipContent: '' },
 		{ name: 'Functions & Transformations', community: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'Multi-tenancy [7]', community: 'false', enterprise: 'true', tooltipContent: 'Organise teams and projects into separate organisations' },
+		{ name: 'Multi-tenancy', community: 'false', enterprise: 'true', tooltipContent: 'Organise teams and projects into separate organisations' },
 		{ name: 'SSO & SAML (Coming Soon)', community: 'false', enterprise: 'true', tooltipContent: '' },
 		{ name: 'Audit Logs (Coming Soon)', community: 'false', enterprise: 'true', tooltipContent: '' },
 		{ name: 'Role-Based Access Control', community: 'false', enterprise: 'true', tooltipContent: '' },
 		{
-			name: 'Technical Support Channels [8]',
+			name: 'Technical Support Channels',
 			community: 'Licensed to Convoy',
 			enterprise: 'Dedicated Support',
 			tooltipContent: 'Enterprise users receive priority with our engineers'
 		},
-		{ name: 'KMS Integration [9]', community: 'false', enterprise: 'true', tooltipContent: 'Store sensitive keys in any KMS of your choie - Vault, AWS KMS etc.' },
-		// { name: 'Environments (Coming Soon) [6]', community: '', enterprise: '', tooltipContent: 'Organise projects into environments - development, production.' },
+		{ name: 'KMS Integration', community: 'false', enterprise: 'true', tooltipContent: 'Store sensitive keys in any KMS of your choie - Vault, AWS KMS etc.' },
+		// { name: 'Environments (Coming Soon)', community: '', enterprise: '', tooltipContent: 'Organise projects into environments - development, production.' },
 		{ name: 'License', community: 'MPL 2.0', enterprise: 'Licensed to Convoy', tooltipContent: '' },
 		{ name: 'Price', community: '$0', enterprise: 'Starts at $500/month', tooltipContent: '' }
 	];
@@ -521,22 +521,19 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 												i === 0 ? 'border-t rounded-tl-8px' : ''
 											}`}>
 											<div className="text-left">
+												<span>{plan.name}</span>
 												{plan.tooltipContent && (
 													<Tooltip
 														tooltipToggle={
-															<div className="">
-																{plan.name}
-																<div className="inline-flex align-text-top">
-																	<svg width="12" height="12" className="fill-gray-600">
-																		<use xlinkHref="#info-icon"></use>
-																	</svg>
-																</div>
+															<div className="inline-flex align-text-bottom ml-4px">
+																<svg width="12" height="12" className="fill-gray-600">
+																	<use xlinkHref="#info-icon"></use>
+																</svg>
 															</div>
 														}>
 														{plan.tooltipContent}
 													</Tooltip>
 												)}
-												{!plan.tooltipContent && <span>{plan.name}</span>}
 											</div>
 										</td>
 										<td className={`p-16px xs:p-10px text-12 text-gray-600 border-x border-primary-50 group-last:border-b ${i === 0 ? 'border-t' : ''}`}>
