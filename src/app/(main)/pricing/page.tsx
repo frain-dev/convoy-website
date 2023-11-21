@@ -81,7 +81,7 @@ export default function Pricing() {
 		},
 		{
 			name: 'Enterprise',
-			id: 'enterprise',
+			id: 'scale',
 			description: 'Convoy Enterprise Edition is designed for larger teams where there exist at least a DevOps or Platform team.',
 			price: 'Custom Pricing',
 			link: 'https://github.com/frain-dev/convoy#installation-getting-started',
