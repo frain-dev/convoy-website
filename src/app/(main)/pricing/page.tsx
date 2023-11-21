@@ -521,7 +521,21 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 												i === 0 ? 'border-t rounded-tl-8px' : ''
 											}`}>
 											<div className="text-left">
-												{plan.tooltipContent && <Tooltip tooltipToggle={<span>{plan.name}</span>}>{plan.tooltipContent}</Tooltip>}
+												{plan.tooltipContent && (
+													<Tooltip
+														tooltipToggle={
+															<div className="">
+																{plan.name}
+																<div className="inline-flex align-text-top">
+																	<svg width="12" height="12" className="fill-gray-600">
+																		<use xlinkHref="#info-icon"></use>
+																	</svg>
+																</div>
+															</div>
+														}>
+														{plan.tooltipContent}
+													</Tooltip>
+												)}
 												{!plan.tooltipContent && <span>{plan.name}</span>}
 											</div>
 										</td>
