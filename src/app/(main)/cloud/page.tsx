@@ -262,7 +262,7 @@ export default function Cloud() {
 						href="#home"
 						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-14 font-medium flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Request Access
-						<Image src={ArrowRightIcon} className="ml-12px" alt="arrow right icon" />
+						<Image src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow right icon" />
 					</Link>
 				</div>
 			</section>
