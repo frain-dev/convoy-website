@@ -97,34 +97,35 @@ export default function Pricing() {
 	];
 
 	const comparedPlans = [
-		{ name: 'Dashboard', community: '', enterprise: '', tooltipContent: '' },
-		{ name: 'Portal Links [1]', community: '', enterprise: '', tooltipContent: 'Use our JS SDK to build a custom dashboard' },
-		{ name: 'Idempotent Keys', community: '', enterprise: '', tooltipContent: '' },
-		{ name: 'White-Label Headers', community: '', enterprise: '', tooltipContent: '' },
-		{ name: 'Message Brokers', community: '', enterprise: '', tooltipContent: '' },
-		{ name: 'Endpoint Management [3]', community: '', enterprise: '', tooltipContent: 'Retries. rate limiting, timeouts & circuit breaking' },
+		{ name: 'Dashboard', community: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Portal Links [1]', community: 'Basic', enterprise: 'Advanced', tooltipContent: 'Use our JS SDK to build a custom dashboard' },
+		{ name: 'Idempotent Keys', community: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'White-Label Headers', community: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Message Brokers', community: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Endpoint Management [3]', community: 'true', enterprise: 'true', tooltipContent: 'Retries. rate limiting, timeouts & circuit breaking' },
 		{
 			name: 'Static IPs [4]',
 			community: 'Basic',
 			enterprise: 'Advanced',
 			tooltipContent: 'Route webhooks through forward proxies to deliver statis egress IPs.The advanced set up includes a load balancer for HA setups.'
 		},
-		{ name: 'Webhook Subscriptions [5]', community: '', enterprise: '', tooltipContent: 'Includes advanced techniques for filtering webhooks, besides event types.' },
-		{ name: 'Automatic Webhooks Documentation (Coming Soon)', community: '', enterprise: '', tooltipContent: '' },
-		{ name: 'Functions & Transformations', community: '', enterprise: '', tooltipContent: '' },
-		{ name: 'Multi-tenancy [7]', community: '', enterprise: '', tooltipContent: 'Organise teams and projects into separate organisations' },
-		{ name: 'SSO & SAML (Coming Soon)', community: '', enterprise: '', tooltipContent: '' },
-		{ name: 'Audit Logs (Coming Soon)', community: '', enterprise: '', tooltipContent: '' },
-		{ name: 'Role-Based Access Control', community: '', enterprise: '', tooltipContent: '' },
+		{ name: 'Webhook Subscriptions [5]', community: 'true', enterprise: 'true', tooltipContent: 'Includes advanced techniques for filtering webhooks, besides event types.' },
+		{ name: 'Automatic Webhooks Documentation (Coming Soon)', community: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Functions & Transformations', community: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Multi-tenancy [7]', community: 'false', enterprise: 'true', tooltipContent: 'Organise teams and projects into separate organisations' },
+		{ name: 'SSO & SAML (Coming Soon)', community: 'false', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Audit Logs (Coming Soon)', community: 'false', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Role-Based Access Control', community: 'false', enterprise: 'true', tooltipContent: '' },
 		{
 			name: 'Technical Support Channels [8]',
 			community: 'Licensed to Convoy',
 			enterprise: 'Dedicated Support',
 			tooltipContent: 'Enterprise users receive priority with our engineers'
 		},
-		{ name: 'KMS Integration [9]', community: '', enterprise: '', tooltipContent: 'Store sensitive keys in any KMS of your choie - Vault, AWS KMS etc.' },
-		{ name: 'Environments (Coming Soon) [6]', community: '', enterprise: '', tooltipContent: 'Organise projects into environments - development, production.' },
-		{ name: 'License', community: 'MPL 2.0', enterprise: 'Licensed to Convoy', tooltipContent: '' }
+		{ name: 'KMS Integration [9]', community: 'false', enterprise: 'true', tooltipContent: 'Store sensitive keys in any KMS of your choie - Vault, AWS KMS etc.' },
+		// { name: 'Environments (Coming Soon) [6]', community: '', enterprise: '', tooltipContent: 'Organise projects into environments - development, production.' },
+		{ name: 'License', community: 'MPL 2.0', enterprise: 'Licensed to Convoy', tooltipContent: '' },
+		{ name: 'Price', community: '$0', enterprise: 'Starts at $500/month', tooltipContent: '' }
 	];
 
 	const tabs = [
@@ -526,8 +527,9 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 										</td>
 										<td className={`p-16px xs:p-10px text-12 text-gray-600 border-x border-primary-50 group-last:border-b ${i === 0 ? 'border-t' : ''}`}>
 											<div className="flex justify-center">
-												{plan.community ? plan.community : ''}
-												{!plan.community && (
+												{plan.community !== 'true' && plan.community !== 'false' && <span>{plan.community}</span>}
+
+												{plan.community === 'true' && (
 													<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 														<path
 															d="M1.5 5.60352L4.146 8.24952C4.19245 8.29608 4.24762 8.33302 4.30837 8.35823C4.36911 8.38343 4.43423 8.39641 4.5 8.39641C4.56577 8.39641 4.63089 8.38343 4.69163 8.35823C4.75238 8.33302 4.80755 8.29608 4.854 8.24952L11.5 1.60352"
@@ -538,6 +540,11 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 														/>
 													</svg>
 												)}
+												{plan.community === 'false' && (
+													<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+													</svg>
+												)}
 											</div>
 										</td>
 										<td
@@ -545,8 +552,19 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 												i === 0 ? 'border-t' : ''
 											}`}>
 											<div className="flex justify-center">
-												{plan.enterprise ? plan.enterprise : ''}
-												{!plan.enterprise && (
+												{plan.enterprise !== 'true' && plan.enterprise !== 'false' && <span>{plan.enterprise}</span>}
+												{plan.enterprise === 'true' && (
+													<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path
+															d="M1.5 5.60352L4.146 8.24952C4.19245 8.29608 4.24762 8.33302 4.30837 8.35823C4.36911 8.38343 4.43423 8.39641 4.5 8.39641C4.56577 8.39641 4.63089 8.38343 4.69163 8.35823C4.75238 8.33302 4.80755 8.29608 4.854 8.24952L11.5 1.60352"
+															stroke="#475467"
+															strokeWidth="1.5"
+															strokeLinecap="round"
+															strokeLinejoin="round"
+														/>
+													</svg>
+												)}
+												{plan.enterprise === 'false' && (
 													<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 														<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 													</svg>
