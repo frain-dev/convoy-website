@@ -75,9 +75,9 @@ export default function Pricing() {
 
 			preText: 'Best for developers that:',
 			features: [
-				'Have basic workloads, generally anything below 10 million events per month is considered basic.',
-				'Do not require advanced customizations their focus is to deliver webhooks reliably.',
-				'Do not require advanced access controls. They most likely comprise of one team.'
+				'Have basic workloads generally. Anything below 10 million events per month is considered basic.',
+				'Do not require advanced customizations. Their focus is to deliver webhooks reliably.',
+				'Do not require advanced access controls. They comprise of single teams.'
 			]
 		},
 		{
@@ -91,7 +91,7 @@ export default function Pricing() {
 			features: [
 				'Have high-performance workloads. This can grow to hundreds of millions of events.',
 				'Require Advanced customisations to completely white-label the experience.',
-				'DevOps team will deploy a gateway to support multiple teams — Advanced Access Controls is needed.',
+				'Require Advanced Access Controls. DevOps team will deploy a gateway to support multiple teams.',
 				'At their scale, technical support with SLA will be desirous.'
 			]
 		}
@@ -119,7 +119,7 @@ export default function Pricing() {
 		{ name: 'Role-Based Access Control', community: 'false', enterprise: 'true', tooltipContent: '' },
 		{
 			name: 'Technical Support Channels',
-			community: 'Licensed to Convoy',
+			community: 'Community Support',
 			enterprise: 'Dedicated Support',
 			tooltipContent: 'Enterprise users receive priority with our engineers'
 		},
