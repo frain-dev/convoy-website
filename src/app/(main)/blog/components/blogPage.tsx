@@ -89,7 +89,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 					)}
 
 					<div className="mb-130px">
-						<main className="max-w-[710px] w-full">{children}</main>
+						<main className="max-w-[750px] w-full">{children}</main>
 					</div>
 				</div>
 
@@ -121,8 +121,8 @@ export default function BlogPage({ posts, blogData, children }: any) {
 											<img src={`/profile-images/${author?.name}.png`} className="w-full mr-12px rounded-[50%]" alt={author?.name} />
 										</div>
 										<div>
-											<h6 className="font-semibold text-primary-400 mb-2px text-12">{author.name}</h6>
-											<p className="font-normal text-12 mb-6px text-grey-80">{author.role}</p>
+											<h6 className="font-semibold text-gray-600 text-12">{author.name}</h6>
+											<p className="font-normal text-10 mb-6px text-gray-500">{author.role}</p>
 										</div>
 									</a>
 								))}
