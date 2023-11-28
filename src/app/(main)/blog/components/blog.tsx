@@ -8,6 +8,7 @@ import FeaturedPost from './featuredPost';
 export default function Blog({ articles }: any) {
 	const searchParams = useSearchParams();
 	const featuredPosts = articles.filter(article => article.featured);
+	const nonFeaturedPosts = articles.filter(article => !article.featured);
 	const [submittingEmail, setIsSubmittingEmail] = useState(false);
 	const [filteredPosts, setFilteredPosts] = useState(articles);
 	const inputRef = useRef(null);
@@ -42,7 +43,7 @@ export default function Blog({ articles }: any) {
 
 	const filterPosts = () => {
 		const filterTag = searchParams.get('tag');
-		const filteredPost = articles.filter(article => article.primary_tag === filterTag);
+		const filteredPost = nonFeaturedPosts.filter(article => article.primary_tag === filterTag);
 		setCurrentTag(filterTag || '');
 		setFilteredPosts(filteredPost);
 	};
@@ -51,6 +52,7 @@ export default function Blog({ articles }: any) {
 		if (searchParams.get('tag')) filterPosts();
 		else setFilteredPosts(articles);
 	}, [searchParams]);
+
 	return (
 		<>
 			<div className="pt-150px pb-100px max-w-[1300px] w-full m-auto">
@@ -120,7 +122,7 @@ export default function Blog({ articles }: any) {
 						<FeaturedPost postData={featuredPosts[0]}></FeaturedPost>
 
 						<div className="desktop:grid desktop:grid-cols-2 gap-y-62px gap-x-48px max-w-[970px] mb-48px mt-48px">
-							{filteredPosts.slice(0, 4).map((article, i) => (
+							{nonFeaturedPosts.slice(0, 4).map((article, i) => (
 								<Post postData={article} key={i} />
 							))}
 						</div>
@@ -155,7 +157,7 @@ export default function Blog({ articles }: any) {
 						</div>
 
 						<div className="desktop:grid desktop:grid-cols-2 gap-y-62px gap-x-48px max-w-[970px] mb-48px mt-48px">
-							{filteredPosts.slice(4).map((article, i) => (
+							{nonFeaturedPosts.slice(4).map((article, i) => (
 								<Post postData={article} key={i} />
 							))}
 						</div>

@@ -36,7 +36,7 @@ export default function Post({ postData, type }: any) {
 					</Link>
 					{type !== 'collapsed' && <p className="text-14 leading-7 font-light text-gray-500 mb-20px h-120px overflow-hidden text-ellipsis">{postData.description}</p>}
 				</div>
-				<div className={`mt-18px mb-26px flex justify-between items-center ${type === 'collapsed' ? '' : 'px-10px desktop:px-16px'}`}>
+				<div className={`mt-18px mb-26px flex justify-between items-end ${type === 'collapsed' ? '' : 'px-10px desktop:px-16px'}`}>
 					<div className="flex items-center">
 						{postData.primary_author && !postData.authors && (
 							<a
@@ -51,8 +51,8 @@ export default function Post({ postData, type }: any) {
 									/>
 								</div>
 								<div>
-									<h5 className="font-medium mb-4px text-primary-400 text-12">{getPrimaryAuthor()?.name}</h5>
-									<p className="text-12 text-grey-80">{getPrimaryAuthor()?.role}</p>
+									<h5 className="font-medium text-gray-800 text-14">{getPrimaryAuthor()?.name}</h5>
+									<p className="text-12 text-gray-600">{getPrimaryAuthor()?.role}</p>
 								</div>
 							</a>
 						)}
