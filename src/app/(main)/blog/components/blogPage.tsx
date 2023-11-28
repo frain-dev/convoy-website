@@ -19,9 +19,9 @@ export default function BlogPage({ posts, blogData, children }: any) {
 	};
 
 	return (
-		<div className="m-auto px-20px pt-200px mobile:pt-150px pb-140px max-w-[1264px] w-full">
-			<div className="flex items-start tab-min:flex-wrap justify-between">
-				<div className="max-w-[750px] w-full px-20px desktop:p-0">
+		<div className="m-auto pt-200px mobile:pt-150px pb-140px max-w-[1300px] w-full">
+			<div className="flex items-start flex-wrap nav-bar-break:flex-nowrap justify-between">
+				<div className="nav-bar-break:max-w-[770px] w-full px-20px desktop-min:p-0">
 					{!blogData.isError && (
 						<>
 							<div className="flex w-full flex-col desktop:flex-row desktop:items-center desktop:justify-between">
@@ -74,7 +74,6 @@ export default function BlogPage({ posts, blogData, children }: any) {
 									</li>
 								</ul>
 							</div>
-							
 
 							{blogData.hackernews && (
 								<a
@@ -89,13 +88,13 @@ export default function BlogPage({ posts, blogData, children }: any) {
 					)}
 
 					<div className="mb-130px">
-						<main className="max-w-[750px] w-full">{children}</main>
+						<main className="nav-bar-break:max-w-[770px] w-full">{children}</main>
 					</div>
 				</div>
 
 				<div className="w-[1px] hidden desktop-min:block min-h-[650px] h-full bg-gray-200 sticky desktop:top-200px"></div>
 
-				<div className="px-20px desktop-min:p-0 doc-tab:max-w-[305px] sticky desktop-min:top-200px desktop:top-140px">
+				<div className="px-20px desktop-min:p-0 nav-bar-break:max-w-[325px] sticky desktop-min:top-200px desktop:top-128px">
 					{!blogData.isError && (
 						<>
 							<p className="text-14 font-medium text-gray-500 mb-24px">Written By</p>
@@ -110,8 +109,8 @@ export default function BlogPage({ posts, blogData, children }: any) {
 											<img src={`/profile-images/${getPrimaryAuthor()?.name}.png`} className="w-full mr-12px rounded-[50%]" alt={getPrimaryAuthor()?.name} />
 										</div>
 										<div>
-											<h6 className="font-semibold text-primary-400 mb-2px text-12">{getPrimaryAuthor()?.name}</h6>
-											<p className="font-normal text-12 mb-6px text-grey-80">{getPrimaryAuthor()?.role}</p>
+											<h6 className="font-semibold text-gray-600 mb-2px text-12">{getPrimaryAuthor()?.name}</h6>
+											<p className="font-normal text-10 mb-6px text-gray-500">{getPrimaryAuthor()?.role}</p>
 										</div>
 									</a>
 								)}
@@ -132,9 +131,9 @@ export default function BlogPage({ posts, blogData, children }: any) {
 
 					<p className="text-14 font-medium text-gray-500 mb-24px">More Posts</p>
 
-					<div className="flex flex-wrap desktop-min:flex-col gap-48px">
+					<div className="flex flex-row flex-wrap gap-48px">
 						{posts.map((post, i) => (
-							<Post type="collapsed" postData={post} key={i}></Post>
+							<Post type="collapsed" postData={post} key={i} className="max-w-[350px] w-full first-of-type:border-b first-of-type:border-gray-200 first-of-type:pb-20px"></Post>
 						))}
 					</div>
 				</div>
