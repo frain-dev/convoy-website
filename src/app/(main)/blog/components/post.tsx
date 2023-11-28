@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import authors from '../../../data/authors.json';
 
-export default function Post({ postData, type }: any) {
+export default function Post({ postData, type, className }: any) {
 	const [showFallBackImg, setShowFallBackImg] = useState(false);
 
 	const getAuthors = () => {
@@ -19,7 +19,7 @@ export default function Post({ postData, type }: any) {
 	};
 	return (
 		<>
-			<div className={`w-full rounded-12px ${type === 'collapsed' ? '' : 'bg-white-100 p-10px shadow-card'}`}>
+			<div className={`w-full ${type === 'collapsed' ? '' : 'bg-white-100 rounded-12px p-10px shadow-card'} ${className}`}>
 				<div className="rounded-4px mb-20px w-full overflow-hidden backdrop-blur-[3.4767px] h-fit max-h-[170px]">
 					<img
 						src={showFallBackImg ? '/static/convoy.png' : `/post-images/${postData.post_image}`}
@@ -36,19 +36,16 @@ export default function Post({ postData, type }: any) {
 					</Link>
 					{type !== 'collapsed' && <p className="text-14 leading-7 font-light text-gray-500 mb-20px h-120px overflow-hidden text-ellipsis">{postData.description}</p>}
 				</div>
-				<div className={`mt-18px mb-26px flex justify-between items-end ${type === 'collapsed' ? '' : 'px-10px desktop:px-16px'}`}>
-					<div className="flex items-center">
+
+				<div className={`mt-18px mb-26px flex justify-between items-end flex-wrap gap-20px ${type === 'collapsed' ? '' : 'px-10px desktop:px-16px'}`}>
+					<div className="flex items-end">
 						{postData.primary_author && !postData.authors && (
 							<a
 								href={`${getPrimaryAuthor()?.twitter ? 'http://twitter.com/' + getPrimaryAuthor()?.twitter : ''}`}
 								target="_blank"
 								className="flex items-start desktop:mb-[unset]">
 								<div className="w-40px h-40px rounded-50% mr-16px overflow-hidden flex items-center bg-grey-20">
-									<img
-										src={`/profile-images/${getPrimaryAuthor()?.name}.png`}
-										className="w-full mr-12px rounded-[50%]"
-										alt={getPrimaryAuthor()?.name}
-									/>
+									<img src={`/profile-images/${getPrimaryAuthor()?.name}.png`} className="w-full mr-12px rounded-[50%]" alt={getPrimaryAuthor()?.name} />
 								</div>
 								<div>
 									<h5 className="font-medium text-gray-800 text-14">{getPrimaryAuthor()?.name}</h5>
