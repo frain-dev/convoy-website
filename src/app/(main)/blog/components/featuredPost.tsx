@@ -38,7 +38,7 @@ export default function FeaturedPost({ postData }: any) {
 					</div>
 
 					<Link href={`/blog/${postData.slug}`}>
-						<h3 className="text-20 font-semibold mb-16px">{postData.title}</h3>
+						<h3 className="text-20 text-gray-700 font-semibold mb-16px">{postData.title}</h3>
 					</Link>
 
 					<p className="font-light text-gray-500 text-14 mb-50px overflow-hidden text-ellipsis">{postData.description}</p>
