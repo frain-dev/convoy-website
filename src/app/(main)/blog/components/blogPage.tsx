@@ -97,7 +97,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 				<div className="px-20px desktop-min:p-0 nav-bar-break:max-w-[325px] sticky desktop-min:top-200px desktop:top-128px">
 					{!blogData.isError && (
 						<>
-							<p className="text-14 font-medium text-gray-500 mb-24px">Written By</p>
+							<p className="text-14 text-gray-500 mb-24px">Written By</p>
 
 							<div className="flex flex-col gap-16px mb-50px">
 								{blogData.primary_author && !blogData.authors && (
@@ -129,7 +129,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 						</>
 					)}
 
-					<p className="text-14 font-medium text-gray-500 mb-24px">More Posts</p>
+					<p className="text-14 text-gray-500 mb-24px">More Posts</p>
 
 					<div className="flex flex-row flex-wrap gap-48px">
 						{posts.map((post, i) => (
