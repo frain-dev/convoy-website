@@ -22,14 +22,14 @@ export default function FeaturedPost({ postData }: any) {
 		<div>
 			<div
 				className="
-                rounded-[20px]
+                rounded-[24px]
                 shadow-card
                 max-w-[970px]
                 bg-white-100
                 mt-32px
                 pt-20px
                 px-12px
-                desktop:pl-56px desktop:pt-26px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
+                desktop:pl-12px desktop:pt-26px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
                 mobile:mb-48px">
 				<div className="desktop:max-w-[470px] p-10px pr-24px">
 					<div className="flex justify-between items-center mb-24px">
@@ -38,13 +38,13 @@ export default function FeaturedPost({ postData }: any) {
 					</div>
 
 					<Link href={`/blog/${postData.slug}`}>
-						<h3 className="text-24 font-bold mb-16px">{postData.title}</h3>
+						<h3 className="text-20 font-semibold mb-16px">{postData.title}</h3>
 					</Link>
 
 					<p className="font-light text-gray-500 text-14 mb-50px overflow-hidden text-ellipsis">{postData.description}</p>
 
 					<div className="flex flex-wrap my-26px items-end justify-between">
-						<div className="flex items-center">
+						<div className="flex items-end">
 							{postData.primary_author && !postData.authors && (
 								<a
 									href={`${postData.primary_author?.twitter ? 'http://twitter.com/' + postData.primary_author?.twitter : ''}`}

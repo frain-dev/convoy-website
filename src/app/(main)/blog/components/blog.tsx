@@ -121,7 +121,7 @@ export default function Blog({ articles }: any) {
 
 						<FeaturedPost postData={featuredPosts[0]}></FeaturedPost>
 
-						<div className="desktop:grid desktop:grid-cols-2 gap-y-62px gap-x-48px max-w-[970px] mb-48px mt-48px">
+						<div className="grid desktop:grid-cols-2 gap-48px max-w-[970px] mb-48px mt-48px">
 							{nonFeaturedPosts.slice(0, 4).map((article, i) => (
 								<Post postData={article} key={i} />
 							))}
@@ -156,7 +156,7 @@ export default function Blog({ articles }: any) {
 							<img src="/gif/mailbox.gif" className="w-180px order-1 m-auto desktop:order-2 desktop:m-[unset]" alt="mailbox animation" />
 						</div>
 
-						<div className="desktop:grid desktop:grid-cols-2 gap-y-62px gap-x-48px max-w-[970px] mb-48px mt-48px">
+						<div className="grid desktop:grid-cols-2 gap-48px max-w-[970px] mb-48px mt-48px">
 							{nonFeaturedPosts.slice(4).map((article, i) => (
 								<Post postData={article} key={i} />
 							))}

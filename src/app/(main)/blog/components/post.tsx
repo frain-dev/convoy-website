@@ -19,20 +19,20 @@ export default function Post({ postData, type, className }: any) {
 	};
 	return (
 		<>
-			<div className={`w-full ${type === 'collapsed' ? '' : 'bg-white-100 rounded-12px p-10px shadow-card'} ${className}`}>
-				<div className="rounded-4px mb-20px w-full overflow-hidden backdrop-blur-[3.4767px] h-fit max-h-[170px]">
+			<div className={`w-full ${type === 'collapsed' ? '' : 'bg-white-100 rounded-8px p-16px shadow-card'} ${className}`}>
+				<div className="rounded-8px mb-20px w-full overflow-hidden backdrop-blur-[3.4767px] h-fit max-h-[170px]">
 					<img
 						src={showFallBackImg ? '/static/convoy.png' : `/post-images/${postData.post_image}`}
 						onError={() => setShowFallBackImg(true)}
-						className="rounded-4px w-full -z-10"
+						className="rounded-8px w-full -z-10"
 						alt="post image"
 					/>
 				</div>
 				<div className="rounded-2px font-medium text-14 text-primary-400 uppercase">{postData.tag}</div>
 
-				<div className={`flex flex-col ${type === 'collapsed' ? '' : 'min-h-[220px] px-10px desktop:px-16px'}`}>
+				<div className={`flex flex-col ${type === 'collapsed' ? '' : 'min-h-[200px]'}`}>
 					<Link href={`/blog/${postData.slug}`}>
-						<h3 className="text-20 font-bold mb-24px overflow-hidden text-ellipsis">{postData.title}</h3>
+						<h3 className={`font-semibold mb-24px overflow-hidden text-ellipsis ${type === 'collapsed' ? 'text-16' : 'text-20'}`}>{postData.title}</h3>
 					</Link>
 					{type !== 'collapsed' && <p className="text-14 leading-7 font-light text-gray-500 mb-20px h-120px overflow-hidden text-ellipsis">{postData.description}</p>}
 				</div>
