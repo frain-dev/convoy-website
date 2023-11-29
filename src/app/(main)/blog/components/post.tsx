@@ -32,7 +32,7 @@ export default function Post({ postData, type, className }: any) {
 
 				<div className={`flex flex-col ${type === 'collapsed' ? '' : 'min-h-[200px]'}`}>
 					<Link href={`/blog/${postData.slug}`}>
-						<h3 className={`font-semibold mb-24px overflow-hidden text-ellipsis ${type === 'collapsed' ? 'text-16' : 'text-20'}`}>{postData.title}</h3>
+						<h3 className={`font-semibold mb-24px overflow-hidden text-ellipsis text-gray-700 ${type === 'collapsed' ? 'text-16' : 'text-20'}`}>{postData.title}</h3>
 					</Link>
 					{type !== 'collapsed' && <p className="text-14 leading-7 font-light text-gray-500 mb-20px h-120px overflow-hidden text-ellipsis">{postData.description}</p>}
 				</div>
