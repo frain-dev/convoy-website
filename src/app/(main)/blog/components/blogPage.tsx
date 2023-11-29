@@ -4,6 +4,7 @@ import Image from 'next/image';
 import formatDate from '@/lib/formatDate';
 import Post from './post';
 import authors from '../../../data/authors.json';
+import GetStarted from '@/app/components/GetStarted';
 
 export default function BlogPage({ posts, blogData, children }: any) {
 	const getAuthors = () => {
@@ -19,7 +20,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 	};
 
 	return (
-		<div className="m-auto pt-200px mobile:pt-150px pb-140px max-w-[1300px] w-full">
+		<div className="m-auto pt-200px mobile:pt-150px max-w-[1300px] w-full">
 			<div className="flex items-start flex-wrap nav-bar-break:flex-nowrap justify-between">
 				<div className="nav-bar-break:max-w-[770px] w-full px-20px desktop-min:p-0">
 					{!blogData.isError && (
@@ -32,7 +33,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 									<span className="text-primary-400 text-12">{blogData.primary_tag}</span>
 								</div>
 
-								<div className="font-medium text-12 flex items-center mt-16px desktop:mt-0 text-gray-600">
+								<div className="text-12 flex items-center mt-16px desktop:mt-0 text-gray-600">
 									{blogData.readTime} min read
 									<span className="mx-6px mb-2px">
 										<svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,9 +93,8 @@ export default function BlogPage({ posts, blogData, children }: any) {
 					</div>
 				</div>
 
-				<div className="w-[1px] hidden desktop-min:block min-h-[650px] h-full bg-gray-200 sticky desktop:top-200px"></div>
-
-				<div className="px-20px desktop-min:p-0 nav-bar-break:max-w-[325px] sticky desktop-min:top-200px desktop:top-128px">
+				
+				<div className="px-20px desktop-min:p-0 nav-bar-break:max-w-[375px] sticky desktop-min:top-200px desktop:top-128px nav-bar-break:pl-50px nav-bar-break:border-l border-gray-200">
 					{!blogData.isError && (
 						<>
 							<p className="text-14 text-gray-500 mb-24px">Written By</p>
@@ -133,11 +133,13 @@ export default function BlogPage({ posts, blogData, children }: any) {
 
 					<div className="flex flex-row flex-wrap gap-48px">
 						{posts.map((post, i) => (
-							<Post type="collapsed" postData={post} key={i} className="max-w-[350px] w-full first-of-type:border-b first-of-type:border-gray-200 first-of-type:pb-20px"></Post>
+							<Post type="collapsed" postData={post} key={i} className="max-w-[340px] w-full nav-bar-break:first-of-type:border-b first-of-type:border-gray-200 nav-bar-break:first-of-type:pb-20px"></Post>
 						))}
 					</div>
 				</div>
 			</div>
+
+			<GetStarted></GetStarted>
 		</div>
 	);
 }
