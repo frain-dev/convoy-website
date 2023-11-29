@@ -26,14 +26,14 @@ export default function BlogPage({ posts, blogData, children }: any) {
 					{!blogData.isError && (
 						<>
 							<div className="flex w-full flex-col desktop:flex-row desktop:items-center desktop:justify-between">
-								<div className="font-medium text-12 text-grey-80">
+								<div className="font-medium text-12 text-gray-500">
 									<Link href="/blog">Blog</Link>
 
 									<span className="mx-16px">|</span>
 									<span className="text-primary-400 text-12">{blogData.primary_tag}</span>
 								</div>
 
-								<div className="text-12 flex items-center mt-16px desktop:mt-0 text-gray-600">
+								<div className="text-12 flex items-center mt-16px desktop:mt-0 text-gray-500">
 									{blogData.readTime} min read
 									<span className="mx-6px mb-2px">
 										<svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
