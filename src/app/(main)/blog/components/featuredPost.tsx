@@ -2,21 +2,34 @@
 import formatDate from '@/lib/formatDate';
 import Link from 'next/link';
 import { useState } from 'react';
+import authors from '../../../data/authors.json';
 
 export default function FeaturedPost({ postData }: any) {
 	const [showFallBackImg, setShowFallBackImg] = useState(false);
+
+	const getAuthors = () => {
+		if (!postData.authors) return [];
+		const postAuthors = authors.filter(item => postData.authors.includes(item.id));
+		return postAuthors;
+	};
+
+	const getPrimaryAuthor = () => {
+		if (!postData.primary_author) return;
+		const primaryAuthor = authors.find(item => item.name === postData.primary_author?.name);
+		return primaryAuthor;
+	};
 	return (
 		<div>
 			<div
 				className="
-                rounded-[20px]
+                rounded-[24px]
                 shadow-card
                 max-w-[970px]
                 bg-white-100
                 mt-32px
                 pt-20px
                 px-12px
-                desktop:pl-56px desktop:pt-26px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
+                desktop:pl-12px desktop:pt-26px desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
                 mobile:mb-48px">
 				<div className="desktop:max-w-[470px] p-10px pr-24px">
 					<div className="flex justify-between items-center mb-24px">
@@ -25,22 +38,73 @@ export default function FeaturedPost({ postData }: any) {
 					</div>
 
 					<Link href={`/blog/${postData.slug}`}>
-						<h3 className="text-24 font-bold mb-16px">{postData.title}</h3>
+						<h3 className="text-20 text-gray-700 font-semibold mb-16px">{postData.title}</h3>
 					</Link>
 
 					<p className="font-light text-gray-500 text-14 mb-50px overflow-hidden text-ellipsis">{postData.description}</p>
 
-					<div className="flex flex-wrap my-26px desktop:items-end items-center justify-between">
-						<a href={postData.primary_author.twitter ? 'http://twitter.com/' + postData.primary_author.twitter : ''} target="_blank" className="flex items-start">
-							<div className="w-40px h-40px rounded-[50%] mr-16px overflow-hidden flex items-center">
-								<img src={`/profile-images/${postData.primary_author.name}.png`} className="w-full mr-12px rounded-[50%]" alt="author imge" />
-							</div>
-							<div>
-								<h5 className="font-medium mb-4px text-12">{postData.primary_author.name}</h5>
-								<p className="text-12 text-grey-80">Convoy</p>
-							</div>
-						</a>
-						<Link href={'/blog/' + postData.slug} className="flex items-center text-primary-400 font-medium text-12">
+					<div className="flex flex-wrap my-26px items-end justify-between">
+						<div className="flex items-end">
+							{postData.primary_author && !postData.authors && (
+								<a
+									href={`${postData.primary_author?.twitter ? 'http://twitter.com/' + postData.primary_author?.twitter : ''}`}
+									target="_blank"
+									className="flex items-start desktop:mb-[unset]">
+									<div className="w-40px h-40px rounded-50% mr-16px overflow-hidden flex items-center bg-grey-20">
+										<img
+											src={`/profile-images/${postData.primary_author?.name}.png`}
+											className="w-full mr-12px rounded-[50%]"
+											alt={postData.primary_author?.name}
+										/>
+									</div>
+									<div>
+										<h5 className="font-medium text-gray-800 text-14">{postData.primary_author?.name}</h5>
+										<p className="text-12 text-gray-600">{getPrimaryAuthor()?.role}</p>
+									</div>
+								</a>
+							)}
+
+							{postData.authors && (
+								<>
+									{getAuthors()
+										.slice(0, 2)
+										.map(author => (
+											<a
+												key={author.id}
+												href={`${author?.twitter ? 'http://twitter.com/' + author?.twitter : ''}`}
+												target="_blank"
+												className="-ml-20px first-of-type:ml-0">
+												<div className="w-40px h-40px rounded-50% shadow-sm overflow-hidden flex items-center justify-center border border-gray-25 bg-gray-25">
+													<img src={`/profile-images/${author?.name}.png`} className="w-full rounded-[50%]" alt={author?.name} />
+												</div>
+											</a>
+										))}
+
+									{getAuthors()?.length && getAuthors()?.length > 2 && (
+										<div className="w-40px h-40px rounded-50% shadow-sm flex items-center justify-center bg-gray-600 text-12 text-gray-25 -ml-20px">
+											+{postData.authors?.length - 2}
+										</div>
+									)}
+
+									<div className="w-92px flex flex-wrap ml-6px">
+										{getAuthors()
+											.slice(0, 2)
+											.map((author, i) => (
+												<a
+													key={i}
+													href={`${author?.twitter ? 'http://twitter.com/' + author?.twitter : ''}`}
+													target="_blank"
+													className="font-medium  text-gray-600 text-10">
+													{author?.name}
+													{i === 0 && <>,</>}
+												</a>
+											))}
+									</div>
+								</>
+							)}
+						</div>
+
+						<Link href={`/blog/${postData.slug}`} className="flex items-center text-primary-400 font-medium text-12">
 							Read More
 							<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-6px">
 								<path
