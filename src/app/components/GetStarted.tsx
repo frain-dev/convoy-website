@@ -12,7 +12,7 @@ export default function GetStarted() {
 				</p>
 				<a
 					target="_blank"
-					href="https://github.com/frain-dev/convoy#installation-getting-started"
+					href="https://cloud.getconvoy.io"
 					className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 font-semibold flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 					Get started
 					<Image src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow right" />
