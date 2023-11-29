@@ -1,0 +1,14 @@
+[
+	{ "id": "emmanuelAina", "name": "Emmanuel Aina", "role": "Co-Founder", "twitter": "emmanuelaina_" },
+	{ "id": "subomiOluwana", "name": "Subomi Oluwalana", "role": "Co-Founder", "twitter": "subomiOluwalana" },
+	{ "id": "danielOlujomu", "name": "Daniel Oluojomu", "role": "Backend Engineer", "twitter": "danvixent" },
+	{ "id": "raymondTukpe", "name": "Raymond Tukpe", "role": "CTO", "twitter": "rtukpe" },
+	{ "id": "dotunJolaoso", "name": "Dotun Jolaoso", "role": "Backend Engineer", "twitter": "dotunj_" },
+	{ "id": "lotannaNwose", "name": "Lotanna Nwose", "role": "Growth Lead", "twitter": "viclotana" },
+	{ "id": "amarachiAso", "name": "Amarachi Aso", "role": "Writer", "twitter": "AsoAmarachi" },
+	{ "id": "adamsAdebayo", "name": "Adams Adebayo", "role": "Writer", "twitter": "olodocoder" },
+	{ "id": "abdulazeezAbdulazeez", "name": "Abdulazeez Abdulazeez", "role": "Dev Advocate", "twitter": "kvng_zeez" },
+	{ "id": "obinnaOdirionye", "name": "Obinna Odirionye", "role": "Writer", "twitter": "odirionyeo" },
+	{ "id": "pelumiOni", "name": "Pelumi Oni", "role": "Frontend Engineer", "twitter": "pelumi__o" },
+	{ "id": "press", "name": "Press", "role": "Convoy", "twitter": "getconvoy" }
+]
