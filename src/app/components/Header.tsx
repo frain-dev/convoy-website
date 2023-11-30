@@ -27,6 +27,7 @@ export default function Header() {
 				{ name: 'Nohooks', route: 'https://nohooks.io', type: 'external' }
 			]
 		},
+		{ name: 'About Us', route: '/aboutus', type: 'route' },
 		{ name: 'Pricing', route: '/pricing', type: 'route' },
 		{
 			name: 'Resources',
