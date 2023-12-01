@@ -10,7 +10,7 @@ export default function Blog({ articles }: any) {
 	const featuredPosts = articles.filter(article => article.featured);
 	const nonFeaturedPosts = articles.filter(article => !article.featured);
 	const [submittingEmail, setIsSubmittingEmail] = useState(false);
-	const [filteredPosts, setFilteredPosts] = useState(articles);
+	const [filteredPosts, setFilteredPosts] = useState(nonFeaturedPosts);
 	const inputRef = useRef(null);
 	const [currentTag, setCurrentTag] = useState('All Posts');
 	const [showCategories, setShowCategories] = useState(false);
@@ -122,7 +122,7 @@ export default function Blog({ articles }: any) {
 						<FeaturedPost postData={featuredPosts[0]}></FeaturedPost>
 
 						<div className="grid desktop:grid-cols-2 gap-48px max-w-[970px] mb-48px mt-48px">
-							{nonFeaturedPosts.slice(0, 4).map((article, i) => (
+							{filteredPosts.slice(0, 4).map((article, i) => (
 								<Post postData={article} key={i} />
 							))}
 						</div>
@@ -157,7 +157,7 @@ export default function Blog({ articles }: any) {
 						</div>
 
 						<div className="grid desktop:grid-cols-2 gap-48px max-w-[970px] mb-48px mt-48px">
-							{nonFeaturedPosts.slice(4).map((article, i) => (
+							{filteredPosts.slice(4).map((article, i) => (
 								<Post postData={article} key={i} />
 							))}
 						</div>
