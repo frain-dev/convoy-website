@@ -116,7 +116,13 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="rounded-[20px] desktop:rounded-[70px] mx-auto bg-[linear-gradient(180deg,#2c2f3e_0%,#422f41_100%)] -mb-78px max-w-[1350px] w-[90%] z-auto relative">
+			<section className="bg-[url(/static/convoy-bg.png)] bg-contain bg-no-repeat bg-center px-20px">
+				<div className="rounded-12px bg-white-8 backdrop-blur-[30px] p-20px desktop:p-40px max-w-[1185px] w-full m-auto">
+					<img src="/static/new-dashboard.png" alt="convoy dashboard" />
+				</div>
+			</section>
+
+			{/* <section className="rounded-[20px] desktop:rounded-[70px] mx-auto bg-[linear-gradient(180deg,#2c2f3e_0%,#422f41_100%)] -mb-78px max-w-[1350px] w-[90%] z-auto relative">
 				<div className="w-full md:bg-[url(/static/Settings.png)] bg-no-repeat bg-right desktop:bg-contain rounded-[70px] min-h-[200px] py-30px desktop:py-56px px-20px desktop:px-70px">
 					<p className="font-bold text-white-100 text-24 desktop:text-32 max-w-[690px]">
 						Engineering teams that value efficiency use
@@ -167,10 +173,10 @@ export default function Home() {
 						</li>
 					</ul>
 				</div>
-			</section>
+			</section> */}
 
 			{/* why use us   */}
-			<section id="why-convoy" className="flex flex-col justify-center items-center pt-160px bg-white-100">
+			<section id="why-convoy" className="flex flex-col justify-center items-center pt-160px">
 				<div className="bg-primary-25 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 					<div className="mr-16px w-24px h-24px rounded-100px bg-success-400 flex justify-center items-center">
 						<svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -187,7 +193,7 @@ export default function Home() {
 					Convoy is a high-performance open-source webhooks gateway
 				</h1>
 
-				<div className="desktop:py-40px px-20px bg-white-100 feature-list">
+				<div className="desktop:py-40px px-20px feature-list">
 					{newFeatures.slice(0, 3).map((feature, i) => (
 						<div className="flex flex-col desktop:flex-row items-center justify-between max-w-[1236px] mx-auto mb-140px feature gap-x-20 gap-y-10" key={i}>
 							<div className="order-2 desktop:order-1 px-20px xs:px-10px desktop:px-0">
