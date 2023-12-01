@@ -124,12 +124,12 @@ export default function AboutUs() {
 				<div className="grid xs:grid-cols-1 desktop:grid-cols-3 tab-min:grid-cols-2 gap-24px desktop:gap-150px justify-center items-center m-auto">
 					{teamMembers.map((member, i) => (
 						<div key={i}>
-							<div className="flex flex-col text-16 text-gray-700 m-auto" >
+							<div className="flex flex-col justify-center items-center text-center text-gray-700 m-auto">
 								<img src={`/static/${member.image}.png`} alt={member.image} className="max-h-[300px] desktop:max-h-[444px] w-fit rounded-16px" />
-							
-								<p className="mt-16px mb-2px">{member.name}</p>
-								<p className="font-semibold">{member.role}</p>
-							
+
+								<p className="mt-16px mb-2px text-16 desktop:text-18">{member.name}</p>
+								<p className="font-semibold text-18 desktop:text-20">{member.role}</p>
+
 								<ul className="flex gap-16px mt-16px">
 									<li className="w-32px h-32px bg-gray-400 bg-opacity-10 flex items-center justify-center rounded-[50%]">
 										<a href={member.github} target="_blank">
@@ -148,7 +148,7 @@ export default function AboutUs() {
 											</svg>
 										</a>
 									</li>
-							
+
 									<li className="w-32px h-32px bg-gray-400 bg-opacity-10 flex items-center justify-center rounded-[50%]">
 										<a href={member.linkedIn} target="_blank">
 											<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -159,7 +159,7 @@ export default function AboutUs() {
 											</svg>
 										</a>
 									</li>
-							
+
 									<li className="w-32px h-32px bg-gray-400 bg-opacity-10 flex items-center justify-center rounded-[50%]">
 										<a href={member.twitter} target="_blank">
 											<svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
