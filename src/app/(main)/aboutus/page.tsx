@@ -1,9 +1,10 @@
 'use client';
+import GetStarted from '@/app/components/GetStarted';
 import Image from 'next/image';
 
 export default function AboutUs() {
 	const backedLeaders = [
-		{ name: 'Aadil Mamujee', role: 'Musha Venture', image: 'aadil-mamujee' },
+		{ name: 'Aadil Mamujee', role: 'Musha Ventures', image: 'aadil-mamujee' },
 		{ name: 'David Cramer', role: 'Founder & CTO, Sentry', image: 'david-cramer' },
 		{ name: 'Timi Ajiboye', role: 'Founder & CEO, Helicarrier', image: 'timi-ajiboye' },
 		{ name: 'Tomiwa Lasebikan', role: 'Founder & CPO, Helicarrier', image: 'tomiwa-lasebikan' },
@@ -16,16 +17,16 @@ export default function AboutUs() {
 	const teamMembers = [
 		{
 			name: 'Raymond Tukpe',
-			role: 'Chief Technology Officer',
-			image: 'employee',
+			role: 'CTO',
+			image: 'raymond',
 			github: 'https://github.com/jirevwe',
 			linkedIn: 'https://www.linkedin.com/in/rtukpe/',
 			twitter: 'https://twitter.com/rtukpe'
 		},
 		{
 			name: 'Subomi Oluwalana',
-			role: 'Founder / C.E.O',
-			image: 'employee',
+			role: 'Founder & C.E.O',
+			image: 'subomi',
 			github: 'https://github.com/subomi',
 			linkedIn: 'https://www.linkedin.com/in/subomi-oluwalana-one/',
 			twitter: 'https://twitter.com/subomiOluwalana'
@@ -33,47 +34,47 @@ export default function AboutUs() {
 		{
 			name: 'Emmanuel Aina',
 			role: 'Founder',
-			image: 'employee',
+			image: 'emmanuel',
 			github: 'https://github.com/horlah',
 			linkedIn: 'https://www.linkedin.com/in/emmanuel-aina-o/',
 			twitter: 'https://twitter.com/emmanuelaina_'
-		},
-		{
-			name: 'Daniel Oluojomu',
-			role: 'Backend Engineer',
-			image: 'employee',
-			github: 'https://github.com/danvixent',
-			linkedIn: 'https://www.linkedin.com/in/daniel-oluojomu/',
-			twitter: 'http://twitter.com/danvixent'
-		},
-		{
-			name: 'Pelumi Oni',
-			role: 'Frontend Engineer',
-			image: 'employee',
-			github: 'https://github.com/oluwadaminiola',
-			linkedIn: 'https://www.linkedin.com/in/pelumioni',
-			twitter: 'https://twitter.com/pelumi__o'
-		},
-		{
-			name: 'Philip Simbwa',
-			role: 'Cloud Engineer',
-			image: 'employee',
-			github: 'https://github.com/simbwa',
-			linkedIn: 'https://www.linkedin.com/in/phillip-simbwa-8517741b/',
-			twitter: 'http://twitter.com/simbwa'
 		}
+		// {
+		// 	name: 'Daniel Oluojomu',
+		// 	role: 'Backend Engineer',
+		// 	image: 'employee',
+		// 	github: 'https://github.com/danvixent',
+		// 	linkedIn: 'https://www.linkedin.com/in/daniel-oluojomu/',
+		// 	twitter: 'http://twitter.com/danvixent'
+		// },
+		// {
+		// 	name: 'Pelumi Oni',
+		// 	role: 'Frontend Engineer',
+		// 	image: 'employee',
+		// 	github: 'https://github.com/oluwadaminiola',
+		// 	linkedIn: 'https://www.linkedin.com/in/pelumioni',
+		// 	twitter: 'https://twitter.com/pelumi__o'
+		// },
+		// {
+		// 	name: 'Philip Simbwa',
+		// 	role: 'Cloud Engineer',
+		// 	image: 'employee',
+		// 	github: 'https://github.com/simbwa',
+		// 	linkedIn: 'https://www.linkedin.com/in/phillip-simbwa-8517741b/',
+		// 	twitter: 'http://twitter.com/simbwa'
+		// }
 	];
 
 	return (
 		<main>
-			<section className="max-w-[1062] flex flex-col justify-center items-center pt-220px pb-100px desktop:pb-236px px-20px">
+			<section className="max-w-[1062] flex flex-col justify-center items-center pt-220px pb-100px desktop:pb-160px px-20px">
 				<div className="bg-primary-25 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 					We are backed by
 					<Image src="/svg/y-combinator.svg" width={24} height={24} className="ml-16px w-24px" alt="y-combinator" />
 				</div>
 				<h1 className="text-center desktop:text-[50px] desktop:leading-[80px] font-bold max-w-[910px] m-auto">Building the webhooks infrastructure for the internet.</h1>
 				<p className="text-center max-w-[950px] mx-auto text-16 leading-8 mobile:text-14 mt-16px text-gray-600">
-					We’re a team of fine engineers building the finest webhooks platform that engineers and teams of all sizes can rely on at scale.
+					We’re a team of fine engineers building the finest webhooks infrastructure that engineers and teams of all sizes can rely on at scale.
 				</p>
 				<ul className="flex gap-16px mt-40px">
 					<li className="w-32px h-32px bg-primary-400 bg-opacity-10 flex items-center justify-center rounded-[50%]">
@@ -118,14 +119,16 @@ export default function AboutUs() {
 				</ul>
 			</section>
 
-			<section className="max-w-[1233px] px-20px m-auto py-150px bg-[#FCFCFC]">
+			<section className="max-w-[1233px] px-20px m-auto py-100px">
 				<h2 className="text-24 text-gray-600 font-semibold text-center mb-82px">By the best team</h2>
 
 				<div className="grid xs:grid-cols-1 desktop:grid-cols-3 tab-min:grid-cols-2 gap-24px desktop:gap-150px justify-center items-center m-auto">
 					{teamMembers.map((member, i) => (
 						<div key={i}>
 							<div className="flex flex-col justify-center items-center text-center text-gray-700 m-auto">
-								<img src={`/static/${member.image}.png`} alt={member.image} className="max-h-[300px] desktop:max-h-[444px] w-fit rounded-16px" />
+								<div className="w-[310px] h-[318px] overflow-hidden rounded-16px">
+									<img src={`/employees/${member.image}.jpg`} alt={member.image} />
+								</div>
 
 								<p className="mt-16px mb-2px text-16 desktop:text-18">{member.name}</p>
 								<p className="font-semibold text-18 desktop:text-20">{member.role}</p>
@@ -177,20 +180,24 @@ export default function AboutUs() {
 				</div>
 			</section>
 
-			<section className="max-w-[1233px] px-20px m-auto py-150px bg-[#FCFCFC]">
-				<h2 className="text-24 text-gray-600 font-semibold text-center mb-82px">Backed leaders</h2>
+			<section className="bg-[#FCFCFC]">
+				<div className="max-w-[1233px] px-20px m-auto py-150px bg-[#FCFCFC]">
+					<h2 className="text-24 text-gray-600 font-semibold text-center mb-82px">Backed by Industry leaders</h2>
 
-				<div className="grid grid-cols-2 desktop:grid-cols-4 gap-24px desktop:gap-110px">
-					{backedLeaders.map((leader, i) => (
-						<div className="flex flex-col justify-center items-center text-16 text-gray-700 text-center" key={i}>
-							<img src={`/static/${leader.image}.png`} alt={leader.image} className="w-110px desktop:w-154px" />
+					<div className="grid grid-cols-2 desktop:grid-cols-4 gap-24px desktop:gap-110px">
+						{backedLeaders.map((leader, i) => (
+							<div className="flex flex-col justify-center items-center text-16 text-gray-700 text-center" key={i}>
+								<img src={`/static/${leader.image}.png`} alt={leader.image} className="w-110px desktop:w-154px" />
 
-							<p className="mt-24px mb-2px">{leader.name}</p>
-							<p className="font-semibold">{leader.role}</p>
-						</div>
-					))}
+								<p className="mt-24px mb-2px">{leader.name}</p>
+								<p className="font-semibold">{leader.role}</p>
+							</div>
+						))}
+					</div>
 				</div>
 			</section>
+
+			<GetStarted></GetStarted>
 		</main>
 	);
 }
