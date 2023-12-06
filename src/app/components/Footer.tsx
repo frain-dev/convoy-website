@@ -47,6 +47,7 @@ export default function Footer() {
 		{
 			title: 'Company',
 			links: [
+				{ name: 'About Us', link: '/aboutus', isExternal: false },
 				{ name: 'Terms of Use', link: '/legal/Terms-of-Use-Convoy.pdf', isExternal: true },
 				{ name: 'Privacy Policy', link: '/legal/Privacy-Policy-Convoy.pdf', isExternal: true }
 			]
