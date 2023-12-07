@@ -83,7 +83,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 												<Link
 													href={item.children[0].link}
 													className={`flex justify-items-center transition-all duration-300 text-12 ${
-														isChildRouteActive(item.title) ? 'text-primary-400' : 'text-gray-500'
+														isChildRouteActive(item.title) ? 'text-primary-400' : 'text-gray-600'
 													} `}>
 													<img
 														src={`/doc-icons/${item.icon}${isChildRouteActive(item.title) ? '-active' : ''}.svg`}
@@ -98,7 +98,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 												<Link
 													href={item.link}
 													className={`flex justify-items-center transition-all duration-300 text-12 ${
-														item.link === pathname ? 'text-primary-400' : 'text-gray-500'
+														item.link === pathname ? 'text-primary-400' : 'text-gray-600'
 													} `}>
 													<img
 														src={`/doc-icons/${item.icon}${isChildRouteActive(item.title) ? '-active' : ''}.svg`}
@@ -114,10 +114,10 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 												<ul className={`mt-24px border-l-2 border-primary-50 transition-all duration-300`}>
 													{item.children.map((subItem, index) => (
 														<li
-															className={`mb-24px -ml-2px transition-all duration-400 text-12 text-gray-400  ${
+															className={`mb-24px -ml-2px transition-all duration-400 text-12 text-gray-500  ${
 																pathname.includes(subItem.link)
 																	? 'border-l-2 border-primary-400 text-primary-400 font-normal'
-																	: 'text-gray-400 font-light'
+																	: 'text-gray-500 font-light'
 															}`}
 															key={index}>
 															<Link href={subItem.link} onClick={() => setCurrentDoc(subItem.link)} className="pl-24px">
