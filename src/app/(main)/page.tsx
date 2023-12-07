@@ -130,12 +130,12 @@ export default function Home() {
 			<section className="max-w-[700px] m-auto px-20px pt-80px">
 				<p className="text-center text-gray-800 text-20 mb-74px">Trusted by</p>
 				<ul className="flex flex-wrap justify-center items-center gap-24px desktop:gap-x-40px mb-24px mx-auto">
-					<li className="desktop:min-w-[140px]">
+					<li className="desktop:min-w-[130px]">
 						<a target="_blank" href="https://testlify.com/">
 							<Image src={TestlifyIcon} alt="testlify logo" className="h-20px" />
 						</a>
 					</li>
-					<li className="desktop:min-w-[170px]">
+					<li className="desktop:min-w-[190px]">
 						<a target="_blank" href="https://mono.co/">
 							<Image src={MonoIcon} alt="mono logo" className="h-16px" />
 						</a>
