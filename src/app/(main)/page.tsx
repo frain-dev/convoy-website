@@ -98,7 +98,7 @@ export default function Home() {
 					We are backed by
 					<Image src="/svg/y-combinator.svg" width={24} height={24} className="ml-16px w-24px" alt="y-combinator" />
 				</div>
-				<h1 className="text-center desktop:text-[50px] desktop:leading-[80px] font-bold">Open-source Webhooks Gateway for</h1>
+				<h1 className="text-center desktop:text-[50px] desktop:leading-[80px] font-bold">Reliable open-source webhooks for</h1>
 				<h1 className="text-center desktop:text-[50px] desktop:leading-[80px] font-bold text-primary-400">Efficient Engineers</h1>
 				<p className="text-center max-w-[950px] mx-auto text-16 leading-8 mobile:text-14 mt-16px text-gray-600">
 					Securely Send, Receive and Manage millions of Webhooks Reliably with robust support for Retries, Rate Limiting, Static IPs, Circuit Breaking, Rolling Secrets
@@ -145,7 +145,7 @@ export default function Home() {
 							<Image src={XenditIcon} alt="xendit logo" className="h-26px" />
 						</a>
 					</li>
-				
+
 					<li>
 						<a target="_blank" href="https://www.caxton.io/">
 							<Image src={CaxtonIcon} alt="caxton logo" className="h-16px" />
@@ -166,7 +166,7 @@ export default function Home() {
 							<Image src={TrustmiIcon} alt="trustmi logo" className="h-18px" />
 						</a>
 					</li>
-				
+
 					<li className="">
 						<a target="_blank" href="https://www.blochq.io/">
 							<Image src={BlocIcon} alt="bloc logo" className="h-20px" />
@@ -190,7 +190,6 @@ export default function Home() {
 				</ul>
 			</section>
 
-			
 			{/* why use us   */}
 			<section id="why-convoy" className="flex flex-col justify-center items-center pt-160px">
 				<div className="bg-primary-25 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
@@ -206,7 +205,7 @@ export default function Home() {
 				</div>
 
 				<h1 className="text-center font-bold max-w-[1040px] text-[46px] text-gray-800 desktop:leading-[58px] mt-16px mx-auto mb-80px">
-					Convoy is a high-performance open-source webhooks gateway
+					Convoy is the Fastest Open-Source Webhooks Gateway
 				</h1>
 
 				<div className="desktop:py-40px px-20px feature-list">
