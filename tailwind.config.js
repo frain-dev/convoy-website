@@ -46,7 +46,7 @@ module.exports = {
 			desktop: { min: '1024px' },
 			'desktop-min': { min: '1248px' },
 			'tab-min': { max: '768px' },
-			'index-animation-min': { min: '1405px' },
+			'index-animation-min': { min: '1445px' },
 			'index-animation-max': { min: '2087px' },
 			'nav-bar-break': { min: '1055px' },
 			md: { min: '1288px' },
