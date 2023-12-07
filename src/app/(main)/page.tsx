@@ -1,14 +1,19 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import DojahIcon from '../../../public/svg/dojah.svg';
-import CatlogIcon from '../../../public/svg/Catlog.svg';
-import GetWalletsIcon from '../../../public/svg/getwallets.svg';
-import PayourseIcon from '../../../public/svg/payourse.svg';
-import PiggyvestIcon from '../../../public/svg/piggyvest.svg';
-import TermiiIcon from '../../../public/svg/termii.svg';
-import HailifyIcon from '../../../public/svg/hailify-logo.svg';
-import BuycoinsIcon from '../../../public/svg/buycoins.svg';
+
+import TestlifyIcon from '../../../public/svg/testlify.svg';
+import MonoIcon from '../../../public/svg/mono.svg';
+import XenditIcon from '../../../public/svg/xendit.svg';
+import CaxtonIcon from '../../../public/svg/caxton.svg';
+import MapleIcon from '../../../public/svg/maple.svg';
+import PiggyvestIcon from '../../../public/svg/piggyvest-logo.svg';
+import TrustmiIcon from '../../../public/svg/trustmi.svg';
+import BlocIcon from '../../../public/svg/bloc.svg';
+import SlineIcon from '../../../public/svg/sline.svg';
+import FreshTrackIcon from '../../../public/svg/freshtrack.svg';
+import RooftiIcon from '../../../public/svg/roofti.svg';
+
 import GreenCheckIcon from '../../../public/svg/green_check.svg';
 import ArrowRightIcon from '../../../public/svg/arrow-right-icon.svg';
 import Illustration from '../../../public/static/2nd-illustration.png';
@@ -88,7 +93,7 @@ export default function Home() {
 	];
 	return (
 		<main>
-			<section className="max-w-[1062] flex flex-col justify-center items-center pt-220px pb-100px desktop:pb-236px px-20px">
+			<section className="max-w-[1062] flex flex-col justify-center items-center pt-220px pb-100px px-20px">
 				<div className="bg-primary-25 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 					We are backed by
 					<Image src="/svg/y-combinator.svg" width={24} height={24} className="ml-16px w-24px" alt="y-combinator" />
@@ -116,65 +121,76 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="bg-[url(/static/convoy-bg.png)] bg-contain bg-no-repeat bg-center px-20px">
-				<div className="rounded-12px bg-white-8 backdrop-blur-[30px] p-20px desktop:p-40px max-w-[1185px] w-full m-auto">
-					<img src="/static/new-dashboard.png" alt="convoy dashboard" />
+			<section className="bg-[url(/static/convoy-bg.png)] bg-[length:150%] bg-no-repeat bg-center px-20px">
+				<div className="rounded-12px bg-white-8 backdrop-blur-[30px] p-20px desktop:p-30px max-w-[1085px] w-full m-auto">
+					<img src="/static/screen-dashboard.png" alt="convoy dashboard" />
 				</div>
 			</section>
 
-			{/* <section className="rounded-[20px] desktop:rounded-[70px] mx-auto bg-[linear-gradient(180deg,#2c2f3e_0%,#422f41_100%)] -mb-78px max-w-[1350px] w-[90%] z-auto relative">
-				<div className="w-full md:bg-[url(/static/Settings.png)] bg-no-repeat bg-right desktop:bg-contain rounded-[70px] min-h-[200px] py-30px desktop:py-56px px-20px desktop:px-70px">
-					<p className="font-bold text-white-100 text-24 desktop:text-32 max-w-[690px]">
-						Engineering teams that value efficiency use
-						<span className="text-primary-300 mx-4px">Convoy</span>
-						to manage webhook events.
-					</p>
+			<section className="max-w-[700px] m-auto px-20px pt-80px">
+				<p className="text-center text-gray-800 text-20 mb-74px">Trusted by</p>
+				<ul className="flex flex-wrap justify-center items-center gap-24px desktop:gap-x-40px mb-24px mx-auto">
+					<li className="desktop:min-w-[140px]">
+						<a target="_blank" href="https://testlify.com/">
+							<Image src={TestlifyIcon} alt="testlify logo" className="h-20px" />
+						</a>
+					</li>
+					<li className="desktop:min-w-[170px]">
+						<a target="_blank" href="https://mono.co/">
+							<Image src={MonoIcon} alt="mono logo" className="h-16px" />
+						</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://www.xendit.co/">
+							<Image src={XenditIcon} alt="xendit logo" className="h-26px" />
+						</a>
+					</li>
+				
+					<li>
+						<a target="_blank" href="https://www.caxton.io/">
+							<Image src={CaxtonIcon} alt="caxton logo" className="h-16px" />
+						</a>
+					</li>
+					<li className="">
+						<a target="_blank" href="https://maplebilling.com/">
+							<Image src={MapleIcon} alt="maple logo" className="h-24px" />
+						</a>
+					</li>
+					<li className="">
+						<a target="_blank" href="https://www.piggyvest.com/">
+							<Image src={PiggyvestIcon} alt="piggyvest logo" className="h-20px" />
+						</a>
+					</li>
+					<li className="">
+						<a target="_blank" href="https://www.trustmi.ai/">
+							<Image src={TrustmiIcon} alt="trustmi logo" className="h-18px" />
+						</a>
+					</li>
+				
+					<li className="">
+						<a target="_blank" href="https://www.blochq.io/">
+							<Image src={BlocIcon} alt="bloc logo" className="h-20px" />
+						</a>
+					</li>
+					<li className="">
+						<a target="_blank" href="https://www.sline.io/">
+							<Image src={SlineIcon} alt="sline logo" className="h-20px" />
+						</a>
+					</li>
+					<li className="">
+						<a target="_blank" href="https://www.freshtrack.ma/">
+							<Image src={FreshTrackIcon} alt="freshtrack logo" className="h-26px" />
+						</a>
+					</li>
+					<li className="">
+						<a target="_blank" href="https://www.rootfi.dev/">
+							<Image src={RooftiIcon} alt="roofti logo" className="h-20px" />
+						</a>
+					</li>
+				</ul>
+			</section>
 
-					<ul className="flex items-center list-none mt-38px">
-						<li className="mr-12px">
-							<a target="_blank" href="https://www.drivehailify.com/">
-								<Image src={HailifyIcon} alt="hailify logo" />
-							</a>
-						</li>
-						<li className="mr-12px">
-							<a target="_blank" href="https://www.piggyvest.com/">
-								<Image src={PiggyvestIcon} alt="piggyvest logo" />
-							</a>
-						</li>
-						<li className="mr-12px">
-							<a target="_blank" href="https://www.catlog.shop/">
-								<Image src={CatlogIcon} alt="catlog logo" />
-							</a>
-						</li>
-						<li className="mr-12px">
-							<a target="_blank" href="https://www.payourse.com/">
-								<Image src={PayourseIcon} className="mt-4px" alt="payourse logo" />
-							</a>
-						</li>
-						<li className="mr-12px hidden desktop:block">
-							<a target="_blank" href="https://buycoins.africa/">
-								<Image src={BuycoinsIcon} alt="buycoins logo" />
-							</a>
-						</li>
-						<li className="mr-12px hidden desktop:block">
-							<a target="_blank" href="https://www.getwallets.co/">
-								<Image src={GetWalletsIcon} alt="getwallets logo" />
-							</a>
-						</li>
-						<li className="mr-12px hidden desktop:block">
-							<a target="_blank" href="https://www.dojah.io/">
-								<Image src={DojahIcon} alt="dojah logo" />
-							</a>
-						</li>
-						<li className="mr-12px hidden desktop:block">
-							<a target="_blank" href="https://termii.com/">
-								<Image src={TermiiIcon} alt="termii logo" />
-							</a>
-						</li>
-					</ul>
-				</div>
-			</section> */}
-
+			
 			{/* why use us   */}
 			<section id="why-convoy" className="flex flex-col justify-center items-center pt-160px">
 				<div className="bg-primary-25 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
