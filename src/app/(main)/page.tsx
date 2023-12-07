@@ -121,7 +121,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="bg-[url(/static/convoy-bg.png)] bg-[length:150%] bg-no-repeat bg-center px-20px">
+			<section className="bg-[url(/static/convoy-bg.png)] index-animation-min:bg-[length:100%] bg-[length:150%] bg-no-repeat bg-center px-20px">
 				<div className="rounded-12px bg-white-8 backdrop-blur-[30px] p-20px desktop:p-30px max-w-[1085px] w-full m-auto">
 					<img src="/static/screen-dashboard.png" alt="convoy dashboard" />
 				</div>
