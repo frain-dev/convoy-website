@@ -9,7 +9,7 @@ primary_tag: Open Thoughts
 tags:
     - Convoy
     - Open Thoughts
-featured: true
+featured: false
 description: Why did we choose to build Convoy as an open-source project? In this article, I share our beliefs about open source and why it's important to us. Enjoy 🎉
 published_at: 2023-08-16T16:00:00.000+00:00
 ---
