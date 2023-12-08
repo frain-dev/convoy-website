@@ -29,4 +29,4 @@ Let me close, with the wise words of the Legend — [Heather Meeker](https://hea
 
 One last image because, why not?
 
-[Random picture of the beautiful view](/blog-assets/picture-of-the-landscape.jpg)
+![Random picture of the beautiful view](/blog-assets/picture-of-the-landscape.jpg)
