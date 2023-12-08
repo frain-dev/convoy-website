@@ -13,7 +13,7 @@ description: Why are open core companies winning? And why will they continue win
 published_at: 2023-12-08T13:00:00.000+00:00
 ---
 
-Why are open-core companies winning? And why will they continue to succeed in the future? This is a question I constantly ask myself as an open-core founder and enthusiast. It was one of the many things I hoped to learn at the just concluded open core summit. And I think I picked up something relevant I’d like to share. But first, let me share one random picture I took to show how much I enjoyed the conference.
+Why are open-core companies winning? And why will they continue to succeed in the future? This is a question I constantly ask myself as an open-core founder and enthusiast. It was one of the many things I hoped to learn at the just concluded [open core summit](https://opencoresummit.com/). And I think I picked up something relevant I’d like to share. But first, let me share one random picture I took to show how much I enjoyed the conference.
 
 ![Picture with Kelsey Hightower](/blog-assets/picture-with-kelsey.jpg)
 
