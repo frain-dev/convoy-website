@@ -25,7 +25,7 @@ export default function AboutUs() {
 		},
 		{
 			name: 'Subomi Oluwalana',
-			role: 'Founder & C.E.O',
+			role: 'Founder & CEO',
 			image: 'subomi',
 			github: 'https://github.com/subomi',
 			linkedIn: 'https://www.linkedin.com/in/subomi-oluwalana-one/',
