@@ -126,7 +126,7 @@ export default function Pricing() {
 		{ name: 'KMS Integration', community: 'false', enterprise: 'true', tooltipContent: 'Store sensitive keys in any KMS of your choie - Vault, AWS KMS etc.' },
 		// { name: 'Environments (Coming Soon)', community: '', enterprise: '', tooltipContent: 'Organise projects into environments - development, production.' },
 		{ name: 'License', community: 'MPL 2.0', enterprise: 'Licensed to Convoy', tooltipContent: '' },
-		{ name: 'Price', community: '$0', enterprise: 'Starts at $500/month', tooltipContent: '' }
+		{ name: 'Price', community: '$0', enterprise: '', tooltipContent: '' }
 	];
 
 	const tabs = [
@@ -582,6 +582,14 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 													<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 														<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 													</svg>
+												)}
+
+												{plan.name === 'Price' && (
+													<button
+														className="flex items-center justify-center underline"
+														onClick={() => enterpriseModal.current?.showModal()}>
+														Contact Us
+													</button>
 												)}
 											</div>
 										</td>
