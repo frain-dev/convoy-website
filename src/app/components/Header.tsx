@@ -33,7 +33,7 @@ export default function Header() {
 			type: 'dropdown',
 			children: [
 				{ name: 'Blog', route: '/blog', type: 'route' },
-				{ name: 'Docs', route: '/docs', type: 'route' },
+				{ name: 'Docs', route: 'https://docs.getconvoy.io', type: 'external' },
 				{ name: 'Tutorials', route: '/blog?tag=Tutorial', type: 'route' }
 			]
 		},
