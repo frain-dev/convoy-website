@@ -38,7 +38,7 @@ export default function Footer() {
 			title: 'Resources',
 			links: [
 				{ name: 'API Reference', link: 'https://convoy.readme.io/', isExternal: true },
-				{ name: 'Documentation', link: '/docs', isExternal: false },
+				{ name: 'Documentation', link: 'https://docs.getconvoy.io', isExternal: true },
 				{ name: 'Watch Demo', link: 'https://youtu.be/DSIet81oBsg?si=1ni58qJWlLFAH1KZ', isExternal: true },
 				{ name: 'Status Page', link: 'https://status.getconvoy.io/status/cloud', isExternal: true },
 				{ name: 'Roadmap', link: 'https://github.com/orgs/frain-dev/projects/3/views/1', isExternal: true }
