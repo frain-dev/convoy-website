@@ -113,7 +113,7 @@ export default function Home() {
 					</a>
 
 					<Link
-						href="/docs"
+						href="https://docs.getconvoy.io"
 						className="py-12px px-28px text-14 font-medium rounded-8px bg-primary-25 text-primary-400 border border-primary-50 flex items-center justify-center text-center xs:w-[90vw]">
 						<Image src="/svg/documentation.svg" height={16} width={16} className="mr-10px w-16px" alt="document icon" />
 						Documentation
