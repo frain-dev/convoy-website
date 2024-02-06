@@ -10,12 +10,12 @@ export const useToaster = (details: { message: string; style: 'success' | 'dange
 	const icon = document.querySelector(`#toast #${details.style}-icon `)?.classList;
 	const message = document.querySelector('#toast #message');
 
-	toast?.add('!right-40px', 'bg-opacity-[0.04]', `bg-${details.style}-400`, toastBorders[details.style]);
+	toast?.add('!right-40px', `bg-${details.style}-400`, toastBorders[details.style]);
 	icon?.add('!inline-flex');
 	if (message) message.innerHTML = details.message;
 
 	setTimeout(() => {
-		toast?.remove('!right-40px', 'bg-opacity-[0.04]', `bg-${details.style}-400`, toastBorders[details.style]);
+		toast?.remove('!right-40px', `bg-${details.style}-400`, toastBorders[details.style]);
 		icon?.remove('!inline-flex');
 	}, 5000);
 };
