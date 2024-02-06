@@ -7,10 +7,9 @@ interface Props {
 	submitEnterPriseForm: Function;
 }
 export default function EnterpriseWaitlist(props: Props) {
-	const FORM_KEY = process.env.NEXT_PUBLIC_FORM_KEY || ''
 	const [isSubmitingRequestAccessForm, setIsSubmitingRequestAccessForm] = useState(false);
 	const [form, setFormData] = useState({ firstname: '', lastname: '', email: '', organisation: '', usecase: '' });
-	const [state, handleSubmit] = useForm(FORM_KEY);
+	const [state, handleSubmit] = useForm('xpzvpawp');
 
 
 	useEffect(() => {
