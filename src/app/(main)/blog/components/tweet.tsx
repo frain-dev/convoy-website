@@ -12,7 +12,7 @@ export default function EmbeddedTweet({ url }: TweetProps) {
 					</a>
 				</blockquote>
 			</div>
-			<script async defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			<script async defer src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
 		</>
 	);
 }
