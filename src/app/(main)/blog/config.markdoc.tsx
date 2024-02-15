@@ -2,6 +2,7 @@ import { Config } from '@markdoc/markdoc';
 import Link from 'next/link';
 import Heading from './components/heading';
 import CodeBlock from '@/app/(docs)/docs/components/codeblock';
+import EmbeddedTweet from './components/tweet';
 
 const config: Config = {
 	nodes: {
@@ -67,7 +68,16 @@ const config: Config = {
 			}
 		}
 	},
-	tags: {}
+	tags: {
+		tweet: {
+			render: 'EmbeddedTweet',
+			attributes: {
+				url: {
+					type: String
+				}
+			}
+		}
+	}
 };
 
 const components = {
@@ -110,7 +120,8 @@ const components = {
 	Code: ({ content }: any) => {
 		return <code className="text-12 text-gray-800 bg-grey-20 font-menlo rounded-4px py-2px px-8px my-0 mx-[1px]">{content}</code>;
 	},
-	CodeBlock
+	CodeBlock,
+	EmbeddedTweet
 };
 
 export { config, components };
