@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Heading from './components/heading';
 import CodeBlock from '@/app/(docs)/docs/components/codeblock';
 import EmbeddedTweet from './components/tweet';
+import BlockQuote from '@/app/(docs)/docs/components/blockquote';
 
 const config: Config = {
 	nodes: {
@@ -66,7 +67,10 @@ const config: Config = {
 					type: String
 				}
 			}
-		}
+		},
+		blockquote: {
+			render: 'BlockQuote'
+		},
 	},
 	tags: {
 		tweet: {
@@ -121,7 +125,8 @@ const components = {
 		return <code className="text-12 text-gray-800 bg-grey-20 font-menlo rounded-4px py-2px px-8px my-0 mx-[1px]">{content}</code>;
 	},
 	CodeBlock,
-	EmbeddedTweet
+	EmbeddedTweet,
+	BlockQuote
 };
 
 export { config, components };
