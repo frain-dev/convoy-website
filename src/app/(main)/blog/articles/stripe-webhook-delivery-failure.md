@@ -10,13 +10,13 @@ tags:
     - Convoy
     - Open Thoughts
 featured: false 
-description: Yes, you read the title correctly. A stripe webhook caused a DoS attack on a Vercel function, translating into 63 GB of serverless execution and a $23k bill in 48 hours. As a great CEO, Rauch stepped up to the occasion and provided transparency and a full refund. This incident is a good lesson on cascading failures. 
+description: Yes, you read the title correctly. A stripe webhook caused a DoS>  attack on a Vercel function, translating into 63 GB of serverless execution and a $23k bill in 48 hours. As a great CEO, Rauch stepped up to the occasion and provided transparency and a full refund. This incident is a good lesson on cascading failures. 
 published_at: 2024-02-15T18:00:00.000+00:00
 ---
 
 Yes, you read the title correctly. A stripe webhook caused a DoS attack on a vercel function that translated into [63gb of serverless execution](https://x.com/michaelaubry/status/1757554062114107601?s=20), and finally a $23k bill in a space of 48 hours. Rauch, being a great CEO, stepped up to the occasion, provided [transparency](https://twitter.com/rauchg/status/1757948957421113853) and a full refund. This incident is a good lesson on cascading failures. 
 
-**Shameless Plug:** Convoy is an open-source high-performance webhooks gateway to manage millions of webhooks end-to-end. You can use Convoy to send or receive webhooks and completely prevent all the problems explained in this article.
+> **Shameless Plug:** Convoy is an open-source high-performance webhooks gateway to manage millions of webhooks end-to-end. You can use Convoy to send or receive webhooks and completely prevent all the problems explained in this article.
 
 ## TL;DR
 
