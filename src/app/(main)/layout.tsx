@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 		canonical: '/'
 	},
 	openGraph: {
-		title: 'Webhooks Gateway for sending and receiving webhooks - Convoy',
+		title: 'Webhooks service for sending and receiving webhooks - Convoy',
 		description:
 			'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
 		url: 'https://getconvoy.io/',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 		images: '/static/convoy.png'
 	},
 	twitter: {
-		title: 'Webhooks Gateway for sending and receiving webhooks - Convoy',
+		title: 'Webhooks service for sending and receiving webhooks - Convoy',
 		creator: '@getconvoy',
 		images: [
 			{
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 		],
 		site: '@getconvoy',
 		description:
-			'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
+			'Reliable Webhooks service for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
 		card: 'summary_large_image'
 	},
 	viewport: {
@@ -58,8 +58,9 @@ export const metadata: Metadata = {
 		'webhooks api',
 		'incoming webhooks',
 		'convoy webhooks',
-		'kafta',
+		'kafka',
 		'platform engineering',
+		'Webhook signatures',
 		'api gateway',
 		'webhooks service',
 		'webhooks provider',
