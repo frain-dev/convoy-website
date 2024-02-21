@@ -1,9 +1,9 @@
 import { Config } from '@markdoc/markdoc';
 import Link from 'next/link';
 import Heading from './components/heading';
-import CodeBlock from '@/app/(docs)/docs/components/codeblock';
+import CodeBlock from './components/codeblock';
 import EmbeddedTweet from './components/tweet';
-import BlockQuote from '@/app/(docs)/docs/components/blockquote';
+import BlockQuote from './components/blockquote';
 
 const config: Config = {
 	nodes: {
