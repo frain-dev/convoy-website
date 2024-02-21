@@ -1,7 +1,7 @@
 import { Config } from '@markdoc/markdoc';
 import Link from 'next/link';
 import Heading from './components/heading';
-import CodeBlock from '@/app/(docs)/docs/components/codeblock';
+import CodeBlock from './components/codeblock';
 
 const config: Config = {
 	nodes: {
