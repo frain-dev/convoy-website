@@ -1,25 +1,7 @@
-import data from './data/nav.json';
 import { getAllRoutes, getPosts } from '@/lib/getPosts';
 
 export default async function sitemap(){
 	const URL = 'https://getconvoy.io';
-
-	const getDocRoutes = () => {
-		const docRoutes: string[] = [];
-		data.forEach(item => {
-			if (item.link) docRoutes.push(item.link);
-			if (item.children) {
-				item.children.forEach(childRoute => {
-					docRoutes.push(childRoute.link);
-				});
-			}
-		});
-		const fullDocRoutes = docRoutes.map(route => ({
-			url: `${URL}${route}`,
-			lastModified: new Date()
-		}));
-		return fullDocRoutes;
-	};
 
 	const getBlogRoutes = async () => {
 		const blogs = await getPosts();
@@ -45,8 +27,7 @@ export default async function sitemap(){
 		lastModified: new Date()
 	};
 	const mainRoutes = await getMainRoutes();
-	const docRoutes = getDocRoutes();
 	const blogRoutes = await getBlogRoutes();
 
-	return [indexRoute, ...mainRoutes, ...docRoutes, ...blogRoutes];
+	return [indexRoute, ...mainRoutes, ...blogRoutes];
 }
