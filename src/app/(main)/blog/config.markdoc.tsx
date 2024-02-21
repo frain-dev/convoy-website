@@ -2,6 +2,8 @@ import { Config } from '@markdoc/markdoc';
 import Link from 'next/link';
 import Heading from './components/heading';
 import CodeBlock from './components/codeblock';
+import EmbeddedTweet from './components/tweet';
+import BlockQuote from './components/blockquote';
 
 const config: Config = {
 	nodes: {
@@ -65,9 +67,21 @@ const config: Config = {
 					type: String
 				}
 			}
-		}
+		},
+		blockquote: {
+			render: 'BlockQuote'
+		},
 	},
-	tags: {}
+	tags: {
+		tweet: {
+			render: 'EmbeddedTweet',
+			attributes: {
+				url: {
+					type: String
+				}
+			}
+		}
+	}
 };
 
 const components = {
@@ -110,7 +124,9 @@ const components = {
 	Code: ({ content }: any) => {
 		return <code className="text-12 text-gray-800 bg-grey-20 font-menlo rounded-4px py-2px px-8px my-0 mx-[1px]">{content}</code>;
 	},
-	CodeBlock
+	CodeBlock,
+	EmbeddedTweet,
+	BlockQuote
 };
 
 export { config, components };
