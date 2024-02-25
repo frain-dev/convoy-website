@@ -38,7 +38,7 @@ export default function Footer() {
 		{
 			title: 'Resources',
 			links: [
-				{ name: 'API Reference', link: 'https://convoy.readme.io/', isExternal: true },
+				{ name: 'API Reference', link: 'https://docs.getconvoy.io/api-reference', isExternal: true },
 				{ name: 'Documentation', link: 'https://docs.getconvoy.io', isExternal: true },
 				{ name: 'Watch Demo', link: 'https://youtu.be/DSIet81oBsg?si=1ni58qJWlLFAH1KZ', isExternal: true },
 				{ name: 'Status Page', link: 'https://status.getconvoy.io/status/cloud', isExternal: true },
@@ -49,6 +49,7 @@ export default function Footer() {
 			title: 'Company',
 			links: [
 				{ name: 'About Us', link: '/aboutus', isExternal: false },
+				{ name: 'Trust Center', link: 'https://trust.getconvoy.io/', isExternal: true },
 				{ name: 'Terms of Use', link: '/legal/Terms-of-Use-Convoy.pdf', isExternal: true },
 				{ name: 'Privacy Policy', link: '/legal/Privacy-Policy-Convoy.pdf', isExternal: true }
 			]
