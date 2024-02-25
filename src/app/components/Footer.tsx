@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
+import SOCIcon from '../../../public/svg/soc-stamp.svg';
 import GithubIcon from '../../../public/svg/github-icon.svg';
 import SlackIcon from '../../../public/svg/slack-icon.svg';
 import MailIcon from '../../../public/svg/mail-icon.svg';
@@ -148,7 +149,10 @@ export default function Footer() {
 							))}
 						</nav>
 
-						<div className="border-b border-b-white-8 flex justify-end pb-40px">
+						<div className="border-b border-b-white-8 flex justify-between flex-wrap items-end pb-40px">
+							<div>
+								<Image src={SOCIcon} alt="soc stamp" className="h-100px w-100px" />
+							</div>
 							<div className="w-full p-0 desktop:max-w-[430px] desktop:flex-row desktop:justify-around desktop:items-center">
 								<div className="flex justify-between items-center w-full m-0">
 									<div className="order-1">
