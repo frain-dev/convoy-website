@@ -168,7 +168,7 @@ export default function Community() {
 						Everything you need before you need it
 					</h1>
 
-					<div className="grid gird-cols-1 desktop:grid-cols-2 gap-8 desktop:gap-100px">
+					<div className="grid grid-cols-1 desktop:grid-cols-2 gap-8 desktop:gap-100px">
 						{communityFeatures.map((feature, index) => (
 							<div className="flex justify-start items-start" key={index}>
 								<img src={`/svg/${feature.img}.svg`} className="mr-14px w-40px" alt={feature.title} />
