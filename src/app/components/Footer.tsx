@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
+import SOCIcon from '../../../public/svg/soc-stamp.svg';
 import GithubIcon from '../../../public/svg/github-icon.svg';
 import SlackIcon from '../../../public/svg/slack-icon.svg';
 import MailIcon from '../../../public/svg/mail-icon.svg';
@@ -37,7 +38,7 @@ export default function Footer() {
 		{
 			title: 'Resources',
 			links: [
-				{ name: 'API Reference', link: 'https://convoy.readme.io/', isExternal: true },
+				{ name: 'API Reference', link: 'https://docs.getconvoy.io/api-reference', isExternal: true },
 				{ name: 'Documentation', link: 'https://docs.getconvoy.io', isExternal: true },
 				{ name: 'Watch Demo', link: 'https://youtu.be/DSIet81oBsg?si=1ni58qJWlLFAH1KZ', isExternal: true },
 				{ name: 'Status Page', link: 'https://status.getconvoy.io/status/cloud', isExternal: true },
@@ -48,6 +49,7 @@ export default function Footer() {
 			title: 'Company',
 			links: [
 				{ name: 'About Us', link: '/aboutus', isExternal: false },
+				{ name: 'Trust Center', link: 'https://trust.getconvoy.io/', isExternal: true },
 				{ name: 'Terms of Use', link: '/legal/Terms-of-Use-Convoy.pdf', isExternal: true },
 				{ name: 'Privacy Policy', link: '/legal/Privacy-Policy-Convoy.pdf', isExternal: true }
 			]
@@ -148,7 +150,10 @@ export default function Footer() {
 							))}
 						</nav>
 
-						<div className="border-b border-b-white-8 flex justify-end pb-40px">
+						<div className="border-b border-b-white-8 flex justify-between flex-wrap items-end pb-40px">
+							<div>
+								<Image src={SOCIcon} alt="soc stamp" className="h-100px w-100px" />
+							</div>
 							<div className="w-full p-0 desktop:max-w-[430px] desktop:flex-row desktop:justify-around desktop:items-center">
 								<div className="flex justify-between items-center w-full m-0">
 									<div className="order-1">
