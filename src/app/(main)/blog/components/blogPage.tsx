@@ -110,7 +110,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 										href={`${getPrimaryAuthor()?.twitter ? 'http://twitter.com/' + getPrimaryAuthor()?.twitter : ''}`}
 										className="flex items-start">
 										<div className="w-40px h-40px rounded-50% mr-16px overflow-hidden flex items-center bg-grey-20">
-											<img src={`/profile-images/${getPrimaryAuthor()?.name}.png`} className="w-full mr-12px rounded-[50%]" alt={getPrimaryAuthor()?.name} />
+											<img src={`/profile-images/${getPrimaryAuthor()?.name}.png`} className="w-full h-full mr-12px rounded-[50%]" alt={getPrimaryAuthor()?.name} />
 										</div>
 										<div>
 											<h6 className="font-semibold text-gray-600 mb-2px text-12">{getPrimaryAuthor()?.name}</h6>
@@ -121,7 +121,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 								{getAuthors().map((author, i) => (
 									<a key={i} target="_blank" href={`${author?.twitter ? 'http://twitter.com/' + author?.twitter : ''}`} className="flex items-start">
 										<div className="w-40px h-40px rounded-50% mr-16px overflow-hidden flex items-center bg-grey-20">
-											<img src={`/profile-images/${author?.name}.png`} className="w-full mr-12px rounded-[50%]" alt={author?.name} />
+											<img src={`/profile-images/${author?.name}.png`} className="w-full h-full mr-12px rounded-[50%]" alt={author?.name} />
 										</div>
 										<div>
 											<h6 className="font-semibold text-gray-600 text-12">{author.name}</h6>
