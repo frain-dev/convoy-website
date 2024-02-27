@@ -9,9 +9,9 @@ primary_tag: SOC2 Compliance
 tags:
     - Convoy
     - SOC2 Compliance
-featured: false
+featured: true
 description: We are thrilled to announce Frain Technologies has achieved SOC2 Type 1 compliance after a successful audit validating our data security policies. This post will cover our SOC2 journey and how this certification reflects our commitment to protecting customer information. 🎉
-published_at: 2024-02-27T00:00:00.000+00:00
+published_at: 2024-02-26T00:00:00.000+00:00
 ---
 
 We are excited to announce that Frain Technologies Inc has successfully achieved SOC2 Type 1 compliance, underscoring our dedication to data security, transparency, and regulatory standards. This significant milestone demonstrates our commitment to protecting sensitive customer information and meeting industry best practices.
