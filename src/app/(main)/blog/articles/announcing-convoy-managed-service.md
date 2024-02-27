@@ -9,7 +9,7 @@ primary_tag: Product Update
 tags:
   - Convoy
   - Product Update
-featured: true
+featured: false
 description: Presenting Convoy's all-new cloud platform. Tailored to simplify webhooks management like never before, join us as we unveil our exciting new cloud offering featuring dedicated instances, expanded regional availability, competitive pricing, industry standard security, and uncompromising compliance.
 published_at: 2023-11-06T17:00:00.000+00:00
 ---
