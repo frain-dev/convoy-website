@@ -53,7 +53,7 @@ export default function FeaturedPost({ postData }: any) {
 									<div className="w-40px h-40px rounded-50% mr-16px overflow-hidden flex items-center bg-grey-20">
 										<img
 											src={`/profile-images/${postData.primary_author?.name}.png`}
-											className="w-full mr-12px rounded-[50%]"
+											className="w-full h-full mr-12px rounded-[50%]"
 											alt={postData.primary_author?.name}
 										/>
 									</div>
