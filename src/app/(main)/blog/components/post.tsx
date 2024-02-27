@@ -65,7 +65,7 @@ export default function Post({ postData, type, className }: any) {
 											target="_blank"
 											className="-ml-20px first-of-type:ml-0">
 											<div className="w-40px h-40px rounded-50% shadow-sm overflow-hidden flex items-center justify-center border border-gray-25 bg-gray-25">
-												<img src={`/profile-images/${author?.name}.png`} className="w-full rounded-[50%]" alt={author?.name} />
+												<img src={`/profile-images/${author?.name}.png`} className="w-full rounded-[50%] h-full" alt={author?.name} />
 											</div>
 										</a>
 									))}
