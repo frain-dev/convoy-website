@@ -10,5 +10,6 @@
 	{ "id": "abdulazeezAbdulazeez", "name": "Abdulazeez Abdulazeez", "role": "Dev Advocate", "twitter": "kvng_zeez" },
 	{ "id": "obinnaOdirionye", "name": "Obinna Odirionye", "role": "Writer", "twitter": "odirionyeo" },
 	{ "id": "pelumiOni", "name": "Pelumi Oni", "role": "Frontend Engineer", "twitter": "pelumi__o" },
-	{ "id": "press", "name": "Press", "role": "Convoy", "twitter": "getconvoy" }
+	{ "id": "press", "name": "Press", "role": "Convoy", "twitter": "getconvoy" },
+	{ "id": "phillipSimbwa", "name": "Phillip Simbwa", "role": "Senior Software Engineer", "twitter": "PhillipSimbwa" }
 ]
