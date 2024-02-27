@@ -5,12 +5,12 @@ post_image: why-open-source.png
 primary_author:
     name: Phillip Simbwa
     twitter: PhillipSimbwa
-primary_tag: SOC2 Compliance
+primary_tag: News
 tags:
-    - Convoy
-    - SOC2 Compliance
+    - News
+    - Compliance
 featured: true
-description: We are thrilled to announce Frain Technologies has achieved SOC2 Type 1 compliance after a successful audit validating our data security policies. This post will cover our SOC2 journey and how this certification reflects our commitment to protecting customer information. 🎉
+description: We are thrilled to announce Frain Technologies has achieved SOC2 Type 1 compliance after a successful audit validating our data security policies. This post will cover our SOC2 journey and how this certification reflects our commitment to protecting customer information.
 published_at: 2024-02-26T00:00:00.000+00:00
 ---
 
