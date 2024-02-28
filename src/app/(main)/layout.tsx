@@ -83,7 +83,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	const featurePosts = await getPosts();
-	const filteredArticles = featurePosts.filter(article => !article.isError);
+	const filteredArticles = featurePosts.filter(article => !article.isError).sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at));
 	return (
 		<html lang="en" style={{ scrollBehavior: 'smooth' }}>
 			<body suppressHydrationWarning={true}>
