@@ -8,7 +8,7 @@ import FeaturedPost from './featuredPost';
 export default function Blog({ articles }: any) {
 	const searchParams = useSearchParams();
 	const featuredPosts = articles.filter(article => article.featured);
-	const nonFeaturedPosts = articles.filter(article => !article.featured);
+	const nonFeaturedPosts = articles.filter(article => !article.featured).sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at));
 	const [submittingEmail, setIsSubmittingEmail] = useState(false);
 	const [filteredPosts, setFilteredPosts] = useState(nonFeaturedPosts);
 	const inputRef = useRef(null);
@@ -50,7 +50,7 @@ export default function Blog({ articles }: any) {
 
 	useEffect(() => {
 		if (searchParams.get('tag')) filterPosts();
-		else setFilteredPosts(articles);
+		else setFilteredPosts(nonFeaturedPosts);
 	}, [searchParams]);
 
 	return (

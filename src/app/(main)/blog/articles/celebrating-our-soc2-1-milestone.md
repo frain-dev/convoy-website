@@ -1,7 +1,7 @@
 ---
 title: 'Celebrating a Milestone: Convoy Attains SOC2 Type 1 Compliance'
-feature_image: why-open-source.png
-post_image: why-open-source.png 
+feature_image: convoy-attains-soc2-type-1-compliance.png
+post_image: convoy-attains-soc2-type-1-compliance.png 
 primary_author:
     name: Phillip Simbwa
     twitter: PhillipSimbwa
