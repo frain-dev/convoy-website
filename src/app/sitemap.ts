@@ -1,6 +1,6 @@
 import { getAllRoutes, getPosts } from '@/lib/getPosts';
 
-export default async function sitemap(){
+export default async function sitemap() {
 	const URL = 'https://getconvoy.io';
 
 	const getBlogRoutes = async () => {
@@ -8,7 +8,9 @@ export default async function sitemap(){
 		const slugs = blogs.filter(blog => blog.slug).map(item => `/blog/${item.slug}`);
 		const blogRoutes = slugs.map(route => ({
 			url: `${URL}${route}`,
-			lastModified: new Date()
+			lastModified: new Date(),
+			changeFrequency: 'weekly',
+			priority: 1
 		}));
 		return blogRoutes;
 	};
@@ -17,14 +19,18 @@ export default async function sitemap(){
 		const mRoutes = await getAllRoutes();
 		const mainRoutes = mRoutes.map(route => ({
 			url: `${URL}${route}`,
-			lastModified: new Date()
+			lastModified: new Date(),
+			changeFrequency: 'monthly',
+			priority: 0.8
 		}));
 		return mainRoutes;
 	};
 
 	const indexRoute = {
 		url: `${URL}/`,
-		lastModified: new Date()
+		lastModified: new Date(),
+		changeFrequency: 'yearly',
+		priority: 1
 	};
 	const mainRoutes = await getMainRoutes();
 	const blogRoutes = await getBlogRoutes();
