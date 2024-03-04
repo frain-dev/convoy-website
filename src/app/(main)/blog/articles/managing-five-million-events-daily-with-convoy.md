@@ -37,7 +37,7 @@ This is where Philip started researching solutions, his criteria were simple, a 
 
 ## The best features at the scale-up stage
 
-When I asked Philip about what Convoy features he considers really important when dealing with millions of events at scale, he mentioned [Convoy Portal Links](https://getconvoy.io/docs/manual/portal-links/) and the pause button for endpoints. He says these two things help the customer success team speak the same language with some of the highly technical teams and clients they work with (which is often hard without a tool like Convoy)
+When I asked Philip about what Convoy features he considers really important when dealing with millions of events at scale, he mentioned [Convoy Portal Links](https://docs.getconvoy.io/product-manual/portal-links) and the pause button for endpoints. He says these two things help the customer success team speak the same language with some of the highly technical teams and clients they work with (which is often hard without a tool like Convoy)
 
 ## Managing internal infrastructure
 

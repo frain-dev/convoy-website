@@ -35,10 +35,10 @@ Last year, Bloc's customer success team received numerous webhook complaints. Up
 
 ## Portal Links to the rescue
 
-One issue reported to Bloc's customer success team persisted for three weeks. During a session with the customer, Bloc’s support engineers learned that the issue was caused by Bloc sending webhooks to an auth-protected route that returned a forbidden error. The user was able to identify this issue by reviewing event deliveries through [Convoy's Portal Links](https://getconvoy.io/docs/manual/portal-links).
+One issue reported to Bloc's customer success team persisted for three weeks. During a session with the customer, Bloc’s support engineers learned that the issue was caused by Bloc sending webhooks to an auth-protected route that returned a forbidden error. The user was able to identify this issue by reviewing event deliveries through [Convoy's Portal Links](https://docs.getconvoy.io/product-manual/portal-links).
 
-A [Portal Link](https://getconvoy.io/docs/manual/portal-links) generates a customer-facing dashboard to display information on an endpoint's event deliveries. The portal link serves as a medium to quickly generate portals for users to review and debug webhook events from a publisher. 
+A [Portal Link](https://docs.getconvoy.io/product-manual/portal-links) generates a customer-facing dashboard to display information on an endpoint's event deliveries. The portal link serves as a medium to quickly generate portals for users to review and debug webhook events from a publisher. 
 
-Following this and similar experiences, the Bloc team now uses [Portal Links](https://getconvoy.io/docs/manual/portal-links/#caveats) through the [Convoy API](https://convoy.readme.io/reference/get_api-v1-projects-projectid-portal-links) to give customers total control over monitoring and seamlessly debugging webhooks and audit logs. If you are a Bloc customer, you may already be familiar with webhook logs in your dashboard, which is fully powered by the Convoy Webhooks Gateway.
+Following this and similar experiences, the Bloc team now uses [Portal Links](https://docs.getconvoy.io/product-manual/portal-links#caveats) through the [Convoy API](https://docs.getconvoy.io/api-reference/portal-links/list-all-portal-links) to give customers total control over monitoring and seamlessly debugging webhooks and audit logs. If you are a Bloc customer, you may already be familiar with webhook logs in your dashboard, which is fully powered by the Convoy Webhooks Gateway.
 
 *"This singular implementation has reduced the number of support issues we receive by over 90%. It is a game-changer for us."*

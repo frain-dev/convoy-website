@@ -279,5 +279,5 @@ autoscaling:
 
 We plan on adding more support for other platforms you can configure to work as a forward proxy with Convoy such as [Envoy](https://github.com/envoyproxy/envoy), [OpenResty](https://openresty.org) etc. We'll also keep improving
 
-You can stay up to date with the docs [here](https://getconvoy.io/docs/forward-proxies/smokescreen) to keep track of when the documentation is added.
+You can stay up to date with the docs [here](https://docs.getconvoy.io/product-manual/forward-proxies/smokescreen) to keep track of when the documentation is added.
 

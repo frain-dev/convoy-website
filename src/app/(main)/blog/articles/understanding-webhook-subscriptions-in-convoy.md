@@ -52,7 +52,7 @@ Complete the same steps from your end and you would have created a webhook subsc
 
 ![creating subscription with event types](/blog-assets/create-subscription-with-event-type.gif)
 
-Your outgoing project is now ready to start sending webhook requests. We would trigger a request by creating an event via the Convoy endpoint [https://dashboard.getconvoy.io/api/v1/projects/{projectID}/events](https://convoy.readme.io/reference/get_v1-projects-projectid-events) on the terminal.
+Your outgoing project is now ready to start sending webhook requests. We would trigger a request by creating an event via the Convoy endpoint [https://dashboard.getconvoy.io/api/v1/projects/{projectID}/events](https://docs.getconvoy.io/api-reference/events/list-all-events) on the terminal.
 
 
 Construct the following request to make on your terminal replacing `<host>`, `<your-project-id>`, `<project-api-key>` and, `<endpoint-id>` with their actual values:
@@ -152,11 +152,11 @@ $ curl --request POST \
 }'
 ```
 
-The above should create a successful event delivery. You can change the value of `verified` in the payload to `false` and see that the targeted endpoint "outgoing-endpoint-two" does not receive the notification. Convoy supports many more forms of filtering, find the complete rundown of available filters in the [documentation](https://getconvoy.io/docs/manual/subscriptions/#subscription-filters)
+The above should create a successful event delivery. You can change the value of `verified` in the payload to `false` and see that the targeted endpoint "outgoing-endpoint-two" does not receive the notification. Convoy supports many more forms of filtering, find the complete rundown of available filters in the [documentation](https://docs.getconvoy.io/product-manual/subscriptions#filters)
 
 
 ### Webhook Fan-out
-Webhook Fan-out refers to a technique used to dispatch webhooks events to multiple endpoints at a go. This makes it possible for webhook consumers to provide multiple endpoints where they need the same events to be received. Starting from `v0.8` Convoy introduced a new mechanism for webhook fan-out. To fan out events to multiple endpoints, the event needs to be published using the [/events/fanout](https://convoy.readme.io/reference/post_v1-projects-projectid-events-fanout) endpoint. There's also a new field on the endpoint object--`owner_id`, this field is used to identify endpoints as belonging to the same entity. To enable the two endpoints that we have created to receive events sent through the convoy API `/events/fanout` endpoint, we need to update the endpoints to assign them an owner id of the same value. Use the following request template to update each of the endpoints:
+Webhook Fan-out refers to a technique used to dispatch webhooks events to multiple endpoints at a go. This makes it possible for webhook consumers to provide multiple endpoints where they need the same events to be received. Starting from `v0.8` Convoy introduced a new mechanism for webhook fan-out. To fan out events to multiple endpoints, the event needs to be published using the [/events/fanout](https://docs.getconvoy.io/api-reference/events/fan-out-an-event) endpoint. There's also a new field on the endpoint object--`owner_id`, this field is used to identify endpoints as belonging to the same entity. To enable the two endpoints that we have created to receive events sent through the convoy API `/events/fanout` endpoint, we need to update the endpoints to assign them an owner id of the same value. Use the following request template to update each of the endpoints:
 
 
 ```bash {% file="terminal" %}

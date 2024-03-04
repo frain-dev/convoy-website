@@ -16,7 +16,7 @@ published_at: 2023-06-06T17:00:00.000+00:00
 ---
 
 
-How do you deploy and manage your own [Convoy](https://getconvoy.io) instance to get all the benefits it offers? The getting started [install](https://getconvoy.io/docs/deploy/install-convoy/#requirements) guide is a good place to start and test out Convoy's features. But for when you mean business, you'll need to deploy Convoy on actual servers: on-prem or on public clouds, manage your own data, and scale your deployment as need be. Convoy can be deployed on almost all public cloud platforms, but in this blog post, you will see how you can deploy convoy on Fly.io.
+How do you deploy and manage your own [Convoy](https://getconvoy.io) instance to get all the benefits it offers? The getting started [install](https://docs.getconvoy.io/deployment/install-convoy) guide is a good place to start and test out Convoy's features. But for when you mean business, you'll need to deploy Convoy on actual servers: on-prem or on public clouds, manage your own data, and scale your deployment as need be. Convoy can be deployed on almost all public cloud platforms, but in this blog post, you will see how you can deploy convoy on Fly.io.
 
 [Fly.io](https://fly.io/) is a public cloud for running full stack applications and databases close to your users. It is designed to make it easy to deploy distributed and real-time apps, which makes it especially suitable for deploying your convoy instance and its dependencies. You can understand all Fly.io related concepts or commands that we use in this post by simply following along, but if you want to get a more in-depth background understanding of how things work on Fly, you can check the documentation [here](https://fly.io/docs/).
 

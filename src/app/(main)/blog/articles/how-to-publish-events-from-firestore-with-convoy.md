@@ -308,10 +308,10 @@ Lastly, verify that events have been sent to your convoy instance from your Conv
 
 With this basic setup, you’re good to go with sending out webhook events automatically triggered by an update to your Firebase Firestore Collection.
 
-You can similarly listen to Firebase Authentication and other Firebase actions and trigger a resulting webhook event after (more details on that [here](https://firebase.google.com/docs/functions/use-cases)), using the [Convoy SDKs](https://getconvoy.io/docs/sdk).
+You can similarly listen to Firebase Authentication and other Firebase actions and trigger a resulting webhook event after (more details on that [here](https://firebase.google.com/docs/functions/use-cases)), using the [Convoy SDKs](https://docs.getconvoy.io/sdk/sdk).
 
 ## Conclusion
 
 Convoy provides the ability to receive webhooks from various providers and fans out to your applications. In this article, you learned how to trigger webhook events to your Convoy instance when an event is added to your Firebase Firestore collection.
 
-Convoy provides you with reliability and replayability out-of-the-box. If this sounds suitable for your architecture, [try it out](https://dashboard.getconvoy.io) and give us feedback on our [slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email) community!
+Convoy provides you with reliability and replayability out-of-the-box. If this sounds suitable for your architecture, [try it out](https://cloud.getconvoy.io) and give us feedback on our [slack](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email) community!
