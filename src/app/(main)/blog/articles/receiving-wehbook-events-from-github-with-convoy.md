@@ -119,7 +119,7 @@ Alternatively, on the UI, immediately after creating the group, a create applica
 
 **Create a source**
 
-Next, we are to create a source, select the `Ingestion HTTP` source type, and afterward select `Github` as the Ingester HTTP type and set a secret to communicate with your GitHub webhook source. You can find more documentation on sources [here](https://getconvoy.io/docs/manual/sources/).
+Next, we are to create a source, select the `Ingestion HTTP` source type, and afterward select `Github` as the Ingester HTTP type and set a secret to communicate with your GitHub webhook source. You can find more documentation on sources [here](https://docs.getconvoy.io/product-manual/sources).
 
 ![Create a source](/blog-assets/create-a-source.png)
 
@@ -149,7 +149,7 @@ $ curl \
 
 **Create Subscription**
 
-Next, we have to create a subscription. Subscriptions are a many-to-many relationship between sources/apps **→** endpoints. You can find more documentation on subscriptions [here](https://getconvoy.io/docs/manual/subscriptions/).
+Next, we have to create a subscription. Subscriptions are a many-to-many relationship between sources/apps **→** endpoints. You can find more documentation on subscriptions [here](https://docs.getconvoy.io/product-manual/subscriptions).
 
 On the UI, just select the source, app, and endpoint you previously created.
 

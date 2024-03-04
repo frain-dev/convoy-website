@@ -30,7 +30,7 @@ Convoy is an Open Source Webhooks Gateway. For both incoming & outgoing events. 
 
 - Worker: This component runs all the asynchronous tasks from the queuing system.
 
-Tip: Convoy uses Redis for Queueing, Rate limiting, and Caching, while PostgreSQL is the Database. You can learn more [here](https://getconvoy.io/docs/deploy/architecture/#components)
+Tip: Convoy uses Redis for Queueing, Rate limiting, and Caching, while PostgreSQL is the Database. You can learn more [here](https://docs.getconvoy.io/deployment/architecture#components)
 
 ## New features
 
