@@ -29,7 +29,7 @@ For the Payourse team, from one dashboard, they can now easily tell where issues
 
 “This new experience has made it possible for us to quickly find sources of errors and even help our clients to debug their own applications by sending them portal links” - Hakeem
 
->A [Portal Link](https://getconvoy.io/docs/manual/portal-links) generates a customer-facing dashboard to display information on an endpoint's event deliveries. The portal link serves as a medium to quickly generate portals for users to review and debug webhook events from a publisher.
+>A [Portal Link](https://docs.getconvoy.io/product-manual/portal-links) generates a customer-facing dashboard to display information on an endpoint's event deliveries. The portal link serves as a medium to quickly generate portals for users to review and debug webhook events from a publisher.
 
 ## What we love
 

@@ -36,7 +36,7 @@ Your challenge is offering developers in your organisation a simple and dependab
 
 The diagram above provides an high level view of how a webhook gateway operates. We used AWS specific elements but this can be any cloud environment - Azure, GCP, Digital Ocean, etc or even On-Prem. The arrows from the left show the flow of traffic from your backend services to client endpoints on the right, and the arrows from the right show the flow of traffic from third-party providers like (stripe, twilio, etc.) to your backend services for processing. 
 
-Generally, to avoid vendor lock-in, a webhook gateway will (should) provide support for multiple broker systems like Amazon SQS, Google PubSub, Kafka etc. to allow you use the best broker for your scenario. Visit this [page](https://getconvoy.io/docs/deploy/architecture) to learn about Convoy's internal architecture.
+Generally, to avoid vendor lock-in, a webhook gateway will (should) provide support for multiple broker systems like Amazon SQS, Google PubSub, Kafka etc. to allow you use the best broker for your scenario. Visit this [page](https://docs.getconvoy.io/deployment/architecture) to learn about Convoy's internal architecture.
 
 # API Gateways vs. Webhook Gateways
 
