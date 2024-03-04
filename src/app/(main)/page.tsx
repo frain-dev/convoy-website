@@ -112,8 +112,9 @@ export default function Home() {
 					We are backed by
 					<Image src="/svg/y-combinator.svg" width={24} height={24} className="ml-16px w-24px" alt="y-combinator" />
 				</div>
-				<h1 className="text-center desktop:text-[50px] desktop:leading-[80px] font-bold">Reliable open-source webhooks for</h1>
-				<h1 className="text-center desktop:text-[50px] desktop:leading-[80px] font-bold text-primary-400">Efficient Engineers</h1>
+				<h1 className="text-center desktop:text-[50px] desktop:leading-[80px] font-bold">
+					Reliable open-source webhooks for <br /> <span className="text-primary-400">Efficient Engineers</span>
+				</h1>
 				<p className="text-center max-w-[950px] mx-auto text-16 leading-8 mobile:text-14 mt-16px text-gray-600">
 					Securely Send, Receive and Manage millions of Webhooks Reliably with robust support for Retries, Rate Limiting, Static IPs, Circuit Breaking, Rolling Secrets
 					and more.
@@ -155,7 +156,6 @@ export default function Home() {
 							<Image src={NeynarIcon} alt="neynar logo" className="h-26px" />
 						</a>
 					</li>
-					
 
 					<li className="flex items-center justify-center">
 						<a target="_blank" href="https://www.caxton.io/">
@@ -189,7 +189,7 @@ export default function Home() {
 							<Image src={XenditIcon} alt="xendit logo" className="h-36px" />
 						</a>
 					</li>
-					
+
 					<li className="flex items-center justify-center">
 						<a target="_blank" href="https://www.sline.io/">
 							<Image src={SlineIcon} alt="sline logo" className="h-26px" />
@@ -200,12 +200,8 @@ export default function Home() {
 							<Image src={FreshTrackIcon} alt="freshtrack logo" className="h-36px" />
 						</a>
 					</li>
-					
 				</ul>
-
-				
 			</section>
-
 
 			{/* why use us   */}
 			<section id="why-convoy" className="flex flex-col justify-center items-center pt-160px">
@@ -221,9 +217,9 @@ export default function Home() {
 					Why use Convoy?
 				</div>
 
-				<h1 className="text-center font-bold max-w-[1040px] text-[46px] text-gray-800 desktop:leading-[58px] mt-16px mx-auto mb-80px">
+				<h2 className="text-center font-bold max-w-[1040px] text-[46px] text-gray-800 desktop:leading-[58px] mt-16px mx-auto mb-80px">
 					Convoy is the Fastest Open-Source Webhooks Gateway
-				</h1>
+				</h2>
 
 				<div className="desktop:py-40px px-20px feature-list">
 					{newFeatures.slice(0, 3).map((feature, i) => (
@@ -293,7 +289,7 @@ export default function Home() {
 								className={`flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${
 									activeTab === 'enterprise' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'
 								}`}>
-								<h1 className="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Enterprise Edition</h1>
+								<h2 className="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Enterprise Edition</h2>
 								<p className="text-white-100 text-center text-14 leading-7 desktop:mt-16px max-w-[860px] m-auto">
 									Send & Receive billions of webhooks while totally control your own event infrastructure and data, and staying compliant all with one platform
 									with on-prem support .
@@ -316,7 +312,7 @@ export default function Home() {
 								className={`flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${
 									activeTab === 'cloud' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'
 								}`}>
-								<h1 className="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Convoy Cloud</h1>
+								<h2 className="text-32 desktop:text-[40px] desktop:leading-[60px] text-white-100 font-bold text-center">Convoy Cloud</h2>
 								<p className="text-white-100 text-center text-14 leading-7 mt-20px desktop:mt-16px max-w-[860px] m-auto">
 									Fully managed Webhooks-as-a-service platform where you can manage millions of webhook events whether incoming or outgoing and you only pay for
 									what you use.
@@ -339,7 +335,7 @@ export default function Home() {
 								className={`flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${
 									activeTab === 'community' ? 'animate-slideup block opacity-100' : 'opacity-0 hidden animate-slidedown'
 								}`}>
-								<h1 className="text-32 desktop:leading-[60px] text-white-100 font-bold text-center">Community Edition</h1>
+								<h2 className="text-32 desktop:leading-[60px] text-white-100 font-bold text-center">Community Edition</h2>
 								<p className="text-white-100 text-center text-14 leading-7 mt-20px desktop:mt-16px max-w-[860px] m-auto">
 									Open-source Webhooks Gateway for managing incoming and outgoing webhooks. Ships with everything you need for securely sending and receiving
 									events reliably.
@@ -432,7 +428,7 @@ export default function Home() {
 					</div>
 					Work more efficiently!
 				</div>
-				<h1 className="desktop:text-[48px] desktop:leading-[60px] font-bold max-w-[842px]">All-in-one Webhooks Gateway for all your event needs</h1>
+				<h2 className="desktop:text-[48px] desktop:leading-[60px] font-bold max-w-[842px]">All-in-one Webhooks Gateway for all your event needs</h2>
 			</section>
 
 			<section>

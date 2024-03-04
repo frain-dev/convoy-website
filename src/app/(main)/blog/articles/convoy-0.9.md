@@ -41,7 +41,7 @@ Then run the `convoy ingest` process to spin up workers dedicated to consuming m
 In the past, we talked about local debugging for Convoy. Yes, we had to re-launch this because our previous implementation wasn’t intuitive enough for our users. To achieve this new implementation, we 
 
 1. We decided to ship this only for our `Incoming Project` users, while we ship this in a more intuitive fashion for `Outgoing Projects`.
-2. Shipped a new cli entirely called the Client CLI. See the full docs [here](https://getconvoy.io/docs/tools/convoy-cli).
+2. Shipped a new cli entirely called the Client CLI. See the full docs [here](https://docs.getconvoy.io/cli-file/convoy-cli).
 
 We wrote a full blog post on how to get started with our new cli [here](https://getconvoy.io/blog/debugging-webhook-events-with-convoy-cli/) - Please let us know your thoughts.
 

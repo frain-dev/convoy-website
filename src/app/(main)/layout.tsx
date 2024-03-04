@@ -9,8 +9,8 @@ import Toast from '../components/Toast';
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://getconvoy.io'),
-	title: 'Convoy',
-	description: 'Convoy Documentation and Website',
+	title: 'Webhooks service for sending and receiving webhooks - Convoy',
+	description: 'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
 	alternates: {
 		canonical: '/'
 	},
@@ -55,13 +55,21 @@ export const metadata: Metadata = {
 		'open-source webhooks',
 		'free webhook',
 		'secure webhooks',
+		'reliable webhooks',
 		'webhooks api',
+		'outgoing webhooks',
 		'incoming webhooks',
 		'convoy webhooks',
+		'google pub/sub',
+		'aws',
 		'kafka',
+		'redis',
+		'aws sqs',
+		'rabbitmq',
 		'platform engineering',
 		'Webhook signatures',
 		'api gateway',
+		'events gateway',
 		'webhooks service',
 		'webhooks provider',
 		'webhooks infrastructure',
@@ -74,10 +82,12 @@ export const metadata: Metadata = {
 		'webhook endpoint',
 		'zapier webhook',
 		'web hook',
+		'portal links',
 		'endpoint',
 		'API',
 		'cloud',
-		'cloud-native'
+		'cloud-native',
+		'idempotency'
 	]
 };
 

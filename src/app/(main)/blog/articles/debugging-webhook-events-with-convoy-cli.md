@@ -17,7 +17,7 @@ published_at: 2023-03-20T10:00:00.000+00:00
 
 Hey Friends,
 
-We re-launched our `client cli` tool with new documentation [here](https://getconvoy.io/docs/tools/convoy-cli). For the unfamiliar reader, Convoy is an open-source high-performance webhooks gateway to manage millions of webhooks end-to-end. It is designed to be a highly scalable multi-tenant webhooks gateway to support multiple backend services sending and receiving webhooks. In this article, we describe the new `client cli` and why we made these changes.
+We re-launched our `client cli` tool with new documentation [here](https://docs.getconvoy.io/cli-file/convoy-cli). For the unfamiliar reader, Convoy is an open-source high-performance webhooks gateway to manage millions of webhooks end-to-end. It is designed to be a highly scalable multi-tenant webhooks gateway to support multiple backend services sending and receiving webhooks. In this article, we describe the new `client cli` and why we made these changes.
 
 ### Background
 
@@ -80,7 +80,7 @@ $ convoy-cli listen --forward-to <your-forward-address>
 
 The value you pass to the `--forward-to` flag can be any address of your choice, but this will typically be an endpoint on a local server, where you can debug your events as they come in.
 
-The full documentation for the convoy-cli tool can be found [here](https://getconvoy.io/docs/tools/convoy-cli).
+The full documentation for the convoy-cli tool can be found [here](https://docs.getconvoy.io/cli-file/convoy-cli).
 
 ### Conclusion
 
