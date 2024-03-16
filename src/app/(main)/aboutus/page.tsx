@@ -30,14 +30,6 @@ export default function AboutUs() {
 			github: 'https://github.com/subomi',
 			linkedIn: 'https://www.linkedin.com/in/subomi-oluwalana-one/',
 			twitter: 'https://twitter.com/subomiOluwalana'
-		},
-		{
-			name: 'Emmanuel Aina',
-			role: 'Founder',
-			image: 'emmanuel',
-			github: 'https://github.com/horlah',
-			linkedIn: 'https://www.linkedin.com/in/emmanuel-aina-o/',
-			twitter: 'https://twitter.com/emmanuelaina_'
 		}
 		// {
 		// 	name: 'Daniel Oluojomu',
