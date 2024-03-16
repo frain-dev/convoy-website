@@ -30,14 +30,6 @@ export default function AboutUs() {
 			github: 'https://github.com/subomi',
 			linkedIn: 'https://www.linkedin.com/in/subomi-oluwalana-one/',
 			twitter: 'https://twitter.com/subomiOluwalana'
-		},
-		{
-			name: 'Emmanuel Aina',
-			role: 'Founder',
-			image: 'emmanuel',
-			github: 'https://github.com/horlah',
-			linkedIn: 'https://www.linkedin.com/in/emmanuel-aina-o/',
-			twitter: 'https://twitter.com/emmanuelaina_'
 		}
 		// {
 		// 	name: 'Daniel Oluojomu',
@@ -122,7 +114,7 @@ export default function AboutUs() {
 			<section className="max-w-[1233px] px-20px m-auto py-100px">
 				<h2 className="text-24 text-gray-600 font-semibold text-center mb-82px">By the best team</h2>
 
-				<div className="grid xs:grid-cols-1 desktop:grid-cols-3 tab-min:grid-cols-2 gap-24px desktop:gap-150px justify-center items-center m-auto">
+				<div className="grid xs:grid-cols-1 desktop:grid-cols-2 tab-min:grid-cols-2 gap-24px desktop:gap-150px justify-center items-center m-auto">
 					{teamMembers.map((member, i) => (
 						<div key={i}>
 							<div className="flex flex-col justify-center items-center text-center text-gray-700 m-auto">
