@@ -398,7 +398,7 @@ export default function Home() {
 					<h2 className="font-bold desktop:text-32 mb-22px">
 						Developers use Convoy Webhooks Gateway to securely ingest, persist, debug, deliver and manage millions of events reliably...
 					</h2>
-					<Link href="/docs/overview" className="text-16 font-semibold text-primary-400 flex items-center">
+					<Link href="https://docs.getconvoy.io/deployment/architecture" className="text-16 font-semibold text-primary-400 flex items-center">
 						Learn about our infrastructure
 						<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-8px">
 							<path
