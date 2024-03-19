@@ -585,9 +585,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 												)}
 
 												{plan.name === 'Price' && (
-													<button
-														className="flex items-center justify-center underline"
-														onClick={() => enterpriseModal.current?.showModal()}>
+													<button className="flex items-center justify-center underline" onClick={() => enterpriseModal.current?.showModal()}>
 														Contact Us
 													</button>
 												)}
@@ -722,13 +720,12 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 					<p className="text-center text-14 text-white-100 max-w-[806px] m-auto">
 						Get in touch with us today to find out how best we can support your business and work needs.
 					</p>
-					<a
-						target="_blank"
-						href="https://calendly.com/d/d6k-jw2-wgj/convoy-user-demo"
+					<button
+						onClick={() => enterpriseModal.current?.showModal()}
 						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-14 font-medium flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Contact Sales
 						<Image src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow icon right" />
-					</a>
+					</button>
 				</div>
 			</section>
 
