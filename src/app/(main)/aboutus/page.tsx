@@ -111,14 +111,14 @@ export default function AboutUs() {
 				</ul>
 			</section>
 
-			<section className="max-w-[1233px] px-20px m-auto py-100px">
+			<section className="max-w-[900px] px-20px m-auto py-100px">
 				<h2 className="text-24 text-gray-600 font-semibold text-center mb-82px">By the best team</h2>
 
-				<div className="grid xs:grid-cols-1 desktop:grid-cols-2 tab-min:grid-cols-2 gap-24px desktop:gap-150px justify-center items-center m-auto">
+				<div className="grid xs:grid-cols-1 desktop:grid-cols-2 tab-min:grid-cols-2 gap-24px justify-center items-center m-auto">
 					{teamMembers.map((member, i) => (
 						<div key={i}>
 							<div className="flex flex-col justify-center items-center text-center text-gray-700 m-auto">
-								<div className="w-[310px] h-[318px] overflow-hidden rounded-16px">
+								<div className="w-[310px] h-[310px] overflow-hidden rounded-16px">
 									<img src={`/employees/${member.image}.jpg`} alt={member.image} />
 								</div>
 
