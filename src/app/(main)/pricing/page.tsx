@@ -111,7 +111,6 @@ export default function Pricing() {
 			tooltipContent: 'Route webhooks through forward proxies to deliver statis egress IPs.The advanced set up includes a load balancer for HA setups.'
 		},
 		{ name: 'Webhook Subscriptions', community: 'true', enterprise: 'true', tooltipContent: 'Includes advanced techniques for filtering webhooks, besides event types.' },
-		{ name: 'Automatic Webhooks Documentation (Coming Soon)', community: 'true', enterprise: 'true', tooltipContent: '' },
 		{ name: 'Functions & Transformations', community: 'true', enterprise: 'true', tooltipContent: '' },
 		{ name: 'Multi-tenancy', community: 'false', enterprise: 'true', tooltipContent: 'Organise teams and projects into separate organisations' },
 		{ name: 'SSO & SAML (Coming Soon)', community: 'false', enterprise: 'true', tooltipContent: '' },
@@ -137,7 +136,7 @@ export default function Pricing() {
 	const dedicatedPlans = [
 		{ id: 1, name: 'CC-30', price: 99, value: 50 },
 		{ id: 2, name: 'CC-50', price: 350, value: 375 },
-		{ id: 3, name: 'CC-70', price: 1000, value: 2000 }
+		{ id: 3, name: 'CC-70', price: 1000, value: 1000 }
 	];
 
 	const notes = [
