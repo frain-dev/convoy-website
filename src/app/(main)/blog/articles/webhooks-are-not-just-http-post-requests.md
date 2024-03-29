@@ -26,6 +26,6 @@ Business requirements determine the abstraction, and we all know business requir
 
 Practically, this mirrors my experience with building Convoy and talking to users — there’s a new abstraction users are constantly seeking. The environment now is completely different from the environment years ago, where we did not have the proliferation of SaaS, Serverless/edge functions were nowhere to be found, and honestly, leading companies have built excellent webhook systems that the requirements are way higher than before, so get on with the times. :) The HTTP Post Idea does not suffice! A new abstraction is being built and is here to stay.
 
-To wrap up this rant, I’m the founder of a [webhooks gateway](https://getconvoy.io/blog/what-are-webhook-gateways) company, and my bias is staring me right in the face. But much more than that, my mission is to help developers build secure and reliable apps in production, and I hope that when you read through our blog and docs, you’ll learn how to achieve that with webhooks and events in your apps. 
+To wrap up this rant, I’m the founder of a [webhooks gateway](https://getconvoy.io/blog/what-are-webhook-gateways) company, and my bias is staring me right in the face. But much more than that, my mission is to help developers build secure and reliable apps in production, and I hope that when you read through our [blog](https://getconvoy.io/blog) and [docs](https://docs.getconvoy.io), you’ll learn how to achieve that with webhooks and events in your apps. 
 
 Bye for now!
