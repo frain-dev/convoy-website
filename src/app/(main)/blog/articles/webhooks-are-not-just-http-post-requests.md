@@ -20,7 +20,7 @@ I also occasionally meet engineers who have worked with webhooks in production a
 
 Abstractions are everywhere in software engineering and at several layers. We write them because we want to either hide away complexity or re-use complexity. The easiest way to disdain an abstraction is to be oblivious to the requirements of the abstraction, which would lead to reducing the abstraction to the limitation of your understanding. Another hidden benefit of abstraction is getting it right opens up other benefits/possibilities that previously did not exist. I am reminded of this tweet by [Greg Brockman](https://twitter.com/gdb), which I love:
 
-{% tweet url="https://x.com/gdb/status/1764005795799400796" /%}
+{% tweet url="https://twitter.com/gdb/status/1764005795799400796" /%}
 
 Business requirements determine the abstraction, and we all know business requirements are fluid. And it even gets more interesting if your abstraction is needed across several verticals. The shape and form of the abstraction would be different for each but intuitive enough for both. Effectively, what you know as the API today is no longer the API tomorrow. We need to continuously evolve our understanding of the business requirements that shape our abstractions; that is the only way to acknowledge better APIs truly. Otherwise, sooner or later, you’ll ask yourself who moved my cheese.
 
