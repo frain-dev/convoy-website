@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Heading from './components/heading';
 import CodeBlock from './components/codeblock';
 import EmbeddedTweet from './components/tweet';
+import InstagramEmbed from './components/instagramEmbed';
 import BlockQuote from './components/blockquote';
 
 const config: Config = {
@@ -70,11 +71,19 @@ const config: Config = {
 		},
 		blockquote: {
 			render: 'BlockQuote'
-		},
+		}
 	},
 	tags: {
 		tweet: {
 			render: 'EmbeddedTweet',
+			attributes: {
+				url: {
+					type: String
+				}
+			}
+		},
+		instagramPost: {
+			render: 'InstagramEmbed',
 			attributes: {
 				url: {
 					type: String
@@ -126,6 +135,7 @@ const components = {
 	},
 	CodeBlock,
 	EmbeddedTweet,
+	InstagramEmbed,
 	BlockQuote
 };
 
