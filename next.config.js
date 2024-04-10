@@ -3,6 +3,15 @@ const path = require('path');
 const withMarkdoc = require('@markdoc/next.js');
 
 const nextConfig = {
+	async redirects() {
+		return [
+			{
+				source: '/docs',
+				destination: 'https://docs.getconvoy.io',
+				permanent: true
+			}
+		];
+	},
 	experimental: {
 		appDir: true
 	},
