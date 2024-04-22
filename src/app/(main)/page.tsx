@@ -13,6 +13,7 @@ import BlocIcon from '../../../public/svg/bloc.svg';
 import SlineIcon from '../../../public/svg/sline.svg';
 import FreshTrackIcon from '../../../public/svg/freshtrack.svg';
 import NeynarIcon from '../../../public/svg/neymar.svg';
+import SpruceIcon from '../../../public/svg/spruce-logo.svg';
 
 import GreenCheckIcon from '../../../public/svg/green_check.svg';
 import ArrowRightIcon from '../../../public/svg/arrow-right-icon.svg';
@@ -93,17 +94,18 @@ export default function Home() {
 	];
 
 	const companies = [
-		{ name: { TestlifyIcon }, url: 'https://testlify.com/' },
-		{ name: { MonoIcon }, url: 'https://mono.co/' },
-		{ name: { XenditIcon }, url: 'https://www.xendit.co/' },
-		{ name: { CaxtonIcon }, url: 'https://www.caxton.io/' },
-		{ name: { MapleIcon }, url: 'https://maplebilling.com/' },
-		{ name: { PiggyvestIcon }, url: 'https://www.piggyvest.com/' },
-		{ name: { TrustmiIcon }, url: 'https://www.trustmi.ai/' },
-		{ name: { BlocIcon }, url: 'https://www.blochq.io/' },
-		{ name: { SlineIcon }, url: 'https://www.sline.io/' },
-		{ name: { FreshTrackIcon }, url: 'https://www.freshtrack.ma/' },
-		{ name: { NeynarIcon }, url: 'https://neynar.com/' }
+		{ name: 'testlify', url: 'https://testlify.com/', class:'h-28px' },
+		{ name: 'mono', url: 'https://mono.co/', class:'h-20px' },
+		{ name: 'xendit', url: 'https://www.xendit.co/', class:'h-28px' },
+		{ name: 'caxton', url: 'https://www.caxton.io/', class:'h-20px' },
+		{ name: 'maple', url: 'https://maplebilling.com/', class:'h-30px' },
+		{ name: 'piggyvest-logo', url: 'https://www.piggyvest.com/', class:'h-30px' },
+		{ name: 'trustmi', url: 'https://www.trustmi.ai/', class:'h-24px' },
+		// { name: 'bloc', url: 'https://www.blochq.io/' },
+		{ name: 'spruce-logo', url: 'https://www.sprucetech.com/', class:'h-28px' },
+		{ name: 'sline', url: 'https://www.sline.io/', class:'h-26px' },
+		{ name: 'freshtrack', url: 'https://www.freshtrack.ma/', class:'h-36px mx-20px -mt-8px' },
+		{ name: 'neymar', url: 'https://neynar.com/', class:'h-26px' }
 	];
 	return (
 		<main>
@@ -136,75 +138,43 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="px-20px max-w-[1000px] w-full m-auto">
-				<p className="text-center text-gray-500 text-16 mb-74px">Trusted by great teams</p>
+			<section className="">
+				<p className="text-center text-gray-500 text-16 mb-40px">Trusted by great teams all over the world</p>
 
-				<ul className="flex items-center flex-wrap justify-center gap-44px">
-					<li className="flex items-center justify-center">
-						<a target="_blank" href="https://testlify.com/">
-							<Image src={TestlifyIcon} alt="testlify logo" className="h-28px" />
-						</a>
-					</li>
-					<li className="flex items-center justify-center">
-						<a target="_blank" href="https://mono.co/">
-							<Image src={MonoIcon} alt="mono logo" className="h-20px" />
-						</a>
-					</li>
-
-					<li className="flex items-center justify-center">
-						<a target="_blank" href="https://neynar.com/">
-							<Image src={NeynarIcon} alt="neynar logo" className="h-26px" />
-						</a>
-					</li>
-
-					<li className="flex items-center justify-center">
-						<a target="_blank" href="https://www.caxton.io/">
-							<Image src={CaxtonIcon} alt="caxton logo" className="h-20px" />
-						</a>
-					</li>
-					<li className="flex items-center justify-center">
-						<a target="_blank" href="https://maplebilling.com/">
-							<Image src={MapleIcon} alt="maple logo" className="h-30px" />
-						</a>
-					</li>
-					<li className="flex items-center justify-center">
-						<a target="_blank" href="https://www.piggyvest.com/">
-							<Image src={PiggyvestIcon} alt="piggyvest logo" className="h-30px" />
-						</a>
-					</li>
-					<li className="flex items-center justify-center">
-						<a target="_blank" href="https://www.trustmi.ai/">
-							<Image src={TrustmiIcon} alt="trustmi logo" className="h-24px" />
-						</a>
-					</li>
-
-					<li className="flex items-center justify-center">
-						<a target="_blank" href="https://www.blochq.io/">
-							<Image src={BlocIcon} alt="bloc logo" className="h-30px" />
-						</a>
-					</li>
-
-					<li className="flex items-center justify-center">
-						<a target="_blank" href="https://www.xendit.co/">
-							<Image src={XenditIcon} alt="xendit logo" className="h-36px" />
-						</a>
-					</li>
-
-					<li className="flex items-center justify-center">
-						<a target="_blank" href="https://www.sline.io/">
-							<Image src={SlineIcon} alt="sline logo" className="h-26px" />
-						</a>
-					</li>
-					<li className="flex items-center justify-center">
-						<a target="_blank" href="https://www.freshtrack.ma/">
-							<Image src={FreshTrackIcon} alt="freshtrack logo" className="h-36px" />
-						</a>
-					</li>
-				</ul>
+				<div className="slideshow bg-gray-100 py-16px">
+					<div className="firstSlide ">
+						{[0, 1, 2].map(index => (
+							<ul className="flex items-center justify-center" key={index}>
+								{companies.map(company => (
+									<li className="min-w-[200px] flex justify-center">
+										<a target="_blank" href={company.url}>
+											<img src={`/svg/${company.name}.svg`} alt={`${company.name} logo`} className={company.class} />
+										</a>
+									</li>
+								))}
+							</ul>
+						))}
+					</div>
+				</div>
+				<div className="slideshow bg-gray-100 py-16px desktop:hidden">
+					<div className="secondSlide ">
+						{[0, 1, 2].map(index => (
+							<ul className="flex items-center justify-center" key={index}>
+								{companies.reverse().map(company => (
+									<li className="min-w-[200px] flex justify-center">
+										<a target="_blank" href={company.url}>
+											<img src={`/svg/${company.name}.svg`} alt={`${company.name} logo`} className={company.class} />
+										</a>
+									</li>
+								))}
+							</ul>
+						))}
+					</div>
+				</div>
 			</section>
 
 			{/* why use us   */}
-			<section id="why-convoy" className="flex flex-col justify-center items-center pt-160px">
+			<section id="why-convoy" className="flex flex-col justify-center items-center pt-80px">
 				<div className="bg-primary-25 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 					<div className="mr-16px w-24px h-24px rounded-100px bg-success-400 flex justify-center items-center">
 						<svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -432,7 +402,7 @@ export default function Home() {
 			</section>
 
 			<section>
-				<div className="slideshow">
+				<div className="slideshow py-30px">
 					<div className="firstSlide">
 						{offerings.map((offer, i) => (
 							<div
@@ -444,7 +414,8 @@ export default function Home() {
 						))}
 					</div>
 				</div>
-				<div className="slideshow">
+
+				<div className="slideshow py-30px">
 					<div className="secondSlide">
 						{offerings.map((offer, i) => (
 							<div
