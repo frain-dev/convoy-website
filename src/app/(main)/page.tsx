@@ -13,7 +13,7 @@ import BlocIcon from '../../../public/svg/bloc.svg';
 import SlineIcon from '../../../public/svg/sline.svg';
 import FreshTrackIcon from '../../../public/svg/freshtrack.svg';
 import NeynarIcon from '../../../public/svg/neymar.svg';
-import SpruceIcon from '../../../public/svg/spruce-logo.svg';
+import SpruceIcon from '../../../public/svg/spruce.svg';
 
 import GreenCheckIcon from '../../../public/svg/green_check.svg';
 import ArrowRightIcon from '../../../public/svg/arrow-right-icon.svg';
@@ -102,7 +102,7 @@ export default function Home() {
 		{ name: 'piggyvest-logo', url: 'https://www.piggyvest.com/', class:'h-30px' },
 		{ name: 'trustmi', url: 'https://www.trustmi.ai/', class:'h-24px' },
 		// { name: 'bloc', url: 'https://www.blochq.io/' },
-		{ name: 'spruce-logo', url: 'https://www.sprucetech.com/', class:'h-28px' },
+		{ name: 'spruce', url: 'https://sprucehealth.com/', class:'h-28px' },
 		{ name: 'sline', url: 'https://www.sline.io/', class:'h-26px' },
 		{ name: 'freshtrack', url: 'https://www.freshtrack.ma/', class:'h-36px mx-20px -mt-8px' },
 		{ name: 'neymar', url: 'https://neynar.com/', class:'h-26px' }
