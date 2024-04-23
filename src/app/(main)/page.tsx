@@ -105,7 +105,8 @@ export default function Home() {
 		{ name: 'spruce', url: 'https://sprucehealth.com/', class:'h-28px' },
 		{ name: 'sline', url: 'https://www.sline.io/', class:'h-26px' },
 		{ name: 'freshtrack', url: 'https://www.freshtrack.ma/', class:'h-36px mx-20px -mt-8px' },
-		{ name: 'neymar', url: 'https://neynar.com/', class:'h-26px' }
+		{ name: 'neymar', url: 'https://neynar.com/', class:'h-26px' },
+		{ name: 'pinata', url: 'https://pinata.cloud/', class:'h-28px' }
 	];
 	return (
 		<main>
