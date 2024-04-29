@@ -41,8 +41,12 @@ export const metadata: Metadata = {
 		initialScale: 1
 	},
 	robots: {
-		index: false,
-		follow: true
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true, 
+			follow: true
+		}
 	},
 	keywords: [
 		'webhooks',
