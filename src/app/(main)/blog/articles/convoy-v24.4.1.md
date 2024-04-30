@@ -9,8 +9,8 @@ primary_tag: Product Update
 tags:
     - Convoy
     - Product Update
-featured: true
-description: Convoy v24.4.1 Release Notes
+featured: false
+description: Convoy v24.4.1 release has landed 🎉. We’ve been working on these improvements and we are super excited to share this release. These include a rate limiter backed by PostgreSQL, RabbitMQ message broker support, payload mutation using JavaScript functions for message broker sources, and lots of bug fixes.  
 published_at: 2024-04-30T16:00:00.000+00:00
 ---
 
