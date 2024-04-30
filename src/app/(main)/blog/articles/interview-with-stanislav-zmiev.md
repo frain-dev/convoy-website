@@ -10,13 +10,13 @@ tags:
     - Convoy
     - Open Thoughts
 featured: false 
-description: We sat down briefly with Stanislav Zmiev, who's the tech lead of platform engineering at Monite to discuss to Platform Engineering, how they designed their webhooks gateway, and some of thoughts on api versioning. Enjoy 🎉 
+description: We sat down briefly with Stanislav Zmiev, who's the tech lead of platform engineering at Monite to chat about platform engineering, how they designed their webhooks gateway, and some of thoughts on api versioning. Enjoy 🎉 
 published_at: 2024-04-30T18:00:00.000+00:00
 ---
 
 ![interview-with-stanislav-zmiev.png](/blog-assets/interview-with-stanislav-zmiev.png)
 
-Stanislav is the tech lead of platform engineering at [Monite](https://monite.com/), where he has been for two years. We sat down briefly with him to discuss to talk about Platform Engineering, how they designed their webhooks gateway, and some of thoughts on api versioning. Enjoy 🎉
+Stanislav is the tech lead of platform engineering at [Monite](https://monite.com/), where he has been for two years. We sat down briefly with him to chat about Platform Engineering, how they designed their webhooks gateway, and some of thoughts on api versioning. Enjoy 🎉
 
 1. **You’re the Tech Lead for Monite’s Platform Engineering team. Tell us, what does platform engineering mean to you? How does this translate to your everyday work?** 
     
