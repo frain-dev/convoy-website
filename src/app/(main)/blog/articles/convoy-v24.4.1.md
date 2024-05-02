@@ -14,14 +14,17 @@ description: Convoy v24.4.1 release has landed 🎉. We’ve been working on the
 published_at: 2024-04-30T16:00:00.000+00:00
 ---
 
+![header](/blog-assets/convoy-v24.4.1-header.png)
+
 
 We’re proud to announce the release of `Convoy v2024.4.1`, which includes many features, enhancements, and bug fixes. These include a rate limiter backed by PostgreSQL, RabbitMQ message broker support, and payload mutation using JavaScript functions for message broker sources.
 
 ## Message Broker Source Functions
 
+Events ingested via message brokers like Kafka, Amazon SQS, and Google PubSub can now be mutated using the same Javascript engine that powers subscription filters for incoming projects. Previously, events ingested via these sources needed to conform to a particular format or would be dropped and not acknowledged. This can be frustrating when integrating Convoy into your stack because you need to set up a new queue or topic from which Convoy will read events. With source functions, you can connect your current queues and topics to Convoy and specify a function in Convoy that will wrap your payload into something Convoy can ingest.
+
 ![source function update](/blog-assets/message_broker_update.png)
 
-Events ingested via message brokers like Kafka, Amazon SQS, and Google PubSub can now be mutated using the same Javascript engine that powers subscription filters for incoming projects. Previously, events ingested via these sources needed to conform to a particular format or would be dropped and not acknowledged. This can be frustrating when integrating Convoy into your stack because you need to set up a new queue or topic from which Convoy will read events. With source functions, you can connect your current queues and topics to Convoy and specify a function in Convoy that will wrap your payload into something Convoy can ingest.
 
 ## RabbitMQ Message Broker Support
 
@@ -54,3 +57,7 @@ We re-implemented our endpoint rate limiter (which limits the rate of requests s
 - Fixed a bug where a created or updated subscription didn't show the nested values.
 - Fixed endpoints count query for portal links.
 - Added data plane capabilities back to the worker, which was unintentionally removed.
+
+# Getting Started with Convoy
+
+Want to deliver fine-grained webhooks like [Neynar](https://neynar.com)? You can get started at [Convoy Cloud](https://cloud.getconvoy.io/signup).
