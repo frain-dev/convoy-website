@@ -129,7 +129,7 @@ export default function Home() {
 				<p className="text-center text-gray-500 text-16 mb-40px">Trusted by great teams all over the world</p>
 
 				<div className="slideshow bg-gray-100 py-16px">
-					<div className="firstSlide ">
+					<div className="firstSlide">
 						{[0, 1, 2].map(index => (
 							<ul className="flex items-center justify-center" key={index}>
 								{companies.map(company => (
@@ -145,7 +145,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* why use us   */}
+			{/* why use us */}
 			<section id="why-convoy" className="flex flex-col justify-center items-center pt-80px">
 				<div className="bg-primary-25 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 					<div className="mr-16px w-24px h-24px rounded-100px bg-success-400 flex justify-center items-center">
