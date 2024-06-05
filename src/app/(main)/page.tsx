@@ -89,7 +89,7 @@ export default function Home() {
 		{ name: 'xendit', url: 'https://www.xendit.co/', class: 'h-28px' },
 		{ name: 'spruce', url: 'https://sprucehealth.com/', class: 'h-28px' },
 		{ name: 'caxton', url: 'https://www.caxton.io/', class: 'h-20px' },
-		{ name: 'neymar', url: 'https://neynar.com/', class: 'h-26px' },
+		{ name: 'neynar', url: 'https://neynar.com/', class: 'h-26px' },
 		{ name: 'piggyvest-logo', url: 'https://www.piggyvest.com/', class: 'h-30px' },
 		{ name: 'trustmi', url: 'https://www.trustmi.ai/', class: 'h-24px' },
 		{ name: 'sline', url: 'https://www.sline.io/', class: 'h-26px' },
