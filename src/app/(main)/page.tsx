@@ -81,18 +81,19 @@ export default function Home() {
 	];
 
 	const companies = [
-		{ name: 'testlify', url: 'https://testlify.com/', class:'h-28px' },
-		{ name: 'mono', url: 'https://mono.co/', class:'h-20px' },
-		{ name: 'xendit', url: 'https://www.xendit.co/', class:'h-28px' },
-		{ name: 'caxton', url: 'https://www.caxton.io/', class:'h-20px' },
-		{ name: 'maple', url: 'https://maplebilling.com/', class:'h-30px' },
-		{ name: 'piggyvest-logo', url: 'https://www.piggyvest.com/', class:'h-30px' },
-		{ name: 'trustmi', url: 'https://www.trustmi.ai/', class:'h-24px' },
-		{ name: 'spruce', url: 'https://sprucehealth.com/', class:'h-28px' },
-		{ name: 'sline', url: 'https://www.sline.io/', class:'h-26px' },
-		{ name: 'freshtrack', url: 'https://www.freshtrack.ma/', class:'h-36px mx-20px -mt-8px' },
-		{ name: 'neymar', url: 'https://neynar.com/', class:'h-26px' },
-		{ name: 'pinata', url: 'https://pinata.cloud/', class:'h-28px' }
+		{ name: 'pinata', url: 'https://pinata.cloud/', class: 'h-28px' },
+		{ name: 'airstack', url: 'https://www.airstack.xyz/', class: 'h-34px' },
+		{ name: 'maple', url: 'https://maplebilling.com/', class: 'h-30px' },
+		{ name: 'testlify', url: 'https://testlify.com/', class: 'h-28px' },
+		{ name: 'mono', url: 'https://mono.co/', class: 'h-20px' },
+		{ name: 'xendit', url: 'https://www.xendit.co/', class: 'h-28px' },
+		{ name: 'spruce', url: 'https://sprucehealth.com/', class: 'h-28px' },
+		{ name: 'caxton', url: 'https://www.caxton.io/', class: 'h-20px' },
+		{ name: 'neynar', url: 'https://neynar.com/', class: 'h-26px' },
+		{ name: 'piggyvest-logo', url: 'https://www.piggyvest.com/', class: 'h-30px' },
+		{ name: 'trustmi', url: 'https://www.trustmi.ai/', class: 'h-24px' },
+		{ name: 'sline', url: 'https://www.sline.io/', class: 'h-26px' },
+		{ name: 'freshtrack', url: 'https://www.freshtrack.ma/', class: 'h-36px mx-20px -mt-8px' }
 	];
 	return (
 		<main>
@@ -127,13 +128,13 @@ export default function Home() {
 
 			<section className="">
 				<p className="text-center text-gray-500 text-16 mb-40px">Trusted by great teams all over the world</p>
-
+				
 				<div className="slideshow bg-gray-100 py-16px">
 					<div className="firstSlide">
 						{[0, 1, 2].map(index => (
 							<ul className="flex items-center justify-center" key={index}>
 								{companies.map(company => (
-									<li className="min-w-[200px] flex justify-center">
+									<li className="min-w-[200px] flex justify-center" key={company.name}>
 										<a target="_blank" href={company.url}>
 											<img src={`/svg/${company.name}.svg`} alt={`${company.name} logo`} className={company.class} />
 										</a>
