@@ -7,6 +7,7 @@ import ArrowRightIcon from '../../../public/svg/arrow-right-icon.svg';
 import Illustration from '../../../public/static/2nd-illustration.png';
 import { useState } from 'react';
 import GetStarted from '../components/GetStarted';
+import Comments from '../components/Comments';
 
 export default function Home() {
 	const [activeTab, setActiveTab] = useState('cloud');
@@ -81,18 +82,18 @@ export default function Home() {
 	];
 
 	const companies = [
-		{ name: 'testlify', url: 'https://testlify.com/', class:'h-28px' },
-		{ name: 'mono', url: 'https://mono.co/', class:'h-20px' },
-		{ name: 'xendit', url: 'https://www.xendit.co/', class:'h-28px' },
-		{ name: 'caxton', url: 'https://www.caxton.io/', class:'h-20px' },
-		{ name: 'maple', url: 'https://maplebilling.com/', class:'h-30px' },
-		{ name: 'piggyvest-logo', url: 'https://www.piggyvest.com/', class:'h-30px' },
-		{ name: 'trustmi', url: 'https://www.trustmi.ai/', class:'h-24px' },
-		{ name: 'spruce', url: 'https://sprucehealth.com/', class:'h-28px' },
-		{ name: 'sline', url: 'https://www.sline.io/', class:'h-26px' },
-		{ name: 'freshtrack', url: 'https://www.freshtrack.ma/', class:'h-36px mx-20px -mt-8px' },
-		{ name: 'neymar', url: 'https://neynar.com/', class:'h-26px' },
-		{ name: 'pinata', url: 'https://pinata.cloud/', class:'h-28px' }
+		{ name: 'testlify', url: 'https://testlify.com/', class: 'h-28px' },
+		{ name: 'mono', url: 'https://mono.co/', class: 'h-20px' },
+		{ name: 'xendit', url: 'https://www.xendit.co/', class: 'h-28px' },
+		{ name: 'caxton', url: 'https://www.caxton.io/', class: 'h-20px' },
+		{ name: 'maple', url: 'https://maplebilling.com/', class: 'h-30px' },
+		{ name: 'piggyvest-logo', url: 'https://www.piggyvest.com/', class: 'h-30px' },
+		{ name: 'trustmi', url: 'https://www.trustmi.ai/', class: 'h-24px' },
+		{ name: 'spruce', url: 'https://sprucehealth.com/', class: 'h-28px' },
+		{ name: 'sline', url: 'https://www.sline.io/', class: 'h-26px' },
+		{ name: 'freshtrack', url: 'https://www.freshtrack.ma/', class: 'h-36px mx-20px -mt-8px' },
+		{ name: 'neymar', url: 'https://neynar.com/', class: 'h-26px' },
+		{ name: 'pinata', url: 'https://pinata.cloud/', class: 'h-28px' }
 	];
 	return (
 		<main>
@@ -133,7 +134,7 @@ export default function Home() {
 						{[0, 1, 2].map(index => (
 							<ul className="flex items-center justify-center" key={index}>
 								{companies.map(company => (
-									<li className="min-w-[200px] flex justify-center">
+									<li className="min-w-[200px] flex justify-center" key={company.name}>
 										<a target="_blank" href={company.url}>
 											<img src={`/svg/${company.name}.svg`} alt={`${company.name} logo`} className={company.class} />
 										</a>
@@ -334,8 +335,10 @@ export default function Home() {
 				</div>
 			</section>
 
+			<Comments></Comments>
+
 			{/* architecture infrastructure */}
-			<section className="bg-[#fcfcfc] py-60px desktop:py-80px px-24px desktop:px-64px">
+			{/* <section className="bg-[#fcfcfc] py-60px desktop:py-80px px-24px desktop:px-64px">
 				<div className="max-w-[1234px] mx-auto">
 					<h2 className="font-bold desktop:text-32 mb-22px">
 						Developers use Convoy Webhooks Gateway to securely ingest, persist, debug, deliver and manage millions of events reliably...
@@ -355,10 +358,10 @@ export default function Home() {
 						<Image src={Illustration} alt="infrastructure image" />
 					</div>
 				</div>
-			</section>
+			</section> */}
 
 			{/* offerings  */}
-			<section className="max-w-[1234px] mx-auto pt-60px px-20px desktop:pt-180px pb-60px desktop:pb-116px">
+			{/* <section className="max-w-[1234px] mx-auto pt-60px px-20px desktop:pt-180px pb-60px desktop:pb-116px">
 				<div className="bg-primary-25 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 					<div className="mr-16px w-24px h-24px rounded-100px bg-warning-400 flex justify-center items-center">
 						<svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -371,9 +374,9 @@ export default function Home() {
 					Work more efficiently!
 				</div>
 				<h2 className="desktop:text-[48px] desktop:leading-[60px] font-bold max-w-[842px]">All-in-one Webhooks Gateway for all your event needs</h2>
-			</section>
+			</section> */}
 
-			<section>
+			{/* <section>
 				<div className="slideshow py-30px">
 					<div className="firstSlide">
 						{offerings.map((offer, i) => (
@@ -399,7 +402,7 @@ export default function Home() {
 						))}
 					</div>
 				</div>
-			</section>
+			</section> */}
 
 			<GetStarted></GetStarted>
 
