@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function Comments() {
 	const businessComments = [
 		{
 			name: 'Subomi Oluwalana',
-			company: 'neymar',
+			company: 'neynar',
 			companyUrl: 'https://neynar.com/',
 			role: 'CEO',
 			image: 'subomi',
@@ -16,7 +16,7 @@ export default function Comments() {
 		},
 		{
 			name: 'Subomi Oluwalana',
-			company: 'neymar',
+			company: 'neynar',
 			companyUrl: 'https://neynar.com/',
 			role: 'CEO',
 			image: 'subomi',
@@ -28,7 +28,7 @@ export default function Comments() {
 		},
 		{
 			name: 'Subomi Oluwalana',
-			company: 'neymar',
+			company: 'neynar',
 			companyUrl: 'https://neynar.com/',
 			role: 'CEO',
 			image: 'subomi',
@@ -40,7 +40,7 @@ export default function Comments() {
 		},
 		{
 			name: 'Subomi Oluwalana',
-			company: 'neymar',
+			company: 'neynar',
 			companyUrl: 'https://neynar.com/',
 			role: 'CEO',
 			image: 'subomi',
@@ -52,7 +52,7 @@ export default function Comments() {
 		},
 		{
 			name: 'Subomi Oluwalana',
-			company: 'neymar',
+			company: 'neynar',
 			companyUrl: 'https://neynar.com/',
 			role: 'CEO',
 			image: 'subomi',
@@ -61,18 +61,10 @@ export default function Comments() {
                 well as some basic HTML. The design includes a left navigation made up of 
                 images and a large image gallery on the right that lets us scroll through 
                 each image individually.`
-		}
+		},
 	];
 
 	const [count, setCount] = useState(0);
-	const cArray = Array.from({ length: businessComments.length }, (v, i) => i);
-	const [countArray, setCountArray] = useState(cArray);
-
-	const startCarousel = () => {
-		setInterval(() => {
-			setCount(count < businessComments.length - 1 ? count + 1 : 0);
-		}, 10000);
-	};
 
 	const goToPreviousComment = () => {
 		const screenWidth = screen.width;
@@ -93,7 +85,6 @@ export default function Comments() {
 		let scrollLength = screenWidth > 630 ? 624 : 324;
 
 		if (count === businessComments.length - 1) {
-			scrollLength = screenWidth > 630 ? 624 : 324;
 			if (element) element.scrollLeft -= scrollLength * businessComments.length;
 			setCount(0);
 		} else {
@@ -102,15 +93,12 @@ export default function Comments() {
 		}
 	};
 
-	useEffect(() => {
-		console.log(countArray);
-	}, []);
 	return (
 		<>
 			<div className="flex gap-24px w-full overflow-hidden p-24px" id="commentSection">
 				{businessComments.map((comment, i) => (
 					<div
-						className="bg-white-100 border border-primary-50 rounded-16px shadow-default p-24px footer:p-16px flex flex-col justify-center gap-30px min-w-[600px] footer:min-w-[300px] cursor-pointer"
+						className="bg-white-100 border border-primary-50 rounded-16px shadow-default p-24px footer:p-16px flex flex-col justify-center gap-40px min-w-[600px] footer:min-w-[300px] cursor-pointer"
 						key={i}>
 						<a target="_blank" href={comment.companyUrl} className="m-auto">
 							<img src={`/svg/${comment.company}.svg`} alt={`${comment.company} logo`} className="h-20px" />
@@ -128,10 +116,10 @@ export default function Comments() {
 						</div>
 					</div>
 				))}
-				<div className="min-w-[600px] footer:min-w-[300px]"></div>
+				<div className="min-w-[600px] tab-min:min-w-[80px] footer:hidden"></div>
 			</div>
 
-			<div className="flex items-end justify-between px-24px mt-24px">
+			<div className="flex items-end justify-between px-26px mt-24px">
 				<div className="flex gap-4px">
 					{businessComments.map((_, i) => (
 						<button key={i} className={`w-10px h-10px rounded-[20px] ${count === i ? 'bg-primary-400' : 'bg-primary-50'}`}></button>
