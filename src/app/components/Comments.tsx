@@ -110,7 +110,7 @@ export default function Comments() {
 							</div>
 							<div>
 								<p className="mb-2px text-12 footer:text-10 font-semibold uppercase text-gray-400 tracking-wide">
-									{comment.name}, {comment.role} @ ${comment.company}
+									{comment.name}, {comment.role} @ {comment.company}
 								</p>
 							</div>
 						</div>
