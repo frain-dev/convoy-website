@@ -98,7 +98,7 @@ export default function Comments() {
 			<div className="flex gap-24px w-full overflow-hidden p-24px" id="commentSection">
 				{businessComments.map((comment, i) => (
 					<div
-						className="bg-white-100 border border-primary-50 rounded-16px shadow-default p-24px footer:p-16px flex flex-col justify-center gap-40px min-w-[600px] footer:min-w-[300px] cursor-pointer"
+						className="bg-white-100 border border-primary-50 rounded-16px shadow-default p-24px footer:p-16px flex flex-col justify-center gap-40px min-w-[600px] footer:min-w-[300px] cursor-pointer duration-1000 transition-all ease-in-out hover:border-primary-100"
 						key={i}>
 						<a target="_blank" href={comment.companyUrl} className="m-auto">
 							<img src={`/svg/${comment.company}.svg`} alt={`${comment.company} logo`} className="h-20px" />
