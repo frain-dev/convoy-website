@@ -1,7 +1,7 @@
 ---
 title: "API Authentication: Techniques & Best practices from Leading API Platforms"
-feature_image: 
-post_image: 
+feature_image: api-authentication-techniques.png
+post_image: api-authentication-techniques.png
 primary_author:
     name: Amarachi Aso
     twitter: AsoAmarachi
@@ -12,13 +12,14 @@ tags:
     - API Authetication
 featured: false
 description: So you want to build secure APIs? Learn about how popular API platforms are implementing the most common API authentication techniques, then choose the best method for your use case.
-published_at: 2023-06-06T17:00:00.000+00:00
+published_at: 2024-06-10T17:00:00.000+00:00
 ---
 
+![api-authentication-techniques.png](/blog-assets/api-authentication-techniques.png)
 
 A large portion of the software market is API-driven, hence it makes sense that many startups and companies building new products want to implement APIs as a way for developers to interact or integrate with their services.
 
-This is a series that will evaluate the mechanisms and best practices that leading API companies are using to build secure, scalable, and user-friendly APIs (And webhooks?). 
+This is a series that will evaluate the mechanisms and best practices that leading API companies are using to build secure, scalable, and user-friendly APIs. 
 
 The first in the series will focus on API authentication.
 
@@ -119,3 +120,6 @@ No one authentication method is 100% secure, each method is simply another layer
 
 The next in the series will go in-depth on authorization. Hope to see you there!
 
+### Getting Started with Convoy
+
+Already have an API, and want to send or receive webhooks from it? Get started in minutes at [cloud.getconvoy.io/signup](http://cloud.getconvoy.io/signup).
