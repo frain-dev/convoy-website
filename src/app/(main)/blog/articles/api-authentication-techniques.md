@@ -28,6 +28,19 @@ There are multiple ways to implement API authentication. They are often one of t
 In general, this article will explain what API authentication is, then expound on the mechanisms that existing successful API providers are using for their authentication, and what to consider when deciding the method of authentication to adopt based on your use case.
 
 
+#### TL;DR
+
+Most common Authentication methods and popular platforms using them.
+
+**API Keys:** Google Maps API & Stripe, among others.
+
+**Personal Access Tokens:** Github & Airtable among others.
+
+**OAuth:** Spotify & X(twitter) among others.
+
+Adoption of any of these techniques should depend on how your API will be used, and your specific security needs.
+
+
 ### What is API Authentication
 
 Simply put, API authentication refers to the act of restricting access to API resources to only trusted entities. To determine a trusted entity, an API server would expect an entity to meet certain criteria, such as possessing a valid credential. Authentication here is closely related to authorization, but their roles differ. API authorization would refer to a means of specifying what an entity or user can or cannot do with an API even after they have gained access to it.
