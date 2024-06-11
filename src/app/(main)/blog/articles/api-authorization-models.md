@@ -1,7 +1,7 @@
 ---
-title: "API Authorization: Modern Techniques & Best practices "
-feature_image: 
-post_image: 
+title: "API Authorization: Modern Techniques & Best practices"
+feature_image: api-authorization-models.png
+post_image: api-authorization-models.png
 primary_author:
     name: Amarachi Aso
     twitter: AsoAmarachi
@@ -11,9 +11,11 @@ tags:
     - APIs
     - API Authorization
 featured: false
-description: So you want to build secure APIs? Learn about how popular API platforms are implementing the most common API authentication techniques, then choose the best method for your use case.
+description: Read about API authorization models and the best place in your stack to implement them.
 published_at: 2024-06-13T17:00:00.000+00:00
 ---
+
+![api-authorization-models.png](/blog-assets/api-authorization-models.png)
 
 API security does not stop at authentication, it goes further into proper authorization and even beyond. This is the second part of a series about modern API best practices. The first part focused solely on authentication. This one will take a closer look at modern authorization mechanisms and the kind of access control needs they're ideal for.
 
@@ -32,43 +34,41 @@ One or a combination of the following models can be used when creating your acce
 
 Involves creating roles with predefined sets of permissions. Users who are assigned any of roles inherits the permissions associated with the role. As an example, an online store API could have roles such as customer, vendor, admin, and super admin.
 
-Use case: Suitable for APIs where each onboarded user can only play one kind of clear-cut role. For instance, given the previous example of an online store API, at no point would a user who is onboarded as a customer need to perform an administrative task such as to edit or remove a product.
+**Use case:** Suitable for APIs where each onboarded user can only play one kind of clear-cut role. For instance, given the previous example of an online store API, at no point would a user who is onboarded as a customer need to perform an administrative task such as to edit or remove a product.
 
 
 #### Attribute-Based Access Control (ABAC):
 
-In ABAC, you define attributes and then associate a set of permissions with each of the attributes, so that users or other entities who possess any of the attributes at the time of interacting with the API also have the associated permissions. Possible attributes vary greatly depending on use case requirements. In a movie streaming/download application, attributes could include location, age, and device type. (**return: do I need to mention policy here?)
+In ABAC, you define attributes and then associate a set of permissions with each of the attributes, so that users or other entities who possess any of the attributes at the time of interacting with the API also have the associated permissions. Possible attributes vary greatly depending on use case requirements. In a movie streaming/download application, attributes could include location, age, and device type.
 
 
-Use case: Ideal for APIs requiring high customization and context sensitivity. If you need to regulate access to certain resources and data based on factors such as location, age, time, resource ownership, and even role, then this method of access control will meet your needs.
+**Use case:** Ideal for APIs requiring high customization and context sensitivity. If you need to regulate access to certain resources and data based on factors such as location, age, time, resource ownership, and even role, then this method of access control will meet your needs.
 
 
 #### Relationship-Based Access Control (ReBAC):
 
 ReBAC works by defining access control policies in terms of relationships between entities. Take a social media application for instance, Users might only be able to send direct messages to their mutuals, see posts from people they follow, or the “follows” of their “follows”. In a healthcare application, a caregiver might be allowed to view the medical records of the patient they care for, and the doctor treating this patient might be able to view and edit the same record. 
 
-Use case: ReBAC is particularly well-suited for applications that involve complex relationships between entities.
+**Use case:** ReBAC is particularly well-suited for applications that involve complex relationships between entities.
 
 
 #### Permission-based authorization:
 
 This method involves directly assigning specific permissions to individual entities. There are two common ways this is done. One is when a user delegates some of their privileges to a third-party program by means of an access token, the third-party program could then call and access API endpoints and resources on behalf of the user. Two is when entities are directly assigned specific permissions on the system level, and not through delegation by a user.
 
-Use case: Effective for APIs where users should be able to grant fine-grained access to third-party programs such as scripts and automation tools. And for APIs where permission requirements are mostly unique per use or entity.
+**Use case:** Effective for APIs where users should be able to grant fine-grained access to third-party programs such as scripts and automation tools. And for APIs where permission requirements are mostly unique per use or entity.
 
 
 #### Scope-based authorization:
 
 This is the method of access control available in OAuth 2.0. The permissions granted to an application are those available within the scopes requested during the initial token exchange. It works similarly to Permission-based authorization but for OAuth 2.0 flows.
 
-Use case: Useful for APIs where third-party applications require fine-grained access to a user's resources. 
+**Use case:** Useful for APIs where third-party applications require fine-grained access to a user's resources. 
 
 
-### API Authorization Check points | API Authorization Levels
+### Authorization Check Points
 
 Authorization checks can be implemented on different layers of an API for maximum security. OWASP lists [top 10 Security Risks](https://owasp.org/API-Security/editions/2023/en/0x11-t10/) associated with APIs, among them, three have to do especially with faulty authorization. To prevent these vulnerabilities, it's important to implement the right authorization policy at both the API gateway and within your API code. A closer look at what can be done at each of these locations.
-
-
 
 
 ### API Gateway
@@ -91,7 +91,7 @@ Without a proper function level authorization policy, a user could:
 
 The goal is to ensure that only authorized users can call endpoints or use certain HTTP methods. To do this, the API gateway could serve as a policy enforcement point. For every API request, check the role of the caller, and ensure that they have sufficient privilege to perform the requested operation. 
 
-![A diagram illustrating Function Level Authorization](downloads/function-level-authorization.png)
+![A diagram illustrating Function Level Authorization](/blog-assets/function-level-authorization.png)
 
 
 2) Another authorization level that can be implemented on the gateway is Object Property Level Authorization. This would refer to a means to check that only authorized users can view certain properties in the API response object, or include certain properties in their request object.
@@ -118,9 +118,11 @@ A vendor is not intended to be able to declare their product as featured, but th
 
 - Validate the request objects sent by clients to ensure they follow a predefined structure appropriate for the different user roles the API supports. 
 
-- For the response object, the API code should also define object schemas for each user role or level you support which would curtain only the properties necessary for that role. Otherwise, implement a way for the api gateway to stripe out unnecessary properties from the response object.
+![Illustrates Object Property Level Authorization on request objects](/blog-assets/object-property-level-authorization1.png)
 
-![Illustrates Object Property Level Authorization](downloads/object-property-level-authorization.png)
+- For the response object, the API code should also define response object schemas for each user role or level you support which would contain only the properties necessary for that role. Otherwise, implement a way for the api gateway to stripe out unnecessary properties from the response object.
+
+![Illustrates Object Property Level Authorization](/blog-assets/object-property-level-authorization2.png)
 
 
 ### API Code
@@ -136,7 +138,7 @@ For every function that uses an input from the client to access or manipulate a 
 
 To reduce the chances of users guessing the IDs of other users, use UUIDs to generate IDs and other similar means of identifying objects.
 
-![Illustrates Object Level Authorization](downloads/object-level-authorization.png)
+![Illustrates Object Level Authorization](/blog-assets/object-level-authorization.png)
 
 
 ### Best Practices for API Authorization
@@ -155,4 +157,10 @@ Keep Audits and Logs: This helps with detecting anomalies, identifying potential
 
 Until this point, you got to learn about 5 different access control models and their use cases, the different authorization levels and where in your stack to best implement them, and then some best practices to keep in mind as you design your API authorization mechanism.
 
-The next article in this series will be about pagination in APIs. Again, hope to see you there!
+The next article in this series will be about pagination in APIs. Again, hope to see you there.
+
+
+### Getting Started with Convoy
+
+Already have an API, and want to send or receive webhooks from it? Get started in minutes at [cloud.getconvoy.io/signup](http://cloud.getconvoy.io/signup).
+
