@@ -1,7 +1,7 @@
 ---
 title: "API Pagination: How Leading API Platforms Implement It"
-feature_image: 
-post_image: 
+feature_image: api-pagination-types.png
+post_image: api-pagination-types.png
 primary_author:
     name: Amarachi Aso
     twitter: AsoAmarachi
@@ -12,8 +12,10 @@ tags:
     - API Pagination
 featured: false
 description: Find out about the slightly different ways leading API platforms are implementing the two most common pagination types for APIs.
-published_at: 2024-06-13T17:00:00.000+00:00
+published_at: 2024-06-20T17:00:00.000+00:00
 ---
+
+![api-pagination-types.png](/blog-assets/api-pagination-types.png)
 
 API endpoints that have the possibility of returning a large dataset as a response, should ideally support pagination. Pagination is the technique used to return data in small batches, as against returning all the available data that matches the request made at a go. In the absence of this, the problems that arise include a response time that gets slower as data grows, and the backend server or the client side retrieving or receiving an overwhelming amount of data that could cause either of them to shut down.
 
