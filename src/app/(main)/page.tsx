@@ -93,6 +93,7 @@ export default function Home() {
 		{ name: 'piggyvest-logo', url: 'https://www.piggyvest.com/', class: 'h-30px' },
 		{ name: 'trustmi', url: 'https://www.trustmi.ai/', class: 'h-24px' },
 		{ name: 'sline', url: 'https://www.sline.io/', class: 'h-26px' },
+		{ name: 'elenpay', url: 'https://elenpay.tech/', class: 'h-24px' },
 		{ name: 'freshtrack', url: 'https://www.freshtrack.ma/', class: 'h-36px mx-20px -mt-8px' }
 	];
 	return (
