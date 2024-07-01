@@ -174,6 +174,10 @@
 			{
 				"title": "Release Process",
 				"link": "/docs/resources/release-process"
+			},
+			{
+				"title": "Convoy Cloud Upgrade Policy",
+				"link": "/docs/resources/cloud-upgrade-policy"
 			}
 		]
 	},
