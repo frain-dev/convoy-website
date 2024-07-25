@@ -6,8 +6,8 @@ export default function Comments() {
 			name: 'Manan Patel',
 			company: 'neynar',
 			companyUrl: 'https://neynar.com/',
-			role: 'CTO at Neynar, Ex-Coinbase',
-			image: 'manan-patel',
+			role: 'Co-Founder and CTO at Neynar, Ex-Coinbase',
+			image: 'manan',
 			feedback: `We tried a few different solutions in the market but what 
 					eventually got us sold on Convoy was the dynamic filtering via subscriptions. 
 					It is a game changer for us because it enables Neynar developers to have 
@@ -35,7 +35,7 @@ export default function Comments() {
 			name: 'Aravindkumar Rajendiran',
 			company: 'maple',
 			companyUrl: 'https://maplebilling.com/',
-			role: 'Co-Founder and CTO at Maple Billing, E',
+			role: 'Co-Founder and CTO at Maple Billing',
 			image: 'aravindkumar-rajendiran',
 			feedback: `Convoy had everything (retries, signatures, SDKs) we needed for a webhook 
 			gateway. We were able to get it up and running within a few hours instead of months. 
@@ -89,7 +89,7 @@ export default function Comments() {
 							</div>
 							<div>
 								<p className="mb-2px text-12 footer:text-10 font-semibold uppercase text-gray-400 tracking-wide">
-									{comment.name}, {comment.role} @ {comment.company}
+									{comment.name}, {comment.role}
 								</p>
 							</div>
 						</div>
