@@ -23,8 +23,7 @@ export default function Header() {
 				{ name: 'Community Edition', route: '/community', type: 'route' },
 				{ name: 'Enterprise Edition', route: '/enterprise', type: 'route' },
 				{ name: 'Convoy Cloud', route: '/cloud', type: 'route' },
-				{ name: 'Convoy Playground', route: 'https://playground.getconvoy.io', type: 'external' },
-				// { name: 'Nohooks', route: 'https://nohooks.io', type: 'external' }
+				{ name: 'Convoy Playground', route: 'https://playground.getconvoy.io', type: 'external' }
 			]
 		},
 		{ name: 'Pricing', route: '/pricing', type: 'route' },
@@ -32,12 +31,13 @@ export default function Header() {
 			name: 'Resources',
 			type: 'dropdown',
 			children: [
+				{ name: 'Slack', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'external'},
 				{ name: 'Blog', route: '/blog', type: 'route' },
 				{ name: 'Docs', route: 'https://docs.getconvoy.io', type: 'external' },
 				{ name: 'Tutorials', route: '/blog?tag=Tutorial', type: 'route' }
 			]
 		},
-		{ name: 'Community', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'link' }
+		{ name: 'Community', route: 'https://community.getconvoy.io', type: 'link' }
 	];
 
 	const getGithubStars = async () => {
