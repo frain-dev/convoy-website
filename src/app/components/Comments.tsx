@@ -21,7 +21,7 @@ export default function Comments() {
 			company: 'spruce',
 			companyUrl: 'https://sprucehealth.com/',
 			role: 'Principal Engineer at Spruce Health',
-			image: 'michael-raines',
+			image: 'michael',
 			feedback: `We considered building a webhooks system internally, but quickly realized 
 				that reaching the level of quality and robustness our customers deserve would be 
 				highly time-consuming. After evaluating alternative paths we saw that Convoy offered 
