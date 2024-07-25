@@ -136,7 +136,6 @@ export default function Pricing() {
 	const dedicatedPlans = [
 		{ id: 1, name: 'CC-30', price: 99, value: 50 },
 		{ id: 2, name: 'CC-50', price: 350, value: 375 },
-		{ id: 3, name: 'CC-70', price: 1000, value: 1000 }
 	];
 
 	const notes = [
@@ -242,9 +241,6 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 				background = 'bg-gray-200';
 				break;
 			case 2:
-				background = 'bg-gradient-to-r from-success-200 from-50% to-gray-200 to-50%';
-				break;
-			case 3:
 				background = 'bg-success-200';
 				break;
 			default:
@@ -331,7 +327,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 															id="rangeSelector"
 															type="range"
 															min={1}
-															max={3}
+															max={2}
 															defaultValue={selectedPlanId}
 															onChange={event => {
 																setSelectedPlanId(Number(event?.target?.value));
