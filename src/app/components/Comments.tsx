@@ -36,7 +36,7 @@ export default function Comments() {
 			company: 'maple',
 			companyUrl: 'https://maplebilling.com/',
 			role: 'Co-Founder and CTO at Maple Billing',
-			image: 'aravindkumar-rajendiran',
+			image: 'aravindkumar',
 			feedback: `Convoy had everything (retries, signatures, SDKs) we needed for a webhook 
 			gateway. We were able to get it up and running within a few hours instead of months. 
 			It allowed our engineering team to focus on building our core product.`
