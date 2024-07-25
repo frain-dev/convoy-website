@@ -3,65 +3,44 @@ import { useState } from 'react';
 export default function Comments() {
 	const businessComments = [
 		{
-			name: 'Subomi Oluwalana',
+			name: 'Manan Patel',
 			company: 'neynar',
 			companyUrl: 'https://neynar.com/',
-			role: 'CEO',
-			image: 'subomi',
-			feedback: `There’s no JavaScript here, whatsoever! No jQuery plugins. No trickiness. 
-                Just a couple of new-ish CSS properties that I’ve been experimenting with as 
-                well as some basic HTML. The design includes a left navigation made up of 
-                images and a large image gallery on the right that lets us scroll through 
-                each image individually.`
+			role: 'CTO at Neynar, Ex-Coinbase',
+			image: 'manan-patel',
+			feedback: `We tried a few different solutions in the market but what 
+					eventually got us sold on Convoy was the dynamic filtering via subscriptions. 
+					It is a game changer for us because it enables Neynar developers to have 
+					programmatic access to fine-tune the exact information they need vs. a firehose 
+					of events that they filter on their end. Convoy was also extremely easy to 
+					setup out of the box. We just cloned the repo and had test webhooks 
+					going through it within the hour.`
 		},
 		{
-			name: 'Subomi Oluwalana',
-			company: 'neynar',
-			companyUrl: 'https://neynar.com/',
-			role: 'CEO',
-			image: 'subomi',
-			feedback: `There’s no JavaScript here, whatsoever! No jQuery plugins. No trickiness. 
-                Just a couple of new-ish CSS properties that I’ve been experimenting with as 
-                well as some basic HTML. The design includes a left navigation made up of 
-                images and a large image gallery on the right that lets us scroll through 
-                each image individually.`
+			name: 'Michael Raines',
+			company: 'spruce',
+			companyUrl: 'https://sprucehealth.com/',
+			role: 'Principal Engineer at Spruce Health',
+			image: 'michael-raines',
+			feedback: `We considered building a webhooks system internally, but quickly realized 
+				that reaching the level of quality and robustness our customers deserve would be 
+				highly time-consuming. After evaluating alternative paths we saw that Convoy offered 
+				a high quality feature set that added immediate value and would be a significant 
+				investment to develop ourselves. Convoy allows us to provide a higher quality 
+				solution to our customers. The solid fundamental architecture and scalability  
+				mindset of Convoy's design gives us confidence that it can grow with us, and allow 
+				us to focus on our core business.`
 		},
 		{
-			name: 'Subomi Oluwalana',
-			company: 'neynar',
-			companyUrl: 'https://neynar.com/',
-			role: 'CEO',
-			image: 'subomi',
-			feedback: `There’s no JavaScript here, whatsoever! No jQuery plugins. No trickiness. 
-                Just a couple of new-ish CSS properties that I’ve been experimenting with as 
-                well as some basic HTML. The design includes a left navigation made up of 
-                images and a large image gallery on the right that lets us scroll through 
-                each image individually.`
-		},
-		{
-			name: 'Subomi Oluwalana',
-			company: 'neynar',
-			companyUrl: 'https://neynar.com/',
-			role: 'CEO',
-			image: 'subomi',
-			feedback: `There’s no JavaScript here, whatsoever! No jQuery plugins. No trickiness. 
-                Just a couple of new-ish CSS properties that I’ve been experimenting with as 
-                well as some basic HTML. The design includes a left navigation made up of 
-                images and a large image gallery on the right that lets us scroll through 
-                each image individually.`
-		},
-		{
-			name: 'Subomi Oluwalana',
-			company: 'neynar',
-			companyUrl: 'https://neynar.com/',
-			role: 'CEO',
-			image: 'subomi',
-			feedback: `There’s no JavaScript here, whatsoever! No jQuery plugins. No trickiness. 
-                Just a couple of new-ish CSS properties that I’ve been experimenting with as 
-                well as some basic HTML. The design includes a left navigation made up of 
-                images and a large image gallery on the right that lets us scroll through 
-                each image individually.`
-		},
+			name: 'Aravindkumar Rajendiran',
+			company: 'maple',
+			companyUrl: 'https://maplebilling.com/',
+			role: 'Co-Founder and CTO at Maple Billing, E',
+			image: 'aravindkumar-rajendiran',
+			feedback: `Convoy had everything (retries, signatures, SDKs) we needed for a webhook 
+			gateway. We were able to get it up and running within a few hours instead of months. 
+			It allowed our engineering team to focus on building our core product.`
+		}
 	];
 
 	const [count, setCount] = useState(0);
