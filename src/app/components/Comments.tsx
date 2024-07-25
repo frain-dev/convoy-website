@@ -77,23 +77,21 @@ export default function Comments() {
 			<div className="flex gap-24px w-full overflow-hidden p-24px" id="commentSection">
 				{businessComments.map((comment, i) => (
 					<div
-						className="bg-white-100 border border-primary-50 rounded-16px shadow-default p-24px footer:p-16px flex flex-col justify-center gap-40px min-w-[600px] footer:min-w-[300px] cursor-pointer duration-1000 transition-all ease-in-out hover:border-primary-100"
+						className="bg-white-100 border border-primary-50 rounded-16px shadow-default p-24px footer:p-16px flex flex-col justify-center min-w-[660px] footer:min-w-[300px] cursor-pointer duration-1000 transition-all ease-in-out hover:border-primary-100"
 						key={i}>
-						<a target="_blank" href={comment.companyUrl} className="m-auto">
-							<img src={`/svg/${comment.company}.svg`} alt={`${comment.company} logo`} className="h-20px" />
-						</a>
-						<p className="text-16 footer:text-12 text-gray-700 text-center">"{comment.feedback}"</p>
+						<div className="pt-20px mb-40px m-auto">
+							<a target="_blank" href={comment.companyUrl} className="m-auto">
+								<img src={`/svg/${comment.company}.svg`} alt={`${comment.company} logo`} className="h-20px" />
+							</a>
+						</div>
+						<p className="text-16 footer:text-12 text-gray-700 text-center h-220px mb-24px">"{comment.feedback}"</p>
 						<div className="flex flex-col justify-center items-center gap-12px">
 							<div className="w-40px h-40px overflow-hidden rounded-100px">
 								<img src={`/employees/${comment.image}.jpg`} alt={comment.image} />
 							</div>
-							<div>
-								<p className="mb-2px text-12 footer:text-10 font-semibold uppercase text-gray-400 tracking-wide">
-									{comment.name}
-								</p>
-								<p className="mb-2px text-12 footer:text-10 font-semibold uppercase text-gray-400 tracking-wide">
-									{comment.role}
-								</p>
+							<div className="text-center">
+								<p className="mb-2px text-14 footer:text-10 text-gray-400 tracking-wide">{comment.name}</p>
+								<p className="mb-2px text-14 footer:text-10 text-gray-400 tracking-wide">{comment.role}</p>
 							</div>
 						</div>
 					</div>
