@@ -88,6 +88,7 @@ export default function Home() {
 		{ name: 'testlify', url: 'https://testlify.com/', class: 'h-28px' },
 		{ name: 'mono', url: 'https://mono.co/', class: 'h-20px' },
 		{ name: 'xendit', url: 'https://www.xendit.co/', class: 'h-28px' },
+		{ name: 'marble', url: 'https://www.checkmarble.com/', class: 'h-28px' },
 		{ name: 'spruce', url: 'https://sprucehealth.com/', class: 'h-28px' },
 		{ name: 'caxton', url: 'https://www.caxton.io/', class: 'h-20px' },
 		{ name: 'neynar', url: 'https://neynar.com/', class: 'h-26px' },
