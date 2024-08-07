@@ -51,7 +51,7 @@ To understand how Convoy is used, and the desired end-user experience, we need t
 
 ![convoy-architecture.png](/blog-assets/convoy-architecture.png)
 
-From the architecture described above the data plane is the component we’re interested in. It is the component responsible for ingesting and delivering webhooks to user endpoints. To this end, we designed a robust integration test suite to guarantee we don’t introduce regressions to the data plane as we continue to evolve it.
+From the architecture described above the data plane is the component we’re interested in. It is the component responsible for ingesting and delivering webhooks to user endpoints. To this end, we designed a robust integration test suite so we don't inadvertently introduce regression defects to the data plane as we continue to evolve it.
 
 # **Using TestContainers**
 
@@ -216,8 +216,8 @@ failed to connect to reaper: dial tcp [::1]:49485: connect: connection refused: 
 
 Checking for the root cause of this error, we stumbled upon:
 
-- https://github.com/testcontainers/testcontainers-java/issues/3609 on GitHub
-- https://github.com/testcontainers/testcontainers-go/issues/2563 on GitHub
+- [Could not connect to Ryuk at localhost:49154 on Docker for Windows](https://github.com/testcontainers/testcontainers-java/issues/3609)
+- [[Bug]: compose.dockerCompose.Up errors out with "failed to connect to reaper](https://github.com/testcontainers/testcontainers-go/issues/2563)
 - The official documentation at https://golang.testcontainers.org/features/configuration/#customizing-ryuk-the-resource-reaper,
 
 Despite reviewing these sources meticulously, progress was not forthcoming. We then decided to ignore the error, since we were already cleaning up used resources in the `t.Cleanup` method.
@@ -238,7 +238,7 @@ Other supported Ingest Channels are Amazon SQS, Apache Kafka, Google PubSub and 
 
 ## Fan-Out Events Test Cases
 
-A fan-out is an event delivered to multiple endpoints linked by an `ownerID`(see [docs](https://docs.getconvoy.io/product-manual/events-and-event-deliveries#fan-out)). Similarly, the pseudocode for this flow is:
+A fan-out is an event delivered to multiple endpoints linked by an `ownerID`(see [docs](https://docs.getconvoy.io/product-manual/events-and-event-deliveries#fan-out)). The pseudocode for this flow is:
 
 ```go
 func (f *FanoutEventsTestSuite) Test_FanoutEvent_Success() {
@@ -276,7 +276,7 @@ func (f *FanoutEventsTestSuite) Test_FanoutEvent_NotMatching() {
 }
 ```
 
-Now that we have the foundation of the test suite laid out, we will be able to continue improving the test suite for various other combinations and assertions like Broadcast Events, Dynamic Events, Pub/Sub Ingest, Custom Headers & Idempotency Keys, etc. it to catch regressions before any new releases.
+Now that we have the foundation of the test suite laid out, we will be able to continue improving the test suite for various other combinations and assertions, such as Broadcast Events, Dynamic Events, Pub/Sub Ingest, Custom Headers and Idempotency Keys, etc. to catch regressions before any new releases.
 
 > The goal of our pilot test cases was **correctness**.
 > 
