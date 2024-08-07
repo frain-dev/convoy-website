@@ -9,7 +9,7 @@ primary_tag: News
 tags:
     - News
     - Compliance
-featured: true
+featured: false
 description: We are thrilled to announce Convoy has achieved SOC2 Type 1 compliance after a successful audit validating our data security policies. This post will cover our SOC2 journey and how this certification reflects our commitment to protecting customer information.
 published_at: 2024-02-26T00:00:00.000+00:00
 ---
