@@ -217,7 +217,7 @@ failed to connect to reaper: dial tcp [::1]:49485: connect: connection refused: 
 Checking for the root cause of this error, we stumbled upon:
 
 - [Could not connect to Ryuk at localhost:49154 on Docker for Windows](https://github.com/testcontainers/testcontainers-java/issues/3609)
-- [[Bug]: compose.dockerCompose.Up errors out with "failed to connect to reaper](https://github.com/testcontainers/testcontainers-go/issues/2563)
+- [[Bug]: compose.dockerCompose.Up errors out with "failed to connect to reaper: dial tcp [::1]:49485: connect: connection refused: Connecting to Ryuk on localhost:49485 failed", although containers are up & running](https://github.com/testcontainers/testcontainers-go/issues/2563)
 - The official documentation at https://golang.testcontainers.org/features/configuration/#customizing-ryuk-the-resource-reaper,
 
 Despite reviewing these sources meticulously, progress was not forthcoming. We then decided to ignore the error, since we were already cleaning up used resources in the `t.Cleanup` method.
