@@ -24,15 +24,14 @@ export default function Footer() {
 				{ name: 'Features', link: '/#features' },
 				{ name: 'Open Source', link: 'http://github.com/frain-dev/convoy', isExternal: true },
 				{ name: 'Cloud', link: 'https://cloud.getconvoy.io/login', isExternal: true },
-				{ name: 'Convoy Playground', link: 'https://playground.getconvoy.io', isExternal: true },
-				{ name: 'Nohooks', link: 'https://nohooks.io', isExternal: true }
+				{ name: 'Convoy Playground', link: 'https://playground.getconvoy.io', isExternal: true }
 			]
 		},
 		{
-			title: 'Community',
+			title: 'Speak to us',
 			links: [
 				{ name: 'Slack', link: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', isExternal: true },
-				{ name: 'Github Discussion', link: 'https://github.com/frain-dev/convoy/discussions', isExternal: true }
+				{ name: 'Community', link: 'https://community.getconvoy.io', isExternal: true }
 			]
 		},
 		{
