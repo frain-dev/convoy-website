@@ -69,63 +69,187 @@ export default function Pricing() {
 		{
 			name: 'Community',
 			id: 'community',
-			description: 'Convoy Community Edition is designed for hobbyist developers and small teams',
+			description: 'Convoy Community Edition is designed for hobbyist developers.',
 			price: 'Free',
 			link: 'https://github.com/frain-dev/convoy#installation-getting-started',
 
 			preText: 'Best for developers that:',
 			features: [
-				'Have basic workloads generally. Anything below 10 million events per month is considered basic.',
-				'Do not require advanced customizations. Their focus is to deliver webhooks reliably.',
-				'Do not require advanced access controls. They comprise of single teams.'
+				'Web UI',
+				'Basic Endpoint Management',
+				'Open Telemetry',
+				'Single-Player Mode',
+				'Basic Message Broker Integration',
+				'Basic Webhook Subscriptions',
+				'Idempotent Keys',
+				'Google SSO'
+			]
+		},
+		{
+			name: 'Business',
+			id: 'community',
+			description: 'Convoy Business Edition is designed for small businesses and scale ups',
+			price: '$500',
+			link: 'https://github.com/frain-dev/convoy#installation-getting-started',
+
+			preText: 'Best for developers that:',
+			features: [
+				'Everyting in Community',
+				'Advanced Endpoint Management',
+				'Advanced Message Broker Integration',
+				'Advanced Webhook Subscriptions',
+				'Javascript Functions and Transformations',
+				'Advanced Webhook Filtering & Debugging',
+				'Portal Links',
+				'Events Catalogue',
+				'Webhook Analytics',
 			]
 		},
 		{
 			name: 'Enterprise',
-			id: 'scale',
-			description: 'Convoy Enterprise Edition is designed for larger teams where there exist at least a DevOps or Platform team.',
+			id: 'growth',
+			description: 'Convoy Community Edition is designed for larger enterprises',
 			price: 'Custom Pricing',
 			link: 'https://github.com/frain-dev/convoy#installation-getting-started',
 
-			preText: 'Best for companies that:',
+			preText: 'Best for developers that:',
 			features: [
-				'Have high-performance workloads. This can grow to hundreds of millions of events.',
-				'Require Advanced customisations to completely white-label the experience.',
-				'Require Advanced Access Controls. DevOps team will deploy a gateway to support multiple teams.',
-				'At their scale, technical support with SLA will be desirous.'
+				'Everything in Business plan',
+				'Data Plane Multi-Tenancy',
+				'SSO & SAML',
+				'HashiCorp Vault Integration',
+				'Role-Based Access Controls',
+				'Custom Users & Organisations',
+				'Managed Onboarding and Implementation',
+				'Feature Priority',
+				'BYOC',
+				'White-Labelling',
+				'Audit Logs',
+				'Mutual TLS (mTLS)'
 			]
 		}
 	];
 
 	const comparedPlans = [
-		{ name: 'Dashboard', community: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'Portal Links', community: 'Basic', enterprise: 'Advanced', tooltipContent: 'Use our JS SDK to build a custom dashboard' },
-		{ name: 'Idempotent Keys', community: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'White-Label Headers', community: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'Message Brokers', community: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'Endpoint Management', community: 'true', enterprise: 'true', tooltipContent: 'Retries. rate limiting, timeouts & circuit breaking' },
+		{ name: 'Dashboard', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Portal Links', community: 'false', business: 'true', enterprise: 'true', tooltipContent: 'Use our JS SDK to build a custom dashboard' },
+		{ name: 'Idempotent Keys', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'White-Labeling', community: 'false', business: 'false', enterprise: 'true', tooltipContent: '' },
+		{
+			name: 'Prometheus Metrics with Grafana Dashboards',
+			community: 'false',
+			business: 'true',
+			enterprise: 'true',
+			tooltipContent: `Convoy-specific Prometheus metrics. It’s in beta now. Check the docs out <a href="https://docs.getconvoy.io/product-manual/metrics" target="_blank" class="underline text-gray-700">here</a>`
+		},
+		{
+			name: 'Advanced Endpoint Management',
+			community: 'false',
+			business: 'true',
+			enterprise: 'true',
+			tooltipContent:
+				'This includes fine-grained timeout controls and circuit breaking. With circuit breaking, Convoy sends out error notifications when the endpoint’s error rate crosses the defined threshold.'
+		},
+		{
+			name: 'Forward Proxy + IP Blacklisting',
+			community: 'false',
+			business: 'true',
+			enterprise: 'true',
+			tooltipContent: 'Protect your system from malicious URLs with either forward proxies or blacklisting internal IPs.'
+		},
+		{
+			name: 'Advanced Webhooks Archiving',
+			community: 'false',
+			business: 'true',
+			enterprise: 'true',
+			tooltipContent:
+				'This includes manually triggering retention, using time-based partitions to increase performance and uptime, and using service account authentication for increased security.'
+		},
+		{
+			name: 'High Availability Deployment',
+			community: 'false',
+			business: 'true',
+			enterprise: 'true',
+			tooltipContent: 'This is the ability for Convoy to utilise PostgreSQL read replicas for the dashboard and limit inserts to the primary.'
+		},
+		{
+			name: 'Event Catalogue',
+			community: 'false',
+			business: 'true',
+			enterprise: 'true',
+			tooltipContent: 'Generate a documentation site for all your events and their schema using openapi.'
+		},
+		{
+			name: 'Webhook Analytics',
+			community: 'true',
+			business: 'true',
+			enterprise: 'true',
+			tooltipContent: `Webhook analytics: We generate 
+		- reports about what events are the most trendy
+		- reports about when and where (country or state based on the IP) their webhooks are being sent to
+		- dashboards to see live cumulative webhook traffic from the last 24hrs`
+		},
+		{ name: 'Synchronous Webhooks', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'BYOC', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'BYOC', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{
+			name: 'Message Brokers',
+			community: 'Basic',
+			business: 'Advanced',
+			enterprise: 'Advanced',
+			tooltipContent: 'This includes tuning the consumers to ingest faster from any broker and supporting other data formats like Avro.'
+		},
+		{ name: 'Endpoint Management', community: 'Basic', business: 'Advanced', enterprise: 'Advanced', tooltipContent: 'Retries. rate limiting, timeouts & circuit breaking' },
 		{
 			name: 'Static IPs',
 			community: 'Basic',
+			business: 'true',
 			enterprise: 'Advanced',
 			tooltipContent: 'Route webhooks through forward proxies to deliver statis egress IPs.The advanced set up includes a load balancer for HA setups.'
 		},
-		{ name: 'Webhook Subscriptions', community: 'true', enterprise: 'true', tooltipContent: 'Includes advanced techniques for filtering webhooks, besides event types.' },
-		{ name: 'Functions & Transformations', community: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'Multi-tenancy', community: 'false', enterprise: 'true', tooltipContent: 'Organise teams and projects into separate organisations' },
-		{ name: 'SSO & SAML (Coming Soon)', community: 'false', enterprise: 'true', tooltipContent: '' },
-		{ name: 'Audit Logs (Coming Soon)', community: 'false', enterprise: 'true', tooltipContent: '' },
-		{ name: 'Role-Based Access Control', community: 'false', enterprise: 'true', tooltipContent: '' },
+		{
+			name: 'Advanced Webhook Subscriptions',
+			community: 'false',
+			business: 'true',
+			enterprise: 'true',
+			tooltipContent: 'This includes fine-grained webhook filtering, besides event types.'
+		},
+		{ name: 'JS Functions & Transformations', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{
+			name: 'Data Plane Multi-tenancy',
+			community: 'false',
+			business: 'Limited to 5 organisations and 20 team members.',
+			enterprise: 'true',
+			tooltipContent: 'Organise teams and projects into separate organisations'
+		},
+		{ name: 'SSO & SAML', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Audit Logs', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Role-Based Access Control', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
+
+		// {
+		// 	name: 'KMS Integration',
+		// 	community: 'false',
+		// 	business: 'true',
+		// 	enterprise: 'true',
+		// 	tooltipContent: 'Store sensitive keys in any KMS of your choie - Vault, AWS KMS etc.'
+		// },
+		// { name: 'Environments (Coming Soon)', community: '',business: 'true', enterprise: '', tooltipContent: 'Organise projects into environments - development, production.' },
+		{
+			name: 'Feature Priority',
+			community: 'false',
+			business: 'false',
+			enterprise: 'true',
+			tooltipContent: ''
+		},
 		{
 			name: 'Technical Support Channels',
 			community: 'Community Support',
-			enterprise: 'Dedicated Support',
+			business: 'Business Support',
+			enterprise: 'Gold Support with 24/7 SLA',
 			tooltipContent: 'Enterprise users receive priority with our engineers'
 		},
-		{ name: 'KMS Integration', community: 'false', enterprise: 'true', tooltipContent: 'Store sensitive keys in any KMS of your choie - Vault, AWS KMS etc.' },
-		// { name: 'Environments (Coming Soon)', community: '', enterprise: '', tooltipContent: 'Organise projects into environments - development, production.' },
-		{ name: 'License', community: 'MPL 2.0', enterprise: 'Licensed to Convoy', tooltipContent: '' },
-		{ name: 'Price', community: '$0', enterprise: '', tooltipContent: '' }
+		{ name: 'License', community: 'ELv 2.0', business: 'ELv 2.0', enterprise: 'ELv 2.0', tooltipContent: '' },
+		{ name: 'Price', community: '$0', business: 'Starts at $500 monthly', enterprise: '', tooltipContent: '' }
 	];
 
 	const tabs = [
@@ -135,7 +259,7 @@ export default function Pricing() {
 
 	const dedicatedPlans = [
 		{ id: 1, name: 'CC-30', price: 99, value: 50 },
-		{ id: 2, name: 'CC-50', price: 350, value: 375 },
+		{ id: 2, name: 'CC-50', price: 350, value: 375 }
 	];
 
 	const notes = [
@@ -435,12 +559,14 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 				)}
 
 				{activeTab === 'selfHosted' && (
-					<div className="m-auto max-w-[1000px] mb-160px">
-						<div className="flex flex-wrap items-center justify-center gap-60px">
+					<div className="m-auto max-w-[1248px] mb-160px">
+						<div className="grid grid-cols-1 tab:grid-cols-2 md:grid-cols-3 gap-24px items-end">
 							{selfHostedPlans.map((plan, i) => (
-								<div className={`rounded-16px border border-primary-50 bg-white-100 shadow-default pb-24px flex justify-between flex-col max-w-[400px]`} key={i}>
+								<div
+									className={`rounded-16px border border-primary-50 bg-white-100 shadow-default pb-24px flex justify-between flex-col max-w-[400px] h-full`}
+									key={i}>
 									<div>
-										<div className={`${i === 0 ? 'bg-primary-25  rounded-tl-16px rounded-tr-16px' : ''} px-24px md:px-32px pt-24px md:pt-32px pb-24px`}>
+										<div className={`${i === 2 ? 'bg-success-50 rounded-tl-16px rounded-tr-16px' : ''} px-24px md:px-32px pt-24px md:pt-32px pb-24px`}>
 											<div className="flex items-center mb-24px">
 												<img src={`/svg/${plan.id}-plan.svg`} alt={`${plan.id} plan`} className="mr-16px" />
 												<div>
@@ -450,15 +576,22 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 
 											<p className="text-gray-600 text-12 max-w-[336px]">{plan.description}</p>
 
-											<hr className={`${i === 0 ? 'border-primary-100' : 'border-primary-25'} border-t my-24px`} />
+											<hr className={`${i === 2 ? 'border-success-100' : 'border-primary-25'} border-t my-24px`} />
 
-											<p className="flex items-center text-18 font-medium text-gray-600">{plan.price}</p>
+											{i === 1 && <div className={`bg-primary-25 text-primary-400 py-2px px-4px rounded-22px mb-10px w-fit text-10`}>Starts at</div>}
+											{i !== 1 && <p className="flex items-center text-18 font-medium text-gray-600">{plan.price}</p>}
+											{i === 1 && (
+												<p className="flex items-center">
+													<span className="text-36 font-bold">{plan.price}</span>
+													<span className="text-18 text-gray-600 ml-10px">/ month</span>
+												</p>
+											)}
 										</div>
 
 										<div className={`px-24px md:px-32px pb-24px md:pb-32px`}>
-											{i === 1 && <hr className="border-primary-25 border-t" />}
+											{i !== 2 && <hr className="border-primary-25 border-t" />}
 											<div className={`min-h-[244px] md:min-h-[300px] pt-24px`}>
-												<p className="text-12 text-gray-400 mb-16px">{plan.preText}</p>
+												{/* <p className="text-12 text-gray-400 mb-16px">{plan.preText}</p> */}
 												{plan.features.map((feature, index) => (
 													<div className="flex items-start mb-10px" key={index}>
 														<div>
@@ -477,7 +610,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 										</div>
 									</div>
 
-									{i === 1 && (
+									{i !== 0 && (
 										<button
 											className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14"
 											onClick={() => enterpriseModal.current?.showModal()}>
@@ -507,6 +640,10 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 										<h5 className="font-semibold xs:text-14 text-gray-600">Community</h5>
 										<p className="text-14 xs:text-10 text-gray-600 mt-10px">Free</p>
 									</td>
+									<td className="border-t border-primary-50 text-center bg-primary-25 py-16px xs:py-10px">
+										<h5 className="font-semibold xs:text-14 text-gray-600">Business</h5>
+										<p className="text-14 xs:text-10 text-gray-600 mt-10px">Starts at $500</p>
+									</td>
 									<td className="border-r border-t border-primary-50 rounded-tr-8px text-center bg-primary-25 py-16px xs:py-10px">
 										<h5 className="font-semibold xs:text-14 text-gray-600">Enterprise</h5>
 										<p className="text-14 xs:text-10 text-gray-600 mt-10px">Custom Pricing</p>
@@ -529,7 +666,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 																</svg>
 															</div>
 														}>
-														{plan.tooltipContent}
+														<div className="text-12 text-gray-400" dangerouslySetInnerHTML={{ __html: plan.tooltipContent }}></div>
 													</Tooltip>
 												)}
 											</div>
@@ -550,6 +687,30 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 													</svg>
 												)}
 												{plan.community === 'false' && (
+													<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+													</svg>
+												)}
+											</div>
+										</td>
+										<td
+											className={`p-16px xs:p-10px text-12 text-gray-600 border-primary-50 border-r group-last:border-b group-last:rounded-br-8px ${
+												i === 0 ? 'border-t' : ''
+											}`}>
+											<div className="flex justify-center">
+												{plan.business !== 'true' && plan.business !== 'false' && <span>{plan.business}</span>}
+												{plan.business === 'true' && (
+													<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path
+															d="M1.5 5.60352L4.146 8.24952C4.19245 8.29608 4.24762 8.33302 4.30837 8.35823C4.36911 8.38343 4.43423 8.39641 4.5 8.39641C4.56577 8.39641 4.63089 8.38343 4.69163 8.35823C4.75238 8.33302 4.80755 8.29608 4.854 8.24952L11.5 1.60352"
+															stroke="#475467"
+															strokeWidth="1.5"
+															strokeLinecap="round"
+															strokeLinejoin="round"
+														/>
+													</svg>
+												)}
+												{plan.business === 'false' && (
 													<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 														<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 													</svg>

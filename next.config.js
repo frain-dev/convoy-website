@@ -12,9 +12,6 @@ const nextConfig = {
 			}
 		];
 	},
-	experimental: {
-		appDir: true
-	},
 	output: 'standalone',
 	pageExtensions: ['md', 'mdoc', 'js', 'jsx', 'ts', 'tsx'],
 	sassOptions: {
