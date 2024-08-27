@@ -625,7 +625,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 											target="_blank"
 											href="https://cloud.getconvoy.io/login"
 											className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14">
-											Start your project
+											Buy Convoy Business
 											<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
 										</a>
 									)}
