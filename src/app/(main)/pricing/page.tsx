@@ -88,7 +88,7 @@ export default function Pricing() {
 		{
 			name: 'Business',
 			id: 'community',
-			description: 'Convoy Business Edition is designed for small businesses and scale ups',
+			description: 'Convoy Business Edition is designed for growing startups',
 			price: '$500',
 			link: 'https://github.com/frain-dev/convoy#installation-getting-started',
 
@@ -102,7 +102,7 @@ export default function Pricing() {
 				'Advanced Webhook Filtering & Debugging',
 				'Portal Links',
 				'Events Catalogue',
-				'Webhook Analytics',
+				'Webhook Analytics'
 			]
 		},
 		{
@@ -132,9 +132,36 @@ export default function Pricing() {
 
 	const comparedPlans = [
 		{ name: 'Dashboard', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'Portal Links', community: 'false', business: 'true', enterprise: 'true', tooltipContent: 'Use our JS SDK to build a custom dashboard' },
 		{ name: 'Idempotent Keys', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'White-Labeling', community: 'false', business: 'false', enterprise: 'true', tooltipContent: '' },
+		{
+			name: 'Webhook Analytics',
+			community: 'true',
+			business: 'true',
+			enterprise: 'true',
+			tooltipContent: `Webhook analytics: We generate 
+		- reports about what events are the most trendy
+		- reports about when and where (country or state based on the IP) their webhooks are being sent to
+		- dashboards to see live cumulative webhook traffic from the last 24hrs`
+		},
+		{ name: 'BYOC', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{
+			name: 'Message Brokers',
+			community: 'Basic',
+			business: 'Advanced',
+			enterprise: 'Advanced',
+			tooltipContent: 'This includes tuning the consumers to ingest faster from any broker and supporting other data formats like Avro.'
+		},
+		{ name: 'Endpoint Management', community: 'Basic', business: 'Advanced', enterprise: 'Advanced', tooltipContent: 'Retries. rate limiting, timeouts & circuit breaking' },
+		{
+			name: 'Static IPs',
+			community: 'Basic',
+			business: 'Advanced',
+			enterprise: 'Advanced',
+			tooltipContent: 'Route webhooks through forward proxies to deliver statis egress IPs.The advanced set up includes a load balancer for HA setups.'
+		},
+		{ name: 'SSO & SAML', community: 'Google SSO', business: 'Google SSO', enterprise: 'true', tooltipContent: '' },
+
+		{ name: 'Portal Links', community: 'false', business: 'true', enterprise: 'true', tooltipContent: 'Use our JS SDK to build a custom dashboard' },
 		{
 			name: 'Prometheus Metrics with Grafana Dashboards',
 			community: 'false',
@@ -179,34 +206,9 @@ export default function Pricing() {
 			enterprise: 'true',
 			tooltipContent: 'Generate a documentation site for all your events and their schema using openapi.'
 		},
-		{
-			name: 'Webhook Analytics',
-			community: 'true',
-			business: 'true',
-			enterprise: 'true',
-			tooltipContent: `Webhook analytics: We generate 
-		- reports about what events are the most trendy
-		- reports about when and where (country or state based on the IP) their webhooks are being sent to
-		- dashboards to see live cumulative webhook traffic from the last 24hrs`
-		},
+
 		{ name: 'Synchronous Webhooks', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'BYOC', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'BYOC', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
-		{
-			name: 'Message Brokers',
-			community: 'Basic',
-			business: 'Advanced',
-			enterprise: 'Advanced',
-			tooltipContent: 'This includes tuning the consumers to ingest faster from any broker and supporting other data formats like Avro.'
-		},
-		{ name: 'Endpoint Management', community: 'Basic', business: 'Advanced', enterprise: 'Advanced', tooltipContent: 'Retries. rate limiting, timeouts & circuit breaking' },
-		{
-			name: 'Static IPs',
-			community: 'Basic',
-			business: 'true',
-			enterprise: 'Advanced',
-			tooltipContent: 'Route webhooks through forward proxies to deliver statis egress IPs.The advanced set up includes a load balancer for HA setups.'
-		},
+
 		{
 			name: 'Advanced Webhook Subscriptions',
 			community: 'false',
@@ -215,6 +217,8 @@ export default function Pricing() {
 			tooltipContent: 'This includes fine-grained webhook filtering, besides event types.'
 		},
 		{ name: 'JS Functions & Transformations', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
+
+		{ name: 'Audit Logs', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
 		{
 			name: 'Data Plane Multi-tenancy',
 			community: 'false',
@@ -222,9 +226,8 @@ export default function Pricing() {
 			enterprise: 'true',
 			tooltipContent: 'Organise teams and projects into separate organisations'
 		},
-		{ name: 'SSO & SAML', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'Audit Logs', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
-		{ name: 'Role-Based Access Control', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Mutual TLS (mTLS)', community: 'false', business: 'false', enterprise: 'true', tooltipContent: '' },
+		{ name: 'Role-Based Access Control', community: 'false', business: 'false', enterprise: 'true', tooltipContent: '' },
 
 		// {
 		// 	name: 'KMS Integration',
@@ -234,6 +237,7 @@ export default function Pricing() {
 		// 	tooltipContent: 'Store sensitive keys in any KMS of your choie - Vault, AWS KMS etc.'
 		// },
 		// { name: 'Environments (Coming Soon)', community: '',business: 'true', enterprise: '', tooltipContent: 'Organise projects into environments - development, production.' },
+		{ name: 'HashiCorp Vault Integration', community: 'false', business: 'false', enterprise: 'true', tooltipContent: '' },
 		{
 			name: 'Feature Priority',
 			community: 'false',
@@ -241,6 +245,7 @@ export default function Pricing() {
 			enterprise: 'true',
 			tooltipContent: ''
 		},
+		{ name: 'White-Labeling', community: 'false', business: 'false', enterprise: 'true', tooltipContent: '' },
 		{
 			name: 'Technical Support Channels',
 			community: 'Community Support',
@@ -249,7 +254,7 @@ export default function Pricing() {
 			tooltipContent: 'Enterprise users receive priority with our engineers'
 		},
 		{ name: 'License', community: 'ELv 2.0', business: 'ELv 2.0', enterprise: 'ELv 2.0', tooltipContent: '' },
-		{ name: 'Price', community: '$0', business: 'Starts at $500 monthly', enterprise: '', tooltipContent: '' }
+		{ name: 'Price', community: '$0', business: '$500 monthly', enterprise: '', tooltipContent: '' }
 	];
 
 	const tabs = [
@@ -384,10 +389,8 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 	return (
 		<main>
 			<section className="pt-214px px-20px">
-				<h1 className="text-center font-bold text-32 desktop:text-[42px] desktop:leading-[48px] mb-24px max-w-[1020px] m-auto">Usage Pricing, no surprises.</h1>
-				<p className="text-center text-gray-600 text-14 max-w-[561px] m-auto mb-66px">
-					All the tools you need to take control and manage your webhook events infrastructure, from your hubby project to scale.
-				</p>
+				<h1 className="text-center font-bold text-32 desktop:text-[42px] desktop:leading-[48px] mb-24px max-w-[1020px] m-auto">Pricing.</h1>
+				<p className="text-center text-gray-600 text-14 max-w-[561px] m-auto mb-66px">Pricing for each stage of growth both in the Cloud and on-prem.</p>
 
 				<div className="bg-primary-25 rounded-8px w-fit m-auto flex flex-row mb-30px">
 					{tabs.map(tab => (
@@ -574,16 +577,15 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 												</div>
 											</div>
 
-											<p className="text-gray-600 text-12 max-w-[336px]">{plan.description}</p>
+											<p className="text-gray-600 text-12 max-w-[306px]">{plan.description}</p>
 
 											<hr className={`${i === 2 ? 'border-success-100' : 'border-primary-25'} border-t my-24px`} />
 
-											{i === 1 && <div className={`bg-primary-25 text-primary-400 py-2px px-4px rounded-22px mb-10px w-fit text-10`}>Starts at</div>}
 											{i !== 1 && <p className="flex items-center text-18 font-medium text-gray-600">{plan.price}</p>}
 											{i === 1 && (
-												<p className="flex items-center">
-													<span className="text-36 font-bold">{plan.price}</span>
-													<span className="text-18 text-gray-600 ml-10px">/ month</span>
+												<p className="flex items-center text-20">
+													<span className="font-bold">{plan.price}</span>
+													<span className="text-14 text-gray-600 ml-4px">/ month</span>
 												</p>
 											)}
 										</div>
@@ -610,7 +612,7 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 										</div>
 									</div>
 
-									{i !== 0 && (
+									{i === 2 && (
 										<button
 											className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14"
 											onClick={() => enterpriseModal.current?.showModal()}>
@@ -618,7 +620,15 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 											<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
 										</button>
 									)}
-
+									{i === 1 && (
+										<a
+											target="_blank"
+											href="https://cloud.getconvoy.io/login"
+											className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14">
+											Start your project
+											<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
+										</a>
+									)}
 									{i === 0 && (
 										<a
 											target="_blank"
