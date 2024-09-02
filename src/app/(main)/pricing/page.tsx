@@ -78,11 +78,11 @@ export default function Pricing() {
 				'Web UI',
 				'Basic Endpoint Management',
 				'Open Telemetry',
-				'Single-Player Mode',
 				'Basic Message Broker Integration',
-				'Basic Webhook Subscriptions',
 				'Idempotent Keys',
-				'Google SSO'
+				'1 user, 1 organization',
+				'Google SSO',
+				'Community Support'
 			]
 		},
 		{
@@ -95,14 +95,20 @@ export default function Pricing() {
 			preText: 'Best for developers that:',
 			features: [
 				'Everyting in Community',
-				'Advanced Endpoint Management',
-				'Advanced Message Broker Integration',
-				'Advanced Webhook Subscriptions',
-				'Javascript Functions and Transformations',
-				'Advanced Webhook Filtering & Debugging',
 				'Portal Links',
 				'Events Catalogue',
-				'Webhook Analytics'
+				'Prometheus Metrics',
+				'Advanced Performance tuning',
+				'Advanced Endpoint Management',
+				'Advanced Webhooks Retention',
+				'Role-Based Access Controls',
+				'Static IPs and Forward Proxy Routing',
+				'Advanced Message Broker Integration',
+				'Unlimited Users and Organisations',
+				//'Advanced Webhook Filtering & Debugging',
+				'Webhook Transformations with Javascript',
+				//'Webhook Analytics',
+				'Business Support'
 			]
 		},
 		{
@@ -117,15 +123,11 @@ export default function Pricing() {
 				'Everything in Business plan',
 				'Data Plane Multi-Tenancy',
 				'SSO & SAML',
-				'HashiCorp Vault Integration',
-				'Role-Based Access Controls',
-				'Custom Users & Organisations',
-				'Managed Onboarding and Implementation',
-				'Feature Priority',
-				'BYOC',
 				'White-Labelling',
+				'Mutual TLS (mTLS)',
 				'Audit Logs',
-				'Mutual TLS (mTLS)'
+				'Custom Requirements',
+				'Gold Support'
 			]
 		}
 	];
@@ -133,17 +135,8 @@ export default function Pricing() {
 	const comparedPlans = [
 		{ name: 'Dashboard', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
 		{ name: 'Idempotent Keys', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
-		{
-			name: 'Webhook Analytics',
-			community: 'true',
-			business: 'true',
-			enterprise: 'true',
-			tooltipContent: `Webhook analytics: We generate 
-		- reports about what events are the most trendy
-		- reports about when and where (country or state based on the IP) their webhooks are being sent to
-		- dashboards to see live cumulative webhook traffic from the last 24hrs`
-		},
-		{ name: 'BYOC', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'OpenTelemetry', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{ name: 'OpenTelemetry', community: 'true', business: 'true', enterprise: 'true', tooltipContent: '' },
 		{
 			name: 'Message Brokers',
 			community: 'Basic',
@@ -152,15 +145,22 @@ export default function Pricing() {
 			tooltipContent: 'This includes tuning the consumers to ingest faster from any broker and supporting other data formats like Avro.'
 		},
 		{ name: 'Endpoint Management', community: 'Basic', business: 'Advanced', enterprise: 'Advanced', tooltipContent: 'Retries. rate limiting, timeouts & circuit breaking' },
+		{ name: 'SSO & SAML', community: 'Google SSO', business: 'Google SSO', enterprise: 'true', tooltipContent: '' },
 		{
-			name: 'Static IPs',
-			community: 'Basic',
-			business: 'Advanced',
-			enterprise: 'Advanced',
+			name: 'User and Organisation Limit',
+			community: '1 user, 1 organization',
+			business: 'Unlimited',
+			enterprise: 'Unlimited',
+		},
+
+		//{ name: 'Webhook Analytics', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
+		{
+			name: 'Static IPs & Forward Proxy Routing',
+			community: 'false',
+			business: 'true',
+			enterprise: 'true',
 			tooltipContent: 'Route webhooks through forward proxies to deliver statis egress IPs.The advanced set up includes a load balancer for HA setups.'
 		},
-		{ name: 'SSO & SAML', community: 'Google SSO', business: 'Google SSO', enterprise: 'true', tooltipContent: '' },
-
 		{ name: 'Portal Links', community: 'false', business: 'true', enterprise: 'true', tooltipContent: 'Use our JS SDK to build a custom dashboard' },
 		{
 			name: 'Prometheus Metrics with Grafana Dashboards',
@@ -174,8 +174,7 @@ export default function Pricing() {
 			community: 'false',
 			business: 'true',
 			enterprise: 'true',
-			tooltipContent:
-				'This includes fine-grained timeout controls and circuit breaking. With circuit breaking, Convoy sends out error notifications when the endpoint’s error rate crosses the defined threshold.'
+			tooltipContent: "Includes timeout controls and circuit breaking"
 		},
 		{
 			name: 'Forward Proxy + IP Blacklisting',
@@ -190,14 +189,14 @@ export default function Pricing() {
 			business: 'true',
 			enterprise: 'true',
 			tooltipContent:
-				'This includes manually triggering retention, using time-based partitions to increase performance and uptime, and using service account authentication for increased security.'
+				'Use time-based partitions to increase performance and uptime, and using service account authentication for increased security.'
 		},
 		{
 			name: 'High Availability Deployment',
 			community: 'false',
 			business: 'true',
 			enterprise: 'true',
-			tooltipContent: 'This is the ability for Convoy to utilise PostgreSQL read replicas for the dashboard and limit inserts to the primary.'
+			tooltipContent: "Supports deploying Convoy for High Availability"
 		},
 		{
 			name: 'Event Catalogue',
@@ -207,7 +206,7 @@ export default function Pricing() {
 			tooltipContent: 'Generate a documentation site for all your events and their schema using openapi.'
 		},
 
-		{ name: 'Synchronous Webhooks', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
+		// { name: 'Synchronous Webhooks', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
 
 		{
 			name: 'Advanced Webhook Subscriptions',
@@ -222,7 +221,7 @@ export default function Pricing() {
 		{
 			name: 'Data Plane Multi-tenancy',
 			community: 'false',
-			business: 'Limited to 5 organisations and 20 team members.',
+			business: 'false',
 			enterprise: 'true',
 			tooltipContent: 'Organise teams and projects into separate organisations'
 		},
