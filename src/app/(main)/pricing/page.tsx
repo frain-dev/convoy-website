@@ -150,7 +150,7 @@ export default function Pricing() {
 			name: 'User and Organisation Limit',
 			community: '1 user, 1 organization',
 			business: 'Unlimited',
-			enterprise: 'Unlimited',
+			enterprise: 'Unlimited'
 		},
 
 		//{ name: 'Webhook Analytics', community: 'false', business: 'true', enterprise: 'true', tooltipContent: '' },
@@ -174,7 +174,7 @@ export default function Pricing() {
 			community: 'false',
 			business: 'true',
 			enterprise: 'true',
-			tooltipContent: "Includes timeout controls and circuit breaking"
+			tooltipContent: 'Includes timeout controls and circuit breaking'
 		},
 		{
 			name: 'Forward Proxy + IP Blacklisting',
@@ -188,15 +188,14 @@ export default function Pricing() {
 			community: 'false',
 			business: 'true',
 			enterprise: 'true',
-			tooltipContent:
-				'Use time-based partitions to increase performance and uptime, and using service account authentication for increased security.'
+			tooltipContent: 'Use time-based partitions to increase performance and uptime, and using service account authentication for increased security.'
 		},
 		{
 			name: 'High Availability Deployment',
 			community: 'false',
 			business: 'true',
 			enterprise: 'true',
-			tooltipContent: "Supports deploying Convoy for High Availability"
+			tooltipContent: 'Supports deploying Convoy for High Availability'
 		},
 		{
 			name: 'Event Catalogue',
@@ -271,6 +270,8 @@ export default function Pricing() {
 		'If you don’t see a workload that adequately fits your scenario, please don’t hesitate to reach out.',
 		'Ingress throughput differs from Egress throughput. The information specified above is ingress.'
 	];
+
+	const selfHostedNotes = ['If you don’t see a workload that adequately fits your scenario, please don’t hesitate to reach out.'];
 
 	const features = [
 		'Resilient webhooks delivery with linear or exponential time retries, bulk retries and rate limiting.',
@@ -561,206 +562,239 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 				)}
 
 				{activeTab === 'selfHosted' && (
-					<div className="m-auto max-w-[1248px] mb-160px">
-						<div className="grid grid-cols-1 tab:grid-cols-2 md:grid-cols-3 gap-24px items-end">
-							{selfHostedPlans.map((plan, i) => (
-								<div
-									className={`rounded-16px border border-primary-50 bg-white-100 shadow-default pb-24px flex justify-between flex-col max-w-[400px] h-full`}
-									key={i}>
-									<div>
-										<div className={`${i === 2 ? 'bg-success-50 rounded-tl-16px rounded-tr-16px' : ''} px-24px md:px-32px pt-24px md:pt-32px pb-24px`}>
-											<div className="flex items-center mb-24px">
-												<img src={`/svg/${plan.id}-plan.svg`} alt={`${plan.id} plan`} className="mr-16px" />
-												<div>
-													<h1 className="text-24 text-gray-800 font-bold">{plan.name}</h1>
-												</div>
-											</div>
-
-											<p className="text-gray-600 text-12 max-w-[306px]">{plan.description}</p>
-
-											<hr className={`${i === 2 ? 'border-success-100' : 'border-primary-25'} border-t my-24px`} />
-
-											{i !== 1 && <p className="flex items-center text-18 font-medium text-gray-600">{plan.price}</p>}
-											{i === 1 && (
-												<p className="flex items-center text-20">
-													<span className="font-bold">{plan.price}</span>
-													<span className="text-14 text-gray-600 ml-4px">/ month</span>
-												</p>
-											)}
-										</div>
-
-										<div className={`px-24px md:px-32px pb-24px md:pb-32px`}>
-											{i !== 2 && <hr className="border-primary-25 border-t" />}
-											<div className={`min-h-[244px] md:min-h-[300px] pt-24px`}>
-												{/* <p className="text-12 text-gray-400 mb-16px">{plan.preText}</p> */}
-												{plan.features.map((feature, index) => (
-													<div className="flex items-start mb-10px" key={index}>
-														<div>
-															<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-16px mt-6px">
-																<path
-																	d="M0.580256 4.33949L1.78196 3.13352L3.75497 5.07244L8.13139 0.713068L9.34162 1.91903L3.75497 7.47585L0.580256 4.33949Z"
-																	fill="#477DB3"
-																/>
-															</svg>
-														</div>
-
-														<p className="text-12 text-gray-600 md:max-w-[542px]">{feature}</p>
+					<>
+						<div className="m-auto max-w-[1248px] mb-160px">
+							<div className="grid grid-cols-1 tab:grid-cols-2 md:grid-cols-3 gap-24px items-end">
+								{selfHostedPlans.map((plan, i) => (
+									<div
+										className={`rounded-16px border border-primary-50 bg-white-100 shadow-default pb-24px flex justify-between flex-col max-w-[400px] h-full`}
+										key={i}>
+										<div>
+											<div className={`${i === 2 ? 'bg-success-50 rounded-tl-16px rounded-tr-16px' : ''} px-24px md:px-32px pt-24px md:pt-32px pb-24px`}>
+												<div className="flex items-center mb-24px">
+													<img src={`/svg/${plan.id}-plan.svg`} alt={`${plan.id} plan`} className="mr-16px" />
+													<div>
+														<h1 className="text-24 text-gray-800 font-bold">{plan.name}</h1>
 													</div>
-												))}
+												</div>
+
+												<p className="text-gray-600 text-12 max-w-[306px]">{plan.description}</p>
+
+												<hr className={`${i === 2 ? 'border-success-100' : 'border-primary-25'} border-t my-24px`} />
+
+												{i !== 1 && <p className="flex items-center text-18 font-medium text-gray-600">{plan.price}</p>}
+												{i === 1 && (
+													<p className="flex items-center text-20">
+														<span className="font-bold">{plan.price}</span>
+														<span className="text-14 text-gray-600 ml-4px">/ month</span>
+													</p>
+												)}
 											</div>
-										</div>
-									</div>
 
-									{i === 2 && (
-										<button
-											className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14"
-											onClick={() => enterpriseModal.current?.showModal()}>
-											Contact Us
-											<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
-										</button>
-									)}
-									{i === 1 && (
-										<a
-											target="_blank"
-											href="https://cloud.getconvoy.io/licenses"
-											className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14">
-											Buy Convoy Business
-											<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
-										</a>
-									)}
-									{i === 0 && (
-										<a
-											target="_blank"
-											href="https://github.com/frain-dev/convoy#installation-getting-started"
-											className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14">
-											Start your project
-											<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
-										</a>
-									)}
-								</div>
-							))}
-						</div>
-
-						{/* <div className="rounded-8px mt-100px">
-							<table className="w-full border-separate border-spacing-0">
-								<tr>
-									<td></td>
-									<td className="border-l border-t border-primary-50 rounded-tl-8px text-center bg-primary-25 py-16px xs:py-10px">
-										<h5 className="font-semibold xs:text-14 text-gray-600">Community</h5>
-										<p className="text-14 xs:text-10 text-gray-600 mt-10px">Free</p>
-									</td>
-									<td className="border-t border-primary-50 text-center bg-primary-25 py-16px xs:py-10px">
-										<h5 className="font-semibold xs:text-14 text-gray-600">Business</h5>
-										<p className="text-14 xs:text-10 text-gray-600 mt-10px">Starts at $500</p>
-									</td>
-									<td className="border-r border-t border-primary-50 rounded-tr-8px text-center bg-primary-25 py-16px xs:py-10px">
-										<h5 className="font-semibold xs:text-14 text-gray-600">Enterprise</h5>
-										<p className="text-14 xs:text-10 text-gray-600 mt-10px">Custom Pricing</p>
-									</td>
-								</tr>
-								{comparedPlans.map((plan, i) => (
-									<tr className={`even:bg-primary-25 group ${i === 0 ? 'border-t rounded-8px ' : ''}`} key={i}>
-										<td
-											className={`p-16px xs:p-10px text-12 text-gray-600 border-primary-50 border-l group-last:border-b group-last:rounded-bl-8px ${
-												i === 0 ? 'border-t rounded-tl-8px' : ''
-											}`}>
-											<div className="text-left">
-												<span>{plan.name}</span>
-												{plan.tooltipContent && (
-													<Tooltip
-														tooltipToggle={
-															<div className="inline-flex align-text-bottom ml-4px">
-																<svg width="12" height="12" className="fill-gray-600">
-																	<use xlinkHref="#info-icon"></use>
+											<div className={`px-24px md:px-32px pb-24px md:pb-32px`}>
+												{i !== 2 && <hr className="border-primary-25 border-t" />}
+												<div className={`min-h-[244px] md:min-h-[300px] pt-24px`}>
+													{/* <p className="text-12 text-gray-400 mb-16px">{plan.preText}</p> */}
+													{plan.features.map((feature, index) => (
+														<div className="flex items-start mb-10px" key={index}>
+															<div>
+																<svg
+																	width="10"
+																	height="8"
+																	viewBox="0 0 10 8"
+																	fill="none"
+																	xmlns="http://www.w3.org/2000/svg"
+																	className="mr-16px mt-6px">
+																	<path
+																		d="M0.580256 4.33949L1.78196 3.13352L3.75497 5.07244L8.13139 0.713068L9.34162 1.91903L3.75497 7.47585L0.580256 4.33949Z"
+																		fill="#477DB3"
+																	/>
 																</svg>
 															</div>
-														}>
-														<div className="text-12 text-gray-400" dangerouslySetInnerHTML={{ __html: plan.tooltipContent }}></div>
-													</Tooltip>
-												)}
-											</div>
-										</td>
-										<td className={`p-16px xs:p-10px text-12 text-gray-600 border-x border-primary-50 group-last:border-b ${i === 0 ? 'border-t' : ''}`}>
-											<div className="flex justify-center">
-												{plan.community !== 'true' && plan.community !== 'false' && <span>{plan.community}</span>}
 
-												{plan.community === 'true' && (
-													<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path
-															d="M1.5 5.60352L4.146 8.24952C4.19245 8.29608 4.24762 8.33302 4.30837 8.35823C4.36911 8.38343 4.43423 8.39641 4.5 8.39641C4.56577 8.39641 4.63089 8.38343 4.69163 8.35823C4.75238 8.33302 4.80755 8.29608 4.854 8.24952L11.5 1.60352"
-															stroke="#475467"
-															strokeWidth="1.5"
-															strokeLinecap="round"
-															strokeLinejoin="round"
-														/>
-													</svg>
-												)}
-												{plan.community === 'false' && (
-													<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-													</svg>
-												)}
+															<p className="text-12 text-gray-600 md:max-w-[542px]">{feature}</p>
+														</div>
+													))}
+												</div>
 											</div>
-										</td>
-										<td
-											className={`p-16px xs:p-10px text-12 text-gray-600 border-primary-50 border-r group-last:border-b group-last:rounded-br-8px ${
-												i === 0 ? 'border-t' : ''
-											}`}>
-											<div className="flex justify-center">
-												{plan.business !== 'true' && plan.business !== 'false' && <span>{plan.business}</span>}
-												{plan.business === 'true' && (
-													<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path
-															d="M1.5 5.60352L4.146 8.24952C4.19245 8.29608 4.24762 8.33302 4.30837 8.35823C4.36911 8.38343 4.43423 8.39641 4.5 8.39641C4.56577 8.39641 4.63089 8.38343 4.69163 8.35823C4.75238 8.33302 4.80755 8.29608 4.854 8.24952L11.5 1.60352"
-															stroke="#475467"
-															strokeWidth="1.5"
-															strokeLinecap="round"
-															strokeLinejoin="round"
-														/>
-													</svg>
-												)}
-												{plan.business === 'false' && (
-													<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-													</svg>
-												)}
-											</div>
-										</td>
-										<td
-											className={`p-16px xs:p-10px text-12 text-gray-600 border-primary-50 border-r group-last:border-b group-last:rounded-br-8px ${
-												i === 0 ? 'border-t' : ''
-											}`}>
-											<div className="flex justify-center">
-												{plan.enterprise !== 'true' && plan.enterprise !== 'false' && <span>{plan.enterprise}</span>}
-												{plan.enterprise === 'true' && (
-													<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path
-															d="M1.5 5.60352L4.146 8.24952C4.19245 8.29608 4.24762 8.33302 4.30837 8.35823C4.36911 8.38343 4.43423 8.39641 4.5 8.39641C4.56577 8.39641 4.63089 8.38343 4.69163 8.35823C4.75238 8.33302 4.80755 8.29608 4.854 8.24952L11.5 1.60352"
-															stroke="#475467"
-															strokeWidth="1.5"
-															strokeLinecap="round"
-															strokeLinejoin="round"
-														/>
-													</svg>
-												)}
-												{plan.enterprise === 'false' && (
-													<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-													</svg>
-												)}
+										</div>
 
-												{plan.name === 'Price' && (
-													<button className="flex items-center justify-center underline" onClick={() => enterpriseModal.current?.showModal()}>
-														Contact Us
-													</button>
-												)}
-											</div>
+										{i === 2 && (
+											<button
+												className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14"
+												onClick={() => enterpriseModal.current?.showModal()}>
+												Contact Us
+												<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
+											</button>
+										)}
+										{i === 1 && (
+											<a
+												target="_blank"
+												href="https://cloud.getconvoy.io/licenses"
+												className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14">
+												Buy Convoy Business
+												<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
+											</a>
+										)}
+										{i === 0 && (
+											<a
+												target="_blank"
+												href="https://github.com/frain-dev/convoy#installation-getting-started"
+												className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14">
+												Start your project
+												<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
+											</a>
+										)}
+									</div>
+								))}
+							</div>
+
+							{/* <div className="rounded-8px mt-100px">
+								<table className="w-full border-separate border-spacing-0">
+									<tr>
+										<td></td>
+										<td className="border-l border-t border-primary-50 rounded-tl-8px text-center bg-primary-25 py-16px xs:py-10px">
+											<h5 className="font-semibold xs:text-14 text-gray-600">Community</h5>
+											<p className="text-14 xs:text-10 text-gray-600 mt-10px">Free</p>
+										</td>
+										<td className="border-t border-primary-50 text-center bg-primary-25 py-16px xs:py-10px">
+											<h5 className="font-semibold xs:text-14 text-gray-600">Business</h5>
+											<p className="text-14 xs:text-10 text-gray-600 mt-10px">Starts at $500</p>
+										</td>
+										<td className="border-r border-t border-primary-50 rounded-tr-8px text-center bg-primary-25 py-16px xs:py-10px">
+											<h5 className="font-semibold xs:text-14 text-gray-600">Enterprise</h5>
+											<p className="text-14 xs:text-10 text-gray-600 mt-10px">Custom Pricing</p>
 										</td>
 									</tr>
-								))}
-							</table>
-						</div> */}
-					</div>
+									{comparedPlans.map((plan, i) => (
+										<tr className={`even:bg-primary-25 group ${i === 0 ? 'border-t rounded-8px ' : ''}`} key={i}>
+											<td
+												className={`p-16px xs:p-10px text-12 text-gray-600 border-primary-50 border-l group-last:border-b group-last:rounded-bl-8px ${
+													i === 0 ? 'border-t rounded-tl-8px' : ''
+												}`}>
+												<div className="text-left">
+													<span>{plan.name}</span>
+													{plan.tooltipContent && (
+														<Tooltip
+															tooltipToggle={
+																<div className="inline-flex align-text-bottom ml-4px">
+																	<svg width="12" height="12" className="fill-gray-600">
+																		<use xlinkHref="#info-icon"></use>
+																	</svg>
+																</div>
+															}>
+															<div className="text-12 text-gray-400" dangerouslySetInnerHTML={{ __html: plan.tooltipContent }}></div>
+														</Tooltip>
+													)}
+												</div>
+											</td>
+											<td className={`p-16px xs:p-10px text-12 text-gray-600 border-x border-primary-50 group-last:border-b ${i === 0 ? 'border-t' : ''}`}>
+												<div className="flex justify-center">
+													{plan.community !== 'true' && plan.community !== 'false' && <span>{plan.community}</span>}
+						
+													{plan.community === 'true' && (
+														<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path
+																d="M1.5 5.60352L4.146 8.24952C4.19245 8.29608 4.24762 8.33302 4.30837 8.35823C4.36911 8.38343 4.43423 8.39641 4.5 8.39641C4.56577 8.39641 4.63089 8.38343 4.69163 8.35823C4.75238 8.33302 4.80755 8.29608 4.854 8.24952L11.5 1.60352"
+																stroke="#475467"
+																strokeWidth="1.5"
+																strokeLinecap="round"
+																strokeLinejoin="round"
+															/>
+														</svg>
+													)}
+													{plan.community === 'false' && (
+														<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+														</svg>
+													)}
+												</div>
+											</td>
+											<td
+												className={`p-16px xs:p-10px text-12 text-gray-600 border-primary-50 border-r group-last:border-b group-last:rounded-br-8px ${
+													i === 0 ? 'border-t' : ''
+												}`}>
+												<div className="flex justify-center">
+													{plan.business !== 'true' && plan.business !== 'false' && <span>{plan.business}</span>}
+													{plan.business === 'true' && (
+														<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path
+																d="M1.5 5.60352L4.146 8.24952C4.19245 8.29608 4.24762 8.33302 4.30837 8.35823C4.36911 8.38343 4.43423 8.39641 4.5 8.39641C4.56577 8.39641 4.63089 8.38343 4.69163 8.35823C4.75238 8.33302 4.80755 8.29608 4.854 8.24952L11.5 1.60352"
+																stroke="#475467"
+																strokeWidth="1.5"
+																strokeLinecap="round"
+																strokeLinejoin="round"
+															/>
+														</svg>
+													)}
+													{plan.business === 'false' && (
+														<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+														</svg>
+													)}
+												</div>
+											</td>
+											<td
+												className={`p-16px xs:p-10px text-12 text-gray-600 border-primary-50 border-r group-last:border-b group-last:rounded-br-8px ${
+													i === 0 ? 'border-t' : ''
+												}`}>
+												<div className="flex justify-center">
+													{plan.enterprise !== 'true' && plan.enterprise !== 'false' && <span>{plan.enterprise}</span>}
+													{plan.enterprise === 'true' && (
+														<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path
+																d="M1.5 5.60352L4.146 8.24952C4.19245 8.29608 4.24762 8.33302 4.30837 8.35823C4.36911 8.38343 4.43423 8.39641 4.5 8.39641C4.56577 8.39641 4.63089 8.38343 4.69163 8.35823C4.75238 8.33302 4.80755 8.29608 4.854 8.24952L11.5 1.60352"
+																stroke="#475467"
+																strokeWidth="1.5"
+																strokeLinecap="round"
+																strokeLinejoin="round"
+															/>
+														</svg>
+													)}
+													{plan.enterprise === 'false' && (
+														<svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path d="M8 1.5L1 8.5M1 1.5L8 8.5" stroke="#475467" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+														</svg>
+													)}
+						
+													{plan.name === 'Price' && (
+														<button className="flex items-center justify-center underline" onClick={() => enterpriseModal.current?.showModal()}>
+															Contact Us
+														</button>
+													)}
+												</div>
+											</td>
+										</tr>
+									))}
+								</table>
+							</div> */}
+						</div>
+
+						<section className="max-w-[1248px] w-full m-auto mt-68px mb-160px">
+							<div className="w-full bg-white-100 border border-primary-50 rounded-16px shadow-default p-24px md:p-32px">
+								<div className="min-w-[300px] xs:min-w-[unset]">
+									<h1 className="text-24 font-bold text-gray-800 mb-24px">Notes</h1>
+
+									{selfHostedNotes.map((feature, index) => (
+										<div className="flex items-start mb-10px" key={index}>
+											<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-16px mt-6px">
+												<path
+													d="M0.580256 4.33949L1.78196 3.13352L3.75497 5.07244L8.13139 0.713068L9.34162 1.91903L3.75497 7.47585L0.580256 4.33949Z"
+													fill="#477DB3"
+												/>
+											</svg>
+											<p className="text-12 text-gray-600 md:max-w-[562px]">{feature}</p>
+										</div>
+									))}
+									<button
+										onClick={() => enterpriseModal.current?.showModal()}
+										className="bg-gray-100 rounded-6px px-16px py-12px text-gray-800 text-14 mb-30px md:mb-0 mt-24px">
+										Contact Us
+									</button>
+								</div>
+							</div>
+						</section>
+					</>
 				)}
 			</section>
 
