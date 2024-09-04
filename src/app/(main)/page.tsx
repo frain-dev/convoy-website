@@ -106,11 +106,10 @@ export default function Home() {
 					<Image src="/svg/y-combinator.svg" width={24} height={24} className="ml-16px w-24px" alt="y-combinator" />
 				</div>
 				<h1 className="text-center desktop:text-[50px] desktop:leading-[80px] font-bold">
-					Webhooks as a Service
+					Deliver Webhooks Easily. Anywhere.
 				</h1>
-				<p className="text-center max-w-[950px] mx-auto text-16 leading-8 mobile:text-14 mt-16px text-gray-600">
-					Securely Send, Receive and Manage millions of Webhooks Reliably with robust support for Retries, Rate Limiting, Static IPs, Circuit Breaking, Rolling Secrets
-					and more.
+				<p className="text-center max-w-[950px] mx-auto text-24 leading-8 mobile:text-14 mt-16px text-gray-600">
+					Secure and reliable webhook delivery, in the cloud or on-prem.
 				</p>
 				<div className="flex justify-center xs:flex-col mt-40px">
 					<a
