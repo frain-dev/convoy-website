@@ -9,13 +9,13 @@ import Toast from '../components/Toast';
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://getconvoy.io'),
-	title: 'Webhooks service for sending and receiving webhooks - Convoy',
+	title: 'Convoy: Webhooks gateway for sending and receiving webhooks',
 	description: 'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
 	alternates: {
 		canonical: '/'
 	},
 	openGraph: {
-		title: 'Webhooks service for sending and receiving webhooks - Convoy',
+		title: 'Convoy: Webhooks gateway for sending and receiving webhooks',
 		description:
 			'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
 		url: 'https://getconvoy.io/',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 		images: '/static/convoy.png'
 	},
 	twitter: {
-		title: 'Webhooks service for sending and receiving webhooks - Convoy',
+		title: 'Convoy: Webhooks gateway for sending and receiving webhooks',
 		creator: '@getconvoy',
 		images: [
 			{
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 		],
 		site: '@getconvoy',
 		description:
-			'Reliable Webhooks service for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
+			'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
 		card: 'summary_large_image'
 	},
 	viewport: {
