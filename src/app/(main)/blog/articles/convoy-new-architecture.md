@@ -9,11 +9,10 @@ primary_tag: Product Update
 tags:
     - Convoy
     - Product Update 
-featured: false 
+featured: true 
 description: 'In our latest release, we’ve simplified Convoy’s architecture. In this article I describe a little bit more about the architecture and the benefits for Convoy.'
 published_at: 2024-09-11T17:00:00.000+00:00
 ---
-
 
 In our latest release (`v24.8.x` series), we’ve simplified Convoy’s architecture. In this article I describe a little bit more about the architecture and the benefits for Convoy. You can refer to the [docs](https://docs.getconvoy.io/deployment/architecture) to learn more about each component and their responsibility in the overall design. But before we discuss the new architecture, let’s juxtapose our old and new architecture.
 
@@ -34,3 +33,7 @@ The final benefit I’d like to highlight is cost. In our previous architecture,
 A hallmark of good software design is when several unintended benefits emerge naturally from it. This architecture has laid a strong foundation for us to enhance the data processing pipeline, allowing us to achieve even higher reliability and performance guarantees. I’m excited to share more updates as we continue to make progress. That’s all for now. :)
 
 Take care!
+
+## Getting Started with Convoy
+
+Want to add webhooks to your API in minutes? You can get started at [cloud.getconvoy.io/signup](http://cloud.getconvoy.io/signup).
