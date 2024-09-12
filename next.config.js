@@ -6,8 +6,18 @@ const nextConfig = {
 	async redirects() {
 		return [
 			{
-				source: '/docs',
-				destination: 'https://docs.getconvoy.io',
+				source: '/docs/manual/:slug*',
+				destination: 'https://docs.getconvoy.io/product-manual/:slug*',
+				permanent: true 
+			},
+			{
+				source: '/docs/releases/:slug*',
+				destination: 'https://docs.getconvoy.io/release-notes/:slug*',
+				permanent: true 
+			},
+			{
+				source: '/docs/:slug*',
+				destination: 'https://docs.getconvoy.io/:slug*',
 				permanent: true
 			}
 		];
