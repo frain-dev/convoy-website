@@ -12,18 +12,23 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 							<img src="/svg/convoy-white.svg" />
 						</a>
 						<div className="flex gap-12px">
-							<button className="flex gap-8px items-center border border-neutral-1 text-neutral-1 text-14 py-8px px-16px rounded-8px">
-								Sign In
-								<svg width="18" height="18">
-									<use xlinkHref="#arrow-right-icon" className="fill-neutral-1"></use>
-								</svg>
-							</button>
-							<button className="flex gap-8px items-center bg-neutral-1 text-neutral-12 text-14 py-8px px-16px rounded-8px">
-								Start your project
-								<svg width="18" height="18">
-									<use xlinkHref="#arrow-right-icon" className="fill-neutral-12"></use>
-								</svg>
-							</button>
+							<a target="_blank" href="https://cloud.getconvoy.io/login">
+								<button className="flex gap-8px items-center border border-neutral-1 text-neutral-1 text-14 py-8px px-16px rounded-8px">
+									Sign In
+									<svg width="18" height="18">
+										<use xlinkHref="#arrow-right-icon" className="fill-neutral-1"></use>
+									</svg>
+								</button>
+							</a>
+
+							<a target="_blank" href="https://cloud.getconvoy.io/signup">
+								<button className="flex gap-8px items-center bg-neutral-1 text-neutral-12 text-14 py-8px px-16px rounded-8px">
+									Start your project
+									<svg width="18" height="18">
+										<use xlinkHref="#arrow-right-icon" className="fill-neutral-12"></use>
+									</svg>
+								</button>
+							</a>
 						</div>
 					</div>
 				</header>
