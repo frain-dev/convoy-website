@@ -13,6 +13,18 @@ function customSpacing() {
 	return spaces;
 }
 
+function generateColorScale(name) {
+	let scale = Array.from({ length: 12 }, (_, i) => {
+		let id = i + 1;
+		return [
+			[id, `var(--${name}-${id})`],
+			[`a${id}`, `var(--${name}-a${id})`]
+		];
+	}).flat();
+
+	return Object.fromEntries(scale);
+}
+
 module.exports = {
 	content: ['./src/pages/**/*.{js,ts,jsx,tsx,mdx}', './src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
 	safelist: ['bg-success-400', 'bg-primary-400', 'bg-danger-400', 'bg-warning-400'],
@@ -30,6 +42,7 @@ module.exports = {
 			},
 			fontFamily: {
 				menlo: ['Menlo Regular'],
+				sometype: ['Sometype Mono'],
 				inter: ['Inter']
 			}
 		},
@@ -169,6 +182,7 @@ module.exports = {
 			},
 			white: {
 				100: 'rgba(var(--color-white), 1)',
+				80: 'rgba(var(--color-white), 0.80)',
 				64: 'rgba(var(--color-white), 0.64)',
 				40: 'rgba(var(--color-white), 0.40)',
 				24: 'rgba(var(--color-white), 0.24)',
@@ -176,6 +190,7 @@ module.exports = {
 				8: 'rgba(var(--color-white), 0.08)',
 				4: 'rgba(var(--color-white), 0.04)'
 			},
+			neutral: generateColorScale('gray'),
 			'light-blue': '#F8FBFF',
 			transparent: 'transparent'
 		}
