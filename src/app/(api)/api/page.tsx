@@ -40,7 +40,7 @@ export default function Home() {
 								} ${i > 0 ? 'desktop-min:-mb-210px desktop:-mb-130px' : ''}`}>
 								<Link href={`/api/${topic.path}`}>
 									<div
-										className={`border border-white-24 bg-white-16 backdrop-blur-sm desktop-min:h-280px desktop:h-200px p-12px rounded-12px flex items-end justify-between text-neutral-2 font-sometype w-full text-24`}>
+										className={`border border-white-24 bg-[radial-gradient(225.48%_149.76%_at_7.42%_5.1%,rgba(255,255,255,0.10)_4.25%,rgba(255,255,255,0.24)_96.39%)] backdrop-blur-[2px] desktop-min:h-280px desktop:h-200px p-12px rounded-12px flex items-end justify-between text-neutral-2 font-sometype w-full text-24`}>
 										<div className="uppercase max-w-[220px]">{topic.name}</div>
 										<div className="">{topic.index > 9 ? topic.index : `0${topic.index}`}</div>
 									</div>
