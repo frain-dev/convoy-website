@@ -87,6 +87,7 @@ export default function Home() {
 		{ name: 'maple', url: 'https://maplebilling.com/', class: 'h-30px' },
 		{ name: 'testlify', url: 'https://testlify.com/', class: 'h-28px' },
 		{ name: 'mono', url: 'https://mono.co/', class: 'h-20px' },
+		{ name: 'ascenda', url: 'https://www.ascenda.com/', class: 'h-24px' },
 		{ name: 'xendit', url: 'https://www.xendit.co/', class: 'h-28px' },
 		{ name: 'marble', url: 'https://www.checkmarble.com/', class: 'h-28px' },
 		{ name: 'spruce', url: 'https://sprucehealth.com/', class: 'h-28px' },
