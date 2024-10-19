@@ -83,7 +83,6 @@ export default function Home() {
 
 	const companies = [
 		{ name: 'pinata', url: 'https://pinata.cloud/', class: 'h-28px' },
-		{ name: 'airstack', url: 'https://www.airstack.xyz/', class: 'h-34px' },
 		{ name: 'maple', url: 'https://maplebilling.com/', class: 'h-30px' },
 		{ name: 'testlify', url: 'https://testlify.com/', class: 'h-28px' },
 		{ name: 'mono', url: 'https://mono.co/', class: 'h-20px' },
