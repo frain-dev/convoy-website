@@ -10,12 +10,12 @@ export default function Header() {
 	const [showMenu, setShowMenu] = useState(false);
 	const [currentRoute, setCurrentRoute] = useState('');
 	const pathname = usePathname();
-	const isChildRouteActive = (parentRoute: any) => {
-		const childrenRoutes = menuItems.find(item => item.name === parentRoute)?.children;
+	// const isChildRouteActive = (parentRoute: any) => {
+	// 	const childrenRoutes = menuItems.find(item => item.name === parentRoute)?.children;
 
-		return childrenRoutes?.some(route => pathname.includes(route.route));
-	};
-	const menuItems = [
+	// 	return childrenRoutes?.some(route => pathname.includes(route.route));
+	// };
+	const menuItemsOld = [
 		{
 			name: 'Products',
 			type: 'dropdown',
@@ -31,13 +31,21 @@ export default function Header() {
 			name: 'Resources',
 			type: 'dropdown',
 			children: [
-				{ name: 'Slack', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'external'},
+				{ name: 'Slack', route: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', type: 'external' },
 				{ name: 'Blog', route: '/blog', type: 'route' },
 				{ name: 'Docs', route: 'https://docs.getconvoy.io', type: 'external' },
 				{ name: 'Tutorials', route: '/blog?tag=Tutorial', type: 'route' }
 			]
 		},
 		{ name: 'Community', route: 'https://community.getconvoy.io', type: 'link' }
+	];
+
+	const menuItems = [
+		{ name: 'Core Gateway', route: '/core-gateway', type: 'route' },
+		{ name: 'Enterprise', route: '/enterprise', type: 'route' },
+		{ name: 'Blog', route: '/blog', type: 'route' },
+		{ name: 'Pricing', route: '/pricing', type: 'route' },
+		{ name: 'About', route: '/about', type: 'route' }
 	];
 
 	const getGithubStars = async () => {
@@ -55,8 +63,8 @@ export default function Header() {
 	return (
 		<header>
 			{!pathname.includes('/docs/') && (
-				<nav className="w-full m-auto px-20px pt-60px pb-20px z-50 fixed nav-bar-break:pt-50px nav-bar-break:pb-12px transition-all duration-300 bg-white-100 shadow">
-					<section className="fixed top-0 left-0 bg-primary-400 w-full h-40px py-8px px-12px flex items-center justify-center font-medium text-12 text-white-100 nav-bar-break:text-14">
+				<nav className="w-full m-auto px-20px pt-0 pb-0 !py-0 z-50 fixed nav-bar-break:pt-0 nav-bar-break:pb-0 transition-all duration-300 bg-white-100 border-b border-[#E7E7E7]">
+					{/* <section className="fixed top-0 left-0 bg-primary-400 w-full h-40px py-8px px-12px flex items-center justify-center font-medium text-12 text-white-100 nav-bar-break:text-14">
 						<span>Give us a star on GitHub</span>
 						<a className="h-20px w-20px mx-12px hover:cursor-pointer" target="_blank" href="https://github.com/frain-dev/convoy">
 							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +80,7 @@ export default function Header() {
 								{githubStars}
 							</button>
 						</a>
-					</section>
+					</section> */}
 
 					<div className="flex items-center justify-between m-auto max-w-[1300px]">
 						<button className="block absolute nav-bar-break:hidden" onClick={() => setShowMenu(!showMenu)}>
@@ -91,102 +99,115 @@ export default function Header() {
 							)}
 						</button>
 
-						<div className="ml-40px nav-bar-break:w-fit nav-bar-break:ml-0">
+						<div className="ml-40px nav-bar-break:w-fit nav-bar-break:ml-0 flex items-center justify-center gap-4">
 							<Link href="/">
-								<Image src="/svg/convoy-logo.svg" height={29} width={110} alt="logo" quality="70" />
+								<Image src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" quality="70" />
 							</Link>
+
+							<ul
+								className={`mobile:absolute mobile:top-104px mobile:left-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500 ${
+									showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'
+								}`}>
+								{menuItems.map(link => (
+									<li
+										className="py-14px nav-bar-break:py-8px px-12px border-b border-b-primary-25 last-of-type:border-none nav-bar-break:border-none relative"
+										key={link.name}
+										onClick={() => setCurrentRoute(link.name)}>
+										{link.type === 'route' && link.route && (
+											<Link
+												className={`text-14 font-medium transition-all duration-300 hover:text-gray-800 ${
+													pathname == link.route ? 'text-[#2780F1]' : 'text-[#000]'
+												}`}
+												href={link.route}>
+												{link.name}
+											</Link>
+										)}
+										{link.type === 'link' && link.route && (
+											<a className="text-14 text-[#000] font-medium transition-all duration-300 hover:text-black" target="_blank" href={link.route}>
+												{link.name}
+											</a>
+										)}
+										{link.type !== 'route' && link.type !== 'link' && (
+											<div>
+												{/* <a
+													className={`text-14 font-medium flex items-center justify-between transition-all duration-300 hover:text-black hover:cursor-pointer group ${
+														isChildRouteActive(link.name) ? 'text-primary-400' : 'text-gray-500'
+													}`}>
+													{link.name}
+													<svg
+														width="16"
+														height="16"
+														className={`transition-all duration-300 group-hover:fill-black ${
+															isChildRouteActive(link.name) ? 'fill-primary-400' : 'fill-gray-500 '
+														}`}>
+														<use xlinkHref="#angle-down-icon"></use>
+													</svg>
+												</a> */}
+												{currentRoute === link.name && (
+													<div className="nav-bar-break:absolute nav-bar-break:top-[100%] nav-bar-break:shadow nav-bar-break:min-w-[198px] w-fit bg-white-100 rounded-10px nav-bar-break:shadow-dropdown nav-bar-break:z-10 transition-all ease-in-out duration-300 nav-bar-break:h-fit">
+														<ul className="nav-bar-break:pl-20px nav-bar-break:pb-20px">
+															{/* {link.children?.map(subRoute => (
+																<li
+																	className="py-10px nav-bar-break:pr-20px nav-bar-break:border-b nav-bar-break:border-b-gray-100"
+																	v-for="subRoute in link.children"
+																	key={subRoute.name}
+																	onClick={event => {
+																		event.stopPropagation();
+																		setCurrentRoute('');
+																		setShowMenu(false);
+																	}}>
+																	{subRoute.type === 'route' && (
+																		<Link className="text-12 text-gray-500 transition-all duration-300 hover:text-black" href={subRoute.route}>
+																			{subRoute.name}
+																		</Link>
+																	)}
+
+																	{subRoute.type !== 'route' && (
+																		<a
+																			className="text-12 text-gray-500 transition-all duration-300 hover:text-black flex items-center"
+																			target="_blank"
+																			href={subRoute.route}>
+																			{subRoute.name}
+																			<span className="px-8px bg-primary-25 text-primary-400 ml-8px rounded-12px text-10">new</span>
+																		</a>
+																	)}
+																</li>
+															))} */}
+														</ul>
+													</div>
+												)}
+											</div>
+										)}
+									</li>
+								))}
+							</ul>
 						</div>
 
 						<ul
 							className={`mobile:absolute mobile:top-104px mobile:left-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500 ${
 								showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'
 							}`}>
-							{menuItems.map(link => (
-								<li
-									className="py-14px nav-bar-break:py-8px px-12px border-b border-b-primary-25 last-of-type:border-none nav-bar-break:border-none relative"
-									key={link.name}
-									onClick={() => setCurrentRoute(link.name)}>
-									{link.type === 'route' && link.route && (
-										<Link
-											className={`text-14 font-medium transition-all duration-300 hover:text-gray-800 ${
-												pathname == link.route ? 'text-primary-400' : 'text-gray-500'
-											}`}
-											href={link.route}>
-											{link.name}
-										</Link>
-									)}
-									{link.type === 'link' && link.route && (
-										<a className="text-14 text-gray-500 font-medium transition-all duration-300 hover:text-black" target="_blank" href={link.route}>
-											{link.name}
-										</a>
-									)}
-									{link.type !== 'route' && link.type !== 'link' && (
-										<div>
-											<a
-												className={`text-14 font-medium flex items-center justify-between transition-all duration-300 hover:text-black hover:cursor-pointer group ${
-													isChildRouteActive(link.name) ? 'text-primary-400' : 'text-gray-500'
-												}`}>
-												{link.name}
-												<svg
-													width="16"
-													height="16"
-													className={`transition-all duration-300 group-hover:fill-black ${
-														isChildRouteActive(link.name) ? 'fill-primary-400' : 'fill-gray-500 '
-													}`}>
-													<use xlinkHref="#angle-down-icon"></use>
-												</svg>
-											</a>
-											{currentRoute === link.name && (
-												<div className="nav-bar-break:absolute nav-bar-break:top-[100%] nav-bar-break:shadow nav-bar-break:min-w-[198px] w-fit bg-white-100 rounded-10px nav-bar-break:shadow-dropdown nav-bar-break:z-10 transition-all ease-in-out duration-300 nav-bar-break:h-fit">
-													<ul className="nav-bar-break:pl-20px nav-bar-break:pb-20px">
-														{link.children?.map(subRoute => (
-															<li
-																className="py-10px nav-bar-break:pr-20px nav-bar-break:border-b nav-bar-break:border-b-gray-100"
-																v-for="subRoute in link.children"
-																key={subRoute.name}
-																onClick={event => {
-																	event.stopPropagation();
-																	setCurrentRoute('');
-																	setShowMenu(false);
-																}}>
-																{subRoute.type === 'route' && (
-																	<Link className="text-12 text-gray-500 transition-all duration-300 hover:text-black" href={subRoute.route}>
-																		{subRoute.name}
-																	</Link>
-																)}
-
-																{subRoute.type !== 'route' && (
-																	<a
-																		className="text-12 text-gray-500 transition-all duration-300 hover:text-black flex items-center"
-																		target="_blank"
-																		href={subRoute.route}>
-																		{subRoute.name}
-																		<span className="px-8px bg-primary-25 text-primary-400 ml-8px rounded-12px text-10">new</span>
-																	</a>
-																)}
-															</li>
-														))}
-													</ul>
-												</div>
-											)}
-										</div>
-									)}
-								</li>
-							))}
-
-							<li className="py-14px nav-bar-break:py-8px px-12px flex items-center nav-bar-break:pr-0 nav-bar-break:pl-40px">
+							<li className="py-14px nav-bar-break:py-14px px-12px flex items-center nav-bar-break:pr-0 nav-bar-break:pl-40px">
 								<a
 									target="_blank"
 									href="https://cloud.getconvoy.io/login"
-									className="nav-bar-break:px-10px py-10px text-14 mr-16px font-medium rounded-8px nav-bar-break:bg-primary-25 nav-bar-break:text-primary-400 text-primary-400 flex items-center">
-									Sign In
+									className="nav-bar-break:px-16px py-10px text-14 mr-16px h-[40px] font-medium rounded-8px nav-bar-break:bg-white-100 nav-bar-break:text-[#000] text-[#000] flex items-center justify-center border-[#E7E7E7] border shadow-btn">
+									<span>Sign In</span>
+
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none" className="ml-1 mt-[1px]">
+										<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="black" />
+									</svg>
 								</a>
 								<div className="block nav-bar-break:hidden h-18px w-[1px] bg-primary-25 mx-12px"></div>
 								<a
 									target="_blank"
 									href="https://cloud.getconvoy.io/signup"
-									className="px-14px py-10px text-14 font-medium rounded-8px nav-bar-break:bg-primary-400 nav-bar-break:text-white-100 text-primary-400 flex items-center">
-									Start your project
+									className="px-16px py-10px text-14 font-medium rounded-8px h-10 nav-bar-break:bg-[#2780F1] nav-bar-break:text-white-100 text-primary-400 flex items-center">
+									<span>Start your project</span>
+
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px]">
+										<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
+									</svg>
 								</a>
 							</li>
 						</ul>

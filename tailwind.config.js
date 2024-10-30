@@ -23,7 +23,8 @@ module.exports = {
 				layout: '0px 30px 40px 0px rgba(20, 37, 63, 0.08), 0px 16px 16px 0px rgba(12, 26, 75, 0.05), 0px 16px 16px 0px rgba(12, 26, 75, 0.06)',
 				default: '0px 2px 4px rgba(12, 26, 75, 0.04), 0px 4px 20px -2px rgba(50, 50, 71, 0.08)',
 				card: '40px 44px 81px rgba(111, 118, 138, 0.08)',
-				nav: 'inset 0px -3px 8px rgba(255, 255, 255, 0.07);'
+				nav: 'inset 0px -3px 8px rgba(255, 255, 255, 0.07);',
+				btn: '0px 2px 2px -1px rgba(0, 0, 0, 0.04);'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(white 10%, #fafafe78)'
