@@ -63,7 +63,6 @@ export default function Blog({ articles }: any) {
 		else setFilteredPosts(nonFeaturedPosts);
 	}, [searchParams]);
 
-	// Pagination logic
 	const indexOfLastPost = currentPage * postsPerPage;
 	const indexOfFirstPost = indexOfLastPost - postsPerPage;
 	const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
@@ -212,7 +211,6 @@ export default function Blog({ articles }: any) {
 							))}
 						</div>
 
-						{/* Pagination */}
 						{totalPages > 1 && (
 							<div className="flex items-center justify-center space-x-1.5 mt-[72px]">
 								<button

@@ -6,8 +6,6 @@ import formatDate from '@/lib/formatDate';
 import Image from 'next/image';
 
 export default function Post({ postData, type, className, index }: any) {
-	const [showFallBackImg, setShowFallBackImg] = useState(false);
-
 	const getGradientColor = (index: number) => {
 		const colors = ['#2780F1', '#F18527', '#27F185', '#AE27F1', '#F1B527'];
 		return colors[index % colors.length];
