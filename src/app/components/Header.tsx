@@ -63,7 +63,7 @@ export default function Header() {
 	return (
 		<header>
 			{!pathname.includes('/docs/') && (
-				<nav className="w-full m-auto px-20px pt-0 pb-0 !py-0 z-50 fixed nav-bar-break:pt-0 nav-bar-break:pb-0 transition-all duration-300 bg-white-100 border-b border-[#E7E7E7]">
+				<nav className="w-full m-auto px-0px pt-0 pb-0 mobile:!py-4 nav-bar-break:!py-0 z-50 fixed nav-bar-break:pt-0 nav-bar-break:pb-0 transition-all duration-300 bg-white-100 border-b border-[#E7E7E7]">
 					{/* <section className="fixed top-0 left-0 bg-primary-400 w-full h-40px py-8px px-12px flex items-center justify-center font-medium text-12 text-white-100 nav-bar-break:text-14">
 						<span>Give us a star on GitHub</span>
 						<a className="h-20px w-20px mx-12px hover:cursor-pointer" target="_blank" href="https://github.com/frain-dev/convoy">
@@ -83,29 +83,13 @@ export default function Header() {
 					</section> */}
 
 					<div className="flex items-center justify-between m-auto max-w-[1300px]">
-						<button className="block absolute nav-bar-break:hidden" onClick={() => setShowMenu(!showMenu)}>
-							{!showMenu && (
-								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M3 7H21" stroke="#477DB3" strokeWidth="1.5" strokeLinecap="round" />
-									<path d="M3 12H21" stroke="#477DB3" strokeWidth="1.5" strokeLinecap="round" />
-									<path d="M3 17H21" stroke="#477DB3" strokeWidth="1.5" strokeLinecap="round" />
-								</svg>
-							)}
-							{showMenu && (
-								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M18 6L6 18" stroke="#477DB3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-									<path d="M6 6L18 18" stroke="#477DB3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-								</svg>
-							)}
-						</button>
-
-						<div className="ml-40px nav-bar-break:w-fit nav-bar-break:ml-0 flex items-center justify-center gap-4">
+						<div className="ml-20px nav-bar-break:w-fit nav-bar-break:ml-0 flex items-center justify-center gap-4">
 							<Link href="/">
 								<Image src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" quality="70" />
 							</Link>
 
 							<ul
-								className={`mobile:absolute mobile:top-104px mobile:left-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500 ${
+								className={`mobile:absolute mobile:top-50px mobile:right-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-t-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500 ${
 									showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'
 								}`}>
 								{menuItems.map(link => (
@@ -184,39 +168,58 @@ export default function Header() {
 						</div>
 
 						<ul
-							className={`mobile:absolute mobile:top-104px mobile:left-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500 ${
+							className={`mobile:absolute mobile:top-[314px] mobile:right-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-b-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500 ${
 								showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'
 							}`}>
 							<li className="py-14px nav-bar-break:py-14px px-12px flex items-center nav-bar-break:pr-0 nav-bar-break:pl-40px">
 								<a
 									target="_blank"
 									href="https://cloud.getconvoy.io/login"
-									className="nav-bar-break:px-16px py-10px text-14 mr-16px h-[40px] font-medium rounded-8px nav-bar-break:bg-white-100 nav-bar-break:text-[#000] text-[#000] flex items-center justify-center border-[#E7E7E7] border shadow-btn">
+									className="nav-bar-break:px-16px py-10px text-14 mr-16px h-[40px] font-medium rounded-8px nav-bar-break:bg-white-100 nav-bar-break:text-[#000] text-[#2780F1] flex items-center justify-center nav-bar-break:border-[#E7E7E7] nav-bar-break:border nav-bar-break:shadow-btn">
 									<span>Sign In</span>
 
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none" className="ml-1 mt-[1px]">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none" className="hidden nav-bar-break:block ml-1 mt-[1px]">
 										<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="black" />
 									</svg>
 								</a>
-								<div className="block nav-bar-break:hidden h-18px w-[1px] bg-primary-25 mx-12px"></div>
+								<div className="block nav-bar-break:hidden h-18px w-[1px] bg-primary-25 mx-10px"></div>
 								<a
 									target="_blank"
 									href="https://cloud.getconvoy.io/signup"
-									className="px-16px py-10px text-14 font-medium rounded-8px h-10 nav-bar-break:bg-[#2780F1] nav-bar-break:text-white-100 text-primary-400 flex items-center">
+									className="px-12px py-10px text-14 font-medium rounded-8px h-10 nav-bar-break:bg-[#2780F1] nav-bar-break:text-white-100 text-[#2780F1] flex items-center">
 									<span>Start your project</span>
 
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px]">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="hidden nav-bar-break:block ml-1 mt-[1px]">
 										<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
 									</svg>
 								</a>
 							</li>
 						</ul>
-						<a
-							target="_blank"
-							href="https://cloud.getconvoy.io/login"
-							className="px-20px py-8px text-10 font-medium rounded-8px bg-primary-400 text-white-100 block nav-bar-break:hidden whitespace-nowrap xs:hidden">
-							Get Started
-						</a>
+
+						<button className="block absolute nav-bar-break:hidden right-5" onClick={() => setShowMenu(!showMenu)}>
+							{!showMenu && (
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+									<g clip-path="url(#clip0_2905_2221)">
+										<path
+											d="M18.8235 2.95206H1.17647C1.0154 2.95206 0.848547 2.88131 0.716524 2.73435C0.582916 2.58563 0.5 2.37349 0.5 2.14253C0.5 1.91157 0.582916 1.69943 0.716524 1.55071C0.848547 1.40376 1.0154 1.33301 1.17647 1.33301H18.8235C18.9846 1.33301 19.1515 1.40376 19.2835 1.55071C19.4171 1.69943 19.5 1.91157 19.5 2.14253C19.5 2.3735 19.4171 2.58564 19.2835 2.73435C19.1515 2.88131 18.9846 2.95206 18.8235 2.95206ZM18.8235 10.8092H1.17647C1.0154 10.8092 0.848547 10.7384 0.716524 10.5915C0.582916 10.4428 0.5 10.2306 0.5 9.99967C0.5 9.76871 0.582916 9.55657 0.716524 9.40785C0.848547 9.2609 1.0154 9.19015 1.17647 9.19015H18.8235C18.9846 9.19015 19.1515 9.2609 19.2835 9.40786C19.4171 9.55657 19.5 9.76871 19.5 9.99967C19.5 10.2306 19.4171 10.4428 19.2835 10.5915C19.1515 10.7384 18.9846 10.8092 18.8235 10.8092ZM18.8235 18.6663H1.17647C1.0154 18.6663 0.848546 18.5956 0.716525 18.4486C0.582917 18.2999 0.5 18.0878 0.5 17.8568C0.5 17.6259 0.582917 17.4137 0.716524 17.265C0.848546 17.118 1.0154 17.0473 1.17647 17.0473H18.8235C18.9846 17.0473 19.1515 17.118 19.2835 17.265C19.4171 17.4137 19.5 17.6259 19.5 17.8568C19.5 18.0878 19.4171 18.2999 19.2835 18.4486C19.1515 18.5956 18.9846 18.6663 18.8235 18.6663Z"
+											fill="#6B7280"
+											stroke="#6B7280"
+										/>
+									</g>
+									<defs>
+										<clipPath id="clip0_2905_2221">
+											<rect width="20" height="20" fill="white" />
+										</clipPath>
+									</defs>
+								</svg>
+							)}
+							{showMenu && (
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M18 6L6 18" stroke="#477DB3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+									<path d="M6 6L18 18" stroke="#477DB3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+								</svg>
+							)}
+						</button>
 					</div>
 				</nav>
 			)}
