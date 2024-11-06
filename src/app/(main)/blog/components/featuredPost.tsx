@@ -6,8 +6,6 @@ import authors from '../../../data/authors.json';
 import Image from 'next/image';
 
 export default function FeaturedPost({ postData }: any) {
-	const [showFallBackImg, setShowFallBackImg] = useState(false);
-
 	const getAuthors = () => {
 		if (!postData.authors) return [];
 		const postAuthors = authors.filter(item => postData.authors.includes(item.id));
