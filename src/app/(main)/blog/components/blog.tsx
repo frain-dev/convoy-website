@@ -16,6 +16,15 @@ export default function Blog({ articles }: any) {
 	const [showCategories, setShowCategories] = useState(false);
 	const tags = ['All Posts', 'Product Update', 'News', 'Engineering', 'Tutorial', 'Open Thoughts', 'Customer Stories'];
 
+	const [currentPage, setCurrentPage] = useState(1);
+	const postsPerPage = 6;
+
+	const isTagActive = (tag: string) => {
+		const urlTag = searchParams.get('tag');
+		if (!urlTag && tag === 'All Posts') return true;
+		return urlTag === tag;
+	};
+
 	const subscribeToNewsletter = async (event: any) => {
 		event.preventDefault();
 		setIsSubmittingEmail(true);
@@ -46,6 +55,7 @@ export default function Blog({ articles }: any) {
 		const filteredPost = nonFeaturedPosts.filter(article => article.primary_tag === filterTag);
 		setCurrentTag(filterTag || '');
 		setFilteredPosts(filteredPost);
+		setCurrentPage(1);
 	};
 
 	useEffect(() => {
@@ -53,45 +63,118 @@ export default function Blog({ articles }: any) {
 		else setFilteredPosts(nonFeaturedPosts);
 	}, [searchParams]);
 
+	// Pagination logic
+	const indexOfLastPost = currentPage * postsPerPage;
+	const indexOfFirstPost = indexOfLastPost - postsPerPage;
+	const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+	const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+
+	const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+	const nextPage = () => {
+		if (currentPage < totalPages) {
+			setCurrentPage(currentPage + 1);
+		}
+	};
+
+	const prevPage = () => {
+		if (currentPage > 1) {
+			setCurrentPage(currentPage - 1);
+		}
+	};
+
 	return (
 		<>
-			<div className="pt-150px pb-100px max-w-[1300px] w-full m-auto">
-				<div className="m-auto pb-0 flex justify-between pt-0">
+			<div className="pt-184px pb-100px max-w-[1350px] w-full m-auto">
+				<div className="flex flex-col items-center justify-center gap-6">
+					<h1 className="text-[40px] font-medium">Convoy Summaries</h1>
+					<form onSubmit={subscribeToNewsletter} className="flex gap-4 items-center">
+						<input
+							type="email"
+							id="email"
+							className="block p-4 ps-[16px] shadow-btn placeholder-[#666] placeholder:font-[500] text-[15px] text-gray-900 border border-[#E7E7E7] rounded-8px bg-[#fff] w-[494px] h-11 focus:outline-none"
+							placeholder="Join our newsletter"
+							required
+							ref={inputRef}
+						/>
+						<button className="px-16px py-10px text-14 font-medium rounded-8px h-11 nav-bar-break:bg-[#2780F1] nav-bar-break:text-white-100 text-primary-400 flex items-center shadow-btn-secondary">
+							<span>Subscribe</span>
+
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px]">
+								<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
+							</svg>
+						</button>
+					</form>
+				</div>
+
+				<div className="m-auto pb-0 flex justify-between pt-156px">
 					<aside className="w-240px hidden desktop:sticky desktop:top-150px desktop:block desktop:pl-20px desktop:pr-32px">
+						<div className="relative mb-8">
+							<div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+									<path
+										d="M19.25 19.25L15.5 15.5M4.75 11C4.75 7.54822 7.54822 4.75 11 4.75C14.4518 4.75 17.25 7.54822 17.25 11C17.25 14.4518 14.4518 17.25 11 17.25C7.54822 17.25 4.75 14.4518 4.75 11Z"
+										stroke="#A5A5A5"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</div>
+							<input
+								type="text"
+								id="default-search"
+								className="block p-4 ps-[44px] shadow-btn placeholder-[#A5A5A5] text-[15px] text-gray-900 border border-[#E7E7E7] rounded-8px bg-[#fff] w-[280px] h-[44px] focus:outline-none"
+								placeholder="Search"
+								required
+							/>
+						</div>
+
 						<ul className="p-0">
-							<h6 className="font-bold text-gray-800 mb-18px">CATEGORIES</h6>
+							<h6 className="font-bold text-[#000] mb-18px">CATEGORIES</h6>
 							{tags.map((tag, i) => (
-								<li key={i} className="font-medium text-12 mb-30px text-gray-500">
-									<Link href={tag !== 'All Posts' ? '/blog?tag=' + tag : '/blog'}>{tag}</Link>
+								<li key={i} className="font-medium text-14 mb-[15px] ml-20px">
+									<Link
+										href={tag !== 'All Posts' ? `/blog?tag=${tag}` : '/blog'}
+										className={`${isTagActive(tag) ? 'text-[#2780F1]' : 'text-[#666]'} hover:text-[#2780F1] transition-colors duration-200`}>
+										{tag}
+									</Link>
 								</li>
 							))}
 						</ul>
 
 						<div>
-							<h6 className="font-semibold mb-18px">Follow Us</h6>
+							<h6 className="font-semibold mb-18px mt-8">Follow Us</h6>
 
 							<ul className="flex">
-								<li className="bg-gray-400 bg-opacity-10 w-42px h-42px flex items-center justify-center rounded-[50%] mr-16px last-of-type:mr-[unset]">
+								<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 									<a target="_blank" href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
-										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
 											<path
-												d="M23 9.50001C22.9989 8.5721 22.6298 7.68251 21.9736 7.02638C21.3175 6.37024 20.4279 6.00113 19.5 6.00001C18.98 6.0028 18.4673 6.1228 18 6.35108V4.50001C18.0011 3.80422 17.7944 3.12396 17.4065 2.54634C17.0186 1.96872 16.4671 1.52005 15.8226 1.25778C15.1781 0.995512 14.4701 0.931594 13.789 1.07421C13.108 1.21683 12.4851 1.55949 12 2.0583C11.4244 1.45965 10.6539 1.08613 9.82741 1.00498C9.00087 0.923818 8.17251 1.14035 7.49142 1.6156C6.81033 2.09085 6.32124 2.79361 6.11219 3.59738C5.90314 4.40115 5.98785 5.25314 6.35108 6.00001H4.50001C3.80422 5.99895 3.12396 6.20561 2.54634 6.59352C1.96872 6.98143 1.52005 7.53294 1.25778 8.17741C0.995512 8.82187 0.931594 9.52996 1.07421 10.211C1.21683 10.892 1.55949 11.5149 2.0583 12C1.45965 12.5757 1.08613 13.3461 1.00498 14.1726C0.923818 14.9992 1.14035 15.8275 1.6156 16.5086C2.09085 17.1897 2.79361 17.6788 3.59738 17.8878C4.40115 18.0969 5.25314 18.0122 6.00001 17.6489V19.5C5.99895 20.1958 6.20561 20.8761 6.59352 21.4537C6.98143 22.0313 7.53294 22.48 8.17741 22.7422C8.82187 23.0045 9.52996 23.0684 10.211 22.9258C10.892 22.7832 11.5149 22.4405 12 21.9417C12.5757 22.5404 13.3461 22.9139 14.1726 22.995C14.9992 23.0762 15.8275 22.8597 16.5086 22.3844C17.1897 21.9092 17.6788 21.2064 17.8878 20.4026C18.0969 19.5989 18.0122 18.7469 17.6489 18H19.5C20.1958 18.0011 20.8761 17.7944 21.4537 17.4065C22.0313 17.0186 22.48 16.4671 22.7422 15.8226C23.0045 15.1781 23.0684 14.4701 22.9258 13.789C22.7832 13.108 22.4405 12.4851 21.9417 12C22.2764 11.6753 22.5425 11.2867 22.7243 10.8573C22.906 10.4279 22.9998 9.96632 23 9.50001V9.50001ZM13 4.50001C13 4.10219 13.158 3.72066 13.4394 3.43935C13.7207 3.15805 14.1022 3.00001 14.5 3.00001C14.8978 3.00001 15.2794 3.15805 15.5607 3.43935C15.842 3.72066 16 4.10219 16 4.50001V9.50001C16 9.89784 15.842 10.2794 15.5607 10.5607C15.2794 10.842 14.8978 11 14.5 11C14.1022 11 13.7207 10.842 13.4394 10.5607C13.158 10.2794 13 9.89784 13 9.50001V4.50001ZM6.00001 14.5C6.00001 14.7967 5.91204 15.0867 5.74722 15.3334C5.58239 15.58 5.34813 15.7723 5.07404 15.8858C4.79995 15.9994 4.49835 16.0291 4.20738 15.9712C3.9164 15.9133 3.64913 15.7705 3.43935 15.5607C3.22957 15.3509 3.08671 15.0836 3.02883 14.7926C2.97096 14.5017 3.00066 14.2001 3.11419 13.926C3.22772 13.6519 3.41998 13.4176 3.66666 13.2528C3.91333 13.088 4.20334 13 4.50001 13H6.00001V14.5ZM11 19.5C11 19.8978 10.842 20.2794 10.5607 20.5607C10.2794 20.842 9.89784 21 9.50001 21C9.10219 21 8.72066 20.842 8.43935 20.5607C8.15805 20.2794 8.00001 19.8978 8.00001 19.5V14.5C8.00001 14.1022 8.15805 13.7207 8.43935 13.4394C8.72066 13.158 9.10219 13 9.50001 13C9.89784 13 10.2794 13.158 10.5607 13.4394C10.842 13.7207 11 14.1022 11 14.5V19.5ZM9.50001 11H4.50001C4.10219 11 3.72066 10.842 3.43935 10.5607C3.15805 10.2794 3.00001 9.89784 3.00001 9.50001C3.00001 9.10219 3.15805 8.72066 3.43935 8.43935C3.72066 8.15805 4.10219 8.00001 4.50001 8.00001H9.50001C9.89784 8.00001 10.2794 8.15805 10.5607 8.43935C10.842 8.72066 11 9.10219 11 9.50001C11 9.89784 10.842 10.2794 10.5607 10.5607C10.2794 10.842 9.89784 11 9.50001 11ZM11 6.00001H9.50001C9.20334 6.00001 8.91333 5.91204 8.66666 5.74722C8.41998 5.58239 8.22772 5.34813 8.11419 5.07404C8.00066 4.79995 7.97096 4.49835 8.02883 4.20738C8.08671 3.9164 8.22957 3.64913 8.43935 3.43935C8.64913 3.22957 8.9164 3.08671 9.20738 3.02883C9.49835 2.97096 9.79995 3.00066 10.074 3.11419C10.3481 3.22772 10.5824 3.41998 10.7472 3.66666C10.912 3.91333 11 4.20334 11 4.50001V6.00001ZM12 12.0583C11.9807 12.0385 11.9615 12.0194 11.9417 12C11.9615 11.9807 11.9807 11.9615 12 11.9417C12.0194 11.9615 12.0385 11.9807 12.0583 12C12.0385 12.0194 12.0194 12.0385 12 12.0583ZM14.5 21C14.1023 20.9996 13.721 20.8414 13.4398 20.5602C13.1586 20.279 13.0004 19.8977 13 19.5V18H14.5C14.8978 18 15.2794 18.158 15.5607 18.4394C15.842 18.7207 16 19.1022 16 19.5C16 19.8978 15.842 20.2794 15.5607 20.5607C15.2794 20.842 14.8978 21 14.5 21ZM19.5 16H14.5C14.1022 16 13.7207 15.842 13.4394 15.5607C13.158 15.2794 13 14.8978 13 14.5C13 14.1022 13.158 13.7207 13.4394 13.4394C13.7207 13.158 14.1022 13 14.5 13H19.5C19.8978 13 20.2794 13.158 20.5607 13.4394C20.842 13.7207 21 14.1022 21 14.5C21 14.8978 20.842 15.2794 20.5607 15.5607C20.2794 15.842 19.8978 16 19.5 16ZM19.5 11H18V9.50001C18 9.20334 18.088 8.91333 18.2528 8.66666C18.4176 8.41998 18.6519 8.22772 18.926 8.11419C19.2001 8.00066 19.5017 7.97096 19.7926 8.02883C20.0836 8.08671 20.3509 8.22957 20.5607 8.43935C20.7704 8.64913 20.9133 8.9164 20.9712 9.20738C21.0291 9.49835 20.9994 9.79995 20.8858 10.074C20.7723 10.3481 20.58 10.5824 20.3334 10.7472C20.0867 10.912 19.7967 11 19.5 11Z"
-												fill="#737A91"
+												d="M26.25 8.125C26.25 6.39875 24.8512 5 23.125 5C21.3988 5 20 6.39875 20 8.125C20 9.12 20 14.6275 20 15.625C20 17.3512 21.3988 18.75 23.125 18.75C24.8512 18.75 26.25 17.3512 26.25 15.625C26.25 14.6275 26.25 9.12 26.25 8.125ZM33.75 15.625C33.75 17.3512 32.3512 18.75 30.625 18.75C29.8487 18.75 27.5 18.75 27.5 18.75C27.5 18.75 27.5 16.575 27.5 15.625C27.5 13.8988 28.8988 12.5 30.625 12.5C32.3512 12.5 33.75 13.8988 33.75 15.625ZM30.625 26.25C32.3512 26.25 33.75 24.8512 33.75 23.125C33.75 21.3988 32.3512 20 30.625 20C29.63 20 24.1225 20 23.125 20C21.3988 20 20 21.3988 20 23.125C20 24.8512 21.3988 26.25 23.125 26.25C24.1225 26.25 29.63 26.25 30.625 26.25ZM23.125 33.75C21.3988 33.75 20 32.3512 20 30.625C20 29.8487 20 27.5 20 27.5C20 27.5 22.175 27.5 23.125 27.5C24.8512 27.5 26.25 28.8988 26.25 30.625C26.25 32.3512 24.8512 33.75 23.125 33.75ZM12.5 30.625C12.5 32.3512 13.8988 33.75 15.625 33.75C17.3512 33.75 18.75 32.3512 18.75 30.625C18.75 29.63 18.75 24.1225 18.75 23.125C18.75 21.3988 17.3512 20 15.625 20C13.8988 20 12.5 21.3988 12.5 23.125C12.5 24.1225 12.5 29.63 12.5 30.625ZM5 23.125C5 21.3988 6.39875 20 8.125 20C8.90125 20 11.25 20 11.25 20C11.25 20 11.25 22.175 11.25 23.125C11.25 24.8512 9.85125 26.25 8.125 26.25C6.39875 26.25 5 24.8512 5 23.125ZM8.125 12.5C6.39875 12.5 5 13.8988 5 15.625C5 17.3512 6.39875 18.75 8.125 18.75C9.12 18.75 14.6275 18.75 15.625 18.75C17.3512 18.75 18.75 17.3512 18.75 15.625C18.75 13.8988 17.3512 12.5 15.625 12.5C14.6275 12.5 9.12 12.5 8.125 12.5ZM15.625 5C17.3512 5 18.75 6.39875 18.75 8.125C18.75 8.90125 18.75 11.25 18.75 11.25C18.75 11.25 16.575 11.25 15.625 11.25C13.8988 11.25 12.5 9.85125 12.5 8.125C12.5 6.39875 13.8988 5 15.625 5Z"
+												fill="#666666"
 											/>
 										</svg>
 									</a>
 								</li>
-								<li className="bg-gray-400 bg-opacity-10 w-42px h-42px flex items-center justify-center rounded-[50%] mr-16px last-of-type:mr-[unset]">
+								<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 									<a target="_blank" href="https://twitter.com/getconvoy">
-										<img src="/svg/twitter-grey-icon.svg" alt="twitter logo" />
+										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+											<path
+												d="M5.02344 5L16.3662 22.0117L5.42139 35H8.69043L17.8091 24.1797L25.0234 35H25.6924H35.021L23.3926 17.5537L33.9712 5H30.7021L21.9497 15.3882L15.0234 5H5.02344ZM9.69629 7.5H13.6855L30.3506 32.5H26.3613L9.69629 7.5Z"
+												fill="#666666"
+											/>
+										</svg>{' '}
 									</a>
 								</li>
-								<li className="bg-gray-400 bg-opacity-10 w-42px h-42px flex items-center justify-center rounded-[50%] mr-16px last-of-type:mr-[unset]">
+								<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 									<a target="_blank" href="https://github.com/frain-dev/convoy">
-										<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
 											<path
-												d="M6.99913 0.145752C3.13425 0.145752 0 3.29225 0 7.17375C0 10.2783 2.0055 12.912 4.788 13.8421C5.138 13.9069 5.26575 13.6899 5.26575 13.5035C5.26575 13.3364 5.25962 12.8945 5.25612 12.3083C3.30925 12.7326 2.898 11.3659 2.898 11.3659C2.58038 10.5539 2.121 10.3378 2.121 10.3378C1.48488 9.902 2.16825 9.91075 2.16825 9.91075C2.87087 9.96063 3.24013 10.6353 3.24013 10.6353C3.86488 11.7089 4.879 11.3991 5.278 11.2189C5.341 10.7648 5.52212 10.455 5.7225 10.2791C4.1685 10.1015 2.534 9.49863 2.534 6.80625C2.534 6.03888 2.807 5.4115 3.255 4.91975C3.18238 4.74213 2.94263 4.02725 3.32325 3.06038C3.32325 3.06038 3.91125 2.87138 5.24825 3.7805C5.8065 3.62475 6.405 3.54688 7.00088 3.54425C7.595 3.54775 8.19437 3.62475 8.7535 3.78138C10.0896 2.87225 10.6767 3.06125 10.6767 3.06125C11.0582 4.029 10.8185 4.743 10.7467 4.92063C11.1956 5.41238 11.466 6.03975 11.466 6.80713C11.466 9.5065 9.82975 10.1006 8.2705 10.2748C8.52162 10.4918 8.74562 10.9205 8.74562 11.5759C8.74562 12.5156 8.73687 13.2734 8.73687 13.5035C8.73687 13.6916 8.86287 13.9104 9.21812 13.8413C11.9962 12.9103 14 10.2774 14 7.17375C14 3.29225 10.8658 0.145752 6.99913 0.145752Z"
-												fill="#737A91"
+												fill-rule="evenodd"
+												clip-rule="evenodd"
+												d="M20 5C11.7139 5 5 11.7139 5 20C5 26.626 9.29688 32.251 15.2588 34.2334C16.0107 34.3701 16.2842 33.9111 16.2842 33.5107C16.2842 33.1543 16.2695 32.2119 16.2646 30.9619C12.0898 31.8652 11.2109 28.9502 11.2109 28.9502C10.5273 27.2168 9.5459 26.7529 9.5459 26.7529C8.18359 25.8252 9.64844 25.8447 9.64844 25.8447C11.1523 25.9521 11.9434 27.3877 11.9434 27.3877C13.2813 29.6826 15.4541 29.0186 16.3086 28.6377C16.4453 27.666 16.8359 27.0068 17.2607 26.6309C13.9307 26.2549 10.4297 24.9658 10.4297 19.2188C10.4297 17.5781 11.0156 16.2402 11.9727 15.1904C11.8213 14.8145 11.3037 13.2861 12.1191 11.2207C12.1191 11.2207 13.3789 10.8203 16.2451 12.7588C17.4414 12.4268 18.7256 12.2607 20 12.2559C21.2744 12.2607 22.5586 12.4268 23.7549 12.7588C26.6211 10.8203 27.876 11.2207 27.876 11.2207C28.6963 13.2861 28.1836 14.8145 28.0273 15.1904C28.9893 16.2402 29.5654 17.5781 29.5654 19.2188C29.5654 24.9805 26.0596 26.2451 22.7197 26.6211C23.2568 27.0801 23.7354 27.998 23.7354 29.3945C23.7354 31.4014 23.7207 33.0176 23.7207 33.5107C23.7207 33.9111 23.9893 34.3799 24.751 34.2334C30.708 32.2461 35 26.626 35 20C35 11.7139 28.2861 5 20 5Z"
+												fill="#666666"
 											/>
 										</svg>
 									</a>
@@ -102,17 +185,15 @@ export default function Blog({ articles }: any) {
 
 					<main className="max-w-[1035px] w-full px-20px">
 						<div className="relative">
-							<h2 className="font-bold text-black flex items-center">
-								{currentTag}
-								<button onClick={() => setShowCategories(!showCategories)} className="h-fit mt-4px ml-8px desktop:hidden">
-									<img src="/svg/angle-down-black-icon.svg" alt="arrow down iconn" />
-								</button>
-							</h2>
 							{showCategories && (
 								<ul className="absolute bg-white-100 shadow-sm rounded-10px p-24px z-1 w-216px mt-4px">
 									{tags.map((tag, i) => (
-										<li key={i} className="mb-32px last-of-type:mb-0 text-14 text-gray-600" onClick={() => setShowCategories(!showCategories)}>
-											<Link href={'/blog?tag=' + tag}>{tag}</Link>
+										<li key={i} className="mb-32px last-of-type:mb-0 text-14" onClick={() => setShowCategories(false)}>
+											<Link
+												href={`/blog?tag=${tag}`}
+												className={`${isTagActive(tag) ? 'text-[#2780F1]' : 'text-[#666]'} hover:text-[#2780F1] transition-colors duration-200`}>
+												{tag}
+											</Link>
 										</li>
 									))}
 								</ul>
@@ -122,45 +203,75 @@ export default function Blog({ articles }: any) {
 						<FeaturedPost postData={featuredPosts[0]}></FeaturedPost>
 
 						<div className="grid desktop:grid-cols-2 gap-48px max-w-[970px] mb-48px mt-48px">
-							{filteredPosts.slice(0, 4).map((article, i) => (
-								<Post postData={article} key={i} />
+							{currentPosts.map((article, i) => (
+								<Post postData={article} key={i} index={i} />
 							))}
 						</div>
 
-						<div className="bg-white-100 shadow-card rounded-8px flex flex-col items-center max-w-[970px] py-32px px-24px desktop:px-70px mt-40px desktop:mt-48px desktop:flex-row desktop:justify-around">
-							<div>
-								<p className="mb-10px text-14 text-center desktop:text-left">Join our newsletter</p>
-								<p className="text-14 text-center desktop:text-left">No spam! Just articles, events, and talks.</p>
-								<form onSubmit={subscribeToNewsletter} className="bg-primary-25 border-primary-25 flex p-10px rounded-8px items-center mt-24px">
-									<div>
-										<svg width="32" height="28" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path
-												d="M23.6875 11.9688C22.9688 12.5312 22.0625 13.2188 18.875 15.5312C18.25 16 17.0938 17.0312 16 17.0312C14.875 17.0312 13.75 16 13.0938 15.5312C9.90625 13.2188 9 12.5312 8.28125 11.9688C8.15625 11.875 8 11.9688 8 12.125V18.5C8 19.3438 8.65625 20 9.5 20H22.5C23.3125 20 24 19.3438 24 18.5V12.125C24 11.9688 23.8125 11.875 23.6875 11.9688ZM16 16C16.7188 16.0312 17.75 15.0938 18.2812 14.7188C22.4375 11.7188 22.75 11.4375 23.6875 10.6875C23.875 10.5625 24 10.3438 24 10.0938V9.5C24 8.6875 23.3125 8 22.5 8H9.5C8.65625 8 8 8.6875 8 9.5V10.0938C8 10.3438 8.09375 10.5625 8.28125 10.6875C9.21875 11.4375 9.53125 11.7188 13.6875 14.7188C14.2188 15.0938 15.25 16.0312 16 16Z"
-												fill="#477DB3"
-											/>
-										</svg>
-									</div>
-									<input
-										type="email"
-										id="email"
-										placeholder="Your email"
-										aria-label="Email"
-										ref={inputRef}
-										className="bg-transparent focus:outline-none focus:border-none"
-									/>
-									<button>
-										<img src="/svg/send-primary-icon.svg" alt="send icon" className="w-24px h-24px" />
-									</button>
-								</form>
+						{/* Pagination */}
+						{totalPages > 1 && (
+							<div className="flex items-center justify-center space-x-1.5 mt-[72px]">
+								<button
+									className="w-[43px] h-[39px] flex items-center justify-center rounded-8px border border-[#e7e7e7] disabled:opacity-50 shadow-btn bg-white-100"
+									onClick={prevPage}
+									disabled={currentPage === 1}>
+									<svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+										<path d="M8.6197 9.00052L12.332 5.2882L11.2714 4.22754L6.4984 9.00052L11.2714 13.7734L12.332 12.7128L8.6197 9.00052Z" fill="#666666" />
+									</svg>
+								</button>
+								{Array.from({ length: totalPages }).map((_, index) => {
+									const pageNumber = index + 1;
+
+									
+									if (pageNumber === 1 || pageNumber === totalPages || (pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1)) {
+										return (
+											<button
+												key={index}
+												className={`w-[43px] h-[39px] flex items-center justify-center rounded-8px  disabled:opacity-50 shadow-btn text-[15px] font-semibold ${
+													currentPage === pageNumber
+														? 'border border-[#2780F1]/[0.01] bg-[#2780F133] text-white'
+														: 'border border-[#e7e7e7] text-[#666] bg-white-100'
+												}`}
+												onClick={() => paginate(pageNumber)}>
+												{index + 1}
+											</button>
+										);
+									}
+
+									
+									if (pageNumber === currentPage - 2 || pageNumber === currentPage + 2) {
+										return (
+											<span
+												key={index}
+												className="w-[43px] h-[39px] flex items-center justify-center rounded-8px border border-[#e7e7e7] disabled:opacity-50 shadow-btn bg-white-100">
+												...
+											</span>
+										);
+									}
+
+									return null;
+								})}
+
+								<button
+									className="w-[43px] h-[39px] flex items-center justify-center rounded-8px border border-[#e7e7e7] disabled:opacity-50 shadow-btn bg-white-100"
+									onClick={nextPage}
+									disabled={currentPage === totalPages}>
+									<svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+										<path d="M10.3803 9.00052L6.66797 5.2882L7.72863 4.22754L12.5016 9.00052L7.72863 13.7734L6.66797 12.7128L10.3803 9.00052Z" fill="#666666" />
+									</svg>
+								</button>
+
+								<button
+									className="w-[43px] h-[39px] flex items-center justify-center rounded-8px border border-[#e7e7e7] disabled:opacity-50 shadow-btn bg-white-100"
+									onClick={() => paginate(totalPages)}
+									disabled={currentPage === totalPages}>
+									<svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+										<path d="M13.7123 8.77298L10 5.06066L11.0607 4L15.8336 8.77298L11.0607 13.5459L10 12.4853L13.7123 8.77298Z" fill="#666666" />
+										<path d="M7.71233 8.77298L4 5.06066L5.06066 4L9.83363 8.77298L5.06066 13.5459L4 12.4853L7.71233 8.77298Z" fill="#666666" />
+									</svg>
+								</button>
 							</div>
-							<img src="/gif/mailbox.gif" className="w-180px order-1 m-auto desktop:order-2 desktop:m-[unset]" alt="mailbox animation" />
-						</div>
-
-						<div className="grid desktop:grid-cols-2 gap-48px max-w-[970px] mb-48px mt-48px">
-							{filteredPosts.slice(4).map((article, i) => (
-								<Post postData={article} key={i} />
-							))}
-						</div>
+						)}
 					</main>
 				</div>
 			</div>
