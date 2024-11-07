@@ -30,8 +30,7 @@ export default function FeaturedPost({ postData }: any) {
                 px-20px
                 desktop:pl-[40px] desktop:pt-[50px] desktop:pr-0 desktop:flex desktop:justify-between desktop:flex-wrap desktop:items-end
                 mobile:mb-48px bg-gradient-to-b from-[#fff] from-[0%] via-[#fdf6ff] via-[54.97%] to-[#f1d2fc] to-[134.32%] border border-[#E7E7E7] relative overflow-hidden">
-				<Image src="/svg/grid-lines.svg" width={850} height={402} className="w-[905px] h-full absolute -top-0 -left-[57px]" alt="y-combinator" />
-				<Image src="/svg/grid-lines.svg" width={850} height={402} className="w-[905px] h-full absolute top-0 -right-[674px]" alt="y-combinator" />
+				<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.5rem_2.35rem] absolute w-full h-full top-0 right-0"></div>
 
 				<div className="desktop:max-w-[470px] pt-2px pr-24px z-10">
 					<div className="flex justify-between items-center mb-24px">

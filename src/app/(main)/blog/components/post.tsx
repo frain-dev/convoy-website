@@ -30,9 +30,9 @@ export default function Post({ postData, type, className, index }: any) {
 					style={{
 						background: `linear-gradient(to top, ${getGradientColor(index)}26, #FFFFFF)`
 					}}>
-					<Image src="/svg/grid-lines.svg" width={850} height={402} className="w-[1905px] absolute -top-0 -left-[0px]" alt="y-combinator" />
+					<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] absolute top-0 right-0 w-full h-full"></div>
 
-					<Link href={`/blog/${postData.slug}`}>
+					<Link href={`/blog/${postData.slug}`} className="z-10">
 						<h3
 							className={`font-semibold z-10 mb -48px overflow-hidden text-ellipsis text-[#000] w-[320px] ${
 								type === 'collapsed' ? 'text-16' : 'text-20 leading-[28px]'
