@@ -4,6 +4,7 @@ import formatDate from '@/lib/formatDate';
 import Post from './post';
 import authors from '../../../data/authors.json';
 import Image from 'next/image';
+import GetStarted from '@/app/components/GetStarted';
 
 export default function BlogPage({ posts, blogData, children }: any) {
 	const getGradientColor = (index: number) => {
@@ -137,7 +138,9 @@ export default function BlogPage({ posts, blogData, children }: any) {
 					</div>
 				</div>
 
-				<main className="nav-bar-break:max-w-[770px] w-full px-20px desktop-min:p-0 mb-130px mt-40px">{children}</main>
+				<main className="nav-bar-break:max-w-[770px] w-full px-20px desktop-min:p-0 mb-70px mt-40px">{children}</main>
+
+				<GetStarted></GetStarted>
 
 				<div className="px-20px desktop-min:p-0 desktop-min:top-200px desktop:top-128px">
 					<p className="text-20 font-semibold text-[#111928] mb-40px">Related Posts</p>
