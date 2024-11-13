@@ -32,7 +32,8 @@ module.exports = {
 			},
 			fontFamily: {
 				menlo: ['Menlo Regular'],
-				inter: ['Inter']
+				inter: ['Inter'],
+				'open-sauce-sans': ['Open Sauce Sans']
 			}
 		},
 		fontWeight: {
@@ -57,7 +58,7 @@ module.exports = {
 			mobile: { max: '1054px' },
 			footer: { max: '630px' },
 			xs: { max: '425px' },
-			tab: { max: '1287px', min: '880px' },
+			tab: { max: '1360px', min: '880px' },
 			'doc-tab': { min: '768px' }
 		},
 		borderRadius: {

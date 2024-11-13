@@ -11,11 +11,11 @@ export default function Header() {
 	const pathname = usePathname();
 
 	const menuItems = [
-		{ name: 'Core Gateway', route: '/core-gateway', type: 'route' },
+		{ name: 'Open Source', route: '/community', type: 'route' },
 		{ name: 'Enterprise', route: '/enterprise', type: 'route' },
 		{ name: 'Blog', route: '/blog', type: 'route' },
 		{ name: 'Pricing', route: '/pricing', type: 'route' },
-		{ name: 'About', route: '/about', type: 'route' }
+		{ name: 'About', route: '/aboutus', type: 'route' }
 	];
 
 	return (
@@ -60,7 +60,7 @@ export default function Header() {
 							className={`mobile:absolute mobile:top-[314px] mobile:right-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-b-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500 ${
 								showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'
 							}`}>
-							<li className="py-14px nav-bar-break:py-14px px-12px flex items-center nav-bar-break:pr-0 nav-bar-break:pl-40px">
+							<li className="py-14px nav-bar-break:py-14px pl-12px flex items-center nav-bar-break:pr-0 nav-bar-break:pl-40px">
 								<a
 									target="_blank"
 									href="https://cloud.getconvoy.io/login"
@@ -77,7 +77,7 @@ export default function Header() {
 										<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="black" />
 									</svg>
 								</a>
-								<div className="block nav-bar-break:hidden h-18px w-[1px] bg-primary-25 mx-10px"></div>
+								<div className="block nav-bar-break:hidden h-18px w-[1px] bg-primary-25 mx-5px"></div>
 								<a
 									target="_blank"
 									href="https://cloud.getconvoy.io/signup"
