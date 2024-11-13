@@ -87,11 +87,10 @@ export default function Pricing() {
 		},
 		{
 			name: 'Business',
-			id: 'community',
+			id: 'growth',
 			description: 'Convoy Business Edition is designed for growing startups',
 			price: 'Custom Pricing',
 			link: 'https://github.com/frain-dev/convoy#installation-getting-started',
-
 			preText: 'Best for developers that:',
 			features: [
 				'Everyting in Community',
@@ -628,13 +627,12 @@ stack (Buycoins, Sendcash, Sendcash Pay) and we’re really loving it! E soft pl
 											</button>
 										)}
 										{i === 1 && (
-											<a
-												target="_blank"
-												href="https://cloud.getconvoy.io/licensing"
-												className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14">
-												Buy Convoy Business
+											<button
+												className="mx-24px bg-[linear-gradient(0deg,#376DA4_0%,#477DB3_100%)] shadow-sm rounded-10px p-16px xs:p-10px xs:text-12 flex items-center justify-center text-white-100 text-14"
+												onClick={() => enterpriseModal.current?.showModal()}>
+												Contact Us
 												<Image src={ArrowRightIcon} alt="arrow right icon" className="ml-12px w-12px" />
-											</a>
+											</button>
 										)}
 										{i === 0 && (
 											<a
