@@ -123,7 +123,7 @@ export default function Blog({ articles }: any) {
 							<input
 								type="text"
 								id="default-search"
-								className="block p-4 ps-[44px] shadow-btn placeholder-[#A5A5A5] text-[15px] text-gray-900 border border-[#E7E7E7] rounded-8px bg-[#fff] w-[280px] h-[44px] focus:outline-none"
+								className="block p-4 ps-[44px] shadow-btn placeholder-[#A5A5A5] text-[15px] text-gray-900 border border-[#E7E7E7] rounded-8px bg-[#fff] tab:w-[200px] desktop-min:z w-[280px] h-[44px] focus:outline-none"
 								placeholder="Search"
 								required
 							/>
@@ -205,7 +205,7 @@ export default function Blog({ articles }: any) {
 
 						<FeaturedPost postData={featuredPosts[0]}></FeaturedPost>
 
-						<div className="grid desktop:grid-cols-2 gap-48px max-w-[970px] mb-48px mt-48px">
+						<div className="grid desktop:grid-cols-2 gap-40px max-w-[970px] mb-40px mt-40px">
 							{currentPosts.map((article, i) => (
 								<Post postData={article} key={i} index={i} />
 							))}

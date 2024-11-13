@@ -5,6 +5,38 @@
 	src: local('Menlo Regular'), url('../fonts/Menlo-Regular.woff') format('woff');
 }
 
+/* Open Sauce Sans */
+@font-face {
+	font-family: 'Open Sauce Sans';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Open Sauce Sans'), url('../fonts/open-sauce-sans/OpenSauceSans-Regular.ttf') format('ttf');
+}
+
+/* Open Sauce Sans */
+// @font-face {
+// 	font-family: 'Open Sauce Sans';
+// 	font-style: normal;
+// 	font-weight: 500;
+// 	src: local('Open Sauce Sans'), url('../fonts/open-sauce-sans/OpenSauceSans-Medium.ttf') format('ttf');
+// }
+
+/* Open Sauce Sans */
+// @font-face {
+// 	font-family: 'Open Sauce Sans';
+// 	font-style: normal;
+// 	font-weight: 600;
+// 	src: local('Open Sauce Sans'), url('../fonts/open-sauce-sans/OpenSauceSans-SemiBold.ttf') format('ttf');
+// }
+
+/* Open Sauce Sans */
+// @font-face {
+// 	font-family: 'Open Sauce Sans';
+// 	font-style: normal;
+// 	font-weight: 700;
+// 	src: local('Open Sauce Sans'), url('../fonts/open-sauce-sans/OpenSauceSans-Bold.ttf') format('ttf');
+// }
+
 /* cyrillic-ext */
 @font-face {
 	font-family: 'Inter';
