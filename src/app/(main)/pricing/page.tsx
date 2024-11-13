@@ -89,7 +89,7 @@ export default function Pricing() {
 			name: 'Business',
 			id: 'community',
 			description: 'Convoy Business Edition is designed for growing startups',
-			price: '$500',
+			price: 'Custom Pricing',
 			link: 'https://github.com/frain-dev/convoy#installation-getting-started',
 
 			preText: 'Best for developers that:',
