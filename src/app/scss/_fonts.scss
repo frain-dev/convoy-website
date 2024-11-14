@@ -9,33 +9,33 @@
 @font-face {
 	font-family: 'Open Sauce Sans';
 	font-style: normal;
-	font-weight: normal;
-	src: local('Open Sauce Sans'), url('../fonts/open-sauce-sans/OpenSauceSans-Regular.ttf') format('ttf');
+	font-weight: 400;
+	src: url('../fonts/open-sauce-sans/OpenSauceSans-Regular.ttf') format('truetype');
 }
 
 /* Open Sauce Sans */
-// @font-face {
-// 	font-family: 'Open Sauce Sans';
-// 	font-style: normal;
-// 	font-weight: 500;
-// 	src: local('Open Sauce Sans'), url('../fonts/open-sauce-sans/OpenSauceSans-Medium.ttf') format('ttf');
-// }
+@font-face {
+	font-family: 'Open Sauce Sans';
+	font-style: normal;
+	font-weight: 500;
+	src: url('../fonts/open-sauce-sans/OpenSauceSans-Medium.ttf') format('truetype');
+}
 
 /* Open Sauce Sans */
-// @font-face {
-// 	font-family: 'Open Sauce Sans';
-// 	font-style: normal;
-// 	font-weight: 600;
-// 	src: local('Open Sauce Sans'), url('../fonts/open-sauce-sans/OpenSauceSans-SemiBold.ttf') format('ttf');
-// }
+@font-face {
+	font-family: 'Open Sauce Sans';
+	font-style: normal;
+	font-weight: 600;
+	src: url('../fonts/open-sauce-sans/OpenSauceSans-SemiBold.ttf') format('truetype');
+}
 
 /* Open Sauce Sans */
-// @font-face {
-// 	font-family: 'Open Sauce Sans';
-// 	font-style: normal;
-// 	font-weight: 700;
-// 	src: local('Open Sauce Sans'), url('../fonts/open-sauce-sans/OpenSauceSans-Bold.ttf') format('ttf');
-// }
+@font-face {
+	font-family: 'Open Sauce Sans';
+	font-style: normal;
+	font-weight: 700;
+	src: url('../fonts/open-sauce-sans/OpenSauceSans-Bold.ttf') format('truetype');
+}
 
 /* cyrillic-ext */
 @font-face {
