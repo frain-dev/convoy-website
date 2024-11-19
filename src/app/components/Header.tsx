@@ -23,7 +23,7 @@ export default function Header() {
 			{!pathname.includes('/docs/') && (
 				<nav className="w-full m-auto px-0px pt-0 pb-0 mobile:!py-4 nav-bar-break:!py-0 z-50 fixed nav-bar-break:pt-0 nav-bar-break:pb-0 transition-all duration-300 bg-white-100 border-b border-[#E7E7E7]">
 					<div className="flex items-center justify-between m-auto max-w-[1300px]">
-						<div className="ml-20px nav-bar-break:w-fit nav-bar-break:ml-0 flex items-center justify-center gap-4">
+						<div className="ml-20px nav-bar-break:w-fit nav-bar-break:ml-20px flex items-center justify-center gap-4">
 							<Link href="/">
 								<Image src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" quality="70" />
 							</Link>
@@ -57,7 +57,7 @@ export default function Header() {
 						</div>
 
 						<ul
-							className={`mobile:absolute mobile:top-[314px] mobile:right-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-b-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500 ${
+							className={`mobile:absolute mobile:top-[314px] nav-bar-break:pr-20px mobile:right-20px mobile:text-left mobile:bg-white-100 mobile:shadow-sm mobile:rounded-b-10px mobile:min-w-[250px] nav-bar-break:flex nav-bar-break:items-center nav-bar-break:justify-end nav-bar-break:bg-transparent transition-all duration-500 ${
 								showMenu ? 'mobile:h-fit mobile:block mobile:z-50' : 'mobile:hidden mobile:h-0'
 							}`}>
 							<li className="py-14px nav-bar-break:py-14px pl-12px flex items-center nav-bar-break:pr-0 nav-bar-break:pl-40px">

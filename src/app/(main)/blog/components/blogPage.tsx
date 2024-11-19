@@ -30,7 +30,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 		<div className="m-auto pt-100px mobile:pt- 150px max-w -[1300px] w-full">
 			<div className="flex flex-col items-center flex-wrap nav-bar-break:flex-nowrap justify-center w-full">
 				<div
-					className="border border-[#EBEBEB] w-full min-h-[520px] py-30px desktop:py-52px bg-gradient-to-b from-[#fff] from-[0%] via-[#fee] via-[54.97%] to-[#ffd7d7] to-[134.32%] flex items-center justify-center mobile:px-20px mobile:min-h-[304px] relative overflow-hidden"
+					className="border border-[#EBEBEB] w-full min-h-[520px] py-30px desktop:py-52px bg-gradient-to-b from-[#fff] from-[0%] via-[#fee] via-[54.97%] to-[#ffd7d7] to-[134.32%] flex items-center justify-center mobile:px-20px nav-bar-break:px-30px mobile:min-h-[304px] relative overflow-hidden"
 					// style={{
 					// 	background: `linear-gradient(to top, ${getGradientColor(index)}26, #FFFFFF)`
 					// }}
