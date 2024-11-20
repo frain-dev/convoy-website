@@ -97,7 +97,9 @@ export default function Footer() {
 									<Image src="/svg/convoy-logo-full-new.svg" height={32} width={160} alt="logo" className="w-[119px] nav-bar-break:w-160px" />
 								</div>
 
-								<p className="text-14 mb-24px mt-12px nav-bar-break:w-[246px] text-[#666] font-medium leading-[160%]">2261 Market Street, San Francisco, CA 94114</p>
+								<p className="text-14 mb-24px mt-12px nav-bar-break:w-[246px] text-[#666] font-medium leading-[160%]">
+									2261 Market Street, San Francisco, CA 94114
+								</p>
 							</div>
 
 							<div className="flex flex-col-reverse nav-bar-break:flex-col justify-between flex-wra desktop:pb-40px desktop:footer:block bor der w-full desktop:w-min mobile:gap-10">
@@ -109,16 +111,17 @@ export default function Footer() {
 												<img src="/svg/angle-down-icon.svg" alt="accordion icon" className="invisible footer:visible w-16px" />
 											</h3>
 											{section.links.map((link, i) => (
-												<li
-													key={i}
-													className="text-[#666]">
+												<li key={i} className="text-[#666]">
 													{!link.isExternal && (
 														<Link href={link.link} className="text-12 desktop:text-14 font-medium mb-2 desktop:mb-12px block footer:pl-4px w-full">
 															{link.name}
 														</Link>
 													)}
 													{link.isExternal && (
-														<a target="_blank" href={link.link} className="text-12 desktop:text-14 font-medium mb-2 desktop:mb-12px block footer:pl-4px w-full">
+														<a
+															target="_blank"
+															href={link.link}
+															className="text-12 desktop:text-14 font-medium mb-2 desktop:mb-12px block footer:pl-4px w-full">
 															{link.name}
 														</a>
 													)}
@@ -242,16 +245,12 @@ export default function Footer() {
 									</li>
 									<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 										<a target="_blank" href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
-											<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
-												<a target="_blank" href="https://github.com/frain-dev/convoy">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<path
-															d="M15.75 4.875C15.75 3.83925 14.9108 3 13.875 3C12.8392 3 12 3.83925 12 4.875C12 5.472 12 8.7765 12 9.375C12 10.4108 12.8392 11.25 13.875 11.25C14.9108 11.25 15.75 10.4108 15.75 9.375C15.75 8.7765 15.75 5.472 15.75 4.875ZM20.25 9.375C20.25 10.4108 19.4108 11.25 18.375 11.25C17.9093 11.25 16.5 11.25 16.5 11.25C16.5 11.25 16.5 9.945 16.5 9.375C16.5 8.33925 17.3392 7.5 18.375 7.5C19.4108 7.5 20.25 8.33925 20.25 9.375ZM18.375 15.75C19.4108 15.75 20.25 14.9108 20.25 13.875C20.25 12.8392 19.4108 12 18.375 12C17.778 12 14.4735 12 13.875 12C12.8392 12 12 12.8392 12 13.875C12 14.9108 12.8392 15.75 13.875 15.75C14.4735 15.75 17.778 15.75 18.375 15.75ZM13.875 20.25C12.8392 20.25 12 19.4108 12 18.375C12 17.9093 12 16.5 12 16.5C12 16.5 13.305 16.5 13.875 16.5C14.9108 16.5 15.75 17.3392 15.75 18.375C15.75 19.4108 14.9108 20.25 13.875 20.25ZM7.5 18.375C7.5 19.4108 8.33925 20.25 9.375 20.25C10.4108 20.25 11.25 19.4108 11.25 18.375C11.25 17.778 11.25 14.4735 11.25 13.875C11.25 12.8392 10.4108 12 9.375 12C8.33925 12 7.5 12.8392 7.5 13.875C7.5 14.4735 7.5 17.778 7.5 18.375ZM3 13.875C3 12.8392 3.83925 12 4.875 12C5.34075 12 6.75 12 6.75 12C6.75 12 6.75 13.305 6.75 13.875C6.75 14.9108 5.91075 15.75 4.875 15.75C3.83925 15.75 3 14.9108 3 13.875ZM4.875 7.5C3.83925 7.5 3 8.33925 3 9.375C3 10.4108 3.83925 11.25 4.875 11.25C5.472 11.25 8.7765 11.25 9.375 11.25C10.4108 11.25 11.25 10.4108 11.25 9.375C11.25 8.33925 10.4108 7.5 9.375 7.5C8.7765 7.5 5.472 7.5 4.875 7.5ZM9.375 3C10.4108 3 11.25 3.83925 11.25 4.875C11.25 5.34075 11.25 6.75 11.25 6.75C11.25 6.75 9.945 6.75 9.375 6.75C8.33925 6.75 7.5 5.91075 7.5 4.875C7.5 3.83925 8.33925 3 9.375 3Z"
-															fill="#666666"
-														/>
-													</svg>
-												</a>
-											</li>
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+												<path
+													d="M15.75 4.875C15.75 3.83925 14.9108 3 13.875 3C12.8392 3 12 3.83925 12 4.875C12 5.472 12 8.7765 12 9.375C12 10.4108 12.8392 11.25 13.875 11.25C14.9108 11.25 15.75 10.4108 15.75 9.375C15.75 8.7765 15.75 5.472 15.75 4.875ZM20.25 9.375C20.25 10.4108 19.4108 11.25 18.375 11.25C17.9093 11.25 16.5 11.25 16.5 11.25C16.5 11.25 16.5 9.945 16.5 9.375C16.5 8.33925 17.3392 7.5 18.375 7.5C19.4108 7.5 20.25 8.33925 20.25 9.375ZM18.375 15.75C19.4108 15.75 20.25 14.9108 20.25 13.875C20.25 12.8392 19.4108 12 18.375 12C17.778 12 14.4735 12 13.875 12C12.8392 12 12 12.8392 12 13.875C12 14.9108 12.8392 15.75 13.875 15.75C14.4735 15.75 17.778 15.75 18.375 15.75ZM13.875 20.25C12.8392 20.25 12 19.4108 12 18.375C12 17.9093 12 16.5 12 16.5C12 16.5 13.305 16.5 13.875 16.5C14.9108 16.5 15.75 17.3392 15.75 18.375C15.75 19.4108 14.9108 20.25 13.875 20.25ZM7.5 18.375C7.5 19.4108 8.33925 20.25 9.375 20.25C10.4108 20.25 11.25 19.4108 11.25 18.375C11.25 17.778 11.25 14.4735 11.25 13.875C11.25 12.8392 10.4108 12 9.375 12C8.33925 12 7.5 12.8392 7.5 13.875C7.5 14.4735 7.5 17.778 7.5 18.375ZM3 13.875C3 12.8392 3.83925 12 4.875 12C5.34075 12 6.75 12 6.75 12C6.75 12 6.75 13.305 6.75 13.875C6.75 14.9108 5.91075 15.75 4.875 15.75C3.83925 15.75 3 14.9108 3 13.875ZM4.875 7.5C3.83925 7.5 3 8.33925 3 9.375C3 10.4108 3.83925 11.25 4.875 11.25C5.472 11.25 8.7765 11.25 9.375 11.25C10.4108 11.25 11.25 10.4108 11.25 9.375C11.25 8.33925 10.4108 7.5 9.375 7.5C8.7765 7.5 5.472 7.5 4.875 7.5ZM9.375 3C10.4108 3 11.25 3.83925 11.25 4.875C11.25 5.34075 11.25 6.75 11.25 6.75C11.25 6.75 9.945 6.75 9.375 6.75C8.33925 6.75 7.5 5.91075 7.5 4.875C7.5 3.83925 8.33925 3 9.375 3Z"
+													fill="#666666"
+												/>
+											</svg>
 										</a>
 									</li>
 									<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
