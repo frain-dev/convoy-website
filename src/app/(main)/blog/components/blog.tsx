@@ -257,7 +257,7 @@ export default function Blog({ articles }: any) {
 
 						<FeaturedPost postData={featuredPosts[0]}></FeaturedPost>
 
-						<div className="grid desktop:grid-cols-2 gap-40px max-w-[970px] mb-40px mt-40px">
+						<div className="grid grid-cols-1 desktop:grid-cols-2 gap-40px max-w-[970px] mb-40px mt-40px w-full">
 							{currentPosts.map((article, i) => (
 								<Post postData={article} key={i} index={i} />
 							))}
