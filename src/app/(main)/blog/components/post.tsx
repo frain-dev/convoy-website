@@ -34,7 +34,7 @@ export default function Post({ postData, type, className, index }: any) {
 
 					<Link href={`/blog/${postData.slug}`} className="z-10">
 						<h3
-							className={`font-semibold z-10 mb -48px overflow-hidden text-ellipsis text-[#000] w-[320px] ${
+							className={`font-semibold z-10 mb -48px overflow-hidden text-ellipsis text-[#000] desktop:w-[320px] ${
 								type === 'collapsed' ? 'text-16' : 'text-20 leading-[28px]'
 							}`}>
 							{postData.title}
