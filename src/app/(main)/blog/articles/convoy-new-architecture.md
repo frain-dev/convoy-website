@@ -9,7 +9,7 @@ primary_tag: Product Update
 tags:
     - Convoy
     - Product Update 
-featured: true 
+featured: false 
 description: 'In our latest release, we’ve simplified Convoy’s architecture. In this article I describe a little bit more about the architecture and the benefits for Convoy.'
 published_at: 2024-09-11T17:00:00.000+00:00
 ---
