@@ -56,10 +56,16 @@ module.exports = {
 			md: { min: '1288px' },
 			'md-max': { max: '1288px' },
 			mobile: { max: '1054px' },
+			'mobile-min': { max: '768px' },
 			footer: { max: '630px' },
 			xs: { max: '425px' },
 			tab: { max: '1360px', min: '880px' },
-			'doc-tab': { min: '768px' }
+			'doc-tab': { min: '768px' },
+			'sm-old': { min: '640px' },
+			'md-old': { min: '768px' },
+			'lg-old': { min: '1024px' },
+			'xl-old': { min: '1280px' },
+			'2xl-old': { min: '1536px' }
 		},
 		borderRadius: {
 			'2px': '2px',
