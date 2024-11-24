@@ -89,7 +89,7 @@ export default function Footer() {
 	return (
 		<>
 			{!pathname.includes('/docs/') && (
-				<footer className="bg-white-100 text-[#000] py-40px desktop:py-60px px-20px">
+				<footer className="bg-white-100 text-[#000] py-40px desktop:py-60px px-20px border-t border-[#ebebeb]">
 					<div className="max-w-[1200px] m-auto">
 						<nav className="flex justify-between flex-wra p pb-px footer:block">
 							<div className="mobile:w-full mobile:mb-40px">
