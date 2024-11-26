@@ -4,8 +4,15 @@ import formatDate from '@/lib/formatDate';
 import Post from './post';
 import authors from '../../../data/authors.json';
 import GetStarted from '@/app/components/GetStarted';
+import { useEffect, useState } from 'react';
 
 export default function BlogPage({ posts, blogData, children }: any) {
+	const [canShare, setCanShare] = useState(false);
+
+	useEffect(() => {
+		setCanShare(typeof navigator !== 'undefined' && typeof navigator.share === 'function');
+	}, []);
+
 	const handleShare = async (platform: 'linkedin' | 'twitter' | 'hackernews' | 'native') => {
 		const url = window.location.href;
 		const title = blogData.title;
@@ -207,7 +214,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 								</button>
 							</li>
 
-							{typeof navigator.share === 'function' && (
+							{canShare && (
 								<li className="bg-opacity-10 w-24px h-42px flex items-center justify-center mr-0px last-of-type:mr-[unset]">
 									<button onClick={() => handleShare('native')} className="hover:opacity-80 transition-opacity" aria-label="Share using device options">
 										<svg
