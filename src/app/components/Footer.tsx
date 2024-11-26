@@ -44,7 +44,9 @@ export default function Footer() {
 				{ name: 'Documentation', link: 'https://docs.getconvoy.io', isExternal: true },
 				{ name: 'Watch Demo', link: 'https://youtu.be/DSIet81oBsg?si=1ni58qJWlLFAH1KZ', isExternal: true },
 				{ name: 'Status Page', link: 'https://status.getconvoy.io', isExternal: true },
-				{ name: 'Roadmap', link: 'https://github.com/orgs/frain-dev/projects/3/views/1', isExternal: true }
+				{ name: 'Roadmap', link: 'https://github.com/orgs/frain-dev/projects/3/views/1', isExternal: true },
+				{ name: 'Convoy vs. Implementation', link: '/convoy-vs-implementation', isExternal: false },
+				{ name: 'What are Webhooks?', link: '/what-are-webhooks', isExternal: false }
 			]
 		},
 		{
