@@ -376,31 +376,17 @@ export default function Webhooks() {
 							</p>
 
 							<div className="space-y-1 w-max">
-								<a href="" className="flex items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] w-max">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="min-w-max stroke-[#BBBBBB]">
-										<line x1="6" y1="11" x2="18" y2="11" stroke-width="2" />
-									</svg>
-									<span>Standard Webhooks</span>
-								</a>
-								<a href="" className="flex items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] w-max">
+								<a
+									href="https://docs.getconvoy.io/webhook-guides/webhook-retries"
+									className="flex items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] w-max">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="min-w-max stroke-[#BBBBBB]">
 										<line x1="6" y1="11" x2="18" y2="11" stroke-width="2" />
 									</svg>
 									<span>Webhook Retries</span>
 								</a>
-								<a href="" className="flex items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] w-max">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="min-w-max stroke-[#BBBBBB]">
-										<line x1="6" y1="11" x2="18" y2="11" stroke-width="2" />
-									</svg>
-									<span>Webhook Circuit Breaking</span>
-								</a>
-								<a href="" className="flex items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] w-max">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="min-w-max stroke-[#BBBBBB]">
-										<line x1="6" y1="11" x2="18" y2="11" stroke-width="2" />
-									</svg>
-									<span>Webhooks Ordering</span>
-								</a>
-								<a href="" className="flex items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] w-max">
+								<a
+									href="https://docs.getconvoy.io/webhook-guides/tackling-ssrf"
+									className="flex items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] w-max">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="min-w-max stroke-[#BBBBBB]">
 										<line x1="6" y1="11" x2="18" y2="11" stroke-width="2" />
 									</svg>
