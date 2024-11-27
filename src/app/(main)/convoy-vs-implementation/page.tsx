@@ -149,10 +149,9 @@ export default function ConvoyComparison() {
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.35rem_2.35rem] absolute left-0 -top-1 w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10">
-							<h3 className="text-28 font-semibold">A more feature-rich option</h3>
+							<h3 className="text-28 font-semibold">Feature-rich gateway</h3>
 							<p className="text-[#666] text-16 leading-[160%] font-medium">
-								Enhance your webhook reliability, security, and performance with advanced endpoint controls tailored to ensure stable, secure, and efficient message
-								delivery.
+								Convoy is a webhook gateway with all the batteries included to help you securely and reliably ingest and deliver webhooks.
 							</p>
 						</div>
 					</div>
@@ -187,10 +186,10 @@ export default function ConvoyComparison() {
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.35rem_2.35rem] absolute left-0 -top-1 w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10">
-							<h3 className="text-28 font-semibold">A more feature-rich option</h3>
+							<h3 className="text-28 font-semibold">Highly Reliable Architecture</h3>
 							<p className="text-[#666] text-16 leading-[160%] font-medium">
-								Enhance your webhook reliability, security, and performance with advanced endpoint controls tailored to ensure stable, secure, and efficient message
-								delivery.
+								Built for resilience and speed, the system combines a control and data plane architecture, and PostgresSQL's robustness to ensure high availability,
+								durability, and seamless data handling.
 							</p>
 						</div>
 					</div>
