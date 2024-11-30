@@ -25,7 +25,8 @@ module.exports = {
 				card: '40px 44px 81px rgba(111, 118, 138, 0.08)',
 				nav: 'inset 0px -3px 8px rgba(255, 255, 255, 0.07)',
 				btn: '0px 2px 2px -1px rgba(0, 0, 0, 0.04)',
-				'btn-secondary': '0px 4px 11px -1px rgba(0, 130, 249, 0.04)'
+				'btn-secondary': '0px 4px 11px -1px rgba(0, 130, 249, 0.04)',
+				video: '0px 2.208px 4.417px -1.656px rgba(0, 0, 0, 0.08);'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(white 10%, #fafafe78)'

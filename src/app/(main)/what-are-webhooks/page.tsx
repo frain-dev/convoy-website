@@ -68,7 +68,7 @@ export default function Webhooks() {
 			<section className="pt-[100px] pb-12 desktop:pt-[137px] desktop:pb-[57px] bg-[#fafafa]">
 				<div className="max-w-[1280px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
 					<div className="flex flex-col items-start">
-						<h1 className="text-32 desktop:text-[40px] font-medium desktop:font-bold">What are Webhooks?</h1>
+						<h1 className="text-32 desktop:text-[40px] font-medium">What are Webhooks?</h1>
 						<p className="max-w-[683px] mx-auto desktop:text-16 text-14 !leading-[200%] text-[#4b4b4b] mt-2 desktop:mt-24px font-medium">
 							Whether you’re an engineer or product manager, this guide walks you through everything you need to become a webhook pro. Let’s begin!
 						</p>
