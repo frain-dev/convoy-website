@@ -15,81 +15,9 @@ import michael from '../../../public/profile-images/Michael Raines.png';
 import pascal from '../../../public/profile-images/Pascal Delange.png';
 import jonathan from '../../../public/profile-images/Jonathan Wiemer.png';
 import aravindkumar from '../../../public/profile-images/Aravindkumar Rajendira.png';
-import { useState } from 'react';
 import OfficeHours from '../components/OfficeHours';
 
 export default function Home() {
-	const [activeTab, setActiveTab] = useState('cloud');
-	const [expandImage, setExpandImage] = useState(false);
-
-	const newFeatures = [
-		{
-			img: 'send',
-			title: 'Send and Receive webhooks',
-			body: 'You can both publish and receive millions of Webhooks events from any provider. Both API providers and API consumers can benefit from using Convoy',
-			featureImg: 'send-and-receive-webhooks'
-		},
-		{
-			img: 'secure',
-			title: 'Secure all Payload',
-			body: 'Create secrets, sign payload, verify events. Increase security by enabling rolling secrets. Prevents well known attacks like SSRF (Server-Side Request Forgery).',
-			featureImg: 'secure-all-payload'
-		},
-		{
-			img: 'no-language',
-			title: 'No Language Lock-in',
-			body: 'Use any cloud technology and deploy to any environment and send events from any language. We have built SDKs in a number of languages (Ruby, Golang, JavaScript etc) to make integrating sending and receiving webhooks a breeze.',
-			featureImg: 'no-language-lock-in'
-		},
-		{
-			img: 'scale',
-			title: 'Scale without worries',
-			body: 'Independently scale convoy as your system needs grows. You can horizontally scale convoy’s components (API server, dispatch workers, egress gateway)',
-			featureImg: 'scale-without-worries'
-		},
-		{
-			img: 'efficient',
-			title: 'Efficient Rate Limiting',
-			body: 'Avoid blasting too much events to a single endpoint at once with flexible rate limiting controls. Rate limits can be configured at both high level and per endpoint.',
-			featureImg: 'efficient-rate-limiting'
-		},
-		{
-			img: 'stress',
-			title: 'Stress free event debugging',
-			body: 'Easily filter & debug events sent to multiple applications & endpoints with Delivery Attempt Logs. The Dashboards helps you easily fix customer issues and have a guaranteed audit trail in addition to application logs.',
-			featureImg: 'stress-free-event-debugging'
-		}
-	];
-
-	const tabs = [
-		{ label: 'Cloud', id: 'cloud' },
-		{ label: 'Community', id: 'community' },
-		{ label: 'Enterprise', id: 'enterprise' }
-	];
-
-	const communityFeatures = ['Rate Limiting', 'Retries', 'Static IPs', 'App Portal', 'Send Millions of Events'];
-	const enterpriseFeatures = ['Send Billion of Events', 'Dedicated Customer Success', 'Own your data', 'On-prem Support', 'Compliant'];
-	const cloudFeatures = ['Team management', 'Mulitple projects', 'Debug logs and metric', 'Manage app and customers'];
-
-	const offerings = [
-		{ offer: 'Independently scalable', img: 'independently', class: 'bg-success-400' },
-		{ offer: 'Bi-directional webhooks', img: 'bi-directional', class: 'bg-[#D4D1FA]' },
-		{ offer: 'Static IP’s', img: 'static', class: 'bg-[#F8DEC7]' },
-		{ offer: 'Retries', img: 'retries', class: 'bg-[#F2F2F2]' },
-		{ offer: 'Language Agnostic', img: 'language-agnostic', class: 'bg-[#D1F0FA]' },
-		{ offer: 'Rich UI - Event Logs & Querying', img: 'monitor', class: 'bg-[#FCE3AD]' },
-		{ offer: 'Flexible Configuration', img: 'flexible', class: 'bg-[#E3EDF7]' },
-		{ offer: 'URL per Event Type', img: 'url', class: 'bg-alert-500' },
-		{ offer: 'Independently scalable', img: 'independently', class: 'bg-success-400' },
-		{ offer: 'Bi-directional webhooks', img: 'bi-directional', class: 'bg-[#D4D1FA]' },
-		{ offer: 'Static IP’s', img: 'static', class: 'bg-[#F8DEC7]' },
-		{ offer: 'Retries', img: 'retries', class: 'bg-[#F2F2F2]' },
-		{ offer: 'Language Agnostic', img: 'language-agnostic', class: 'bg-[#D1F0FA]' },
-		{ offer: 'Rich UI - Event Logs & Querying', img: 'monitor', class: 'bg-[#FCE3AD]' },
-		{ offer: 'Flexible Configuration', img: 'flexible', class: 'bg-[#E3EDF7]' },
-		{ offer: 'URL per Event Type', img: 'url', class: 'bg-alert-500' }
-	];
-
 	const companies = [
 		{ name: 'pinata', url: 'https://pinata.cloud/', class: 'h-28px' },
 		{ name: 'maple', url: 'https://maplebilling.com/', class: 'h-30px' },
