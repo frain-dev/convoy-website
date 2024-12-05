@@ -287,10 +287,10 @@ const faqs = [
 
 const selfHostedPricing = [
 	{
-		name: 'Basic',
+		name: 'Community',
 		price: 'Free',
 		description:
-			"In our latest release, we've simplified Convoy's architecture. In this article I describe a little bit more about the architecture and the benefits for Convoy.",
+			'Perfect for developers exploring self-hosted solutions, the Community plan provides everything you need to reliably manage webhooks in your own environment. Start simple with no cost and scale as your needs grow.',
 		cta: {
 			text: 'Link to Docs',
 			link: 'https://docs.getconvoy.io/'
@@ -300,10 +300,10 @@ const selfHostedPricing = [
 		name: 'Premium',
 		price: 'Custom',
 		description:
-			"In our latest release, we've simplified Convoy's architecture. In this article I describe a little bit more about the architecture and the benefits for Convoy.",
+			'Built for organizations with advanced requirements, the Premium plan offers unlimited flexibility and full control. Customize your webhook gateway with premium features and priority support to meet enterprise demands',
 		cta: {
 			text: 'Book a call',
-			link: ''
+			link: 'https://cal.com/subomi/30min'
 		}
 	}
 ];
@@ -317,7 +317,7 @@ const cloudPricing = [
 			label: 'Pricing starts at'
 		},
 		description:
-			"In our latest release, we've simplified Convoy's architecture. In this article I describe a little bit more about the architecture and the benefits for Convoy.",
+			'Designed for small teams and startups, the Pro plan offers essential webhook delivery features. Get started quickly with a simple, predictable pricing model.',
 		cta: {
 			text: 'Link to the cloud',
 			link: 'https://cloud.getconvoy.io/signup'
@@ -326,11 +326,10 @@ const cloudPricing = [
 	{
 		name: 'Enterprise',
 		price: 'Custom',
-		description:
-			"In our latest release, we've simplified Convoy's architecture. In this article I describe a little bit more about the architecture and the benefits for Convoy.",
+		description: 'Tailored for scale-ups and large organizations, the Enterprise plan provides custom solutions for complex webhook needs',
 		cta: {
 			text: 'Book a call',
-			link: ''
+			link: 'https://cal.com/subomi/30min'
 		}
 	}
 ];
@@ -350,19 +349,20 @@ export default function Pricing() {
 
 	return (
 		<main className="flex flex-col items-center pb-120px">
-			<section className="pt-150px px-20px flex items-center flex-col max-w-[1280px]">
-				<h1 className="text-center font-medium text-[40px] desktop:text-[40px] mb-24px max-w-[1020px] m-auto">Pricing plans</h1>
-				<p className="text-center text-[#666] text-14 desktop:text-16 max-w-[683px] m-auto mb-48px font-medium">
-					Secure <span className="text-[#2780F1]">send, receive and manage millions of webhooks reliably</span> with robust support for Retries, Rate Limiting, Static
-					IPs, Circuit Breaking, Rolling Secrets and more.
-				</p>
+			<section className="pt-120px desktop:pt-150px px-20px flex items-center flex-col max-w-[1280px]">
+				<div className="w-full flex flex-col items-start desktop:items-center justify-center">
+					<h1 className="desktop:text-center font-medium text-32 desktop:text-[40px] mb-24px max-w-[1020px] desktop:m-auto">Pricing plans</h1>
+					<p className="desktop:text-center text-[#666] text-14 desktop:text-16 max-w-[683px] m-auto mb-48px font-medium">
+						Pricing for each stage of growth both in the Cloud and on-prem
+					</p>
+				</div>
 
 				<div className="inline-flex mx-auo mb-30px p-1 bg-white-100 border border-[#e7e7e7] rounded-8px">
 					{options.map(option => (
 						<button
 							key={option.id}
 							onClick={() => handleSelect(option.id)}
-							className={`px-4 py-2.5 text-sm font-semibold rounded-6px transition-colors' ${
+							className={`px-4 py-2.5 text-[15px] font-semibold rounded-6px transition-colors' ${
 								selected === option.id ? 'bg-[#2780F1] px-10 border-[#2078E8] text-white-100' : 'text-[#000]'
 							}
 							`}
@@ -375,19 +375,19 @@ export default function Pricing() {
 
 				<PricingCard data={selected === 'cloud' ? cloudPricing : selfHostedPricing} variant={selected} />
 
-				<div className="bg-white-100 rounded-8px border border-[#e7e7e7] w-full mt-72px p-20">
+				<div className="hid den bg-white-100 rounded-8px border border-[#e7e7e7] w-full mt-72px py-30px px-10px sm-old:px-20px desktop:p-20">
 					<PricingTable features={selected === 'cloud' ? cloudFeatures : selfHostedFeatures} selected={selected} />
 				</div>
 			</section>
 
-			<section className="w-full flex-col px-20 px flex items-center max-w-[1280px]">
-				<div className="mt-72px w-full flex flex-col gap-10">
-					<div className="flex flex-col items-center gap-6">
-						<h2 className="text-[40px] font-medium">Frequently Asked Questions</h2>
-						<p className="text-center text-16 leading-[150%] text-[#666]">Quick answers to questions you might have</p>
+			<section className="w-full flex-col px-20px flex items-center max-w-[1280px]">
+				<div className="mt-72px w-full flex flex-col gap-6 desktop:gap-10 items-center">
+					<div className="flex flex-col items-start desktop:items-center gap-2 desktop:gap-6">
+						<h2 className="text-24 desktop:text-[40px] font-medium">Frequently Asked Questions</h2>
+						<p className="text-left desktop:text-center text-14 desktop:text-16 leading-[150%] text-[#666]">Quick answers to questions you might have</p>
 					</div>
 
-					<div className="max-w-[1100px] pt-5 pb-7 px-10 flex flex-col items-center justify-center bg-white-100 border border-[#e7e7e7] divide-y-[1px] divide-[#e7e7e7]/80 rounded-8px">
+					<div className="max-w-[1100px] w-full px-5 pt-2 desktop:pt-5 pb-2 desktop:pb-7 desktop:px-10 flex flex-col items-center justify-center bg-white-100 border border-[#e7e7e7] divide-y-[1px] divide-[#e7e7e7]/80 rounded-8px">
 						{faqs.map((faq, index) => (
 							<FAQItem key={index} question={faq.question} answer={faq.answer} />
 						))}
@@ -412,50 +412,52 @@ const PricingCard = ({ data, variant }) => {
 	const renderPrice = price => {
 		if (typeof price === 'object') {
 			return (
-				<div className="mt-5 mb-1 flex flex-col justify-center">
+				<div className="mb-1 flex flex-col justify-center">
 					<p className="text-14 text-[#000] font-medium leading-[150%]">{price.label}</p>
 					<div className="flex items-end gap-2">
-						<h4 className="text-[#000] text-[60px] font-semibold leading-[130%]">${price.amount}</h4>
-						<p className="text-24 text-[#000] font-medium mb-2.5">{price.interval}</p>
+						<h4 className="text-[#000] text-[44px] desktop:text-[60px] font-semibold leading-[130%]">${price.amount}</h4>
+						<p className="text-18 desktop:text-24 text-[#000] font-medium mb-2.5">{price.interval}</p>
 					</div>
 				</div>
 			);
 		}
 		return (
-			<div className="mt-5 flex flex-col justify-center py-[12.5px]">
-				<h4 className="text-[60px] font-semibold leading-[130%]">{price}</h4>
+			<div className="flex flex-col justify-center py-0 desktop:py-[12.5px]">
+				<h4 className="text-[44px] desktop:text-[60px] font-semibold leading-[130%]">{price}</h4>
 			</div>
 		);
 	};
 
 	return (
-		<div className="flex gap-5">
+		<div className="flex flex-col desktop:flex-row gap-5">
 			{data.map((item, index) => (
 				<div
 					key={item.name}
-					className={`rounded-8px py-40px desktop:py-40px bg-gradient-to-b ${getBgGradient(
+					className={`rounded-8px p-20px desktop:p-40px bg-gradient-to-b ${getBgGradient(
 						index
-					)} flex flex-col items-start justify-start mobile:px-40px nav-bar-break:px-40px w-[560px] h-[370px] relative overflow-hidden border border-[#e7e7e7]`}>
+					)} flex flex-col items-start justify-between w-full desktop:w-[560px] h-full desktop:h-[370px] relative overflow-hidden border border-[#e7e7e7]`}>
 					<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.45rem_2.55rem] absolute left-0 -top-1 w-full h-full"></div>
 
 					<div className="z-10">
-						<span className={`${getLabelBg(index)} rounded-6px py-1 px-2.5 font-medium leading-[150%] text-16`}>{item.name}</span>
+						<span className={`${getLabelBg(index)} rounded-6px py-1 px-2.5 font-medium leading-[150%] text-14 desktop:text-16`}>{item.name}</span>
 
-						<p className="text-[#666] text-16 font-medium leading-[150%] mt-3">{item.description}</p>
-
-						{renderPrice(item.price)}
+						<p className="text-[#666] text-14 desktop:text-16 font-medium leading-[150%] mt-3">{item.description}</p>
 					</div>
 
-					<a
-						target="_blank"
-						href={item.cta.link}
-						className="mt-5 pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] text-white-100 flex items-center z-10">
-						<span>{item.cta.text}</span>
+					<div className="z-10">
+						{renderPrice(item.price)}
 
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px]">
-							<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
-						</svg>
-					</a>
+						<a
+							target="_blank"
+							href={item.cta.link}
+							className="mt-3 pl-20px desktop:pl-14px pr-14px desktop:pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] text-white-100 flex items-center z-10 w-max">
+							<span>{item.cta.text}</span>
+
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px]">
+								<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
+							</svg>
+						</a>
+					</div>
 				</div>
 			))}
 		</div>
@@ -492,69 +494,75 @@ const StatusIndicator = ({ status }: { status: string }) => {
 
 function PricingTable({ features, selected }) {
 	return (
-		<div className="flex w-full justify-between items-start px-[90px]">
-			<div className="flex flex-col mt-[42px] gap-[41px]">
+		<div className="flex w-full justify-between items-start desktop:items-center px-0 desktop:px-[90px]">
+			<div className="flex flex-col mt-[42px] gap-[58px] desktop:gap-[41px]">
 				{features.map(featureType => (
 					<div key={featureType.title} className="flex flex-col justify-center">
-						<h4 className="text-14 font-semibold h-[41px] bor der px-3 pt-2">{featureType.title}</h4>
+						<h4 className="text-14 font-semibold w-[100px] h-[58px] desktop:w-full desktop:h-[41px] px-3 pt-1.5 desktop:px-3 desktop:pt-2">{featureType.title}</h4>
 
 						<div className="flex flex-col">
 							{featureType.feat.map(feature => (
-								<p className="text-14 h-[48px] bor der px-3 pt-3 text-[#666]">{feature.name}</p>
+								<p className="text-14 h-[90px] desktop:h-[48px] w-[140px] desktop:w-full px-3 py-2.5 desktop:pb-0 text-[#666]">{feature.name}</p>
 							))}
 						</div>
 					</div>
 				))}
 			</div>
 
-			<div className="border border-[#E7E7E780] rounded-12px overflow-hidden mobile-min:w-[800px] w-max">
-				<table className="w-max border-collapse">
-					<thead className="text-[#000] font-medium text-14">
-						<tr className="">
-							<th className="text-14 font-medium p-4 py-[10px] border-b border-[#E7E7E780] text-left">{selected === 'cloud' ? 'Pro' : 'Basic'}</th>
-							<th className="text-14 font-medium pl-4 py-[9px] border-b border-l border-[#E7E7E780] text-left">{selected === 'cloud' ? 'Enterprise' : 'Premium'}</th>
-						</tr>
-					</thead>
-					<tbody className="divide-y divide-[#E7E7E780] text-[#000]">
-						{features.map((featureType, typeIndex) => (
-							<>
-								{/* Empty row before only first feature type */}
-								{typeIndex === 0 && (
-									<tr>
-										<td className="text-14 pl-3 w-200px h-[41px] text-[#4b4b4b]"></td>
-										<td className="text-14 pl-3 w-200px h-[41px] border-l border-[#E7E7E780]"></td>
-									</tr>
-								)}
-
-								{/* Empty rows before each feature type */}
-								{typeIndex > 0 && (
+			<div className="relative w-[130px] sm-old:w-auto desktop:w-auto">
+				<div className="overflow-x-auto">
+					<div className="border border-[#E7E7E780] rounded-12px overflow-hidden min-w-[300px]">
+						<table className="w-full border-collapse">
+							<thead className="text-[#000] font-medium text-14">
+								<tr className="">
+									<th className="text-14 font-medium p-4 py-[10px] border-b border-[#E7E7E780] text-left">{selected === 'cloud' ? 'Pro' : 'Basic'}</th>
+									<th className="text-14 font-medium pl-4 py-[9px] border-b border-l border-[#E7E7E780] text-left">
+										{selected === 'cloud' ? 'Enterprise' : 'Premium'}
+									</th>
+								</tr>
+							</thead>
+							<tbody className="divide-y divide-[#E7E7E780] text-[#000]">
+								{features.map((featureType, typeIndex) => (
 									<>
-										<tr>
-											<td className="h-[41px]"></td>
-											<td className="h-[41px] border-l border-[#E7E7E780]"></td>
-										</tr>
-										<tr>
-											<td className="h-[41px]"></td>
-											<td className="h-[41px] border-l border-[#E7E7E780]"></td>
-										</tr>
-									</>
-								)}
+										{/* Empty row before only first feature type */}
+										{typeIndex === 0 && (
+											<tr>
+												<td className="text-14 pl-3 w-[150px] desktop:w-200px h-[58px] desktop:h-[41px] text-[#4b4b4b]"></td>
+												<td className="text-14 pl-3 w-[150px] desktop:w-200px h-[58px] desktop:h-[41px] border-l border-[#E7E7E780]"></td>
+											</tr>
+										)}
 
-								{/* Feature rows */}
-								{featureType.feat.map((feature, index) => (
-									<tr key={feature.name} className="">
-										<td className="text-14 pl-3 w-200px h-48px text-[#4b4b4b]">
-											<StatusIndicator status={feature.basic} />
-										</td>
-										<td className="text-14 pl-3 w-200px h-48px border-l border-[#E7E7E780]">
-											<StatusIndicator status={feature.premium} />
-										</td>
-									</tr>
+										{/* Empty rows before each feature type */}
+										{typeIndex > 0 && (
+											<>
+												<tr>
+													<td className="h-[58px] desktop:h-[41px]"></td>
+													<td className="h-[58px] desktop:h-[41px] border-l border-[#E7E7E780]"></td>
+												</tr>
+												<tr>
+													<td className="h-[58px] desktop:h-[41px]"></td>
+													<td className="h-[58px] desktop:h-[41px] border-l border-[#E7E7E780]"></td>
+												</tr>
+											</>
+										)}
+
+										{/* Feature rows */}
+										{featureType.feat.map((feature, index) => (
+											<tr key={feature.name} className="">
+												<td className="text-14 pl-3 w-[150px] desktop:w-200px h-[90px] desktop:h-48px text-[#4b4b4b]">
+													<StatusIndicator status={feature.basic} />
+												</td>
+												<td className="text-14 pl-3 w-[150px] desktop:w-200px h-[90px] desktop:h-48px border-l border-[#E7E7E780]">
+													<StatusIndicator status={feature.premium} />
+												</td>
+											</tr>
+										))}
+									</>
 								))}
-							</>
-						))}
-					</tbody>
-				</table>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
@@ -580,7 +588,7 @@ const FAQItem: React.FC<{ question: string; answer: React.ReactNode }> = ({ ques
 			<div className="pt-1.5">{isOpen ? <MinusIcon /> : <PlusIcon />}</div>
 			<div className="">
 				<button className="flex justify-between items-center w-full text-left group" onClick={() => setIsOpen(!isOpen)} aria-expanded={isOpen}>
-					<span className="text-[#000] text-18 font-medium">{question}</span>
+					<span className="text-[#000] text-14 desktop:text-18 font-medium">{question}</span>
 				</button>
 				{isOpen && <div className="mt-2 text-14 text-[#666]">{answer}</div>}
 			</div>
