@@ -1,4 +1,5 @@
 'use client';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 import retries from '../../../../public/svg/retries 3.svg';
@@ -254,7 +255,7 @@ export default function WebhookGateway() {
 			</section>
 
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#EBEBEB] rounded-8px overflow-hidden w-full bg-white-100">
+				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#2780F1]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
@@ -272,7 +273,7 @@ export default function WebhookGateway() {
 			</section>
 
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#EBEBEB] rounded-8px overflow-hidden w-full bg-white-100">
+				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#AE27F166]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
@@ -290,7 +291,7 @@ export default function WebhookGateway() {
 			</section>
 
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#EBEBEB] rounded-8px overflow-hidden w-full bg-white-100">
+				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#27F18566]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
@@ -308,7 +309,7 @@ export default function WebhookGateway() {
 			</section>
 
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#EBEBEB] rounded-8px overflow-hidden w-full bg-white-100">
+				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#F1852766]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
@@ -326,7 +327,7 @@ export default function WebhookGateway() {
 			</section>
 
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#EBEBEB] rounded-8px overflow-hidden w-full bg-white-100">
+				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#AEF12766]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
@@ -344,7 +345,7 @@ export default function WebhookGateway() {
 			</section>
 
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#EBEBEB] rounded-8px overflow-hidden w-full bg-white-100">
+				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#F1B52766]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
@@ -371,29 +372,104 @@ type Features = {
 	link: string;
 };
 
-function FeatureGrid({ features }: { features: Features[] }) {
-	return (
-		<div className="w-full grid grid-cols-1 md-old:grid-cols-2 lg-old:grid-cols-3 px-0 py-0 desktop:p-0 divide-y-[1px] divide-x-[1px] divide-[#E7E7E74D]">
-			{features.map((feature, index) => (
-				<div className="bor der-r border-[#E7E7E74D] p-5 lg-old:p-10 w-full max">
-					<div className="max-w- [322px] flex flex-col justify-between h-full">
-						<div className="flex flex-col gap-4">
-							<Image src={feature.icon} alt="play" className="cursor-pointer w-32px h-32px lg-old:w-40px lg-old:h-40px" />
-							<p className="text-[#666] text-16 leading-[160%]">
-								<span className="text-[#000] font-medium mr-1">{feature.title}</span>
-								{feature.description}
-							</p>
-						</div>
+const FeatureGrid = ({ features }: { features: Features[] }) => {
+	const gridRef = useRef<HTMLDivElement>(null);
+	const [rowHeights, setRowHeights] = useState<number[]>([]);
 
-						<a href={feature.link} className="flex items-center gap-1 mt-4">
-							<p className="text-[#666] text-14 font-semibold">Learn more</p>
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-								<path d="M9.8764 9.00052L6.16406 5.2882L7.22473 4.22754L11.9977 9.00052L7.22473 13.7734L6.16406 12.7128L9.8764 9.00052Z" fill="#666666" />
-							</svg>
-						</a>
-					</div>
+	useEffect(() => {
+		const calculateRowHeights = () => {
+			if (!gridRef.current) return;
+
+			const grid = gridRef.current;
+			const items = Array.from(grid.children);
+			const columnCount = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+
+			const heights: number[] = [];
+			for (let i = 0; i < items.length; i += columnCount) {
+				const rowItems = items.slice(i, i + columnCount);
+				const rowHeight = Math.max(...rowItems.map(item => item.getBoundingClientRect().height));
+				heights.push(rowHeight);
+			}
+
+			setRowHeights(heights);
+		};
+
+		// Calculate initially and on window resize
+		calculateRowHeights();
+		window.addEventListener('resize', calculateRowHeights);
+
+		// Small delay to ensure content is properly rendered
+		const timeout = setTimeout(calculateRowHeights, 100);
+
+		return () => {
+			window.removeEventListener('resize', calculateRowHeights);
+			clearTimeout(timeout);
+		};
+	}, [features]);
+
+	return (
+		<div className="w-full relative">
+			{/* Grid Lines Container */}
+			<div className="absolute inset-0 pointer-events-none">
+				{/* Mobile Horizontal Lines (1 column) */}
+				<div className="lg-old:hidden md-old:hidden">
+					{rowHeights.slice(0, -1).map((_, index) => {
+						const topOffset = rowHeights.slice(0, index + 1).reduce((sum, height) => sum + height, 0);
+						return <div key={`mobile-line-${index}`} className="absolute w-full h-px bg-[#E7E7E74D]" style={{ top: `${topOffset}px` }} />;
+					})}
 				</div>
-			))}
+
+				{/* Tablet Lines (2 columns) */}
+				<div className="hidden md-old:block lg-old:hidden">
+					{/* Vertical line */}
+					<div className="absolute left-1/2 top-0 h-full w-px bg-[#E7E7E74D]" />
+
+					{/* Horizontal lines */}
+					{rowHeights.slice(0, -1).map((_, index) => {
+						const topOffset = rowHeights.slice(0, index + 1).reduce((sum, height) => sum + height, 0);
+						return <div key={`tablet-line-${index}`} className="absolute w-full h-px bg-[#E7E7E74D]" style={{ top: `${topOffset}px` }} />;
+					})}
+				</div>
+
+				{/* Desktop Lines (3 columns) */}
+				<div className="hidden lg-old:block">
+					{/* Vertical lines */}
+					<div className="absolute left-1/3 top-0 h-full w-px bg-[#E7E7E74D]" />
+					<div className="absolute left-2/3 top-0 h-full w-px bg-[#E7E7E74D]" />
+
+					{/* Horizontal lines */}
+					{rowHeights.slice(0, -1).map((_, index) => {
+						const topOffset = rowHeights.slice(0, index + 1).reduce((sum, height) => sum + height, 0);
+						return <div key={`desktop-line-${index}`} className="absolute w-full h-px bg-[#E7E7E74D]" style={{ top: `${topOffset}px` }} />;
+					})}
+				</div>
+			</div>
+
+			{/* Features Grid */}
+			<div ref={gridRef} className="w-full grid grid-cols-1 md-old:grid-cols-2 lg-old:grid-cols-3">
+				{features.map((feature, index) => (
+					<div key={index} className="p-5 lg-old:p-10 w-full">
+						<div className="flex flex-col justify-between h-full">
+							<div className="flex flex-col gap-4">
+								<Image src={feature.icon} alt="feature icon" className="cursor-pointer w-32px h-32px lg-old:w-40px lg-old:h-40px" />
+								<p className="text-[#666] text-16 leading-[160%]">
+									<span className="text-[#000] font-medium mr-1">{feature.title}</span>
+									{feature.description}
+								</p>
+							</div>
+
+							{feature.link && (
+								<a href={feature.link} className="flex items-center gap-1 mt-4">
+									<p className="text-[#666] text-14 font-semibold">Learn more</p>
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+										<path d="M9.8764 9.00052L6.16406 5.2882L7.22473 4.22754L11.9977 9.00052L7.22473 13.7734L6.16406 12.7128L9.8764 9.00052Z" fill="#666666" />
+									</svg>
+								</a>
+							)}
+						</div>
+					</div>
+				))}
+			</div>
 		</div>
 	);
-}
+};
