@@ -3,14 +3,14 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import BlogSlide from '../components/BlogSlide';
 import { getPosts } from '@/lib/getPosts';
 import Toast from '../components/Toast';
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://getconvoy.io'),
 	title: 'Convoy: Webhooks Gateway for Sending and Receiving Webhooks',
-	description: 'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
+	description:
+		'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
 	alternates: {
 		canonical: '/'
 	},
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 		index: true,
 		follow: true,
 		googleBot: {
-			index: true, 
+			index: true,
 			follow: true
 		}
 	},
@@ -105,7 +105,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 				{children}
 				<Toast></Toast>
-				<BlogSlide featurePosts={filteredArticles.slice(0, 7)}></BlogSlide>
 				<Footer></Footer>
 
 				<svg display="none" className="hidden">
