@@ -256,7 +256,7 @@ export default function WebhookGateway() {
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
 				<div className="border border-[#EBEBEB] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#2780F1]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
-						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.35rem_2.35rem] absolute left-0 -top-1 w-full h-full"></div>
+						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
 							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Advanced endpoint management</h3>
@@ -274,7 +274,7 @@ export default function WebhookGateway() {
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
 				<div className="border border-[#EBEBEB] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#AE27F166]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
-						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.35rem_2.35rem] absolute left-0 -top-1 w-full h-full"></div>
+						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
 							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Rock-solid Webhooks Logs & Filtering</h3>
@@ -292,7 +292,7 @@ export default function WebhookGateway() {
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
 				<div className="border border-[#EBEBEB] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#27F18566]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
-						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.35rem_2.35rem] absolute left-0 -top-1 w-full h-full"></div>
+						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
 							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Highly Reliable Architecture</h3>
@@ -310,7 +310,7 @@ export default function WebhookGateway() {
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
 				<div className="border border-[#EBEBEB] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#F1852766]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
-						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.35rem_2.35rem] absolute left-0 -top-1 w-full h-full"></div>
+						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
 							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Secure Webhook Delivery</h3>
@@ -328,7 +328,7 @@ export default function WebhookGateway() {
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
 				<div className="border border-[#EBEBEB] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#AEF12766]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
-						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.35rem_2.35rem] absolute left-0 -top-1 w-full h-full"></div>
+						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
 							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Observability</h3>
@@ -346,7 +346,7 @@ export default function WebhookGateway() {
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
 				<div className="border border-[#EBEBEB] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#F1B52766]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
-						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.35rem_2.35rem] absolute left-0 -top-1 w-full h-full"></div>
+						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
 							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Other Core Features</h3>
