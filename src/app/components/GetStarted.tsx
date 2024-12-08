@@ -1,8 +1,8 @@
 export default function GetStarted() {
 	return (
 		<section className="w-full flex items-center justify-center px-5">
-			<div className="mb-100px desktop:mb-130px desktop:max-w-[800px] w-full h-[216px] desktop:h-[247px] border border-[#ebebeb] flex mx-auto rounded-16px overflow-hidden">
-				<div className="w-[90px] desktop:w-[197px] h-full bg-gradient-to-r from-white-100/40 from-[-20%] to-[#2780F1]/40 to-[150%] rounded-l-16px relative p-6 desktop:p-10">
+			<div className="mb-100px desktop:mb-130px desktop:max-w-[800px] w-full h-auto desktop:h-[247px] bg-white-100 border border-[#ebebeb] flex mx-auto rounded-16px overflow-hidden">
+				<div className="w-[90px] desktop:w-[197px] min-h-full bg-gradient-to-r from-white-100/40 from-[-20%] to-[#2780F1]/40 to-[150%] rounded-l-16px relative p-6 desktop:p-10">
 					<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] absolute top-0 right-0 w-full h-full"></div>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" className="z-10 w-10 h-10 desktop:w-16 desktop:h-16">
 						<path
@@ -12,7 +12,7 @@ export default function GetStarted() {
 					</svg>
 				</div>
 
-				<div className="gap-1 desktop:gap-2 flex flex-col justify-between items-end px-5 desktop:px-10 py-4 desktop:py-6">
+				<div className="gap-6 desktop:gap-2 flex flex-col justify-between items-start desktop:items-end px-5 desktop:px-10 py-4 desktop:py-6">
 					<div className="flex flex-col gap-2">
 						<h3 className="text-20 desktop:text-32 font-semibold">Getting started with Convoy</h3>
 						<p className="text-12 desktop:text-16 text-[#666] font-normal leading-[160%] w-full desktop:w-[523px]">
@@ -22,11 +22,11 @@ export default function GetStarted() {
 
 					<a
 						href="https://cloud.getconvoy.io"
-						className="px-16px py-10px w-[107px] text-14 font-medium rounded-8px h-10 nav-bar-break:h-11 bg-[#2780F1] text-white-100 flex items-center shadow-btn-secondary cursor-pointer">
+						className="desktop:px-16px py-10px w-[107px] text-14 font-medium rounded-8px h-10 nav-bar-break:h-11 bg-white-100 desktop:bg-[#2780F1] text-[#2780F1] desktop:text-white-100 flex items-center desktop:shadow-btn-secondary cursor-pointer">
 						<span>Sign up</span>
 
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px]">
-							<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] fill-[#2780F1] desktop:fill-white-100">
+							<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" />
 						</svg>
 					</a>
 				</div>

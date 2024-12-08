@@ -46,58 +46,58 @@ const selfHostedFeatures = [
 		feat: [
 			{
 				name: 'Circuit Breaking',
-				basic: 'Supported',
-				premium: 'Unsupported'
+				basic: 'Unsupported',
+				premium: 'Supported'
 			},
 			{
 				name: 'Prometheus Metrics',
-				basic: 'Supported',
-				premium: 'Unsupported'
+				basic: 'Unsupported',
+				premium: 'Supported'
 			},
 			{
 				name: '	Performance Tuning',
-				basic: 'Supported',
-				premium: 'Unsupported'
+				basic: 'Unsupported',
+				premium: 'Supported'
 			},
 			{
 				name: 'SSO & SAML',
-				basic: 'Supported',
-				premium: 'Unsupported'
+				basic: 'Unsupported',
+				premium: 'Supported'
 			},
 			{
 				name: 'Advanced Webhook Retention',
-				basic: 'Supported',
-				premium: 'Unsupported'
+				basic: 'Unsupported',
+				premium: 'Supported'
 			},
 			{
 				name: 'White-Labelling',
-				basic: 'Supported',
-				premium: 'Unsupported'
+				basic: 'Unsupported',
+				premium: 'Supported'
 			},
 			{
 				name: 'Role Based Access Control',
-				basic: 'Supported',
-				premium: 'Unsupported'
+				basic: 'Unsupported',
+				premium: 'Supported'
 			},
 			{
 				name: 'Advanced Storage',
-				basic: 'Supported',
-				premium: 'Unsupported'
+				basic: 'Unsupported',
+				premium: 'Supported'
 			},
 			{
 				name: 'Webhook Transformations with JS',
-				basic: 'Supported',
-				premium: 'Unsupported'
+				basic: 'Unsupported',
+				premium: 'Supported'
 			},
 			{
 				name: 'Advanced Transformation with JS',
-				basic: 'Supported',
-				premium: 'Unsupported'
+				basic: 'Unsupported',
+				premium: 'Supported'
 			},
 			{
 				name: 'Advanced Webhook Subsription',
-				basic: 'Supported',
-				premium: 'Unsupported'
+				basic: 'Unsupported',
+				premium: 'Supported'
 			}
 		]
 	},
@@ -350,7 +350,7 @@ export default function Pricing() {
 	return (
 		<main className="flex flex-col items-center pb-120px">
 			<section className="pt-120px desktop:pt-150px px-20px flex items-center flex-col max-w-[1280px]">
-				<div className="w-full flex flex-col items-start desktop:items-center justify-center">
+				<div className="w-full flex flex-col items-start desktop:items-center justify-center desktop:gap-6">
 					<h1 className="desktop:text-center font-medium text-32 desktop:text-[40px] mb-24px max-w-[1020px] desktop:m-auto">Pricing plans</h1>
 					<p className="desktop:text-center text-[#666] text-14 desktop:text-16 max-w-[683px] m-auto mb-48px font-medium">
 						Pricing for each stage of growth both in the Cloud and on-prem

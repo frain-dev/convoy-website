@@ -4,6 +4,8 @@ import question from 'public/svg/question.svg';
 import error from 'public/svg/error.svg';
 import spruce from 'public/svg/spruce-health-mark.svg';
 import michael from 'public/profile-images/Michael Raines.png';
+import subomi from 'public/profile-images/Subomi Oluwalana.png';
+
 import Image from 'next/image';
 
 const features = [
@@ -114,15 +116,16 @@ export default function ConvoyComparison() {
 				<div className="max-w-[1280px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
 					<div className="flex flex-col items-start desktop:items-center justify-start desktop:justify-center w-full">
 						<h1 className="text-32 desktop:text-[40px] font-medium">Convoy vs Internal implementation</h1>
-						<p className="max-w-[683px] desktop:mx-auto desktop:text-16 desktop:text-center text-14 !leading-[200%] text-[#4b4b4b] mt-2 desktop:mt-24px font-medium">
+						<p className="max-w-[683px] desktop:mx-auto desktop:text-16 desktop:text-center text-14 !leading-[200%] text-[#4b4b4b] mt-2 desktop:my-24px font-medium">
 							Whether you’re an engineer or product manager, this guide walks you through everything you need to become a webhook pro. Let’s begin!
 						</p>
-						<div className="flex footer:justify-center mt-4 desktop:mt-24px">
+
+						<div className="flex footer:justify-center mt-4 desktop:mt-0 mb-56px">
 							<a
 								target="_blank"
 								href="https://cloud.getconvoy.io/signup"
 								className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] text-white-100 flex items-center">
-								<span>Get started</span>
+								<span>Try for free</span>
 
 								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px]">
 									<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
@@ -130,13 +133,11 @@ export default function ConvoyComparison() {
 							</a>
 							<a
 								target="_blank"
-								href="https://cloud.getconvoy.io/login"
-								className="px-16px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border shadow-btn">
-								<span>Visit docs</span>
+								href="https://cal.com/subomi/30min"
+								className="px-8px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border shadow-btn gap-2">
+								<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
 
-								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" className="block ml-1 mt-[1px]">
-									<path d="M12.0039 7.06066L5.54894 13.5156L4.48828 12.455L10.9432 6H5.2539V4.5H13.5039V12.75H12.0039V7.06066Z" fill="black" />
-								</svg>
+								<span>Talk to a founder</span>
 							</a>
 						</div>
 					</div>
@@ -166,7 +167,7 @@ export default function ConvoyComparison() {
 					<h3 className="text-28 font-medium">Don't just take our word for it</h3>
 					<div className="flex flex-col gap-5 items-start">
 						<Image src={spruce} height={30} width={150} alt="logo" quality="70" className="h-24px desktop:h-28px w-auto" />
-						<p className="text-16 desktop:text-20 leading-[140%] text-[#666]">
+						<p className="text-14 desktop:text-20 leading-[140%] text-[#666]">
 							We considered building a webhooks system internally but quickly realised that reaching the quality and robustness our customers deserve would be highly
 							time-consuming. Convoy offered this out-of-the-box.
 						</p>

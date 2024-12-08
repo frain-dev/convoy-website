@@ -2,6 +2,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
+import subomi from '../../../../public/profile-images/Subomi Oluwalana.png';
+
 import retries from '../../../../public/svg/retries 3.svg';
 import circuit from '../../../../public/svg/circuit.svg';
 import ssl from '../../../../public/svg/ssl.svg';
@@ -230,12 +232,12 @@ export default function WebhookGateway() {
 					IPs, Circuit Breaking, Rolling Secrets and more.
 				</p>
 
-				<div className="flex desktop:justify-center desktop:mt-24px mb-56px">
+				<div className="flex footer:justify-center mt-4 desktop:mt-24px mb-56px">
 					<a
 						target="_blank"
 						href="https://cloud.getconvoy.io/signup"
 						className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] text-white-100 flex items-center">
-						<span>See a demo</span>
+						<span>Try for free</span>
 
 						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px]">
 							<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
@@ -243,13 +245,11 @@ export default function WebhookGateway() {
 					</a>
 					<a
 						target="_blank"
-						href="https://cloud.getconvoy.io/login"
-						className="px-16px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border shadow-btn">
-						<span>Try for free</span>
+						href="https://cal.com/subomi/30min"
+						className="px-8px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border shadow-btn gap-2">
+						<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
 
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" className="block ml-1 mt-[1px]">
-							<path d="M12.0039 7.06066L5.54894 13.5156L4.48828 12.455L10.9432 6H5.2539V4.5H13.5039V12.75H12.0039V7.06066Z" fill="black" />
-						</svg>
+						<span>Talk to a founder</span>
 					</a>
 				</div>
 			</section>

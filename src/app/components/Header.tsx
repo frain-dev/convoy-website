@@ -11,7 +11,7 @@ export default function Header() {
 	const pathname = usePathname();
 
 	const menuItems = [
-		{ name: 'Open Source', route: '/community', type: 'route' },
+		{ name: 'Core Gateway', route: '/webhook-gateway', type: 'route' },
 		{ name: 'Documentation', route: 'https://docs.getconvoy.io/', type: 'route' },
 		{ name: 'Blog', route: '/blog', type: 'route' },
 		{ name: 'Pricing', route: '/pricing', type: 'route' },
