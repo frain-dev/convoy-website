@@ -10,6 +10,7 @@ import TwitterIcon from '../../../public/svg/twitter-icon.svg';
 import LinkedInIcon from '../../../public/svg/linkedin.svg';
 import { usePathname } from 'next/navigation';
 import { useToaster } from '@/hooks/notification';
+import { isExternal } from 'util/types';
 
 export default function Footer() {
 	const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -30,8 +31,8 @@ export default function Footer() {
 		{
 			title: 'Product',
 			links: [
-				{ name: 'Features', link: '/#features' },
 				{ name: 'Open Source', link: 'http://github.com/frain-dev/convoy', isExternal: true },
+				{ name: 'Core Gateway', link: '/core-gateway', isExternal: false },
 				{ name: 'Cloud', link: 'https://cloud.getconvoy.io/login', isExternal: true },
 				{ name: 'Convoy Playground', link: 'https://playground.getconvoy.io', isExternal: true }
 			]
@@ -42,11 +43,10 @@ export default function Footer() {
 			links: [
 				{ name: 'API Reference', link: 'https://docs.getconvoy.io/api-reference', isExternal: true },
 				{ name: 'Documentation', link: 'https://docs.getconvoy.io', isExternal: true },
-				{ name: 'Watch Demo', link: 'https://youtu.be/DSIet81oBsg?si=1ni58qJWlLFAH1KZ', isExternal: true },
 				{ name: 'Status Page', link: 'https://status.getconvoy.io', isExternal: true },
 				{ name: 'Roadmap', link: 'https://github.com/orgs/frain-dev/convoy-roadmap', isExternal: true },
-				{ name: 'Convoy vs. Implementation', link: '/convoy-vs-implementation', isExternal: false },
-				{ name: 'What are Webhooks?', link: '/what-are-webhooks', isExternal: false }
+				{ name: 'What are Webhooks?', link: '/what-are-webhooks', isExternal: false },
+				{ name: 'Convoy vs. Internal Implementation', link: '/convoy-vs-internal-implementation', isExternal: false }
 			]
 		},
 		{

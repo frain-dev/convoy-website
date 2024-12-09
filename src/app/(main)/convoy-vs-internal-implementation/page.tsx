@@ -5,43 +5,44 @@ import error from 'public/svg/error.svg';
 import spruce from 'public/svg/spruce-health-mark.svg';
 import michael from 'public/profile-images/Michael Raines.png';
 import subomi from 'public/profile-images/Subomi Oluwalana.png';
+import GetStarted from '@/app/components/GetStarted';
 
 import Image from 'next/image';
 
 const features = [
 	{
 		name: 'Retries',
-		description: 'Send webhooks with retries to ensure eventual delivery.',
+		description: 'Automatically retry failed webhooks to ensure eventual delivery and handle temporary network issues.',
 		convoy: 'supported',
-		implementation: 'questionable'
+		implementation: 'supported'
 	},
 	{
 		name: 'Rate Limiting',
-		description: 'Prevent blasting too many events at client endpoints at once.',
+		description: 'Control event flow to client endpoints, preventing overload and ensuring smooth operations during traffic spikes.',
 		convoy: 'supported',
 		implementation: 'questionable'
 	},
 	{
 		name: 'Endpoint Circuit Breaking',
-		description: 'Automatically detect zombie endpoints and deactivate them to avoid backpressure.',
+		description: 'Detect and isolate malfunctioning endpoints to prevent backpressure and maintain system stability.',
 		convoy: 'supported',
 		implementation: 'unsupported'
 	},
 	{
 		name: 'Multiple URLs',
-		description: 'Enable developers to add multiple webhook URLs.',
+		description: 'Enable developers to configure multiple webhook URLs for greater flexibility,',
 		convoy: 'supported',
 		implementation: 'questionable'
 	},
 	{
 		name: 'Fine-grained webhook subscriptions',
-		description: 'Subscribe to webhooks beyond the event types, subscribed based on the payload structure.',
+		description: 'Filter webhook events based on payload details for precise and efficient subscriptions.',
 		convoy: 'supported',
 		implementation: 'unsupported'
 	},
 	{
 		name: 'Ease of debugging',
-		description: 'Operators and Customer support can use our Web UI to debug webhooks delivery vs. sifting through server logs.',
+		description: 'Use a web UI for simple debugging, eliminating the need for complex server log analysis.',
 		convoy: 'supported',
 		implementation: 'unsupported'
 	},
@@ -59,13 +60,13 @@ const features = [
 	},
 	{
 		name: 'Static IPs',
-		description: 'Send webhooks with a consistent set of egress IP addresses.',
+		description: 'Deliver webhooks from consistent egress IPs, simplifying firewall configurations and ensuring stability.',
 		convoy: 'supported',
 		implementation: 'supported'
 	},
 	{
 		name: 'Webhook Log',
-		description: '',
+		description: 'Maintain a log of webhook events for easy monitoring, debugging, and compliance checks.',
 		convoy: 'supported',
 		implementation: 'questionable'
 	}
@@ -74,23 +75,23 @@ const features = [
 const architecture = [
 	{
 		name: 'Language Choice',
-		convoy: 'Convoy is built with Golang — the most popular cloud-native language',
-		implementation: 'Usually bundled with a monolith built in Ruby/Go/Java, Python/Django, etc.'
+		convoy: 'Built with Golang, the most popular language for cloud-native applications.',
+		implementation: 'Often bundled in monolithic architectures using Ruby, Go, Java, or Python/Django.'
 	},
 	{
 		name: 'Microservices support',
-		convoy: 'Convoy is built as a resilient webhooks gateway to support multiple teams and microservices.',
-		implementation: "Most internal implementations are tightly coupled with a monolith and can't support the entire organization."
+		convoy: 'Built to support multiple teams and microservices with a resilient webhook gateway.',
+		implementation: "Tightly coupled with monoliths, limiting scalability across teams and services."
 	},
 	{
 		name: 'Message Broker support',
-		convoy: 'Instant events from any message broker of choice. Convoy supports Kafka, Amazon SQS, Google PubSub, and RabbitMQ.',
-		implementation: 'Very limited support for Message Brokers.'
+		convoy: 'Ingest events seamlessly from any message broker, including Kafka, Amazon SQS, Google PubSub, and RabbitMQ, for flexible event processing.',
+		implementation: 'Limited or no support for message brokers.'
 	},
 	{
 		name: 'Resilient & Reliable Architecture',
-		convoy: 'Convoy relies on a control and data plane architecture that enables it to achieve high throughput and high availability during operations.',
-		implementation: 'The entire system is coupled together and reduces overall reliability because there are too many moving parts.'
+		convoy: 'Uses a control and data plane architecture for high throughput and availability.',
+		implementation: 'Coupled system with many dependencies, reducing overall reliability.'
 	},
 	{
 		name: 'Performance',
@@ -99,13 +100,13 @@ const architecture = [
 	},
 	{
 		name: 'Observability',
-		convoy: 'Prometheus Metrics & OpenTelemetry',
-		implementation: 'Can be hard to tell what is going on in the system.'
+		convoy: 'Fully supports Prometheus metrics and OpenTelemetry for monitoring.',
+		implementation: 'Limited visibility, making system diagnostics difficult.'
 	},
 	{
 		name: 'Retention Policies',
-		convoy: 'Supports flexible retention policies to archive events to S3-compatible storage.',
-		implementation: "Most Providers don't support persistence because they don't want to deal with purging storage."
+		convoy: 'Flexible retention policies to archive events to S3-compatible storage.',
+		implementation: "Most providers lack persistence and do not handle data purging efficiently."
 	}
 ];
 
@@ -117,7 +118,7 @@ export default function ConvoyComparison() {
 					<div className="flex flex-col items-start desktop:items-center justify-start desktop:justify-center w-full">
 						<h1 className="text-32 desktop:text-[40px] font-medium">Convoy vs Internal implementation</h1>
 						<p className="max-w-[683px] desktop:mx-auto desktop:text-16 desktop:text-center text-14 !leading-[200%] text-[#4b4b4b] mt-2 desktop:my-24px font-medium">
-							Whether you’re an engineer or product manager, this guide walks you through everything you need to become a webhook pro. Let’s begin!
+							Discover why choosing Convoy over building an internal webhook service saves time, reduces complexity, and ensures reliability at scale.
 						</p>
 
 						<div className="flex footer:justify-center mt-4 desktop:mt-0 mb-56px">
@@ -199,6 +200,8 @@ export default function ConvoyComparison() {
 					<ArchitectureTable />
 				</div>
 			</section>
+
+			<GetStarted></GetStarted>
 		</main>
 	);
 }

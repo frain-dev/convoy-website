@@ -228,8 +228,8 @@ export default function WebhookGateway() {
 			<section className="pt-100px desktop:pt-150px px-20px flex items-start desktop:items-center flex-col max-w-[1180px] w-full">
 				<h1 className="desktop:text-center font-medium text-[32px] desktop:text-[40px] mb-24px desktop:max-w-[683px] m-auto">The world’s most advanced Webhooks Gateway</h1>
 				<p className="desktop:text-center text-[#666] text-16 desktop:text-16 desktop:max-w-[683px] desktop:m-auto mb-24px font-medium leading-[200%]">
-					Secure <span className="text-[#2780F1]">send, receive and manage millions of webhooks reliably</span> with robust support for Retries, Rate Limiting, Static
-					IPs, Circuit Breaking, Rolling Secrets and more.
+					Streamline your webhook infrastructure with advanced features for <span className="text-[#2780F1]">scalability, reliability and enterprise-grade security.</span> Built for developers, trusted by
+					enterprises.
 				</p>
 
 				<div className="flex footer:justify-center mt-4 desktop:mt-24px mb-56px">

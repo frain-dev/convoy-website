@@ -67,8 +67,7 @@ export default function Home() {
 					events
 				</h1>
 				<p className="desktop:text-center text-[#666] text-[16px] desktop:max-w-[683px] m-auto mb-6 desktop:font-medium">
-					Secure <span className="text-[#2780F1]">send, receive and manage millions of webhooks reliably</span> with robust support for Retries, Rate Limiting, Static
-					IPs, Circuit Breaking, Rolling Secrets and more.
+					The complete solution for <span className="text-[#2780F1]">secure, scalable, and reliable</span> webhook delivery. Built for developers, trusted by enterprises.
 				</p>
 
 				<div className="flex desktop:justify-center mb-56px">
@@ -279,7 +278,7 @@ export default function Home() {
 					<div className="flex flex-col desktop:items-center gap-6">
 						<h2 className="text-32 desktop:text-[40px] w-full desktop:w-[436px] font-medium desktop:text-center">Security, Scalability and Compliance</h2>
 						<p className="text-[#666] w-full desktop:w-[512px] desktop:text-center text-14 desktop:text-16 leading-[180%] desktop:leading-[150%]">
-							We take security and reliability seriously. Our platform complies with security standards you need to run your business.
+							Built for the highest standards of security, we ensure your business runs with reliability and meets the compliance requirements you rely on.
 						</p>
 					</div>
 

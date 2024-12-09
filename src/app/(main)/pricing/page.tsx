@@ -140,7 +140,7 @@ const cloudFeatures = [
 			{
 				name: 'Uptime SLA',
 				basic: '99.99%',
-				premium: '99.99%'
+				premium: '99.999%'
 			},
 			{
 				name: 'Webhook Retention',
@@ -251,11 +251,7 @@ const faqs = [
 		question: 'Do you offer free trials?',
 		answer: (
 			<>
-				We have a 14 days free trial in the Cloud, but we don’t offer free trials for self-hosted licenses. Please reach out to us at
-				<a href="mailto:sales@getconvoy.io" className="text-[#2780F1] underline hover:no-underline px-1">
-					sales@getconvoy.io
-				</a>
-				or book a call, we're happy to learn about your needs.
+				We have a 14 days free trial in the Cloud, but we don’t offer free trials for self-hosted deployments. 
 			</>
 		)
 	},
@@ -263,11 +259,16 @@ const faqs = [
 		question: 'The 25 events/sec limit in the Cloud is too small, how can I purchase more?',
 		answer: (
 			<>
-				Please reach out to us at
+				Please reach out to us in 
+				<a href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ"
+					className="text-[#2780F1] underline hover:no-underline px-1">
+					Slack
+				</a> 
+				or at
 				<a href="mailto:sales@getconvoy.io" className="text-[#2780F1] underline hover:no-underline px-1">
 					sales@getconvoy.io
-				</a>
-				or book a call, we're happy to learn about your needs.
+				</a>, 
+				we're happy to learn about your needs and increase your limit.
 			</>
 		)
 	},
@@ -275,11 +276,15 @@ const faqs = [
 		question: 'What regions are supported in the Cloud?',
 		answer: (
 			<>
-				We currently support only two regions: 'US', and 'EU'. Please reach out to us at
-				<a href="mailto:sales@getconvoy.io" className="text-[#2780F1] underline hover:no-underline px-1">
-					sales@getconvoy.io
-				</a>
-				or book a call, we're happy to learn about your needs.
+				We currently have clusters deployed in the United States and Europe to cater for regional compliance.
+			</>
+		)
+	},
+	{
+		question: 'Can I use Convoy to receive webhooks?',
+		answer: (
+			<>
+				Yes, Convoy is a bi-directional webhook gateway that can be used to send and receive webhooks.
 			</>
 		)
 	}

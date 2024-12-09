@@ -85,7 +85,7 @@ export default function Webhooks() {
 							</a>
 							<a
 								target="_blank"
-								href="https://cloud.getconvoy.io/login"
+								href="https://docs.getconvoy.io/"
 								className="px-16px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border shadow-btn">
 								<span>Visit docs</span>
 

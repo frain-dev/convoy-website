@@ -14,7 +14,7 @@ export default function GetStarted() {
 
 				<div className="gap-6 desktop:gap-2 flex flex-col justify-between items-start desktop:items-end px-5 desktop:px-10 py-4 desktop:py-6">
 					<div className="flex flex-col gap-2">
-						<h3 className="text-20 desktop:text-32 font-semibold">Getting started with Convoy</h3>
+						<h3 className="text-20 desktop:text-32 font-semibold">Getting started with Convoy?</h3>
 						<p className="text-12 desktop:text-16 text-[#666] font-normal leading-[160%] w-full desktop:w-[523px]">
 							Want to add webhooks to your API in minutes? Sign up to get started.
 						</p>

@@ -190,8 +190,6 @@ export default function AboutUs() {
 					</div>
 				</div>
 			</section>
-
-			<GetStarted></GetStarted>
 		</main>
 	);
 }

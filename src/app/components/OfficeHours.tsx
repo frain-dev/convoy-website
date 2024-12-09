@@ -21,17 +21,20 @@ export default function OfficeHours({ type }: { type: 'playground' | 'guides' })
 
 				<div className="gap-8 desktop:gap-2 flex flex-col justify-between items-start desktop:items-end px-5 desktop:px-10 py-4 desktop:pt-6 desktop:pb-9">
 					<div className="flex flex-col gap-3 desktop:gap-5">
-						<h3 className="text-16 desktop:text-32 font-semibold"> {type === 'playground' ? 'Test Convoy in our playground' : 'Read our Guides'}</h3>
+						<h3 className="text-16 desktop:text-32 font-semibold"> {type === 'playground' ? 'Try out our playground' : 'Read our API & Webhook Guides'}</h3>
 						<p className="text-12 desktop:text-18 text-[#666] font-normal leading-[160%] w-full desktop:w-[899px] full">
-							We aim to be true partners. Please register for our bi-weekly office hours to talk to our founders. We <br /> chat about everything: Webhooks, Convoy
-							and API-First Engineering.
+							{
+								type === 'playground' ? 
+								'The Convoy Playground makes testing webhook integrations effortless. Generate webhook URLs, inspect payloads, and analyze headers—all in one place.' :
+								'Explore our in-depth guides on webhooks and API-First engineering. As your trusted partner, we cover best practices across a wide range of topics to help you deliver world class APIs and Webhooks.'
+							}
 						</p>
 					</div>
 
 					<a
-						href="https://cloud.getconvoy.io"
+						href={ type === 'playground' ? 'https://playground.getconvoy.io' : "https://docs.getconvoy.io/webhook-guides" }
 						className="desktop:px-16px py-10px w-[107px] text-14 font-medium rounded-8px h-10 nav-bar-break:h-11 bg-white-100 desktop:bg-[#2780F1] text-[#2780F1] desktop:text-white-100 flex items-center desktop:shadow-btn-secondary cursor-pointer">
-						<span>Register</span>
+						<span>{ type === 'playground' ? 'Try for free' : 'Read Guides'}</span>
 
 						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] fill-[#2780F1] desktop:fill-white-100">
 							<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" />
