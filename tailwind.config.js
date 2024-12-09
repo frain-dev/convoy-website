@@ -23,14 +23,18 @@ module.exports = {
 				layout: '0px 30px 40px 0px rgba(20, 37, 63, 0.08), 0px 16px 16px 0px rgba(12, 26, 75, 0.05), 0px 16px 16px 0px rgba(12, 26, 75, 0.06)',
 				default: '0px 2px 4px rgba(12, 26, 75, 0.04), 0px 4px 20px -2px rgba(50, 50, 71, 0.08)',
 				card: '40px 44px 81px rgba(111, 118, 138, 0.08)',
-				nav: 'inset 0px -3px 8px rgba(255, 255, 255, 0.07);'
+				nav: 'inset 0px -3px 8px rgba(255, 255, 255, 0.07)',
+				btn: '0px 2px 2px -1px rgba(0, 0, 0, 0.04)',
+				'btn-secondary': '0px 4px 11px -1px rgba(0, 130, 249, 0.04)',
+				video: '0px 2.208px 4.417px -1.656px rgba(0, 0, 0, 0.08);'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(white 10%, #fafafe78)'
 			},
 			fontFamily: {
 				menlo: ['Menlo Regular'],
-				inter: ['Inter']
+				inter: ['Inter'],
+				'open-sauce-sans': ['Open Sauce Sans']
 			}
 		},
 		fontWeight: {
@@ -53,10 +57,16 @@ module.exports = {
 			md: { min: '1288px' },
 			'md-max': { max: '1288px' },
 			mobile: { max: '1054px' },
+			'mobile-min': { max: '768px' },
 			footer: { max: '630px' },
 			xs: { max: '425px' },
-			tab: { max: '1287px', min: '880px' },
-			'doc-tab': { min: '768px' }
+			tab: { max: '1360px', min: '880px' },
+			'doc-tab': { min: '768px' },
+			'sm-old': { min: '640px' },
+			'md-old': { min: '768px' },
+			'lg-old': { min: '1024px' },
+			'xl-old': { min: '1280px' },
+			'2xl-old': { min: '1536px' }
 		},
 		borderRadius: {
 			'2px': '2px',
