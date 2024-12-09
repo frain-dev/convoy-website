@@ -1,6 +1,8 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 import playButton from '../../../public/svg/play-button.svg';
 import frame from '../../../public/static/screenshot-frame.svg';
@@ -44,13 +46,27 @@ export default function Home() {
 		{ name: 'marble-full', url: 'https://www.checkmarble.com/', class: 'h-20px desktop:h-28px ml-[20px]' }
 	];
 
+	const words = ['sending', 'receiving'];
+
+	const [index, setIndex] = useState(0);
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setIndex(prevIndex => (prevIndex + 1) % words.length);
+		}, 2000); // Change word every 0.5 seconds
+
+		return () => clearInterval(interval);
+	}, []);
+
 	return (
 		<main className="flex flex-col items-center pb-60px desktop:pb-120px w-full">
 			<section className="pt-150px px-20px flex desktop:items-center flex-col max-w-[1180px] w-full">
-				<h1 className="desktop:text-center font-medium text-32 desktop:text-[40px] mb-24px desktop:max-w-[683px]">
-					The webhook gateway for <br /> sending events
+				<h1 className="desktop:text-center font-medium text-[32px] desktop:text-[40px] mb-6 desktop:max-w-[683px]">
+					The webhook gateway for <br />
+					<span>sending</span>{' '}
+					events
 				</h1>
-				<p className="desktop:text-center text-[#666] text-16 desktop:max-w-[683px] m-auto mb-24px desktop:font-medium">
+				<p className="desktop:text-center text-[#666] text-[16px] desktop:max-w-[683px] m-auto mb-6 desktop:font-medium">
 					Secure <span className="text-[#2780F1]">send, receive and manage millions of webhooks reliably</span> with robust support for Retries, Rate Limiting, Static
 					IPs, Circuit Breaking, Rolling Secrets and more.
 				</p>

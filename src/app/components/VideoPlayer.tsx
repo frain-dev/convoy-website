@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 
 const VideoPlayer: React.FC = () => {
 	const [isPlaying, setIsPlaying] = useState(false);
@@ -22,12 +21,12 @@ const VideoPlayer: React.FC = () => {
 			<AnimatePresence>
 				{showOverlay && (
 					<motion.div className="absolute inset-0 z-10" initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-						<motion.div className="w-full h-full bg-[#000] absolute top-0 left-0" initial={{ opacity: 0.5 }} animate={{ opacity: 0.5 }} />
-						<div className="absolute inset-0 flex items-center justify-center">
-							<motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={handlePlayClick}>
-								<Image src="/svg/play-button.svg" alt="Play video" width={80} height={80} className="cursor-pointer w-60px desktop:w-max" />
-							</motion.div>
-						</div>
+						<motion.div
+							onClick={handlePlayClick}
+							className="cursor-pointer w-full h-full bg-[#000] absolute top-0 left-0"
+							initial={{ opacity: 0.5 }}
+							animate={{ opacity: 0.5 }}
+						/>
 					</motion.div>
 				)}
 			</AnimatePresence>
