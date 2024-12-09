@@ -40,33 +40,33 @@ import synchronous from '../../../../public/svg/synchronous.svg';
 const advancedFeatures = [
 	{
 		icon: retries,
-		title: 'Retries.',
-		description: 'Automatically attempts to resend webhooks if delivery fails, ensuring reliable message delivery.',
+		title: 'Retries:',
+		description: 'Automatically retry failed webhooks to ensure eventual delivery and handle temporary network issues.',
 		link: 'https://docs.getconvoy.io/webhook-guides/webhook-retries#webhook-retries'
 	},
 	{
 		icon: circuit,
-		title: 'Circuit Breaking.',
+		title: 'Circuit Breaking:',
 		description:
 			'Temporarily pause webhook delivery to failing endpoints, preventing repeated errors and maintain system stability by redirecting traffic away from problematic connections.',
 		link: ''
 	},
 	{
 		icon: ssl,
-		title: 'Enforce SSL.',
+		title: 'Enforce SSL:',
 		description:
 			'Guarantee secure webhook delivery by requiring SSL/TLS in production, protecting data in transit from interception and tampering, and ensuring compliance with security standards.',
 		link: ''
 	},
 	{
 		icon: rateLimiting,
-		title: 'Rate Limiting.',
+		title: 'Rate Limiting:',
 		description: 'Control the number of webhooks sent per second, preventing overload and ensuring system stability.',
 		link: ''
 	},
 	{
 		icon: timeouts,
-		title: 'Fine-grained Connection Timeouts.',
+		title: 'Fine-grained Connection Timeouts:',
 		description: 'Customise timeout settings for each webhook, optimising performance and resource usage.',
 		link: ''
 	}
@@ -75,26 +75,20 @@ const advancedFeatures = [
 const webhookFeatures = [
 	{
 		icon: postgresql,
-		title: 'Built on PostgreSQL.',
+		title: 'Built on PostgreSQL:',
 		description: 'Leverage the world’s most ubiquitous database to ensure durability and reliability for all events, deliveries, and delivery attempts.',
 		link: ''
 	},
 	{
 		icon: policies,
-		title: 'Flexible Retention Policies.',
+		title: 'Flexible Retention Policies:',
 		description:
 			'Provide customisable data retention policies for archiving older events, optimising storage costs, and ensuring compliance with regulatory requirements efficiently.',
 		link: ''
 	},
 	{
-		icon: archiving,
-		title: 'High-Performance Archiving to Object Storage.',
-		description: "Utilise PostgreSQL partitioning to enable efficient archiving, maintaining the system's SLA and ensuring optimal performance.",
-		link: ''
-	},
-	{
 		icon: logs,
-		title: 'Filter Webhook Logs.',
+		title: 'Filter Webhook Logs:',
 		description: 'Control the number of webhooks sent per second, preventing overload and ensuring system stability.',
 		link: ''
 	}
@@ -103,33 +97,21 @@ const webhookFeatures = [
 const architectureFeatures = [
 	{
 		icon: control,
-		title: 'Control and Data Plane Architecture.',
+		title: 'Control and Data Plane Architecture:',
 		description: 'Achieve high availability and fault tolerance by splitting the ingestion and delivery pipeline (data plane) from the configuration layer (control plane).',
-		link: ''
+		link: 'https://docs.getconvoy.io/deployment/architecture'
 	},
 	{
 		icon: read,
-		title: 'Read and Write Replicas.',
+		title: 'Read and Write Replicas:',
 		description:
 			'Leverage PostgreSQL read replicas to speed up read queries for the dashboard and other functions while writing only events, event deliveries and delivery attempts to the primary database.',
 		link: ''
 	},
 	{
-		icon: multitenant,
-		title: 'Multi-tenant Data Plane.',
-		description: 'Isolate large customers to their data plane nodes to maintain high SLAs even at peak traffic.',
-		link: ''
-	},
-	{
-		icon: extendable,
-		title: 'Extendable.',
-		description: 'Extend Convoy with plugins.',
-		link: ''
-	},
-	{
-		icon: extensive,
-		title: 'Extensive Test Suites.',
-		description: '',
+		icon: archiving,
+		title: 'High-Performance Archiving to Object Storage:',
+		description: "Utilise PostgreSQL partitioning to enable efficient archiving, maintaining the system's SLA and ensuring optimal performance.",
 		link: ''
 	}
 ];
@@ -137,20 +119,20 @@ const architectureFeatures = [
 const secureFeatures = [
 	{
 		icon: hmac,
-		title: 'HMAC Signatures.',
+		title: 'HMAC Signatures:',
 		description: 'Verify webhook authenticity using HMAC (Hash-based Message Authentication Code), ensuring data integrity and origin validation.',
 		link: ''
 	},
 	{
 		icon: blacklisting,
-		title: 'Static IPs & IP Blacklisting.',
+		title: 'Static IPs & IP Blacklisting:',
 		description: 'Ensure consistent and secure webhook delivery from designated IP addresses as well as eliminating the possibility of SSRF by blacklisting IPs.',
 		link: ''
 	},
 	{
 		icon: tls,
-		title: 'Mutual TLS.',
-		description: 'Implements mutual authentication and encrypted communication, meeting stringent security and compliance standards required by specific industries.',
+		title: 'Replay Attack Prevention:',
+		description: 'Protect your data from malicious attacks with replay attack prevention, ensuring that each webhook delivery is unique and secure..',
 		link: ''
 	}
 ];
@@ -158,13 +140,13 @@ const secureFeatures = [
 const observabilityFeatures = [
 	{
 		icon: prometheus,
-		title: 'Prometheus Metrics.',
+		title: 'Prometheus Metrics:',
 		description: 'Easily diagnose all webhook delivery issues, like high latencies and high queue backlogs per tenant.',
 		link: ''
 	},
 	{
 		icon: telemetry,
-		title: 'Open Telemetry.',
+		title: 'Open Telemetry:',
 		description: 'Diagnose performance issues in your entire cluster with OpenTelemetry on any backend you choose.',
 		link: ''
 	}
@@ -173,51 +155,32 @@ const observabilityFeatures = [
 const otherFeatures = [
 	{
 		icon: ingest,
-		title: 'Ingest webhooks from any source.',
+		title: 'Ingest webhooks from any source:',
 		description: 'Convoy’s flexible architecture enables you to ingest webhooks from just any source like Amazon SQS, Apache Kafka, Google PubSub, RabbitMQ and HTTP.',
 		link: ''
 	},
 	{
 		icon: connect,
-		title: 'Connect directly to your CDC Pipeline.',
+		title: 'Connect directly to your CDC Pipeline:',
 		description: 'You can connect directly to your CDC to ingest payloads that don’t fit any ingestion structure, but add javascript transformations to re-shape them.',
 		link: ''
 	},
 	{
-		icon: catalogue,
-		title: 'Event Catalogue.',
-		description: 'Publish your supported events with a valid openapi spec to enable your users to know what events are supported and their exact structure.',
-		link: ''
-	},
-	{
 		icon: portal,
-		title: 'Developer Portal.',
+		title: 'Developer Portal:',
 		description: 'Create read or read-and-write developer portal for users to view their event deliveries, configure and debug their endpoints.',
 		link: ''
 	},
 	{
 		icon: fineGrained,
-		title: 'Fine-grained webhook subscriptions.',
+		title: 'Fine-grained webhook subscriptions:',
 		description: 'Go beyond the basic event-type webhooks subscriptions and subscribe to specific events with a particular payload shape.',
-		link: ''
-	},
-
-	{
-		icon: support,
-		title: 'Support multiple ingestion mechanisms.',
-		description: '',
 		link: ''
 	},
 	{
 		icon: retry,
-		title: 'Bulk Retry for Failed Event Deliveries',
-		description: '',
-		link: ''
-	},
-	{
-		icon: synchronous,
-		title: 'Synchronous Webhooks.',
-		description: '',
+		title: 'Bulk Retry for Failed Event Deliveries:',
+		description: 'Quickly recover from delivery failures by retrying multiple events in bulk, ensuring minimal disruption and faster resolution for your workflows.',
 		link: ''
 	}
 ];
@@ -280,31 +243,12 @@ export default function WebhookGateway() {
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
 							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Rock-solid Webhooks Logs & Filtering</h3>
 							<p className="text-[#666] text-14 desktop:text-16 leading-[140%] desktop:leading-[160%] font-medium">
-								Enhance your webhook reliability, security, and performance with advanced endpoint controls tailored to ensure stable, secure, and efficient message
-								delivery.
+								Easily trace and troubleshoot webhook activity with detailed logs and powerful filtering options, ensuring faster resolutions and seamless monitoring.
 							</p>
 						</div>
 					</div>
 
 					<FeatureGrid features={webhookFeatures} />
-				</div>
-			</section>
-
-			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
-					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#27F18566]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
-						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
-
-						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
-							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Highly Reliable Architecture</h3>
-							<p className="text-[#666] text-14 desktop:text-16 leading-[140%] desktop:leading-[160%] font-medium">
-								Enhance your webhook reliability, security, and performance with advanced endpoint controls tailored to ensure stable, secure, and efficient message
-								delivery.
-							</p>
-						</div>
-					</div>
-
-					<FeatureGrid features={architectureFeatures} />
 				</div>
 			</section>
 
@@ -316,13 +260,29 @@ export default function WebhookGateway() {
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
 							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Secure Webhook Delivery</h3>
 							<p className="text-[#666] text-14 desktop:text-16 leading-[140%] desktop:leading-[160%] font-medium">
-								Enhance your webhook reliability, security, and performance with advanced endpoint controls tailored to ensure stable, secure, and efficient message
-								delivery.
+							Ensure reliable and secure webhook delivery with advanced security measures including HMAC signatures, static IPs, and replay attack prevention, safeguarding data integrity and compliance.
 							</p>
 						</div>
 					</div>
 
 					<FeatureGrid features={secureFeatures} />
+				</div>
+			</section>
+
+			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
+				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
+					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#27F18566]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
+						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
+
+						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
+							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Highly Reliable Architecture</h3>
+							<p className="text-[#666] text-14 desktop:text-16 leading-[140%] desktop:leading-[160%] font-medium">
+								Built for unmatched reliability, our architecture ensures high availability, fault tolerance, and seamless performance at scale.
+							</p>
+						</div>
+					</div>
+
+					<FeatureGrid features={architectureFeatures} />
 				</div>
 			</section>
 
@@ -334,8 +294,7 @@ export default function WebhookGateway() {
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
 							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Observability</h3>
 							<p className="text-[#666] text-14 desktop:text-16 leading-[140%] desktop:leading-[160%] font-medium">
-								Enhance your webhook reliability, security, and performance with advanced endpoint controls tailored to ensure stable, secure, and efficient message
-								delivery.
+								Gain deep insights into system performance and webhook delivery with robust metrics and end-to-end observability tools.
 							</p>
 						</div>
 					</div>
@@ -350,10 +309,9 @@ export default function WebhookGateway() {
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
-							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Other Core Features</h3>
+							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Unparalleled Developer Experience</h3>
 							<p className="text-[#666] text-14 desktop:text-16 leading-[140%] desktop:leading-[160%] font-medium">
-								Enhance your webhook reliability, security, and performance with advanced endpoint controls tailored to ensure stable, secure, and efficient message
-								delivery.
+								Empower your developers with a seamless experience, offering intuitive tools for managing webhooks, precise event control, and guaranteed reliability
 							</p>
 						</div>
 					</div>
