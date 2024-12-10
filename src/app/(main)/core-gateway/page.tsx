@@ -89,7 +89,7 @@ const webhookFeatures = [
 	{
 		icon: logs,
 		title: 'Filter Webhook Logs:',
-		description: 'Control the number of webhooks sent per second, preventing overload and ensuring system stability.',
+		description: 'Filter events and deliveries effortlessly to quickly identify and resolve event matching or delivery issues.',
 		link: ''
 	}
 ];
