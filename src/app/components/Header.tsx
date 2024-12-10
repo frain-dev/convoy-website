@@ -64,7 +64,7 @@ export default function Header() {
 								<a
 									target="_blank"
 									href="https://cloud.getconvoy.io/login"
-									className="nav-bar-break:px-16px py-10px text-14 mr-16px h-[40px] font-medium rounded-8px nav-bar-break:bg-white-100 nav-bar-break:text-[#000] text-[#2780F1] flex items-center justify-center nav-bar-break:border-[#E7E7E7] nav-bar-break:border nav-bar-break:shadow-btn">
+									className="nav-bar-break:px-16px py-10px text-14 mr-16px h-[40px] font-medium rounded-8px nav-bar-break:bg-white-100 hover:nav-bar-break:bg-[#e7e7e7] group transition-all duration-300 nav-bar-break:text-[#000] text-[#2780F1] flex items-center justify-center nav-bar-break:border-[#E7E7E7] nav-bar-break:border nav-bar-break:shadow-btn">
 									<span>Sign In</span>
 
 									<svg
@@ -73,7 +73,7 @@ export default function Header() {
 										height="19"
 										viewBox="0 0 18 19"
 										fill="none"
-										className="hidden nav-bar-break:block ml-1 mt-[1px]">
+										className="hidden nav-bar-break:block ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
 										<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="black" />
 									</svg>
 								</a>
@@ -81,10 +81,10 @@ export default function Header() {
 								<a
 									target="_blank"
 									href="https://cloud.getconvoy.io/signup"
-									className="px-12px py-10px text-14 font-medium rounded-8px h-10 nav-bar-break:bg-[#2780F1] nav-bar-break:text-white-100 text-[#2780F1] flex items-center">
+									className="px-12px py-10px text-14 font-medium rounded-8px h-10 nav-bar-break:bg-[#2780F1] hover:nav-bar-break:bg-[#1f66c1] group transition-all duration-300 nav-bar-break:text-white-100 text-[#2780F1] flex items-center">
 									<span>Start your project</span>
 
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="hidden nav-bar-break:block ml-1 mt-[1px]">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="hidden nav-bar-break:block ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
 										<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
 									</svg>
 								</a>

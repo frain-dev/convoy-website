@@ -455,10 +455,10 @@ const PricingCard = ({ data, variant }) => {
 						<a
 							target="_blank"
 							href={item.cta.link}
-							className="mt-3 pl-20px desktop:pl-14px pr-14px desktop:pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] text-white-100 flex items-center z-10 w-max">
+							className="mt-3 pl-20px desktop:pl-14px pr-14px desktop:pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center z-10 w-max">
 							<span>{item.cta.text}</span>
 
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px]">
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
 								<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
 							</svg>
 						</a>

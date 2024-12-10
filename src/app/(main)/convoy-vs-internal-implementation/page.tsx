@@ -81,7 +81,7 @@ const architecture = [
 	{
 		name: 'Microservices support',
 		convoy: 'Built to support multiple teams and microservices with a resilient webhook gateway.',
-		implementation: "Tightly coupled with monoliths, limiting scalability across teams and services."
+		implementation: 'Tightly coupled with monoliths, limiting scalability across teams and services.'
 	},
 	{
 		name: 'Message Broker support',
@@ -106,7 +106,7 @@ const architecture = [
 	{
 		name: 'Retention Policies',
 		convoy: 'Flexible retention policies to archive events to S3-compatible storage.',
-		implementation: "Most providers lack persistence and do not handle data purging efficiently."
+		implementation: 'Most providers lack persistence and do not handle data purging efficiently.'
 	}
 ];
 
@@ -125,17 +125,22 @@ export default function ConvoyComparison() {
 							<a
 								target="_blank"
 								href="https://cloud.getconvoy.io/signup"
-								className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] text-white-100 flex items-center">
+								className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center">
 								<span>Try for free</span>
 
-								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px]">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="18"
+									height="19"
+									viewBox="0 0 18 19"
+									className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
 									<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
 								</svg>
 							</a>
 							<a
 								target="_blank"
 								href="https://cal.com/subomi/30min"
-								className="px-8px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border shadow-btn gap-2">
+								className="px-8px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2">
 								<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
 
 								<span>Talk to a founder</span>
