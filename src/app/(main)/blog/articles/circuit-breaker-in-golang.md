@@ -496,7 +496,7 @@ func (cb *CircuitBreakerManager) sampleStore(ctx context.Context, pollResults ma
 ```
 
 # Benefit in production?
-We began testing this in production and found some a pretty interesting graph. One of our self-hosted customers was averaging about 100k failed delivery attempts/day (~10% of their traffic; they send about 600k events/day) due to zombie endpoints. Now it’s down to about 5k per day. That’s a 95% improvement. It turns out the ideal metric of success is the % of failed delivery attempts should be less than a number depending on the scale of deployment.
+We began testing this in production and found some pretty interesting graph. One of our self-hosted customers was averaging about 100k failed delivery attempts/day (~10% of their traffic; they send about 600k events/day) due to zombie endpoints. Now it’s down to about 5k per day. That’s a 95% improvement. It turns out the ideal metric of success is the % of failed delivery attempts should be less than a number depending on the scale of deployment.
 
 ![circuit-breaker-graph](/blog-assets/circuit-breaker-graph.png)
 
