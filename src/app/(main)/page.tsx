@@ -61,40 +61,72 @@ export default function Home() {
 	return (
 		<main className="flex flex-col items-center pb-60px desktop:pb-120px w-full">
 			<section className="pt-150px px-20px flex desktop:items-center flex-col max-w-[1180px] w-full">
-				<h1 className="desktop:text-center font-medium text-[32px] desktop:text-[40px] mb-6 desktop:max-w-[683px]">
-					The webhook gateway for <br />
-					<span>sending</span>{' '}
-					events
-				</h1>
-				<p className="desktop:text-center text-[#666] text-[16px] desktop:max-w-[683px] m-auto mb-6 desktop:font-medium">
-					The complete solution for <span className="text-[#2780F1]">secure, scalable, and reliable</span> webhook delivery. Built for developers, trusted by enterprises.
-				</p>
+				<motion.div
+					initial={{ opacity: 0, y: 40 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 0.8,
+							delay: 0,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="">
+					<h1 className="desktop:text-center font-medium text-[32px] desktop:text-[40px] mb-6 desktop:max-w-[683px]">
+						The webhook gateway for <br />
+						<span>sending</span> events
+					</h1>
+					<p className="desktop:text-center text-[#666] text-[16px] desktop:max-w-[683px] m-auto mb-6 desktop:font-medium">
+						The complete solution for <span className="text-[#2780F1]">secure, scalable, and reliable</span> webhook delivery. Built for developers, trusted by
+						enterprises.
+					</p>
 
-				<div className="flex desktop:justify-center mb-56px">
-					<a
-						target="_blank"
-						href="https://cloud.getconvoy.io/signup"
-						className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] text-white-100 flex items-center">
-						<span>Try for free</span>
+					<div className="flex desktop:justify-center mb-56px">
+						<a
+							target="_blank"
+							href="https://cloud.getconvoy.io/signup"
+							className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center">
+							<span>Try for free</span>
 
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px]">
-							<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
-						</svg>
-					</a>
-					<a
-						target="_blank"
-						href="https://cal.com/subomi/30min"
-						className="px-8px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border shadow-btn gap-2">
-						<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
+								<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
+							</svg>
+						</a>
+						<a
+							target="_blank"
+							href="https://cal.com/subomi/30min"
+							className="px-8px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2">
+							<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
 
-						<span>Talk to a founder</span>
-					</a>
-				</div>
+							<span>Talk to a founder</span>
+						</a>
+					</div>
+				</motion.div>
 
 				<VideoPlayer />
 			</section>
 
-			<section className="pt-80px pb-40px desktop:py-80px w-full px-20px flex items-center justify-center">
+			<motion.section
+				initial={{ opacity: 0, y: 0 }}
+				whileInView={{
+					opacity: 1,
+					y: 0,
+					transition: {
+						duration: 0.8,
+						delay: 0,
+						ease: [0.44, 0, 0, 1]
+					}
+				}}
+				viewport={{
+					amount: 'some',
+					once: true
+				}}
+				className="pt-80px pb-40px desktop:py-80px w-full px-20px flex items-center justify-center">
 				<div className="w-full desktop:w-[1180px] overflow-hidden relative">
 					<div className="w-80px h-20px desktop:h-40px bg-gradient-to-r from-[#fafafa] to-transparent bo rder absolute left-0 top-0 z-20" />
 					<div className="w-80px h-20px desktop:h-40px bg-gradient-to-l from-[#fafafa] to-transparent bo rder absolute right-0 top-0 z-20" />
@@ -114,70 +146,189 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
-			</section>
+			</motion.section>
 
 			<section className="flex flex-col gap-10 desktop:gap-20 max-w-[1180px] w-full my-0 desktop:my-10 px-20px">
 				<div className="w-full flex items-center justify-center">
-					<h2 className="desktop:text-center text-32 desktop:text-[40px] font-medium w-full desktop:w-[603px]">The World’s Most Advanced Webhooks Gateway</h2>
+					<motion.h2
+						initial={{ opacity: 0, y: 40 }}
+						whileInView={{
+							opacity: 1,
+							y: 0,
+							transition: {
+								duration: 0.8,
+								delay: 0,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
+						className="desktop:text-center text-32 desktop:text-[40px] font-medium w-full desktop:w-[603px]">
+						The World’s Most Advanced Webhooks Gateway
+					</motion.h2>
 				</div>
 				<div className="flex flex-col desktop:flex-row gap-30px desktop:gap-[60px]">
-					<div className="flex flex-col gap-3">
+					<motion.div
+						initial={{ opacity: 0, x: -40 }}
+						whileInView={{
+							opacity: 1,
+							x: 0,
+							transition: {
+								duration: 0.8,
+								delay: 0.2,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
+						className="flex flex-col gap-3">
 						<h4 className="text-24 desktop:text-20 font-semibold leading-[150%]">Advanced Endpoint Management</h4>
 						<p className="text-14 desktop:text-16 leading-[150%] text-[#666] w-full desktop:w-[378px]">
 							Enhance your webhook reliability, security, and performance with advanced endpoint controls tailored to ensure stable, secure, and efficient message
 							delivery.
 						</p>
-					</div>
-					<div
+					</motion.div>
+					<motion.div
+						initial={{ opacity: 0, x: 40 }}
+						whileInView={{
+							opacity: 1,
+							x: 0,
+							transition: {
+								duration: 0.8,
+								delay: 0.6,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
 						className="w-full desktop:w-[742px] h-max desktop:h-[360px] pt-3 desktop:pt-10 pl-3 desktop:pl-10  overflow-hidden rounded-t-16px"
 						style={{ backgroundImage: `url(${frame.src})` }}>
 						<div className="bg-white-100 h-full w-full rounded-tl-8px overflow-hidden shadow-video">
 							<Image src={advancedEndpoint} alt="screenshot" className="bg-cover object-cover w-full" />
 						</div>
-					</div>
+					</motion.div>
 				</div>
 
 				<OfficeHours type="playground" />
 
 				<div className="flex flex-col desktop:flex-row gap-30px desktop:gap-[60px]">
-					<div className="flex flex-col gap-3">
+					<motion.div
+						initial={{ opacity: 0, x: -40 }}
+						whileInView={{
+							opacity: 1,
+							x: 0,
+							transition: {
+								duration: 0.8,
+								delay: 0.4,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
+						className="flex flex-col gap-3">
 						<h4 className="text-24 desktop:text-20 font-semibold leading-[150%]">Unparalleled Developer Experience</h4>
 						<p className="text-14 desktop:text-16 leading-[150%] text-[#666] w-full desktop:w-[378px]">
 							Create secrets, sign payload, verify events. Increase security by enabling rolling secrets. Prevents well known attacks like SSRF (Server-Side Request
 							Forgery).
 						</p>
-					</div>
-					<div
+					</motion.div>
+					<motion.div
+						initial={{ opacity: 0, x: 40 }}
+						whileInView={{
+							opacity: 1,
+							x: 0,
+							transition: {
+								duration: 0.8,
+								delay: 0.6,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
 						className="w-full desktop:w-[742px] h-max desktop:h-[360px] pt-3 desktop:pt-10 pl-3 desktop:pl-10  overflow-hidden rounded-t-16px"
 						style={{ backgroundImage: `url(${frame.src})` }}>
 						<div className="bg-white-100 h-full w-full rounded-tl-8px overflow-hidden shadow-video">
 							<Image src={developerExperience} alt="screenshot" className="bg-cover object-cover w-full" />
 						</div>
-					</div>
+					</motion.div>
 				</div>
 
 				<OfficeHours type="guides" />
 
 				<div className="flex flex-col desktop:flex-row gap-30px desktop:gap-[60px]">
-					<div className="flex flex-col gap-3">
+					<motion.div
+						initial={{ opacity: 0, x: -40 }}
+						whileInView={{
+							opacity: 1,
+							x: 0,
+							transition: {
+								duration: 0.8,
+								delay: 0.4,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
+						className="flex flex-col gap-3">
 						<h4 className="text-24 desktop:text-20 font-semibold leading-[150%]">Highly Reliable Architecture</h4>
 						<p className="text-14 desktop:text-16 leading-[150%] text-[#666] w-full desktop:w-[378px]">
 							Built for resilience and speed, the system combines a control and data plane architecture, and PostgreSQL’s robustness to ensure high availability,
 							durability, and seamless data handling.
 						</p>
-					</div>
-					<div
+					</motion.div>
+					<motion.div
+						initial={{ opacity: 0, x: 40 }}
+						whileInView={{
+							opacity: 1,
+							x: 0,
+							transition: {
+								duration: 0.8,
+								delay: 0.6,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
 						className="w-full desktop:w-[742px] h-max desktop:h-[360px] pt-3 desktop:pt-10 pl-3 desktop:pl-10  overflow-hidden rounded-t-16px"
 						style={{ backgroundImage: `url(${frame.src})` }}>
 						<div className="bg-white-100 h-full w-full rounded-tl-8px overflow-hidden shadow-video">
 							<Image src={reliableArchitecture} alt="screenshot" className="bg-cover object-cover w-full" />
 						</div>
-					</div>
+					</motion.div>
 				</div>
 			</section>
 
 			<section className="flex items-center justify-center w-full px-20px">
-				<div className="bg-white-100 rounded-8px gap-40px desktop:gap-60px my-10 desktop:my-20 p-5 desktop:p-10 border border-[#e7e7e7] flex flex-col max-w-[1180px] w-full">
+				<motion.div
+					initial={{ opacity: 0, x: 0 }}
+					whileInView={{
+						opacity: 1,
+						x: 0,
+						transition: {
+							duration: 1.5,
+							delay: 0,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="bg-white-100 rounded-8px gap-40px desktop:gap-60px my-10 desktop:my-20 p-5 desktop:p-10 border border-[#e7e7e7] flex flex-col max-w-[1180px] w-full">
 					<div className="flex flex-col items-start desktop:items-center gap-3">
 						<h2 className="text-32 desktop:text-[40px] font-medium desktop:text-center">Customer Remarks</h2>
 						<p className="text-[#666] desktop:text-center text-14 desktop:text-16 leading-[150%]">Read what our customers have to say about Convoy</p>
@@ -270,20 +421,50 @@ export default function Home() {
 							</div>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 			</section>
 
 			<section className="flex flex-col desktop:flex-row items-center justify-center w-full px-5">
 				<div className="gap-32px desktop:gap-60px my- 20 flex flex-col max-w-[1180px] w-full items-center">
-					<div className="flex flex-col desktop:items-center gap-6">
+					<motion.div
+						initial={{ opacity: 0, y: 40 }}
+						whileInView={{
+							opacity: 1,
+							y: 0,
+							transition: {
+								duration: 0.8,
+								delay: 0,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
+						className="flex flex-col desktop:items-center gap-6">
 						<h2 className="text-32 desktop:text-[40px] w-full desktop:w-[436px] font-medium desktop:text-center">Security, Scalability and Compliance</h2>
 						<p className="text-[#666] w-full desktop:w-[512px] desktop:text-center text-14 desktop:text-16 leading-[180%] desktop:leading-[150%]">
 							Built for the highest standards of security, we ensure your business runs with reliability and meets the compliance requirements you rely on.
 						</p>
-					</div>
+					</motion.div>
 
 					<div className="flex flex-col-reverse desktop:flex-row items-center justify-center gap-32px desktop:gap-0 desktop:justify-between w-full">
-						<ul className="flex flex-col gap-3 desktop:gap-5 list-none w-full desktop:w-auto">
+						<motion.ul
+							initial={{ opacity: 0, x: -40 }}
+							whileInView={{
+								opacity: 1,
+								x: 0,
+								transition: {
+									duration: 0.8,
+									delay: 0.2,
+									ease: [0.44, 0, 0, 1]
+								}
+							}}
+							viewport={{
+								amount: 'some',
+								once: true
+							}}
+							className="flex flex-col gap-3 desktop:gap-5 list-none w-full desktop:w-auto">
 							<li className="flex gap-2.5 items-center">
 								<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" className="w-24px desktop:w-32px">
 									<path
@@ -343,9 +524,24 @@ export default function Home() {
 								</svg>
 								<p className="text-14 desktop:text-20 font-semibold leading-[150%]">Role-based access control.</p>
 							</li>
-						</ul>
+						</motion.ul>
 
-						<div className="w-full desktop:w-[720px] h-[250px] desktop:h-[360px] rounded-16px bg-gradient-to-b from-[#2780F11A] to-[#fafafa]"></div>
+						<motion.div
+							initial={{ opacity: 0, x: 40 }}
+							whileInView={{
+								opacity: 1,
+								x: 0,
+								transition: {
+									duration: 0.8,
+									delay: 0.4,
+									ease: [0.44, 0, 0, 1]
+								}
+							}}
+							viewport={{
+								amount: 'some',
+								once: true
+							}}
+							className="w-full desktop:w-[720px] h-[250px] desktop:h-[360px] rounded-16px bg-gradient-to-b from-[#2780F11A] to-[#fafafa]"></motion.div>
 					</div>
 				</div>
 			</section>

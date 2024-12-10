@@ -110,7 +110,7 @@ export default function Blog({ articles }: any) {
 									? 'bg-success-500 text-white-100'
 									: status === 'error'
 									? 'bg-danger-500 text-white-100'
-									: 'bg-[#2780F1] text-white-100 hover:bg-[#1a6fd4]'
+									: 'bg-[#2780F1] text-white-100 hover:bg-[#1f66c1] group transition-all duration-300'
 							} disabled:opacity-50 min-w-[120px]`}
 							aria-live="polite">
 							{status === 'submitting' && (
@@ -149,7 +149,7 @@ export default function Blog({ articles }: any) {
 							{status === 'idle' && (
 								<>
 									Subscribe
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px]">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
 										<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
 									</svg>
 								</>

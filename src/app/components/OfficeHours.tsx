@@ -1,6 +1,23 @@
+import { motion } from 'framer-motion';
+
 export default function OfficeHours({ type }: { type: 'playground' | 'guides' }) {
 	return (
-		<section className="w-full flex items-center justify-center">
+		<motion.section
+			initial={{ opacity: 0, x: 0 }}
+			whileInView={{
+				opacity: 1,
+				x: 0,
+				transition: {
+					duration: 1.2,
+					delay: 0,
+					ease: [0.44, 0, 0, 1]
+				}
+			}}
+			viewport={{
+				amount: 'some',
+				once: true
+			}}
+			className="w-full flex items-center justify-center">
 			<div className="desktop:max-w-[1180px] w-full h-auto desktop:h-[217px] bg-white-100 border border-[#ebebeb] flex mx-auto rounded-16px overflow-hidden">
 				<div className="w-[90px] desktop:w-[210px] min-h-full bg-gradient-to-r from-white-100/40 from-[-20%] to-[#2780F1]/40 to-[150%] rounded-l-16px relative p-6 desktop:p-5">
 					<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] absolute top-0 right-0 w-full h-full"></div>
@@ -23,25 +40,23 @@ export default function OfficeHours({ type }: { type: 'playground' | 'guides' })
 					<div className="flex flex-col gap-3 desktop:gap-5">
 						<h3 className="text-16 desktop:text-32 font-semibold"> {type === 'playground' ? 'Try out our playground' : 'Read our API & Webhook Guides'}</h3>
 						<p className="text-12 desktop:text-18 text-[#666] font-normal leading-[160%] w-full desktop:w-[899px] full">
-							{
-								type === 'playground' ? 
-								'The Convoy Playground makes testing webhook integrations effortless. Generate webhook URLs, inspect payloads, and analyze headers—all in one place.' :
-								'Explore our in-depth guides on webhooks and API-First engineering. As your trusted partner, we cover best practices across a wide range of topics to help you deliver world class APIs and Webhooks.'
-							}
+							{type === 'playground'
+								? 'The Convoy Playground makes testing webhook integrations effortless. Generate webhook URLs, inspect payloads, and analyze headers—all in one place.'
+								: 'Explore our in-depth guides on webhooks and API-First engineering. As your trusted partner, we cover best practices across a wide range of topics to help you deliver world class APIs and Webhooks.'}
 						</p>
 					</div>
 
 					<a
-						href={ type === 'playground' ? 'https://playground.getconvoy.io' : "https://docs.getconvoy.io/webhook-guides" }
-						className="desktop:px-16px py-10px w-[107px] text-14 font-medium rounded-8px h-10 nav-bar-break:h-11 bg-white-100 desktop:bg-[#2780F1] text-[#2780F1] desktop:text-white-100 flex items-center desktop:shadow-btn-secondary cursor-pointer">
-						<span>{ type === 'playground' ? 'Try for free' : 'Read Guides'}</span>
+						href={type === 'playground' ? 'https://playground.getconvoy.io' : 'https://docs.getconvoy.io/webhook-guides'}
+						className="desktop:px-16px py-10px w-auto [107px] text-14 font-medium rounded-8px h-10 nav-bar-break:h-11 bg-white-100 desktop:bg-[#2780F1] text-[#2780F1] hover:desktop:bg-[#1f66c1] group transition-all duration-300 desktop:text-white-100 flex items-center desktop:shadow-btn-secondary cursor-pointer">
+						<span>{type === 'playground' ? 'Try for free' : 'Read Guides'}</span>
 
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] fill-[#2780F1] desktop:fill-white-100">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] fill-[#2780F1] desktop:fill-white-100 group-hover:translate-x-[2px] transition-all">
 							<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" />
 						</svg>
 					</a>
 				</div>
 			</div>
-		</section>
+		</motion.section>
 	);
 }
