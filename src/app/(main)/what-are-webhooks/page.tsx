@@ -230,12 +230,12 @@ export default function Webhooks() {
 
 									<div className="space-y-3 text-14 desktop:text-16 leading-[180%] text-[#4B4B4B] pb-12">
 										<p className="">
-											<span className="font-semibold desktop:font-bold text-[#000] pr-1">Order Notifications:</span>Send order confirmations, update
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Order Notifications:</span>Send order confirmations, update
 											inventory, or alert teams to new purchases as soon as they happen.
 										</p>
 
 										<p className="">
-											<span className="font-semibold desktop:font-bold text-[#000] pr-1">Shipping Updates:</span>Notify customers and logistics platforms in
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Shipping Updates:</span>Notify customers and logistics platforms in
 											real time when an order is shipped or delivered.
 										</p>
 									</div>
@@ -252,12 +252,12 @@ export default function Webhooks() {
 
 									<div className="space-y-3 text-14 desktop:text-16 leading-[180%] text-[#4B4B4B] pb-12">
 										<p className="">
-											<span className="font-semibold desktop:font-bold text-[#000] pr-1">Transactions Alerts:</span>Banks and financial platforms can alert
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Transactions Alerts:</span>Banks and financial platforms can alert
 											users of transactions, withdrawals, or unusual activity instantly.
 										</p>
 
 										<p className="">
-											<span className="font-semibold desktop:font-bold text-[#000] pr-1">Account Changes:</span>Notify users or backend systems whenever an
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Account Changes:</span>Notify users or backend systems whenever an
 											account detail is updated, improving security and user experience.
 										</p>
 									</div>
@@ -274,12 +274,12 @@ export default function Webhooks() {
 
 									<div className="space-y-3 text-14 desktop:text-16 leading-[180%] text-[#4B4B4B] pb-12">
 										<p className="">
-											<span className="font-semibold desktop:font-bold text-[#000] pr-1">Appointment Reminders:</span>Send automated notifications to patients
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Appointment Reminders:</span>Send automated notifications to patients
 											and practitioners for scheduled appointments.
 										</p>
 
 										<p className="">
-											<span className="font-semibold desktop:font-bold text-[#000] pr-1">Patient Data Update:</span>Alert healthcare providers when patient
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Patient Data Update:</span>Alert healthcare providers when patient
 											records are updated, keeping teams informed with real-time data.
 										</p>
 									</div>
@@ -295,12 +295,12 @@ export default function Webhooks() {
 
 									<div className="space-y-3 text-14 desktop:text-16 leading-[180%] text-[#4B4B4B] pb-12">
 										<p className="">
-											<span className="font-semibold desktop:font-bold text-[#000] pr-1">User Actions:</span>Track user activities, such as login events or
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">User Actions:</span>Track user activities, such as login events or
 											file uploads, enabling responsive notifications and audit trails.
 										</p>
 
 										<p className="">
-											<span className="font-semibold desktop:font-bold text-[#000] pr-1">Subscription Events:</span>Notify billing systems or CRMs of user
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Subscription Events:</span>Notify billing systems or CRMs of user
 											signups, renewals, or cancellations for streamlined account management.
 										</p>
 									</div>
@@ -317,12 +317,12 @@ export default function Webhooks() {
 
 									<div className="space-y-3 text-14 desktop:text-16 leading-[180%] text-[#4B4B4B] pb-12">
 										<p className="">
-											<span className="font-semibold desktop:font-bold text-[#000] pr-1">Build and Deployment Notifications:</span>Trigger automatic builds or
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Build and Deployment Notifications:</span>Trigger automatic builds or
 											deployments as soon as code is pushed, saving developers manual steps.
 										</p>
 
 										<p className="">
-											<span className="font-semibold desktop:font-bold text-[#000] pr-1">Error Tracking and Incident Alerts:</span>Instantly notify teams when
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Error Tracking and Incident Alerts:</span>Instantly notify teams when
 											critical errors or performance issues arise for faster response times.
 										</p>
 									</div>
