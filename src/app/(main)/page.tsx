@@ -46,18 +46,6 @@ export default function Home() {
 		{ name: 'marble-full', url: 'https://www.checkmarble.com/', class: 'h-20px desktop:h-28px ml-[20px]' }
 	];
 
-	const words = ['sending', 'receiving'];
-
-	const [index, setIndex] = useState(0);
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setIndex(prevIndex => (prevIndex + 1) % words.length);
-		}, 2000); // Change word every 0.5 seconds
-
-		return () => clearInterval(interval);
-	}, []);
-
 	return (
 		<main className="flex flex-col items-center pb-60px desktop:pb-120px w-full">
 			<section className="pt-150px px-10px xs-old:px-20px flex desktop:items-center flex-col max-w-[1180px] w-full">
