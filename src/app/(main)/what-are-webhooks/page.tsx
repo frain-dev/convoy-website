@@ -241,8 +241,20 @@ export default function Webhooks() {
 									</div>
 
 									<div className="absolute right-4 bottom-5 flex items-center gap-3">
-										<Image src={shopify} alt="Shopify logo" width={85} height={24} className="h-5 desktop:h-6 w-auto" />
-										<Image src={woocommerce} alt="WooCommerce logo" width={106} height={24} className="h-5 desktop:h-6 w-auto" />
+										<a
+											href="https://shopify.dev/docs/apps/build/webhooks"
+											target="_blank"
+											rel="noopener noreferrer"
+											className="hover:opacity-80 transition-opacity">
+											<Image src={shopify} alt="Shopify logo" width={85} height={24} className="h-5 desktop:h-6 w-auto" />
+										</a>
+										<a
+											href="https://developer.bigcommerce.com/docs/integrations/webhooks"
+											target="_blank"
+											rel="noopener noreferrer"
+											className="hover:opacity-80 transition-opacity">
+											<Image src={woocommerce} alt="WooCommerce logo" width={106} height={24} className="h-5 desktop:h-6 w-auto" />
+										</a>
 									</div>
 								</div>
 
@@ -263,8 +275,16 @@ export default function Webhooks() {
 									</div>
 
 									<div className="absolute right-4 bottom-5 flex items-center gap-3">
-										<Image src={stripe} alt="Stripe logo" width={60} height={24} className="h-5 desktop:h-6 w-auto" />
-										<Image src={square} alt="Modern Treasure logo" width={24} height={24} className="h-5 desktop:h-6 w-auto" />
+										<a href="https://docs.stripe.com/webhooks" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+											<Image src={stripe} alt="Stripe logo" width={60} height={24} className="h-5 desktop:h-6 w-auto" />
+										</a>
+										<a
+											href="https://docs.moderntreasury.com/platform/docs/webhooks-1"
+											target="_blank"
+											rel="noopener noreferrer"
+											className="hover:opacity-80 transition-opacity">
+											<Image src={square} alt="Modern Treasure logo" width={24} height={24} className="h-5 desktop:h-6 w-auto" />
+										</a>
 									</div>
 								</div>
 
@@ -274,8 +294,8 @@ export default function Webhooks() {
 
 									<div className="space-y-3 text-14 desktop:text-16 leading-[180%] text-[#4B4B4B] pb-12">
 										<p className="">
-											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Appointment Reminders:</span>Send automated notifications to patients
-											and practitioners for scheduled appointments.
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Appointment Reminders:</span>Send automated notifications to
+											patients and practitioners for scheduled appointments.
 										</p>
 
 										<p className="">
@@ -285,7 +305,13 @@ export default function Webhooks() {
 									</div>
 
 									<div className="absolute right-4 bottom-5 flex items-center gap-3">
-										<Image src={spruce} alt="Spruce logo" width={124} height={24} className="h-5 desktop:h-6 w-auto" />
+										<a
+											href="https://developer.sprucehealth.com/docs/webhooks-overview"
+											target="_blank"
+											rel="noopener noreferrer"
+											className="hover:opacity-80 transition-opacity">
+											<Image src={spruce} alt="Spruce logo" width={124} height={24} className="h-5 desktop:h-6 w-auto" />
+										</a>
 									</div>
 								</div>
 
@@ -306,8 +332,20 @@ export default function Webhooks() {
 									</div>
 
 									<div className="absolute right-4 bottom-5 flex items-center gap-3">
-										<Image src={calendar} alt="Calendly logo" width={90} height={24} className="h-5 desktop:h-6 w-auto" />
-										<Image src={linear} alt="Linear logo" width={88} height={24} className="h-5 desktop:h-6 w-auto" />
+										<a
+											href="https://help.calendly.com/hc/en-us/articles/223195488-Webhooks-overview"
+											target="_blank"
+											rel="noopener noreferrer"
+											className="hover:opacity-80 transition-opacity">
+											<Image src={calendar} alt="Calendly logo" width={90} height={24} className="h-5 desktop:h-6 w-auto" />
+										</a>
+										<a
+											href="https://developers.linear.app/docs/graphql/webhooks"
+											target="_blank"
+											rel="noopener noreferrer"
+											className="hover:opacity-80 transition-opacity">
+											<Image src={linear} alt="Linear logo" width={88} height={24} className="h-5 desktop:h-6 w-auto" />
+										</a>
 									</div>
 								</div>
 
@@ -317,19 +355,31 @@ export default function Webhooks() {
 
 									<div className="space-y-3 text-14 desktop:text-16 leading-[180%] text-[#4B4B4B] pb-12">
 										<p className="">
-											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Build and Deployment Notifications:</span>Trigger automatic builds or
-											deployments as soon as code is pushed, saving developers manual steps.
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Build and Deployment Notifications:</span>Trigger automatic builds
+											or deployments as soon as code is pushed, saving developers manual steps.
 										</p>
 
 										<p className="">
-											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Error Tracking and Incident Alerts:</span>Instantly notify teams when
-											critical errors or performance issues arise for faster response times.
+											<span className="font-semibold desktop:font-medium text-[#000] pr-1">Error Tracking and Incident Alerts:</span>Instantly notify teams
+											when critical errors or performance issues arise for faster response times.
 										</p>
 									</div>
 
 									<div className="absolute right-4 bottom-5 flex items-center gap-3">
-										<Image src={github} alt="GitHub logo" width={62} height={24} className="h-5 desktop:h-6 w-auto" />
-										<Image src={pagerduty} alt="PagerDuty logo" width={104} height={24} className="h-5 desktop:h-6 w-auto" />
+										<a
+											href="https://docs.github.com/en/webhooks/about-webhooks"
+											target="_blank"
+											rel="noopener noreferrer"
+											className="hover:opacity-80 transition-opacity">
+											<Image src={github} alt="GitHub logo" width={62} height={24} className="h-5 desktop:h-6 w-auto" />
+										</a>
+										<a
+											href="https://developer.pagerduty.com/docs/db0fa8c8984fc-overview"
+											target="_blank"
+											rel="noopener noreferrer"
+											className="hover:opacity-80 transition-opacity">
+											<Image src={pagerduty} alt="PagerDuty logo" width={104} height={24} className="h-5 desktop:h-6 w-auto" />
+										</a>
 									</div>
 								</div>
 							</div>
