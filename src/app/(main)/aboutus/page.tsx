@@ -12,7 +12,8 @@ export default function AboutUs() {
 		{ name: 'Prosper Otemuyiwa', role: 'Senior Developer Advocate, Novu', image: 'prosper-otemuyiwa' },
 		{ name: 'Ezra Olubi', role: 'Cofounder and CTO, Paystack', image: 'ezra-olubi' },
 		{ name: 'Fernando Mayo', role: 'Director of Engineering, Datadog', image: 'fernando-mayo' },
-		{ name: 'Kareem Kouddous', role: 'Ex-Engineering Leader, Airbnb', image: 'kareem-kouddous' }
+		{ name: 'Kareem Kouddous', role: 'Ex-Engineering Leader, Airbnb', image: 'kareem-kouddous' },
+		{ name: 'Claudio Cherubino', role: 'Senior Director of Engineering, Calendly', image: 'claudio-cherubino'}	
 	];
 
 	const teamMembers = [
@@ -189,8 +190,6 @@ export default function AboutUs() {
 					</div>
 				</div>
 			</section>
-
-			<GetStarted></GetStarted>
 		</main>
 	);
 }
