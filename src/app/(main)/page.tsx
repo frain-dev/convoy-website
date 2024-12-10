@@ -20,7 +20,7 @@ import aravindkumar from '../../../public/profile-images/Aravindkumar Rajendira.
 import subomi from '../../../public/profile-images/Subomi Oluwalana.png';
 
 import advancedEndpoint from '../../../public/static/advanced-endpoint.png';
-import developerExperience from '../../../public/static/advanced-endpoint.png';
+import developerExperience from '../../../public/static/developer-experience.png';
 import reliableArchitecture from '../../../public/static/reliable-architecture.png';
 
 import OfficeHours from '../components/OfficeHours';
@@ -566,7 +566,7 @@ export default function Home() {
 							}}
 							className="w-full desktop:w-[720px] h-[250px] desktop:h-[360px] flex items-center justify-center rounded-16px bg-gradient-to-b from-[#2780F11A] to-[#fafafa]">
 							<Image src={scalabilityBg} alt="illustration" className="scale-[0.75] desktop:scale-[1]" />
-							</motion.div>
+						</motion.div>
 					</div>
 				</div>
 			</section>
