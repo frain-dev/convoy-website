@@ -45,7 +45,7 @@ You can read more about circuit breakers [here](https://learn.microsoft.com/en-u
 
 # Synchronous vs. Asynchronous circuit breakers
 
-**Synchronous Circuit Breakers**
+## Synchronous Circuit Breakers
 
 Synchronous circuit breakers operate in a blocking manner when performing health checks. When evaluating the next state for a circuit breaker, all subsequent calls for the circuit breaker will be blocked until it is complete. This is a straightforward approach, but it can lead to performance issues, as the calling services are forced to wait for the operation to complete before proceeding. This blocking behavior is commonly implemented with a mutex or a semaphore. The libraries mentioned above are examples of Synchronous circuit breakers.
 
@@ -59,7 +59,7 @@ The disadvantages of synchronous circuit breakers include:
 1. **No Synchronization Across Replicas**: Since each server runs its version of the circuit breaker, each server realizes the state of the third-party service or an upstream endpoint on its own without a means to let the other servers know about its findings. If a decision needs to be made to switch to a fallback provider or disable an endpoint, a new replica that is spun up will still attempt to send requests to that failing third-party service.
 2. **Reduced Concurrency**: Synchronous circuit breakers limit the system's concurrency, as each request must wait for the circuit breaker state evaluation to complete before it can proceed.
 
-**Asynchronous Circuit Breakers**
+## Asynchronous Circuit Breakers
 
 Asynchronous circuit breakers, on the other hand, operate in a non-blocking manner. That is, state evaluation is decoupled from usage. This allows the system to maintain higher availability and concurrency, as calling services can process requests while the new state is being evaluated.
 
@@ -92,16 +92,16 @@ Before I get into our solution, let's explore some alternatives evaluated:
 
 # Solution #1: Using Redis and Etcd
 
-**Shared Metrics in Redis**:
+## Shared Metrics in Redis
 - All agents increment the number of requests and failures in Redis using atomic operations.
 
-**State Management in `etcd`**:
+## State Management in `etcd`
 
 - Use `etcd` to store the circuit breaker state.
 - Implement leader election using `etcd`.
 - Only the leader can update the circuit breaker state using the metrics from Redis, and the other agents (followers) can only read it.
 
-**Workflow**:
+## Workflow:
 
 - When writing;
     - Agents send webook requests and update Redis with the result (success/failure).
@@ -110,24 +110,25 @@ Before I get into our solution, let's explore some alternatives evaluated:
 - When reading;
     - Each agent reads the state from `etcd` before sending an event.
 
-**Pros**
+## Pros
 
 - Metrics collection is decoupled from the decision-making process.
 - We get industry-standard leader-election baked into the system automatically.
 
-**Cons**
+## Cons
 
 - This would require us to add a new dependency, which would be a deal breaker as running in our cloud environment would cost more per customer, and our community members would have to learn how to host and run an `etcd` cluster.
 
 # Solution #2: Using Redis and PostgreSQL: LISTEN/NOTIFY + leader election using RedLock
-**PostgreSQL triggers the event**
+
+## PostgreSQL triggers the event
 - Whenever the status of an event delivery changes, an ON-UPDATE SQL event is triggered from the event deliveries table. The trigger runs a function that sends a notification message from Postgres to the app using `NOTIFY`.
 
-**State management in Redis**
+## State management in Redis
 - The leader agent `LISTEN`(s) to the channel; when it receives a message, it updates the circuit breaker’s state based on the failure rate and stores the new state in Redis.
 - A background job is run on the leader periodically to transition each breaker's state from `open` to `half-open` when the timeout has elapsed.
 
-**Workflow**
+## Workflow
 - When writing;
     - Each agent tries to acquire a distributed lock using Redlock; only one succeeds and holds it until it is done, while the other agents' lock requests expire.
     - Write the updated circuit breaker state to redis
@@ -135,11 +136,11 @@ Before I get into our solution, let's explore some alternatives evaluated:
 - When reading;
     - Each agent fetches the circuit breaker state from Redis before sending an event.
 
-**Pros**
+## Pros
 
 - Row-level database triggers are thread-safe since each trigger is executed in the same transaction context, and Go’s mutex locks will serialize the concurrent operation [3]
 
-**Cons**
+## Cons
 
 - For every event delivery sent, the database trigger runs and generates a notification, which could lead to the listener doing a disproportionate amount of work when many events are sent in a short period.
 - Metrics collection information can be lost if an error occurs in the listener’s handler or when the leader election event is happening since there is no leader at that point.
@@ -149,17 +150,17 @@ Before I get into our solution, let's explore some alternatives evaluated:
 
 This was inspired by AWS’s Do Constant Work [6] philosophy. 
 
-**PostgreSQL**
+## PostgreSQL
 
 - Samples a set of rows based on an observability window from an SQL table to calculate success and failure rates.
 
-**Redis**
+## Redis
 
 - We use a distributed lock on Redis to select the leader node [1].
 - The leader loads the circuit breaker state, updates it based on the success and failure rates from the db poll result, and stores the new state in Redis.
 - All agents load the circuit breaker state from Redis into memory when making decisions.
 
-**Workflow**
+## Workflow
 - When writing;
     - Each agent tries to acquire a distributed lock using Redlock; only one succeeds and holds it until it is done, while the other agents' lock requests expire.
     - Samples a set of rows based on an observability window from an SQL table to calculate success and failure rates.
@@ -172,7 +173,8 @@ This was inspired by AWS’s Do Constant Work [6] philosophy.
 
 # Implementation
 
-**Circuit Breaker Representation:** A circuit breaker represents an upstream endpoint or a 3rd party service.
+## Circuit Breaker Representation 
+A circuit breaker represents an upstream endpoint or a 3rd party service.
 
 ```go
 // State represents a state of a CircuitBreaker.
@@ -212,7 +214,8 @@ type CircuitBreaker struct {
 }
 ```
 
-**Circuit Breaker Manager Representation:** We use a CircuitBreakerManager to manage all the circuit breakers. It comes bundled with a `Store`, `Configuration`, and `Clock`.
+## Circuit Breaker Manager Representation
+We use a CircuitBreakerManager to manage all the circuit breakers. It comes bundled with a `Store`, `Configuration`, and `Clock`.
 
 ```go
 type CircuitBreakerManager struct {
@@ -223,7 +226,8 @@ type CircuitBreakerManager struct {
 } 
 ```
 
-**Configuring the CircuitBreakerManager:** We expose Configuration options that allow us to tune the sample rate, timeout duration, etc.
+## Configuring the CircuitBreakerManager
+We expose Configuration options that allow us to tune the sample rate, timeout duration, etc.
 
 ```go
 // CircuitBreakerConfig is the configuration that all the circuit breakers will use
@@ -258,7 +262,8 @@ type CircuitBreakerConfig struct {
 }
 ```
 
-**Store:** We define a Store interface that describes access methods for circuit breaker state storage and distributed lock management.
+## Store 
+We define a Store interface that describes access methods for circuit breaker state storage and distributed lock management.
 
 ```go
 type CircuitBreakerStore interface {
@@ -285,7 +290,8 @@ type CircuitBreakerStore interface {
 }
 ```
 
-**Clock:** Finally, we define a Clock interface, which we can mock when running tests. 
+## Clock 
+Finally, we define a Clock interface, which we can mock when running tests. 
 
 ```go
 // A Clock is an object that can tell you the current time.
@@ -301,7 +307,8 @@ type Clock interface {
 }
 ```
 
-**Initializing the CircuitBreakerManager:** Next, we provide a constructor function to initialize the `CircuitBreakerManager` instance.
+## Initializing the CircuitBreakerManager
+Next, we provide a constructor function to initialize the `CircuitBreakerManager` instance.
 
 ```go
 func NewCircuitBreakerManager(options ...CircuitBreakerOption) (*CircuitBreakerManager, error) {

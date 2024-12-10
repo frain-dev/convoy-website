@@ -21,7 +21,10 @@ const config: Config = {
 			render: 'Strong'
 		},
 		list: {
-			render: 'List'
+			render: 'List',
+			attributes: {
+				ordered: { type: Boolean }
+			}
 		},
 		item: {
 			render: 'Item'
@@ -96,13 +99,15 @@ const config: Config = {
 const components = {
 	Heading,
 	Paragraph: ({ children }: any) => {
-		return <p className="text-14 leading-7 text-gray-500 mb-32px">{children}</p>;
+		return <p className="text-14 leading-7 text-gray-500 mb-20px">{children}</p>;
 	},
 	Strong: ({ children }: any) => {
 		return <strong className="font-semibold">{children}</strong>;
 	},
-	List: ({ children }: any) => {
-		return <ol className="list-[unset] mb-20px ml-16px">{children}</ol>;
+	List: ({ children, ordered }: any) => {
+		return ordered 
+			? <ol className="list-decimal mb-20px ml-16px">{children}</ol>
+			: <ul className="list-disc mb-20px ml-16px">{children}</ul>;
 	},
 	Item: ({ children }: any) => {
 		return <li className="text-14 text-gray-600 mb-8px">{children}</li>;
