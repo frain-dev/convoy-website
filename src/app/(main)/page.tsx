@@ -73,7 +73,7 @@ export default function Home() {
 								animate={{ y: [-11, -76, -76, -11] }}
 								transition={{
 									repeat: Infinity,
-									repeatDelay: 1,
+									repeatDelay: 4,
 									repeatType: 'loop',
 									times: [0, 0.3, 0.7, 1],
 									duration: 4,
@@ -87,7 +87,7 @@ export default function Home() {
 								animate={{ y: [52, -11, -11, 52] }}
 								transition={{
 									repeat: Infinity,
-									repeatDelay: 1,
+									repeatDelay: 4,
 									repeatType: 'loop',
 									times: [0, 0.3, 0.7, 1],
 									duration: 4,
