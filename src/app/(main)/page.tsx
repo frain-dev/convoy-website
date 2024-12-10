@@ -1,16 +1,16 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, animate } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
-import playButton from '../../../public/svg/play-button.svg';
 import frame from '../../../public/static/screenshot-frame.svg';
 import neynar from '../../../public/svg/neynar-new.svg';
 import source from '../../../public/svg/source-new.svg';
 import spruce from '../../../public/svg/spruce-health-mark.svg';
 import marble from '../../../public/svg/marble-new.svg';
 import maple from '../../../public/svg/maple-new.svg';
+import scalabilityBg from '../../../public/svg/scalability-bg.svg';
 
 import manan from '../../../public/profile-images/Manan Patel.png';
 import michael from '../../../public/profile-images/Michael Raines.png';
@@ -20,7 +20,7 @@ import aravindkumar from '../../../public/profile-images/Aravindkumar Rajendira.
 import subomi from '../../../public/profile-images/Subomi Oluwalana.png';
 
 import advancedEndpoint from '../../../public/static/advanced-endpoint.png';
-import developerExperience from '../../../public/static/advanced-endpoint.png';
+import developerExperience from '../../../public/static/developer-experience.png';
 import reliableArchitecture from '../../../public/static/reliable-architecture.png';
 
 import OfficeHours from '../components/OfficeHours';
@@ -46,21 +46,9 @@ export default function Home() {
 		{ name: 'marble-full', url: 'https://www.checkmarble.com/', class: 'h-20px desktop:h-28px ml-[20px]' }
 	];
 
-	const words = ['sending', 'receiving'];
-
-	const [index, setIndex] = useState(0);
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setIndex(prevIndex => (prevIndex + 1) % words.length);
-		}, 2000); // Change word every 0.5 seconds
-
-		return () => clearInterval(interval);
-	}, []);
-
 	return (
 		<main className="flex flex-col items-center pb-60px desktop:pb-120px w-full">
-			<section className="pt-150px px-20px flex desktop:items-center flex-col max-w-[1180px] w-full">
+			<section className="pt-150px px-10px xs-old:px-20px flex desktop:items-center flex-col max-w-[1180px] w-full">
 				<motion.div
 					initial={{ opacity: 0, y: 40 }}
 					whileInView={{
@@ -79,28 +67,63 @@ export default function Home() {
 					className="">
 					<h1 className="desktop:text-center font-medium text-[32px] desktop:text-[40px] mb-6 desktop:max-w-[683px]">
 						The webhook gateway for <br />
-						<span>sending</span> events
+						<motion.span className="relative inline-block overflow-hidden h-[38px] desktop:h-[42px] w-[154px] desktop:w-[190px] bor der align-bottom pt-1 desktop:pt-0 desktop:align-middle desktop:mr-2.5">
+							<motion.span
+								initial={{ y: -11 }}
+								animate={{ y: [-11, -76, -76, -11] }}
+								transition={{
+									repeat: Infinity,
+									repeatDelay: 4,
+									repeatType: 'loop',
+									times: [0, 0.3, 0.7, 1],
+									duration: 4,
+									ease: 'easeInOut'
+								}}
+								className="absolute left-0 right-auto desktop:left-auto desktop:right-0">
+								sending
+							</motion.span>
+							<motion.span
+								initial={{ y: 52 }}
+								animate={{ y: [52, -11, -11, 52] }}
+								transition={{
+									repeat: Infinity,
+									repeatDelay: 4,
+									repeatType: 'loop',
+									times: [0, 0.3, 0.7, 1],
+									duration: 4,
+									ease: 'easeInOut'
+								}}
+								className="absolute left-0 right-auto desktop:left-auto desktop:right-0">
+								receiving
+							</motion.span>
+						</motion.span>
+						events
 					</h1>
 					<p className="desktop:text-center text-[#666] text-[16px] desktop:max-w-[683px] m-auto mb-6 desktop:font-medium">
 						The complete solution for <span className="text-[#2780F1]">secure, scalable, and reliable</span> webhook delivery. Built for developers, trusted by
 						enterprises.
 					</p>
 
-					<div className="flex desktop:justify-center mb-56px">
+					<div className="flex flex-col gap-8px xs-old:gap-16px xs-old:flex-row desktop:justify-center mb-56px">
 						<a
 							target="_blank"
 							href="https://cloud.getconvoy.io/signup"
-							className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center">
+							className="w-max pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center">
 							<span>Try for free</span>
 
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="18"
+								height="19"
+								viewBox="0 0 18 19"
+								className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
 								<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
 							</svg>
 						</a>
 						<a
 							target="_blank"
 							href="https://cal.com/subomi/30min"
-							className="px-8px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2">
+							className="w-max px-8px py-10px text-14 h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2">
 							<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
 
 							<span>Talk to a founder</span>
@@ -126,7 +149,7 @@ export default function Home() {
 					amount: 'some',
 					once: true
 				}}
-				className="pt-80px pb-40px desktop:py-80px w-full px-20px flex items-center justify-center">
+				className="pt-80px pb-40px desktop:py-80px w-full px-10px xs-old:px-20px flex items-center justify-center">
 				<div className="w-full desktop:w-[1180px] overflow-hidden relative">
 					<div className="w-80px h-20px desktop:h-40px bg-gradient-to-r from-[#fafafa] to-transparent bo rder absolute left-0 top-0 z-20" />
 					<div className="w-80px h-20px desktop:h-40px bg-gradient-to-l from-[#fafafa] to-transparent bo rder absolute right-0 top-0 z-20" />
@@ -148,7 +171,7 @@ export default function Home() {
 				</div>
 			</motion.section>
 
-			<section className="flex flex-col gap-10 desktop:gap-20 max-w-[1180px] w-full my-0 desktop:my-10 px-20px">
+			<section className="flex flex-col gap-10 desktop:gap-20 max-w-[1180px] w-full my-0 desktop:my-10 px-10px xs-old:px-20px">
 				<div className="w-full flex items-center justify-center">
 					<motion.h2
 						initial={{ opacity: 0, y: 40 }}
@@ -312,7 +335,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="flex items-center justify-center w-full px-20px">
+			<section className="flex items-center justify-center w-full px-10px xs-old:px-20px">
 				<motion.div
 					initial={{ opacity: 0, x: 0 }}
 					whileInView={{
@@ -541,7 +564,9 @@ export default function Home() {
 								amount: 'some',
 								once: true
 							}}
-							className="w-full desktop:w-[720px] h-[250px] desktop:h-[360px] rounded-16px bg-gradient-to-b from-[#2780F11A] to-[#fafafa]"></motion.div>
+							className="w-full desktop:w-[720px] h-[250px] desktop:h-[360px] flex items-center justify-center rounded-16px bg-gradient-to-b from-[#2780F11A] to-[#fafafa]">
+							<Image src={scalabilityBg} alt="illustration" className="scale-[0.75] desktop:scale-[1]" />
+						</motion.div>
 					</div>
 				</div>
 			</section>
