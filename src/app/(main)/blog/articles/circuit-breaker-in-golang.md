@@ -1,7 +1,7 @@
 ---
 title: Designing a distributed circuit breaker for disabling webhook endpoints in Golang
-feature_image: forward-proxies.png
-post_image: forward-proxies.png
+feature_image: distributed-circuit-breaker.png
+post_image: distributed-circuit-breaker.png
 primary_author:
     name: Raymond Tukpe
     twitter: rtukpe
