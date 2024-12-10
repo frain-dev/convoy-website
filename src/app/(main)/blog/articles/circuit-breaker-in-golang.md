@@ -5,9 +5,7 @@ post_image: forward-proxies.png
 primary_author:
     name: Raymond Tukpe
     twitter: rtukpe
-authors:
-    - subomiOluwalana
-    - rtukpe
+primary_tag: Engineering
 tags:
     - Convoy
     - Engineering
