@@ -9,7 +9,7 @@ primary_tag: Engineering
 tags:
     - Convoy
     - Engineering 
-featured: true 
+featured: false 
 description: 'We recently onboarded a customer who had Enterprise SSO requirements as a non-negotiable, and we were able to deliver a solution in ~2 days worth of work. I found the implementation to be quite straightforward so here’s a blog post. '
 published_at: 2024-11-21T17:00:00.000+00:00
 ---
