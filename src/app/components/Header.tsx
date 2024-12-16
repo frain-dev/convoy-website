@@ -12,7 +12,7 @@ export default function Header() {
 
 	const menuItems = [
 		{ name: 'Core Gateway', route: '/core-gateway', type: 'route' },
-		{ name: 'Documentation', route: 'https://docs.getconvoy.io/', type: 'route' },
+		{ name: 'Documentation', route: '/docs', type: 'route' },
 		{ name: 'Blog', route: '/blog', type: 'route' },
 		{ name: 'Pricing', route: '/pricing', type: 'route' },
 		{ name: 'About', route: '/aboutus', type: 'route' }
