@@ -134,23 +134,23 @@ export default function Home() {
 				<VideoPlayer />
 			</section>
 
-			<motion.section
-				initial={{ opacity: 0, y: 0 }}
-				whileInView={{
-					opacity: 1,
-					y: 0,
-					transition: {
-						duration: 0.8,
-						delay: 0,
-						ease: [0.44, 0, 0, 1]
-					}
-				}}
-				viewport={{
-					amount: 'some',
-					once: true
-				}}
-				className="pt-80px pb-40px desktop:py-80px w-full px-10px xs-old:px-20px flex items-center justify-center">
-				<div className="w-full desktop:w-[1180px] overflow-hidden relative">
+			<section className="pt-80px pb-40px desktop:py-80px w-full px-10px xs-old:px-20px flex items-center justify-center">
+				<motion.div
+					initial={{ opacity: 0, y: 0 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 0.8,
+							delay: 0,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="w-full desktop:w-[1180px] overflow-hidden relative">
 					<div className="w-80px h-20px desktop:h-40px bg-gradient-to-r from-[#fafafa] to-transparent bo rder absolute left-0 top-0 z-20" />
 					<div className="w-80px h-20px desktop:h-40px bg-gradient-to-l from-[#fafafa] to-transparent bo rder absolute right-0 top-0 z-20" />
 					<div className="slideshow h-20px desktop:h-40px">
@@ -158,7 +158,7 @@ export default function Home() {
 							{[0, 1, 2].map(index => (
 								<ul className="flex items-center justify-center" key={index}>
 									{companies.map(company => (
-										<li className="min-w-[150px] desktop:min-w-[200px] flex justify-center" key={company.name}>
+										<li className="min-w-[150px] desktop:min-w-[200px] flex justify-center hover:scale-[1.03] transition-all" key={company.name}>
 											<a target="_blank" href={company.url} className="">
 												<img src={`/svg/${company.name}.svg`} alt={`${company.name} logo`} className={company.class} />
 											</a>
@@ -168,8 +168,8 @@ export default function Home() {
 							))}
 						</div>
 					</div>
-				</div>
-			</motion.section>
+				</motion.div>
+			</section>
 
 			<section className="flex flex-col gap-10 desktop:gap-20 max-w-[1180px] w-full my-0 desktop:my-10 px-10px xs-old:px-20px">
 				<div className="w-full flex items-center justify-center">
@@ -222,7 +222,7 @@ export default function Home() {
 							x: 0,
 							transition: {
 								duration: 0.8,
-								delay: 0.6,
+								delay: 0.4,
 								ease: [0.44, 0, 0, 1]
 							}
 						}}
@@ -248,7 +248,7 @@ export default function Home() {
 							x: 0,
 							transition: {
 								duration: 0.8,
-								delay: 0.4,
+								delay: 0.2,
 								ease: [0.44, 0, 0, 1]
 							}
 						}}
@@ -270,7 +270,7 @@ export default function Home() {
 							x: 0,
 							transition: {
 								duration: 0.8,
-								delay: 0.6,
+								delay: 0.4,
 								ease: [0.44, 0, 0, 1]
 							}
 						}}
@@ -296,7 +296,7 @@ export default function Home() {
 							x: 0,
 							transition: {
 								duration: 0.8,
-								delay: 0.4,
+								delay: 0.2,
 								ease: [0.44, 0, 0, 1]
 							}
 						}}
@@ -318,7 +318,7 @@ export default function Home() {
 							x: 0,
 							transition: {
 								duration: 0.8,
-								delay: 0.6,
+								delay: 0.4,
 								ease: [0.44, 0, 0, 1]
 							}
 						}}

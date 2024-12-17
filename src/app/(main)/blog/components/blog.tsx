@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
 import Post from './post';
 import FeaturedPost from './featuredPost';
@@ -91,7 +92,22 @@ export default function Blog({ articles }: any) {
 	return (
 		<>
 			<div className="pt-130px nav-bar-break:pt-184px pb-100px max-w-[1350px] w-full m-auto">
-				<div className="flex flex-col items-center justify-center gap-6 w-full px-4">
+				<motion.div
+					initial={{ opacity: 0, y: 40 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 0.8,
+							delay: 0,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="flex flex-col items-center justify-center gap-6 w-full px-4">
 					<h1 className="text-32 nav-bar-break:text-[40px] font-medium">Convoy Summaries</h1>
 					<form onSubmit={subscribeToNewsletter} className="flex flex-col nav-bar-break:flex-row gap-3 nav-bar-break:gap-4 items-center justify-center w-full">
 						<input
@@ -149,17 +165,37 @@ export default function Blog({ articles }: any) {
 							{status === 'idle' && (
 								<>
 									Subscribe
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="18"
+										height="19"
+										viewBox="0 0 18 19"
+										className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
 										<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
 									</svg>
 								</>
 							)}
 						</button>
 					</form>
-				</div>
+				</motion.div>
 
 				<div className="m-auto pb-0 flex justify-between pt-90px">
-					<aside className="w-240px hidden desktop:sticky desktop:top-150px desktop:block desktop:pl-20px desktop:pr-32px">
+					<motion.aside
+						initial={{ opacity: 0, x: -5 }}
+						whileInView={{
+							opacity: 1,
+							x: 0,
+							transition: {
+								duration: 0.8,
+								delay: 0.2,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
+						className="w-240px hidden desktop:sticky desktop:top-150px desktop:block desktop:pl-20px desktop:pr-32px">
 						<div className="relative mb-8">
 							<div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -232,10 +268,25 @@ export default function Blog({ articles }: any) {
 								</li>
 							</ul>
 						</div>
-					</aside>
+					</motion.aside>
 
 					<main className="max-w-[1035px] w-full px-20px">
-						<div className="relative desktop:hidden mb-[33px]">
+						<motion.div
+							initial={{ opacity: 0, y: 5 }}
+							whileInView={{
+								opacity: 1,
+								y: 0,
+								transition: {
+									duration: 0.8,
+									delay: 0.2,
+									ease: [0.44, 0, 0, 1]
+								}
+							}}
+							viewport={{
+								amount: 'some',
+								once: true
+							}}
+							className="relative desktop:hidden mb-[33px]">
 							<h2 className="text-[#666] text-16 font-medium text-black flex items-center">
 								{currentTag}
 								<button onClick={() => setShowCategories(!showCategories)} className="h-fit mt-4px ml-4px desktop:hidden">
@@ -253,18 +304,49 @@ export default function Blog({ articles }: any) {
 									))}
 								</ul>
 							)}
-						</div>
+						</motion.div>
 
 						<FeaturedPost postData={featuredPosts[0]}></FeaturedPost>
 
 						<div className="grid grid-cols-1 desktop:grid-cols-2 gap-40px max-w-[970px] mb-40px mt-40px w-full">
 							{currentPosts.map((article, i) => (
-								<Post postData={article} key={i} index={i} />
+								<motion.div
+									initial={{ opacity: 0, y: 5 }}
+									whileInView={{
+										opacity: 1,
+										y: 0,
+										transition: {
+											duration: 0.8,
+											delay: i * 0.2,
+											ease: [0.44, 0, 0, 1]
+										}
+									}}
+									viewport={{
+										amount: 'some',
+										once: true
+									}}>
+									<Post postData={article} key={i} index={i} />
+								</motion.div>
 							))}
 						</div>
 
 						{totalPages > 1 && (
-							<div className="flex items-center justify-center space-x-1.5 mt-[72px]">
+							<motion.div
+								initial={{ opacity: 0, y: 0 }}
+								whileInView={{
+									opacity: 1,
+									y: 0,
+									transition: {
+										duration: 0.8,
+										delay: 0,
+										ease: [0.44, 0, 0, 1]
+									}
+								}}
+								viewport={{
+									amount: 'some',
+									once: true
+								}}
+								className="flex items-center justify-center space-x-1.5 mt-[72px]">
 								<button
 									className="w-[43px] h-[39px] flex items-center justify-center rounded-8px border border-[#e7e7e7] disabled:opacity-50 shadow-btn bg-white-100"
 									onClick={prevPage}
@@ -322,10 +404,25 @@ export default function Blog({ articles }: any) {
 										<path d="M7.71233 8.77298L4 5.06066L5.06066 4L9.83363 8.77298L5.06066 13.5459L4 12.4853L7.71233 8.77298Z" fill="#666666" />
 									</svg>
 								</button>
-							</div>
+							</motion.div>
 						)}
 
-						<div className="desktop:hidden mt-20">
+						<motion.div
+							initial={{ opacity: 0, y: 0 }}
+							whileInView={{
+								opacity: 1,
+								y: 0,
+								transition: {
+									duration: 0.8,
+									delay: 0,
+									ease: [0.44, 0, 0, 1]
+								}
+							}}
+							viewport={{
+								amount: 'some',
+								once: true
+							}}
+							className="desktop:hidden mt-20">
 							<h6 className="font-semibold mb-8px mt-8 text-14">Follow Us</h6>
 
 							<ul className="flex">
@@ -362,7 +459,7 @@ export default function Blog({ articles }: any) {
 									</a>
 								</li>
 							</ul>
-						</div>
+						</motion.div>
 					</main>
 				</div>
 			</div>

@@ -2,6 +2,7 @@
 import formatDate from '@/lib/formatDate';
 import Link from 'next/link';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import authors from '../../../data/authors.json';
 import Image from 'next/image';
 
@@ -18,7 +19,21 @@ export default function FeaturedPost({ postData }: any) {
 		return primaryAuthor;
 	};
 	return (
-		<div>
+		<motion.div
+			initial={{ opacity: 0, y: 5 }}
+			whileInView={{
+				opacity: 1,
+				y: 0,
+				transition: {
+					duration: 1.5,
+					delay: 0.2,
+					ease: [0.44, 0, 0, 1]
+				}
+			}}
+			viewport={{
+				amount: 'some',
+				once: true
+			}}>
 			<div
 				className="
                 rounded-[8px]
@@ -108,6 +123,6 @@ export default function FeaturedPost({ postData }: any) {
 					</div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 }
