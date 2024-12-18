@@ -91,7 +91,7 @@ export default function Blog({ articles }: any) {
 
 	return (
 		<>
-			<div className="pt-130px nav-bar-break:pt-184px pb-100px max-w-[1350px] w-full m-auto">
+			<div className="pt-100px nav-bar-break:pt-184px pb-100px max-w-[1350px] w-full m-auto">
 				<motion.div
 					initial={{ opacity: 0, y: 40 }}
 					whileInView={{
@@ -108,7 +108,7 @@ export default function Blog({ articles }: any) {
 						once: true
 					}}
 					className="flex flex-col items-center justify-center gap-6 w-full px-4">
-					<h1 className="text-32 nav-bar-break:text-[40px] font-medium">Convoy Summaries</h1>
+					<h1 className="text-32 nav-bar-break:text-[40px] font-medium text-center">Convoy Summaries</h1>
 					<form onSubmit={subscribeToNewsletter} className="flex flex-col nav-bar-break:flex-row gap-3 nav-bar-break:gap-4 items-center justify-center w-full">
 						<input
 							type="email"
@@ -179,7 +179,7 @@ export default function Blog({ articles }: any) {
 					</form>
 				</motion.div>
 
-				<div className="m-auto pb-0 flex justify-between pt-90px">
+				<div className="m-auto pb-0 flex justify-between pt-70px desktop:pt-90px">
 					<motion.aside
 						initial={{ opacity: 0, x: -5 }}
 						whileInView={{
@@ -308,7 +308,7 @@ export default function Blog({ articles }: any) {
 
 						<FeaturedPost postData={featuredPosts[0]}></FeaturedPost>
 
-						<div className="grid grid-cols-1 desktop:grid-cols-2 gap-40px max-w-[970px] mb-40px mt-40px w-full">
+						<div className="grid grid-cols-1 sm-old:grid-cols-2 gap-20px desktop:gap-40px max-w-[970px] my-20px desktop:mb-40px desktop:mt-40px w-full">
 							{currentPosts.map((article, i) => (
 								<motion.div
 									initial={{ opacity: 0, y: 5 }}

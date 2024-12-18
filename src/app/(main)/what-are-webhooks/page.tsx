@@ -83,16 +83,16 @@ export default function Webhooks() {
 							amount: 'some',
 							once: true
 						}}
-						className="flex flex-col items-start">
+						className="flex flex-col items-start w-full desktop:w-auto">
 						<h1 className="text-32 desktop:text-[40px] font-medium">What are Webhooks?</h1>
 						<p className="max-w-[683px] mx-auto desktop:text-16 text-14 !leading-[200%] text-[#4b4b4b] mt-2 desktop:mt-24px font-medium">
 							Whether you’re an engineer or product manager, this guide walks you through everything you need to become a webhook pro. Let’s begin!
 						</p>
-						<div className="flex footer:justify-center mt-4 desktop:mt-24px">
+						<div className="flex flex-wrap w-full gap-16px mt-4 desktop:mt-24px">
 							<a
 								target="_blank"
 								href="https://cloud.getconvoy.io/signup"
-								className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center">
+								className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center justify-center w-full sm-old:w-max">
 								<span>Get started</span>
 
 								<svg
@@ -107,7 +107,7 @@ export default function Webhooks() {
 							<a
 								target="_blank"
 								href="https://docs.getconvoy.io/"
-								className="px-16px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center hover:bg-[#e7e7e7] group transition-all duration-300 border-[#E7E7E7] border shadow-btn">
+								className="px-16px py-10px text-14 h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center hover:bg-[#e7e7e7] group transition-all duration-300 border-[#E7E7E7] border shadow-btn w-full sm-old:w-max">
 								<span>Visit docs</span>
 
 								<svg
@@ -644,22 +644,22 @@ export default function Webhooks() {
 									amount: 'some',
 									once: true
 								}}
-								className="space-y-1 w-max">
+								className="space-y-1 w-full desktop:w-max">
 								<a
 									href="https://docs.getconvoy.io/webhook-guides/webhook-retries"
-									className="flex items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] w-max">
+									className="flex items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] group w-max">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="min-w-max stroke-[#BBBBBB]">
 										<line x1="6" y1="11" x2="18" y2="11" stroke-width="2" />
 									</svg>
-									<span>Webhook Retries</span>
+									<span className='group-hover:opacity-75 transition-all'>Webhook Retries</span>
 								</a>
 								<a
 									href="https://docs.getconvoy.io/webhook-guides/tackling-ssrf"
-									className="flex items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] w-max">
+									className="flex items-start desktop:items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] group desktop:w-max">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="min-w-max stroke-[#BBBBBB]">
 										<line x1="6" y1="11" x2="18" y2="11" stroke-width="2" />
 									</svg>
-									<span>Webhook Security: Preventing SSRF & Delivering Static IPs</span>
+									<span className='group-hover:opacity-75 transition-all'>Webhook Security: Preventing SSRF & Delivering Static IPs</span>
 								</a>
 							</motion.div>
 						</div>

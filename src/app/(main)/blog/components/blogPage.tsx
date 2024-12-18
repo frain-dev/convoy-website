@@ -70,7 +70,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 	const index = Math.floor(Math.random() * 5);
 
 	return (
-		<div className="m-auto pt-[67px] mobile:pt- 150px max-w -[1300px] w-full">
+		<div className="m-auto pt-[62px] lg-old:pt-[67px] w-full">
 			<div className="flex flex-col items-center flex-wrap nav-bar-break:flex-nowrap justify-center w-full">
 				<div
 					className="border border-[#EBEBEB] w-full min-h-[520px] py-30px desktop:py-52px bg-gradient-to-b from-[#fff] from-[0%] via-[#fee] via-[54.97%] to-[#ffd7d7] to-[134.32%] flex items-center justify-center mobile:px-20px nav-bar-break:px-30px mobile:min-h-[304px] relative overflow-hidden"
@@ -194,7 +194,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 								once: true
 							}}
 							className="mt-66px desktop:mt-40px flex flex-col gap-2 desktop:gap-3">
-							<h4 className="text-[#666] text-14 desktop:text-16 font-medium leading-[24px]">Written by</h4>
+							<h4 className="text-[#666] text-[13px] sm-old:text-14 desktop:text-16 font-medium leading-[24px]">Written by</h4>
 							<div className="flex flex-wrap mb-10px desktop:mb-26px items-end justify-between">
 								<div className="flex items-end">
 									{blogData.primary_author && !blogData.authors && (
@@ -275,7 +275,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 					viewport={{
 						amount: 'some',
 						once: true
-					}} className="flex w-full nav-bar-break:max-w-[770px] mt-20 px-20px desktop-min:p-0">
+					}} className="flex w-full nav-bar-break:max-w-[770px] mt-10 md-old:mt-20 px-20px desktop-min:p-0">
 					<div className="flex flex-col">
 						<h6 className="font-medium mb-2px text-[#000] text-12 desktop:text-14">Share</h6>
 
@@ -350,15 +350,15 @@ export default function BlogPage({ posts, blogData, children }: any) {
 					viewport={{
 						amount: 'some',
 						once: true
-					}} className="nav-bar-break:max-w-[770px] w-full px-20px desktop-min:p-0 mb-70px mt-40px">{children}</motion.main>
+					}} className="nav-bar-break:max-w-[770px] w-full px-20px desktop-min:p-0 mb-10px md-old:mb-70px mt-40px">{children}</motion.main>
 
 				<GetStarted></GetStarted>
 
-				<div className="px-20px desktop-min:p-0 desktop-min:top-200px desktop:top-128px">
+				<div className="-mt-10 md-old:mt-0 px-20px desktop-min:p-0">
 					<p className="text-20 font-semibold text-[#111928] mb-40px">Related Posts</p>
 
 					<div className="flex flex-row flex-wrap gap-48px">
-						<div className="grid desktop:grid-cols-2 gap-20px max-w-[970px] mb-48px">
+						<div className="grid sm-old:grid-cols-2 gap-20px max-w-[970px] mb-48px">
 							{posts.map((article, i) => (
 								<motion.div
 									initial={{ opacity: 0, y: 5 }}

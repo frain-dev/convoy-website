@@ -213,11 +213,11 @@ export default function WebhookGateway() {
 						<span className="text-[#2780F1]">scalability, reliability and enterprise-grade security.</span> Built for developers, trusted by enterprises.
 					</p>
 
-					<div className="flex flex-col gap-8px xs-old:gap-16px xs-old:flex-row desktop:justify-center mb-56px mt-4 desktop:mt-6">
+					<div className="flex flex-wrap gap-16px mt-4 desktop:mt-6 desktop:items-center desktop:justify-center mb-56px">
 						<a
 							target="_blank"
 							href="https://cloud.getconvoy.io/signup"
-							className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center">
+							className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center justify-center w-full sm-old:w-max">
 							<span>Try for free</span>
 
 							<svg
@@ -232,7 +232,7 @@ export default function WebhookGateway() {
 						<a
 							target="_blank"
 							href="https://cal.com/subomi/30min"
-							className="px-8px py-10px text-14 h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2">
+							className="px-8px py-10px text-14 h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2 w-full sm-old:w-max">
 							<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
 
 							<span>Talk to a founder</span>
@@ -536,7 +536,13 @@ const FeatureGrid = ({ features }: { features: Features[] }) => {
 							{feature.link && (
 								<a href={feature.link} className="flex items-center gap-1 mt-4 group hover:opacity-70 transition-all">
 									<p className="text-[#666] text-14 font-semibold">Learn more</p>
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" className='group-hover:translate-x-[2px] transition-all'>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="18"
+										height="18"
+										viewBox="0 0 18 18"
+										fill="none"
+										className="group-hover:translate-x-[2px] transition-all">
 										<path d="M9.8764 9.00052L6.16406 5.2882L7.22473 4.22754L11.9977 9.00052L7.22473 13.7734L6.16406 12.7128L9.8764 9.00052Z" fill="#666666" />
 									</svg>
 								</a>

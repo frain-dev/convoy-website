@@ -114,7 +114,7 @@ const architecture = [
 export default function ConvoyComparison() {
 	return (
 		<main className="bg-[#fafafa]">
-			<section className="pt-[100px] pb-12 desktop:pt-[137px] desktop:pb-[57px]">
+			<section className="pt-[100px] pb-0 desktop:pt-[137px] desktop:pb-[57px]">
 				<div className="max-w-[1280px] m-auto flex footer:flex-wrap justify-between items-center px-20px">
 					<motion.div
 						initial={{ opacity: 0, y: 40 }}
@@ -137,11 +137,11 @@ export default function ConvoyComparison() {
 							Discover why choosing Convoy over building an internal webhook service saves time, reduces complexity, and ensures reliability at scale.
 						</p>
 
-						<div className="flex footer:justify-center mt-4 desktop:mt-0 mb-56px">
+						<div className="flex flex-wrap gap-16px mt-4 desktop:mt-0 mb-56px">
 							<a
 								target="_blank"
 								href="https://cloud.getconvoy.io/signup"
-								className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center">
+								className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center justify-center w-full sm-old:w-max">
 								<span>Try for free</span>
 
 								<svg
@@ -156,7 +156,7 @@ export default function ConvoyComparison() {
 							<a
 								target="_blank"
 								href="https://cal.com/subomi/30min"
-								className="px-8px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2">
+								className="px-8px py-10px text-14 h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2 w-full sm-old:w-max">
 								<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
 
 								<span>Talk to a founder</span>
@@ -234,7 +234,7 @@ export default function ConvoyComparison() {
 				</motion.div>
 			</section>
 
-			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-60px desktop:pb-72px">
+			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-40px md-old:pb-60px desktop:pb-72px">
 				<motion.div
 					initial={{ opacity: 0, y: 5 }}
 					whileInView={{
@@ -303,40 +303,44 @@ const StatusIndicator = ({ status }: { status: string }) => {
 function FeatureTable() {
 	return (
 		<div className="flex w-full justify-between items-start pl-2 pr-5 py-5 desktop:p-10 gap-5">
-			<div className="flex flex-col mt-[42px]">
+			<div className="flex flex-col mt-[42px] w-full">
 				{features.map(feature => (
-					<div key={feature.name} className="flex flex-col gap-[8px] py-[22.5px] pl-3 desktop:pr-72px h-[116px] desktop:h-[98px] justify-center w-[220px] desktop:w-full">
+					<div
+						key={feature.name}
+						className="flex flex-col gap-[8px] py-[22.5px] pl-3 desktop:pr-72px h-[270px] sm-old:h-[116px] desktop:!h-[98px] justify-center w-[110px] sm-old:w-[220px] desktop:!w-[516px]">
 						<h4 className="text-14 font-bold leading-[150%]">{feature.name}</h4>
-						<p className="text-[#4b4b4b] text-12 desktop:text-14 font-medium leading-[150%] max-w-[416px]">{feature.description}</p>
+						<p className="text-[#4b4b4b] text-12 desktop:text-14 font-medium leading-[150%] w-full max-w- [416px]">{feature.description}</p>
 					</div>
 				))}
 			</div>
 
-			<div className="w-full overflow-x-auto desktop:w-auto flex justify-end">
-				<div className="hid den border border-[#E7E7E780] rounded-12px overflow-hidden w-max">
-					<table className="w-max border-collapse">
-						<thead className="text-[#000] font-medium text-14">
-							<tr>
-								<th className="text-14 font-medium px-4 py-[10px] border-b border-[#E7E7E780] text-center flex items-center justify-center gap-2">
-									<Image src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" quality="70" className="h-16px w-auto" />
-									<span>Convoy</span>
-								</th>
-								<th className="text-14 font-medium text-center px-4 py-[9px] border-b border-l border-[#E7E7E780]">Your implementation</th>
-							</tr>
-						</thead>
-						<tbody className="divide-y text-[#000]">
-							{features.map(feature => (
-								<tr key={feature.name} className="">
-									<td className="text-14 py-[44.5px] desktop:py-[35.5px] px-[62.5px] text-[#4b4b4b]">
-										<StatusIndicator status={feature.convoy} />
-									</td>
-									<td className="text-14 py-[44.5px] desktop:py-[35.5px] px-[62.5px] border-l border-[#E7E7E780]">
-										<StatusIndicator status={feature.implementation} />
-									</td>
+			<div className="relative w-[130px] xxs-old:w-[250px] sm-old:w-[300px] md-old:w-auto desktop:w-auto">
+				<div className="overflow-x-auto">
+					<div className="hid den border border-[#E7E7E780] rounded-12px overflow-hidden w-max">
+						<table className="w-max border-collapse">
+							<thead className="text-[#000] font-medium text-14">
+								<tr>
+									<th className="text-14 font-medium px-4 py-[10px] border-b border-[#E7E7E780] text-center flex items-center justify-center gap-2">
+										<Image src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" quality="70" className="h-16px w-auto" />
+										<span>Convoy</span>
+									</th>
+									<th className="text-14 font-medium text-center px-4 py-[9px] border-b border-l border-[#E7E7E780]">Your implementation</th>
 								</tr>
-							))}
-						</tbody>
-					</table>
+							</thead>
+							<tbody className="divide-y text-[#000]">
+								{features.map(feature => (
+									<tr key={feature.name} className="">
+										<td className="text-14 py-[44.5px] desktop:py-[35.5px] px-[62.5px] text-[#4b4b4b] h-[270px] sm-old:h-auto">
+											<StatusIndicator status={feature.convoy} />
+										</td>
+										<td className="text-14 py-[44.5px] desktop:py-[35.5px] px-[62.5px] border-l border-[#E7E7E780] h-[270px] sm-old:h-auto">
+											<StatusIndicator status={feature.implementation} />
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -348,37 +352,39 @@ function ArchitectureTable() {
 		<div className="flex w-full justify-between items-start pl-2 pr-5 py-5 desktop:p-10 gap-5">
 			<div className="flex flex-col mt-[42px]">
 				{architecture.map(feature => (
-					<div key={feature.name} className="flex flex-col gap-[8px] py-[12px] pl-3 w-[170px] desktop:w-auto pr-3 desktop:pr-72px h-[95.5px] justify-start">
+					<div key={feature.name} className="flex flex-col gap-[8px] py-[12px] pl-3 w-[100px] sm-old:w-[170px] desktop:w-auto pr-3 desktop:pr-72px h-[95.5px] justify-start">
 						<h4 className="text-14 font-bold leading-[150%]">{feature.name}</h4>
 					</div>
 				))}
 			</div>
 
-			<div className="w-full overflow-x-auto desktop:overflow-clip desktop:w-auto flex justify-end">
-				<div className="border border-[#E7E7E780] rounded-12px overflow-hidden w-max mr-[1px] desktop:mr-0">
-					<table className="w-max border-collapse">
-						<thead className="text-[#000] font-medium text-14">
-							<tr>
-								<th className="text-14 font-medium px-4 py-[10px] border-b border-[#E7E7E780] text-center flex items-center justify-center gap-2">
-									<Image src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" quality="70" className="h-16px w-auto" />
-									<span>Convoy</span>
-								</th>
-								<th className="text-14 font-medium text-center px-4 py-[9px] border-b border-l border-[#E7E7E780]">Your implementation</th>
-							</tr>
-						</thead>
-						<tbody className="divide-y text-[#000]">
-							{architecture.map(feature => (
-								<tr key={feature.name} className="">
-									<td className="text-12 desktop:text-14 py-[12px] h-[95px] px-[12px] text-[#000] bg-[#2780F10A] font-medium leading-[150%] w-[270px] desktop:w-[408px] align-top">
-										{feature.convoy}
-									</td>
-									<td className="text-12 desktop:text-14 py-[12px] h-[95px] px-[12px] text-[#000] leading-[150%] border-l border-[#E7E7E780] w-[270px] desktop:w-[408px] align-top">
-										{feature.implementation}
-									</td>
+			<div className="relative w-[130px] xxs-old:w-[250px] sm-old:w-[300px] md-old:w-auto desktop:w-auto">
+				<div className="overflow-x-auto">
+					<div className="border border-[#E7E7E780] rounded-12px overflow-hidden w-max mr-[1px] desktop:mr-0">
+						<table className="w-max border-collapse">
+							<thead className="text-[#000] font-medium text-14">
+								<tr>
+									<th className="text-14 font-medium px-4 py-[10px] border-b border-[#E7E7E780] text-center flex items-center justify-center gap-2">
+										<Image src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" quality="70" className="h-16px w-auto" />
+										<span>Convoy</span>
+									</th>
+									<th className="text-14 font-medium text-center px-4 py-[9px] border-b border-l border-[#E7E7E780]">Your implementation</th>
 								</tr>
-							))}
-						</tbody>
-					</table>
+							</thead>
+							<tbody className="divide-y text-[#000]">
+								{architecture.map(feature => (
+									<tr key={feature.name} className="">
+										<td className="text-12 desktop:text-14 py-[12px] h-[95px] px-[12px] text-[#000] bg-[#2780F10A] font-medium leading-[150%] w-[270px] desktop:w-[408px] align-top">
+											{feature.convoy}
+										</td>
+										<td className="text-12 desktop:text-14 py-[12px] h-[95px] px-[12px] text-[#000] leading-[150%] border-l border-[#E7E7E780] w-[270px] desktop:w-[408px] align-top">
+											{feature.implementation}
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

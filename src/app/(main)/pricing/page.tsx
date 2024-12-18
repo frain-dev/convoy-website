@@ -348,7 +348,7 @@ export default function Pricing() {
 
 	return (
 		<main className="flex flex-col items-center pb-120px">
-			<section className="pt-120px desktop:pt-150px px-20px flex items-center flex-col max-w-[1280px]">
+			<section className="pt-100px desktop:pt-150px px-20px flex items-center flex-col max-w-[1280px]">
 				<motion.div
 					initial={{ opacity: 0, y: 40 }}
 					whileInView={{
@@ -364,7 +364,7 @@ export default function Pricing() {
 						amount: 'some',
 						once: true
 					}}
-					className="w-full flex flex-col items-start desktop:items-center justify-center desktop:gap-6">
+					className="w-full flex flex-col items-start sm-old:items-center justify-center desktop:gap-6">
 					<h1 className="desktop:text-center font-medium text-32 desktop:text-[40px] mb-24px max-w-[1020px] desktop:m-auto">Pricing plans</h1>
 					<p className="desktop:text-center text-[#666] text-14 desktop:text-16 max-w-[683px] m-auto mb-48px font-medium">
 						Pricing for each stage of growth both in the Cloud and on-prem
@@ -386,19 +386,30 @@ export default function Pricing() {
 						amount: 'some',
 						once: true
 					}}
-					className="inline-flex mx-auo mb-30px p-1 bg-white-100 border border-[#e7e7e7] rounded-8px">
+					className="inline-flex mx-auto mb-[30px] p-1 bg-white-100 border border-[#e7e7e7] rounded-[8px]">
 					{options.map(option => (
-						<button
+						<motion.button
 							key={option.id}
 							onClick={() => handleSelect(option.id)}
-							className={`px-4 py-2.5 text-[15px] font-semibold rounded-6px transition-colors' ${
-								selected === option.id ? 'bg-[#2780F1] px-10 border-[#2078E8] text-white-100' : 'text-[#000]'
-							}
-							`}
+							className={`relative px-4 py-2 desktop:py-2.5 text-[15px] font-semibold rounded-[6px] transition-all ${
+								selected === option.id ? 'text-white-100' : 'text-[#000]'
+							}`}
 							aria-selected={selected === option.id}
 							role="tab">
-							{option.label}
-						</button>
+							{selected === option.id && (
+								<motion.div
+									layoutId="background"
+									className="absolute inset-0 bg-[#2780F1] rounded-[6px]"
+									initial={false}
+									transition={{
+										type: 'spring',
+										stiffness: 400,
+										damping: 30
+									}}
+								/>
+							)}
+							<span className="relative z-10">{option.label}</span>
+						</motion.button>
 					))}
 				</motion.div>
 
@@ -419,12 +430,12 @@ export default function Pricing() {
 						amount: 'some',
 						once: true
 					}}
-					className="hid den bg-white-100 rounded-8px border border-[#e7e7e7] w-full mt-72px py-30px px-10px sm-old:px-20px desktop:p-20">
+					className="hid den bg-white-100 rounded-8px border border-[#e7e7e7] w-full mt-42px md-old:mt-72px py-30px px-10px sm-old:px-20px desktop:p-20">
 					<PricingTable features={selected === 'cloud' ? cloudFeatures : selfHostedFeatures} selected={selected} />
 				</motion.div>
 			</section>
 
-			<section className="w-full flex-col px-20px flex items-center max-w-[1280px]">
+			<section className="w-full flex-col px-20px flex items-center max-w-[1280px] !hid den">
 				<div className="mt-72px w-full flex flex-col gap-6 desktop:gap-10 items-center">
 					<motion.div
 						initial={{ opacity: 0, y: 40 }}
@@ -529,7 +540,7 @@ const PricingCard = ({ data, variant }) => {
 					<div className="z-10">
 						<span className={`${getLabelBg(index)} rounded-6px py-1 px-2.5 font-medium leading-[150%] text-14 desktop:text-16`}>{item.name}</span>
 
-						<p className="text-[#666] text-14 desktop:text-16 font-medium leading-[150%] mt-3">{item.description}</p>
+						<p className="text-[#666] text-14 desktop:text-16 font-medium leading-[150%] mt-4 desktop:mt-3 mb-5 desktop:mb-0">{item.description}</p>
 					</div>
 
 					<div className="z-10">
@@ -595,7 +606,9 @@ function PricingTable({ features, selected }) {
 
 						<div className="flex flex-col">
 							{featureType.feat.map(feature => (
-								<p className="text-14 h-[90px] desktop:h-[48px] w-[140px] desktop:w-full px-3 py-2.5 desktop:pb-0 text-[#666]">{feature.name}</p>
+								<p className="text-14 h-[90px] sm-old:h-[90px] desktop:h-[48px] w-[100px] sm-old:w-[140px] desktop:w-full px-3 py-2.5 desktop:pb-0 text-[#666]">
+									{feature.name}
+								</p>
 							))}
 						</div>
 					</div>

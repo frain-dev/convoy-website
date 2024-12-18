@@ -48,7 +48,7 @@ export default function Home() {
 
 	return (
 		<main className="flex flex-col items-center pb-60px desktop:pb-120px w-full">
-			<section className="pt-150px px-10px xs-old:px-20px flex desktop:items-center flex-col max-w-[1180px] w-full">
+			<section className="pt-100px desktop:pt-150px px-10px xs-old:px-20px flex desktop:items-center flex-col max-w-[1180px] w-full">
 				<motion.div
 					initial={{ opacity: 0, y: 40 }}
 					whileInView={{
@@ -66,8 +66,8 @@ export default function Home() {
 					}}
 					className="">
 					<h1 className="desktop:text-center font-medium text-[32px] desktop:text-[40px] mb-6 desktop:max-w-[683px]">
-						The webhook gateway for <br />
-						<motion.span className="relative inline-block overflow-hidden h-[38px] desktop:h-[42px] w-[154px] desktop:w-[190px] bor der align-bottom pt-1 desktop:pt-0 desktop:align-middle desktop:mr-2.5">
+						The webhook gateway for <br className="hidden desktop:inline-flex" />
+						<motion.span className="relative inline-block overflow-hidden h-[38px] desktop:h-[42px] w-[154px] desktop:w-[190px] bor der align-bottom pt-1 desktop:pt-0 desktop:align-middle xxs-old:ml-1 desktop:ml-0 desktop:mr-2.5">
 							<motion.span
 								initial={{ y: -11 }}
 								animate={{ y: [-11, -76, -76, -11] }}
@@ -104,37 +104,37 @@ export default function Home() {
 						enterprises.
 					</p>
 
-					<div className="flex flex-col gap-8px xs-old:gap-16px xs-old:flex-row desktop:justify-center mb-56px">
-						<a
-							target="_blank"
-							href="https://cloud.getconvoy.io/signup"
-							className="w-max pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center">
-							<span>Try for free</span>
+					<div className="flex flex-wrap gap-16px mt-4 desktop:mt-0 mb-56px desktop:items-center desktop:justify-center">
+							<a
+								target="_blank"
+								href="https://cloud.getconvoy.io/signup"
+								className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center justify-center w-full sm-old:w-max">
+								<span>Try for free</span>
 
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="18"
-								height="19"
-								viewBox="0 0 18 19"
-								className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
-								<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
-							</svg>
-						</a>
-						<a
-							target="_blank"
-							href="https://cal.com/subomi/30min"
-							className="w-max px-8px py-10px text-14 h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2">
-							<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="18"
+									height="19"
+									viewBox="0 0 18 19"
+									className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
+									<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
+								</svg>
+							</a>
+							<a
+								target="_blank"
+								href="https://cal.com/subomi/30min"
+								className="px-8px py-10px text-14 h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2 w-full sm-old:w-max">
+								<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
 
-							<span>Talk to a founder</span>
-						</a>
-					</div>
+								<span>Talk to a founder</span>
+							</a>
+						</div>
 				</motion.div>
 
 				<VideoPlayer />
 			</section>
 
-			<section className="pt-80px pb-40px desktop:py-80px w-full px-10px xs-old:px-20px flex items-center justify-center">
+			<section className="pt-80px pb-60px desktop:py-80px w-full px-10px xs-old:px-20px flex items-center justify-center">
 				<motion.div
 					initial={{ opacity: 0, y: 0 }}
 					whileInView={{

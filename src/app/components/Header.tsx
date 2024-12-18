@@ -21,7 +21,7 @@ export default function Header() {
 	return (
 		<header>
 			{!pathname.includes('/docs/') && (
-				<nav className="w-full m-auto px-0px pt-0 pb-0 mobile:!py-4 nav-bar-break:!py-0 z-50 fixed nav-bar-break:pt-0 nav-bar-break:pb-0 transition-all duration-300 bg-white-100 border-b border-[#E7E7E7]">
+				<nav className="w-full m-auto px-0px pt-0 pb-0 mobile:!py-4 nav-bar-break:!py-0 z-[150] fixed nav-bar-break:pt-0 nav-bar-break:pb-0 transition-all duration-300 bg-white-100 border-b border-[#E7E7E7]">
 					<div className="flex items-center justify-between m-auto max-w-[1300px]">
 						<div className="ml-20px nav-bar-break:w-fit nav-bar-break:ml-20px flex items-center justify-center gap-4">
 							<Link href="/">
@@ -36,7 +36,10 @@ export default function Header() {
 									<li
 										className="py-14px nav-bar-break:py-8px px-12px border-b border-b-primary-25 last-of-type:border-none nav-bar-break:border-none relative"
 										key={link.name}
-										onClick={() => setCurrentRoute(link.name)}>
+										onClick={() => {
+											setCurrentRoute(link.name);
+											setShowMenu(false);
+										}}>
 										{link.type === 'route' && link.route && (
 											<Link
 												className={`text-14 font-medium transition-all duration-300 hover:text-gray-800 ${
@@ -84,7 +87,12 @@ export default function Header() {
 									className="px-12px py-10px text-14 font-medium rounded-8px h-10 nav-bar-break:bg-[#2780F1] hover:nav-bar-break:bg-[#1f66c1] group transition-all duration-300 nav-bar-break:text-white-100 text-[#2780F1] flex items-center">
 									<span>Start your project</span>
 
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="hidden nav-bar-break:block ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="18"
+										height="19"
+										viewBox="0 0 18 19"
+										className="hidden nav-bar-break:block ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
 										<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
 									</svg>
 								</a>
@@ -120,8 +128,8 @@ export default function Header() {
 			)}
 
 			<div
-				className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-10 backdrop-blur-[25px] transition-all duration-500 ${
-					showMenu ? 'pointer-events-all opacity-100 z-[2]' : 'pointer-events-none opacity-0'
+				className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-10 backdrop-blur-[25px] transition-all duration-300 ${
+					showMenu ? 'pointer-events-all opacity-100 z-[100]' : 'pointer-events-none opacity-0'
 				}`}
 				onClick={() => setShowMenu(!showMenu)}></div>
 

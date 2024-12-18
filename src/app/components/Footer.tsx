@@ -95,17 +95,17 @@ export default function Footer() {
 					<div className="max-w-[1200px] m-auto">
 						<nav className="flex justify-between flex-wra p pb-px footer:block">
 							<div className="mobile:w-full mobile:mb-40px">
-								<div>
+								<Link href="/">
 									<Image src="/svg/convoy-logo-full-new.svg" height={32} width={160} alt="logo" className="w-[119px] nav-bar-break:w-160px" />
-								</div>
+								</Link>
 
 								<p className="text-14 mb-24px mt-12px nav-bar-break:w-[246px] text-[#666] font-medium leading-[160%]">
 									2261 Market Street, San Francisco, CA 94114
 								</p>
 							</div>
 
-							<div className="flex flex-col-reverse nav-bar-break:flex-col justify-between flex-wra desktop:pb-40px desktop:footer:block bor der w-full desktop:w-min mobile:gap-10">
-								<div className="flex justify-between items-start desktop:justify-end bor der desktop:gap-100px w-full gap-y-10 desktop: flex-wrap pb-42px desktop:footer:block desktop:w-max">
+							<div className="flex flex-col-reverse nav-bar-break:flex-col justify-between flex-wra desktop:pb-40px desktop:block bor der w-full xl-old:w-min mobile:gap-10 bor der !hi dden">
+								<div className="flex justify-between items-start desktop:justify-end bor der desktop:gap-100px w-full gap-y-10 desktop: flex-wrap pb-42px desktop:footer:block xl-old:w-max">
 									{footerLinks.map((section, index) => (
 										<ul key={index} className="mobile:w-[150px]">
 											<h3 className="text-16 desktop:text-18 footer:border-b footer:border-b-white-24 group-hover:footer:mb-0 footer:pb-8px font-semibold footer:font-normal mb-4 desktop:mb-24px flex items-center justify-between">
@@ -191,7 +191,12 @@ export default function Footer() {
 										{status === 'idle' && (
 											<>
 												Subscribe
-												<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="18"
+													height="19"
+													viewBox="0 0 18 19"
+													className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
 													<path
 														d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z"
 														fill="white"
