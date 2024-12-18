@@ -3,23 +3,20 @@ const path = require('path');
 const withMarkdoc = require('@markdoc/next.js');
 
 const nextConfig = {
-	async redirects() {
+	async rewrites() {
 		return [
 			{
-				source: '/docs/manual/:slug*',
-				destination: 'https://docs.getconvoy.io/product-manual/:slug*',
-				permanent: true 
-			},
+        source: '/docs',
+        destination: 'https://convoy.mintlify.dev/docs'
+      },
 			{
-				source: '/docs/releases/:slug*',
-				destination: 'https://docs.getconvoy.io/release-notes/:slug*',
-				permanent: true 
-			},
-			{
-				source: '/docs/:slug*',
-				destination: 'https://docs.getconvoy.io/:slug*',
-				permanent: true
-			}
+        source: '/docs/:match*',
+        destination: 'https://convoy.mintlify.dev/docs/:match*'
+      }
+		]
+	},
+	async redirects() {
+		return [
 		];
 	},
 	output: 'standalone',

@@ -26,29 +26,35 @@ export default function Post({ postData, type, className, index }: any) {
 		<>
 			<div className={`w-full ${type === 'collapsed' ? '' : 'bg-white-100 border border-[#E7E7E7] rounded-8px p- 16px shadow-card'} ${className}`}>
 				<div
-					className="w-full h-[160px] border-b  rounded-t-8px p-20px flex flex-col justify-between relative overflow-hidden"
+					className="w-full min-h-[160px] border-b  rounded-t-8px p-20px flex flex-col justify-between relative overflow-hidden"
 					style={{
 						background: `linear-gradient(to top, ${getGradientColor(index)}26, #FFFFFF)`
 					}}>
-					<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] absolute top-0 right-0 w-full h-full"></div>
+					<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] absolute top-0 right-0 w-full h-full pointer-events-none"></div>
 
 					<Link href={`/blog/${postData.slug}`} className="z-10">
 						<h3
 							className={`font-semibold z-10 mb -48px overflow-hidden text-ellipsis text-[#000] desktop:w-[320px] ${
-								type === 'collapsed' ? 'text-16' : 'text-20 leading-[28px]'
+								type === 'collapsed' ? 'text-16' : 'text-18 md-old:text-20 leading-[140%] md-old:leading-[28px]'
 							}`}>
 							{postData.title}
 						</h3>
 					</Link>
 
-					<div className="font-medium text-12 text-[#666] leading-[16px] z-10">{formatDate(postData.published_at)}</div>
+					<div className="font-medium text-12 text-[#666] leading-[16px] z-10 mt-3">{formatDate(postData.published_at)}</div>
 				</div>
 
-				<div className={`flex flex-col pt-5 px-5 ${type === 'collapsed' ? '' : 'min-h-[200px]'}`}>
-					{type !== 'collapsed' && <p className="text-14 leading-7 text-[#666] mb-20px h-120px overflow-hidden text-ellipsis">{postData.description}</p>}
+				<div className={`flex flex-col pt-5 px-5 ${type === 'collapsed' ? '' : 'sm-old:min-h-[200px]'}`}>
+					{type !== 'collapsed' && (
+						<p
+							className="text-12 md-old:text-14 leading-[160%] text-[#666] mb-40px sm-old:mb-20px 
+      line-clamp-5 display-[-webkit-box] -webkit-box-orient-vertical overflow-hidden">
+							{postData.description}
+						</p>
+					)}
 				</div>
 
-				<div className={`mb-26px flex justify-between items-end flex-wrap gap-20px ${type === 'collapsed' ? '' : 'px-10px desktop:px-20px'}`}>
+				<div className={`mb-26px  flex justify-between items-end flex-wrap gap-20px ${type === 'collapsed' ? '' : 'px-20px desktop:px-20px'}`}>
 					<div className="flex items-end">
 						{postData.primary_author && !postData.authors && (
 							<a
@@ -63,7 +69,7 @@ export default function Post({ postData, type, className, index }: any) {
 									/>
 								</div>
 								<div>
-									<h5 className="font-semibold text-[#666] text-14 leading-[16px]">{postData.primary_author?.name}</h5>
+									<h5 className="font-semibold text-[#666] text-12 md-old:text-14 leading-[16px]">{postData.primary_author?.name}</h5>
 									<p className="text-10 leading-[16px] text-[#666] font-medium">{getPrimaryAuthor()?.role}</p>
 								</div>
 							</a>
