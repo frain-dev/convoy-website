@@ -606,7 +606,7 @@ function PricingTable({ features, selected }) {
 
 						<div className="flex flex-col">
 							{featureType.feat.map(feature => (
-								<p className="text-14 h-[90px] sm-old:h-[90px] desktop:h-[48px] w-[100px] sm-old:w-[140px] desktop:w-full px-3 py-2.5 desktop:pb-0 text-[#666]">
+								<p className="text-14 h-[90px] sm-old:h-[90px] desktop:!h-[48px] w-[100px] sm-old:w-[140px] desktop:!w-full px-3 py-2.5 desktop:pb-0 text-[#666]">
 									{feature.name}
 								</p>
 							))}
