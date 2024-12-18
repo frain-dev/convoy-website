@@ -42,8 +42,8 @@ export default function Header() {
 										}}>
 										{link.type === 'route' && link.route && (
 											<Link
-												className={`text-14 font-medium transition-all duration-300 hover:text-gray-800 ${
-													pathname == link.route ? 'text-[#2780F1]' : 'text-[#000]'
+												className={`text-14 font-medium hover:opacity-75 transition-all ${
+													pathname == link.route ? 'text-[#2780F1] hover:opacity-100' : 'text-[#000]'
 												}`}
 												href={link.route}>
 												{link.name}

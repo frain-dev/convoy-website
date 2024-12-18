@@ -115,7 +115,7 @@ export default function Footer() {
 											{section.links.map((link, i) => (
 												<li key={i} className="text-[#666]">
 													{!link.isExternal && (
-														<Link href={link.link} className="text-12 desktop:text-14 font-medium mb-2 desktop:mb-12px block footer:pl-4px w-full">
+														<Link href={link.link} className="text-12 desktop:text-14 font-medium mb-2 desktop:mb-12px block footer:pl-4px w-full hover:opacity-75 transition-all">
 															{link.name}
 														</Link>
 													)}
@@ -123,7 +123,7 @@ export default function Footer() {
 														<a
 															target="_blank"
 															href={link.link}
-															className="text-12 desktop:text-14 font-medium mb-2 desktop:mb-12px block footer:pl-4px w-full">
+															className="text-12 desktop:text-14 font-medium mb-2 desktop:mb-12px block footer:pl-4px w-full hover:opacity-75 transition-all">
 															{link.name}
 														</a>
 													)}
