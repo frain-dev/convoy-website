@@ -39,7 +39,27 @@ export default function Blog({ articles }: { articles: articles }) {
 	const [showCategories, setShowCategories] = useState(false);
 	const tags = ['All Posts', 'Product Update', 'News', 'Engineering', 'Tutorial', 'Open Thoughts', 'Customer Stories'];
 
-	console.log('articles', articles);
+	// console.log('articles', articles);
+
+	const dropdownRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		function handleClickOutside(event: MouseEvent) {
+			if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+				setShowCategories(false);
+			}
+		}
+
+		// Add event listener when dropdown is open
+		if (showCategories) {
+			document.addEventListener('mousedown', handleClickOutside);
+		}
+
+		// Cleanup the event listener
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [showCategories]);
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const postsPerPage = 6;
@@ -413,6 +433,7 @@ export default function Blog({ articles }: { articles: articles }) {
 
 						<div className="flex items-center justify-between gap-10 desktop:hidden">
 							<motion.div
+								ref={dropdownRef}
 								initial={{ opacity: 0, y: 5 }}
 								whileInView={{
 									opacity: 1,
@@ -428,26 +449,74 @@ export default function Blog({ articles }: { articles: articles }) {
 									once: true
 								}}
 								className="relative mb-[33px]">
-								<h2 className="text-[#666] text-16 font-medium text-black flex items-center">
+								<motion.h2
+									onClick={() => setShowCategories(!showCategories)}
+									className="cursor-pointer hover:opacity-75 transition-all text-[#666] text-16 font-medium text-black flex items-center">
 									{currentTag}
-									<button onClick={() => setShowCategories(!showCategories)} className="h-fit mt-4px ml-4px desktop:hidden">
+									<motion.button
+										className="h-fit mt-2px ml-4px desktop:hidden"
+										animate={{ rotate: showCategories ? 180 : 0 }}
+										transition={{ duration: 0.3, ease: 'easeInOut' }}>
 										<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
 											<path
 												d="M9.00045 9.87835L12.7128 6.16602L13.7734 7.22668L9.00045 11.9997L4.22753 7.22668L5.28818 6.16602L9.00045 9.87835Z"
 												fill="black"
 											/>
-										</svg>{' '}
-									</button>
-								</h2>
-								{showCategories && (
-									<ul className="absolute bg-white-100 shadow-sm rounded-10px p-24px z-1 w-216px mt-4px z-30">
-										{tags.map((tag, i) => (
-											<li key={i} className="mb-32px last-of-type:mb-0 text-14 text-gray-600" onClick={() => setShowCategories(!showCategories)}>
-												<Link href={'/blog?tag=' + tag}>{tag}</Link>
-											</li>
-										))}
-									</ul>
-								)}
+										</svg>
+									</motion.button>
+								</motion.h2>
+
+								<AnimatePresence>
+									{showCategories && (
+										<motion.div
+											initial={{ opacity: 0, y: -10, scale: 0.95 }}
+											animate={{
+												opacity: 1,
+												y: 0,
+												scale: 1,
+												transition: {
+													duration: 0.2,
+													ease: 'easeOut'
+												}
+											}}
+											exit={{
+												opacity: 0,
+												y: -10,
+												scale: 0.95,
+												transition: {
+													duration: 0.15,
+													ease: 'easeIn'
+												}
+											}}
+											className="absolute bg-white-100 rounded-10px py-10px pl-24px z-1 w-216px mt-4px z-30 border border-[#e7e7e7] shadow-btn">
+											{tags.map((tag, i) => (
+												<motion.div
+													key={tag}
+													initial={{ opacity: 0, x: -20 }}
+													animate={{
+														opacity: 1,
+														x: 0,
+														transition: {
+															duration: 0.2,
+															delay: i * 0.03 // Stagger the animations
+														}
+													}}>
+													<Link
+														href={tag !== 'All Posts' ? `/blog?tag=${tag}` : `/blog?`}
+														className="mb-32px py-14px !px- 24px last-of-type:mb-0 text-14 group cursor-pointer w-full block"
+														onClick={() => setShowCategories(false)}>
+														<p
+															className={`${
+																isTagActive(tag) ? 'text-[#2780F1]' : 'text-[#666]'
+															} group-hover:text-[#2780F1] transition-colors duration-200`}>
+															{tag}
+														</p>
+													</Link>
+												</motion.div>
+											))}
+										</motion.div>
+									)}
+								</AnimatePresence>
 							</motion.div>
 
 							<motion.div
