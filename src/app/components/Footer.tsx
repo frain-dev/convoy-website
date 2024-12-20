@@ -272,7 +272,7 @@ export default function Footer() {
 								<h6 className="font-semibold mb-8px text-[#666] text-12 desktop:text-14">Follow Us</h6>
 
 								<ul className="flex">
-									<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+									<li className="bg-opacity-10 hover:opacity-75 transition-all w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 										<a target="_blank" href="https://github.com/frain-dev/convoy">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 												<path
@@ -284,7 +284,7 @@ export default function Footer() {
 											</svg>
 										</a>
 									</li>
-									<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+									<li className="bg-opacity-10 hover:opacity-75 transition-all w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 										<a target="_blank" href="https://www.linkedin.com/company/convoy-webhooks/">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 												<path
@@ -294,7 +294,7 @@ export default function Footer() {
 											</svg>
 										</a>
 									</li>
-									<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+									<li className="bg-opacity-10 hover:opacity-75 transition-all w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 										<a target="_blank" href="mailto:sales@getconvoy.io">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 												<path
@@ -308,7 +308,7 @@ export default function Footer() {
 											</svg>
 										</a>
 									</li>
-									<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+									<li className="bg-opacity-10 hover:opacity-75 transition-all w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 										<a target="_blank" href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 												<path
@@ -318,7 +318,7 @@ export default function Footer() {
 											</svg>
 										</a>
 									</li>
-									<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+									<li className="bg-opacity-10 hover:opacity-75 transition-all w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 										<a target="_blank" href="https://twitter.com/getconvoy">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 												<path

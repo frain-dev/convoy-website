@@ -534,7 +534,7 @@ const FeatureGrid = ({ features }: { features: Features[] }) => {
 							</div>
 
 							{feature.link && (
-								<a href={feature.link} className="flex items-center gap-1 mt-4 group hover:opacity-70 transition-all">
+								<a target="_blank" href={feature.link} className="flex items-center gap-1 mt-4 group hover:opacity-70 transition-all">
 									<p className="text-[#666] text-14 font-semibold">Learn more</p>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"

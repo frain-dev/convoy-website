@@ -515,55 +515,58 @@ const PricingCard = ({ data, variant }) => {
 
 	return (
 		<div className="flex flex-col desktop:flex-row gap-5">
-			{data.map((item, index) => (
-				<motion.div
-					initial={{ opacity: 0, y: 5 }}
-					whileInView={{
-						opacity: 1,
-						y: 0,
-						transition: {
-							duration: 0.8,
-							delay: index * 0.2 + 0.2,
-							ease: [0.44, 0, 0, 1]
-						}
-					}}
-					viewport={{
-						amount: 'some',
-						once: true
-					}}
-					key={item.name}
-					className={`rounded-8px p-20px desktop:p-40px bg-gradient-to-b ${getBgGradient(
-						index
-					)} flex flex-col items-start justify-between w-full desktop:w-[560px] h-full desktop:h-[370px] relative overflow-hidden border border-[#e7e7e7]`}>
-					<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.45rem_2.55rem] absolute left-0 -top-1 w-full h-full"></div>
+			<AnimatePresence mode="popLayout">
+				{data.map((item, index) => (
+					<motion.div
+						initial={{ opacity: 0, y: 5 }}
+						exit={{ opacity: 0, y: 5 }}
+						whileInView={{
+							opacity: 1,
+							y: 0,
+							transition: {
+								duration: 0.8,
+								delay: index * 0.2 + 0.2,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
+						key={item.name}
+						className={`rounded-8px p-20px desktop:p-40px bg-gradient-to-b ${getBgGradient(
+							index
+						)} flex flex-col items-start justify-between w-full desktop:w-[560px] h-full desktop:h-[370px] relative overflow-hidden border border-[#e7e7e7]`}>
+						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.45rem_2.55rem] absolute left-0 -top-1 w-full h-full"></div>
 
-					<div className="z-10">
-						<span className={`${getLabelBg(index)} rounded-6px py-1 px-2.5 font-medium leading-[150%] text-14 desktop:text-16`}>{item.name}</span>
+						<div className="z-10">
+							<span className={`${getLabelBg(index)} rounded-6px py-1 px-2.5 font-medium leading-[150%] text-14 desktop:text-16`}>{item.name}</span>
 
-						<p className="text-[#666] text-14 desktop:text-16 font-medium leading-[150%] mt-4 desktop:mt-3 mb-5 desktop:mb-0">{item.description}</p>
-					</div>
+							<p className="text-[#666] text-14 desktop:text-16 font-medium leading-[150%] mt-4 desktop:mt-3 mb-5 desktop:mb-0">{item.description}</p>
+						</div>
 
-					<div className="z-10">
-						{renderPrice(item.price)}
+						<div className="z-10">
+							{renderPrice(item.price)}
 
-						<a
-							target="_blank"
-							href={item.cta.link}
-							className="mt-3 pl-20px desktop:pl-14px pr-14px desktop:pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center z-10 w-max">
-							<span>{item.cta.text}</span>
+							<a
+								target="_blank"
+								href={item.cta.link}
+								className="mt-3 pl-20px desktop:pl-14px pr-14px desktop:pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center z-10 w-max">
+								<span>{item.cta.text}</span>
 
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="18"
-								height="19"
-								viewBox="0 0 18 19"
-								className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
-								<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
-							</svg>
-						</a>
-					</div>
-				</motion.div>
-			))}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="18"
+									height="19"
+									viewBox="0 0 18 19"
+									className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
+									<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
+								</svg>
+							</a>
+						</div>
+					</motion.div>
+				))}
+			</AnimatePresence>
 		</div>
 	);
 };

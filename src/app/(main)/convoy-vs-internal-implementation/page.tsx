@@ -352,7 +352,7 @@ function ArchitectureTable() {
 		<div className="flex w-full justify-between items-start pl-2 pr-5 py-5 desktop:p-10 gap-5">
 			<div className="flex flex-col mt-[42px]">
 				{architecture.map(feature => (
-					<div key={feature.name} className="flex flex-col gap-[8px] py-[12px] pl-3 w-[100px] sm-old:w-[170px] desktop:w-auto pr-3 desktop:pr-72px h-[95.5px] justify-start">
+					<div key={feature.name} className="flex flex-col gap-[8px] py-[12px] pl-3 w-[100px] sm-old:w-[170px] desktop:!w-full pr-3 h-[95.5px] justify-start">
 						<h4 className="text-14 font-bold leading-[150%]">{feature.name}</h4>
 					</div>
 				))}

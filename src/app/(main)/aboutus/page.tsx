@@ -79,6 +79,7 @@ export default function AboutUs() {
 				}}
 				className="max-w-[1062] flex flex-col justify-center desktop:items-center pt-100px desktop:pt-150px pb-70px desktop:pb-80px px-20px">
 				<a
+					target="_blank"
 					href="https://www.ycombinator.com/companies/convoy-2"
 					className="bg-[#2780F1]/[0.1] hover:opacity-75 transition-all cursor-pointer rounded-[6px] w-fit py-10px px-12px flex items-center text-14 font-medium mb-40px">
 					We are backed by
