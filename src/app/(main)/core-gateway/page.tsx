@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 import subomi from '../../../../public/profile-images/Subomi Oluwalana.png';
@@ -89,7 +90,7 @@ const webhookFeatures = [
 	{
 		icon: logs,
 		title: 'Filter Webhook Logs:',
-		description: 'Control the number of webhooks sent per second, preventing overload and ensuring system stability.',
+		description: 'Filter events and deliveries effortlessly to quickly identify and resolve event matching or delivery issues.',
 		link: ''
 	}
 ];
@@ -189,36 +190,74 @@ export default function WebhookGateway() {
 	return (
 		<main className="flex flex-col items-center pb-60px desktop:pb-120px w-full">
 			<section className="pt-100px desktop:pt-150px px-20px flex items-start desktop:items-center flex-col max-w-[1180px] w-full">
-				<h1 className="desktop:text-center font-medium text-[32px] desktop:text-[40px] mb-24px desktop:max-w-[683px] m-auto">The world’s most advanced Webhooks Gateway</h1>
-				<p className="desktop:text-center text-[#666] text-16 desktop:text-16 desktop:max-w-[683px] desktop:m-auto mb-24px font-medium leading-[200%]">
-					Streamline your webhook infrastructure with advanced features for{' '}
-					<span className="text-[#2780F1]">scalability, reliability and enterprise-grade security.</span> Built for developers, trusted by enterprises.
-				</p>
+				<motion.div
+					initial={{ opacity: 0, y: 40 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 0.8,
+							delay: 0,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}>
+					<h1 className="desktop:text-center font-medium text-[32px] desktop:text-[40px] mb-24px desktop:max-w-[683px] m-auto">
+						The world’s most advanced Webhooks Gateway
+					</h1>
+					<p className="desktop:text-center text-[#666] text-16 desktop:text-16 desktop:max-w-[683px] desktop:m-auto mb-24px font-medium leading-[200%]">
+						Streamline your webhook infrastructure with advanced features for{' '}
+						<span className="text-[#2780F1]">scalability, reliability and enterprise-grade security.</span> Built for developers, trusted by enterprises.
+					</p>
 
-				<div className="flex footer:justify-center mt-4 desktop:mt-24px mb-56px">
-					<a
-						target="_blank"
-						href="https://cloud.getconvoy.io/signup"
-						className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center">
-						<span>Try for free</span>
+					<div className="flex flex-wrap gap-16px mt-4 desktop:mt-6 desktop:items-center desktop:justify-center mb-56px">
+						<a
+							target="_blank"
+							href="https://cloud.getconvoy.io/signup"
+							className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center justify-center w-full sm-old:w-max">
+							<span>Try for free</span>
 
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
-							<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
-						</svg>
-					</a>
-					<a
-						target="_blank"
-						href="https://cal.com/subomi/30min"
-						className="px-8px py-10px text-14 ml-16px h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2">
-						<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="18"
+								height="19"
+								viewBox="0 0 18 19"
+								className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
+								<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
+							</svg>
+						</a>
+						<a
+							target="_blank"
+							href="https://cal.com/subomi/30min"
+							className="px-8px py-10px text-14 h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2 w-full sm-old:w-max">
+							<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
 
-						<span>Talk to a founder</span>
-					</a>
-				</div>
+							<span>Talk to a founder</span>
+						</a>
+					</div>
+				</motion.div>
 			</section>
 
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
+				<motion.div
+					initial={{ opacity: 0, y: 5 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 1.5,
+							delay: 0.2,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#2780F1]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
@@ -232,11 +271,26 @@ export default function WebhookGateway() {
 					</div>
 
 					<FeatureGrid features={advancedFeatures} />
-				</div>
+				</motion.div>
 			</section>
 
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
+				<motion.div
+					initial={{ opacity: 0, y: 5 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 1.5,
+							delay: 0.2,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#AE27F166]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
@@ -250,11 +304,26 @@ export default function WebhookGateway() {
 					</div>
 
 					<FeatureGrid features={webhookFeatures} />
-				</div>
+				</motion.div>
 			</section>
 
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
+				<motion.div
+					initial={{ opacity: 0, y: 5 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 1.5,
+							delay: 0.2,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#F1852766]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
@@ -268,11 +337,26 @@ export default function WebhookGateway() {
 					</div>
 
 					<FeatureGrid features={secureFeatures} />
-				</div>
+				</motion.div>
 			</section>
 
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
+				<motion.div
+					initial={{ opacity: 0, y: 5 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 1.5,
+							delay: 0.2,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#27F18566]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
@@ -285,11 +369,26 @@ export default function WebhookGateway() {
 					</div>
 
 					<FeatureGrid features={architectureFeatures} />
-				</div>
+				</motion.div>
 			</section>
 
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
+				<motion.div
+					initial={{ opacity: 0, y: 5 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 1.5,
+							delay: 0.2,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#AEF12766]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
@@ -302,11 +401,26 @@ export default function WebhookGateway() {
 					</div>
 
 					<FeatureGrid features={observabilityFeatures} />
-				</div>
+				</motion.div>
 			</section>
 
 			<section className="w-full max-w-[1280px] mx-auto px-4 mobile:px-6 desktop:px-8 pb-24px desktop:pb-72px">
-				<div className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
+				<motion.div
+					initial={{ opacity: 0, y: 5 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 1.5,
+							delay: 0.2,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="border border-[#E7E7E74D] rounded-8px overflow-hidden w-full bg-white-100">
 					<div className="w-full desktop:min-h-[168px] p-5 desktop:p-40px bg-gradient-to-b from-[#fff] from-[0%] to-[#F1B52766]/20 to-[134.32%] flex items-center justify-start relative overflow-hidden">
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
@@ -320,7 +434,7 @@ export default function WebhookGateway() {
 					</div>
 
 					<FeatureGrid features={otherFeatures} />
-				</div>
+				</motion.div>
 			</section>
 		</main>
 	);
@@ -420,9 +534,15 @@ const FeatureGrid = ({ features }: { features: Features[] }) => {
 							</div>
 
 							{feature.link && (
-								<a href={feature.link} className="flex items-center gap-1 mt-4">
+								<a target="_blank" href={feature.link} className="flex items-center gap-1 mt-4 group hover:opacity-70 transition-all">
 									<p className="text-[#666] text-14 font-semibold">Learn more</p>
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="18"
+										height="18"
+										viewBox="0 0 18 18"
+										fill="none"
+										className="group-hover:translate-x-[2px] transition-all">
 										<path d="M9.8764 9.00052L6.16406 5.2882L7.22473 4.22754L11.9977 9.00052L7.22473 13.7734L6.16406 12.7128L9.8764 9.00052Z" fill="#666666" />
 									</svg>
 								</a>

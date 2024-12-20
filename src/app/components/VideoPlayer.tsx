@@ -24,7 +24,7 @@ const VideoPlayer: React.FC = () => {
 				y: 0,
 				transition: {
 					duration: 1.5,
-					delay: 0.6,
+					delay: 0.2,
 					ease: [0.44, 0, 0, 1]
 				}
 			}}
