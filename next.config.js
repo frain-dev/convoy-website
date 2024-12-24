@@ -7,7 +7,7 @@ const nextConfig = {
 		return [
 			{
         source: '/docs',
-        destination: 'https://convoy.mintlify.dev'
+        destination: 'https://convoy.mintlify.dev/home/quickstart'
       },
 			{
         source: '/docs/:match*',
