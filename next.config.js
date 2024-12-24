@@ -6,10 +6,6 @@ const nextConfig = {
 	async rewrites() {
 		return [
 			{
-        source: '/docs',
-        destination: 'https://convoy.mintlify.dev/home/quickstart'
-      },
-			{
         source: '/docs/:match*',
         destination: 'https://convoy.mintlify.dev/:match*'
       }
