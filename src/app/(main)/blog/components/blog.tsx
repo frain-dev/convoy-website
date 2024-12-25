@@ -8,21 +8,22 @@ import FeaturedPost from './featuredPost';
 
 type BlogPost = {
 	title: string;
+	metaTitle?: string;
 	feature_image: string;
-	post_image: string;
+	post_image?: string;
 	primary_author: {
 		name: string;
 		twitter: string;
 	};
 	primary_tag: string;
-	tags: string[];
-	featured: boolean;
+	tags?: string[];
+	featured?: boolean;
 	description: string;
-	published_at: string; // ISO 8601 date string
+	published_at: string;
 	readTime: number;
 	slug: string;
 	content: string;
-	isError: boolean;
+	isError?: boolean;
 };
 
 type articles = BlogPost[];
@@ -85,7 +86,7 @@ export default function Blog({ articles }: { articles: articles }) {
 				article.title.toLowerCase().includes(normalizedQuery) ||
 				article.description.toLowerCase().includes(normalizedQuery) ||
 				article.primary_tag.toLowerCase().includes(normalizedQuery) ||
-				article.tags.some(tag => tag.toLowerCase().includes(normalizedQuery));
+				article.tags?.some(tag => tag.toLowerCase().includes(normalizedQuery));
 
 			return matchesTag && matchesSearch;
 		});
@@ -150,7 +151,7 @@ export default function Blog({ articles }: { articles: articles }) {
 					article.title.toLowerCase().includes(normalizedQuery) ||
 					article.description.toLowerCase().includes(normalizedQuery) ||
 					article.primary_tag.toLowerCase().includes(normalizedQuery) ||
-					article.tags.some(tag => tag.toLowerCase().includes(normalizedQuery))
+					article.tags?.some(tag => tag.toLowerCase().includes(normalizedQuery))
 			);
 		}
 
