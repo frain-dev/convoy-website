@@ -1,12 +1,36 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
 import Post from './post';
 import FeaturedPost from './featuredPost';
 
-export default function Blog({ articles }: any) {
+type BlogPost = {
+	title: string;
+	metaTitle?: string;
+	feature_image: string;
+	post_image?: string;
+	primary_author: {
+		name: string;
+		twitter: string;
+	};
+	primary_tag: string;
+	tags?: string[];
+	featured?: boolean;
+	description: string;
+	published_at: string;
+	readTime: number;
+	slug: string;
+	content: string;
+	isError?: boolean;
+};
+
+type articles = BlogPost[];
+
+export default function Blog({ articles }: { articles: articles }) {
 	const searchParams = useSearchParams();
+	const [searchQuery, setSearchQuery] = useState('');
 	const featuredPosts = articles.filter(article => article.featured);
 	const nonFeaturedPosts = articles.filter(article => !article.featured).sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at));
 	const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -16,8 +40,59 @@ export default function Blog({ articles }: any) {
 	const [showCategories, setShowCategories] = useState(false);
 	const tags = ['All Posts', 'Product Update', 'News', 'Engineering', 'Tutorial', 'Open Thoughts', 'Customer Stories'];
 
+	// console.log('articles', articles);
+
+	const dropdownRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		function handleClickOutside(event: MouseEvent) {
+			if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+				setShowCategories(false);
+			}
+		}
+
+		// Add event listener when dropdown is open
+		if (showCategories) {
+			document.addEventListener('mousedown', handleClickOutside);
+		}
+
+		// Cleanup the event listener
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [showCategories]);
+
 	const [currentPage, setCurrentPage] = useState(1);
 	const postsPerPage = 6;
+
+	// Search functionality
+	const searchPosts = (query: string) => {
+		setSearchQuery(query);
+		setCurrentPage(1); // Reset to first page when searching
+
+		if (!query.trim()) {
+			// If search is empty, show regular filtered posts based on tag
+			const tagFilter = searchParams.get('tag');
+			const posts = tagFilter ? nonFeaturedPosts.filter(article => article.primary_tag === tagFilter) : nonFeaturedPosts;
+			setFilteredPosts(posts);
+			return;
+		}
+
+		const normalizedQuery = query.toLowerCase().trim();
+
+		const searchResults = nonFeaturedPosts.filter(article => {
+			const matchesTag = !searchParams.get('tag') || article.primary_tag === searchParams.get('tag');
+			const matchesSearch =
+				article.title.toLowerCase().includes(normalizedQuery) ||
+				article.description.toLowerCase().includes(normalizedQuery) ||
+				article.primary_tag.toLowerCase().includes(normalizedQuery) ||
+				article.tags?.some(tag => tag.toLowerCase().includes(normalizedQuery));
+
+			return matchesTag && matchesSearch;
+		});
+
+		setFilteredPosts(searchResults);
+	};
 
 	const isTagActive = (tag: string) => {
 		const urlTag = searchParams.get('tag');
@@ -46,23 +121,47 @@ export default function Blog({ articles }: any) {
 			if (inputRef.current) inputRef.current.value = '';
 			setTimeout(() => {
 				setStatus('idle');
-			}, 5000);
+			}, 2500);
 		} catch (error) {
 			console.error('Subscription error:', error);
 			setStatus('error');
 			setTimeout(() => {
 				setStatus('idle');
-			}, 5000);
+			}, 2500);
 		}
 	};
 
+	// Modified filterPosts to work with search
 	const filterPosts = () => {
 		const filterTag = searchParams.get('tag');
-		const filteredPost = nonFeaturedPosts.filter(article => article.primary_tag === filterTag);
-		setCurrentTag(filterTag || '');
-		setFilteredPosts(filteredPost);
+		let filtered = nonFeaturedPosts;
+
+		if (filterTag) {
+			filtered = filtered.filter(article => article.primary_tag === filterTag);
+			setCurrentTag(filterTag);
+		} else {
+			setCurrentTag('All Posts');
+		}
+
+		// Apply search filter if there's an active search
+		if (searchQuery) {
+			const normalizedQuery = searchQuery.toLowerCase().trim();
+			filtered = filtered.filter(
+				article =>
+					article.title.toLowerCase().includes(normalizedQuery) ||
+					article.description.toLowerCase().includes(normalizedQuery) ||
+					article.primary_tag.toLowerCase().includes(normalizedQuery) ||
+					article.tags?.some(tag => tag.toLowerCase().includes(normalizedQuery))
+			);
+		}
+
+		setFilteredPosts(filtered);
 		setCurrentPage(1);
 	};
+
+	useEffect(() => {
+		filterPosts();
+	}, [searchParams]);
 
 	useEffect(() => {
 		if (searchParams.get('tag')) filterPosts();
@@ -90,11 +189,27 @@ export default function Blog({ articles }: any) {
 
 	return (
 		<>
-			<div className="pt-130px nav-bar-break:pt-184px pb-100px max-w-[1350px] w-full m-auto">
-				<div className="flex flex-col items-center justify-center gap-6 w-full px-4">
-					<h1 className="text-32 nav-bar-break:text-[40px] font-medium">Convoy Summaries</h1>
+			<div className="pt-100px nav-bar-break:pt-184px pb-100px max-w-[1350px] w-full m-auto">
+				<motion.div
+					initial={{ opacity: 0, y: 40 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 0.8,
+							delay: 0,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="flex flex-col items-center justify-center gap-6 w-full px-4">
+					<h1 className="text-32 nav-bar-break:text-[40px] font-medium text-center">Convoy Summaries</h1>
 					<form onSubmit={subscribeToNewsletter} className="flex flex-col nav-bar-break:flex-row gap-3 nav-bar-break:gap-4 items-center justify-center w-full">
-						<input
+						<motion.input
+							layout="position"
 							type="email"
 							id="email"
 							className="block p-4 ps-[16px] shadow-btn placeholder-[#666] placeholder:font-[500] text-[15px] text-gray-900 border border-[#E7E7E7] rounded-8px bg-[#fff] w-full nav-bar-break:w-[494px] h-11 focus:outline-none"
@@ -102,64 +217,139 @@ export default function Blog({ articles }: any) {
 							required
 							ref={inputRef}
 						/>
-						<button
+						<motion.button
+							layout="size"
 							type="submit"
-							disabled={status === 'submitting'}
-							className={`px-16px py-10px text-14 font-medium rounded-8px h-10 nav-bar-break:h-11 flex items-center justify-center shadow-btn-secondary transition-all duration-300 ${
-								status === 'success'
-									? 'bg-success-500 text-white-100'
-									: status === 'error'
-									? 'bg-danger-500 text-white-100'
-									: 'bg-[#2780F1] text-white-100 hover:bg-[#1f66c1] group transition-all duration-300'
-							} disabled:opacity-50 min-w-[120px]`}
+							// disabled={status === 'submitting'}
+							initial={false}
+							animate={{
+								backgroundColor:
+									status === 'success'
+										? '#12b76a'
+										: status === 'error'
+										? '#f04438'
+										: status === 'submitting'
+										? 'rgba(39, 128, 241, 0.5)'
+										: 'rgba(39, 128, 241, 1)',
+								width: status === 'success' ? 130 : status === 'error' ? 130 : 130
+							}}
+							transition={{
+								width: { duration: 0.2, ease: 'easeInOut' },
+								backgroundColor: { duration: 0.2 }
+							}}
+							className={`px-16px py-10px text-14 font-medium rounded-8px h-10 nav-bar-break:h-11 flex items-center bg-danger-500 justify-center shadow-btn-secondary min-w-[130px] text-white-100 disabled:opacity-50 group`}
 							aria-live="polite">
-							{status === 'submitting' && (
-								<svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-									<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-									<path
-										className="opacity-75"
-										fill="currentColor"
-										d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-								</svg>
-							)}
-							{status === 'success' && (
-								<>
-									Subscribed
-									<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+							<AnimatePresence mode="wait">
+								{status === 'submitting' && (
+									<motion.svg
+										key="submitting"
+										initial={{ opacity: 0, scale: 0.8 }}
+										animate={{ opacity: 1, scale: 1 }}
+										exit={{ opacity: 0, scale: 0.8 }}
+										transition={{ duration: 0.2 }}
+										className="animate-spin h-5 w-5 text-white"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24">
+										<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
 										<path
-											fillRule="evenodd"
-											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-											clipRule="evenodd"
+											className="opacity-75"
+											fill="currentColor"
+											d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
 										/>
-									</svg>
-								</>
-							)}
-							{status === 'error' && (
-								<>
-									Error
-									<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-										<path
-											fillRule="evenodd"
-											d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-											clipRule="evenodd"
-										/>
-									</svg>
-								</>
-							)}
-							{status === 'idle' && (
-								<>
-									Subscribe
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
-										<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
-									</svg>
-								</>
-							)}
-						</button>
+									</motion.svg>
+								)}
+								{status === 'success' && (
+									<motion.div
+										key="success"
+										initial={{ opacity: 0, x: 20 }}
+										animate={{ opacity: 1, x: 0 }}
+										exit={{ opacity: 0, x: -20 }}
+										transition={{ duration: 0.2 }}
+										className="flex items-center">
+										Subscribed
+										<motion.svg
+											xmlns="http://www.w3.org/2000/svg"
+											className="h-5 w-5 ml-2"
+											viewBox="0 0 20 20"
+											fill="currentColor"
+											initial={{ scale: 0 }}
+											animate={{ scale: 1 }}
+											transition={{ delay: 0.2 }}>
+											<path
+												fillRule="evenodd"
+												d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+												clipRule="evenodd"
+											/>
+										</motion.svg>
+									</motion.div>
+								)}
+								{status === 'error' && (
+									<motion.div
+										key="error"
+										initial={{ opacity: 0, x: 20 }}
+										animate={{ opacity: 1, x: 0 }}
+										exit={{ opacity: 0, x: -20 }}
+										transition={{ duration: 0.2 }}
+										className="flex items-center">
+										Error
+										<motion.svg
+											xmlns="http://www.w3.org/2000/svg"
+											className="h-5 w-5 ml-2"
+											viewBox="0 0 20 20"
+											fill="currentColor"
+											initial={{ scale: 0 }}
+											animate={{ scale: 1 }}
+											transition={{ delay: 0.2 }}>
+											<path
+												fillRule="evenodd"
+												d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+												clipRule="evenodd"
+											/>
+										</motion.svg>
+									</motion.div>
+								)}
+								{status === 'idle' && (
+									<motion.div
+										key="idle"
+										initial={{ opacity: 0, x: 20 }}
+										animate={{ opacity: 1, x: 0 }}
+										exit={{ opacity: 0, x: -20 }}
+										transition={{ duration: 0.2 }}
+										className="flex items-center group">
+										Subscribe
+										<motion.svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="18"
+											height="19"
+											viewBox="0 0 18 19"
+											className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-transform">
+											<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
+										</motion.svg>
+									</motion.div>
+								)}
+							</AnimatePresence>
+						</motion.button>
 					</form>
-				</div>
+				</motion.div>
 
-				<div className="m-auto pb-0 flex justify-between pt-90px">
-					<aside className="w-240px hidden desktop:sticky desktop:top-150px desktop:block desktop:pl-20px desktop:pr-32px">
+				<div className="m-auto pb-0 flex justify-between pt-70px desktop:pt-90px">
+					<motion.aside
+						initial={{ opacity: 0, x: -5 }}
+						whileInView={{
+							opacity: 1,
+							x: 0,
+							transition: {
+								duration: 0.8,
+								delay: 0.2,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
+						className="w-240px hidden desktop:sticky desktop:top-150px desktop:block desktop:pl-20px desktop:pr-32px">
 						<div className="relative mb-8">
 							<div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -174,10 +364,10 @@ export default function Blog({ articles }: any) {
 							</div>
 							<input
 								type="text"
-								id="default-search"
+								value={searchQuery}
+								onChange={e => searchPosts(e.target.value)}
 								className="block p-4 ps-[44px] shadow-btn placeholder-[#A5A5A5] text-[15px] text-gray-900 border border-[#E7E7E7] rounded-8px bg-[#fff] tab:w-[200px] desktop-min:z w-[280px] h-[44px] focus:outline-none"
-								placeholder="Search"
-								required
+								placeholder="Search articles..."
 							/>
 						</div>
 
@@ -186,7 +376,7 @@ export default function Blog({ articles }: any) {
 							{tags.map((tag, i) => (
 								<li key={i} className="font-medium text-14 mb-[15px] ml-20px">
 									<Link
-										href={tag !== 'All Posts' ? `/blog?tag=${tag}` : '/blog'}
+										href={tag !== 'All Posts' ? `/blog?tag=${tag}` : `/blog?`}
 										className={`${isTagActive(tag) ? 'text-[#2780F1]' : 'text-[#666]'} hover:text-[#2780F1] transition-colors duration-200`}>
 										{tag}
 									</Link>
@@ -198,7 +388,7 @@ export default function Blog({ articles }: any) {
 							<h6 className="font-semibold mb-18px mt-8">Follow Us</h6>
 
 							<ul className="flex">
-								<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+								<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset] hover:opacity-75 transition-all">
 									<a target="_blank" href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
 										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
 											<path
@@ -208,7 +398,7 @@ export default function Blog({ articles }: any) {
 										</svg>
 									</a>
 								</li>
-								<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+								<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset] hover:opacity-75 transition-all">
 									<a target="_blank" href="https://twitter.com/getconvoy">
 										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
 											<path
@@ -218,7 +408,7 @@ export default function Blog({ articles }: any) {
 										</svg>{' '}
 									</a>
 								</li>
-								<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+								<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset] hover:opacity-75 transition-all">
 									<a target="_blank" href="https://github.com/frain-dev/convoy">
 										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
 											<path
@@ -232,39 +422,183 @@ export default function Blog({ articles }: any) {
 								</li>
 							</ul>
 						</div>
-					</aside>
+					</motion.aside>
 
 					<main className="max-w-[1035px] w-full px-20px">
-						<div className="relative desktop:hidden mb-[33px]">
-							<h2 className="text-[#666] text-16 font-medium text-black flex items-center">
-								{currentTag}
-								<button onClick={() => setShowCategories(!showCategories)} className="h-fit mt-4px ml-4px desktop:hidden">
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-										<path d="M9.00045 9.87835L12.7128 6.16602L13.7734 7.22668L9.00045 11.9997L4.22753 7.22668L5.28818 6.16602L9.00045 9.87835Z" fill="black" />
-									</svg>{' '}
-								</button>
-							</h2>
-							{showCategories && (
-								<ul className="absolute bg-white-100 shadow-sm rounded-10px p-24px z-1 w-216px mt-4px z-30">
-									{tags.map((tag, i) => (
-										<li key={i} className="mb-32px last-of-type:mb-0 text-14 text-gray-600" onClick={() => setShowCategories(!showCategories)}>
-											<Link href={'/blog?tag=' + tag}>{tag}</Link>
-										</li>
-									))}
-								</ul>
-							)}
+						{/* Show search results count if searching */}
+						{searchQuery && (
+							<motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="mb-4 text-sm text-[#666]">
+								Found {filteredPosts.length} result{filteredPosts.length !== 1 ? 's' : ''} for "{searchQuery}" in {currentTag}
+							</motion.div>
+						)}
+
+						<div className="flex items-center justify-between gap-10 desktop:hidden">
+							<motion.div
+								ref={dropdownRef}
+								initial={{ opacity: 0, y: 5 }}
+								whileInView={{
+									opacity: 1,
+									y: 0,
+									transition: {
+										duration: 0.8,
+										delay: 0.2,
+										ease: [0.44, 0, 0, 1]
+									}
+								}}
+								viewport={{
+									amount: 'some',
+									once: true
+								}}
+								className="relative mb-[33px]">
+								<motion.h2
+									onClick={() => setShowCategories(!showCategories)}
+									className="cursor-pointer hover:opacity-75 transition-all text-[#666] text-16 font-medium text-black flex items-center">
+									{currentTag}
+									<motion.button
+										className="h-fit mt-2px ml-4px desktop:hidden"
+										animate={{ rotate: showCategories ? 180 : 0 }}
+										transition={{ duration: 0.3, ease: 'easeInOut' }}>
+										<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+											<path
+												d="M9.00045 9.87835L12.7128 6.16602L13.7734 7.22668L9.00045 11.9997L4.22753 7.22668L5.28818 6.16602L9.00045 9.87835Z"
+												fill="black"
+											/>
+										</svg>
+									</motion.button>
+								</motion.h2>
+
+								<AnimatePresence>
+									{showCategories && (
+										<motion.div
+											initial={{ opacity: 0, y: -10, scale: 0.95 }}
+											animate={{
+												opacity: 1,
+												y: 0,
+												scale: 1,
+												transition: {
+													duration: 0.2,
+													ease: 'easeOut'
+												}
+											}}
+											exit={{
+												opacity: 0,
+												y: -10,
+												scale: 0.95,
+												transition: {
+													duration: 0.15,
+													ease: 'easeIn'
+												}
+											}}
+											className="absolute bg-white-100 rounded-10px py-10px pl-24px z-1 w-216px mt-4px z-30 border border-[#e7e7e7] shadow-btn">
+											{tags.map((tag, i) => (
+												<motion.div
+													key={tag}
+													initial={{ opacity: 0, x: -20 }}
+													animate={{
+														opacity: 1,
+														x: 0,
+														transition: {
+															duration: 0.2,
+															delay: i * 0.03 // Stagger the animations
+														}
+													}}>
+													<Link
+														href={tag !== 'All Posts' ? `/blog?tag=${tag}` : `/blog?`}
+														className="mb-32px py-14px !px- 24px last-of-type:mb-0 text-14 group cursor-pointer w-full block"
+														onClick={() => setShowCategories(false)}>
+														<p
+															className={`${
+																isTagActive(tag) ? 'text-[#2780F1]' : 'text-[#666]'
+															} group-hover:text-[#2780F1] transition-colors duration-200`}>
+															{tag}
+														</p>
+													</Link>
+												</motion.div>
+											))}
+										</motion.div>
+									)}
+								</AnimatePresence>
+							</motion.div>
+
+							<motion.div
+								initial={{ opacity: 0, y: 5 }}
+								whileInView={{
+									opacity: 1,
+									y: 0,
+									transition: {
+										duration: 0.8,
+										delay: 0.2,
+										ease: [0.44, 0, 0, 1]
+									}
+								}}
+								viewport={{
+									amount: 'some',
+									once: true
+								}}
+								className="relative mb-8">
+								<div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<path
+											d="M19.25 19.25L15.5 15.5M4.75 11C4.75 7.54822 7.54822 4.75 11 4.75C14.4518 4.75 17.25 7.54822 17.25 11C17.25 14.4518 14.4518 17.25 11 17.25C7.54822 17.25 4.75 14.4518 4.75 11Z"
+											stroke="#A5A5A5"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</div>
+								<input
+									type="text"
+									value={searchQuery}
+									onChange={e => searchPosts(e.target.value)}
+									className="block p-4 ps-[44px] shadow-btn placeholder-[#A5A5A5] text-[15px] text-gray-900 border border-[#E7E7E7] rounded-8px bg-[#fff] w-full tab:w-[200px] desktop-min:z sm-old:w-[280px] h-[44px] focus:outline-none"
+									placeholder="Search articles..."
+								/>
+							</motion.div>
 						</div>
 
-						<FeaturedPost postData={featuredPosts[0]}></FeaturedPost>
+						{/* Only show featured post if not searching */}
+						{!searchQuery && <FeaturedPost postData={featuredPosts[0]} />}
 
-						<div className="grid grid-cols-1 desktop:grid-cols-2 gap-40px max-w-[970px] mb-40px mt-40px w-full">
+						<div className="grid grid-cols-1 sm-old:grid-cols-2 gap-20px desktop:gap-40px max-w-[970px] my-20px desktop:mb-40px desktop:mt-40px w-full">
 							{currentPosts.map((article, i) => (
-								<Post postData={article} key={i} index={i} />
+								<motion.div
+									initial={{ opacity: 0, y: 5 }}
+									whileInView={{
+										opacity: 1,
+										y: 0,
+										transition: {
+											duration: 0.8,
+											delay: i * 0.2,
+											ease: [0.44, 0, 0, 1]
+										}
+									}}
+									viewport={{
+										amount: 'some',
+										once: true
+									}}>
+									<Post postData={article} key={i} index={i} />
+								</motion.div>
 							))}
 						</div>
 
 						{totalPages > 1 && (
-							<div className="flex items-center justify-center space-x-1.5 mt-[72px]">
+							<motion.div
+								initial={{ opacity: 0, y: 0 }}
+								whileInView={{
+									opacity: 1,
+									y: 0,
+									transition: {
+										duration: 0.8,
+										delay: 0,
+										ease: [0.44, 0, 0, 1]
+									}
+								}}
+								viewport={{
+									amount: 'some',
+									once: true
+								}}
+								className="flex items-center justify-center space-x-1.5 mt-[72px]">
 								<button
 									className="w-[43px] h-[39px] flex items-center justify-center rounded-8px border border-[#e7e7e7] disabled:opacity-50 shadow-btn bg-white-100"
 									onClick={prevPage}
@@ -322,14 +656,29 @@ export default function Blog({ articles }: any) {
 										<path d="M7.71233 8.77298L4 5.06066L5.06066 4L9.83363 8.77298L5.06066 13.5459L4 12.4853L7.71233 8.77298Z" fill="#666666" />
 									</svg>
 								</button>
-							</div>
+							</motion.div>
 						)}
 
-						<div className="desktop:hidden mt-20">
+						<motion.div
+							initial={{ opacity: 0, y: 0 }}
+							whileInView={{
+								opacity: 1,
+								y: 0,
+								transition: {
+									duration: 0.8,
+									delay: 0,
+									ease: [0.44, 0, 0, 1]
+								}
+							}}
+							viewport={{
+								amount: 'some',
+								once: true
+							}}
+							className="desktop:hidden mt-20">
 							<h6 className="font-semibold mb-8px mt-8 text-14">Follow Us</h6>
 
 							<ul className="flex">
-								<li className="bg-opacity-10 w-30px h-30px flex items-center justify-center mr-10px last-of-type:mr-[unset]">
+								<li className="bg-opacity-10 w-30px h-30px flex items-center justify-center mr-10px last-of-type:mr-[unset] hover:opacity-75 transition-all">
 									<a target="_blank" href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40" fill="none">
 											<path
@@ -339,7 +688,7 @@ export default function Blog({ articles }: any) {
 										</svg>
 									</a>
 								</li>
-								<li className="bg-opacity-10 w-30px h-30px flex items-center justify-center mr-10px last-of-type:mr-[unset]">
+								<li className="bg-opacity-10 w-30px h-30px flex items-center justify-center mr-10px last-of-type:mr-[unset] hover:opacity-75 transition-all">
 									<a target="_blank" href="https://twitter.com/getconvoy">
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40" fill="none">
 											<path
@@ -349,7 +698,7 @@ export default function Blog({ articles }: any) {
 										</svg>{' '}
 									</a>
 								</li>
-								<li className="bg-opacity-10 w-30px h-30px flex items-center justify-center mr-10px last-of-type:mr-[unset]">
+								<li className="bg-opacity-10 w-30px h-30px flex items-center justify-center mr-10px last-of-type:mr-[unset] hover:opacity-75 transition-all">
 									<a target="_blank" href="https://github.com/frain-dev/convoy">
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40" fill="none">
 											<path
@@ -362,7 +711,7 @@ export default function Blog({ articles }: any) {
 									</a>
 								</li>
 							</ul>
-						</div>
+						</motion.div>
 					</main>
 				</div>
 			</div>
