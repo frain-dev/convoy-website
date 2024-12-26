@@ -5,18 +5,21 @@ import getReadTime from './read-time';
 
 type PostProps = {
 	title: string;
-	metaTitle: string;
-	description: string;
-	primary_tag: string;
+	metaTitle?: string;
 	feature_image: string;
-	readTime: any;
-	published_at: any;
+	post_image?: string;
 	primary_author: {
 		name: string;
 		twitter: string;
 	};
+	primary_tag: string;
+	tags?: string[];
+	featured?: boolean;
+	description: string;
+	published_at: string;
+	readTime: number;
 	slug: string;
-	content: any;
+	content: string;
 	isError?: boolean;
 };
 

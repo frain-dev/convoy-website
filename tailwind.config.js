@@ -63,6 +63,7 @@ module.exports = {
 			tab: { max: '1360px', min: '880px' },
 			'doc-tab': { min: '768px' },
 			'xs-old': { min: '340px' },
+			'xxs-old': { min: '410px' },
 			'sm-old': { min: '640px' },
 			'md-old': { min: '768px' },
 			'lg-old': { min: '1024px' },

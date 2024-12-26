@@ -4,6 +4,7 @@ import question from 'public/svg/question.svg';
 import error from 'public/svg/error.svg';
 import Image from 'next/image';
 import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const selfHostedFeatures = [
 	{
@@ -249,44 +250,31 @@ const cloudFeatures = [
 const faqs = [
 	{
 		question: 'Do you offer free trials?',
-		answer: (
-			<>
-				We have a 14 days free trial in the Cloud, but we don’t offer free trials for self-hosted deployments. 
-			</>
-		)
+		answer: <>We have a 14 days free trial in the Cloud, but we don’t offer free trials for self-hosted deployments.</>
 	},
 	{
 		question: 'The 25 events/sec limit in the Cloud is too small, how can I purchase more?',
 		answer: (
 			<>
-				Please reach out to us in 
-				<a href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ"
-					className="text-[#2780F1] underline hover:no-underline px-1">
+				Please reach out to us in
+				<a href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ" className="text-[#2780F1] underline hover:no-underline px-1">
 					Slack
-				</a> 
+				</a>
 				or at
 				<a href="mailto:sales@getconvoy.io" className="text-[#2780F1] underline hover:no-underline px-1">
 					sales@getconvoy.io
-				</a>, 
-				we're happy to learn about your needs and increase your limit.
+				</a>
+				, we're happy to learn about your needs and increase your limit.
 			</>
 		)
 	},
 	{
 		question: 'What regions are supported in the Cloud?',
-		answer: (
-			<>
-				We currently have clusters deployed in the United States and Europe to cater for regional compliance.
-			</>
-		)
+		answer: <>We currently have clusters deployed in the United States and Europe to cater for regional compliance.</>
 	},
 	{
 		question: 'Can I use Convoy to receive webhooks?',
-		answer: (
-			<>
-				Yes, Convoy is a bi-directional webhook gateway that can be used to send and receive webhooks.
-			</>
-		)
+		answer: <>Yes, Convoy is a bi-directional webhook gateway that can be used to send and receive webhooks.</>
 	}
 ];
 
@@ -352,51 +340,143 @@ export default function Pricing() {
 		setSelected(id);
 	};
 
+	const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+	const handleToggle = (index: number) => {
+		setOpenIndex(openIndex === index ? null : index);
+	};
+
 	return (
 		<main className="flex flex-col items-center pb-120px">
-			<section className="pt-120px desktop:pt-150px px-20px flex items-center flex-col max-w-[1280px]">
-				<div className="w-full flex flex-col items-start desktop:items-center justify-center desktop:gap-6">
+			<section className="pt-100px desktop:pt-150px px-20px flex items-center flex-col max-w-[1280px]">
+				<motion.div
+					initial={{ opacity: 0, y: 40 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 0.8,
+							delay: 0,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="w-full flex flex-col items-start sm-old:items-center justify-center desktop:gap-6">
 					<h1 className="desktop:text-center font-medium text-32 desktop:text-[40px] mb-24px max-w-[1020px] desktop:m-auto">Pricing plans</h1>
 					<p className="desktop:text-center text-[#666] text-14 desktop:text-16 max-w-[683px] m-auto mb-48px font-medium">
 						Pricing for each stage of growth both in the Cloud and on-prem
 					</p>
-				</div>
+				</motion.div>
 
-				<div className="inline-flex mx-auo mb-30px p-1 bg-white-100 border border-[#e7e7e7] rounded-8px">
+				<motion.div
+					initial={{ opacity: 0, y: 40 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 0.8,
+							delay: 0,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="inline-flex mx-auto mb-[30px] p-1 bg-white-100 border border-[#e7e7e7] rounded-[8px]">
 					{options.map(option => (
-						<button
+						<motion.button
 							key={option.id}
 							onClick={() => handleSelect(option.id)}
-							className={`px-4 py-2.5 text-[15px] font-semibold rounded-6px transition-colors' ${
-								selected === option.id ? 'bg-[#2780F1] px-10 border-[#2078E8] text-white-100' : 'text-[#000]'
-							}
-							`}
+							className={`relative px-4 py-2 desktop:py-2.5 text-[15px] font-semibold rounded-[6px] transition-all ${
+								selected === option.id ? 'text-white-100' : 'text-[#000]'
+							}`}
 							aria-selected={selected === option.id}
 							role="tab">
-							{option.label}
-						</button>
+							{selected === option.id && (
+								<motion.div
+									layoutId="background"
+									className="absolute inset-0 bg-[#2780F1] rounded-[6px]"
+									initial={false}
+									transition={{
+										type: 'spring',
+										stiffness: 400,
+										damping: 30
+									}}
+								/>
+							)}
+							<span className="relative z-10">{option.label}</span>
+						</motion.button>
 					))}
-				</div>
+				</motion.div>
 
 				<PricingCard data={selected === 'cloud' ? cloudPricing : selfHostedPricing} variant={selected} />
 
-				<div className="hid den bg-white-100 rounded-8px border border-[#e7e7e7] w-full mt-72px py-30px px-10px sm-old:px-20px desktop:p-20">
+				<motion.div
+					initial={{ opacity: 0, y: 5 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 1.2,
+							delay: 0,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="hid den bg-white-100 rounded-8px border border-[#e7e7e7] w-full mt-42px md-old:mt-72px py-30px px-10px sm-old:px-20px desktop:p-20">
 					<PricingTable features={selected === 'cloud' ? cloudFeatures : selfHostedFeatures} selected={selected} />
-				</div>
+				</motion.div>
 			</section>
 
-			<section className="w-full flex-col px-20px flex items-center max-w-[1280px]">
+			<section className="w-full flex-col px-20px flex items-center max-w-[1280px] !hid den">
 				<div className="mt-72px w-full flex flex-col gap-6 desktop:gap-10 items-center">
-					<div className="flex flex-col items-start desktop:items-center gap-2 desktop:gap-6">
+					<motion.div
+						initial={{ opacity: 0, y: 40 }}
+						whileInView={{
+							opacity: 1,
+							y: 0,
+							transition: {
+								duration: 0.8,
+								delay: 0,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
+						className="flex flex-col items-start desktop:items-center gap-2 desktop:gap-6">
 						<h2 className="text-24 desktop:text-[40px] font-medium">Frequently Asked Questions</h2>
 						<p className="text-left desktop:text-center text-14 desktop:text-16 leading-[150%] text-[#666]">Quick answers to questions you might have</p>
-					</div>
+					</motion.div>
 
-					<div className="max-w-[1100px] w-full px-5 pt-2 desktop:pt-5 pb-2 desktop:pb-7 desktop:px-10 flex flex-col items-center justify-center bg-white-100 border border-[#e7e7e7] divide-y-[1px] divide-[#e7e7e7]/80 rounded-8px">
+					<motion.div
+						className="max-w-[1100px] w-full px-5 pt-2 desktop:pt-5 pb-2 desktop:pb-7 desktop:px-10 flex flex-col items-center justify-center bg-white-100 border border-[#e7e7e7] divide-y-[1px] divide-[#e7e7e7]/80 rounded-8px"
+						initial={{ opacity: 0, y: 5 }}
+						whileInView={{
+							opacity: 1,
+							y: 0,
+							transition: {
+								duration: 0.8,
+								delay: 0.2,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}>
 						{faqs.map((faq, index) => (
-							<FAQItem key={index} question={faq.question} answer={faq.answer} />
+							<FAQItem key={index} question={faq.question} answer={faq.answer} isOpen={openIndex === index} onToggle={() => handleToggle(index)} />
 						))}
-					</div>
+					</motion.div>
 				</div>
 			</section>
 		</main>
@@ -435,36 +515,58 @@ const PricingCard = ({ data, variant }) => {
 
 	return (
 		<div className="flex flex-col desktop:flex-row gap-5">
-			{data.map((item, index) => (
-				<div
-					key={item.name}
-					className={`rounded-8px p-20px desktop:p-40px bg-gradient-to-b ${getBgGradient(
-						index
-					)} flex flex-col items-start justify-between w-full desktop:w-[560px] h-full desktop:h-[370px] relative overflow-hidden border border-[#e7e7e7]`}>
-					<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.45rem_2.55rem] absolute left-0 -top-1 w-full h-full"></div>
+			<AnimatePresence mode="popLayout">
+				{data.map((item, index) => (
+					<motion.div
+						initial={{ opacity: 0, y: 5 }}
+						exit={{ opacity: 0, y: 5 }}
+						whileInView={{
+							opacity: 1,
+							y: 0,
+							transition: {
+								duration: 0.8,
+								delay: index * 0.2 + 0.2,
+								ease: [0.44, 0, 0, 1]
+							}
+						}}
+						viewport={{
+							amount: 'some',
+							once: true
+						}}
+						key={item.name}
+						className={`rounded-8px p-20px desktop:p-40px bg-gradient-to-b ${getBgGradient(
+							index
+						)} flex flex-col items-start justify-between w-full desktop:w-[560px] h-full desktop:h-[370px] relative overflow-hidden border border-[#e7e7e7]`}>
+						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.45rem_2.55rem] absolute left-0 -top-1 w-full h-full"></div>
 
-					<div className="z-10">
-						<span className={`${getLabelBg(index)} rounded-6px py-1 px-2.5 font-medium leading-[150%] text-14 desktop:text-16`}>{item.name}</span>
+						<div className="z-10">
+							<span className={`${getLabelBg(index)} rounded-6px py-1 px-2.5 font-medium leading-[150%] text-14 desktop:text-16`}>{item.name}</span>
 
-						<p className="text-[#666] text-14 desktop:text-16 font-medium leading-[150%] mt-3">{item.description}</p>
-					</div>
+							<p className="text-[#666] text-14 desktop:text-16 font-medium leading-[150%] mt-4 desktop:mt-3 mb-5 desktop:mb-0">{item.description}</p>
+						</div>
 
-					<div className="z-10">
-						{renderPrice(item.price)}
+						<div className="z-10">
+							{renderPrice(item.price)}
 
-						<a
-							target="_blank"
-							href={item.cta.link}
-							className="mt-3 pl-20px desktop:pl-14px pr-14px desktop:pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center z-10 w-max">
-							<span>{item.cta.text}</span>
+							<a
+								target="_blank"
+								href={item.cta.link}
+								className="mt-3 pl-20px desktop:pl-14px pr-14px desktop:pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center z-10 w-max">
+								<span>{item.cta.text}</span>
 
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
-								<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
-							</svg>
-						</a>
-					</div>
-				</div>
-			))}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="18"
+									height="19"
+									viewBox="0 0 18 19"
+									className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
+									<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
+								</svg>
+							</a>
+						</div>
+					</motion.div>
+				))}
+			</AnimatePresence>
 		</div>
 	);
 };
@@ -507,7 +609,9 @@ function PricingTable({ features, selected }) {
 
 						<div className="flex flex-col">
 							{featureType.feat.map(feature => (
-								<p className="text-14 h-[90px] desktop:h-[48px] w-[140px] desktop:w-full px-3 py-2.5 desktop:pb-0 text-[#666]">{feature.name}</p>
+								<p className="text-14 h-[90px] sm-old:h-[90px] desktop:!h-[48px] w-[100px] sm-old:w-[140px] desktop:!w-full px-3 py-2.5 desktop:pb-0 text-[#666]">
+									{feature.name}
+								</p>
 							))}
 						</div>
 					</div>
@@ -585,18 +689,38 @@ const MinusIcon = () => (
 	</svg>
 );
 
-const FAQItem: React.FC<{ question: string; answer: React.ReactNode }> = ({ question, answer }) => {
-	const [isOpen, setIsOpen] = useState(false);
+interface FAQItemProps {
+	question: string;
+	answer: React.ReactNode;
+	isOpen: boolean;
+	onToggle: () => void;
+}
 
+const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onToggle }) => {
 	return (
-		<div className="py-4 w-full flex gap-16px">
-			<div className="pt-1.5">{isOpen ? <MinusIcon /> : <PlusIcon />}</div>
-			<div className="">
-				<button className="flex justify-between items-center w-full text-left group" onClick={() => setIsOpen(!isOpen)} aria-expanded={isOpen}>
+		<motion.div layout className="py-4 w-full flex gap-4">
+			<div onClick={onToggle} className="mt-1.5 cursor-pointer">
+				<motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3, ease: 'easeInOut' }} className="">
+					{isOpen ? <MinusIcon /> : <PlusIcon />}
+				</motion.div>
+			</div>
+			<div className="flex-1">
+				<button className="flex justify-between items-center w-full text-left group" onClick={onToggle} aria-expanded={isOpen}>
 					<span className="text-[#000] text-14 desktop:text-18 font-medium">{question}</span>
 				</button>
-				{isOpen && <div className="mt-2 text-14 text-[#666]">{answer}</div>}
+				<AnimatePresence initial={false}>
+					{isOpen && (
+						<motion.div
+							initial={{ opacity: 0, height: 0 }}
+							animate={{ opacity: 1, height: 'auto' }}
+							exit={{ opacity: 0, height: 0 }}
+							transition={{ duration: 0.3, ease: 'easeInOut' }}
+							className="overflow-hidden">
+							<div className="mt-2 text-14 text-[#666]">{answer}</div>
+						</motion.div>
+					)}
+				</AnimatePresence>
 			</div>
-		</div>
+		</motion.div>
 	);
 };

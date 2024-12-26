@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import SOCIcon from '../../../public/svg/soc-stamp.svg';
 import GithubIcon from '../../../public/svg/github-icon.svg';
 import SlackIcon from '../../../public/svg/slack-icon.svg';
@@ -78,13 +79,13 @@ export default function Footer() {
 			if (inputRef.current) inputRef.current.value = '';
 			setTimeout(() => {
 				setStatus('idle');
-			}, 5000);
+			}, 2500);
 		} catch (error) {
 			console.error('Subscription error:', error);
 			setStatus('error');
 			setTimeout(() => {
 				setStatus('idle');
-			}, 5000);
+			}, 2500);
 		}
 	};
 
@@ -95,17 +96,17 @@ export default function Footer() {
 					<div className="max-w-[1200px] m-auto">
 						<nav className="flex justify-between flex-wra p pb-px footer:block">
 							<div className="mobile:w-full mobile:mb-40px">
-								<div>
+								<Link href="/">
 									<Image src="/svg/convoy-logo-full-new.svg" height={32} width={160} alt="logo" className="w-[119px] nav-bar-break:w-160px" />
-								</div>
+								</Link>
 
 								<p className="text-14 mb-24px mt-12px nav-bar-break:w-[246px] text-[#666] font-medium leading-[160%]">
 									2261 Market Street, San Francisco, CA 94114
 								</p>
 							</div>
 
-							<div className="flex flex-col-reverse nav-bar-break:flex-col justify-between flex-wra desktop:pb-40px desktop:footer:block bor der w-full desktop:w-min mobile:gap-10">
-								<div className="flex justify-between items-start desktop:justify-end bor der desktop:gap-100px w-full gap-y-10 desktop: flex-wrap pb-42px desktop:footer:block desktop:w-max">
+							<div className="flex flex-col-reverse nav-bar-break:flex-col justify-between flex-wra desktop:pb-40px desktop:block bor der w-full xl-old:w-min mobile:gap-10 bor der !hi dden">
+								<div className="flex justify-between items-start desktop:justify-end bor der desktop:gap-100px w-full gap-y-10 desktop: flex-wrap pb-42px desktop:footer:block xl-old:w-max">
 									{footerLinks.map((section, index) => (
 										<ul key={index} className="mobile:w-[150px]">
 											<h3 className="text-16 desktop:text-18 footer:border-b footer:border-b-white-24 group-hover:footer:mb-0 footer:pb-8px font-semibold footer:font-normal mb-4 desktop:mb-24px flex items-center justify-between">
@@ -115,7 +116,9 @@ export default function Footer() {
 											{section.links.map((link, i) => (
 												<li key={i} className="text-[#666]">
 													{!link.isExternal && (
-														<Link href={link.link} className="text-12 desktop:text-14 font-medium mb-2 desktop:mb-12px block footer:pl-4px w-full">
+														<Link
+															href={link.link}
+															className="text-12 desktop:text-14 font-medium mb-2 desktop:mb-12px block footer:pl-4px w-full hover:opacity-75 transition-all">
 															{link.name}
 														</Link>
 													)}
@@ -123,7 +126,7 @@ export default function Footer() {
 														<a
 															target="_blank"
 															href={link.link}
-															className="text-12 desktop:text-14 font-medium mb-2 desktop:mb-12px block footer:pl-4px w-full">
+															className="text-12 desktop:text-14 font-medium mb-2 desktop:mb-12px block footer:pl-4px w-full hover:opacity-75 transition-all">
 															{link.name}
 														</a>
 													)}
@@ -144,62 +147,122 @@ export default function Footer() {
 										required
 										ref={inputRef}
 									/>
-									<button
+									<motion.button
+										layout="size"
 										type="submit"
-										disabled={status === 'submitting'}
-										className={`px-16px py-10px text-14 font-medium rounded-8px h-10 nav-bar-break:h-11 flex items-center justify-center shadow-btn-secondary transition-all duration-300 ${
-											status === 'success'
-												? 'bg-success-500 text-white-100'
-												: status === 'error'
-												? 'bg-danger-500 text-white-100'
-												: 'bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100'
-										} disabled:opacity-50 min-w-[120px]`}
+										// disabled={status === 'submitting'}
+										initial={false}
+										animate={{
+											backgroundColor:
+												status === 'success'
+													? '#12b76a'
+													: status === 'error'
+													? '#f04438'
+													: status === 'submitting'
+													? 'rgba(39, 128, 241, 0.5)'
+													: 'rgba(39, 128, 241, 1)',
+											width: status === 'success' ? 130 : status === 'error' ? 130 : 130
+										}}
+										transition={{
+											width: { duration: 0.2, ease: 'easeInOut' },
+											backgroundColor: { duration: 0.2 }
+										}}
+										className={`px-16px py-10px text-14 font-medium rounded-8px h-10 nav-bar-break:h-11 flex items-center bg-danger-500 justify-center shadow-btn-secondary min-w-[130px] text-white-100 disabled:opacity-50 group`}
 										aria-live="polite">
-										{status === 'submitting' && (
-											<svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-												<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-												<path
-													className="opacity-75"
-													fill="currentColor"
-													d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-											</svg>
-										)}
-										{status === 'success' && (
-											<>
-												Subscribed
-												<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+										<AnimatePresence mode="wait">
+											{status === 'submitting' && (
+												<motion.svg
+													key="submitting"
+													initial={{ opacity: 0, scale: 0.8 }}
+													animate={{ opacity: 1, scale: 1 }}
+													exit={{ opacity: 0, scale: 0.8 }}
+													transition={{ duration: 0.2 }}
+													className="animate-spin h-5 w-5 text-white"
+													xmlns="http://www.w3.org/2000/svg"
+													fill="none"
+													viewBox="0 0 24 24">
+													<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
 													<path
-														fillRule="evenodd"
-														d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-														clipRule="evenodd"
+														className="opacity-75"
+														fill="currentColor"
+														d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
 													/>
-												</svg>
-											</>
-										)}
-										{status === 'error' && (
-											<>
-												Error
-												<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-													<path
-														fillRule="evenodd"
-														d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-														clipRule="evenodd"
-													/>
-												</svg>
-											</>
-										)}
-										{status === 'idle' && (
-											<>
-												Subscribe
-												<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
-													<path
-														d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z"
-														fill="white"
-													/>
-												</svg>
-											</>
-										)}
-									</button>
+												</motion.svg>
+											)}
+											{status === 'success' && (
+												<motion.div
+													key="success"
+													initial={{ opacity: 0, x: 20 }}
+													animate={{ opacity: 1, x: 0 }}
+													exit={{ opacity: 0, x: -20 }}
+													transition={{ duration: 0.2 }}
+													className="flex items-center">
+													Subscribed
+													<motion.svg
+														xmlns="http://www.w3.org/2000/svg"
+														className="h-5 w-5 ml-2"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+														initial={{ scale: 0 }}
+														animate={{ scale: 1 }}
+														transition={{ delay: 0.2 }}>
+														<path
+															fillRule="evenodd"
+															d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+															clipRule="evenodd"
+														/>
+													</motion.svg>
+												</motion.div>
+											)}
+											{status === 'error' && (
+												<motion.div
+													key="error"
+													initial={{ opacity: 0, x: 20 }}
+													animate={{ opacity: 1, x: 0 }}
+													exit={{ opacity: 0, x: -20 }}
+													transition={{ duration: 0.2 }}
+													className="flex items-center">
+													Error
+													<motion.svg
+														xmlns="http://www.w3.org/2000/svg"
+														className="h-5 w-5 ml-2"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+														initial={{ scale: 0 }}
+														animate={{ scale: 1 }}
+														transition={{ delay: 0.2 }}>
+														<path
+															fillRule="evenodd"
+															d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+															clipRule="evenodd"
+														/>
+													</motion.svg>
+												</motion.div>
+											)}
+											{status === 'idle' && (
+												<motion.div
+													key="idle"
+													initial={{ opacity: 0, x: 20 }}
+													animate={{ opacity: 1, x: 0 }}
+													exit={{ opacity: 0, x: -20 }}
+													transition={{ duration: 0.2 }}
+													className="flex items-center group">
+													Subscribe
+													<motion.svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="18"
+														height="19"
+														viewBox="0 0 18 19"
+														className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-transform">
+														<path
+															d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z"
+															fill="white"
+														/>
+													</motion.svg>
+												</motion.div>
+											)}
+										</AnimatePresence>
+									</motion.button>
 								</form>
 							</div>
 						</nav>
@@ -209,7 +272,7 @@ export default function Footer() {
 								<h6 className="font-semibold mb-8px text-[#666] text-12 desktop:text-14">Follow Us</h6>
 
 								<ul className="flex">
-									<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+									<li className="bg-opacity-10 hover:opacity-75 transition-all w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 										<a target="_blank" href="https://github.com/frain-dev/convoy">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 												<path
@@ -221,7 +284,7 @@ export default function Footer() {
 											</svg>
 										</a>
 									</li>
-									<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+									<li className="bg-opacity-10 hover:opacity-75 transition-all w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 										<a target="_blank" href="https://www.linkedin.com/company/convoy-webhooks/">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 												<path
@@ -231,7 +294,7 @@ export default function Footer() {
 											</svg>
 										</a>
 									</li>
-									<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+									<li className="bg-opacity-10 hover:opacity-75 transition-all w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 										<a target="_blank" href="mailto:sales@getconvoy.io">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 												<path
@@ -245,7 +308,7 @@ export default function Footer() {
 											</svg>
 										</a>
 									</li>
-									<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+									<li className="bg-opacity-10 hover:opacity-75 transition-all w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 										<a target="_blank" href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 												<path
@@ -255,7 +318,7 @@ export default function Footer() {
 											</svg>
 										</a>
 									</li>
-									<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
+									<li className="bg-opacity-10 hover:opacity-75 transition-all w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
 										<a target="_blank" href="https://twitter.com/getconvoy">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 												<path

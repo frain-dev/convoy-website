@@ -5,6 +5,7 @@ import Post from './post';
 import authors from '../../../data/authors.json';
 import GetStarted from '@/app/components/GetStarted';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function BlogPage({ posts, blogData, children }: any) {
 	const [canShare, setCanShare] = useState(false);
@@ -52,6 +53,8 @@ export default function BlogPage({ posts, blogData, children }: any) {
 		return colors[index % colors.length];
 	};
 
+	console.log(blogData.authors);
+
 	const getAuthors = () => {
 		if (!blogData.authors) return [];
 		const postAuthors = authors.filter(item => blogData.authors.includes(item.id));
@@ -67,7 +70,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 	const index = Math.floor(Math.random() * 5);
 
 	return (
-		<div className="m-auto pt-[67px] mobile:pt- 150px max-w -[1300px] w-full">
+		<div className="m-auto pt-[62px] lg-old:pt-[67px] w-full">
 			<div className="flex flex-col items-center flex-wrap nav-bar-break:flex-nowrap justify-center w-full">
 				<div
 					className="border border-[#EBEBEB] w-full min-h-[520px] py-30px desktop:py-52px bg-gradient-to-b from-[#fff] from-[0%] via-[#fee] via-[54.97%] to-[#ffd7d7] to-[134.32%] flex items-center justify-center mobile:px-20px nav-bar-break:px-30px mobile:min-h-[304px] relative overflow-hidden"
@@ -80,26 +83,92 @@ export default function BlogPage({ posts, blogData, children }: any) {
 					<div className="w-[1180px] z-10">
 						{!blogData.isError && (
 							<>
-								<div className="w-full flex-col desktop:flex-row desktop:items-center desktop:justify-between hidden desktop:flex">
-									<div className="font-semibold text-[15px] text-[#666] flex gap-1 py-2.5 mb-10">
-										<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+								<motion.div
+									initial={{ opacity: 0, y: 40 }}
+									whileInView={{
+										opacity: 1,
+										y: 0,
+										transition: {
+											duration: 0.8,
+											delay: 0,
+											ease: [0.44, 0, 0, 1]
+										}
+									}}
+									viewport={{
+										amount: 'some',
+										once: true
+									}}
+									className="w-full flex-col desktop:flex-row desktop:items-center desktop:justify-between hidden desktop:flex">
+									<Link href="/blog" className="font-semibold text-[15px] text-[#666] flex gap-1 py-2.5 mb-10 group hover:opacity-70 transition-all">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="18"
+											height="19"
+											viewBox="0 0 18 19"
+											fill="none"
+											className="group-hover:translate-x-[-2px] transition-all">
 											<path d="M8.1197 9.50052L11.832 5.7882L10.7714 4.72754L5.9984 9.50052L10.7714 14.2734L11.832 13.2128L8.1197 9.50052Z" fill="#666666" />
 										</svg>
-										<Link href="/blog">Blog</Link>
-									</div>
-								</div>
+										<span>Blog</span>
+									</Link>
+								</motion.div>
 							</>
 						)}
 
-						<span className="py-6px px-10px bg-[#2780F11F] bg-opacity-10 font-medium text-12 text-[#000] rounded-16px desktop:rounded-6px h-26px">
-							{blogData.primary_tag}
-						</span>
+						<motion.div
+							initial={{ opacity: 0, y: 40 }}
+							whileInView={{
+								opacity: 1,
+								y: 0,
+								transition: {
+									duration: 0.8,
+									delay: 0.2,
+									ease: [0.44, 0, 0, 1]
+								}
+							}}
+							viewport={{
+								amount: 'some',
+								once: true
+							}}
+							className="py-4px px-10px bg-[#2780F11F] bg-opacity-10 font-medium text-12 text-[#000] rounded-16px desktop:rounded-6px h- 26px w-max">
+							<span>{blogData.primary_tag}</span>
+						</motion.div>
 
-						<h3 className="font-bold text-24 leading-[31.2px] text-[#000] mt-20px mb-0px desktop:w-[652px] desktop:mt-20px desktop:mb-26px desktop:text-[56px] desktop:leading-[67px]">
+						<motion.h3
+							initial={{ opacity: 0, y: 40 }}
+							whileInView={{
+								opacity: 1,
+								y: 0,
+								transition: {
+									duration: 0.8,
+									delay: 0.2,
+									ease: [0.44, 0, 0, 1]
+								}
+							}}
+							viewport={{
+								amount: 'some',
+								once: true
+							}}
+							className="font-bold text-24 leading-[31.2px] text-[#000] mt-20px mb-0px desktop:w-[652px] desktop:mt-20px desktop:mb-26px desktop:text-[56px] desktop:leading-[67px]">
 							{blogData.title}
-						</h3>
+						</motion.h3>
 
-						<div className="text-12 desktop:text-16 flex items-center mt-10px desktop:mt-20px font-medium text-[#666] gap-2">
+						<motion.div
+							initial={{ opacity: 0, y: 40 }}
+							whileInView={{
+								opacity: 1,
+								y: 0,
+								transition: {
+									duration: 0.8,
+									delay: 0.2,
+									ease: [0.44, 0, 0, 1]
+								}
+							}}
+							viewport={{
+								amount: 'some',
+								once: true
+							}}
+							className="text-12 desktop:text-16 flex items-center mt-10px desktop:mt-20px font-medium text-[#666] gap-2">
 							<span>{blogData.readTime} min read</span>
 							<span className="mx-4px desktop:mx-6px mb-1px desktop:mb-2px">
 								<svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -107,10 +176,25 @@ export default function BlogPage({ posts, blogData, children }: any) {
 								</svg>
 							</span>
 							<span> {formatDate(blogData.published_at)}</span>
-						</div>
+						</motion.div>
 
-						<div className="mt-66px desktop:mt-40px flex flex-col gap-2 desktop:gap-3">
-							<h4 className="text-[#666] text-14 desktop:text-16 font-medium leading-[24px]">Written by</h4>
+						<motion.div
+							initial={{ opacity: 0, y: 40 }}
+							whileInView={{
+								opacity: 1,
+								y: 0,
+								transition: {
+									duration: 0.8,
+									delay: 0.4,
+									ease: [0.44, 0, 0, 1]
+								}
+							}}
+							viewport={{
+								amount: 'some',
+								once: true
+							}}
+							className="mt-66px desktop:mt-40px flex flex-col gap-2 desktop:gap-3">
+							<h4 className="text-[#666] text-[13px] sm-old:text-14 desktop:text-16 font-medium leading-[24px]">Written by</h4>
 							<div className="flex flex-wrap mb-10px desktop:mb-26px items-end justify-between">
 								<div className="flex items-end">
 									{blogData.primary_author && !blogData.authors && (
@@ -174,11 +258,24 @@ export default function BlogPage({ posts, blogData, children }: any) {
 									)}
 								</div>
 							</div>
-						</div>
+						</motion.div>
 					</div>
 				</div>
 
-				<div className="flex w-full nav-bar-break:max-w-[770px] mt-20 px-20px desktop-min:p-0">
+				<motion.div initial={{ opacity: 0, y: 5 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 0.8,
+							delay: 0.2,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}} className="flex w-full nav-bar-break:max-w-[770px] mt-10 md-old:mt-20 px-20px desktop-min:p-0">
 					<div className="flex flex-col">
 						<h6 className="font-medium mb-2px text-[#000] text-12 desktop:text-14">Share</h6>
 
@@ -238,19 +335,48 @@ export default function BlogPage({ posts, blogData, children }: any) {
 							)}
 						</ul>
 					</div>
-				</div>
+				</motion.div>
 
-				<main className="nav-bar-break:max-w-[770px] w-full px-20px desktop-min:p-0 mb-70px mt-40px">{children}</main>
+				<motion.main initial={{ opacity: 0, y: 5 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 0.8,
+							delay: 0.4,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}} className="nav-bar-break:max-w-[770px] w-full px-20px desktop-min:p-0 mb-10px md-old:mb-70px mt-40px">{children}</motion.main>
 
 				<GetStarted></GetStarted>
 
-				<div className="px-20px desktop-min:p-0 desktop-min:top-200px desktop:top-128px">
+				<div className="-mt-10 md-old:mt-0 px-20px desktop-min:p-0">
 					<p className="text-20 font-semibold text-[#111928] mb-40px">Related Posts</p>
 
 					<div className="flex flex-row flex-wrap gap-48px">
-						<div className="grid desktop:grid-cols-2 gap-20px max-w-[970px] mb-48px">
+						<div className="grid sm-old:grid-cols-2 gap-20px max-w-[970px] mb-48px">
 							{posts.map((article, i) => (
-								<Post postData={article} key={i} index={i} />
+								<motion.div
+									initial={{ opacity: 0, y: 5 }}
+									whileInView={{
+										opacity: 1,
+										y: 0,
+										transition: {
+											duration: 0.8,
+											delay: i * 0.2,
+											ease: [0.44, 0, 0, 1]
+										}
+									}}
+									viewport={{
+										amount: 'some',
+										once: true
+									}}>
+									<Post postData={article} key={i} index={i} />
+								</motion.div>
 							))}
 						</div>
 					</div>
