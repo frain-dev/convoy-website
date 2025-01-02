@@ -86,17 +86,12 @@ const selfHostedFeatures = [
 				premium: 'Supported'
 			},
 			{
-				name: 'Webhook Transformations with JS',
-				basic: 'Unsupported',
-				premium: 'Supported'
-			},
-			{
 				name: 'Advanced Transformation with JS',
 				basic: 'Unsupported',
 				premium: 'Supported'
 			},
 			{
-				name: 'Advanced Webhook Subsription',
+				name: 'Advanced Webhook Subscription',
 				basic: 'Unsupported',
 				premium: 'Supported'
 			}
