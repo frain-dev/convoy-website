@@ -45,7 +45,8 @@ export const metadata: Metadata = {
 		follow: true,
 		googleBot: {
 			index: true,
-			follow: true
+			follow: true,
+			'max-image-preview': 'large'
 		}
 	},
 	keywords: [

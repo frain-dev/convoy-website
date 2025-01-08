@@ -561,25 +561,28 @@ export default function Blog({ articles }: { articles: articles }) {
 						{!searchQuery && <FeaturedPost postData={featuredPosts[0]} />}
 
 						<div className="grid grid-cols-1 sm-old:grid-cols-2 gap-20px desktop:gap-40px max-w-[970px] my-20px desktop:mb-40px desktop:mt-40px w-full">
-							{currentPosts.map((article, i) => (
-								<motion.div
-									initial={{ opacity: 0, y: 5 }}
-									whileInView={{
-										opacity: 1,
-										y: 0,
-										transition: {
-											duration: 0.8,
-											delay: i * 0.2,
-											ease: [0.44, 0, 0, 1]
-										}
-									}}
-									viewport={{
-										amount: 'some',
-										once: true
-									}}>
-									<Post postData={article} key={i} index={i} />
-								</motion.div>
-							))}
+							<AnimatePresence>
+								{currentPosts.map((article, i) => (
+									<motion.div
+										initial={{ opacity: 0, y: 5 }}
+										exit={{ opacity: 0, y: 5 }}
+										whileInView={{
+											opacity: 1,
+											y: 0,
+											transition: {
+												duration: 0.8,
+												delay: i * 0.2,
+												ease: [0.44, 0, 0, 1]
+											}
+										}}
+										viewport={{
+											amount: 'some',
+											once: true
+										}}>
+										<Post postData={article} key={i} index={i} />
+									</motion.div>
+								))}
+							</AnimatePresence>
 						</div>
 
 						{totalPages > 1 && (
