@@ -38,7 +38,7 @@ const jsonLd = {
 		name: 'Convoy',
 		logo: {
 			'@type': 'ImageObject',
-			url: '/static/convoy-new.png'
+			url: 'https://getconvoy.io/svg/convoy-logo-full-new.svg'
 		}
 	},
 	url: 'https://getconvoy.io/blog',
