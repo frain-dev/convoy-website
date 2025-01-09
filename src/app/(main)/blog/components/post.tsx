@@ -62,7 +62,7 @@ export default function Post({ postData, type, className, index }: any) {
 								target="_blank"
 								className="flex items-start desktop:mb-[unset]">
 								<div className="w-32px h-32px rounded-50% mr-8px overflow-hidden flex items-center">
-									<img
+									<Image
 										src={`/profile-images/${postData.primary_author?.name}.png`}
 										className="w-full h-full rounded-[50%] object-cover"
 										alt={postData.primary_author?.name}
@@ -86,7 +86,7 @@ export default function Post({ postData, type, className, index }: any) {
 											target="_blank"
 											className="-ml-20px first-of-type:ml-0">
 											<div className="w-40px h-40px rounded-50% shadow-sm overflow-hidden flex items-center justify-center border border-gray-25 bg-gray-25">
-												<img src={`/profile-images/${author?.name}.png`} className="w-full rounded-[50%]" alt={author?.name} />
+												<Image src={`/profile-images/${author?.name}.png`} className="w-full rounded-[50%]" alt={author?.name} />
 											</div>
 										</a>
 									))}

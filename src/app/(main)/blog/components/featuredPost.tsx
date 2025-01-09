@@ -57,7 +57,9 @@ export default function FeaturedPost({ postData }: any) {
 						<h3 className="text-20 md-old:text-28 text-[#000] font-semibold mb-20px w-full max-w-[420px]">{postData.title}</h3>
 					</Link>
 
-					<p className="text-[#666] text-12 md-old:text-14 overflow-hidden text-ellipsis w-full max-w-[520px] font-medium mb-[12px] desktop:mb-1">{postData.description}</p>
+					<p className="text-[#666] text-12 md-old:text-14 overflow-hidden text-ellipsis w-full max-w-[520px] font-medium mb-[12px] desktop:mb-1">
+						{postData.description}
+					</p>
 
 					<div className="font-medium text-10 text-[#666] leading-[16px]">{formatDate(postData.published_at)}</div>
 
@@ -69,7 +71,7 @@ export default function FeaturedPost({ postData }: any) {
 									target="_blank"
 									className="flex items-start desktop:mb-[unset]">
 									<div className="w-32px h-32px rounded-50% mr-8px overflow-hidden flex items-center">
-										<img
+										<Image
 											src={`/profile-images/${postData.primary_author?.name}.png`}
 											className="w-full h-full rounded-[50%]"
 											alt={postData.primary_author?.name}
@@ -93,7 +95,7 @@ export default function FeaturedPost({ postData }: any) {
 												target="_blank"
 												className="-ml-20px first-of-type:ml-0">
 												<div className="w-40px h-40px rounded-50% shadow-sm overflow-hidden flex items-center justify-center border border-gray-25 bg-gray-25">
-													<img src={`/profile-images/${author?.name}.png`} className="w-full rounded-[50%]" alt={author?.name} />
+													<Image src={`/profile-images/${author?.name}.png`} className="w-full rounded-[50%]" alt={author?.name} />
 												</div>
 											</a>
 										))}

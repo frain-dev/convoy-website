@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import formatDate from '@/lib/formatDate';
 import Post from './post';
 import authors from '../../../data/authors.json';
@@ -203,7 +204,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 											target="_blank"
 											className="flex items-start desktop:mb-[unset]">
 											<div className="w-36px h-36px rounded-50% mr-8px overflow-hidden flex items-center">
-												<img
+												<Image
 													src={`/profile-images/${blogData.primary_author?.name}.png`}
 													className="w-full h-full rounded-[50%] object-cover"
 													alt={blogData.primary_author?.name}
@@ -229,7 +230,7 @@ export default function BlogPage({ posts, blogData, children }: any) {
 														target="_blank"
 														className="-ml-20px first-of-type:ml-0">
 														<div className="w-40px h-40px rounded-50% shadow-sm overflow-hidden flex items-center justify-center border border-gray-25 bg-gray-25">
-															<img src={`/profile-images/${author?.name}.png`} className="w-full rounded-[50%]" alt={author?.name} />
+															<Image src={`/profile-images/${author?.name}.png`} className="w-full rounded-[50%]" alt={author?.name} />
 														</div>
 													</a>
 												))}
@@ -262,7 +263,8 @@ export default function BlogPage({ posts, blogData, children }: any) {
 					</div>
 				</div>
 
-				<motion.div initial={{ opacity: 0, y: 5 }}
+				<motion.div
+					initial={{ opacity: 0, y: 5 }}
 					whileInView={{
 						opacity: 1,
 						y: 0,
@@ -275,7 +277,8 @@ export default function BlogPage({ posts, blogData, children }: any) {
 					viewport={{
 						amount: 'some',
 						once: true
-					}} className="flex w-full nav-bar-break:max-w-[770px] mt-10 md-old:mt-20 px-20px desktop-min:p-0">
+					}}
+					className="flex w-full nav-bar-break:max-w-[770px] mt-10 md-old:mt-20 px-20px desktop-min:p-0">
 					<div className="flex flex-col">
 						<h6 className="font-medium mb-2px text-[#000] text-12 desktop:text-14">Share</h6>
 
@@ -337,7 +340,8 @@ export default function BlogPage({ posts, blogData, children }: any) {
 					</div>
 				</motion.div>
 
-				<motion.main initial={{ opacity: 0, y: 5 }}
+				<motion.main
+					initial={{ opacity: 0, y: 5 }}
 					whileInView={{
 						opacity: 1,
 						y: 0,
@@ -350,7 +354,10 @@ export default function BlogPage({ posts, blogData, children }: any) {
 					viewport={{
 						amount: 'some',
 						once: true
-					}} className="nav-bar-break:max-w-[770px] w-full px-20px desktop-min:p-0 mb-10px md-old:mb-70px mt-40px">{children}</motion.main>
+					}}
+					className="nav-bar-break:max-w-[770px] w-full px-20px desktop-min:p-0 mb-10px md-old:mb-70px mt-40px">
+					{children}
+				</motion.main>
 
 				<GetStarted></GetStarted>
 

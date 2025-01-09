@@ -222,7 +222,7 @@ export default function Cloud() {
 							))}
 						</div>
 						<div className={`md:max-w-[558px] tab:max-w-[450px] tab:ml-20px order-1 ${index === 1 ? ' desktop:order-1' : ' desktop:order-2'}`}>
-							<img src={`/static/${feature.img}.png`} alt={feature.title} className="object-contain" />
+							<Image src={`/static/${feature.img}.png`} alt={feature.title} className="object-contain" />
 						</div>
 					</div>
 				))}

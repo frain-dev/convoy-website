@@ -60,13 +60,17 @@ export default function Enterprise() {
 
 					<div className="flex justify-between flex-wrap gap-6 mt-80px desktop:mt-120px">
 						<div className="desktop:max-w-[340px]">
-							<img src="/static/everything-you-need.png" className="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)] w-48px" alt="everything-you-need" />
+							<Image
+								src="/static/everything-you-need.png"
+								className="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)] w-48px"
+								alt="everything-you-need"
+							/>
 							<p className="text-14 text-gray-500 mt-24px leading-7">
 								Granular role based access control, ensuring authorized access to infrastructure for large organizations.
 							</p>
 						</div>
 						<div className="desktop:max-w-[400px]">
-							<img
+							<Image
 								src="/static/excellent-rate-limiting.png"
 								className="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(43,214,123,0.2)] w-48px"
 								alt="excellent-rate-limiting"
@@ -76,7 +80,11 @@ export default function Enterprise() {
 							</p>
 						</div>
 						<div className="desktop:max-w-[340px]">
-							<img src="/static/transparent-pricing.png" className="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(247,227,109,0.2)] w-48px" alt="transparent-pricing" />
+							<Image
+								src="/static/transparent-pricing.png"
+								className="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(247,227,109,0.2)] w-48px"
+								alt="transparent-pricing"
+							/>
 							<p className="text-14 text-gray-500 mt-24px leading-7">
 								Detailed Audit Logs so your team can tracks all user actions and event calls for compliance and security purposes.
 							</p>

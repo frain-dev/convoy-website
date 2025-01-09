@@ -173,7 +173,7 @@ export default function AboutUs() {
 								className="">
 								<div className="flex flex-col justify-center lg-old:items-center lg-old:text-center m-auto">
 									<div className="w-full lg-old:w-[310px] h-auto aspect-square lg-old:aspect-auto lg-old:h-[310px] overflow-hidden rounded-8px">
-										<img src={`/employees/${member.image}.jpg`} alt={member.image} className="object-cover" />
+										<Image src={`/employees/${member.image}.jpg`} alt={member.image} className="object-cover" />
 									</div>
 
 									<p className="mt-16px mb-2px text-18 desktop:text-20 font-semibold">{member.name}</p>
@@ -267,7 +267,7 @@ export default function AboutUs() {
 								}}
 								className="flex flex-col justify-center items-center text-16 text-center"
 								key={i}>
-								<img src={`/static/${leader.image}.png`} alt={leader.image} className="w-200px sm-old:w-250px desktop:w-180px" />
+								<Image src={`/static/${leader.image}.png`} alt={leader.image} className="w-200px sm-old:w-250px desktop:w-180px" />
 
 								<p className="mt-24px mb-2px font-semibold text-18">{leader.name}</p>
 								<p className="font-medium text-[#666]">{leader.role}</p>

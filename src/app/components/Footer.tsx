@@ -111,7 +111,7 @@ export default function Footer() {
 										<ul key={index} className="mobile:w-[150px]">
 											<h3 className="text-16 desktop:text-18 footer:border-b footer:border-b-white-24 group-hover:footer:mb-0 footer:pb-8px font-semibold footer:font-normal mb-4 desktop:mb-24px flex items-center justify-between">
 												{section.title}
-												<img src="/svg/angle-down-icon.svg" alt="accordion icon" className="invisible footer:visible w-16px" />
+												<Image src="/svg/angle-down-icon.svg" alt="accordion icon" className="invisible footer:visible w-16px" />
 											</h3>
 											{section.links.map((link, i) => (
 												<li key={i} className="text-[#666]">
