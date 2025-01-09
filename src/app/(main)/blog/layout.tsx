@@ -22,6 +22,9 @@ export const metadata: Metadata = {
 		title: 'Webhook Engineering Blog - Convoy',
 		description: 'Deep dives into webhook infrastructure, engineering insights, and best practices.'
 	},
+	alternates: {
+		canonical: '/blog'
+	},
 	keywords: 'webhooks, event-driven architecture, webhook management, webhook infrastructure, developer blog, engineering blog'
 };
 

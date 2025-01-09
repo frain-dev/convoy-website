@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 			title: article.metaTitle,
 			metadataBase: new URL(`https://getconvoy.io/blog/${article.slug}`),
 			alternates: {
-				canonical: '/',
+				canonical: `/blog/${article.slug}`,
 				types: {
 					'application/rss+xml': 'https://getconvoy.io/blog/rss'
 				}

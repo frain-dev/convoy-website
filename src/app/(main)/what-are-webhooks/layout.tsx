@@ -7,6 +7,9 @@ export const metadata: Metadata = {
 		title: 'What are Webhooks? - Convoy',
 		description: 'Complete guide to understanding and implementing webhooks.',
 		type: 'article'
+	},
+	alternates: {
+		canonical: '/what-are-webhooks'
 	}
 };
 

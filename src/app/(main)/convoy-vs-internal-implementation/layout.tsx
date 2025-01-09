@@ -7,6 +7,9 @@ export const metadata: Metadata = {
 		title: 'Convoy vs Internal Webhook Implementation',
 		description: 'Choose the right webhook solution for your needs.',
 		type: 'article'
+	},
+	alternates: {
+		canonical: '/convoy-vs-internal-implementation'
 	}
 };
 

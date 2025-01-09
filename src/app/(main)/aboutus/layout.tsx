@@ -7,7 +7,10 @@ export const metadata: Metadata = {
 		title: 'About Convoy',
 		description: 'Building reliable webhook infrastructure for developers.',
 		type: 'website'
-	}
+	},
+    alternates: {
+        canonical: '/aboutus',
+      }
 };
 
 const jsonLd = {

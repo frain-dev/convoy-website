@@ -8,7 +8,10 @@ export const metadata: Metadata = {
 		title: 'Convoy Core Gateway Features',
 		description: 'Advanced webhook management features for reliable event delivery and filtering.',
 		type: 'website'
-	}
+	},
+    alternates: {
+        canonical: '/core-gateway',
+      }
 };
 
 const jsonLd = {
