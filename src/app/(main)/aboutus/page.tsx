@@ -1,5 +1,4 @@
 'use client';
-import GetStarted from '@/app/components/GetStarted';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 

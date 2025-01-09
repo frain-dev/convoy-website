@@ -20,14 +20,14 @@ export const metadata: Metadata = {
 			'Convoy is a reliable webhooks gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
 		url: 'https://getconvoy.io/',
 		type: 'website',
-		images: '/static/convoy.png'
+		images: '/static/convoy-new.png'
 	},
 	twitter: {
 		title: 'Convoy: Webhooks gateway for sending and receiving webhooks',
 		creator: '@getconvoy',
 		images: [
 			{
-				url: '/static/convoy.png',
+				url: '/static/convoy-new.png',
 				alt: 'Convoy Logo'
 			}
 		],
