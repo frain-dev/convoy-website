@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/',
+      disallow: ['/cloud', '/community', '/enterprise'],
     },
     sitemap: 'https://getconvoy.io/sitemap.xml',
   }
