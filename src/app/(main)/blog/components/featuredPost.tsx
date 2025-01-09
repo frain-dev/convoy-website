@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import authors from '../../../data/authors.json';
 import Image from 'next/image';
+import { OptimizedImage } from '@/app/components/OptimizedImaged';
 
 export default function FeaturedPost({ postData }: any) {
 	const getAuthors = () => {
@@ -71,10 +72,12 @@ export default function FeaturedPost({ postData }: any) {
 									target="_blank"
 									className="flex items-start desktop:mb-[unset]">
 									<div className="w-32px h-32px rounded-50% mr-8px overflow-hidden flex items-center">
-										<Image
+										<OptimizedImage
 											src={`/profile-images/${postData.primary_author?.name}.png`}
 											className="w-full h-full rounded-[50%]"
 											alt={postData.primary_author?.name}
+											width={200}
+											height={200}
 										/>
 									</div>
 									<div>
@@ -95,7 +98,13 @@ export default function FeaturedPost({ postData }: any) {
 												target="_blank"
 												className="-ml-20px first-of-type:ml-0">
 												<div className="w-40px h-40px rounded-50% shadow-sm overflow-hidden flex items-center justify-center border border-gray-25 bg-gray-25">
-													<Image src={`/profile-images/${author?.name}.png`} className="w-full rounded-[50%]" alt={author?.name} />
+													<OptimizedImage
+														src={`/profile-images/${author?.name}.png`}
+														className="w-full rounded-[50%]"
+														alt={author?.name}
+														width={200}
+														height={200}
+													/>
 												</div>
 											</a>
 										))}

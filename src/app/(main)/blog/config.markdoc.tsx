@@ -6,6 +6,7 @@ import CodeBlock from './components/codeblock';
 import EmbeddedTweet from './components/tweet';
 import InstagramEmbed from './components/instagramEmbed';
 import BlockQuote from './components/blockquote';
+import { OptimizedImage } from '@/app/components/OptimizedImaged';
 
 const config: Config = {
 	nodes: {
@@ -121,7 +122,7 @@ const components = {
 	Image: ({ src, alt }: any) => {
 		return (
 			<div className="my-30px m-auto border border-primary-50 rounded-10px">
-				<Image src={src} alt={alt} className="rounded-10px" />
+				<OptimizedImage src={src} alt={alt} className="rounded-10px" />
 			</div>
 		);
 	},

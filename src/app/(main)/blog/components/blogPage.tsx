@@ -7,6 +7,7 @@ import authors from '../../../data/authors.json';
 import GetStarted from '@/app/components/GetStarted';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { OptimizedImage } from '@/app/components/OptimizedImaged';
 
 export default function BlogPage({ posts, blogData, children }: any) {
 	const [canShare, setCanShare] = useState(false);
@@ -204,10 +205,12 @@ export default function BlogPage({ posts, blogData, children }: any) {
 											target="_blank"
 											className="flex items-start desktop:mb-[unset]">
 											<div className="w-36px h-36px rounded-50% mr-8px overflow-hidden flex items-center">
-												<Image
+												<OptimizedImage
 													src={`/profile-images/${blogData.primary_author?.name}.png`}
 													className="w-full h-full rounded-[50%] object-cover"
 													alt={blogData.primary_author?.name}
+													width={200}
+													height={200}
 												/>
 											</div>
 											<div>
@@ -230,7 +233,13 @@ export default function BlogPage({ posts, blogData, children }: any) {
 														target="_blank"
 														className="-ml-20px first-of-type:ml-0">
 														<div className="w-40px h-40px rounded-50% shadow-sm overflow-hidden flex items-center justify-center border border-gray-25 bg-gray-25">
-															<Image src={`/profile-images/${author?.name}.png`} className="w-full rounded-[50%]" alt={author?.name} />
+															<OptimizedImage
+																src={`/profile-images/${author?.name}.png`}
+																className="w-full rounded-[50%]"
+																alt={author?.name}
+																width={200}
+																height={200}
+															/>
 														</div>
 													</a>
 												))}

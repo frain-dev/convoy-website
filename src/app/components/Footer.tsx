@@ -12,6 +12,7 @@ import LinkedInIcon from '../../../public/svg/linkedin.svg';
 import { usePathname } from 'next/navigation';
 import { useToaster } from '@/hooks/notification';
 import { isExternal } from 'util/types';
+import { OptimizedImage } from './OptimizedImaged';
 
 export default function Footer() {
 	const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -97,7 +98,7 @@ export default function Footer() {
 						<nav className="flex justify-between flex-wra p pb-px footer:block">
 							<div className="mobile:w-full mobile:mb-40px">
 								<Link href="/">
-									<Image src="/svg/convoy-logo-full-new.svg" height={32} width={160} alt="logo" className="w-[119px] nav-bar-break:w-160px" />
+									<OptimizedImage src="/svg/convoy-logo-full-new.svg" height={32} width={160} alt="logo" className="w-[119px] nav-bar-break:w-160px" />
 								</Link>
 
 								<p className="text-14 mb-24px mt-12px nav-bar-break:w-[246px] text-[#666] font-medium leading-[160%]">
@@ -111,7 +112,7 @@ export default function Footer() {
 										<ul key={index} className="mobile:w-[150px]">
 											<h3 className="text-16 desktop:text-18 footer:border-b footer:border-b-white-24 group-hover:footer:mb-0 footer:pb-8px font-semibold footer:font-normal mb-4 desktop:mb-24px flex items-center justify-between">
 												{section.title}
-												<Image src="/svg/angle-down-icon.svg" alt="accordion icon" className="invisible footer:visible w-16px" />
+												<OptimizedImage src="/svg/angle-down-icon.svg" alt="accordion icon" className="invisible footer:visible w-16px" width={16} height={16} />
 											</h3>
 											{section.links.map((link, i) => (
 												<li key={i} className="text-[#666]">
@@ -333,7 +334,7 @@ export default function Footer() {
 
 							<div className="flex items-center gap-10 py-10px w-full desktop:w-max justify-between desktop:justify-end">
 								<p className="text-left desktop:text-right text-12 font-medium text-[#666]/60">Copyright {currentYear}, All Rights Reserved</p>
-								<Image src={SOCIcon} alt="soc stamp" className="h-40px w-40px" />
+								<OptimizedImage src={SOCIcon} alt="soc stamp" className="h-40px w-40px" />
 							</div>
 						</div>
 					</div>

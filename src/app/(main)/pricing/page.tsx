@@ -5,6 +5,7 @@ import error from 'public/svg/error.svg';
 import Image from 'next/image';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { OptimizedImage } from '@/app/components/OptimizedImaged';
 
 const selfHostedFeatures = [
 	{
@@ -576,21 +577,21 @@ const StatusIndicator = ({ status }: { status: string }) => {
 		case 'Supported':
 			return (
 				<div className="flex items-center justify-center gap-2 bg-[#E7E7E766] py-[2px] px-1.5 rounded-100px w-max">
-					<Image src={check} height={30} width={28} alt="logo" quality="70" className="h-16px w-16px" />
+					<OptimizedImage src={check} height={30} width={28} alt="logo" className="h-16px w-16px" />
 					<span className="text-14 text-[#000]">Supported</span>
 				</div>
 			);
 		case 'Questionable':
 			return (
 				<div className="flex items-center justify-center gap-2 bg-[#E7E7E766] py-[2px] px-1.5 rounded-100px w-max">
-					<Image src={question} height={30} width={28} alt="logo" quality="70" className="h-16px w-16px" />
+					<OptimizedImage src={question} height={30} width={28} alt="logo" className="h-16px w-16px" />
 					<span className="text-14 text-[#000]">Questionable</span>
 				</div>
 			);
 		case 'Unsupported':
 			return (
 				<div className="flex items-center justify-center gap-2 bg-[#E7E7E766] py-[2px] px-1.5 rounded-100px w-max">
-					<Image src={error} height={30} width={28} alt="logo" quality="70" className="h-16px w-16px" />
+					<OptimizedImage src={error} height={30} width={28} alt="logo" className="h-16px w-16px" />
 					<span className="text-14 text-[#000]">Unsupported</span>
 				</div>
 			);

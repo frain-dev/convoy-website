@@ -5,6 +5,7 @@ import { useRef, useState } from 'react';
 import ArrowRightIcon from '../../../public/svg/arrow-right-icon.svg';
 import SubscribeIcon from '../../../public/svg/subscribe.svg';
 import { useToaster } from '@/hooks/notification';
+import { OptimizedImage } from './OptimizedImaged';
 
 export default function Subscribe() {
 	const [submittingEmail, setIsSubmittingEmail] = useState(false);
@@ -39,7 +40,7 @@ export default function Subscribe() {
 	return (
 		<div className="grid grid-cols-1 tab:grid-cols-2 md:grid-cols-3 gap-5 flex-wrap">
 			<form className="bg-white-100 rounded-10px p-40px mobile:p-24px md:col-span-2" onSubmit={subscribeToNewsletter}>
-				<Image src={SubscribeIcon} className="mb-20px w-54px" alt="subscribe icon" />
+				<OptimizedImage src={SubscribeIcon} className="mb-20px w-54px" alt="subscribe icon" />
 
 				<h3 className="font-semibold mb-10px text-gray-600">Subscribe to our newsletter</h3>
 				<p className="text-14 text-gray-500 max-w-[400px] mb-44px">We are constantly innovating, join the companies staying on top of Convoy updates.</p>
@@ -58,7 +59,7 @@ export default function Subscribe() {
 						disabled={submittingEmail}
 						className="flex items-center justify-center py-12px px-16px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-400 text-white-100 xs:mb-20px shadow-sm xs:w-full">
 						Subscribe
-						<Image src={ArrowRightIcon} className="ml-8px w-12px" alt="arrow right icon" />
+						<OptimizedImage src={ArrowRightIcon} className="ml-8px w-12px" alt="arrow right icon" />
 					</button>
 				</div>
 			</form>
@@ -81,7 +82,7 @@ export default function Subscribe() {
 						href="https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email"
 						className="w-full flex items-center justify-center py-12px px-16px mobile:px-10px whitespace-nowrap text-14 font-medium rounded-8px bg-primary-400 text-white-100 shadow-sm">
 						Join our Slack
-						<Image src={ArrowRightIcon} className="ml-8px w-12px" alt="arrow right icon" />
+						<OptimizedImage src={ArrowRightIcon} className="ml-8px w-12px" alt="arrow right icon" />
 					</Link>
 
 					<Link

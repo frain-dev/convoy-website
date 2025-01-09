@@ -12,6 +12,7 @@ import HailifyIcon from '../../../../public/svg/hailify-logo.svg';
 import BuycoinsIcon from '../../../../public/svg/buycoins.svg';
 import ArrowRightIcon from '../../../../public/svg/arrow-right-icon.svg';
 import EnterpriseWaitlist from '../../components/EnterpriseWaitList';
+import { OptimizedImage } from '@/app/components/OptimizedImaged';
 
 export default function Enterprise() {
 	const enterpriseFeatures = [
@@ -38,7 +39,7 @@ export default function Enterprise() {
 						</div>
 					</div>
 					<div className="max-h-[436px] max-w-[588px]">
-						<Image src={EnterpriseImage} alt="enterprise image" />
+						<OptimizedImage src={EnterpriseImage} alt="enterprise image" />
 					</div>
 				</div>
 			</section>
@@ -60,7 +61,7 @@ export default function Enterprise() {
 
 					<div className="flex justify-between flex-wrap gap-6 mt-80px desktop:mt-120px">
 						<div className="desktop:max-w-[340px]">
-							<Image
+							<OptimizedImage
 								src="/static/everything-you-need.png"
 								className="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(65,111,244,0.2)] w-48px"
 								alt="everything-you-need"
@@ -70,7 +71,7 @@ export default function Enterprise() {
 							</p>
 						</div>
 						<div className="desktop:max-w-[400px]">
-							<Image
+							<OptimizedImage
 								src="/static/excellent-rate-limiting.png"
 								className="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(43,214,123,0.2)] w-48px"
 								alt="excellent-rate-limiting"
@@ -80,7 +81,7 @@ export default function Enterprise() {
 							</p>
 						</div>
 						<div className="desktop:max-w-[340px]">
-							<Image
+							<OptimizedImage
 								src="/static/transparent-pricing.png"
 								className="mb-16px rounded-8px shadow-[0px_22px_24px_rgba(247,227,109,0.2)] w-48px"
 								alt="transparent-pricing"
@@ -105,42 +106,42 @@ export default function Enterprise() {
 						<ul className="flex items-center list-none mt-38px">
 							<li className="mr-12px">
 								<a target="_blank" href="https://www.drivehailify.com/">
-									<Image src={HailifyIcon} alt="hailify logo" />
+									<OptimizedImage src={HailifyIcon} alt="hailify logo" />
 								</a>
 							</li>
 							<li className="mr-12px">
 								<a target="_blank" href="https://www.piggyvest.com/">
-									<Image src={PiggyvestIcon} alt="piggyvest logo" />
+									<OptimizedImage src={PiggyvestIcon} alt="piggyvest logo" />
 								</a>
 							</li>
 							<li className="mr-12px">
 								<a target="_blank" href="https://www.catlog.shop/">
-									<Image src={CatlogIcon} alt="catlog logo" />
+									<OptimizedImage src={CatlogIcon} alt="catlog logo" />
 								</a>
 							</li>
 							<li className="mr-12px">
 								<a target="_blank" href="https://www.payourse.com/">
-									<Image src={PayourseIcon} className="mt-4px" alt="payourse logo" />
+									<OptimizedImage src={PayourseIcon} className="mt-4px" alt="payourse logo" />
 								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
 								<a target="_blank" href="https://buycoins.africa/">
-									<Image src={BuycoinsIcon} alt="buycoins logo" />
+									<OptimizedImage src={BuycoinsIcon} alt="buycoins logo" />
 								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
 								<a target="_blank" href="https://www.getwallets.co/">
-									<Image src={GetWalletsIcon} alt="getwallets logo" />
+									<OptimizedImage src={GetWalletsIcon} alt="getwallets logo" />
 								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
 								<a target="_blank" href="https://www.dojah.io/">
-									<Image src={DojahIcon} alt="dojah logo" />
+									<OptimizedImage src={DojahIcon} alt="dojah logo" />
 								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
 								<a target="_blank" href="https://termii.com/">
-									<Image src={TermiiIcon} alt="termii logo" />
+									<OptimizedImage src={TermiiIcon} alt="termii logo" />
 								</a>
 							</li>
 						</ul>
@@ -191,7 +192,7 @@ export default function Enterprise() {
 						href="#requestAccess"
 						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 font-medium flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Request Access
-						<Image src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow right" />
+						<OptimizedImage src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow right" />
 					</Link>
 				</div>
 			</section>

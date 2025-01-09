@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
+import { OptimizedImage } from './OptimizedImaged';
 
 export default function Comments() {
 	const businessComments = [
@@ -82,13 +83,13 @@ export default function Comments() {
 						key={i}>
 						<div className="pt-20px mb-40px m-auto">
 							<a target="_blank" href={comment.companyUrl} className="m-auto">
-								<Image src={`/svg/${comment.company}.svg`} alt={`${comment.company} logo`} className="h-20px" />
+								<OptimizedImage src={`/svg/${comment.company}.svg`} alt={`${comment.company} logo`} className="h-20px" />
 							</a>
 						</div>
 						<p className="text-16 footer:text-12 text-gray-700 text-center h-220px mb-24px">"{comment.feedback}"</p>
 						<div className="flex flex-col justify-center items-center gap-12px">
 							<div className="w-40px h-40px overflow-hidden rounded-100px">
-								<Image src={`/employees/${comment.image}.jpg`} alt={comment.image} />
+								<OptimizedImage src={`/employees/${comment.image}.jpg`} alt={comment.image} />
 							</div>
 							<div className="text-center">
 								<p className="mb-2px text-14 footer:text-10 text-gray-400 tracking-wide">{comment.name}</p>

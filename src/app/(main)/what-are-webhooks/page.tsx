@@ -11,6 +11,7 @@ import calendar from 'public/svg/calendly.svg';
 import linear from 'public/svg/linear.svg';
 import github from 'public/svg/github-new.svg';
 import pagerduty from 'public/svg/pagerduty.svg';
+import { OptimizedImage } from '@/app/components/OptimizedImaged';
 
 const sections = [
 	{
@@ -387,14 +388,14 @@ export default function Webhooks() {
 											target="_blank"
 											rel="noopener noreferrer"
 											className="hover:opacity-80 transition-opacity">
-											<Image src={shopify} alt="Shopify logo" width={85} height={24} className="h-5 desktop:h-6 w-auto" />
+											<OptimizedImage src={shopify} alt="Shopify logo" width={85} height={24} className="h-5 desktop:h-6 w-auto" />
 										</a>
 										<a
 											href="https://developer.bigcommerce.com/docs/integrations/webhooks"
 											target="_blank"
 											rel="noopener noreferrer"
 											className="hover:opacity-80 transition-opacity">
-											<Image src={woocommerce} alt="WooCommerce logo" width={106} height={24} className="h-5 desktop:h-6 w-auto" />
+											<OptimizedImage src={woocommerce} alt="WooCommerce logo" width={106} height={24} className="h-5 desktop:h-6 w-auto" />
 										</a>
 									</div>
 								</motion.div>
@@ -432,14 +433,14 @@ export default function Webhooks() {
 
 									<div className="absolute right-4 bottom-5 flex items-center gap-3">
 										<a href="https://docs.stripe.com/webhooks" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-											<Image src={stripe} alt="Stripe logo" width={60} height={24} className="h-5 desktop:h-6 w-auto" />
+											<OptimizedImage src={stripe} alt="Stripe logo" width={60} height={24} className="h-5 desktop:h-6 w-auto" />
 										</a>
 										<a
 											href="https://docs.moderntreasury.com/platform/docs/webhooks-1"
 											target="_blank"
 											rel="noopener noreferrer"
 											className="hover:opacity-80 transition-opacity">
-											<Image src={square} alt="Modern Treasure logo" width={24} height={24} className="h-5 desktop:h-6 w-auto" />
+											<OptimizedImage src={square} alt="Modern Treasure logo" width={24} height={24} className="h-5 desktop:h-6 w-auto" />
 										</a>
 									</div>
 								</motion.div>
@@ -481,7 +482,7 @@ export default function Webhooks() {
 											target="_blank"
 											rel="noopener noreferrer"
 											className="hover:opacity-80 transition-opacity">
-											<Image src={spruce} alt="Spruce logo" width={124} height={24} className="h-5 desktop:h-6 w-auto" />
+											<OptimizedImage src={spruce} alt="Spruce logo" width={124} height={24} className="h-5 desktop:h-6 w-auto" />
 										</a>
 									</div>
 								</motion.div>
@@ -523,14 +524,14 @@ export default function Webhooks() {
 											target="_blank"
 											rel="noopener noreferrer"
 											className="hover:opacity-80 transition-opacity">
-											<Image src={calendar} alt="Calendly logo" width={90} height={24} className="h-5 desktop:h-6 w-auto" />
+											<OptimizedImage src={calendar} alt="Calendly logo" width={90} height={24} className="h-5 desktop:h-6 w-auto" />
 										</a>
 										<a
 											href="https://developers.linear.app/docs/graphql/webhooks"
 											target="_blank"
 											rel="noopener noreferrer"
 											className="hover:opacity-80 transition-opacity">
-											<Image src={linear} alt="Linear logo" width={88} height={24} className="h-5 desktop:h-6 w-auto" />
+											<OptimizedImage src={linear} alt="Linear logo" width={88} height={24} className="h-5 desktop:h-6 w-auto" />
 										</a>
 									</div>
 								</motion.div>
@@ -572,14 +573,14 @@ export default function Webhooks() {
 											target="_blank"
 											rel="noopener noreferrer"
 											className="hover:opacity-80 transition-opacity">
-											<Image src={github} alt="GitHub logo" width={62} height={24} className="h-5 desktop:h-6 w-auto" />
+											<OptimizedImage src={github} alt="GitHub logo" width={62} height={24} className="h-5 desktop:h-6 w-auto" />
 										</a>
 										<a
 											href="https://developer.pagerduty.com/docs/db0fa8c8984fc-overview"
 											target="_blank"
 											rel="noopener noreferrer"
 											className="hover:opacity-80 transition-opacity">
-											<Image src={pagerduty} alt="PagerDuty logo" width={104} height={24} className="h-5 desktop:h-6 w-auto" />
+											<OptimizedImage src={pagerduty} alt="PagerDuty logo" width={104} height={24} className="h-5 desktop:h-6 w-auto" />
 										</a>
 									</div>
 								</motion.div>

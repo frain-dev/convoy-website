@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { OptimizedImage } from './OptimizedImaged';
 
 export default function Header() {
 	const [showMenu, setShowMenu] = useState(false);
@@ -25,7 +26,7 @@ export default function Header() {
 					<div className="flex items-center justify-between m-auto max-w-[1300px]">
 						<div className="ml-20px nav-bar-break:w-fit nav-bar-break:ml-20px flex items-center justify-center gap-4">
 							<Link href="/">
-								<Image src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" quality="70" />
+								<OptimizedImage src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo"/>
 							</Link>
 
 							<ul

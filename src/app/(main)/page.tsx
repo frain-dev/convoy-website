@@ -25,6 +25,7 @@ import reliableArchitecture from '../../../public/static/reliable-architecture.p
 
 import OfficeHours from '../components/OfficeHours';
 import VideoPlayer from '../components/VideoPlayer';
+import { OptimizedImage } from '../components/OptimizedImaged';
 
 export default function Home() {
 	const companies = [
@@ -124,7 +125,7 @@ export default function Home() {
 							target="_blank"
 							href="https://cal.com/subomi/30min"
 							className="px-8px py-10px text-14 h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2 w-full sm-old:w-max">
-							<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
+							<OptimizedImage src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
 
 							<span>Talk to a founder</span>
 						</a>
@@ -160,7 +161,7 @@ export default function Home() {
 									{companies.map(company => (
 										<li className="min-w-[150px] desktop:min-w-[200px] flex justify-center hover:scale-[1.03] transition-all" key={company.name}>
 											<a target="_blank" href={company.url} className="">
-												<Image src={`/svg/${company.name}.svg`} alt={`${company.name} logo`} className={company.class} />
+												<OptimizedImage src={`/svg/${company.name}.svg`} alt={`${company.name} logo`} className={company.class} width={200} height={20} />
 											</a>
 										</li>
 									))}
@@ -233,7 +234,7 @@ export default function Home() {
 						className="w-full desktop:w-[742px] h-max desktop:h-[360px] pt-3 desktop:pt-10 pl-3 desktop:pl-10  overflow-hidden rounded-t-16px"
 						style={{ backgroundImage: `url(${frame.src})` }}>
 						<div className="bg-white-100 h-full w-full rounded-tl-8px overflow-hidden shadow-video">
-							<Image src={advancedEndpoint} alt="screenshot" className="bg-cover object-cover w-full" />
+							<OptimizedImage src={advancedEndpoint} alt="screenshot" className="bg-cover object-cover w-full" />
 						</div>
 					</motion.div>
 				</div>
@@ -281,7 +282,7 @@ export default function Home() {
 						className="w-full desktop:w-[742px] h-max desktop:h-[360px] pt-3 desktop:pt-10 pl-3 desktop:pl-10  overflow-hidden rounded-t-16px"
 						style={{ backgroundImage: `url(${frame.src})` }}>
 						<div className="bg-white-100 h-full w-full rounded-tl-8px overflow-hidden shadow-video">
-							<Image src={developerExperience} alt="screenshot" className="bg-cover object-cover w-full" />
+							<OptimizedImage src={developerExperience} alt="screenshot" className="bg-cover object-cover w-full" />
 						</div>
 					</motion.div>
 				</div>
@@ -329,7 +330,7 @@ export default function Home() {
 						className="w-full desktop:w-[742px] h-max desktop:h-[360px] pt-3 desktop:pt-10 pl-3 desktop:pl-10  overflow-hidden rounded-t-16px"
 						style={{ backgroundImage: `url(${frame.src})` }}>
 						<div className="bg-white-100 h-full w-full rounded-tl-8px overflow-hidden shadow-video">
-							<Image src={reliableArchitecture} alt="screenshot" className="bg-cover object-cover w-full" />
+							<OptimizedImage src={reliableArchitecture} alt="screenshot" className="bg-cover object-cover w-full" />
 						</div>
 					</motion.div>
 				</div>
@@ -360,13 +361,13 @@ export default function Home() {
 					<div className="flex flex-col gap-5 desktop:gap-10 items-center">
 						<div className="flex flex-col desktop:flex-row gap-6 items-center w-full">
 							<div className="min-w-[47.5%] desktop:pr-5 pb-0px desktop:pb-28px flex flex-col gap-5 items-start">
-								<Image src={neynar} height={30} width={150} alt="logo" quality="70" className="h-28px w-auto" />
+								<OptimizedImage src={neynar} height={30} width={150} alt="logo" className="h-28px w-auto" />
 								<p className="text-14 desktop:text-20 leading-[160%] desktop:leading-[140%] text-[#666] w-full">
 									We tried a few different solutions in the market, but Convoy stood out for its dynamic filtering capabilities, and it was extremely easy to set
 									up; we had test webhooks sent within the hour.
 								</p>
 								<div className="flex items-center gap-2">
-									<Image src={manan} height={300} width={300} alt="logo" quality="70" className="h-36px w-36px rounded-50% object-cover" />
+									<OptimizedImage src={manan} height={300} width={300} alt="logo" className="h-36px w-36px rounded-50% object-cover" />
 									<div className="flex flex-col gap-1">
 										<h5 className="font-semibold text-14 desktop:text-16 leading-4">Manan Patel</h5>
 										<p className="text-[#666] text-12 desktop:text-[13px] font-medium leading-4">CTO at Neynar, Ex Coinbase</p>
@@ -377,13 +378,13 @@ export default function Home() {
 							<div className="bg-[#e7e7e7] min-w-full desktop:min-w-[0.5px] min-h-[0.5px] desktop:!min-h-[280px]" />
 
 							<div className="min-w-[47.5%] bor der flex pl-0 desktop:pl-5 pb-0px desktop:pb-28px flex-col gap-5 items-start">
-								<Image src={spruce} height={30} width={150} alt="logo" quality="70" className="h-28px w-auto" />
+								<OptimizedImage src={spruce} height={30} width={150} alt="logo" className="h-28px w-auto" />
 								<p className="text-14 desktop:text-20 leading-[160%] desktop:leading-[140%] text-[#666]">
 									We considered building a webhooks system internally but quickly realised that reaching the quality and robustness our customers deserve would be
 									highly time-consuming. Convoy offered this out-of-the-box.
 								</p>
 								<div className="flex items-center gap-2">
-									<Image src={michael} height={300} width={300} alt="logo" quality="70" className="h-36px w-36px rounded-50% object-cover" />
+									<OptimizedImage src={michael} height={300} width={300} alt="logo" className="h-36px w-36px rounded-50% object-cover" />
 									<div className="flex flex-col gap-1">
 										<h5 className="font-semibold text-14 desktop:text-16 leading-4">Michael Raines</h5>
 										<p className="text-[#666] text-12 desktop:text-[13px] font-medium leading-4">Principal Engineer at Spruce Health, Ex AWS</p>
@@ -396,12 +397,12 @@ export default function Home() {
 
 						<div className="flex flex-col desktop:flex-row gap-5 w-full">
 							<div className="w-full desktop:min-w-[340px] [47.5%] bor der flex pb-0px desktop:pb-58px flex-col gap-5 items-start">
-								<Image src={marble} height={30} width={150} alt="logo" quality="70" className="h-28px w-auto" />
+								<OptimizedImage src={marble} height={30} width={150} alt="logo" className="h-28px w-auto" />
 								<p className="text-14 desktop:text-16 w-full desktop:w-[316px] h-auto desktop:h-[140px] leading-[160%] desktop:leading-[150%] text-[#666]">
 									We appreciate that they handle all the complexity of webhooks retries and dispatching for us, letting us focus on our core business.{' '}
 								</p>
 								<div className="flex items-center gap-2">
-									<Image src={pascal} height={300} width={300} alt="logo" quality="70" className="h-36px w-36px rounded-50% object-cover" />
+									<OptimizedImage src={pascal} height={300} width={300} alt="logo" className="h-36px w-36px rounded-50% object-cover" />
 									<div className="flex flex-col gap-1">
 										<h5 className="font-semibold text-14 desktop:text-16 leading-4">Pascal Delange</h5>
 										<p className="text-[#666] text-[12px] font-medium leading-4">CTO at Marble, Ex-Director of Engineering, Shine</p>
@@ -412,13 +413,13 @@ export default function Home() {
 							<div className="bg-[#e7e7e7] min-w-full desktop:min-w-[1px] min-h-[0.5px] desktop:min-h-full" />
 
 							<div className="w-full desktop:min-w-[340px] [47.5%] bor der flex pb-0px desktop:pb-58px flex-col gap-5 items-start">
-								<Image src={source} height={30} width={150} alt="logo" quality="70" className="h-28px w-auto" />
+								<OptimizedImage src={source} height={30} width={150} alt="logo" className="h-28px w-auto" />
 								<p className="text-14 desktop:text-16 w-full desktop:w-[316px] h-auto desktop:h-[140px] leading-[160%] desktop:leading-[150%] text-[#666]">
 									Convoy provides all the features that we are looking for at a fair price, and we were able to integrate and offer a webhook solution in a matter
 									of days.
 								</p>
 								<div className="flex items-center gap-2">
-									<Image src={jonathan} height={300} width={300} alt="logo" quality="70" className="h-36px w-36px rounded-50% object-cover" />
+									<OptimizedImage src={jonathan} height={300} width={300} alt="logo" className="h-36px w-36px rounded-50% object-cover" />
 									<div className="flex flex-col gap-1">
 										<h5 className="font-semibold text-14 desktop:text-16 leading-4">Jonathan Wiemer</h5>
 										<p className="text-[#666] text-[12px] font-medium leading-4">Lead Software Engineer, Source.ag</p>
@@ -429,13 +430,13 @@ export default function Home() {
 							<div className="bg-[#e7e7e7] min-w-full desktop:min-w-[1px] min-h-[0.5px] desktop:min-h-full" />
 
 							<div className="w-full desktop:min-w-[340px] flex pb-0px desktop:pb-58px flex-col gap-5 items-start">
-								<Image src={maple} height={30} width={150} alt="logo" quality="70" className="h-28px w-auto" />
+								<OptimizedImage src={maple} height={30} width={150} alt="logo" className="h-28px w-auto" />
 								<p className="text-14 desktop:text-16 w-full desktop:w-[316px] h-auto desktop:h-[140px] leading-[160%] desktop:leading-[150%] text-[#666]">
 									Convoy had everything we needed from a webhook gateway—retries, signatures, and SDKs. This allowed our engineering team to focus on building our
 									core product.
 								</p>
 								<div className="flex items-center gap-2">
-									<Image src={aravindkumar} height={300} width={300} alt="logo" quality="70" className="h-36px w-36px rounded-50% object-cover" />
+									<OptimizedImage src={aravindkumar} height={300} width={300} alt="logo" className="h-36px w-36px rounded-50% object-cover" />
 									<div className="flex flex-col gap-1">
 										<h5 className="font-semibold text-14 desktop:text-16 leading-4">Aravindkumar Rajendiran</h5>
 										<p className="text-[#666] text-[12px] font-medium leading-4">CTO at Maple, Ex Airbnb</p>
@@ -565,7 +566,7 @@ export default function Home() {
 								once: true
 							}}
 							className="w-full desktop:w-[720px] h-[250px] desktop:h-[360px] flex items-center justify-center rounded-16px bg-gradient-to-b from-[#2780F11A] to-[#fafafa]">
-							<Image src={scalabilityBg} alt="illustration" className="scale-[0.75] desktop:scale-[1]" />
+							<OptimizedImage src={scalabilityBg} alt="illustration" className="scale-[0.75] desktop:scale-[1]" />
 						</motion.div>
 					</div>
 				</div>

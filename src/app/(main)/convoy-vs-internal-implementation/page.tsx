@@ -9,6 +9,7 @@ import GetStarted from '@/app/components/GetStarted';
 import { motion } from 'framer-motion';
 
 import Image from 'next/image';
+import { OptimizedImage } from '@/app/components/OptimizedImaged';
 
 const features = [
 	{
@@ -157,7 +158,7 @@ export default function ConvoyComparison() {
 								target="_blank"
 								href="https://cal.com/subomi/30min"
 								className="px-8px py-10px text-14 h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2 w-full sm-old:w-max">
-								<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
+								<OptimizedImage src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
 
 								<span>Talk to a founder</span>
 							</a>
@@ -218,13 +219,13 @@ export default function ConvoyComparison() {
 					className="w-full bg-white-100 border border-[#e7e7e7] p-5 desktop:p-10 rounded-8px flex flex-col gap-5">
 					<h3 className="text-28 font-medium">Don't just take our word for it</h3>
 					<div className="flex flex-col gap-5 items-start">
-						<Image src={spruce} height={30} width={150} alt="logo" quality="70" className="h-24px desktop:h-28px w-auto" />
+						<OptimizedImage src={spruce} height={30} width={150} alt="logo" className="h-24px desktop:h-28px w-auto" />
 						<p className="text-14 desktop:text-20 leading-[140%] text-[#666]">
 							We considered building a webhooks system internally but quickly realised that reaching the quality and robustness our customers deserve would be highly
 							time-consuming. Convoy offered this out-of-the-box.
 						</p>
 						<div className="flex items-center gap-2">
-							<Image src={michael} height={30} width={30} alt="logo" quality="70" className="h-36px w-36px rounded-50% object-cover" />
+							<OptimizedImage src={michael} height={30} width={30} alt="logo" className="h-36px w-36px rounded-50% object-cover" />
 							<div className="flex flex-col gap-1">
 								<h5 className="font-semibold text-14 desktop:text-16 leading-4 ">Michael Raines</h5>
 								<p className="text-[#666] text-12 desktop:text-[13px] font-medium leading-4">Principal Engineer at Spruce Health, Ex AWS</p>
@@ -277,21 +278,21 @@ const StatusIndicator = ({ status }: { status: string }) => {
 		case 'supported':
 			return (
 				<div className="flex items-center justify-center gap-2 bg-[#E7E7E766] py-[2px] px-1.5 rounded-100px w-max">
-					<Image src={check} height={30} width={28} alt="logo" quality="70" className="h-16px w-16px" />
+					<OptimizedImage src={check} height={30} width={28} alt="logo" className="h-16px w-16px" />
 					<span className="text-14 text-[#000]">Supported</span>
 				</div>
 			);
 		case 'questionable':
 			return (
 				<div className="flex items-center justify-center gap-2 bg-[#E7E7E766] py-[2px] px-1.5 rounded-100px w-max">
-					<Image src={question} height={30} width={28} alt="logo" quality="70" className="h-16px w-16px" />
+					<OptimizedImage src={question} height={30} width={28} alt="logo" className="h-16px w-16px" />
 					<span className="text-14 text-[#000]">Questionable</span>
 				</div>
 			);
 		case 'unsupported':
 			return (
 				<div className="flex items-center justify-center gap-2 bg-[#E7E7E766] py-[2px] px-1.5 rounded-100px w-max">
-					<Image src={error} height={30} width={28} alt="logo" quality="70" className="h-16px w-16px" />
+					<OptimizedImage src={error} height={30} width={28} alt="logo" className="h-16px w-16px" />
 					<span className="text-14 text-[#000]">Unsupported</span>
 				</div>
 			);
@@ -321,7 +322,7 @@ function FeatureTable() {
 							<thead className="text-[#000] font-medium text-14">
 								<tr>
 									<th className="text-14 font-medium px-4 py-[10px] border-b border-[#E7E7E780] text-center flex items-center justify-center gap-2">
-										<Image src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" quality="70" className="h-16px w-auto" />
+										<OptimizedImage src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" className="h-16px w-auto" />
 										<span>Convoy</span>
 									</th>
 									<th className="text-14 font-medium text-center px-4 py-[9px] border-b border-l border-[#E7E7E780]">Your implementation</th>
@@ -365,7 +366,7 @@ function ArchitectureTable() {
 							<thead className="text-[#000] font-medium text-14">
 								<tr>
 									<th className="text-14 font-medium px-4 py-[10px] border-b border-[#E7E7E780] text-center flex items-center justify-center gap-2">
-										<Image src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" quality="70" className="h-16px w-auto" />
+										<OptimizedImage src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" className="h-16px w-auto" />
 										<span>Convoy</span>
 									</th>
 									<th className="text-14 font-medium text-center px-4 py-[9px] border-b border-l border-[#E7E7E780]">Your implementation</th>
