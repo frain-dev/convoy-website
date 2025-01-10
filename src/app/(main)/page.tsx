@@ -26,17 +26,18 @@ import reliableArchitecture from '../../../public/static/reliable-architecture.p
 import OfficeHours from '../components/OfficeHours';
 import VideoPlayer from '../components/VideoPlayer';
 import { OptimizedImage } from '../components/OptimizedImaged';
+import { cn } from '@/lib/utils';
 
 export default function Home() {
 	const companies = [
 		{ name: 'pinata-full', url: 'https://pinata.cloud/', class: 'h-20px desktop:h-28px ml-[30px]' },
 		{ name: 'maple-full', url: 'https://maplebilling.com/', class: 'h-20px desktop:h-30px' },
 		{ name: 'testlify-full', url: 'https://testlify.com/', class: 'h-20px desktop:h-28px' },
-		{ name: 'mono-full', url: 'https://mono.co/', class: 'h-20px desktop:h-20px' },
+		{ name: 'mono-full', url: 'https://mono.co/', class: 'h-20px' },
 		{ name: 'ascenda-full', url: 'https://www.ascenda.com/', class: 'h-20px desktop:h-24px' },
 		{ name: 'xendit-full', url: 'https://www.xendit.co/', class: 'h-20px desktop:h-28px mr-[20px]' },
 		{ name: 'spruce-full', url: 'https://sprucehealth.com/', class: 'h-20px desktop:h-28px' },
-		{ name: 'caxton-full', url: 'https://www.caxton.io/', class: 'h-20px desktop:h-20px' },
+		{ name: 'caxton-full', url: 'https://www.caxton.io/', class: 'h-20px' },
 		{ name: 'neynar-full', url: 'https://neynar.com/', class: 'h-20px desktop:h-26px' },
 		{ name: 'source-full', url: 'https://source.ag/', class: 'h-20px desktop:h-26px' },
 		{ name: 'piggyvest-full', url: 'https://www.piggyvest.com/', class: 'h-20px desktop:h-30px' },
@@ -161,7 +162,14 @@ export default function Home() {
 									{companies.map(company => (
 										<li className="min-w-[150px] desktop:min-w-[200px] flex justify-center hover:scale-[1.03] transition-all" key={company.name}>
 											<a target="_blank" href={company.url} className="">
-												<OptimizedImage src={`/svg/${company.name}.svg`} alt={`${company.name} logo`} className={company.class} width={200} height={20} />
+												<OptimizedImage
+													src={`/svg/${company.name}.svg`}
+													alt={`${company.name} logo`}
+													className={cn(company.class, 'object-contain w-auto')}
+													width={200}
+													height={30}
+													priority
+												/>
 											</a>
 										</li>
 									))}
