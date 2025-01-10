@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { OptimizedImage } from './OptimizedImaged';
 
 export default function Header() {
 	const [showMenu, setShowMenu] = useState(false);
@@ -25,7 +26,7 @@ export default function Header() {
 					<div className="flex items-center justify-between m-auto max-w-[1300px]">
 						<div className="ml-20px nav-bar-break:w-fit nav-bar-break:ml-20px flex items-center justify-center gap-4">
 							<Link href="/">
-								<Image src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" quality="70" />
+								<OptimizedImage src="/svg/convoy-logo-new.svg" height={30} width={28} alt="logo" priority />
 							</Link>
 
 							<ul
@@ -102,7 +103,7 @@ export default function Header() {
 						<button className="block absolute nav-bar-break:hidden right-5" onClick={() => setShowMenu(!showMenu)}>
 							{!showMenu && (
 								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-									<g clip-path="url(#clip0_2905_2221)">
+									<g clipPath="url(#clip0_2905_2221)">
 										<path
 											d="M18.8235 2.95206H1.17647C1.0154 2.95206 0.848547 2.88131 0.716524 2.73435C0.582916 2.58563 0.5 2.37349 0.5 2.14253C0.5 1.91157 0.582916 1.69943 0.716524 1.55071C0.848547 1.40376 1.0154 1.33301 1.17647 1.33301H18.8235C18.9846 1.33301 19.1515 1.40376 19.2835 1.55071C19.4171 1.69943 19.5 1.91157 19.5 2.14253C19.5 2.3735 19.4171 2.58564 19.2835 2.73435C19.1515 2.88131 18.9846 2.95206 18.8235 2.95206ZM18.8235 10.8092H1.17647C1.0154 10.8092 0.848547 10.7384 0.716524 10.5915C0.582916 10.4428 0.5 10.2306 0.5 9.99967C0.5 9.76871 0.582916 9.55657 0.716524 9.40785C0.848547 9.2609 1.0154 9.19015 1.17647 9.19015H18.8235C18.9846 9.19015 19.1515 9.2609 19.2835 9.40786C19.4171 9.55657 19.5 9.76871 19.5 9.99967C19.5 10.2306 19.4171 10.4428 19.2835 10.5915C19.1515 10.7384 18.9846 10.8092 18.8235 10.8092ZM18.8235 18.6663H1.17647C1.0154 18.6663 0.848546 18.5956 0.716525 18.4486C0.582917 18.2999 0.5 18.0878 0.5 17.8568C0.5 17.6259 0.582917 17.4137 0.716524 17.265C0.848546 17.118 1.0154 17.0473 1.17647 17.0473H18.8235C18.9846 17.0473 19.1515 17.118 19.2835 17.265C19.4171 17.4137 19.5 17.6259 19.5 17.8568C19.5 18.0878 19.4171 18.2999 19.2835 18.4486C19.1515 18.5956 18.9846 18.6663 18.8235 18.6663Z"
 											fill="#6B7280"

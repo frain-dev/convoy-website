@@ -12,6 +12,7 @@ import HailifyIcon from '../../../../public/svg/hailify-logo.svg';
 import BuycoinsIcon from '../../../../public/svg/buycoins.svg';
 import ArrowRightIcon from '../../../../public/svg/arrow-right-icon.svg';
 import Subscribe from '../../components/Subscribe';
+import { OptimizedImage } from '@/app/components/OptimizedImaged';
 
 export default function Cloud() {
 	const cloudFeatures = [
@@ -50,7 +51,7 @@ export default function Cloud() {
 				id="home">
 				<div className="bg-primary-25 rounded-[40px] w-fit py-10px px-20px flex items-center text-14 mb-40px">
 					We are backed by
-					<Image src="/svg/y-combinator.svg" width={24} height={24} className="ml-16px w-24px" alt="y-combinator" />
+					<OptimizedImage src="/svg/y-combinator.svg" width={24} height={24} className="ml-16px w-24px" alt="y-combinator" />
 				</div>
 				<h1 className="desktop:text-center text-gray-25 text-32 desktop:text-[56px] desktop:leading-[80px] font-bold max-w-[841px]">
 					Make Webhooks management our problem, not yours
@@ -70,7 +71,7 @@ export default function Cloud() {
 					<Link
 						href="https://docs.getconvoy.io"
 						className="py-12px px-28px text-14 font-medium rounded-8px bg-transparent text-gray-25 border border-gray-25 flex items-center justify-center text-center xs:w-[90vw]">
-						<Image src="/svg/documentation.svg" height={16} width={16} className="mr-10px w-16px" alt="document icon" />
+						<OptimizedImage src="/svg/documentation.svg" height={16} width={16} className="mr-10px w-16px" alt="document icon" />
 						Documentation
 					</Link>
 				</div>
@@ -78,7 +79,7 @@ export default function Cloud() {
 
 			<section className="bg-white-100 px-20px hidden desktop:block min-h-[500px]">
 				<div className="mx-auto max-w-[1400px] relative">
-					<Image src={CloudImage} alt="cloud image" className="-mt-180px absolute" priority />
+					<OptimizedImage src={CloudImage} alt="cloud image" className="-mt-180px absolute" priority />
 				</div>
 			</section>
 
@@ -92,42 +93,42 @@ export default function Cloud() {
 						<ul className="flex items-center list-none mt-38px">
 							<li className="mr-12px">
 								<a target="_blank" href="https://www.drivehailify.com/">
-									<Image src={HailifyIcon} alt="hailify logo" />
+									<OptimizedImage src={HailifyIcon} alt="hailify logo" />
 								</a>
 							</li>
 							<li className="mr-12px">
 								<a target="_blank" href="https://www.piggyvest.com/">
-									<Image src={PiggyvestIcon} alt="piggyvest logo" />
+									<OptimizedImage src={PiggyvestIcon} alt="piggyvest logo" />
 								</a>
 							</li>
 							<li className="mr-12px">
 								<a target="_blank" href="https://www.catlog.shop/">
-									<Image src={CatlogIcon} alt="catlog logo" />
+									<OptimizedImage src={CatlogIcon} alt="catlog logo" />
 								</a>
 							</li>
 							<li className="mr-12px">
 								<a target="_blank" href="https://www.payourse.com/">
-									<Image src={PayourseIcon} className="mt-4px" alt="payourse logo" />
+									<OptimizedImage src={PayourseIcon} className="mt-4px" alt="payourse logo" />
 								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
 								<a target="_blank" href="https://buycoins.africa/">
-									<Image src={BuycoinsIcon} alt="buycoins logo" />
+									<OptimizedImage src={BuycoinsIcon} alt="buycoins logo" />
 								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
 								<a target="_blank" href="https://www.getwallets.co/">
-									<Image src={GetWalletsIcon} alt="getwallets logo" />
+									<OptimizedImage src={GetWalletsIcon} alt="getwallets logo" />
 								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
 								<a target="_blank" href="https://www.dojah.io/">
-									<Image src={DojahIcon} alt="dojah logo" />
+									<OptimizedImage src={DojahIcon} alt="dojah logo" />
 								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
 								<a target="_blank" href="https://termii.com/">
-									<Image src={TermiiIcon} alt="termii logo" />
+									<OptimizedImage src={TermiiIcon} alt="termii logo" />
 								</a>
 							</li>
 						</ul>
@@ -152,7 +153,7 @@ export default function Cloud() {
 
 					<div className="flex justify-between flex-wrap gap-6 mt-80px desktop:mt-120px">
 						<div className="desktop:max-w-[340px]">
-							<Image
+							<OptimizedImage
 								src="/static/fully-managed.png"
 								height={48}
 								width={48}
@@ -162,7 +163,7 @@ export default function Cloud() {
 							<p className="text-14 leading-8 text-gray-600">Fully managed global cloud infrastructure with high availability and resilience baked in.</p>
 						</div>
 						<div className="desktop:max-w-[400px]">
-							<Image
+							<OptimizedImage
 								src="/static/stay-compliant.png"
 								height={48}
 								width={48}
@@ -172,7 +173,7 @@ export default function Cloud() {
 							<p className="text-14 leading-8 max-w-[333px] text-gray-600">Stay compliant by choosing the region we host and store your webhooks data.</p>
 						</div>
 						<div className="desktop:max-w-[340px]">
-							<Image
+							<OptimizedImage
 								src="/static/transparent-usage.png"
 								height={48}
 								width={48}
@@ -222,7 +223,7 @@ export default function Cloud() {
 							))}
 						</div>
 						<div className={`md:max-w-[558px] tab:max-w-[450px] tab:ml-20px order-1 ${index === 1 ? ' desktop:order-1' : ' desktop:order-2'}`}>
-							<img src={`/static/${feature.img}.png`} alt={feature.title} className="object-contain" />
+							<OptimizedImage src={`/static/${feature.img}.png`} alt={feature.title} className="object-contain" />
 						</div>
 					</div>
 				))}
@@ -262,7 +263,7 @@ export default function Cloud() {
 						href="#home"
 						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-14 font-medium flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Request Access
-						<Image src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow right icon" />
+						<OptimizedImage src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow right icon" />
 					</Link>
 				</div>
 			</section>

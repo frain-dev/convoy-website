@@ -1,10 +1,12 @@
 import { Config } from '@markdoc/markdoc';
 import Link from 'next/link';
+import Image from 'next/image';
 import Heading from './components/heading';
 import CodeBlock from './components/codeblock';
 import EmbeddedTweet from './components/tweet';
 import InstagramEmbed from './components/instagramEmbed';
 import BlockQuote from './components/blockquote';
+import { OptimizedImage } from '@/app/components/OptimizedImaged';
 
 const config: Config = {
 	nodes: {
@@ -105,9 +107,7 @@ const components = {
 		return <strong className="font-semibold">{children}</strong>;
 	},
 	List: ({ children, ordered }: any) => {
-		return ordered 
-			? <ol className="list-decimal mb-20px ml-16px">{children}</ol>
-			: <ul className="list-disc mb-20px ml-16px">{children}</ul>;
+		return ordered ? <ol className="list-decimal mb-20px ml-16px">{children}</ol> : <ul className="list-disc mb-20px ml-16px">{children}</ul>;
 	},
 	Item: ({ children }: any) => {
 		return <li className="text-14 text-gray-600 mb-8px">{children}</li>;
@@ -122,7 +122,7 @@ const components = {
 	Image: ({ src, alt }: any) => {
 		return (
 			<div className="my-30px m-auto border border-primary-50 rounded-10px">
-				<img src={src} alt={alt} className="rounded-10px" />
+				<OptimizedImage src={src} alt={alt} className="rounded-10px" />
 			</div>
 		);
 	},

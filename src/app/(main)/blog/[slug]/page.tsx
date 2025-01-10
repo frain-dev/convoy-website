@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 			title: article.metaTitle,
 			metadataBase: new URL(`https://getconvoy.io/blog/${article.slug}`),
 			alternates: {
-				canonical: '/',
+				canonical: `/blog/${article.slug}`,
 				types: {
 					'application/rss+xml': 'https://getconvoy.io/blog/rss'
 				}
@@ -96,14 +96,56 @@ export async function generateStaticParams() {
 
 export default async function BlogPost({ params }: PageProps) {
 	const post = await getPost(params.slug);
+
+	// Handle missing post data
+	if (!post || !post.primary_author) {
+		// Return error page or redirect
+		return <div>Post not found</div>;
+	}
+
 	const ast = Markdoc.parse(post?.content);
 	const blogContent = Markdoc.transform(ast, config);
 
 	const latestArticles = await getPosts();
 	const posts = latestArticles.filter(post => post.slug !== params.slug && !post.isError);
 
+	const jsonLd = {
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		headline: post.title,
+		description: post.description,
+		image: `https://getconvoy.io/blog-socials/${post.feature_image}`,
+		datePublished: post.published_at,
+		dateModified: post.published_at, // Add modified date if available
+		wordCount: post.readTime * 200, // Approximate based on read time
+		timeRequired: `PT${post.readTime}M`,
+		author: {
+			'@type': 'Person',
+			name: post.primary_author.name,
+			sameAs: `http://twitter.com/${post.primary_author.twitter}`
+		},
+		publisher: {
+			'@type': 'Organization',
+			name: 'Convoy',
+			logo: {
+				'@type': 'ImageObject',
+				url: 'https://getconvoy.io/logo.png'
+			}
+		},
+		mainEntityOfPage: {
+			'@type': 'WebPage',
+			'@id': `https://getconvoy.io/blog/${post.slug}`
+		},
+		keywords: [post.primary_tag, ...(post.tags || [])],
+		articleSection: post.primary_tag,
+		isAccessibleForFree: true,
+		url: `https://getconvoy.io/blog/${post.slug}`
+	};
+
 	return (
 		<>
+			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
 			<div>
 				<BlogPage posts={posts.slice(0, 2)} blogData={post}>
 					{Markdoc.renderers.react(blogContent, React, { components })}

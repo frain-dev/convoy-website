@@ -1,7 +1,7 @@
 'use client';
-import GetStarted from '@/app/components/GetStarted';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { OptimizedImage } from '@/app/components/OptimizedImaged';
 
 export default function AboutUs() {
 	const backedLeaders = [
@@ -83,7 +83,7 @@ export default function AboutUs() {
 					href="https://www.ycombinator.com/companies/convoy-2"
 					className="bg-[#2780F1]/[0.1] hover:opacity-75 transition-all cursor-pointer rounded-[6px] w-fit py-10px px-12px flex items-center text-14 font-medium mb-40px">
 					We are backed by
-					<Image src="/svg/y-combinator.svg" width={24} height={24} className="ml-10px w-24px" alt="y-combinator" />
+					<OptimizedImage src="/svg/y-combinator.svg" width={24} height={24} className="ml-10px w-24px" alt="y-combinator" />
 				</a>
 				<h1 className="text-32 desktop:text-[40px] font-medium desktop:max-w-[683px] desktop:text-center">Building the webhooks infrastructure for the internet.</h1>
 				<p className="max-w-[683px] desktop:mx-auto desktop:text-16 desktop:text-center text-14 !leading-[200%] text-[#4b4b4b] mt-2 desktop:my-24px font-medium">
@@ -174,7 +174,7 @@ export default function AboutUs() {
 								className="">
 								<div className="flex flex-col justify-center lg-old:items-center lg-old:text-center m-auto">
 									<div className="w-full lg-old:w-[310px] h-auto aspect-square lg-old:aspect-auto lg-old:h-[310px] overflow-hidden rounded-8px">
-										<img src={`/employees/${member.image}.jpg`} alt={member.image} className="object-cover" />
+										<OptimizedImage src={`/employees/${member.image}.jpg`} alt={member.image} className="object-cover" width={500} height={500} />
 									</div>
 
 									<p className="mt-16px mb-2px text-18 desktop:text-20 font-semibold">{member.name}</p>
@@ -268,7 +268,13 @@ export default function AboutUs() {
 								}}
 								className="flex flex-col justify-center items-center text-16 text-center"
 								key={i}>
-								<img src={`/static/${leader.image}.png`} alt={leader.image} className="w-200px sm-old:w-250px desktop:w-180px" />
+								<OptimizedImage
+									src={`/static/${leader.image}.png`}
+									alt={leader.image}
+									className="w-200px sm-old:w-250px desktop:w-180px"
+									width={300}
+									height={300}
+								/>
 
 								<p className="mt-24px mb-2px font-semibold text-18">{leader.name}</p>
 								<p className="font-medium text-[#666]">{leader.role}</p>

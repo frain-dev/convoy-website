@@ -37,6 +37,7 @@ import fineGrained from '../../../../public/svg/fine-grained.svg';
 import support from '../../../../public/svg/support.svg';
 import retry from '../../../../public/svg/retry.svg';
 import synchronous from '../../../../public/svg/synchronous.svg';
+import { OptimizedImage } from '@/app/components/OptimizedImaged';
 
 const advancedFeatures = [
 	{
@@ -233,7 +234,7 @@ export default function WebhookGateway() {
 							target="_blank"
 							href="https://cal.com/subomi/30min"
 							className="px-8px py-10px text-14 h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center border-[#E7E7E7] border hover:bg-[#e7e7e7] group transition-all duration-300 shadow-btn gap-2 w-full sm-old:w-max">
-							<Image src={subomi} alt="play" className="rounded-[50%] w-24px h-24px object-cover" />
+							<OptimizedImage src={subomi} alt="play" className="!rounded-[50%] w-24px h-24px object-cover" />
 
 							<span>Talk to a founder</span>
 						</a>
@@ -526,7 +527,7 @@ const FeatureGrid = ({ features }: { features: Features[] }) => {
 					<div key={index} className="p-5 lg-old:p-10 w-full">
 						<div className="flex flex-col justify-between h-full">
 							<div className="flex flex-col gap-4">
-								<Image src={feature.icon} alt="feature icon" className="cursor-pointer w-32px h-32px lg-old:w-40px lg-old:h-40px" />
+								<OptimizedImage src={feature.icon} alt="feature icon" className="cursor-pointer w-32px h-32px lg-old:w-40px lg-old:h-40px" />
 								<p className="text-[#666] text-16 leading-[160%]">
 									<span className="text-[#000] font-medium mr-1">{feature.title}</span>
 									{feature.description}

@@ -12,6 +12,7 @@ import LinkedInIcon from '../../../public/svg/linkedin.svg';
 import { usePathname } from 'next/navigation';
 import { useToaster } from '@/hooks/notification';
 import { isExternal } from 'util/types';
+import { OptimizedImage } from './OptimizedImaged';
 
 export default function Footer() {
 	const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -97,7 +98,7 @@ export default function Footer() {
 						<nav className="flex justify-between flex-wra p pb-px footer:block">
 							<div className="mobile:w-full mobile:mb-40px">
 								<Link href="/">
-									<Image src="/svg/convoy-logo-full-new.svg" height={32} width={160} alt="logo" className="w-[119px] nav-bar-break:w-160px" />
+									<OptimizedImage src="/svg/convoy-logo-full-new.svg" height={32} width={160} alt="logo" className="w-[119px] nav-bar-break:w-160px" />
 								</Link>
 
 								<p className="text-14 mb-24px mt-12px nav-bar-break:w-[246px] text-[#666] font-medium leading-[160%]">
@@ -111,7 +112,7 @@ export default function Footer() {
 										<ul key={index} className="mobile:w-[150px]">
 											<h3 className="text-16 desktop:text-18 footer:border-b footer:border-b-white-24 group-hover:footer:mb-0 footer:pb-8px font-semibold footer:font-normal mb-4 desktop:mb-24px flex items-center justify-between">
 												{section.title}
-												<img src="/svg/angle-down-icon.svg" alt="accordion icon" className="invisible footer:visible w-16px" />
+												<OptimizedImage src="/svg/angle-down-icon.svg" alt="accordion icon" className="invisible footer:visible w-16px" width={16} height={16} />
 											</h3>
 											{section.links.map((link, i) => (
 												<li key={i} className="text-[#666]">
@@ -276,8 +277,8 @@ export default function Footer() {
 										<a target="_blank" href="https://github.com/frain-dev/convoy">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 												<path
-													fill-rule="evenodd"
-													clip-rule="evenodd"
+													fillRule="evenodd"
+													clipRule="evenodd"
 													d="M12 3C7.02832 3 3 7.02832 3 12C3 15.9756 5.57813 19.3506 9.15527 20.54C9.60645 20.6221 9.77051 20.3467 9.77051 20.1064C9.77051 19.8926 9.76172 19.3271 9.75879 18.5771C7.25391 19.1191 6.72656 17.3701 6.72656 17.3701C6.31641 16.3301 5.72754 16.0518 5.72754 16.0518C4.91016 15.4951 5.78906 15.5068 5.78906 15.5068C6.69141 15.5713 7.16602 16.4326 7.16602 16.4326C7.96875 17.8096 9.27246 17.4111 9.78516 17.1826C9.86719 16.5996 10.1016 16.2041 10.3564 15.9785C8.3584 15.7529 6.25781 14.9795 6.25781 11.5312C6.25781 10.5469 6.60938 9.74414 7.18359 9.11426C7.09277 8.88867 6.78223 7.97168 7.27149 6.73242C7.27149 6.73242 8.02734 6.49219 9.74707 7.65527C10.4648 7.45605 11.2354 7.35645 12 7.35352C12.7646 7.35645 13.5352 7.45605 14.2529 7.65527C15.9727 6.49219 16.7256 6.73242 16.7256 6.73242C17.2178 7.97168 16.9102 8.88867 16.8164 9.11426C17.3936 9.74414 17.7393 10.5469 17.7393 11.5312C17.7393 14.9883 15.6357 15.7471 13.6318 15.9727C13.9541 16.248 14.2412 16.7988 14.2412 17.6367C14.2412 18.8408 14.2324 19.8105 14.2324 20.1064C14.2324 20.3467 14.3936 20.6279 14.8506 20.54C18.4248 19.3477 21 15.9756 21 12C21 7.02832 16.9717 3 12 3Z"
 													fill="#666666"
 												/>
@@ -333,7 +334,7 @@ export default function Footer() {
 
 							<div className="flex items-center gap-10 py-10px w-full desktop:w-max justify-between desktop:justify-end">
 								<p className="text-left desktop:text-right text-12 font-medium text-[#666]/60">Copyright {currentYear}, All Rights Reserved</p>
-								<Image src={SOCIcon} alt="soc stamp" className="h-40px w-40px" />
+								<OptimizedImage src={SOCIcon} alt="soc stamp" className="h-40px w-40px" />
 							</div>
 						</div>
 					</div>

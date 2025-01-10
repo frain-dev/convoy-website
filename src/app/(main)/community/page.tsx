@@ -11,6 +11,7 @@ import HailifyIcon from '../../../../public/svg/hailify-logo.svg';
 import BuycoinsIcon from '../../../../public/svg/buycoins.svg';
 import ArrowRightIcon from '../../../../public/svg/arrow-right-icon.svg';
 import Subscribe from '../../components/Subscribe';
+import { OptimizedImage } from '@/app/components/OptimizedImaged';
 
 export default function Community() {
 	const setupSteps = ['git clone https://github.com/frain-dev/convoy.git', 'cd convoy', 'docker compose -f configs/local/docker-compose.yml up'];
@@ -87,7 +88,7 @@ export default function Community() {
 								key={step}>
 								<span>$ {step}</span>
 								<button type="button" className="bg-transparent" onClick={event => copyCommand(event, step)}>
-									<img src="/svg/copy-icon.svg" alt="copy icon" />
+									<OptimizedImage src="/svg/copy-icon.svg" alt="copy icon" />
 								</button>
 							</div>
 						))}
@@ -108,42 +109,42 @@ export default function Community() {
 						<ul className="flex items-center list-none mt-38px">
 							<li className="mr-12px">
 								<a target="_blank" href="https://www.drivehailify.com/">
-									<Image src={HailifyIcon} alt="hailify logo" />
+									<OptimizedImage src={HailifyIcon} alt="hailify logo" />
 								</a>
 							</li>
 							<li className="mr-12px">
 								<a target="_blank" href="https://www.piggyvest.com/">
-									<Image src={PiggyvestIcon} alt="piggyvest logo" />
+									<OptimizedImage src={PiggyvestIcon} alt="piggyvest logo" />
 								</a>
 							</li>
 							<li className="mr-12px">
 								<a target="_blank" href="https://www.catlog.shop/">
-									<Image src={CatlogIcon} alt="catlog logo" />
+									<OptimizedImage src={CatlogIcon} alt="catlog logo" />
 								</a>
 							</li>
 							<li className="mr-12px">
 								<a target="_blank" href="https://www.payourse.com/">
-									<Image src={PayourseIcon} className="mt-4px" alt="payourse logo" />
+									<OptimizedImage src={PayourseIcon} className="mt-4px" alt="payourse logo" />
 								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
 								<a target="_blank" href="https://buycoins.africa/">
-									<Image src={BuycoinsIcon} alt="buycoins logo" />
+									<OptimizedImage src={BuycoinsIcon} alt="buycoins logo" />
 								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
 								<a target="_blank" href="https://www.getwallets.co/">
-									<Image src={GetWalletsIcon} alt="getwallets logo" />
+									<OptimizedImage src={GetWalletsIcon} alt="getwallets logo" />
 								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
 								<a target="_blank" href="https://www.dojah.io/">
-									<Image src={DojahIcon} alt="dojah logo" />
+									<OptimizedImage src={DojahIcon} alt="dojah logo" />
 								</a>
 							</li>
 							<li className="mr-12px hidden desktop:block">
 								<a target="_blank" href="https://termii.com/">
-									<Image src={TermiiIcon} alt="termii logo" />
+									<OptimizedImage src={TermiiIcon} alt="termii logo" />
 								</a>
 							</li>
 						</ul>
@@ -171,7 +172,7 @@ export default function Community() {
 					<div className="grid grid-cols-1 desktop:grid-cols-2 gap-8 desktop:gap-100px">
 						{communityFeatures.map((feature, index) => (
 							<div className="flex justify-start items-start" key={index}>
-								<img src={`/svg/${feature.img}.svg`} className="mr-14px w-40px" alt={feature.title} />
+								<OptimizedImage src={`/svg/${feature.img}.svg`} className="mr-14px w-40px" alt={feature.title} />
 
 								<div>
 									<h2 className="font-bold mb-12px desktop:mb-24px text-gray-600 text-20">{feature.title}</h2>
@@ -218,7 +219,7 @@ export default function Community() {
 						href="https://github.com/frain-dev/convoy#installation-getting-started"
 						className="bg-primary-400 m-auto text-white-100 whitespace-nowrap text-12 font-medium flex items-center py-12px px-24px rounded-8px mt-40px w-fit">
 						Get Started
-						<Image src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow right" />
+						<OptimizedImage src={ArrowRightIcon} className="ml-12px w-12px" alt="arrow right" />
 					</a>
 				</div>
 			</section>

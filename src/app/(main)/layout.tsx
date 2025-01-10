@@ -20,14 +20,14 @@ export const metadata: Metadata = {
 			'Convoy is a reliable webhooks gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
 		url: 'https://getconvoy.io/',
 		type: 'website',
-		images: '/static/convoy.png'
+		images: '/static/convoy-new.png'
 	},
 	twitter: {
 		title: 'Convoy: Webhooks gateway for sending and receiving webhooks',
 		creator: '@getconvoy',
 		images: [
 			{
-				url: '/static/convoy.png',
+				url: '/static/convoy-new.png',
 				alt: 'Convoy Logo'
 			}
 		],
@@ -45,7 +45,8 @@ export const metadata: Metadata = {
 		follow: true,
 		googleBot: {
 			index: true,
-			follow: true
+			follow: true,
+			'max-image-preview': 'large'
 		}
 	},
 	keywords: [
@@ -95,12 +96,67 @@ export const metadata: Metadata = {
 	]
 };
 
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	'@id': 'https://getconvoy.io',
+	name: 'Convoy',
+	url: 'https://getconvoy.io',
+	logo: {
+		'@type': 'ImageObject',
+		url: 'https://getconvoy.io/svg/convoy-logo-full-new.svg',
+		alternateName: 'Convoy Logo'
+	},
+	description: 'Open-source webhooks gateway for secure and reliable event delivery',
+	sameAs: [
+		'https://github.com/frain-dev/convoy',
+		'https://twitter.com/getconvoy',
+		'https://linkedin.com/company/convoy-webhooks/'
+	],
+	foundingDate: '2021', 
+	email: 'sales@getconvoy.io',
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: '251 Little Falls Dr, Wilmington, DE 19808, United States'
+	},
+	parentOrganization: {
+		'@type': 'Organization',
+		name: 'Frain Technologies',
+		url: 'https://frain.dev'
+	},
+	knowsAbout: ['Webhook Management', 'Event-Driven Architecture', 'API Integration', 'Webhook Infrastructure', 'Developer Tools'],
+	member: [
+		{
+			'@type': 'OrganizationRole',
+			member: {
+				'@type': 'Person',
+				name: 'Subomi Oluwalana',
+				jobTitle: 'CEO',
+				url: 'https://twitter.com/subomiOluwalana'
+			},
+			roleName: 'Co-Founder & CEO'
+		},
+		{
+			'@type': 'OrganizationRole',
+			member: {
+				'@type': 'Person',
+				name: 'Raymond Tukpe',
+				jobTitle: 'CTO',
+				url: 'https://twitter.com/rTukpe'
+			},
+			roleName: 'Co-Founder & CTO'
+		}
+	]
+};
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	const featurePosts = await getPosts();
 	const filteredArticles = featurePosts.filter(article => !article.isError).sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at));
 	return (
 		<html lang="en" style={{ scrollBehavior: 'smooth' }}>
 			<body suppressHydrationWarning={true}>
+			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
 				<Header></Header>
 
 				{children}
