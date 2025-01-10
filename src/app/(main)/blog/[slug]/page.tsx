@@ -96,6 +96,13 @@ export async function generateStaticParams() {
 
 export default async function BlogPost({ params }: PageProps) {
 	const post = await getPost(params.slug);
+
+	// Handle missing post data
+	if (!post || !post.primary_author) {
+		// Return error page or redirect
+		return <div>Post not found</div>;
+	}
+
 	const ast = Markdoc.parse(post?.content);
 	const blogContent = Markdoc.transform(ast, config);
 
@@ -113,31 +120,31 @@ export default async function BlogPost({ params }: PageProps) {
 		wordCount: post.readTime * 200, // Approximate based on read time
 		timeRequired: `PT${post.readTime}M`,
 		author: {
-		  '@type': 'Person',
-		  name: post.primary_author.name,
-		  sameAs: `http://twitter.com/${post.primary_author.twitter}`
+			'@type': 'Person',
+			name: post.primary_author.name,
+			sameAs: `http://twitter.com/${post.primary_author.twitter}`
 		},
 		publisher: {
-		  '@type': 'Organization',
-		  name: 'Convoy',
-		  logo: {
-			'@type': 'ImageObject',
-			url: 'https://getconvoy.io/logo.png'
-		  }
+			'@type': 'Organization',
+			name: 'Convoy',
+			logo: {
+				'@type': 'ImageObject',
+				url: 'https://getconvoy.io/logo.png'
+			}
 		},
 		mainEntityOfPage: {
-		  '@type': 'WebPage',
-		  '@id': `https://getconvoy.io/blog/${post.slug}`
+			'@type': 'WebPage',
+			'@id': `https://getconvoy.io/blog/${post.slug}`
 		},
 		keywords: [post.primary_tag, ...(post.tags || [])],
 		articleSection: post.primary_tag,
 		isAccessibleForFree: true,
 		url: `https://getconvoy.io/blog/${post.slug}`
-	  }
+	};
 
 	return (
 		<>
-		<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
 			<div>
 				<BlogPage posts={posts.slice(0, 2)} blogData={post}>

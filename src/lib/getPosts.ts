@@ -84,8 +84,14 @@ const getPost = async paramsSlug => {
 	} catch {
 		const filePath = `src/app/(main)/blog/articles/404.md`;
 		const post: PostProps = await fetchContent(filePath);
-		return post;
-	}
+		return {
+		  ...post,
+		  primary_author: {
+			name: 'Convoy',
+			twitter: 'getconvoy'
+		  }
+		};
+	  }
 };
 
 export { getPost, getPosts, getAllRoutes };
