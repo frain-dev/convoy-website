@@ -1,0 +1,23 @@
+{
+	"rewrites": [
+		{
+			"source": "/docs",
+			"destination": "https://docs.getconvoy.io"
+		},
+		{
+			"source": "/docs/:path*",
+			"destination": "https://docs.getconvoy.io/:path*"
+		}
+	],
+	"headers": [
+		{
+			"source": "/docs/:path*",
+			"headers": [
+				{
+					"key": "x-robots-tag",
+					"value": "noindex"
+				}
+			]
+		}
+	]
+}
