@@ -2,22 +2,11 @@
 	"rewrites": [
 		{
 			"source": "/docs",
-			"destination": "https://docs.getconvoy.io"
+			"destination": "https://convoy.mintlify.app"
 		},
 		{
-			"source": "/docs/:path*",
-			"destination": "https://docs.getconvoy.io/:path*"
-		}
-	],
-	"headers": [
-		{
-			"source": "/docs/:path*",
-			"headers": [
-				{
-					"key": "x-robots-tag",
-					"value": "noindex"
-				}
-			]
+			"source": "/docs/:match*",
+			"destination": "https://convoy.mintlify.app/:match*"
 		}
 	]
 }

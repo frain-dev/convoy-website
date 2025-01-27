@@ -15,6 +15,23 @@ export default async function sitemap() {
 		return blogRoutes;
 	};
 
+	const getDocsRoutes = async () => {
+		const response = await fetch('https://docs.getconvoy.io/sitemap.xml');
+		const text = await response.text();
+		const docUrls =
+			text
+				.match(/<loc>(.*?)<\/loc>/g)
+				?.map(loc => loc.replace(/<\/?loc>/g, ''))
+				?.map(url => url.replace('https://docs.getconvoy.io', '/docs'))
+				?.map(route => ({
+					url: `${URL}${route}`,
+					lastModified: new Date(),
+					changeFrequency: 'weekly',
+					priority: 0.9
+				})) || [];
+		return docUrls;
+	};
+
 	const getMainRoutes = async () => {
 		const mRoutes = await getAllRoutes();
 		const mainRoutes = mRoutes.map(route => ({
@@ -34,6 +51,7 @@ export default async function sitemap() {
 	};
 	const mainRoutes = await getMainRoutes();
 	const blogRoutes = await getBlogRoutes();
+	const docsRoute = await getDocsRoutes();
 
-	return [indexRoute, ...mainRoutes, ...blogRoutes];
+	return [indexRoute, ...mainRoutes, ...blogRoutes, ...docsRoute];
 }
