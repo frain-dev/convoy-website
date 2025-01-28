@@ -1,0 +1,71 @@
+---
+title: Paid Features 
+---
+
+This page describes each of our self-hosted paid features in detail. Click on any item to learn more.
+
+<AccordionGroup>
+  <Accordion title="Portal Links" icon="circle-user">
+	Portal Links is our customer-facing developer portal for managing endpoints, subscriptions and webhook deliveries. See [docs](/product-manual/portal-links)
+  </Accordion>
+
+  <Accordion title="Events Catalogue" icon="album-collection">
+	The Event Catalogue is a customer-facing documentation for all your webhook events and their payload structure. 
+  </Accordion>
+
+  <Accordion title="Prometheus Metrics" icon="chart-mixed">
+	This includes prometheus metrics to gain visibility into the internals of the system.
+  </Accordion>
+
+  <Accordion title="Performance tuning" icon="chart-simple">
+	Performance tuning refers to the following configuration parameters used to optimize Convoy's Performance.
+	1. Consumer Pool Size.
+    2. Agent Execution Mode.
+    3. Instance Ingest Rate.
+  </Accordion>
+
+  <Accordion title="Read Replicas for Scalability" icon="database">
+    Read replicas enable distributing read queries across multiple database instances, improving scalability and performance. See [docs](/product-manual/read-replicas).
+  </Accordion>
+
+  <Accordion title="Advanced Endpoint Management" icon="webhook">
+	This includes the following configuration parameters:
+	1. Circuit Breaking
+	2. Fine-grained Endpoint timeouts.
+	3. Endpoint Failure Notifications.
+  </Accordion>
+
+  <Accordion title="Advanced Webhooks Retention" icon="database">
+	This includes the following abilities:
+	1. Ability to trigger retention at any time. 
+	2. Service account authentication.
+  </Accordion>
+
+  <Accordion title="Role-Based Access Controls" icon="lock">
+  </Accordion>
+
+  <Accordion title="Static IPs and Forward Proxy Routing" icon="shield-halved">
+	This includes the following capabilities:
+	1. Use of `HTTP_PROXY` to use a forward proxy.
+
+  </Accordion>
+
+  <Accordion title="Advanced Message Broker Integration" icon="arrow-progress">
+	This includes the following capabilities:
+	1. Support for Avro format.
+  </Accordion>
+
+  <Accordion title="Unlimited Users, Organisations and Projects" icon="users-line">
+	The Community Edition is restricted to `1 user, 1 organisation and 2 projects`. The paid plan is unlimited.
+  </Accordion>
+
+  <Accordion title="Webhook Transformations with Javascript" icon="js">
+	Transformations is the ability to ingest an arbitrary payload into Convoy and transform it into a webhook payload.
+  </Accordion>
+
+  <Accordion title="Advanced Webhook Subscription" icon="js">
+	This refers the capability to subscribe to webhooks based on the payload structure. See [docs](/product-manual/filters).
+  </Accordion>
+</AccordionGroup>
+
+It is safe to assume any capability not listed here is available in the Community Edition. If you're experiencing otherwise, please reach out to us at support@getconvoy.io

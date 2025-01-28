@@ -1,0 +1,92 @@
+---
+title: Read Replicas
+'og:title': Read Replicas
+'og:description': Convoy supports read replicas to improve the scalability and efficiency of database read operations.
+'twitter:description': Convoy supports read replicas to improve the scalability and efficiency of database read operations.
+'twitter:url': https://docs.getconvoy.io/product-manual/read-replicas
+---
+
+Convoy supports read replicas to improve the scalability and efficiency of database read operations. This feature allows you to specify additional database instances that will be used for read operations, while the primary database instance handles write operations.
+
+## Architecture
+<Frame>![Convoy Read Replicas Architecture](/images/read-replicas.svg)</Frame>
+
+With read replicas configured, Convoy distributes read queries across the replicas, improving scalability. Write operations remain dedicated to the primary database.
+
+> **Note:**
+>
+> * The read replica functionality is available only for licensed users.
+> * This feature is currently in beta and disabled by default. To enable it, use the environment variable `CONVOY_ENABLE_FEATURE_FLAG=read-replicas` or the CLI flag `--enable-feature-flag=read-replicas`.
+
+<Tip>
+    Ensure replicas are synchronized with the primary database and configured for read-only access.
+</Tip>
+
+## Configuring Read Replicas
+
+### JSON Configuration
+
+You can configure read replicas by adding the `read_replicas` object to your database configuration JSON. Each read replica should be an object with the following keys:
+
+| Key | Description |
+|---|---|
+| `host` | The hostname of the read replica. |
+| `username` | The username to connect to the read replica. |
+| `password` |  The password to connect to the read replica. |
+| `database` | The database name to connect to. |
+| `port` | The port number the read replica is listening on. |
+
+```json using read replicas via JSON configuration
+"database": {
+    "read_replicas": [
+        {
+            "host": "localhost",
+            "username": "convoy",
+            "password": "convoy",
+            "database": "convoy",
+            "port": 5436
+        },
+        {
+            "host": "localhost",
+            "username": "convoy",
+            "password": "convoy",
+            "database": "convoy",
+            "port": 5437
+        }
+    ],
+    "host": "localhost",
+    "username": "convoy",
+    "password": "convoy",
+    "database": "convoy",
+    "port": 5435
+}
+```
+
+### CLI Configuration
+
+Alternatively, you can use the `read-replicas-dsn` configuration option to provide a list of connection strings.
+Each connection string should follow the format:
+
+`<dbms>://<username>:<password>@<host>:<port>/<database>`
+
+Here's what each field represents:
+
+| Field        | Description                                       |
+|--------------|---------------------------------------------------|
+| `<dbms>`     | The database management system (e.g., `postgres`). |
+| `<username>` | The username to connect to the replica.           |
+| `<password>` | The password to connect to the replica.           |
+| `<host>`     | The hostname or IP address of the replica.        |
+| `<port>`     | The port the replica is listening on.             |
+| `<database>` | The name of the database to connect to.           |
+
+For example:
+
+```shell using read replicas via CLI
+convoy server --enable-feature-flag=read-replicas --read-replicas-dsn="postgres://convoy:convoy@localhost:5436/convoy,postgres://convoy:convoy@localhost:5437/convoy"
+
+```
+This will configure Convoy to use the specified read replicas for database read operations.
+
+> **Important:**
+> Make sure the connection strings are formatted correctly, including the database name, username, password, host, and port.

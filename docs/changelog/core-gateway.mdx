@@ -1,0 +1,313 @@
+---
+title: Core Gateway
+---
+
+<Update label="v24.11">
+  <Frame>
+    <img src="/images/release-images/release-24.11.png" />
+  </Frame>
+
+  ### Release Highlights
+  - Added endpoint circuit breaking.
+  - Added rate limiting to control plane APIs. 
+  - Added `allow_list` and `block_list` config for SSRF prevention.
+  - Added event types. 
+  - Added Enterprise SSO.
+  - Added `Datadog` tracing support.
+
+</Update>
+
+<Update label="v24.9">
+  <Frame>
+    <img src="/images/release-images/release-24.9.png" />
+  </Frame>
+
+  ### Release Highlights
+  - RBAC renamed to multiplayer mode and put behind the license.
+  - Setting the worker/agent execution mode can only be done using a license.
+  - Added support for inbound webhooks that use urlencoded content type.
+  - HTTP ingest now uses the instance ingest rate.
+  - Endpoint authentication configuration is now visible on the dashboard.
+
+  ### Patches
+
+  The changelogs for this minor release version and any maintenance versions are listed below.
+
+  - [Convoy v24.9.2](https://github.com/frain-dev/convoy/releases/tag/v24.9.2)
+  - [Convoy v24.9.1](https://github.com/frain-dev/convoy/releases/tag/v24.9.1)
+
+</Update>
+
+<Update label="v24.8">
+  <Frame>
+    <img src="/images/release-images/release-24.8.png" />
+  </Frame>
+
+  ### Release Highlights
+
+  - Changed Convoy's license to Elastic License v2.0.
+  - Gated some features behind a license.
+  - Docker images are now hosted on DockerHub.
+  - Added end-to-end latency metrics.
+  - Implemented support for inbound webhooks using form data.
+  - Introduced end-to-end test suite using test containers.
+  - Split delivery attempts from event deliveries.
+  - Added authentication to metrics and queue monitoring routes.
+  - Fixed various bugs, including issues with positional array filter, count & batch retry queries, and migration problems.
+
+  ### Breaking changes
+  In this release, we have gated a number of features behind a license.
+  If you use them, these features will cease to work until you provide
+  a license key. Read [here](/business-and-enterprise/licensing) to learn about all the paid features,
+  and [here](/business-and-enterprise/paid-features) to learn how to get a license key.
+
+  ### Upgrading
+  To upgrade from `v24.6.x` to `v24.8.x` and above:
+
+  - **Docker**: Update the docker image from `docker.cloudsmith.io/convoy/convoy/frain-dev/convoy` to `getconvoy/convoy`.
+  - **Kubernetes**: Update both the image repository and the image tag values to `getconvoy/convoy` and `v24.8.x` respectively.
+  See [here](../../deployment/install-convoy/kubernetes#upgrading-to-v24-8-x) for more info.
+  <Note>**You need to switch back to the old image to downgrade**</Note>
+
+  ### Patches
+
+  The changelogs for this minor release version and any maintenance versions are listed below.
+
+  - [Convoy v24.8.2](https://github.com/frain-dev/convoy/releases/tag/v24.8.2)
+  - [Convoy v24.8.1](https://github.com/frain-dev/convoy/releases/tag/v24.8.1)
+</Update>
+
+<Update label="v24.6">
+  <Frame>
+    <img src="/images/release-images/release-24.6.png" />
+  </Frame>
+  ### Release Highlights
+
+  - Added rate limiting to event entry points, HTTP APIs, and message brokers.
+  - Introduced a retry queue for better event processing.
+  - Implemented a search bar for easier subscription management.
+  - Adopted asynq's exponential backoff for event delivery retries.
+  - Integrated PyroScope profiling and Prometheus metrics for enhanced monitoring.
+  - Enabled creation and viewing of endpoint subscriptions via portal links.
+  - Allowed filtering of subscriptions by name.
+
+  ### Patches
+
+  The changelogs for this minor release version and any maintenance versions are listed below.
+
+  - [Convoy v24.6.4](https://github.com/frain-dev/convoy/releases/tag/v24.6.4)
+  - [Convoy v24.6.3](https://github.com/frain-dev/convoy/releases/tag/v24.6.3)
+  - [Convoy v24.6.2](https://github.com/frain-dev/convoy/releases/tag/v24.6.2)
+  - [Convoy v24.6.1](https://github.com/frain-dev/convoy/releases/tag/v24.6.1)
+</Update>
+
+<Update label="v24.5">
+  <Frame>
+    <img src="/images/release-images/release-24.5.png" />
+  </Frame>
+
+  ### Release Highlights
+
+  - Introduced the automatic creation of a default organization during the initial Convoy setup.
+  - Added a user-settings page for situations when no organizations are present.
+  - Enhanced event processing by using transactions to avoid race conditions.
+  - Improved dashboard functionality by displaying the Endpoint table with its ID.
+
+  ### Patches
+
+  The changelogs for this minor release version and any maintenance versions are listed below.
+
+  - [Convoy v24.5.1](https://github.com/frain-dev/convoy/releases/tag/v24.5.1)
+
+</Update>
+
+<Update label="v24.4">
+  <Frame>
+    <img src="/images/release-images/release-24.4.png" />
+  </Frame>
+
+  ### Release Highlights
+  - Implemented an in-memory store.
+  - Re-implement rate limiter using postgres.
+  - Payloads from message broker sources can be mutated using javascript functions.
+
+  All API Changes are backward-compatible.
+  You shouldn't need to change any code to get them to work.
+  You may need to specify the previous version --the latest being **2024-04-01**--
+  to ensure the api does not break for your application.
+
+  ```bash terminal
+  // In convoy.json
+  {
+      "api_version": "2024-01-01"
+  }
+
+  // In environment variables
+  CONVOY_API_VERSION="2024-01-01"
+  ```
+
+  ### Patches
+
+  The changelogs for this minor release version and any maintenance versions are listed below.
+
+  - [Convoy v24.4.1](https://github.com/frain-dev/convoy/releases/tag/v24.4.1)
+
+</Update>
+
+<Update label="v24.1">
+  <Frame>
+    <img src="/images/release-images/release-24.1.png" />
+  </Frame>
+
+  ### Release Highlights
+
+  - **OTel Support:** We added support for OpenTelemetry. You can now receive traces to any OTel-supported backend like Sentry, Signoz, Datadog, etc.
+
+  ### Upgrading 
+  To upgrade from `23.11.x` to `24.1.x`, check the following:
+
+  - Run the query below to update invalid columns in the `endpoints` table.
+    ```sql Update Endpoint Table
+    UPDATE convoy.endpoints
+    SET http_timeout = '5s',
+        rate_limit_duration = '5s'
+    WHERE http_timeout IS NULL OR http_timeout = '' 
+       OR rate_limit_duration IS NULL 
+       OR rate_limit_duration = '';
+    ```
+
+  - To ensure the api does not break for your application, select the correct api version in your `convoy.json`
+    ```bash terminal
+    // In convoy.json
+    {
+        "api_version": "0001-01-01"
+    }
+
+    // In environment variables 
+    CONVOY_API_VERSION="0001-01-01"
+    ```
+
+  ### Patches
+
+  The changelogs for this minor release version and any maintenance versions are listed below.
+
+  - [Convoy v24.1.3](https://github.com/frain-dev/convoy/releases/tag/v24.1.3)
+  - [Convoy v24.1.2](https://github.com/frain-dev/convoy/releases/tag/v24.1.2)
+  - [Convoy v24.1.1](https://github.com/frain-dev/convoy/releases/tag/v24.1.1)
+
+</Update>
+
+<Update label="v23.11">
+  <Frame>
+    <img src="/images/release-images/release-23.11.png" />
+  </Frame>
+  
+  ### Release Highlights
+  - **Profiling:** We added profiling route which you can use to generate a [flame graph](https://github.com/brendangregg/FlameGraph)
+
+  ### Patches
+
+  The changelogs for this minor release version and any maintenance versions are listed below.
+
+  - [Convoy v23.11.1](https://github.com/frain-dev/convoy/releases/tag/v23.11.1)
+
+</Update>
+
+<Update label="v23.10">
+  <Frame>
+    <img src="/images/release-images/release-23.10.png" />
+  </Frame>
+
+  ### Release Highlights
+  - **Performance:** Added several performance improvements using a write-through cache and reduced db calls.
+  - **Event Retries**: Refactored how exponential back-off rate limits are generated.
+  - **Message Brokers:** Add support for Idempotency keys when ingesting events from all message brokers.
+
+  ### Patches
+
+  The changelogs for this minor release version and any maintenance versions are listed below.
+
+  - [Convoy v23.10.1](https://github.com/frain-dev/convoy/releases/tag/v23.10.1)
+
+</Update>
+
+<Update label="v23.9">
+  <Frame>
+    <img src="/images/release-images/release-23.9.png" />
+  </Frame>
+
+  ### Release Highlights
+  - **Functions:**: We added support to transform event payloads using user defined javascript functions
+  - **Dashboard:** We added a tail mode for the events and event deliveries tables which fetches new events when they arrive at intervals.
+
+  ### Patches
+
+  The changelogs for this minor release version and any maintenance versions are listed below.
+
+  - [Convoy v23.9.2](https://github.com/frain-dev/convoy/releases/tag/v23.9.2)
+  - [Convoy v23.9.1](https://github.com/frain-dev/convoy/releases/tag/v23.09.1)
+
+</Update> 
+
+<Update label="v23.8">
+  <Frame>
+    <img src="/images/release-images/release-23.8.png" />
+  </Frame>
+
+  ### Release Highlights
+  - **Searching Events:** We added the ability to search through event payloads using postgres full text search.
+  - **Redis:** We added support for spinning up a Convoy instance that uses a Redis cluster for HA workloads.
+  - **Filters:** We expanded our event filters to allow them to be specified using regular expressions.
+  - **Message Brokers:** We added Kafka as an ingestion source.
+
+  ### Patches
+
+  The changelogs for this minor release version and any maintenance versions are listed below.
+
+  - [Convoy v23.8.2](https://github.com/frain-dev/convoy/releases/tag/v23.08.2)
+  - [Convoy v23.8.1](https://github.com/frain-dev/convoy/releases/tag/v23.08.1)
+
+</Update>
+
+<Update label="v23.6">
+  <Frame>
+    <img src="/images/release-images/release-23.6.png" />
+  </Frame>
+
+  ### Release Highlights
+  - **Ingesting Events:** We added support for webhook events idempotency. This allows an idempotency token to be supplied when sending an event and also building an idempotency key from parts of the request when ingesting an event.
+  - **Portal Links:** We added support for endpoint management in portal links and improved the portal's responsiveness.
+  - **Dashboard:** We redesigned our dashboard, making it easier to access projects and its resources. We also made it easier to filter for events when debugging
+
+  ### Patches
+
+  The changelogs for this minor release version and any maintenance versions are listed below.
+
+  - [Convoy v23.6.3](https://github.com/frain-dev/convoy/releases/tag/v23.06.3)
+  - [Convoy v23.6.2](https://github.com/frain-dev/convoy/releases/tag/v23.06.2)
+  - [Convoy v23.6.1](https://github.com/frain-dev/convoy/releases/tag/v23.06.1)
+
+</Update>
+
+<Update label="v23.5">
+  <Frame>
+    <img src="/images/release-images/release-23.5.png" />
+  </Frame>
+
+  ### Release Highlights
+  - **Meta Events:** We now send out webhooks when specific events happen in your Convoy projects.
+  - **Configuration:** We spilt apart the redis and postgres configuration values to allow for fine-grained configuration and use of secret managers.
+  - **Filters:** We overhauled the filtering logic, making it faster and more efficient.
+  - **Access Control:** We added Role-Based Access Control for our Enterprise build
+
+  ### Patches
+
+  The changelogs for this minor release version and any maintenance versions are listed below.
+
+  - [Convoy v23.5.5](https://github.com/frain-dev/convoy/releases/tag/v23.05.5)
+  - [Convoy v23.5.4](https://github.com/frain-dev/convoy/releases/tag/v23.05.4)
+  - [Convoy v23.5.3](https://github.com/frain-dev/convoy/releases/tag/v23.05.3)
+  - [Convoy v23.5.2](https://github.com/frain-dev/convoy/releases/tag/v23.05.2)
+  - [Convoy v23.5.1](https://github.com/frain-dev/convoy/releases/tag/v23.05.1)
+
+</Update>

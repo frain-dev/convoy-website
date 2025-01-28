@@ -1,0 +1,80 @@
+---
+title: Organizations and Projects
+---
+
+Convoy provides the tools to properly categorise your data. These tools are organisations and projects.
+
+## Organisations
+
+An organisation is the highest level namespace within a Convoy instance. It comprises several projects. Ideally, this should map to a real-world organisation or some form of high-level grouping.
+
+As a new user, an organization can be created by clicking on the **Create Organisation** on the dashboard:
+
+<Frame>![Create organization](/images/create-org-dashboard.png)</Frame>
+
+To switch between organizations, open the current organization's settings, or create a new organization, use the account dropdown on the right of the top bar.
+
+<Frame>![Organization operations](/images/org-process.png)</Frame>
+
+### Adding new members
+
+In the Community Edition, all users are super users, so all users can invite other team members.
+
+> Before doing this, ensure you have your SMTP configuration set up.
+
+<Frame>![Team page](/images/team-page.png)</Frame>
+
+To add a new team member, visit the **teams** page at the top middle of the page.
+
+<Frame>![Add new teammate](/images/new-teammate.png)</Frame>
+
+Once the invite is sent, the user will get an email with an invitation link to join the new project. An invitation token is valid for **2 weeks** after which you'd need to generate a new one.
+
+## Projects
+
+A [project](https://dashboard.getconvoy.io/projects) is a hierarchical namespace for all core resources within Convoy. All events, endpoints, subscriptions and all other critical configurations belong to a project and a project belongs to an organisation.
+
+There are two types of projects; Incoming and Outgoing projects.
+
+<Frame>![Incoming and outgoing projects](/images/copy-teammate-invite-link.png)</Frame>
+
+### Incoming project
+
+An incoming project is designed to receive webhooks from third-party party sources like Github, Twilio, Stripe etc. and even custom sources based on any form of verification. It was designed for API consumers.
+
+### Outgoing project
+
+An outgoing project is designed to publish webhooks to users' endpoints. It is designed for API providers.
+
+### Configure a Project
+
+<Frame>![Project configurations](/images/in-and-out-projects.png)</Frame>
+
+The following are parameters that can be configured on a project.
+| Config                   | Type            | Supported Values                            | Default            |
+|--------------------------|-----------------|---------------------------------------------|--------------------|
+| **Signature Details**    |                 |                                             |                    |
+| Header                   | String          |                                             | X-Convoy-Signature |
+| Hash                     | String          |                                             | SHA512             |
+| **Retry Logic**          |                 |                                             |                    |
+| Mechanism                | String          | Linear time retry, Exponential time backoff | Linear time retry  |
+| Duration                 | Duration String |                                             | 5s                 |
+| Limit                    | Integer         |                                             | 5                  |
+| **Rate Limit**           |                 |                                             |                    |
+| Duration                 | Duration String |                                             | 5s                 |
+| Limit                    | Integer         |                                             | 5                  |
+| **Others**               |                 |                                             |                    |
+| Disable Failing Endpoint | Boolean         |                                             | False              |
+| Search Policy            | Duration String |                                             | 720h (30 days)     |
+| Enable Meta Events       | Boolean         |                                             | False              |
+
+#### Relationship with subscription
+
+All these configurations act as sensible defaults for all subscriptions in a project. A project can't exist without all these parameters defined in the project. Each configuration can also be described on subscriptions in a project, where a subscription doesn't define these parameters, we fall back to the project's defaults.
+
+### Multiple Projects
+
+There are several practical ways of using projects:
+
+- **A project per environment:** You can decide to test your integration with a development or staging environment, before going live to a production environment to keep data separate.
+- **A project per product:** If you have several projects, you can scope them differently on Convoy too.

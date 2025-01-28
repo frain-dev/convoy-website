@@ -1,0 +1,23 @@
+---
+title: "Errors"
+---
+
+Convoy's API is RESTful, and as such, we use conventional HTTP status 
+codes to indicate the status of every request.
+
+## HTTP codes
+| Code | Description                           |
+| -------- | ------------------------------------- |
+| `201 Created`      | Resource was created successfully    |
+| `400 Bad Request`  | The request failed due to an unacceptable, most commonly an invalid parameter. |
+| `401 Unauthorized` | A request to a protected endpoint did not have a valid API Key. |
+| `404 Not Found`    | Resource does not exist.                          |
+
+## Sample Error Response
+
+```json
+{
+  "status": false,
+  "message": "invalid endpoint scheme"
+}
+```

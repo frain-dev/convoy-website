@@ -1,0 +1,80 @@
+---
+title: 'Webhook Security: Tackling SSRF'
+'og:title': Convoy Architecture
+'og:description': This article explores strategies to combat SSRF attacks in webhook systems, focusing on IP Validation & Filtering and Egress Proxy implementation in Convoy.
+'twitter:description': This article explores strategies to combat SSRF attacks in webhook systems, focusing on IP Validation & Filtering and Egress Proxy implementation in Convoy.
+'twitter:url': https://docs.getconvoy.io/webhook-guides/tackling-ssrf
+---
+
+import GetStarted from '/snippets/get-started.mdx';
+
+Server-Side Request Forgery (SSRF) attacks represent a formidable threat to webhook systems. In these attacks, malicious users can manipulate webhook systems to trick your server into making unauthorised requests to internal resources or external systems. The potential impacts of SSRF can be severe, including:
+
+- **Unauthorised access** to internal services and APIs
+- **Data exfiltration** from sensitive internal systems
+- **Remote code execution** in critical scenarios
+- **Exploitation of Cloud Metadata Services**
+
+A common anti-pattern to solving SSRF is to require every customer to register their webhook URLs through customer support. This is time-consuming and inefficient. Fortunately, there are better solutions. In this article, we’ll describe these solutions and how you can implement them in Convoy.
+
+### IP Validation & Filtering
+
+To combat SSRF risks effectively, robust URL validation and filtering are essential. Both checks are important to effectively mitigate the [time-of-check to time-of-use](https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use) vulnerabilities commonly exploited by [DNS rebinding attacks](https://hackerone.com/reports/1379656).
+
+Convoy implements a secure resolution process that first resolves hostnames to their IP addresses and validates these against allow and block lists before establishing connections to approved addresses. To configure it, we can add the following to our `convoy.json`:
+
+```json
+{
+  "dispatcher": {
+    "allow_list": ["0.0.0.0/0"],
+    "block_list": ["169.254.169.254",
+                   "127.0.0.0/8",
+                   "::1/128", 
+                   "10.0.0.0/8", 
+                   "172.16.0.0/12", 
+                   "192.168.0.0/16"]
+	}
+}
+```
+
+The above configuration is a good foundation you can build upon. The `allow_list` enables connections to all IPv4 addresses unless restricted by the `block_list`. The `block_list` specifies IP addresses and ranges that are explicity denied access:
+
+- `169.254.169.254`: Often used for metadata in cloud environments, such as AWS. Blocking this prevents access to instance metadata, adding a layer of security.
+- `127.0.0.0/8`: Blocks the entire localhost range, preventing traffic from any loopback address.
+- `::1/128`: Blocks the IPv6 loopback address, equivalent to 127.0.0.1 in IPv4.
+- `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`: These are private IP ranges commonly used for internal network communications. Blocking these addresses prevents connections from private networks, which can help isolate this service from local network traffic.
+
+### Egress Proxy
+With this technique, we route all webhooks delivered through an egress proxy deployed in an isolated VPC; this would ensure that it’s impossible to reach internal systems from the network layer. Any egress proxy of choice can be deployed, but we recommend [smokescreen](https://github.com/stripe/smokescreen).
+
+<Frame caption="AWS Architecture diagram of Convoy deployed alongside egress proxies to protect SSRF.">
+  <img src="/images/forward-proxy.png" />
+</Frame>
+
+To configure Convoy with a egress proxy, you should add the following to your `convoy.json` and you're good to go!
+```json
+{
+  "server": {
+  ... 
+  "http_proxy": "{egress proxy url}"
+  }
+}
+```
+
+### Defense In Depth
+
+Finally, as with everything in security, taking a layered security approach is a best practice to further ensure the security of your webhook system. By combining IP validation and filtering with an egress proxy, you create multiple layers of protection against SSRF attacks. Here's how this defense in depth strategy works:
+
+- **IP Validation and Filtering:** This acts as the first line of defense, blocking requests to known internal or malicious IP addresses.
+- **Egress Proxy:** As a second layer, the egress proxy provides an additional checkpoint, ensuring that even if a request passes the initial IP filter, it still has to go through a controlled gateway.
+
+This combination offers several advantages:
+
+- **Redundancy:** If one layer fails or is compromised, the other layer can still prevent the attack.
+- **Comprehensive Coverage:** Different types of SSRF attempts may be caught by different layers, increasing overall security.
+- **Flexibility:** You can adjust and fine-tune each layer independently as new threats emerge or your infrastructure changes.
+
+
+By implementing both IP validation and filtering alongside an egress proxy in Convoy, you create a robust, multi-layered defense against SSRF attacks, significantly enhancing the security of your webhook system.
+
+<GetStarted />

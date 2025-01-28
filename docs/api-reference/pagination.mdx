@@ -1,0 +1,35 @@
+---
+title: "Pagination"
+---
+
+Convoy's API uses cursor-based pagination through the `next_page_cursor` and 
+`prev_page_cursor` parameters. Both parameters accept an existing object ID value
+and return objects in reverse chronological order. The `prev_page_cursor` parameter 
+returns objects listed before the named object. The `next_page_cursor` parameter 
+returns objects listed after the named object. 
+
+These parameters are mutually exclusive. You can use either the `next_page_cursor` 
+or `prev_page_cursor` parameter, but not both simultaneously. Full description of 
+each parameter is described below.
+
+
+## Parameters
+
+<ParamField query="perPage" type="integer" default="50">
+    Number of objects per response.
+</ParamField>
+
+<ParamField query="direction" type="string" default="next">
+  This parameter is used to decide if the pagination is forward or backward.
+  It can either be `next` or `prev`.
+</ParamField>
+
+<ParamField query="next_page_cursor" type="string">
+  A cursor to use in pagination. It specifies your current place in the list
+  and is used to query the next page.
+</ParamField>
+
+<ParamField query="prev_page_cursor" type="string">
+  A cursor to use in pagination. It specifies your current place in the list
+  and is used to query the previous page.
+</ParamField>

@@ -1,0 +1,41 @@
+---
+title: "Versioning"
+---
+
+Convoy’s API is designed to be backwards compatible from scratch. The aim was not to break your apps with every new update to the API. Not all Convoy [releases](https://docs.getconvoy.io/release-notes/releases) have breaking API changes; you can view the list of all versions with breaking changes [here](#breaking-changes).
+
+For every new release that includes breaking API changes, we create a new version, and set the new version to the default API version. The current default version is `2024-01-01`. To lock your instance to a specific version, specify the `api_version` in your `convoy.json`. You can also make per-request calls by specifying the header: `X-Convoy-Version` in the request header.
+
+
+## Backwards-compatible changes
+Convoy considers the following changes to be backwards-compatible:
+
+- Adding new API resources.
+- Adding new optional request parameters to existing API methods.
+- Adding new properties to existing API responses.
+- Changing the order of properties in existing API responses.
+- Changing the length or format of opaque strings, such as object IDs, error messages, and other human-readable strings.
+	- This includes adding or removing fixed prefixes (such as `en_` on endpoint IDs).
+ 	- Make sure that your integration can handle Convoy-generated object IDs, which can contain up to 255 characters. For example, if you’re using MySQL, store the IDs in a `VARCHAR(255) COLLATE utf8_bin` column (the `COLLATE` configuration provides case-sensitivity during lookups).
+- Adding new event types
+	- Make sure that your webhook listener gracefully handles unfamiliar event types.
+
+## Compatibility Matrix 
+The table below shows the Convoy version we introduced new API versions.
+
+| Convoy Version | API Version  |
+|----------------|--------------|
+| `v24.4.1`      | `2024-04-01` |
+| `v24.1.1`      | `2024-01-01` |
+
+
+## Breaking Changes
+
+#### 2024-04-01
+- changed endpoint `title` to `name`
+- changes endpoint `target_url` to `url`
+
+#### 2024-01-01
+- Changed `http_timeout` and `rate_limit_duration` in endpoints from duration string to int.
+- Changed the default signature format from `simple` to `advanced`.
+- Stripped out unnecessary fields from dynamic api endpoint.

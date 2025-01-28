@@ -1,0 +1,57 @@
+---
+title: FAQ
+sidebarTitle: Overview
+---
+## What is the difference between an incoming and an outgoing webhooks project?
+
+------ 
+| Features      | Incoming                                                                                   | Outgoing                                                                                     |
+|---------------|--------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| Purpose       | For API consumers. In this scenario, Convoy acts as a reliable ingress for webhook events. | For API providers. In this scenario, Convoy acts as a reliable egress for webhook events.    |
+| Portal        | You don’t need a portal because you have access to the entire dashboard.                   | Each API consumer needs a portal to view their specific endpoint webhook logs.               |
+| Event Sources | Events are ingested only through HTTP source URLs.                                         | Events are ingested through REST API and PubSub systems like Amazon SQS, Google PubSub, etc. |
+
+## How does API versioning work?
+
+<Note> TL;DR: Even if you upgrade your convoy server, you can still use your
+clients as is or make API calls without making any changes by pining the API version to the older version.</Note>
+
+There are two versions that need to be tracked, the server and the client version.
+The server version is automatically set the most recent version whenever there is a breaking change e.g., `2024-04-01`.
+
+#### Server API Version
+You can pin the server to an API version using the environment variable either of the two below.
+
+```bash convoy
+// In convoy.json
+{
+    "api_version": "0001-01-01"
+}
+
+// In environment variables
+CONVOY_API_VERSION="0001-01-01"
+```
+
+#### Client API Version
+You can pin the client to an API version using the http header `X-Convoy-Version`
+
+```http request log
+POST /api/v1/projects/01HS1672A88250D57J8SZV4P3A HTTP/1.1
+
+Authorization: --REDACTED--
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/json;charset=utf-8
+Connection: keep-alive
+Content-Length: 113
+User-Agent: Convoy Go SDK
+X-Convoy-Version: 0001-01-01
+```
+
+#### API Version Precedence
+The order of precedence for the API version is as follows, larger numbers take precedence:
+
+| Name                 | Location              | Precedence | Rationale for overriding                                                                   |
+|----------------------|-----------------------|------------|--------------------------------------------------------------------------------------------|
+| `api_version`        | convoy.json           | 0          |                                                                                            |
+| `CONVOY_API_VERSION` | environment variables | 1          | Environment variables take precedence over values set in convoy.json                       |
+| `X-Convoy-Version`   | http headers          | 2          | Each http request can pin the version if they want to fetch content in a particular format |

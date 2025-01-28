@@ -1,0 +1,66 @@
+---
+title: Google PubSub
+---
+
+To ingest events using Google PubSub, follow the steps outlined below:
+
+<Steps>
+    <Step title="Create a PubSub Topic">
+        <Frame>![create google pubsub topic](/images/google-pubsub.png)</Frame>
+    </Step>
+    <Step title="Create a Subscription">
+        <Frame>![create a subscription](/images/create-google-subscription.png)</Frame>
+    </Step>
+    <Step title="Create a Service Account with PubSub Admin Role">
+        <Frame>![create service account](/images/create-service-account.png)</Frame>
+    </Step>
+    <Step title="Generate Service Account JSON Key">
+        <Frame>![generate service account json key](/images/create-service-account-key.png)</Frame>
+    </Step>
+    <Step title="Configure Source">
+        Supply your `Project ID`, `Topic Name`, `Subscription` and upload your service account json key.
+    </Step>
+    <Step title="Ingest Events">
+        Continue to the next section to see how to format the event payload.
+    </Step>
+</Steps>
+
+## Ingestion Options
+There are two ways to ingest events into Convoy from Google PubSub:
+- Format the payload using the structure below as a guide and write it to your topic.
+    ```json5 reference payload
+     {
+        "event_type": "string, required",
+        "data": "object, required",
+        "custom_headers": { // optional
+            "x-convoy-message-type": "single",
+            "sample-header": "sample-value"
+        },
+        "idempotency_key": "string, optional",
+        "owner_id": "string, optional", // if included, the event is sent to all endpoints with the owner-id
+        "endpoint_id": "string, optional" // if included, the event is sent to a single endpoint
+     }
+    ```
+    > If `x-convoy-message-type` set to **broadcast**, the event will be sent to all endpoints in the project, ignoring both the `endpoint_id` and `owner_id` values.
+
+For a full list of reference payloads, see [our guide on ingesting events](../../product-manual/events-and-event-deliveries#ingesting-events)
+
+- Send your arbitrarily formatted event payloads to your topic and use Convoy’s transform functions to mutate them at the point of ingestion.
+    ```js transform function
+    function transform(payload) {
+        return {
+            "endpoint_id": "",
+            "owner_id": "",
+            "event_type": "sample",
+            "data": payload, // payload contains arbitrary message data read from your queue
+            "custom_headers": {
+                "sample-header": "sample-value"
+            },
+            "idempotency_key": ""
+        }
+    }
+    ```
+
+## Things to note
+- Messages are read of the PubSub topic in chunks by each worker.
+- Acknowledgements are done automatically, this is handled by Google's Go library.
