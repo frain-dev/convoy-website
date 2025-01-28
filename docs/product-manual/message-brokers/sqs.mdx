@@ -1,0 +1,73 @@
+---
+title: Amazon SQS
+---
+
+Convoy supports ingesting events from SQS queues. This is currently only supported in [outgoing projects](../../product-manual/organizations-and-projects#outgoing-project).
+
+## Connecting to your SQS queue
+To ingest events using Amazon SQS, follow the steps outlined below:
+<Steps>
+    <Step title="Create an IAM User for authenticating with the SQS Queue and attach the AmazonSQSFullAccess policy to the user">
+        <Frame>![create IAM user](/images/create-sqs-user.png)</Frame>
+    </Step>
+    <Step>
+        <Frame>![attach AmazonSQSFullAccess policy](/images/attach-sqs-policy.png)</Frame>
+    </Step>
+    <Step title="Under the security credentials tab for the IAM user, generate a new Access Key">
+        > **Take note of the Access Key and Secret Key generated**
+
+        <Frame>![generate a new access key](/images/generate-access-key.png)</Frame>
+    </Step>
+    <Step>
+        <Frame>![create CLI access key](/images/cli-access-key.png)</Frame>
+    </Step>
+    <Step title="Create a SQS Queue and specify the ARN of the IAM user under the access policy">
+        <Frame>![create sqs queue](/images/create-sqs-queue.png)</Frame>
+    </Step>
+    <Step>
+        <Frame>![add the IAM user under access policy](/images/access-policy-iam-user.png)</Frame>
+    </Step>
+    <Step title="Going back to Convoy">
+        Supply your `Access Key`, `Secret Key`, `Queue Name` and `Default Region`.
+    </Step>
+</Steps>
+
+## Ingestion Options
+There are two ways to ingest events into Convoy from your SQS queue:
+- Format the payload using the structure below as a guide and write it to your queue.
+  ```json5 reference payload
+   {
+      "event_type": "string, required",
+      "data": "object, required",
+      "custom_headers": { // optional
+          "x-convoy-message-type": "single",
+          "sample-header": "sample-value"
+      },
+      "idempotency_key": "string, optional",
+      "owner_id": "string, optional", // if included, the event is sent to all endpoints with the owner-id
+      "endpoint_id": "string, optional" // if included, the event is sent to a single endpoint
+   }
+    ```
+  > If `x-convoy-message-type` set to **broadcast**, the event will be sent to all endpoints in the project, ignoring both the `endpoint_id` and `owner_id` values.
+
+For a full list of reference payloads, see [our guide on ingesting events](../../product-manual/events-and-event-deliveries#ingesting-events)
+- Send your arbitrarily formatted event payloads to your queue and use Convoy’s transform functions to mutate them at the point of ingestion.
+  ```js transform function
+  function transform(payload) {
+      return {
+          "endpoint_id": "",
+          "owner_id": "",
+          "event_type": "sample",
+          "data": payload, // payload contains arbitrary message data read from your queue
+          "custom_headers": {
+              "sample-header": "sample-value"
+          },
+          "idempotency_key": ""
+      }
+  }
+    ```
+
+## Things to note
+- Messages are read of the topic one-by-one by each worker reading off the queue.
+- Acknowledgements are done per message.
+- Ingestion is rate-limited (50 per second), and this can be configured by setting the `CONVOY_INGEST_RATE` environment variable.

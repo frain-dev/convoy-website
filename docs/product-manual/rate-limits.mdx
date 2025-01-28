@@ -1,0 +1,35 @@
+---
+title: Rate Limits
+'og:title': Rate Limits
+'og:description': Rate limits in Convoy
+'twitter:description': Rate limits in Convoy
+'twitter:url': https://docs.getconvoy.io/product-manual/rate-limits
+---
+
+## Ingress Rate limits
+This controls how many events Convoy can ingest per second
+This is configured by setting the `CONVOY_INGEST_RATE` env var.
+This value limits the number of:
+- Messages read off message brokers
+- Events created via API (direct, dynamic, fan-out, broadcast).
+
+Reaching this limit will cause requests to receive a `429 (Rate Limit Exceeded)` error response for APIs that create events.
+
+## Egress Rate Limits
+This controls how many events Convoy can send per second.
+There is no instance wide configuration, instead egress rates are configured per endpoint.
+(This might change in the future)
+
+## HTTP API Rate Limits
+This controls how requests per second Convoy can process.
+This includes:
+- Headless control plane APIs (used for managing project resources).
+- Ingress APIs
+
+Reaching this limit will cause requests to receive a `429 (Rate Limit Exceeded)` error response from all APIs.
+> Requests made to the Convoy instance via the UI don't count towards rate limits.
+
+## Technical Details
+
+Rate limits are stored in Redis and are prefixed by `rate:`
+

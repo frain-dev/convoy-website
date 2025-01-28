@@ -1,0 +1,80 @@
+---
+title: RabbitMQ
+---
+
+Convoy supports ingesting events from RabbitMQ queues. This is currently only supported in [outgoing projects](../../product-manual/organizations-and-projects#outgoing-project).
+
+## Before Connecting to RabbitMQ
+To connect your RabbitMQ instance, you need to supply:
+
+- The **hostname and port** of the RabbitMQ cluster (e.g., localhost:5672).
+- The **queue name** from which to pull messages.
+- The **number of workers** specifying the number of consumers polling messages from the queue.
+- (Optional) **Dead Letter Exchange (DLX)**, to route unprocessable messages to a specified exchange. Convoy does not declare this DLX.
+- **Virtual Host (vhost)**, where your queue and exchange are located.
+- **Username** and **password** for authentication.
+
+### Bind Exchange (optional)
+RabbitMQ queues can be bound to exchanges, enabling selective message routing based on a **routing key**. You can specify an exchange name and routing key to filter messages sent to your queue.
+
+## Authentication
+Authentication is optional and can be set up using **username** and **password** if required. Additional configurations, such as **SSL/TLS**, can be enabled or disabled depending on your RabbitMQ setup.
+
+## Connecting to RabbitMQ
+To set up RabbitMQ as an event source in Convoy, follow these steps:
+
+<Steps>
+    <Step title="Complete the RabbitMQ Source Form with the required details">
+        This includes specifying:
+        - **Hostname** and **Port**
+        - **Queue Name**
+        - **Number of Workers**
+        - **Virtual Host**
+        - (Optional) **Dead Letter Exchange (DLX)** and authentication credentials
+
+        <Frame>![RabbitMQ source form](/images/rabbitmq-source-form.png)</Frame>
+    </Step>
+    <Step title="View the created RabbitMQ source in the sources list">
+        After submitting, your new RabbitMQ source should appear in the list of event sources.
+
+        <Frame>![RabbitMQ source created](/images/rabbitmq-source-created.png)</Frame>
+    </Step>
+</Steps>
+
+## Ingestion Options
+Convoy provides two ways to ingest events from RabbitMQ:
+
+1. **Direct Payload Ingestion**: Use the following payload structure as a guide for formatting:
+ ```json5 reference payload
+ {
+    "event_type": "string, required",
+    "data": "object, required",
+    "custom_headers": { // optional
+        "x-convoy-message-type": "single",
+        "sample-header": "sample-value"
+    },
+    "idempotency_key": "string, optional",
+    "owner_id": "string, optional", // if included, the event is sent to all endpoints with the owner-id
+    "endpoint_id": "string, optional" // if included, the event is sent to a single endpoint
+ }
+    ```
+ > If `x-convoy-message-type` is set to **broadcast**, the event is sent to all endpoints in the project, ignoring both the `endpoint_id` and `owner_id` values.
+
+2. **Arbitrary Payload Transformation**: For custom payload formats, use Convoy’s transform functions to modify the payload at the point of ingestion.
+ ```js transform function
+ function transform(payload) {
+     return {
+         "endpoint_id": "",
+         "owner_id": "",
+         "event_type": "sample",
+         "data": payload, // arbitrary data from the queue
+         "custom_headers": {
+             "sample-header": "sample-value"
+         },
+         "idempotency_key": ""
+     }
+ }
+    ```
+
+## Things to Note
+- Each worker reads messages one-by-one from the queue, with acknowledgments processed per message.
