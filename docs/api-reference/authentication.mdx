@@ -1,0 +1,18 @@
+---
+title: "Authentication"
+---
+
+Authenticating against the Convoy API requires an API key. You can retrieve and manage your API keys from your project settings dashboard. If 
+your key gets compromised you can re-generate it from your dashboard.
+
+Your API keys are sensitive information. Please do not share in publicly accessible areas such as GitHub, client-side code, and so forth. 
+
+Authorization headers should be in the following format: `Authorization: Bearer API Key`
+
+```bash  terminal
+curl {base_url}/api/v1/projects/{projectID}/{resource}
+-H "Authorization: Bearer API_KEY"
+-H "Content-Type: application/json"
+-d '{ "name": "fintech app" }'
+-X POST
+```

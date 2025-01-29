@@ -1,0 +1,44 @@
+---
+title: Licensing
+'og:title': Upgrading Convoy with a license key
+'og:description': Upgrading Convoy with a license key
+'twitter:description': Upgrading Convoy with a license key
+'twitter:url': https://docs.getconvoy.io/licensing/licensing
+---
+
+import AddLicense from '/snippets/add-license.mdx';
+
+Convoy has three license tiers, namely `Community` which is the free plan, `Business` and `Enterprise`. This documentation will guide you on how to purchase a license,
+and configure the license key on your convoy instance(s). The pricing of all tiers can be found [here](https://getconvoy.io/pricing).
+
+## Steps
+Follow the instructions below to create a license key:
+<Steps>
+    <Step title="Register or login to Convoy Cloud">
+        <Frame caption="cloud.getconvoy.io">
+          <img src="/images/login-to-convoy-cloud.png" />
+        </Frame>
+    </Step>
+    <Step title="Navigate to the Licenses Page using the sidebar">
+        <Frame>![naviagte to Licenses page using sidebar](/images/licenses-page.png)</Frame>
+    </Step>
+    <Step title="Create a new License">
+        <Frame>![create sqs queue](/images/fill-license-details.png)</Frame>
+    </Step>
+    <Step title="Retrieve license key from your email">
+        <Frame>![retrieve license key](/images/license-key-ready.png)</Frame>
+    </Step>
+    <Step title="Configure instance with license key">
+        <AddLicense />
+    </Step>
+</Steps>
+
+## Running the Instance
+Once you've added the license key configuration, you're ready to proceed. Simply start the instance as usual, and you will now have access to all the features included in your license tier.
+
+## Upgrades
+Upgrading your license will not remove any features you currently have. In addition, you'll gain access to the new features provided by your upgraded license.
+
+## Downgrades
+When you downgrade your license, you'll lose access to the paid features of your previous license. You'll only have access to the features included in your current license. If you downgrade to the community plan and have more than two projects (the limit for the community plan), Convoy will freeze all projects except two, which will be randomly selected. The frozen projects will be restricted from actions that write new data, such as creating events, endpoints, or sources.
+You will be able to view your dashboard per usual.

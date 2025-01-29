@@ -1,0 +1,52 @@
+---
+title: Metrics
+'og:title': Metrics
+'og:description': Convoy exports metrics about the state of events received and sent via Prometheus.
+'twitter:description': Convoy exports metrics about the state of events received and sent via Prometheus.
+'twitter:url': https://docs.getconvoy.io/product-manual/metrics
+---
+
+Convoy exports metrics about the state of events received and sent via Prometheus
+
+## Enabling Metrics
+Metrics are currently in beta, and aren't enabled by default. To enable them, you need to
+- Enable the `prometheus` feature flag using `CONVOY_ENABLE_FEATURE_FLAG=prometheus`
+- Set the metrics backend env var `CONVOY_METRICS_BACKEND`
+
+Either one of the two code blocks below will work.
+
+```shell enabling convoy metrics using flags
+convoy worker --metrics-backend=prometheus --enable-feature-flag=prometheus
+```
+
+```shell enabling convoy metrics using env vars
+export CONVOY_METRICS_BACKEND=prometheus
+convoy worker --enable-feature-flag=prometheus
+```
+
+## Queue Metrics
+
+| Name                                          | Type  | Description                                                                                        |
+|:----------------------------------------------|:------|:---------------------------------------------------------------------------------------------------|
+| `convoy_event_queue_total`                    | Gauge | Total number of tasks in the event queue                                                           |
+| `convoy_event_queue_scheduled_total`          | Gauge | Total number of tasks scheduled in the event queue                                                 |
+| `convoy_event_queue_backlog_seconds`          | Gauge | Number of seconds the oldest pending task is waiting in pending state to be processed.             |
+| `convoy_event_delivery_queue_total`           | Gauge | Total number of tasks in the delivery queue per endpoint                                           |
+| `convoy_event_delivery_attempts_total`        | Gauge | Total number of attempts per endpoint                                                              |
+| `convoy_event_delivery_queue_backlog_seconds` | Gauge | Number of seconds the oldest pending task is waiting in pending state to be processed per endpoint |
+
+
+## Data Ingestion Metrics
+| Name                        | Type      | Description                                               |
+|:----------------------------|:----------|:----------------------------------------------------------|
+| `convoy_ingest_total`       | Counter   | Total number of events ingested                           |
+| `convoy_ingest_success`     | Counter   | Total number of events successfully ingested and consumed |
+| `convoy_ingest_error`       | Counter   | Total number of errors during event ingestion             |
+| `convoy_end_to_end_latency` | Histogram | Total time (in seconds) an event spends in Convoy.        |
+
+
+> [!WARNING]
+> Feature flags in Convoy were reimplemented on a per-feature basis.\
+> The following flags/configs are no longer valid:
+> * `--feature-flag=experimental`
+> * `export CONVOY_FEATURE_FLAG=1`

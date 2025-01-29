@@ -1,0 +1,50 @@
+---
+title: Best practices for generating webhook events
+sidebarTitle: Best practices for generating webhook events
+'og:title': Best practices for generating webhook events
+'og:description': We wrote this guide for webhook providers looking to add webhooks to their API or improve their webhooks delivery system. Here are a few best practices to keep in mind while generating webhook payloads
+'twitter:description': We wrote this guide for webhook providers looking to add webhooks to their API or improve their webhooks delivery system. Here are a few best practices to keep in mind while generating webhook payloads
+'twitter:url': https://docs.getconvoy.io/guides/best-practices-for-generating-webhook-events
+---
+
+We wrote this guide for webhook providers looking to add webhooks to their API or improve their webhooks delivery system. Here are a few best practices to keep in mind while generating webhook payloads:
+
+## Payload Structure
+```json
+{
+	// Prefer a nested resource approach: resource.action or 
+	// resource.subresource.action
+	"event_type": "order.created",
+	
+	// include the entire webhook payload in one object.
+	"data": {}
+}
+```
+
+## Persistence
+It is a good practise to have a mechanism to store events, so you can always push them to your webhooks gateway if the initial push failed. A sample structure can look like this:
+
+| id                   | payload                           | delivered_at             |
+| -------------------- | ----------------------------------| ------------------------ |
+| 01HRD0B6MTEWZZ86ZVVM | `{"event_type": "order.created"}` | 2023-10-14T22:11:20+0000 |
+
+Use the `delivered_at` column to determine if you’ve handed over the event to the webhooks gateway / message broker, so you can delete it afterwards. Use the `id` field as the `Idempotency key` so you can uniquely present each webhook to the gateway.
+
+## Webhooks ordering
+It is common for consumers to request for webhooks to sent in a particular order so they can apply updates to their resources in a deterministic manner. However, this is an anti-pattern. Webhooks are designed to be sent out of order, because ordering significantly increases the complexity of the system. In this section we describe techniques to work around this. 
+
+1. Generate separate events for each state change of your resource. 
+    
+    This technique is used to eliminate the need for webhooks ordering by generating events from each state change of the resource. E.g. Assume we have an `invoice` resource, instead of sending `invoice.update` every time the state of our `invoice` changes, we should generate a new event — `invoice.{state}` for each state change. In the former method, ordering would be required to determine what order the updates happened, whereas the latter does not require ordering because final state does not change. A paid invoice cannot be unpaid. 
+    
+2. Generate separate events for milestones.
+    
+    This technique is used to eliminate the need for webhooks ordering by generating events for each milestone achieved on a resource. E.g. webhook events to track a shipment. Assume we have an object called `shipment`. Instead of sending `shipment.update` for every time the package arrives at a new facility, we should generate a new event— `shipment.milestone` for each milestone achieved include a timestamp.  With this, we can correctly present the shipment history regardless of the order in which the events arrive.
+    
+3. Reject webhooks for subresource without a parent resource.
+    
+    This technique is used to eliminate the need for webhooks ordering by relying on the eventual consistent nature of webhooks. E.g. Assume we have a `customer` and `invoice` object, and an `invoice` belongs to a `customer`. The system should fail If we try to process an `invoice.created` webhook when we’re yet to process the necessary `customer.created`. This is fine because webhooks are an eventually consistent system and most providers will (should) implement a retry. With this in mind, it is ok to reject the webhook with the expectation that eventually the `customer.created` webhook will arrive and the `invoice.created` webhook will be retried and it will balance out.
+    
+4. Use the events to signal the client to pull the latest data
+    
+    This technique is used to eliminate the need for webhooks ordering by using events only as a signal to retrieve data from the API rather than retrieve actual values from the payload. For general resource updates, it’s okay to use the webhook simply as a signal to retrieve the most recent resource via the API. This is obviously wasteful compared to the other techniques, so should be used sparingly.

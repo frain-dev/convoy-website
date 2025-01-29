@@ -1,0 +1,216 @@
+---
+title: Webhooks Documentation
+'og:title': Webhooks
+'og:description': Webhooks are a mechanism for notifying third-party applications about a change in their account in real time.
+'twitter:description': Webhooks are a mechanism for notifying third-party applications about a change in their account in real time.
+'twitter:url': https://docs.getconvoy.io/product-manual/webhooks-documentation
+---
+
+import StaticIPsComponent from '/snippets/static-ips-component.mdx';
+
+We wrote this document for webhook providers to copy and adapt to their own webhook 
+delivery configuration. Most segments can be fully copied, a few others require you to
+select the option for your docs. **Watch out for the tooltips and callouts.**
+
+
+## What are webhooks?
+Webhooks are a mechanism for notifying third-party applications about a change in their
+account in real time. Oftentimes, APIs are able to respond immediately to API calls, but
+not all the time, in scenarios like this, a webhook event is used to notify the third-party 
+app via a Webhook URL. 
+
+
+## Event Types
+<Note> Find a way to document all your supported event types and their accompanying payload. 
+Use the one below, only as a guide. </Note>
+
+<CodeGroup>
+    ```json invoice.created
+    {
+        "event_type": "invoice.created",
+        "data": {
+            "id": "inv_3234aei32489aie2o3245",
+            "status": "created"
+        }
+    }
+    ```
+
+    ```json invoice.paid
+    {
+        "event_type": "invoice.created",
+        "data": {
+            "id": "inv_3234aei32489aie2o3245",
+            "status": "paid"
+        }
+    }
+    ```
+
+</CodeGroup>
+
+## Retry Behaviour
+Convoy supports two types of retry strategies: `linear`, and `exponential backoff`, based on your configuration you 
+can use any of the below to communicate with your users.
+
+<Tabs>
+  <Tab title="Linear Retry Strategy">
+    <Note> Swap out the specific delay and duration according to your config. </Note>
+    ```text
+    In production, if your endpoint does not respond with a 2xx, 
+    we continue to retry the event every n seconds for a 
+    maximum of n hours.
+    ```
+  </Tab>
+  <Tab title="Exponential Backoff Strategy">
+    <Note> Swap out the specific delay and duration according to your config. </Note>
+    ```text
+    In production, if your endpoint does not respond with a 2xx 
+    status code, we continue to retry the event with an exponential 
+    retry schedule.
+    ```
+  </Tab>
+</Tabs>
+
+
+## Webhook Verification
+There are two ways you can verify webhooks from <Tooltip tip="replace this with your company name.">provider</Tooltip>. Let's take a look at both methods 
+and what safe guards they provide.
+
+
+### Static IPs
+With this verification method, you can configure your firewalls to receive webhooks 
+from only the following IP addresses, while blocking out the rest.
+
+<Note> If you're a cloud customer, select the IP addresses from the region your cluster is deployed</Note>
+
+<StaticIPsComponent />
+
+### Signature Verification
+With this verification method, we're able to determine if the webhook came from
+<Tooltip tip="replace this with your company name.">provider</Tooltip>, and has not been 
+tampered with in transit. We use [Convoy](https://getconvoy.io), and they provide SDKs 
+for the following languages:
+
+<Note> 
+Make sure to substitue the `encoding`, `hash`, and `header` for your configuration.
+Supported values for them are:
+- `encoding`: `hex`, `base64`.
+- `hash`: `SHA256`, `SHA512`.
+- `header`: provider specific. E.g. `X-Paystack-Signature`.
+
+</Note>
+
+<Tabs>
+    <Tab title="handler.go">
+     ```go
+     import (
+         "io"
+         "net/http"
+         convoy "github.com/frain-dev/convoy-go/v2"
+     )
+
+     func HandleWebhook(w http.ResponseWriter, r *http.Request) {
+         body, err := io.ReadAll(r.Body)
+         if err != nil {
+             w.WriteHeader(400)
+         }
+
+         webhook := convoy.NewWebhook(
+             convoy.WebhookOpts{
+                 Hash: "SHA512",
+                 Secret: os.Getenv("WEBHOOKS_ENDPOINT_SECRET"),
+                 Payload: body,
+                 Encoding: "hex",
+                 SigHeader: "X-Convoy-Signature",
+             }
+         )
+         err = webhook.VerifyRequest(r)
+         if err != nil {
+             w.WriteHeader(400)
+         }
+
+         // write webhook to queue.
+         w.WriteHeader(200)
+     }
+
+     ```
+    </Tab>
+
+    <Tab title="handler.js">
+        <Note> This example in written Express, but similar can be applied to other frameworks/libraries. </Note>
+        ```js
+        import { Webhook } from 'convoy.js';
+
+        // Using Express
+        app.post("/my/webhook/url", function(req, res) {
+            // verfiy an advanced signature
+            const webhook = new Webhook({
+                header: 't=2048976161,v1=afdb90313acfa15a3fc425755ae651a204947710315bb2a90bccaa87fce88998,v1=fLBDCBUiX5iIs0L5zfNq45h23EkX1HAMpFF+2lHrnes=',
+                payload: { email: 'test@gmail.com' },
+                secret: '8IX9njirDG',
+                hash: 'sha256',
+                encoding: 'base64',
+            });
+
+            if (webhook.verify()) {
+                // Retrieve the request's body
+                const event = req.body;
+                // Do something with event
+            }
+            res.send(200);
+        });
+        ```
+    </Tab>
+
+    <Tab title="handler.rb">
+        <Note> This example in written rails, but similar can be applied to pure frameworks/libraries. </Note>
+        ```Ruby
+        class WebhookController < ApplicationController
+          skip_before_action :authorize_request, only: :webhook
+
+          def webhook
+            body = request.body.read
+            sig_header = request.headers['X-Convoy-Signature']
+
+            begin
+              convoy = Convoy::Webhook.new(secret = endpoint_secret, hash: "SHA512", encoding: "base64")
+              match = convoy.verify body, sig_header
+              raise Convoy::SignatureVerificationError, 'failed to verify signature' unless match
+            end
+
+            payload = JSON.parse(body)
+            event_type = payload['event_type']
+
+            # Handle the event
+            case event_type
+            when 'event.type'
+              # write event to a queue for processing.
+            else
+              puts "Unhandled webhook event type: #{event_type}"
+            end
+
+          rescue JSON::ParserError,
+                 Convoy::SignatureVerificationError => e
+            render status: 400, json: nil and return
+          end
+
+          private 
+
+          def endpoint_secret
+            ENV['WEBHOOK_ENDPOINT_SECRET']
+          end
+        end
+        ```
+    </Tab>
+
+</Tabs>
+
+## Consuming webhooks best practices.
+
+<Note> You can freely copy and paste this segment. </Note>
+
+1. Always return early. If you have a long running process that you'd like to executed
+preferably push that to a background job to process, and return quickly with a `2xx`. 
+2. Favour Idempotent processing. All webhooks are delivered with a `X-Convoy-Idempotency-Key`
+header which can be used for Idempotent processing.
+3. Default to `HTTPS` endpoints. Webhooks are endpoint exposed to the internet, for safety, 
+we default to `HTTPS` only URLs, and validate the certs.

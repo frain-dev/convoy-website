@@ -2,11 +2,11 @@
 	"rewrites": [
 		{
 			"source": "/docs",
-			"destination": "https://convoy.mintlify.dev"
+			"destination": "https://convoy.mintlify.dev/docs"
 		},
 		{
 			"source": "/docs/:match*",
-			"destination": "https://convoy.mintlify.dev/:match*"
+			"destination": "https://convoy.mintlify.dev/docs/:match*"
 		}
 	]
 }

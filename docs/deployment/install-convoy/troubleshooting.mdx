@@ -1,0 +1,25 @@
+---
+title: Troubleshooting
+---
+
+This page contains fixes for some of the known installation and usage errors encountered when using Convoy across different platforms.
+
+<Accordion title="Events are stuck in the scheduled or processing state">
+    This can happen in older versions of Convoy and is a result of a bug where we register workers on a process that doesn't also register the handler. What you can do is to update Convoy to a more recent version and run the retry command
+
+    ```bash terminal 
+    # if you are using the binary
+    convoy retry --status="Scheduled" --time="1h"
+
+    # if you are using docker
+    docker run -d -p 5009:5009 --name retry -v `pwd`/convoy.json:/convoy.json your-convoy-image:tag retry --status="Processing" --time="1h"
+
+    ```
+</Accordion>
+
+<Accordion title="Convoy is failing to connect to redis">
+    Ensure that your Redis connection string is in the correct [format](https://github.com/lettuce-io/lettuce-core/wiki/Redis-URI-and-connection-details#uri-syntax) and that you can connect to the instance using redis-cli from the same machine.
+</Accordion>
+
+
+If you're having any other issues, please reach out to us on [Slack](https://app.slack.com/client/T02JMPNCYNP).

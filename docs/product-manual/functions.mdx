@@ -1,0 +1,87 @@
+---
+title: Functions
+'og:title': Functions
+'og:description': Functions are used to mutate webhook payloads (event data)
+'twitter:description': Functions are used to mutate webhook payloads (event data)
+'twitter:url': https://docs.getconvoy.io/product-manual/functions
+---
+
+Functions are used to mutate webhook payloads (event data) before they are dispatched based on a passed user-defined Javascript function.
+
+Convoy uses [goja](https://github.com/dop251/goja) to provide a JavaScript runtime environment in Go, providing full ECMAScript 5.1 support (including regex and strict mode). Most of the ECMAScript 6 spec is implemented, but this is a work in progress. To enhance the runtime, console support from [goja\_nodejs](https://github.com/dop251/goja_nodejs) was also added.
+
+### Importing Modules
+
+`require` support also exists but is currently disabled.
+
+### Caveats
+
+Certain constraints exist while using functions:
+
+- Multiple functions can be written in the file, but only the `transform` function is invoked.
+- Only the first argument is used in the `transform` function and that is the payload data.
+- The `transform` function must return a value.
+
+
+## Use cases
+### Subscriptions
+Functions can be configured when creating or updating a subscription.
+This is currently only possible in [incoming projects](../product-manual/organizations-and-projects#incoming-project).
+The function is used to mutate ingested event payloads from webhook providers before sending them to the destination endpoints.
+
+### Sources
+Functions can be configured when creating a message broker source in an [outgoing project](../product-manual/organizations-and-projects#outgoing-project).
+The function is used to mutate ingested event payloads from the message broker before sending them to the destination endpoints.
+
+<Frame>![Create Webhook Function](/images/subscription-create-function.png)</Frame>
+
+## Example
+```json sample payload
+{
+	"blockchain": "optimism",
+	"chainId": "10",
+	"connectedAddresses": [
+		{
+			"address": "0xca3a901d1bd21be11b88e4e9d534fb48d35dde48",
+			"blockchain": "ethereum",
+			"chainId": "1",
+			"timestamp": "2023-05-18T16:07: 22Z"
+		}
+	],
+	"profileImageContentValue": {
+		"image": {
+			"original": "10/caster/9613/profile_image/original_image.jpg"
+		}
+	},
+	"userAssociatedAddresses": [
+		"0x4e4814f10e341882438264c85ba8f02ef8f8a592",
+		"0xca3a901d1bd21be11b88e4e9d534fb48d35dde41",
+		"0x3628bbc094720495489f6ac726ef7233c3d9587e"
+	],
+	"userId": "9613"
+}
+```
+
+```js sample function
+function transform(payload) {
+    return {
+        "event_type": "chain.connected",
+        "data": {
+            "addresses": payload.connectedAddresses[0].address,
+            "created_at": new Date(payload.connectedAddresses[0].timestamp).getTime(),
+            "user_id": payload.userId
+        }
+    };
+}
+```
+
+```json sample output
+{
+	"data": {
+		"addresses": "0xca3a901d1bd21be11b88e4e9d534fb48d35dde48",
+		"created_at": 1684426042000,
+		"user_id": "9613"
+	},
+	"event_type": "chain.connected"
+}
+```

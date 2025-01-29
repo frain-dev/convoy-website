@@ -1,0 +1,102 @@
+---
+title: Architecture
+'og:title': Convoy Architecture
+'og:description': Convoy consists of several services working in tandem such as the Server and the Agent.
+'twitter:description': Convoy consists of several services working in tandem such as the Server and the Agent.
+'twitter:url': https://docs.getconvoy.io/deployment/architecture
+---
+
+Convoy consists of several services working in tandem. Below is an architecture diagram and the traffic pattern.
+
+<Frame>![Convoy Architecture](/images/convoy-architecture-3.png)</Frame>
+
+## Components
+
+Let's break down the image above by describing the important elements.
+
+### Server
+
+The API Server hosts Convoy's REST API that powers the dashboard, and all HTTP SDK functions.
+When events are sent through the API, they are immediately enqueued to Redis,
+where an agent picks it up and persists the events into the database, before dispatching to endpoints.
+We iterate at a fast pace and often release new features,
+we try our best to make it backward compatible while shipping new exciting features.
+When there are breaking changes, we explicitly communicate them in the [Release Notes.](/release-notes/releases)
+
+The API Server is a stateless service, and can be scaled horizontally.
+We suggest that you deploy them behind a load balancer to properly distribute traffic among the instances.
+See the CLI details [here](/cli-file/convoy#server).
+
+### Agent
+The agent combines the capabilities of the worker and ingest components,
+making it easier to reason about and keeping the architecture simple.
+These instances are responsible for the following:
+
+1.  **Asynchronous Task Processing**:
+Processing all asynchronous tasks in the queue.
+These can range from important functions like processing webhook events to ancillary tasks like sending emails,
+purging stale events ([retention policies](./configuration#configuration-reference)) etc.
+These workers are designed to be stateless and can be scaled horizontally to increase the throughput of the entire system.
+
+2. **Message Brokers Integration**:
+These stateless workers are used to consume webhook events from [message brokers](/product-manual/message-brokers).
+They poll source configuration from the database and consume events from the broker
+and write it to the redis queue.
+
+See the CLI details [here](/cli-file/convoy#agent)
+
+### Egress
+
+The egress service is an HTTP Connect Proxy
+that is directly responsible for sending webhook events to the client endpoints.
+These services provide two major benefits:
+1. **Static IPs**: because it is a connect-proxy,
+we are able to maintain a predefined set of IP address on all requests forwarded to client endpoints.
+2. **Security**: The egress service prevents Server-Side Request Forgery (SSRF)
+by creating a blocklist of URLs that cannot receive requests to prevent malicious users
+from triggering unexpected behaviours in your environment.
+
+By design, the egress service should be deployed in a static environment
+(i.e., specific VMs with IP Address pre-defined).
+Depending on your availability requirements,
+we suggest you deploy at least three instances
+and place a load balancer in front of the egress services to distribute traffic evenly.
+We highly recommend and use [Smokescreen](https://github.com/stripe/smokescreen).
+
+## Third-Party Dependencies
+
+### PostgreSQL 15+
+Postgres is used as for the following
+- Primary data store
+- Search backend
+
+### Redis 6+
+Redis is used for a number of operations, namely
+- Caching
+- Job queueing
+- Rate limiting
+- Circuit breaking
+
+## Deprecated Architecture and Components
+<Note> **We will continue to maintain the worker and ingest component for two months. They will be unavailable by November, 2024.** </Note>
+
+<Frame>![Convoy Architecture](/images/convoy-architecture-2.png)</Frame>
+
+### Workers
+
+The workers are responsible for processing all asynchronous tasks from Redis.
+This can range from important functions like processing webhook events to ancillary tasks like sending emails,
+purging stale events ([retention policies](./configuration#configuration-reference)) etc.
+
+These workers are designed to be stateless and can be scaled horizontally to increase the throughput of the entire system.
+See the CLI details [here](/cli-file/convoy#worker)
+
+### Ingest
+
+This is a stateless worker server used to consume webhook events from message brokers.
+It constantly polls source configuration from the database and consumes events from the broker.
+It is not responsible for processing these events other than consuming from the broker
+and writing to redis to be consumed by a standard worker.
+See the CLI details [here](/cli-file/convoy#ingest)
+
+

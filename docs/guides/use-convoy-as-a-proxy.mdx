@@ -1,0 +1,57 @@
+---
+title: Use Convoy as a Proxy
+sidebarTitle: Use Convoy as a Proxy
+'og:title': Use Convoy as a Webhook Proxy
+'og:description': Use Convoy as a Webhook Proxy to deliver webhooks with one API
+'twitter:description': Use Convoy as a Webhook Proxy to deliver webhooks with one API
+'twitter:url': https://docs.getconvoy.io/guides/use-convoy-as-a-proxy
+---
+
+Usually to use a Convoy, you'd need to create an endpoint, and then create a 
+subscription, then send events. This isn't the easiest migration path, especially
+for users who already have a webhook system in-place, and are looking to offload
+the delivery to a better delivery system. 
+
+In this guide, I will show you how to use Convoy as a proxy to deliver webhooks 
+with one API. No need for creating any resources upfront. Let's dive in!
+
+### Guide
+
+<Steps>
+  <Step title="Have a Convoy instance running">
+    The first step is to ensure you have a Convoy instance running. You can either 
+    [spin up](../deployment/install-convoy) one or create on from our [cloud platform](https://cloud.getconvoy.io/signup). 
+  </Step>
+  <Step title="Create an outgoing project">
+    This feature is only available to outgoing webhooks project. So you'd need to ensure you've 
+    created one. You can check [here](../product-manual/organizations-and-projects#outgoing-project) to learn more.
+  </Step>
+  <Step title="Push event. 🎉">
+  ```bash terminal
+  curl --request POST \
+  --url {base_url}/api/v1/projects/{project_id}/events/dynamic \
+  --header 'Authorization: Bearer {api_key}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "url": "{endpoint_url}",
+    "secret": "{endpoint_secret}",
+    "data": "{data}",
+    "event_type": "{event_type}",
+    "event_types": ["{event_type}"],
+    "idempotency_key": ""
+}'
+  ```
+  </Step>
+</Steps>
+
+
+### Limitations
+
+While this endpoint enables you get going super fast, there are a few limitations, you 
+should be aware of, such as:
+
+- **Limited Subscription Configuration:** This endpoint, only supports `event_type` filtering with the `event_types` array.
+It doesn't provide advanced [payload filtering](../product-manual/subscriptions#filters). To configure, such filters, check this 
+[endpoint](../api-reference/subscriptions/create-a-subscription).
+- **Limited Endpoint Configuration:** This doesn't enable you to set attributes like `http_timeout`, 
+`rate_limit_duration`. To see what is fully possible check this [endpoint](../api-reference/endpoints/create-an-endpoint).

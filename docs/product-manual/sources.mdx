@@ -1,0 +1,89 @@
+---
+title: Sources
+'og:title': Sources
+'og:description': Sources are how events are ingested into Convoy. Convoy currently supports three types of sources - REST API, HTTP Ingested and Message Brokers such as Google PubSub, Amazon SQS and Kafka.
+'twitter:description': Sources are how events are ingested into Convoy. Convoy currently supports three types of sources - REST API, HTTP Ingested and Message Brokers such as Google PubSub, Amazon SQS and Kafka.
+'twitter:url': https://docs.getconvoy.io/product-manual/sources
+---
+
+Sources are how events are ingested into Convoy. In this section, we explain the different types of sources and their use cases. Convoy currently supports three types of sources:
+- An authenticated REST API
+- An unauthenticated ingest-API
+- Message Brokers
+
+## REST API
+
+This is an authenticated API used to push events to a Convoy instance.
+It is designed specifically for outgoing projects to send events to a specific endpoint,
+a number of endpoints or all endpoints.
+This source is only and automatically available for all outgoing projects.
+
+```json payload structure
+{
+    "owner_id": "string, optional",
+    "event_type": "string, required",
+    "data": "object, required",
+    "custom_headers": "object, optional",
+    "idempotency_key": "string, optional",
+    "endpoint_id": "string, depends"
+}
+```
+
+- `owner_id`: Can be any arbitrary string, it is used to group endpoints together. We recommend setting it some internal id in your system
+- `event_type`: The type of your event. e.g., `customer.created`, `customer.updated`.
+- `data`: The data being sent.
+- `custom_headers`: Any values included will be forwarded to the endpoints as HTTP header.
+- `idempotency_key`: An identifier that is used to deduplicate events.
+- `endpoint_id`: The id of the endpoint to send the event to.
+
+```json sample payload
+{
+    "endpoint_id": "01HVNHCYTFW7MDKMQ43YFS20HZ",
+    "owner_id": "01HVNHE3Z5EKKR9QZJVCH9XRWW",
+    "event_type": "sample",
+    "data": {},
+    "custom_headers": {
+        "x-sample-header": "sample-value"
+    },
+    "idempotency_key": "test123"
+}
+```
+
+For a full list of reference payloads,
+see [our guide on ingesting events](../product-manual/events-and-event-deliveries#ingesting-events)
+
+## HTTP Ingestion
+
+This is an unauthenticated API to receive webhook events from third-party webhook providers like GitHub, Shopify etc.,
+It is designed for incoming projects to receive events from any provider.
+For each provider, a source needs to be configured with its necessary verification.
+Once configured, we provide you with a unique link to be supplied to the provider.
+
+### Verification
+
+Source verification can be configured in four different ways on Convoy:
+
+-  **Hmac:** Hmac is a common mechanism most providers support for webhooks. Providers like [Shopify](https://www.shopify.com/), [Stripe](https://stripe.com/) etc. Creating a Hmac source looks like the below: <Frame>![create hmac source](/images/ingest-hmac.png)</Frame>
+
+For HMAC verification mechanism, Convoy provides support for [simple and advanced signatures](https://getconvoy.io/docs/manual/signatures).
+
+-  **Basic Authentication:** While not popular supported some providers user this mechanism to verify events. Creating a Basic Auth source looks like the below: <Frame>![create basic auth source](/images/ingest-basic.png)</Frame>
+    
+-  **API Keys:** Similar to Basic Authentication, API Keys while not popular are used by some providers to verify events. Providers like [Mono](https://mono.co/) <Frame>![create API key source](/images/ingest-api.png)</Frame>
+    
+-  **Custom Verification:** For some providers, like [Github](https://github.com/) and [Twitter](https://twitter.com/) the core verification mechanisms aren't sufficient. Though they are wrap around the core mechanisms, these modules have to be built specifically for eah provider.
+    
+
+Currently, we have support for [GitHub](https://github.com/),
+and have planned support for [Twitter](https://twitter.com/) and [Shopify](https://shopify.com/).
+
+## Message Brokers
+
+Message Brokers provide extra reliability gains to ingest events from backend services to dispatch to client endpoints.
+With this, disparate services write events to a queue or topic, then convoy reads off the queue or topic and send the events to client endpoint.
+It is designed for and only available to outgoing projects. Today Convoy supports:
+1. [Apache Kafka](../product-manual/message-brokers/kafka)
+2. [Amazon SQS](../product-manual/message-brokers/sqs)
+3. [Google PubSub](../product-manual/message-brokers/pub-sub)
+4. [RabbitMQ (currently in beta)](../product-manual/message-brokers/rabbitmq)
+

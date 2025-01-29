@@ -1,0 +1,72 @@
+--- 
+title: Webhook Retries
+---
+
+import GetStarted from '/snippets/get-started.mdx';
+
+Webhook retries are the mechanism of reattempting to deliver webhook events over a specified period, ensuring they eventually reach their destination. Given the inherent unreliability of network connections, retries play a critical role in guaranteeing that events are successfully delivered, even in cases of temporary disruptions.
+
+Convoy is a flexible webhook gateway that can be configured to use either `linear` or `exponential backoff` retry strategy.
+
+## Comparing Retry Algorithms for Webhooks
+Retry algorithms aren’t specific to webhooks, rather they’re a general technique used to solve various problems in distributed systems. But what would be appropriate retry configuration for a webhook provider? Most providers offer retries with exponential backoff. Let’s assess three retry strategies for webhooks
+
+- `Linear Retry`
+- `Exponential Backoff`
+- `Exponential Backoff with capped duration`
+
+An ideal webhook retry strategy should meet the following requirements: [1]
+
+1. **Requirement 1:** The first 5 retries should happen in less than 30 minutes.
+2. **Requirement 2:** The maximum retry should not exceed 24 hours.
+
+Why? Webhooks power real-time notifications across apps. The keyword here is real-time. As with many things in software engineering, that word is overloaded and can mean different things depending on the context. In high-frequency trading, even a few microseconds of delay can result in significant financial losses. But this isn’t the case for a vast majority of webhooks. For example, a webhook from Linear to Slack with a 1-minute delay wouldn’t result in any significant financial loss or serious disruption to your business, especially when the delay is a result of failure in initial attempts.
+
+Here’s the configuration for each retry strategy compared:
+
+| Strategy | Formula |
+| --- | --- |
+| Linear Retry | + 1 hour |
+| Exponential Backoff | `(delaySeconds * 2^attempt) + jitter` |
+| Exponential Backoff with Capped Duration | `min(delaySeconds * 2^attempt, maxRetrySeconds) + jitter` |
+
+With the following parameters
+
+- **Base:** 20 seconds
+- **Jitter:** +/-10%
+- **Delay Growth**: `delaySeconds * 2^attempt`
+- **Retry Limit:** 20
+
+To provide additional context, the formula is defined as follows:
+
+- **Delay Growth**: The delay doubles with each retry attempt, allowing for a rapid increase in wait time for successive failures (`delaySeconds * 2^attempt`).
+- **Capping**: The new strategy incorporates a default (but configurable) cap of **7200 seconds (**`maxRetrySeconds`) to prevent indefinitely long wait times, thus ensuring the system remains responsive and efficient.
+- **Jitter**: A `jitter` value is added to each calculated wait time, providing an additional layer of randomness that further helps distribute the retry attempts over time.
+
+We wrote a script to run these comparisons [here](https://github.com/subomi/compare-retries). Feel free to tweak the input and analyse the output.
+
+### The Results
+
+<Frame caption="A graph comparing the cumulative retry duration for two retry strategies">
+  <img src="/images/retries_plot.png" />
+</Frame>
+
+Given our requirements above, let's evaluate the two retry strategies shown in the graph based on these criteria:
+
+|  | Linear Retry | Exponential Backoff with Capped Duration |
+| --- | --- | --- |
+| **Requirement 1** <br /> <br /> The first 5 retries should happen in less than 30 minutes | The graph shows that the linear retry strategy takes about 18,000 seconds by the 5th retry. **18,000 seconds** is approximately **5 hours**, which exceeds the 30-minute limit for the first 5 retries.  | The graph shows that the capped duration strategy takes about 601 seconds by the 5th retry. **601 seconds** is approximately **10 minutes and 1 second**, which doesn’t exceed the 30-minute limit for the first 5 retries.  |
+| **Requirement 2** <br /> <br /> The maximum retry should happen not greater than 24 hours | By the 20th retry attempt, the linear strategy takes about **72,000 seconds**, which translates to **20 hours**, which doesn’t exceed the 24 hours rule. | By the 20th retry attempt the capped duration strategy takes about **89559 seconds**, which translates to **24 hours 52 minutes** which slightly exceeds the 24 hours rule. |
+
+We didn’t include the pure exponential backoff strategy above because the chart looks ridiculous compared to the rest.
+
+
+<Frame caption="An additional graph includes exponential backoff.">
+  <img src="/images/exponent_plot.png" />
+</Frame>
+
+## Appendix
+
+1. These numbers aren’t a hard and fast rule; rather, they’re a framework for reasoning about the latency requirements for your webhooks and tuning them accordingly. This would optimize your entire delivery process and save $$$ in compute. Feel free to use our script - [compare-retries](https://github.com/subomi/compare-retries).
+
+<GetStarted />

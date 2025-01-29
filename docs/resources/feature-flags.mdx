@@ -1,0 +1,30 @@
+---
+title: Feature Flags
+'og:title': Feature Flags
+'og:description': Convoy adopts an incremental approach with feature flags to release new features.
+'twitter:url': https://docs.getconvoy.io/resources/feature-flags
+---
+
+Several new features usually start out as `experimental` features before moving to `general availability`. These features are disabled by default, and needs to be specifically enabled to use. They may be enabled by default in future versions.
+
+Experimental features aren't stable yet and their behaviour and API are subject to change in future releases, so enable them with care. All changes are communicated via our [Changelog](/release-notes/releases). 
+
+You can enable any of the `experimental` features using the `--enable-feature-flag` flag or `CONVOY_ENABLE_FEATURE_FLAG` environment variable with a comma separated list of features. 
+
+## Features
+
+### Prometheus Metrics
+`--enable-feature-flag=prometheus` <br />
+This is Convoy native metrics that enable you observe the internal state of the data plane from the ingestion pipeline to the delivery pipeline. See the [docs](/product-manual/metrics).
+
+### Webhook Full text search
+`--enable-feature-flag=full-text-search` <br />
+Search your webhook logs with any parameter in the JSON Payload. This is to enable faster debugging. It indexes all ingested events in the configured time period to make them available for search. Check the project settings to configure it.
+
+### Circuit Breaker
+`--enable-feature-flag=circuit-breaker` <br />
+Identify and automatically disable bad endpoints. See the [docs](/product-manual/endpoints#circuit-breaker).
+
+### Read Replicas
+`--enable-feature-flag=read-replicas` <br />
+Distribute database read queries across multiple replicas to improve scalability and performance while keeping write operations on the primary database. See the [docs](/product-manual/read-replicas).
