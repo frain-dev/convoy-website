@@ -1,9 +1,9 @@
 ---
-title: Data Retention
-'og:title': Data Retention
-'og:description': Data retention ships older webhook data to S3 compatible cold storage.
-'twitter:description': Data retention ships older webhook data to S3 compatible cold storage.
-'twitter:url': https://docs.getconvoy.io/product-manual/data-retention
+title: Retention Policy
+'og:title': Retention Policy
+'og:description': Retention policy facilitates shipping older webhook data to S3 compatible cold storage.
+'twitter:description': Retention policy facilitates shipping older webhook data to S3 compatible cold storage.
+'twitter:url': https://docs.getconvoy.io/product-manual/retention-policy
 ---
 
 Convoy supports exporting events to any S3 compatible cold storage.
@@ -79,7 +79,7 @@ CONVOY_STORAGE_PREM_PATH=''
 ```
 
 ## Retention Using Postgres Partitions
-Prior to `Convoy v25.1.1 the job that ran the retention policy carried out two tasks:
+Prior to `Convoy v25.1.1` the job that ran the retention policy carried out two tasks:
 - Backing up the webhook event data to S3.
 - Running DELETE queries on the tables.
 

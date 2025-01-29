@@ -112,7 +112,7 @@
         "product-manual/functions",
         "product-manual/metrics",
         "product-manual/read-replicas",
-        "product-manual/data-retention"
+        "product-manual/retention-policy"
       ]
     },
     {
