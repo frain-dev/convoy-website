@@ -3,14 +3,14 @@ const path = require('path');
 const withMarkdoc = require('@markdoc/next.js');
 
 const nextConfig = {
-	async rewrites() {
-		return [
-			//   {
-			// 	source: '/docs/:path*',
-			// 	destination: 'https://docs.getconvoy.io/:path*',
-			//   }
-		];
-	},
+	// async rewrites() {
+	//return [
+	//  {
+	//	source: '/docs/:path*',
+	//	destination: 'https://docs.getconvoy.io/:path*',
+	//  }
+	//];
+	//  },
 	// async redirects() {
 	// 	return [
 	// 		{
