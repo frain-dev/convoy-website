@@ -111,7 +111,8 @@
         "product-manual/filters",
         "product-manual/functions",
         "product-manual/metrics",
-        "product-manual/read-replicas"
+        "product-manual/read-replicas",
+        "product-manual/retention-policy"
       ]
     },
     {
@@ -154,8 +155,7 @@
       "pages":[
         "resources/glossary",
         "resources/telemetry",
-        "resources/feature-flags",
-	"resources/support-policy"
+        "resources/feature-flags"
       ]
     },
     {

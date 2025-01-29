@@ -28,13 +28,13 @@ With read replicas configured, Convoy distributes read queries across the replic
 
 You can configure read replicas by adding the `read_replicas` object to your database configuration JSON. Each read replica should be an object with the following keys:
 
-| Key | Description |
-|---|---|
-| `host` | The hostname of the read replica. |
-| `username` | The username to connect to the read replica. |
-| `password` |  The password to connect to the read replica. |
-| `database` | The database name to connect to. |
-| `port` | The port number the read replica is listening on. |
+| Key        | Description                                       |
+|------------|---------------------------------------------------|
+| `host`     | The hostname of the read replica.                 |
+| `username` | The username to connect to the read replica.      |
+| `password` | The password to connect to the read replica.      |
+| `database` | The database name to connect to.                  |
+| `port`     | The port number the read replica is listening on. |
 
 ```json using read replicas via JSON configuration
 "database": {
@@ -71,14 +71,14 @@ Each connection string should follow the format:
 
 Here's what each field represents:
 
-| Field        | Description                                       |
-|--------------|---------------------------------------------------|
+| Field        | Description                                        |
+|--------------|----------------------------------------------------|
 | `<dbms>`     | The database management system (e.g., `postgres`). |
-| `<username>` | The username to connect to the replica.           |
-| `<password>` | The password to connect to the replica.           |
-| `<host>`     | The hostname or IP address of the replica.        |
-| `<port>`     | The port the replica is listening on.             |
-| `<database>` | The name of the database to connect to.           |
+| `<username>` | The username to connect to the replica.            |
+| `<password>` | The password to connect to the replica.            |
+| `<host>`     | The hostname or IP address of the replica.         |
+| `<port>`     | The port the replica is listening on.              |
+| `<database>` | The name of the database to connect to.            |
 
 For example:
 
