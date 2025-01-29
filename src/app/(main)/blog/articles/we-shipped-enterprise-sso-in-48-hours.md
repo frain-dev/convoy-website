@@ -8,13 +8,13 @@ primary_author:
 primary_tag: Engineering
 tags:
     - Convoy
-    - Engineering 
-featured: false 
+    - Engineering
+featured: false
 description: 'We recently onboarded a customer who had Enterprise SSO requirements as a non-negotiable, and we were able to deliver a solution in ~2 days worth of work. I found the implementation to be quite straightforward so here’s a blog post. '
 published_at: 2024-11-21T17:00:00.000+00:00
 ---
 
-We recently onboarded a customer who had Enterprise SSO requirements as a non-negotiable, and we were able to deliver a solution in ~2 days worth of work. I found the implementation to be quite straightforward so here’s a blog post. 
+We recently onboarded a customer who had Enterprise SSO requirements as a non-negotiable, and we were able to deliver a solution in ~2 days worth of work. I found the implementation to be quite straightforward so here’s a blog post.
 
 As with any technical problem, let’s first describe the requirement. Convoy is a webhook gateway that is available in the Cloud or on-prem. This customer in particular is going to deploy Convoy in their corporate network so the SSO capability needed to be embedded inside the binary.
 
@@ -37,6 +37,7 @@ Enter the SSO Proxy, to ensure users didn’t take on a new SaaS dependency we w
 The proxy was designed as part of the Rails monolith that powers Convoy Cloud. Let’s see the internals.
 
 ### Schema
+
 ```ruby
 class CreateSSOTokens < ActiveRecord::Migration[7.1]
   def change
@@ -53,6 +54,7 @@ class CreateSSOTokens < ActiveRecord::Migration[7.1]
   end
 end
 ```
+
 Here we create three columns:
 
 1. `token`: our masked token.
@@ -70,13 +72,14 @@ class SSOToken < ApplicationRecord
     Digest::SHA256.hexdigest(token)
   end
 
-  private 
+  private
 
   def destroy_self
     destroy
   end
 end
 ```
+
 Here we design a self-destructing model to delete the token after validation. SAML tokens are one-time use; this is how SSOReady works, so we simply replicate this capability here.
 
 ### The Controller
@@ -93,7 +96,7 @@ class SSOController < ApplicationController
     res = saml.redirect_url
 
     unless res.success?
-      json = generate_json(status: false, 
+      json = generate_json(status: false,
                            message: ApiResponse::SSO.failed_to_generate_uri)
       render status: 400, json: json and return
     end
@@ -109,9 +112,9 @@ class SSOController < ApplicationController
     create_sso_token = CreateSSOToken.call(saml_access_code: params[:saml_access_code])
 
     unless create_sso_token.success?
-      json = generate_json(status: false, 
+      json = generate_json(status: false,
                            message: ApiResponse::SSO.failed_to_redeem)
-      render status: 400, json: json and return 
+      render status: 400, json: json and return
     end
 
     redirect_to create_sso_token.url, allow_other_host: true
@@ -130,7 +133,7 @@ class SSOController < ApplicationController
     json = generate_json(status: true, data: data)
     render status: 200, json: json
   end
-  
+
 end
 ```
 
@@ -138,7 +141,7 @@ Our proxy exposes three endpoints, to generate a redirect uri, to accept a redir
 
 Our proxy exposes three endpoints:
 
-1. `redirect`: Each Convoy instance calls this endpoint with their License key to generate a redirect URI. 
+1. `redirect`: Each Convoy instance calls this endpoint with their License key to generate a redirect URI.
 2. `saml`: This is the endpoint that we use in the callback chain from `SSOReady`. It handles the core logic of validating the `saml_access_code`, generating our own `token`, and redirect to the Convoy’s instance. More on this in the next section.
 3. `token`: Each Convoy instance calls this endpoint with the masked token to validate the user and grant access to the user. Once this endpoint, the `token` is deleted.
 
@@ -154,7 +157,7 @@ class CreateSSOToken < ApplicationInteractor
 
     saml = SSOReady::Resources::Saml.new
     saml.body = { samlAccessCode: saml_access_code }
-    res = saml.redeem 
+    res = saml.redeem
 
     fail_context_to_user!(message: ERR_FAILED_TO_REDEEM) unless res.success?
 
@@ -171,7 +174,7 @@ class CreateSSOToken < ApplicationInteractor
 
     context.url = generate_url(license, token)
 
-  rescue StandardError => e 
+  rescue StandardError => e
     fail_context_to_sentry!(e)
   end
 
@@ -206,7 +209,7 @@ This is the core logic that is called from the `saml` controller method. There a
 ### Routing
 
 ```ruby
-class SubdomainConstraint 
+class SubdomainConstraint
   def initialize(subdomain)
     @subdomain = subdomain
   end
@@ -225,7 +228,7 @@ Rails.application.routes.draw do
 		get 'ssoready/saml', to: 'sso#saml'
 		post 'ssoready/token', to: 'sso#token'
 	end
-	
+
 	...
 end
 ```
@@ -233,10 +236,11 @@ end
 Finally, we want to give our customers an easy way to grant egress access to the proxy, we do this by setting up the proxy routes under a subdomain; in this case: `ssoproxy.getconvoy.io`
 
 ## Conclusion
+
 Delivering Enterprise SSO in just two days showed how effective the right tools and a focused approach can be. Embedding SSO directly into the Convoy binary ensured the solution met our customers' corporate network requirements while maintaining simplicity and efficiency.
 
 This experience reinforced the value of reliable, developer-friendly tools like **SSOReady**, significantly reducing implementation complexity and time. It’s a great example of how tailored solutions can quickly adapt to enterprise needs without compromising quality.
 
 For teams facing similar challenges, integrating tools like these can significantly improve their ability to meet deadlines and exceed expectations.
 
-And that’s all, if you’re curious here’s the final [docs](https://docs.getconvoy.io/business-and-enterprise/single-sign-on) our users need to read to configure SSO. Shoutout to [Ulysse](https://www.linkedin.com/in/ucarion/), CTO at SSOReady, for reviewing and providing guidance to the design of this proxy.
+And that’s all, if you’re curious here’s the final [docs](https://getconvoy.io/docs/business-and-enterprise/single-sign-on) our users need to read to configure SSO. Shoutout to [Ulysse](https://www.linkedin.com/in/ucarion/), CTO at SSOReady, for reviewing and providing guidance to the design of this proxy.

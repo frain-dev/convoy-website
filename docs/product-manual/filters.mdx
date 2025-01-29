@@ -3,7 +3,7 @@ title: Filters
 'og:title': Filters
 'og:description': Filtering is used to decide what events an endpoint will receive based on the webhook event payload.
 'twitter:description': Filtering is used to decide what events an endpoint will receive based on the webhook event payload.
-'twitter:url': https://docs.getconvoy.io/product-manual/filters
+'twitter:url': https://getconvoy.io/docs/product-manual/filters
 ---
 
 Filtering is used to decide what events an endpoint will receive based on the webhook event payload.
@@ -11,6 +11,7 @@ The filter is an enriched JSON syntax for both simple and complex filters
 (such as special logical and numeric operators `$or`, `$gte`, `$eq`).
 
 ## Use cases
+
 Filters can be configured on subscriptions in both [incoming projects](../product-manual/organizations-and-projects#incoming-project)
 and [outgoing project](../product-manual/organizations-and-projects#outgoing-project).
 
@@ -29,14 +30,11 @@ Simple filters directly match keys to values, and they can be nested. They can a
 
 This filter is used to validate simple JSON webhook payloads.
 
-
-```json  Simple object match filter
+```json Simple object match filter
 {
 	"event_type": "created"
 }
-
 ```
-
 
 <Frame>![subscription filter modal](/images/subscription-filter-modal.png)</Frame>
 
@@ -44,31 +42,25 @@ This filter is used to validate simple JSON webhook payloads.
 
 This filter is used to validate nested webhook payloads.
 
-
-```json  Nesting object match filter
+```json Nesting object match filter
 {
 	"event": {
 		"type": "created"
 	}
 }
-
 ```
-
 
 <Frame>![subscription filter modal](/images/subscription-filter-modal-nested.png)</Frame>
 
 #### Array contains match
 
-
-```json  Array contains match
+```json Array contains match
 {
 	"dish": {
 		"ingredients": "rice"
 	}
 }
-
 ```
-
 
 <Frame>![subscription filter modal](/images/subscription-filter-array-contains.png)</Frame>
 
@@ -81,16 +73,13 @@ Complex filters are employed to filter events using one or more conditions, e.g.
 
 This filter matches event which directly does not match the event type in the webhook payload.
 
-
 ```json $neq filter
 {
 	"event": {
 		"$neq": "created"
 	}
 }
-
 ```
-
 
 <Frame>![$neq subscription filter](/images/subscription-ne-filter.png)</Frame>
 
@@ -109,11 +98,9 @@ These filters are used to match multiple conditions defined in the schema.
 		}
 	]
 }
-
 ```
 
-
-```json  $and filter
+```json $and filter
 {
 	"$and": [
 		{
@@ -133,7 +120,6 @@ These filters are used to match multiple conditions defined in the schema.
 		}
 	]
 }
-
 ```
 
 <Frame>![$and filter](/images/subscription-or-filter.png)</Frame>
@@ -144,29 +130,21 @@ This filter is used to match keys where the value can be a range of values.
 It can be used in place of `$or` if you are comparing on the same field.
 The opposite of this operator `$nin` can be used to match keys where the value is not in a range of values.
 
-
-
 ```json $in filter
 {
 	"operation": {
 		"$in": ["created", "deleted"]
 	}
 }
-
 ```
 
-
-
-
-```json  $nin filter
+```json $nin filter
 {
 	"operation": {
 		"$nin": ["updated", "truncated"]
 	}
 }
-
 ```
-
 
 <Frame>![$in filter](/images/subscription-in-filter.png)</Frame>
 
@@ -176,30 +154,23 @@ These filters match events based on numeric operators.
 For example, the filter below will match all events where the age is greater than 1. The operators supported are `$gt`,
 `$gte`, `$lt`, `$lte`
 
-
-
 ```json Numeric filters
 {
 	"age": {
 		"$gt": 1
 	}
 }
-
 ```
-
 
 #### Array positional filters (currently in beta)
 
 These filters match events with payloads that are array either in the root or nested.
 
-
-```json  Array positional filters
+```json Array positional filters
 {
 	"$.venues.$.lagos": "lekki"
 }
-
 ```
-
 
 <Frame>![Array positional $. filter](/images/subscription-array-positional-filter.png)</Frame>
 
@@ -207,28 +178,27 @@ These filters match events with payloads that are array either in the root or ne
 
 These filters match events with payloads that match the supplied regex.
 
-
-```json  Regex filters
+```json Regex filters
 {
 	"event_type": {
 		"$regex": "^es_[a-zA-Z]+$"
 	}
 }
-
 ```
 
 <Frame>![Regex filter](/images/subscription-regex-filter.png)</Frame>
 
 ### Caveats
-- Convoy only supports filters with arrays nested up to three levels i.e. `$.a.$.b.$.c.$.e` will throw an error
-- Array positional filters are in beta and have time complexity of `O(n^3)`
 
+-   Convoy only supports filters with arrays nested up to three levels i.e. `$.a.$.b.$.c.$.e` will throw an error
+-   Array positional filters are in beta and have time complexity of `O(n^3)`
 
 ## Supported Filters
+
 Here's a full list of the supported filters:
 
 | Operator | Supported Type               | Description                                 |
-|----------|------------------------------|---------------------------------------------|
+| -------- | ---------------------------- | ------------------------------------------- |
 | none     | all                          | Match all                                   |
 | $.       | array                        | Match an array value                        |
 | $gte     | number                       | Greater than or equal to                    |

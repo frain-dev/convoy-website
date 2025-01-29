@@ -41,7 +41,7 @@ For us, we approached Load testing with a couple of important questions:
 2. What does a failed test look like?
 3. What metrics can we look out for to consistently optimise?
 
-In our case we started with evaluating the performance of two API endpoints we feel are critical to our users: - the [GET Events](https://docs.getconvoy.io/api-reference/events/list-all-events) endpoint and the [CREATE Events](https://docs.getconvoy.io/api-reference/events/create-an-event) endpoint.
+In our case we started with evaluating the performance of two API endpoints we feel are critical to our users: - the [GET Events](https://getconvoy.io/docs/api-reference/events/list-all-events) endpoint and the [CREATE Events](https://getconvoy.io/docs/api-reference/events/create-an-event) endpoint.
 
 ### Load Testing with K6
 
@@ -142,7 +142,7 @@ export default function () {
 
 ```
 
-Our test will involve making simultaneous batch requests to the [Create Events](https://docs.getconvoy.io/api-reference/events/create-an-event) and [List Events](https://docs.getconvoy.io/api-reference/events/list-all-events) API.
+Our test will involve making simultaneous batch requests to the [Create Events](https://getconvoy.io/docs/api-reference/events/create-an-event) and [List Events](https://getconvoy.io/docs/api-reference/events/list-all-events) API.
 
 The `stages` key within the `options` object allows us to specify the number of Virtual Users (VU) we want to make requests concurrently. The first stage simulates a ramp-up of traffic from 1 to 20 users within a duration of 60s. Subsequently, within the second stage, there are 20 VU making requests for another 60s.
 

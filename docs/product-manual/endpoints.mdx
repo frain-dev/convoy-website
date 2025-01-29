@@ -3,7 +3,7 @@ title: Endpoints
 'og:title': Endpoints
 'og:description': An endpoint is a valid HTTP URL that can receive webhook events.
 'twitter:description': An endpoint is a valid HTTP URL that can receive webhook events.
-'twitter:url': https://docs.getconvoy.io/product-manual/endpoints
+'twitter:url': https://getconvoy.io/docs/product-manual/endpoints
 ---
 
 An endpoint is a valid [HTTP URL](https://datatracker.ietf.org/doc/html/rfc7230) that can receive webhook events. It can be configured with a number of attributes which include an `http timeout` which denotes how long Convoy should wait for a response before timing out, an `alert configuration` setting which gives you the option to get notified when an endpoint's status changes, a `rate limit` setting which allows you to match your consumers own rate limit, and an `authentication` setting which allows your consumer set an additional level of security on the endpoint.
@@ -12,10 +12,10 @@ An endpoint is a valid [HTTP URL](https://datatracker.ietf.org/doc/html/rfc7230)
 
 An endpoint can have any of the states below:
 
--  `Active`: This state means the endpoint is responding normally, and Convoy will continue to send events to it.
--  `Inactive`: This means the endpoint has consecutively failed to process events. In this state, all new events will be set to the `Discarded` state and **will not be sent** to the endpoint. To re-activate the endpoint -- retry any failed or discarded event delivery, if it's successful, the endpoint will be set to `active`. Then you can batch retry all failed events that weren't processed while the endpoint was `inactive`.
--  `Paused`: In this state, the endpoint has been manually disabled to stop receiving events. All new events will be set to the `Discarded` state and **will not be sent** to the endpoint. To re-activate the endpoint, un-pause the endpoint, and it will be set to `active`.
--  `Pending`: This state indicates that the endpoint was previously `Inactive` and a failed or discarded event delivery is being resent to the endpoint. If successful, the endpoint will be set to `Active`.
+-   `Active`: This state means the endpoint is responding normally, and Convoy will continue to send events to it.
+-   `Inactive`: This means the endpoint has consecutively failed to process events. In this state, all new events will be set to the `Discarded` state and **will not be sent** to the endpoint. To re-activate the endpoint -- retry any failed or discarded event delivery, if it's successful, the endpoint will be set to `active`. Then you can batch retry all failed events that weren't processed while the endpoint was `inactive`.
+-   `Paused`: In this state, the endpoint has been manually disabled to stop receiving events. All new events will be set to the `Discarded` state and **will not be sent** to the endpoint. To re-activate the endpoint, un-pause the endpoint, and it will be set to `active`.
+-   `Pending`: This state indicates that the endpoint was previously `Inactive` and a failed or discarded event delivery is being resent to the endpoint. If successful, the endpoint will be set to `Active`.
 
 ### Zero Downtime Key Rotation
 

@@ -16,12 +16,9 @@ published_at: 2023-08-02T09:00:00.000+00:00
 
 ## Introduction
 
-
 While a webhook is a message that an application automatically creates when a predefined event is triggered, a webhook subscription is a way for you to request that this automatically created message be sent to an endpoint that you provide. As this article progresses, you will see webhook subscriptions simplified even further, and then learn about the methods you can use to fine-tune webhook subscriptions created on Convoy such that consumer endpoints only receive messages that are ready for use.
 
-
 Creating a webhook subscription is similar to enlisting to receive email notifications from a platform, an example is creating a job alert on LinkedIn. But note that the good thing about being able to create a webhook subscription is not simply the fact that your endpoints get to receive messages when events are triggered, but also the fact that you can configure the different settings of this subscription such that only messages that match these configurations get sent to your endpoints. This is much like how the best part about creating a job alert on LinkedIn is not that you receive job alerts but that the alerts are those that you actually have an interest in, otherwise, imagine if LinkedIn sent you an alert every time any job at all is posted, things will quickly start to look messy.
-
 
 A webhook subscription would typically have a property used to define the event type that the subscribed endpoint should receive. In Convoy, this property and some other methods such as filtering by payload structure and Webhook Fan-out are used to nicely manage event routing in both incoming and outgoing webhook projects. Join me as we walk through how to put each one of these to use.
 
@@ -29,8 +26,8 @@ A webhook subscription would typically have a property used to define the event 
 
 In this section, I will talk about Event Types, Payload Structure, Webhook Fan-out, and Retry Logic, and how to effectively use them together to create a webhook subscription that meets your requirements. We would demonstrate their use cases by creating sample webhook events, therefore to follow along, you would need the following:
 
-- A Convoy cloud account or your [self-hosted](https://github.com/frain-dev/convoy#installation-getting-started) convoy.
-- A backend to receive webhook events( I used webhook.site)
+-   A Convoy cloud account or your [self-hosted](https://github.com/frain-dev/convoy#installation-getting-started) convoy.
+-   A backend to receive webhook events( I used webhook.site)
 
 ### Event Types
 
@@ -47,13 +44,11 @@ To begin, log in to your Convoy account and follow the prompts to create an Outg
 5. Under **Set Configurations**, i selected Event Types and created two event types: `user.created` and `user.deleted`.
 6. Scroll down and clit the **Save and Proceed** button.
 
-
 Complete the same steps from your end and you would have created a webhook subscription with Event Types ready to work with.
 
 ![creating subscription with event types](/blog-assets/create-subscription-with-event-type.gif)
 
-Your outgoing project is now ready to start sending webhook requests. We would trigger a request by creating an event via the Convoy endpoint [https://dashboard.getconvoy.io/api/v1/projects/{projectID}/events](https://docs.getconvoy.io/api-reference/events/list-all-events) on the terminal.
-
+Your outgoing project is now ready to start sending webhook requests. We would trigger a request by creating an event via the Convoy endpoint [https://dashboard.getconvoy.io/api/v1/projects/{projectID}/events](https://getconvoy.io/docs/api-reference/events/list-all-events) on the terminal.
 
 Construct the following request to make on your terminal replacing `<host>`, `<your-project-id>`, `<project-api-key>` and, `<endpoint-id>` with their actual values:
 
@@ -70,13 +65,14 @@ $ curl --request POST \
     }
 }'
 ```
->Note that you can find your project ID from settings on `<your-base-url>/projects/`, and your endpoint ID by navigating to endpoints from your dashboard.
 
-In the above request, the value of `event_type` is set to *user.updated*, but we have subscribed the endpoint we created earlier to receive notifications only for event types *user.created* & *user.deleted*. Therefore no event delivery is created since no endpoint has subscribed to this event type. Go to your dashboard under **Event Deliveries** and confirm that this event is not listed. However, you can see this event saved under "Event Logs".
+> Note that you can find your project ID from settings on `<your-base-url>/projects/`, and your endpoint ID by navigating to endpoints from your dashboard.
+
+In the above request, the value of `event_type` is set to _user.updated_, but we have subscribed the endpoint we created earlier to receive notifications only for event types _user.created_ & _user.deleted_. Therefore no event delivery is created since no endpoint has subscribed to this event type. Go to your dashboard under **Event Deliveries** and confirm that this event is not listed. However, you can see this event saved under "Event Logs".
 
 ![event saved in the event logs](/blog-assets/event-saved-in-eventlogs.png)
 
-Trigger a second request, this time changing the event type to *user.created*:
+Trigger a second request, this time changing the event type to _user.created_:
 
 ```bash {% file="terminal" %}
 $ curl --request POST \
@@ -92,11 +88,9 @@ $ curl --request POST \
 }'
 ```
 
-
 See that the event is now received on the endpoint and that a successful event delivery is now recorded.
 
 ![one successful event delivery](/blog-assets/one-successful-event-delivery.png)
-
 
 ### Payload Structure
 
@@ -109,30 +103,29 @@ From the dashboard, go under Subscriptions and click on the **"Create a subscrip
 
 ```json
 {
-    "verified": true
+	"verified": true
 }
 ```
-Sample event payload:
 
+Sample event payload:
 
 ```json
 {
-  "name": "Sam",
-  "verified": true,
-  "bio": "I love cars"
+	"name": "Sam",
+	"verified": true,
+	"bio": "I love cars"
 }
 ```
+
 Test the filter to ensure that the sample data is accepted by the filter and Save.
 
 ![create event filter](/blog-assets/create-a-subscription-filter.gif)
 
 3. Still under the **Set Configurations** section, select **Event Types** and create two event types `user.created` & `user.deleted` just as with the first subscription.
 
-
 4. Scroll down to attach an endpoint to this subscription. Click on **Create New Endpoint**, and give the new endpoint a name. I used "outgoing-endpoint-two".
 5. Enter a new URL. You can obtain a second URL from [webhook.site](https://webhook.site)
 6. Finally, hit the Create Subscription button.
-
 
 Use the below POST request to publish an event targeted at the second endpoint, again replacing `<host>`, `<your-project-id>`, `<project-api-key>` and, `<second-endpoint-id>` with their actual values.
 
@@ -152,12 +145,11 @@ $ curl --request POST \
 }'
 ```
 
-The above should create a successful event delivery. You can change the value of `verified` in the payload to `false` and see that the targeted endpoint "outgoing-endpoint-two" does not receive the notification. Convoy supports many more forms of filtering, find the complete rundown of available filters in the [documentation](https://docs.getconvoy.io/product-manual/subscriptions#filters)
-
+The above should create a successful event delivery. You can change the value of `verified` in the payload to `false` and see that the targeted endpoint "outgoing-endpoint-two" does not receive the notification. Convoy supports many more forms of filtering, find the complete rundown of available filters in the [documentation](https://getconvoy.io/docs/product-manual/subscriptions#filters)
 
 ### Webhook Fan-out
-Webhook Fan-out refers to a technique used to dispatch webhooks events to multiple endpoints at a go. This makes it possible for webhook consumers to provide multiple endpoints where they need the same events to be received. Starting from `v0.8` Convoy introduced a new mechanism for webhook fan-out. To fan out events to multiple endpoints, the event needs to be published using the [/events/fanout](https://docs.getconvoy.io/api-reference/events/fan-out-an-event) endpoint. There's also a new field on the endpoint object--`owner_id`, this field is used to identify endpoints as belonging to the same entity. To enable the two endpoints that we have created to receive events sent through the convoy API `/events/fanout` endpoint, we need to update the endpoints to assign them an owner id of the same value. Use the following request template to update each of the endpoints:
 
+Webhook Fan-out refers to a technique used to dispatch webhooks events to multiple endpoints at a go. This makes it possible for webhook consumers to provide multiple endpoints where they need the same events to be received. Starting from `v0.8` Convoy introduced a new mechanism for webhook fan-out. To fan out events to multiple endpoints, the event needs to be published using the [/events/fanout](https://getconvoy.io/docs/api-reference/events/fan-out-an-event) endpoint. There's also a new field on the endpoint object--`owner_id`, this field is used to identify endpoints as belonging to the same entity. To enable the two endpoints that we have created to receive events sent through the convoy API `/events/fanout` endpoint, we need to update the endpoints to assign them an owner id of the same value. Use the following request template to update each of the endpoints:
 
 ```bash {% file="terminal" %}
 $ curl --request PUT \
@@ -171,7 +163,6 @@ $ curl --request PUT \
 ```
 
 Confirm that the endpoints have been updated with an owner id value of "accounts", if so, you're ready to fan out events to these endpoints. The following request will do exactly that:
-
 
 ```
 $ curl --request POST \
@@ -191,20 +182,16 @@ $ curl --request POST \
 
 Check that both endpoints received the webhook request:
 
-
 ![event recieved on outgoing-endpoint-one](/blog-assets/outgoing-endpoint-one.png)
 ![event recieved on outgoing-endpoint-two](/blog-assets/outgoing-endpoint-two.png)
 
 When you fan out webhook events, their Event types and payload structure are still compared against those set on each of the endpoints. If these checks are present, they have to match, otherwise, notifications will not be sent to the endpoints where they do not match.
 
 ### Retry Logic
+
 Another option available to you when creating a webhook subscription in Convoy is the facility to create a Retry Logic. Depending on your understanding of what kind of downtimes can occur on an endpoint, you can create a schedule for failed events to be retried a specific number of times and within the specified intervals. Convoy supports two retry mechanisms: the default is the Linear time retry where the time between each event retry is fixed, while the other is the Exponential back off retry, where the time between each retry
 progressively increases before the next retry attempt. You can find the option to create a retry logic under the **Set Configurations** section when creating a subscription.
 
 ## Conclusion
+
 This post shed light on what webhook subscriptions are, it explains that they are a way to enlist or subscribe to an endpoint to receive webhook requests when an event is triggered. You saw the features that are available to you when creating a webhook subscription in Convoy, and how to use them together to manage event routing in a convoy project. If what has been described here sounds like it would meet your needs, then you're welcome to try [Convoy Cloud](https://dashboard.getconvoy.io/signup), and join us in our slack [community](https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email).
-
-
-
-
-

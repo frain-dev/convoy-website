@@ -48,7 +48,7 @@ export default function OfficeHours({ type }: { type: 'playground' | 'guides' })
 
 					<a
 						target="_blank"
-						href={type === 'playground' ? 'https://playground.getconvoy.io' : 'https://docs.getconvoy.io/webhook-guides'}
+						href={type === 'playground' ? 'https://playground.getconvoy.io' : '/docs/webhook-guides'}
 						className="desktop:px-16px py-10px w-auto [107px] text-14 font-medium rounded-8px h-10 nav-bar-break:h-11 bg-white-100 desktop:bg-[#2780F1] text-[#2780F1] hover:desktop:bg-[#1f66c1] group transition-all duration-300 desktop:text-white-100 flex items-center desktop:shadow-btn-secondary cursor-pointer">
 						<span>{type === 'playground' ? 'Try for free' : 'Read Guides'}</span>
 

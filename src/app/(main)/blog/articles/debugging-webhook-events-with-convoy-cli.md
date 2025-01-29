@@ -7,26 +7,25 @@ primary_author:
     twitter: danvixent
 primary_tag: Engineering
 tags:
-- Convoy
-- Engineering
+    - Convoy
+    - Engineering
 featured: false
 description: Debugging webhook configuration can be very tedious, many times you are required plumb together multiple tools to get it to work end to end. In this article, we explain how the new Client CLI tool works.
 published_at: 2023-03-20T10:00:00.000+00:00
 ---
 
-
 Hey Friends,
 
-We re-launched our `client cli` tool with new documentation [here](https://docs.getconvoy.io/cli-file/convoy-cli). For the unfamiliar reader, Convoy is an open-source high-performance webhooks gateway to manage millions of webhooks end-to-end. It is designed to be a highly scalable multi-tenant webhooks gateway to support multiple backend services sending and receiving webhooks. In this article, we describe the new `client cli` and why we made these changes.
+We re-launched our `client cli` tool with new documentation [here](https://getconvoy.io/docs/cli-file/convoy-cli). For the unfamiliar reader, Convoy is an open-source high-performance webhooks gateway to manage millions of webhooks end-to-end. It is designed to be a highly scalable multi-tenant webhooks gateway to support multiple backend services sending and receiving webhooks. In this article, we describe the new `client cli` and why we made these changes.
 
 ### Background
 
 In our initial implementation of a client-side CLI, we noticed some issues that raised some questions on the CLI being intuitive and how to use it. Since then, we decided to take a different approach to improve the UX. Shedding more light on the issues:
 
-- In the initial implementation, we bundled the server and client program into one binary. This meant some commands like `convoy server` relied on the `convoy.json` config file while other commands like `convoy listen` relied on a different config file - `config.yml` . This wasn’t very intuitive — which command was for the server and which command was for the client? To solve this we now release two binaries `convoy` ( Our server program ) and `convoy-cli` ( Our client program )
-- Secondly, convoy is a webhooks gateway it is able to ingest webhooks from providers as well as send webhooks to consumers. To achieve this, we created two project types - `Incoming` and `Outgoing` projects. We realised that building a client-side program for the former is way easier than building for the latter. We decided to split up their implementation:
-    - For an `Incoming` project, a user can use their `personal access tokens` to authenticate against their instance and receive and debug events locally.
-    - For an `Outgoing` project, no other solution was more intuitive than `OAuth`. We decided to deprecate support for `CLI Tokens` and re-launch this when `OAuth` is ready. Please reach out to us on [slack](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ) if you’re super interested in this.
+-   In the initial implementation, we bundled the server and client program into one binary. This meant some commands like `convoy server` relied on the `convoy.json` config file while other commands like `convoy listen` relied on a different config file - `config.yml` . This wasn’t very intuitive — which command was for the server and which command was for the client? To solve this we now release two binaries `convoy` ( Our server program ) and `convoy-cli` ( Our client program )
+-   Secondly, convoy is a webhooks gateway it is able to ingest webhooks from providers as well as send webhooks to consumers. To achieve this, we created two project types - `Incoming` and `Outgoing` projects. We realised that building a client-side program for the former is way easier than building for the latter. We decided to split up their implementation:
+    -   For an `Incoming` project, a user can use their `personal access tokens` to authenticate against their instance and receive and debug events locally.
+    -   For an `Outgoing` project, no other solution was more intuitive than `OAuth`. We decided to deprecate support for `CLI Tokens` and re-launch this when `OAuth` is ready. Please reach out to us on [slack](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ) if you’re super interested in this.
 
 ### Usage
 
@@ -80,7 +79,7 @@ $ convoy-cli listen --forward-to <your-forward-address>
 
 The value you pass to the `--forward-to` flag can be any address of your choice, but this will typically be an endpoint on a local server, where you can debug your events as they come in.
 
-The full documentation for the convoy-cli tool can be found [here](https://docs.getconvoy.io/cli-file/convoy-cli).
+The full documentation for the convoy-cli tool can be found [here](https://getconvoy.io/docs/cli-file/convoy-cli).
 
 ### Conclusion
 

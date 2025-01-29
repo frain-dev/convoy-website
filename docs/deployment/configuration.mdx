@@ -3,88 +3,89 @@ title: Configuration
 'og:title': Convoy Configuration
 'og:description': Convoy can be configured using CLI Flags, Environment Variables or a configuration file.
 'twitter:description': Convoy can be configured using CLI Flags, Environment Variables or a configuration file.
-'twitter:url': https://docs.getconvoy.io/deployment/configuration
+'twitter:url': https://getconvoy.io/docs/deployment/configuration
 ---
 
-Convoy can be configured by using any of the following: 
+Convoy can be configured by using any of the following:
 
--  A configuration file -- `convoy.json`
--  Environment variables.
--  `cli flags`
+-   A configuration file -- `convoy.json`
+-   Environment variables.
+-   `cli flags`
 
-It is recommended to pick one configuration method and stick to it, but 
-if you mix and match, the order of precedence is as follows: 
+It is recommended to pick one configuration method and stick to it, but
+if you mix and match, the order of precedence is as follows:
 `cli flags` > `environment variables` > `convoy.json` file. Values set in the `cli flags`
-will override the same config values set in `environment variables`, and 
+will override the same config values set in `environment variables`, and
 values set in both of them will override the same values set in your `convoy.json`.
 
 ## Configuration Reference
-------------------
 
-Here's the full configuration reference 
+---
+
+Here's the full configuration reference
 
 ```json Config
 {
-  // [optional] 
-  // Convoy uses a backwards-compatible api verisioning strategy 
-  // for the REST API. This config specifies which version your 
-  // instance should use. The environment variable equivalent is 
+  // [optional]
+  // Convoy uses a backwards-compatible api verisioning strategy
+  // for the REST API. This config specifies which version your
+  // instance should use. The environment variable equivalent is
   // CONVOY_API_VERSION. The default value is the latest at the time of release.
   "api_version": "2024-01-01",
 
-  // [optional] 
-  // This is used to specify the host the server is running on. 
-  // It is used in emails with links to access the instance. 
-  // E.g. user invitation. The environment variable equivalent is 
-  // CONVOY_HOST. The default value is localhost. 
+  // [optional]
+  // This is used to specify the host the server is running on.
+  // It is used in emails with links to access the instance.
+  // E.g. user invitation. The environment variable equivalent is
+  // CONVOY_HOST. The default value is localhost.
   "host": "hooks.domain.com",
 
   // [required]
-  // Database configuration for your instance. As of this writing, 
+  // Database configuration for your instance. As of this writing,
   // Convoy only supports PostgreSQL.
   "database": {
-    // Database host URL. The environment variable equivalent is 
+    // Database host URL. The environment variable equivalent is
     // CONVOY_DB_HOST. The default value is localhost.
     "host": "localhost",
 
-    // Database scheme. The environment variable equivalent is 
+    // Database scheme. The environment variable equivalent is
     // CONVOY_DB_SCHEME. The default value is postgres.
     "scheme": "postgres",
 
-    // Database username. The environment equivalent is 
+    // Database username. The environment equivalent is
     // CONVOY_DB_USERNAME. The default is postgres.
     "username": "postgres",
 
-    // Database password. The environment equivalent is 
+    // Database password. The environment equivalent is
     // CONVOY_DB_PASSWORD. The default is postgres.
     "password": "postgres",
 
-    // Database name. The environment equivalent is 
+    // Database name. The environment equivalent is
     // CONVOY_DB_DATABASE. The default is convoy.
     "database": "convoy",
 
-    // Database options. The environment equivalent is 
-    // CONVOY_DB_OPTIONS. 
+    // Database options. The environment equivalent is
+    // CONVOY_DB_OPTIONS.
     "options": "sslmode=disable&connect_timeout=30",
-    
-    // Database port. The environment equivalent is 
+
+    // Database port. The environment equivalent is
     // CONVOY_DB_PORT. The default value is 5432.
     "port": 5432
 
-    // This is used to tune the connection to the database 
-    // for maximum performance. It specifies the maximum 
+    // This is used to tune the connection to the database
+    // for maximum performance. It specifies the maximum
     // amount of open connections allowed in the connection pool.
     // The environment variable equivalent is CONVOY_DB_MAX_OPEN_CONN
     "max_open_conn": 10,
 
-    // This is used to tune the connection to the database 
-    // for maximum performance. It specifies how many idle 
+    // This is used to tune the connection to the database
+    // for maximum performance. It specifies how many idle
     // connections are allowed in the connection pool.
     // The environment variable equivalent is CONVOY_DB_MAX_IDLE_CONN
     "max_idle_conn": 10,
 
     // This is used to tune the connection to the database
-    // for maximum performance. It specifies how long any 
+    // for maximum performance. It specifies how long any
     // connection is kept in the pool before being killed.
     // The environment variable equivalent is CONVOY_DB_CONN_MAX_LIFETIME
     "conn_max_lifetime": 10
@@ -120,56 +121,56 @@ Here's the full configuration reference
   },
 
   [required]
-  // Each Convoy component, includes a server component. This is used to 
+  // Each Convoy component, includes a server component. This is used to
   // configure the server on each component.
   "server": {
 
       "http": {
 
-          // This is a boolean flag used to determine if ssl should be 
-          // enabled or not. The environment variable equivalent is 
+          // This is a boolean flag used to determine if ssl should be
+          // enabled or not. The environment variable equivalent is
           // SSL. The default value is false.
           "ssl": false,
 
-          // This is a path used to read the ssl cert file. The environment 
-          // variable equivalent is CONVOY_SSL_CERT_FILE. If ssl is set to 
-          // true, then this must be supplied. 
+          // This is a path used to read the ssl cert file. The environment
+          // variable equivalent is CONVOY_SSL_CERT_FILE. If ssl is set to
+          // true, then this must be supplied.
           "ssl_cert_file": "",
 
-          // This is a path used to read the ssl key file. The environment 
-          // variable equivalent is CONVOY_SSL_KEY_FILE. If ssl is set to 
-          // true, then this must be supplied. 
+          // This is a path used to read the ssl key file. The environment
+          // variable equivalent is CONVOY_SSL_KEY_FILE. If ssl is set to
+          // true, then this must be supplied.
           "ssl_key_file": "",
 
-          // This is used to configure the port for the api server runs on. This 
+          // This is used to configure the port for the api server runs on. This
           // config has no effect on the other components. The environment
           // variable equivalent is PORT.
           "port": 5005,
 
-          // This is used to configure the port the worker server runs on. This 
-          // config has no effect on the other components. The environment 
+          // This is used to configure the port the worker server runs on. This
+          // config has no effect on the other components. The environment
           // variable equivalent is WORKER_PORT.
           "worker_port": 5006,
 
-          // This is used to configure the port the ingest server runs on. This 
-          // config has no effect on the other components. The environment 
+          // This is used to configure the port the ingest server runs on. This
+          // config has no effect on the other components. The environment
           // variable equivalent is INGEST_PORT.
           "ingest_port": 5007,
 
-          // This is used to configure the port the socket server runs on. This 
-          // config has no effect on the other components. The environment 
+          // This is used to configure the port the socket server runs on. This
+          // config has no effect on the other components. The environment
           // variable equivalent is SOCKET_PORT.
           "socket_port": 5008,
 
           // This is used to configure the forward proxy URL. This is must be set
-          // on all workers if you want to configure a forward proxy. The 
+          // on all workers if you want to configure a forward proxy. The
           // environment variable equivalent is HTTP_PROXY.
           "http_proxy": ""
       }
   },
 
   // [required]
-  // Redis configuration for your instance. Convoy uses redis for 
+  // Redis configuration for your instance. Convoy uses redis for
   // caching and enqueuing delivery.
   "redis": {
 
@@ -183,7 +184,7 @@ Here's the full configuration reference
 
     // Redis scheme. The environment variable equivalent is
     // CONVOY_REDIS_SCHEME. Redis sentinel is not currently supported.
-    "scheme": "redis", 
+    "scheme": "redis",
 
     // Redis username. The environment variable equivalent is
     // CONVOY_REDIS_USERNAME.
@@ -193,13 +194,13 @@ Here's the full configuration reference
     // CONVOY_REDIS_PASSWORD.
     "password": "redis",
 
-    // Redis database. The environment variable equivalent is 
+    // Redis database. The environment variable equivalent is
     // CONVOY_REDIS_DATABASE. The default: 0
     "database": 0,
 
     // [optional]
-    // Redis cluster addresses. The environment variable equivalent is 
-    // CONVOY_REDIS_ADDRESSES. The value takes precedence over the 
+    // Redis cluster addresses. The environment variable equivalent is
+    // CONVOY_REDIS_ADDRESSES. The value takes precedence over the
     // other redis configuration in this object. The urls are fully
     // qualified domain names.
     "addresses": "{url}, {url}, ..."
@@ -212,31 +213,31 @@ Here's the full configuration reference
   "license_key": "<your-license-key>",
 
   // [optional]
-  // This is used to tune the workers pool size in our workers. 
+  // This is used to tune the workers pool size in our workers.
   // The environment variable equivalent is CONVOY_CONSUMER_POOL_SIZE.
   // The default value is 100.
   "consumer_pool_size": 100,
 
   // [optional]
   // This is used to enable experimental features. Check
-  // https://docs.getconvoy.io/resources/feature-flags for all the 
-  // supported values. The environment variable equivalent is 
+  // https://getconvoy.io/docs/resources/feature-flags for all the
+  // supported values. The environment variable equivalent is
   // CONVOY_ENABLE_FEATURE_FLAG
   "enable_feature_flag": [ "circuit-breaker" ],
 
   // [optional]
   // This is a boolean flag to configure profiling any Convoy component.
-  // The environment variable equivalent is CONVOY_ENABLE_PROFILING. 
+  // The environment variable equivalent is CONVOY_ENABLE_PROFILING.
   // The default value is false.
   "enable_profiling": false,
 
   // [optional]
-  // smtp configuration is used to configure an email backend to use in 
+  // smtp configuration is used to configure an email backend to use in
   // sending emails like notification emails, etc.
   "smtp": {
 
     // Specify the smtp provider. The environment variable equivalent is
-    // CONVOY_SMTP_PROVIDER.  
+    // CONVOY_SMTP_PROVIDER.
     "provider": "sendgrid",
 
     // Specify the smtp URL. The environment variable equivalent is
@@ -251,11 +252,11 @@ Here's the full configuration reference
     // CONVOY_SMTP_USERNAME
     "username": "apikey",
 
-    // Specify the smtp password. The environment variable equivalent is 
+    // Specify the smtp password. The environment variable equivalent is
     // CONVOY_SMTP_PASSWORD
     "password": "api-key-from-sendgrid",
 
-    // Specify the smtp from email. The environment variable equivalent is 
+    // Specify the smtp from email. The environment variable equivalent is
     // CONVOY_SMTP_FROM
     "from": "[email protected]"
   }
@@ -276,7 +277,7 @@ Here's the full configuration reference
   // This is used to configure the logger for any Convoy component.
   "logger": {
 
-    // This is used to configure the logging level. The supported values 
+    // This is used to configure the logging level. The supported values
     // are: fatal, error, warn, info, debug. The environment variable
     // equivalent is CONVOY_LOGGER_LEVEL. The default value is error.
     "level": "debug"
@@ -284,16 +285,16 @@ Here's the full configuration reference
 
   // [optional]
   // This is used to configure how we generate and push traces to. While
-  // it is an optional object, we highly recommend it to easily spot and 
+  // it is an optional object, we highly recommend it to easily spot and
   // fix production issues.
   "tracer": {
 
-    // This is specifies the tracing backend to use, currently there are two 
+    // This is specifies the tracing backend to use, currently there are two
     // supported in-built backends: otel, sentry. The environment variable
     // equivalent is CONVOY_TRACER_PROVIDER
     "type": "otel",
 
-    // This is used to configure an otel tracing backend. If type above is set 
+    // This is used to configure an otel tracing backend. If type above is set
     // to otel, then the object needs to be fully configured.
     "otel": {
 
@@ -301,7 +302,7 @@ Here's the full configuration reference
       // equivalent is CONVOY_OTEL_SAMPLE_RATE
       "sample_rate": 1.0,
 
-      // OTel backend URL. Only grpc ingestion urls are supported. 
+      // OTel backend URL. Only grpc ingestion urls are supported.
       // The environment variable equivalent is CONVOY_OTEL_SAMPLE_RATE
       "collector_url": "",
 
@@ -317,13 +318,13 @@ Here's the full configuration reference
         // variable equivalent is CONVOY_OTEL_AUTH_HEADER_NAME.
         "header_name": "",
 
-        // This is the request header value. The environment variable 
+        // This is the request header value. The environment variable
         // equivalent is CONVOY_OTEL_AUTH_HEADER_VALUE.
         "header_value": ""
       }
     },
 
-    // This is used to configure the sentry tracing backend. If type above is set 
+    // This is used to configure the sentry tracing backend. If type above is set
     // to sentry, then this object needs to be fully configured.
     "sentry": {
 
@@ -334,9 +335,9 @@ Here's the full configuration reference
   },
 
   // [optional]
-  // We use this to configure deleting events away from PostgreSQL. This config 
-  // is optional, but if you're configuring retention policies on your project, 
-  // then you need to supply it. 
+  // We use this to configure deleting events away from PostgreSQL. This config
+  // is optional, but if you're configuring retention policies on your project,
+  // then you need to supply it.
   "storage_policy": {
 
     // The type can be either s3 or on_prem. The environment variable equivalent is CONVOY_STORAGE_POLICY_TYPE.
@@ -349,23 +350,23 @@ Here's the full configuration reference
       // environment variable equivalent is CONVOY_STORAGE_AWS_PREFIX.
       "prefix": "",
 
-      // S3 Buckect name. The environment variable equivalent is 
+      // S3 Buckect name. The environment variable equivalent is
       // CONVOY_STORAGE_AWS_BUCKET.
       "bucket": "",
 
-      // Bucket access key. The environment variable equivalent is 
+      // Bucket access key. The environment variable equivalent is
       // CONVOY_STORAGE_AWS_ACCESS_KEY.
       "access_key": "",
 
-      // Bucket secret key. The environment variable equivalent is 
+      // Bucket secret key. The environment variable equivalent is
       // CONVOY_STORAGE_AWS_SECRET_KEY.
       "secret_key": "",
 
-      // Bucket region. The environment variable equivalent is 
+      // Bucket region. The environment variable equivalent is
       // CONVOY_STORAGE_AWS_REGION.
       "region": "",
 
-      // auth session token. The environment variable equivalent is 
+      // auth session token. The environment variable equivalent is
       // CONVOY_STORAGE_AWS_SESSION_TOKEN.
       "session_token": "",
 
@@ -376,14 +377,14 @@ Here's the full configuration reference
     // If type above is set to on_prem, then this config needs to be supplied.
     "on_prem": {
 
-      // This specifies the path on the machine where pruned events are stored. 
+      // This specifies the path on the machine where pruned events are stored.
       // The environment variable equivalent is CONVOY_STORAGE_PREM_PATH.
       "path": ""
     }
   }
 
   // [optional]
-  // This is used to configure authentication on your instance. The default values 
+  // This is used to configure authentication on your instance. The default values
   // should be fine, except you want something more custom.
   "auth": {
 
@@ -392,32 +393,32 @@ Here's the full configuration reference
     "is_signup_enabled": true,
 
     "jwt": {
-      // This is a boolean flag to enable user authentication or not. 
-      // The environment variable equivalent is CONVOY_JWT_REALM_ENABLED. 
+      // This is a boolean flag to enable user authentication or not.
+      // The environment variable equivalent is CONVOY_JWT_REALM_ENABLED.
       // The default value is true.
       "enabled": true,
 
       // This is used to generate JWT tokens for UI API access. The environment
-      // variable equivalent is CONVOY_JWT_SECRET. 
+      // variable equivalent is CONVOY_JWT_SECRET.
       "secret": "",
 
-      // This is used to determine how long a token is valid for in seconds. 
-      // The environment variable equivalent is CONVOY_JWT_EXPIRY. 
+      // This is used to determine how long a token is valid for in seconds.
+      // The environment variable equivalent is CONVOY_JWT_EXPIRY.
       "expiry": 1800,
 
-      // This is used to generate refresh JWT tokens. The environment 
-      // variable equivalent is CONVOY_JWT_REFRESH_SECRET. 
+      // This is used to generate refresh JWT tokens. The environment
+      // variable equivalent is CONVOY_JWT_REFRESH_SECRET.
       "refresh_secret": "",
 
-      // This is used to determine how long a refresh token is valid for in seconds. 
-      // The environment variable equivalent is CONVOY_JWT_REFRESH_EXPIRY. 
+      // This is used to determine how long a refresh token is valid for in seconds.
+      // The environment variable equivalent is CONVOY_JWT_REFRESH_EXPIRY.
       "refresh_expiry": 3600
     },
-    
+
     "native": {
 
-      // This is a boolean flag to enable user authentication or not. 
-      // The environment variable equivalent is CONVOY_NATIVE_REALM_ENABLED. 
+      // This is a boolean flag to enable user authentication or not.
+      // The environment variable equivalent is CONVOY_NATIVE_REALM_ENABLED.
       // The default value is true.
       "enabled": true
     }
@@ -428,13 +429,13 @@ Here's the full configuration reference
   "api_rate_limit": 25
 
   // [optional]
-  // This is used to configure the ingestion rate limit on the data plane. Internally, 
-  // it is a distributed rate limiter implemented on Redis to ensure consistent limits 
+  // This is used to configure the ingestion rate limit on the data plane. Internally,
+  // it is a distributed rate limiter implemented on Redis to ensure consistent limits
   // across the cluster.
   "instance_ingest_rate": 50
 
   // [optional]
-  // This is used to control the agent's execution mode. The values can be either 
+  // This is used to control the agent's execution mode. The values can be either
   // default, retry and events.
   "execution_mode": "retry"
 
@@ -442,44 +443,44 @@ Here's the full configuration reference
   // This is used to configure how we circuit break client endpoints.
   "circuit_breaker": {
 
-    // This is the frequency of polling the database in seconds to calculate 
+    // This is the frequency of polling the database in seconds to calculate
     // an endpoint's error rate.
     // The environment variable equivalent is CONVOY_CIRCUIT_BREAKER_SAMPLE_RATE.
     "sample_rate": 10,
 
-    // This is the total amount of time in seconds wait in the half-open state 
+    // This is the total amount of time in seconds wait in the half-open state
     // to enable the endpoint to recover.
     // The environment variable equivalent is CONVOY_CIRCUIT_BREAKER_ERROR_TIMEOUT.
-    "error_timeout": 60, 
+    "error_timeout": 60,
 
-    // This is the % number of failures in the observability window, before 
+    // This is the % number of failures in the observability window, before
     // we tripe the circuit.
     // The environment variable equivalent is CONVOY_CIRCUIT_BREAKER_FAILURE_THRESHOLD.
     "failure_threshold": 10,
 
-    // This is the total number of successes in the half-open state that'll 
-    // trigger the circuit back to a closed state. 
+    // This is the total number of successes in the half-open state that'll
+    // trigger the circuit back to a closed state.
     // The  environment variable equivalent is CONVOY_CIRCUIT_BREAKER_SUCCESS_THRESHOLD.
-    "success_threshold": 50, 
+    "success_threshold": 50,
 
-    // This is the total number of requests an endpoint must have before 
+    // This is the total number of requests an endpoint must have before
     // we begin calculating error rate.
     // The environment variable equivalent is CONVOY_CIRCUIT_BREAKER_MINIMUM_REQUEST_COUNT.
     "minimum_request_count": 15,
 
     // This is the total time window to use in calculating the endpoint error rate.
-    // It is configured in minutes. 
+    // It is configured in minutes.
     // The environment variable equivalent is CONVOY_CIRCUIT_BREAKER_OBSERVABILITY_WINDOW.
     "observability_window": 30,
 
-    // This is the total number of consecutive transitions to the open state 
-    // before we finally disable the endpoint. 
+    // This is the total number of consecutive transitions to the open state
+    // before we finally disable the endpoint.
     // The environment variable equivalent is CONVOY_CIRCUIT_BREAKER_CONSECUTIVE_FAILURE_THRESHOLD.
-    "consecutive_failure_threshold": 10 
+    "consecutive_failure_threshold": 10
   }
 
   // [optional]
-  // This configures a set of IP addresses that we can connect to. The goal 
+  // This configures a set of IP addresses that we can connect to. The goal
   // is to prevent SSRF.
   "dispatcher": {
     // This determines if the gateway accepts self-signed certificates.
@@ -490,14 +491,14 @@ Here's the full configuration reference
     // The equivalent environment variable is CONVOY_DISPATCHER_ALLOW_LIST.
     "allow_list": [ "0.0.0.0/0" ]
 
-    // This is used to configure the set of IP addresses that are blocked. 
+    // This is used to configure the set of IP addresses that are blocked.
     // The equivalent environment variable is CONVOY_DISPATCHER_BLOCK_LIST.
     "deny_list": [ "127.0.0.0/8", "169.254.169.254" ]
   }
 
   // [optional]
   // This is the total time in seconds used to cap the exponential backoff
-  // retry algorithm. For example, if set to 7200, it means we will never 
+  // retry algorithm. For example, if set to 7200, it means we will never
   // exceed 2 hours in retry delay.
   // The equivalent environment variable is CONVOY_MAX_RETRY_SECONDS.
   "max_retry_seconds": 2000

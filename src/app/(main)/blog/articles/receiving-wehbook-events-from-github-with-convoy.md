@@ -40,9 +40,9 @@ Next, create an application for the project. You can do this via API with the fo
 
 ```json {% file="Sample Application Payload" %}
 {
-  "name": "Github-app",
-  "support_email": "your-app-support@email.com",
-  "slack_webhook_url": "<your-slack-webhook-url>"
+	"name": "Github-app",
+	"support_email": "your-app-support@email.com",
+	"slack_webhook_url": "<your-slack-webhook-url>"
 }
 ```
 
@@ -78,9 +78,9 @@ Now that we have the application all set up, let’s create an endpoint:
 
 ```json {% file="Sample Endpoint Payload" %}
 {
-  "url": "<your-endpoint-url>",
-  "http_timeout": "10s",
-  "description": "my-github-endpoint",
+	"url": "<your-endpoint-url>",
+	"http_timeout": "10s",
+	"description": "my-github-endpoint"
 }
 ```
 
@@ -119,7 +119,7 @@ Alternatively, on the UI, immediately after creating the group, a create applica
 
 **Create a source**
 
-Next, we are to create a source, select the `Ingestion HTTP` source type, and afterward select `Github` as the Ingester HTTP type and set a secret to communicate with your GitHub webhook source. You can find more documentation on sources [here](https://docs.getconvoy.io/product-manual/sources).
+Next, we are to create a source, select the `Ingestion HTTP` source type, and afterward select `Github` as the Ingester HTTP type and set a secret to communicate with your GitHub webhook source. You can find more documentation on sources [here](https://getconvoy.io/docs/product-manual/sources).
 
 ![Create a source](/blog-assets/create-a-source.png)
 
@@ -149,7 +149,7 @@ $ curl \
 
 **Create Subscription**
 
-Next, we have to create a subscription. Subscriptions are a many-to-many relationship between sources/apps **→** endpoints. You can find more documentation on subscriptions [here](https://docs.getconvoy.io/product-manual/subscriptions).
+Next, we have to create a subscription. Subscriptions are a many-to-many relationship between sources/apps **→** endpoints. You can find more documentation on subscriptions [here](https://getconvoy.io/docs/product-manual/subscriptions).
 
 On the UI, just select the source, app, and endpoint you previously created.
 
@@ -159,11 +159,11 @@ Likewise, you can create a subscription via the API:
 
 ```json {% file="Sample Subscription Payload" %}
 {
-  "name": "github-sub",
-  "type": "http",
-  "app_id": "<your-app-id>",
-  "source_id": "<your-source-id>",
-  "endpoint_id": "<your-endpoint-id>",
+	"name": "github-sub",
+	"type": "http",
+	"app_id": "<your-app-id>",
+	"source_id": "<your-source-id>",
+	"endpoint_id": "<your-endpoint-id>"
 }
 ```
 

@@ -1,16 +1,15 @@
 ---
 title: SDK
 sidebarTitle: Overview
-'og:title': Convoy SDK Documentation 
+'og:title': Convoy SDK Documentation
 'og:description': Convoy provides SDK for in-app integration. These SDKs carry out the same operations as the API and Convoy dashboard.
 'twitter:description': Convoy provides SDK for in-app integration. These SDKs carry out the same operations as the API and Convoy dashboard.
-'twitter:url': https://docs.getconvoy.io/sdk/sdk
+'twitter:url': https://getconvoy.io/docs/sdk/sdk
 ---
 
 Convoy provides SDK for in-app integration. These SDKs carry out the same operations as the API and Convoy dashboard. The methods in each SDK mirror the [API](/api-reference).
 
 This page introduces you to the SDKs as well as demonstrate the steps involved in sending an event to your Convoy instance.
-
 
 <Tabs>
 <Tab title="Javascript">
@@ -19,18 +18,18 @@ This page introduces you to the SDKs as well as demonstrate the steps involved i
 
 Install convoy.js with
 
-```json  terminal
+```json terminal
 $ npm install convoy.js
-``` 
-
+```
 
 ### Configure
+
 Next, require the convoy module and setup with your auth credentials.
 
 ```json example
 const { Convoy } = require("convoy.js");
 const convoy = new Convoy({ api_key: "your_api_key" });
-``` 
+```
 
 The SDK also supports authenticating via Basic Auth by defining your username and password.
 
@@ -45,10 +44,11 @@ const convoy = new Convoy({
   api_key: "your_api_key",
   uri: "self-hosted-instance",
 });
-``` 
+```
+
 Create an Endpoint
 
-```json  example
+```json example
 try {
   const endpointData = {
     url: "https://0d87-102-89-2-172.ngrok.io",
@@ -61,7 +61,7 @@ try {
 } catch (error) {
   console.log(error);
 }
-``` 
+```
 
 Create a subscription
 
@@ -81,6 +81,7 @@ try {
 With the subscription in place, you're set to send an event.
 
 ## Sending an Event
+
 ```json example
 try {
   const eventData = {
@@ -101,6 +102,7 @@ try {
   console.log(error);
 }
 ```
+
 </Tab>
 
 <Tab title="Ruby">
@@ -126,9 +128,10 @@ $ gem install convoy
 ```
 
 ### Configure
+
 To configure your client, provide your `api_key` and `project_id`, see below:
 
-```ruby 
+```ruby
 require 'convoy'
 
 Convoy.ssl = true
@@ -151,6 +154,7 @@ endpoint = Convoy::Endpoint.new(
 
 endpoint_response = endpoint.save
 ```
+
 ### Create an Subscription
 
 After creating an endpoint, we need to subscribe the endpoint to events.
@@ -165,6 +169,7 @@ subscription = Convoy::Subscription.new(
 
 subscription_response = subscription.save
 ```
+
 ### Send an Event
 
 To send an event, you'll need to pass the `uid` from the endpoint we created earlier.
@@ -184,11 +189,13 @@ event = Convoy::Event.new(
 
 event_response = event.save
 ```
+
   </Tab>
 
 <Tab title="Golang">
 
 ### Install Client
+
 Install convoy-go with
 
 ```golang terminal
@@ -205,7 +212,8 @@ import (
   c := convoy.New(convoy.Options{
       APIKey: "your_api_key",
   })
-  ```
+```
+
 The SDK also supports authenticating via Basic Auth by providing your username and password
 
 ```golang example
@@ -213,15 +221,17 @@ The SDK also supports authenticating via Basic Auth by providing your username a
       APIUsername: "default",
       APIPassword: "default",
   })
-  ```
-  In the event you're using a self hosted convoy instance, you can define the url as part of what is passed into the `convoy.Options` struct
-
-  ```golang example
-  c := convoy.New(convoy.Options{
-       APIKey: "your_api_key",
-       APIEndpoint: "self-hosted-instance",
-   })
 ```
+
+In the event you're using a self hosted convoy instance, you can define the url as part of what is passed into the `convoy.Options` struct
+
+```golang example
+c := convoy.New(convoy.Options{
+     APIKey: "your_api_key",
+     APIEndpoint: "self-hosted-instance",
+ })
+```
+
 ### Create an endpoint
 
 ```golang example
@@ -233,22 +243,22 @@ endpoint, err := c.Endpoints.Create(app.UID, &Convoy.CreateEndpointRequest{
   if err != nil {
       log.Fatal("failed to create app endpoint \n", err)
   }
-  ```
+```
 
-  ### Create a Subscription
+### Create a Subscription
 
-  ```golang example
-  subscription, err := c.Subscriptions.Create(&Convoy.CreateSubscriptionRequest{
-    Name: "<subscription name>"
-    EndpointID: "<endpoint-id>"
+```golang example
+subscription, err := c.Subscriptions.Create(&Convoy.CreateSubscriptionRequest{
+  Name: "<subscription name>"
+  EndpointID: "<endpoint-id>"
 }, nil)
 
-  if err != nil {
-      log.Fatal("failed to create app endpoint \n", err)
-  }
-  ```
+if err != nil {
+    log.Fatal("failed to create app endpoint \n", err)
+}
+```
 
-  With the subscription in place, you're set to send an event.
+With the subscription in place, you're set to send an event.
 
 ### Send an Event
 
@@ -264,12 +274,13 @@ event, err := c.Events.Create(&convoy.CreateEventRequest{
 	if err != nil {
 		log.Fatal("failed to create app event \n", err)
 	}
-  ```
+```
+
   </Tab>
 
 </Tabs>
 
-[Contribute to this doc in Github](https://github.com/frain-dev/convoy-website/tree/main/src/app/(docs)/docs/documentation/sdk.md)
+[Contribute to this doc in Github](<https://github.com/frain-dev/convoy-website/tree/main/src/app/(docs)/docs/documentation/sdk.md>)
 
 #### Don't miss anything.
 

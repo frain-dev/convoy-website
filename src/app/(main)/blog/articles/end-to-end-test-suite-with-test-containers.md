@@ -1,51 +1,52 @@
 ---
 title: 'Designing a Robust Integration Test Suite for Convoy’s Data Plane with TestContainers'
 feature_image: end-to-end-test-suite.png
-post_image: end-to-end-test-suite.png 
+post_image: end-to-end-test-suite.png
 primary_author:
     name: Convoy Engineering
     twitter: getconvoy
-primary_tag: Engineering 
+primary_tag: Engineering
 tags:
-  - Convoy
-  - Engineering
-featured: false 
+    - Convoy
+    - Engineering
+featured: false
 description: For the last 3 years, Convoy has been an indispensable tool for developers to securely send and receive millions of webhook events daily and at a massive scale. And since it is open source, many developers contribute to the project to ensure it remains highly customisable,  performant, efficient and reliable.
-published_at: 2024-08-07T17:00:00.000+00:00 
---- 
+published_at: 2024-08-07T17:00:00.000+00:00
+---
+
 ![end-to-end-test-suite.png](/blog-assets/end-to-end-test-suite.png)
 
-As software systems become large and very complex, asserting that when modifications are made, all the combined pieces still work as intended is **imperative**. That is the goal of testing. 
+As software systems become large and very complex, asserting that when modifications are made, all the combined pieces still work as intended is **imperative**. That is the goal of testing.
 
-But what kind of testing are we talking about? This article focuses on **end-to-end** **integration** tests. 
+But what kind of testing are we talking about? This article focuses on **end-to-end** **integration** tests.
 
-For the last 3 years, Convoy has been an indispensable tool for developers to securely send and receive millions of webhook events daily and at a massive scale. And since it is open source, many developers contribute to the project to ensure it remains highly customisable,  performant, efficient and reliable.
+For the last 3 years, Convoy has been an indispensable tool for developers to securely send and receive millions of webhook events daily and at a massive scale. And since it is open source, many developers contribute to the project to ensure it remains highly customisable, performant, efficient and reliable.
 
-Enter reliability, it can be so easy to ignore this aspect of any software when changes are made to the codebase. This is the main reason why a robust end-to-end test suite is needed to spot defects in the code before they are shipped to end users. 
+Enter reliability, it can be so easy to ignore this aspect of any software when changes are made to the codebase. This is the main reason why a robust end-to-end test suite is needed to spot defects in the code before they are shipped to end users.
 
 # **Before TestContainers**
+
 Before the use of TestContainers, Convoy, written in Go, relied on the following checks:
 
 1. Golang Lint
 2. Unit tests
-3. Mocking (using `mockgen`). 
+3. Mocking (using `mockgen`).
 4. Integration tests (using GitHub workflows and some environment configurations).
 
-These checks are fine as they are and help catch defects and reduce technical debt. 
+These checks are fine as they are and help catch defects and reduce technical debt.
 
-However, there are some limitations. 
+However, there are some limitations.
 
 For example:
 
-- Golang Lint analyses code without running it.
-- Unit tests are quite limited in scope and lack context about the end-to-end behaviour of the system.
-- Mocking simulates this behaviour, however, what happens in the real world could be different.
-- The current integration test suite relies on manually purging the database for every test case since they all share the same hardcoded port in the environment variables. In addition, the tests are not truly end-to-end.
+-   Golang Lint analyses code without running it.
+-   Unit tests are quite limited in scope and lack context about the end-to-end behaviour of the system.
+-   Mocking simulates this behaviour, however, what happens in the real world could be different.
+-   The current integration test suite relies on manually purging the database for every test case since they all share the same hardcoded port in the environment variables. In addition, the tests are not truly end-to-end.
 
 Even if we accept these limitations as we did for a while, some very nasty bugs will escape all these checks. Why? Because these tests do not fully adhere to this guiding principle:
 
 > “The more your tests resemble the way your software is used, the more confidence they can give you” — Kent C. Dodds
-> 
 
 To understand how Convoy is used, and the desired end-user experience, we need to first understand the high-level system architecture.
 
@@ -216,9 +217,9 @@ failed to connect to reaper: dial tcp [::1]:49485: connect: connection refused: 
 
 Checking for the root cause of this error, we stumbled upon:
 
-- [Could not connect to Ryuk at localhost:49154 on Docker for Windows](https://github.com/testcontainers/testcontainers-java/issues/3609)
-- [[Bug]: compose.dockerCompose.Up errors out with "failed to connect to reaper: dial tcp [::1]:49485: connect: connection refused: Connecting to Ryuk on localhost:49485 failed", although containers are up & running](https://github.com/testcontainers/testcontainers-go/issues/2563)
-- The official documentation at https://golang.testcontainers.org/features/configuration/#customizing-ryuk-the-resource-reaper,
+-   [Could not connect to Ryuk at localhost:49154 on Docker for Windows](https://github.com/testcontainers/testcontainers-java/issues/3609)
+-   [[Bug]: compose.dockerCompose.Up errors out with "failed to connect to reaper: dial tcp [::1]:49485: connect: connection refused: Connecting to Ryuk on localhost:49485 failed", although containers are up & running](https://github.com/testcontainers/testcontainers-go/issues/2563)
+-   The official documentation at https://golang.testcontainers.org/features/configuration/#customizing-ryuk-the-resource-reaper,
 
 Despite reviewing these sources meticulously, progress was not forthcoming. We then decided to ignore the error, since we were already cleaning up used resources in the `t.Cleanup` method.
 
@@ -228,17 +229,17 @@ The order was to start up the Postgres server first, followed by Redis and then 
 
 # Building the Test Cases
 
-Since the goal of the test suite is the **correctness of the data plane** (see architecture described above). Let’s examine the ingestion sources, their structure and the expected behaviour (see the [docs](https://docs.getconvoy.io/product-manual/events-and-event-deliveries#ingesting-events) for a more detailed explanation)
+Since the goal of the test suite is the **correctness of the data plane** (see architecture described above). Let’s examine the ingestion sources, their structure and the expected behaviour (see the [docs](https://getconvoy.io/docs/product-manual/events-and-event-deliveries#ingesting-events) for a more detailed explanation)
 
-|  | Direct | Fan Out | Broadcast | Dynamic |
-| --- | --- | --- | --- | --- |
+|      | Direct                                                             | Fan Out                                                                  | Broadcast                                                                   | Dynamic                                                                     |
+| ---- | ------------------------------------------------------------------ | ------------------------------------------------------------------------ | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | HTTP | Ingest events from the HTTP source and deliver it to one endpoint. | Ingest events from the HTTP source and deliver it to multiple endpoints. | Ingest events from the HTTP source and deliver it to all tenant’s endpoints | Ingest events from the HTTP source and deliver it to the embedded endpoint. |
 
 Other supported Ingest Channels are Amazon SQS, Apache Kafka, Google PubSub and RabbitMQ. This integration test suite using TestContainers is designed to ensure that for all possible ingestion structure across any channel the system operates correctly. Let’s look at a sample test case.
 
 ## Fan-Out Events Test Cases
 
-A fan-out is an event delivered to multiple endpoints linked by an `ownerID`(see [docs](https://docs.getconvoy.io/product-manual/events-and-event-deliveries#fan-out)). The pseudocode for this flow is:
+A fan-out is an event delivered to multiple endpoints linked by an `ownerID`(see [docs](https://getconvoy.io/docs/product-manual/events-and-event-deliveries#fan-out)). The pseudocode for this flow is:
 
 ```go
 func (f *FanoutEventsTestSuite) Test_FanoutEvent_Success() {
@@ -247,13 +248,13 @@ func (f *FanoutEventsTestSuite) Test_FanoutEvent_Success() {
 
 	// create multiple endpoints linked by an ownerID.
 	err := createEndpoints(n)
-	
+
 	// subscribe the endpoints to matching event types.
 	err := createMatchingSubscriptions(m)
-	
+
 	// send a matching event through a specific channel
 	err := sendEventToOwnerID(ctx, channel, ownerID, payload)
-	
+
 	// assert that our dummy server received the hook.
 	assertEventCameThrough(ctx)
 }
@@ -264,13 +265,13 @@ func (f *FanoutEventsTestSuite) Test_FanoutEvent_NotMatching() {
 
 	// create multiple endpoints linked by an ownerID.
 	err := createEndpoints(n)
-	
+
 	// subscribe endpoints to event types that wouldn't match.
 	err := createNonMatchingSubscriptions(m)
-	
+
 	// send a matching event through a specific channel
 	err := sendEventToOwnerID(ctx, channel, ownerID, payload)
-	
+
 	// assert that no event came through.
 	assertNoEventCameThrough(ctx)
 }
@@ -279,11 +280,10 @@ func (f *FanoutEventsTestSuite) Test_FanoutEvent_NotMatching() {
 Now that we have the foundation of the test suite laid out, we will be able to continue improving the test suite for various other combinations and assertions, such as Broadcast Events, Dynamic Events, Pub/Sub Ingest, Custom Headers and Idempotency Keys, etc. to catch regressions before any new releases.
 
 > The goal of our pilot test cases was **correctness**.
-> 
 
 # Lessons Learned
 
-To be sure, this integration of TestContainers in Convoy has several benefits. Even while writing the tests, some bugs were squashed along the way. These bugs would have been difficult to detect otherwise. 
+To be sure, this integration of TestContainers in Convoy has several benefits. Even while writing the tests, some bugs were squashed along the way. These bugs would have been difficult to detect otherwise.
 
 In addition, we didn’t need to purge the database all the time as we were doing before now; we have the guarantee that containers are spun up with a clean slate and there will be no conflict with other tests or even parallel runs of the same tests.
 
