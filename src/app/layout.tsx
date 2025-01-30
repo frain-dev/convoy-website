@@ -1,10 +1,10 @@
-import '../globals.scss';
+import './globals.scss';
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import { getPosts } from '@/lib/getPosts';
-import Toast from '../components/Toast';
+import Header from './components/Header';
+import Toast from './components/Toast';
+import Footer from './components/Footer';
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://getconvoy.io'),
