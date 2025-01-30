@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
 			allow: '/',
 			disallow: ['/cloud', '/community', '/enterprise', '/_next/static/', '/api/', '/static/', '*/feed.rss', '*/rss']
 		},
-		sitemap: 'https://getconvoy.io/sitemap.xml'
+		sitemap: 'https://www.getconvoy.io/sitemap.xml'
 	};
 }

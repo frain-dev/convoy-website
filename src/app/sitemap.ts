@@ -1,7 +1,7 @@
 import { getAllRoutes, getPosts } from '@/lib/getPosts';
 
 export default async function sitemap() {
-	const URL = 'https://getconvoy.io';
+	const URL = 'https://www.getconvoy.io';
 
 	const excludedPaths = ['/cloud', '/community', '/enterprise', '/_next/static', '/api', '/static', 'feed.rss', 'rss'];
 
