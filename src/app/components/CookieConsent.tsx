@@ -42,7 +42,7 @@ export default function CookieConsent() {
 					className="fixed bottom-4 right-4 max-w-sm bg-white-100 p-4 rounded-[10px] shadow-card z-50 border border-gray-200">
 					<div className="flex flex-col gap-3">
 						<div className="flex justify-between items-start">
-							<p className="text-sm text-gray-600">We use cookies to improve your experience.</p>
+							<p className="text-[#000]/80 leading-[160%] font-medium">We use cookies to improve your experience.</p>
 							<button onClick={() => handleConsent(false)} className="text-gray-400 hover:text-gray-600" aria-label="Close">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
