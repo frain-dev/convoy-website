@@ -1,23 +1,24 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Convoy vs Internal Implementation',
-	description: 'Compare Convoy with building your own webhook system. Make the right choice for your needs.',
+	title: 'Convoy vs Building Internal Webhook Infrastructure | Comparison Guide',
+	description: "Compare using Convoy's webhook gateway vs building internally. Understand the trade-offs in reliability, maintenance, and development costs.",
 	openGraph: {
-		title: 'Convoy vs Internal Webhook Implementation',
-		description: 'Choose the right webhook solution for your needs.',
+		title: 'Convoy vs Building Your Own Webhook Infrastructure',
+		description: "Compare using Convoy's webhook gateway vs building internally. Understand the trade-offs in reliability, maintenance, and development costs.",
 		type: 'article'
 	},
 	alternates: {
 		canonical: '/convoy-vs-internal-implementation'
-	}
+	},
+	keywords: 'webhook implementation comparison, build vs buy webhooks, webhook infrastructure comparison, webhook gateway benefits'
 };
 
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Article',
-	headline: 'Convoy vs Internal Webhook Implementation',
-	description: 'Comparing Convoy with in-house webhook solutions',
+	headline: 'Convoy vs Internal Implementation',
+	description: 'Discover why choosing Convoy over building an internal webhook service saves time, reduces complexity, and ensures reliability at scale.',
 	publisher: {
 		'@type': 'Organization',
 		name: 'Convoy'

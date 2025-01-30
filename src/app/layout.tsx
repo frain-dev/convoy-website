@@ -7,23 +7,22 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import CookieConsent from './components/CookieConsent';
 
 export const metadata: Metadata = {
-	metadataBase: new URL('https://getconvoy.io'),
-	title: 'Convoy: Webhooks Gateway for Sending and Receiving Webhooks',
-	description:
-		'Reliable Webhooks Gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
+	metadataBase: new URL('https://www.getconvoy.io'),
+	title: 'Convoy - Enterprise-Grade Webhook Gateway for Reliable Event Delivery',
+	description: 'Scalable webhook gateway for managing millions of events. Built for developers with features like retries, circuit breaking, and enterprise security.',
 	alternates: {
 		canonical: '/'
 	},
 	openGraph: {
-		title: 'Convoy: Webhooks Gateway for Sending and Receiving Webhooks',
-		description:
-			'Convoy is a reliable webhooks gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
-		url: 'https://getconvoy.io/',
+		title: 'Convoy - The Enterprise Webhook Gateway',
+		description: 'Scalable webhook gateway for managing millions of events. Built for developers with features like retries, circuit breaking, and enterprise security.',
+		url: 'https:/www.getconvoy.io/',
 		type: 'website',
 		images: '/static/convoy-new.png'
 	},
 	twitter: {
-		title: 'Convoy: Webhooks gateway for sending and receiving webhooks',
+		title: 'Convoy - Enterprise-Grade Webhook Gateway for Reliable Event Delivery',
+		description: 'Scalable webhook gateway for managing millions of events. Built for developers with features like retries, circuit breaking, and enterprise security.',
 		creator: '@getconvoy',
 		images: [
 			{
@@ -32,8 +31,6 @@ export const metadata: Metadata = {
 			}
 		],
 		site: '@getconvoy',
-		description:
-			'Convoy is a reliable webhooks gateway for sending and receiving millions of webhooks securely with support for Retries, Rate Limiting, Static IPs, Circuit Breaking and scalability for efficient engineering teams.',
 		card: 'summary_large_image'
 	},
 	viewport: {
@@ -99,15 +96,15 @@ export const metadata: Metadata = {
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Organization',
-	'@id': 'https://getconvoy.io',
+	'@id': 'https://wwww.getconvoy.io',
 	name: 'Convoy',
-	url: 'https://getconvoy.io',
+	url: 'https://www.getconvoy.io',
 	logo: {
 		'@type': 'ImageObject',
-		url: 'https://getconvoy.io/svg/convoy-logo-full-new.svg',
+		url: 'https://www.getconvoy.io/svg/convoy-logo-full-new.svg',
 		alternateName: 'Convoy Logo'
 	},
-	description: 'Open-source webhooks gateway for secure and reliable event delivery',
+	description: 'Scalable webhook gateway for managing millions of events. Built for developers with features like retries, circuit breaking, and enterprise security.',
 	sameAs: ['https://github.com/frain-dev/convoy', 'https://twitter.com/getconvoy', 'https://linkedin.com/company/convoy-webhooks/'],
 	foundingDate: '2021',
 	email: 'sales@getconvoy.io',

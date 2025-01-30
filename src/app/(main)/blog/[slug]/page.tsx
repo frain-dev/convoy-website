@@ -58,12 +58,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 		};
 	} else
 		return {
-			title: article.metaTitle,
-			metadataBase: new URL('https://getconvoy.io'),
+			title: `${article.metaTitle} | Convoy Blog`,
+			metadataBase: new URL('https://www.getconvoy.io'),
 			alternates: {
 				canonical: `/blog/${article.slug}`,
 				types: {
-					'application/rss+xml': 'https://getconvoy.io/blog/rss'
+					'application/rss+xml': 'https://www.getconvoy.io/blog/rss'
 				}
 			},
 			openGraph: {
@@ -71,8 +71,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 				siteName: 'Convoy',
 				type: 'article',
 				description: article.description,
-				url: `https://getconvoy.io/blog/${article.slug}`,
-				images: ['https://getconvoy.io/blog-socials/' + article.feature_image],
+				url: `https://www.getconvoy.io/blog/${article.slug}`,
+				images: ['https://www.getconvoy.io/blog-socials/' + article.feature_image],
 				tags: article.primary_tag,
 				publishedTime: article.published_at,
 				authors: ['http://twitter.com/' + article.primary_author.twitter]
@@ -80,7 +80,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 			twitter: {
 				title: article.metaTitle,
 				card: 'summary_large_image',
-				images: { url: 'https://getconvoy.io/blog-socials/' + article.feature_image, alt: article.feature_image },
+				images: { url: 'https://www.getconvoy.io/blog-socials/' + article.feature_image, alt: article.feature_image },
 				description: article.description,
 				creator: `@${article.primary_author.name}`
 			}
@@ -114,7 +114,7 @@ export default async function BlogPost({ params }: PageProps) {
 		'@type': 'Article',
 		headline: post.title,
 		description: post.description,
-		image: `https://getconvoy.io/blog-socials/${post.feature_image}`,
+		image: `https://www.getconvoy.io/blog-socials/${post.feature_image}`,
 		datePublished: post.published_at,
 		dateModified: post.published_at, // Add modified date if available
 		wordCount: post.readTime * 200, // Approximate based on read time
@@ -129,17 +129,17 @@ export default async function BlogPost({ params }: PageProps) {
 			name: 'Convoy',
 			logo: {
 				'@type': 'ImageObject',
-				url: 'https://getconvoy.io/logo.png'
+				url: 'https://www.getconvoy.io/logo.png'
 			}
 		},
 		mainEntityOfPage: {
 			'@type': 'WebPage',
-			'@id': `https://getconvoy.io/blog/${post.slug}`
+			'@id': `https://www.getconvoy.io/blog/${post.slug}`
 		},
 		keywords: [post.primary_tag, ...(post.tags || [])],
 		articleSection: post.primary_tag,
 		isAccessibleForFree: true,
-		url: `https://getconvoy.io/blog/${post.slug}`
+		url: `https://www.getconvoy.io/blog/${post.slug}`
 	};
 
 	return (

@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Webhook Engineering Blog | Convoy',
-	description:
-		'Learn about webhook best practices, event-driven architectures, and developer tutorials. Stay updated with the latest in webhook infrastructure and Convoy features.',
+	title: 'Convoy Blog | Webhook Engineering & Best Practices',
+	description: 'Expert insights on webhook infrastructure, engineering practices, and technical deep dives from the team building the future of webhooks.',
 	openGraph: {
-		title: 'Webhook Engineering Blog - Convoy',
-		description: 'Deep dives into webhook infrastructure, engineering insights, and best practices for event-driven architectures.',
+		title: 'Convoy Blog - Webhook Engineering Insights',
+		description: 'Expert insights on webhook infrastructure, engineering practices, and technical deep dives from the team building the future of webhooks.',
 		type: 'website',
 		images: [
 			{
@@ -19,8 +18,8 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'Webhook Engineering Blog - Convoy',
-		description: 'Deep dives into webhook infrastructure, engineering insights, and best practices.'
+		title: 'Convoy Blog - Webhook Engineering Insights',
+		description: 'Expert insights on webhook infrastructure, engineering practices, and technical deep dives from the team building the future of webhooks.'
 	},
 	alternates: {
 		canonical: '/blog'
@@ -31,17 +30,17 @@ export const metadata: Metadata = {
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Blog',
-	name: 'Convoy Blog',
-	description: 'Engineering insights about webhook infrastructure and event-driven architectures',
+	name: 'Convoy Blog - Webhook Engineering Insights',
+	description: 'Expert insights on webhook infrastructure, engineering practices, and technical deep dives from the team building the future of webhooks.',
 	publisher: {
 		'@type': 'Organization',
 		name: 'Convoy',
 		logo: {
 			'@type': 'ImageObject',
-			url: 'https://getconvoy.io/svg/convoy-logo-full-new.svg'
+			url: 'https://www.getconvoy.io/svg/convoy-logo-full-new.svg'
 		}
 	},
-	url: 'https://getconvoy.io/blog',
+	url: 'https://www.getconvoy.io/blog',
 	inLanguage: 'en-US',
 	copyrightYear: new Date().getFullYear()
 };

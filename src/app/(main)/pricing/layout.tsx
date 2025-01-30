@@ -1,23 +1,25 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Pricing | Convoy',
-	description: 'Simple, transparent pricing for webhook management. From individual developers to enterprise teams, choose the right plan for your scale.',
+	title: 'Convoy Pricing | Cloud & Self-Hosted Webhook Gateway Solutions',
+	description: 'Find the right webhook plan for your scale. Choose between cloud-hosted solutions starting at $99/month or enterprise self-hosted options.',
 	openGraph: {
-		title: 'Convoy Pricing',
-		description: 'Transparent pricing for webhook management at any scale.',
+		title: 'Convoy Webhook Gateway Pricing Plans',
+		description: 'Find the right webhook plan for your scale. Choose between cloud-hosted solutions starting at $99/month or enterprise self-hosted options.',
 		type: 'website'
 	},
 	alternates: {
 		canonical: '/pricing'
-	}
+	},
+	keywords: 'webhook gateway pricing, webhook gateway plans, webhook gateway costs, webhook gateway pricing comparison'
+
 };
 
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Product',
 	name: 'Convoy',
-	description: 'Open-source webhooks gateway',
+	description: 'Find the right webhook plan for your scale. Choose between cloud-hosted solutions starting at $99/month or enterprise self-hosted options.',
 	offers: {
 		'@type': 'AggregateOffer',
 		priceCurrency: 'USD',

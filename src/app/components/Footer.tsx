@@ -53,10 +53,7 @@ export default function Footer() {
 		},
 		{
 			title: 'Speak to us',
-			links: [
-				{ name: 'Slack', link: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', isExternal: true },
-				{ name: 'Community', link: 'https://community.getconvoy.io', isExternal: true }
-			]
+			links: [{ name: 'Slack', link: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', isExternal: true }]
 		}
 	];
 	const subscribeToNewsletter = async (event: React.FormEvent) => {
@@ -112,7 +109,13 @@ export default function Footer() {
 										<ul key={index} className="mobile:w-[150px]">
 											<h3 className="text-16 desktop:text-18 footer:border-b footer:border-b-white-24 group-hover:footer:mb-0 footer:pb-8px font-semibold footer:font-normal mb-4 desktop:mb-24px flex items-center justify-between">
 												{section.title}
-												<OptimizedImage src="/svg/angle-down-icon.svg" alt="accordion icon" className="invisible footer:visible w-16px" width={16} height={16} />
+												<OptimizedImage
+													src="/svg/angle-down-icon.svg"
+													alt="accordion icon"
+													className="invisible footer:visible w-16px"
+													width={16}
+													height={16}
+												/>
 											</h3>
 											{section.links.map((link, i) => (
 												<li key={i} className="text-[#666]">

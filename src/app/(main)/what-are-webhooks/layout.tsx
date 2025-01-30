@@ -1,27 +1,28 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'What are Webhooks? | Convoy',
-	description: 'Understanding webhooks and their role in modern applications. Learn about webhook implementation, best practices, and management strategies.',
+	title: 'What are Webhooks? | Complete Guide by Convoy',
+	description: 'Learn how webhooks enable real-time data exchange between applications. A comprehensive guide to webhook implementation and best practices.',
 	openGraph: {
-		title: 'What are Webhooks? - Convoy',
-		description: 'Complete guide to understanding and implementing webhooks.',
+		title: 'What are Webhooks? Complete Implementation Guide',
+		description: 'Learn how webhooks enable real-time data exchange between applications. A comprehensive guide to webhook implementation and best practices.',
 		type: 'article'
 	},
 	alternates: {
 		canonical: '/what-are-webhooks'
-	}
+	},
+	keywords: 'what are webhooks, webhook guide, webhook implementation, webhook basics'
 };
 
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Article',
-	headline: 'What are Webhooks? Complete Guide',
-	description: 'Understanding webhooks and their role in modern applications',
+	name: 'What are Webhooks? | Complete Guide by Convoy',
+	description: 'Whether you’re an engineer or product manager, this guide walks you through everything you need to become a webhook pro. Let’s begin!',
 	publisher: {
 		'@type': 'Organization',
 		name: 'Convoy',
-		url: 'https://getconvoy.io'
+		url: 'https://www.getconvoy.io'
 	},
 	author: {
 		'@type': 'Organization',
@@ -30,7 +31,7 @@ const jsonLd = {
 	isAccessibleForFree: true,
 	mainEntityOfPage: {
 		'@type': 'WebPage',
-		'@id': 'https://getconvoy.io/what-are-webhooks'
+		'@id': 'https://www.getconvoy.io/what-are-webhooks'
 	}
 };
 
