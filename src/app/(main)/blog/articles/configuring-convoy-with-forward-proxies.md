@@ -11,7 +11,7 @@ tags:
     - Product Update
     - Engineering
 featured: false
-description: Configuring Convoy with Forward proxies and Deploying Convoy with our updated Kubernetes deployment helm charts  
+description: Configuring Convoy with Forward proxies and Deploying Convoy with our updated Kubernetes deployment helm charts
 published_at: 2023-06-27T13:00:00.000+00:00
 ---
 
@@ -59,31 +59,32 @@ Smokescreen allows you to specify access control lists, these help prevent IP sp
 ---
 version: v1
 services:
-  - name: enforce-dummy-srv
-    project: usersec
-    action: enforce
-    allowed_domains:
-      - example1.com
-      - example2.com
-      - deny1.com # overrides global deny list
+    - name: enforce-dummy-srv
+      project: usersec
+      action: enforce
+      allowed_domains:
+          - example1.com
+          - example2.com
+          - deny1.com # overrides global deny list
 
-  - name: report-dummy-srv
-    project: security
-    action: report
-    allowed_domains:
-      - example3.com
+    - name: report-dummy-srv
+      project: security
+      action: report
+      allowed_domains:
+          - example3.com
 
 global_allow_list:
-  - goodexample1.com
-  - goodexample2.com
-  - goodexample3.com
-  - conflictingexample.com
+    - goodexample1.com
+    - goodexample2.com
+    - goodexample3.com
+    - conflictingexample.com
 
 global_deny_list:
-  - deny1.com
-  - deny2.com
-  - conflictingexample.com
+    - deny1.com
+    - deny2.com
+    - conflictingexample.com
 ```
+
 The `enforce` action makes smokescreen strictly follow the defined rule, as opposed to `report` which allows the rule to be broken with a warning.
 For more extensive documentation of Smokescreen's configuration see [here](https://github.com/stripe/smokescreen).
 
@@ -231,18 +232,22 @@ Once you've built the image and have it running in a container, you can now upda
 
 ## Ease of Installation
 
-We recently released v1 of our helm charts on [Artifact Hub](https://artifacthub.io/packages/helm/convoy/convoy) in which we refactored the charts based on industry standards. They are now very easy to install and configure making product evaluation and maintenance a breeze. 
+We recently released v1 of our helm charts on [Artifact Hub](https://artifacthub.io/packages/helm/convoy/convoy) in which we refactored the charts based on industry standards. They are now very easy to install and configure making product evaluation and maintenance a breeze.
 
 ## Documentation
+
 Prior to v1, we had no documentation about how to tweak the configuration inside our chart; any developer could install it, but most times, we developers love to tune something to our specific needs, and we have rolled out our [documentation](https://github.com/frain-dev/helm-charts#convoy) which should enable more folks to run Convoy on Kubernetes.
 
 ## Security
-We all know how dangerous it can be to expose secrets without encrypting them; we used config maps for handling configurations, and they revealed specific credentials in plain text. In v1, We now use Kubernetes secrets, and yes, we know Kubernetes secrets are encoded, but you can use any of your favorite tools like [Sops](https://fluxcd.io/flux/guides/mozilla-sops/) or [External secrets](https://github.com/external-secrets/external-secrets) for much better security. We got rid of *convoy.json*.
+
+We all know how dangerous it can be to expose secrets without encrypting them; we used config maps for handling configurations, and they revealed specific credentials in plain text. In v1, We now use Kubernetes secrets, and yes, we know Kubernetes secrets are encoded, but you can use any of your favorite tools like [Sops](https://fluxcd.io/flux/guides/mozilla-sops/) or [External secrets](https://github.com/external-secrets/external-secrets) for much better security. We got rid of _convoy.json_.
 
 ## External Databases
+
 Before v1, we only supported database creation from the helm chart; You could not necessarily use managed DB or bring your Database. Now With the `externalDatabase` and `externalRedis` attributes. You can use your own DB and not rely on the helm chart. Check the docs for [more](https://github.com/frain-dev/helm-charts/blob/main/README.md).
 
 ## Deployments
+
 Before Convoy can be up and running, it needs to do run db migrations if any exist. Before now, when the chart is deployed, other components go into a crash loop since the `migrate` component wasn't complete. Part of the benefit of using Kubernetes is that it has a reconciliation phase where it will retry the pods again. After several seconds and minutes, other components will start. So we had to fix that.
 
 Introducing [InitContainers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/), initContainers allows Kubernetes to run pre-containers before the actual container, which can also be helpful when dealing with migrations. Our new config was updated to this:
@@ -264,6 +269,7 @@ initContainers:
 The config above will check the migration job constantly every 10 seconds to ensure it is complete before other components will run.
 
 ## Auto Scaling based on CPU and Memory Utilization
+
 We also added Horizontal Pod Autoscaling (HPA) which allows specific components to scale based on CPU or memory utilization. All you need to do is enable them in the component and those pods will be scaled when they hit the limits.
 
 ```shell
@@ -279,5 +285,4 @@ autoscaling:
 
 We plan on adding more support for other platforms you can configure to work as a forward proxy with Convoy such as [Envoy](https://github.com/envoyproxy/envoy), [OpenResty](https://openresty.org) etc. We'll also keep improving
 
-You can stay up to date with the docs [here](https://docs.getconvoy.io/product-manual/forward-proxies/smokescreen) to keep track of when the documentation is added.
-
+You can stay up to date with the docs [here](https://getconvoy.io/docs/product-manual/forward-proxies/smokescreen) to keep track of when the documentation is added.

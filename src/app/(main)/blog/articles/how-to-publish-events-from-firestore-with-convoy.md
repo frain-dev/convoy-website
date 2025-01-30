@@ -89,13 +89,13 @@ $ npm install convoy.js
 
 ```js {% file="index.js" %}
 const { Convoy } = require('convoy.js');
-const convoy = new Convoy({ api_key: 'your_api_key' })
+const convoy = new Convoy({ api_key: 'your_api_key' });
 ```
 
 In the event you're using a self-hosted Convoy instance, you can define the URL as part of what is passed into Convoy's constructor.
 
 ```js {% file="index.js" %}
-const convoy = new Convoy({ api_key: 'your_api_key', uri: 'self-hosted-instance' })
+const convoy = new Convoy({ api_key: 'your_api_key', uri: 'self-hosted-instance' });
 ```
 
 6. Now let’s setup our Convoy project to fire out events, with two basic steps:
@@ -198,13 +198,12 @@ Now we’re good to go to write our cloud function.
 2. Next, create our cloud function that listens to a Firestore DB update:
 
     ```js {% file="index.js" %}
-    exports.webhook = functions.firestore.document('/events/{documentId}')
-        .onCreate((snap, context) => {
-          // Grab the current value of what was written to Firestore.
-          const newData = snap.data();
+    exports.webhook = functions.firestore.document('/events/{documentId}').onCreate((snap, context) => {
+    	// Grab the current value of what was written to Firestore.
+    	const newData = snap.data();
 
-    			// ... code for sending events to Convoy
-        });
+    	// ... code for sending events to Convoy
+    });
     ```
 
 3. With that done, the next step is to install Convoy in our function folder; we’ll use the Convoy Javascript SDK for this.
@@ -270,11 +269,11 @@ Now we’re good to go to write our cloud function.
 
     ```json {% file="Sample Payload" %}
     {
-      "app_id": "3774387-...",
-      "event_type": "payment.success",
-      "data": {
-        // some data you want to send
-      }
+    	"app_id": "3774387-...",
+    	"event_type": "payment.success",
+    	"data": {
+    		// some data you want to send
+    	}
     }
     ```
 
@@ -308,7 +307,7 @@ Lastly, verify that events have been sent to your convoy instance from your Conv
 
 With this basic setup, you’re good to go with sending out webhook events automatically triggered by an update to your Firebase Firestore Collection.
 
-You can similarly listen to Firebase Authentication and other Firebase actions and trigger a resulting webhook event after (more details on that [here](https://firebase.google.com/docs/functions/use-cases)), using the [Convoy SDKs](https://docs.getconvoy.io/sdk/sdk).
+You can similarly listen to Firebase Authentication and other Firebase actions and trigger a resulting webhook event after (more details on that [here](https://firebase.google.com/docs/functions/use-cases)), using the [Convoy SDKs](https://getconvoy.io/docs/sdk/sdk).
 
 ## Conclusion
 

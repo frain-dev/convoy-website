@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { sendGAEvent } from '@next/third-parties/google';
 
 const VideoPlayer: React.FC = () => {
 	const [isPlaying, setIsPlaying] = useState(false);
@@ -9,6 +12,7 @@ const VideoPlayer: React.FC = () => {
 	const playingYoutubeUrl = 'https://www.youtube.com/embed/ZPUQH2CUJdo?autoplay=1&rel=0&modestbranding=1&showinfo=0';
 
 	const handlePlayClick = () => {
+		sendGAEvent({ event: 'videoPlayed', value: 'xyz' });
 		setShowOverlay(false);
 		// Small delay to allow overlay to fade out before video starts
 		setTimeout(() => {

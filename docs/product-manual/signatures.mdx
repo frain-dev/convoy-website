@@ -3,7 +3,7 @@ title: Signatures
 'og:title': Signatures
 'og:description': Webhook signatures are strings used to verify the validity of a webhook event sent to Convoy.
 'twitter:description': Webhook signatures are strings used to verify the validity of a webhook event sent to Convoy.
-'twitter:url': https://docs.getconvoy.io/product-manual/signatures
+'twitter:url': https://getconvoy.io/docs/product-manual/signatures
 ---
 
 Webhook signatures are strings used to verify the validity of a webhook event sent to Convoy. This signature is passed as header values in the format: `X-Convoy-Signature`.
@@ -20,15 +20,12 @@ Simple webhook signatures are used to validate the webhook sent. The validation 
 
 An example simple signature is:
 
-
 ```json example
 X-Convoy-Signature: 6ffbb59b2300aae63f272406069a9788598b792a944a07aba816edb039989a39
 
 ```
 
-
 An example request header with a simple signature sent to Convoy:
-
 
 ```json Sample header
 {
@@ -38,11 +35,9 @@ An example request header with a simple signature sent to Convoy:
 
 ```
 
-
 ### Advanced signatures
 
 Unlike simple signatures, advanced signatures are equipped with timestamps. Example:
-
 
 ```json example
 X-Convoy-Signature:
@@ -53,9 +48,7 @@ v0=6ffbb59b2300aae63f272406069a9788598b792a944a07aba816edb039989a39
 
 ```
 
-
 An example header with the advanced signature is:
-
 
 ```json Advanced signature header
 
@@ -66,13 +59,11 @@ An example header with the advanced signature is:
 
 ```
 
-
 The signature above contains a timestamp `t` and multiple signature hashes `v0` and `v1`. Convoy matches at least one of the signatures to verify the authenticity of the webhook event sent.
 
 To further understand the concept of advanced signatures, we have made available a [blog post](https://getconvoy.io/blog/generating-stripe-like-webhook-signatures) on how they are generated as well as their use cases.
 
-Verifying signatures manually
------------------------------
+## Verifying signatures manually
 
 Convoy uses a hash-based message authentication code ( HMAC ) with an encoding method set in the project settings to generate signatures. Convoy [SDKs](https://getconvoy.io/docs/sdks) are equipped with methods to verify your signatures, but you can also follow the steps outlined below to manually verify your signatures:
 
@@ -88,9 +79,9 @@ If the signature is a simple signature, the signature string is returned unproce
 
 Now, we need to generate our own signature. To do this, using a HMAC library of your choice (most languages provide functions in the standard library for this purpose) create a digest with the following:
 
--  A shared secret.
--  Encoding: `base64` or `hex`.
--  Request Payload. If it's an advanced signature, payload should be a concatenated string of the timestamp and the request payload delimited by `,`. It should look like: `{timestamp},{payload}`
+-   A shared secret.
+-   Encoding: `base64` or `hex`.
+-   Request Payload. If it's an advanced signature, payload should be a concatenated string of the timestamp and the request payload delimited by `,`. It should look like: `{timestamp},{payload}`
 
 ### Step 3: Verify Timestamp (Optional)
 
@@ -102,7 +93,8 @@ Compare the signatures from the request header to the signature computed from th
 
 ### Caveat: Ensuring exact JSON payload match
 
--  **Ordering:** According to the [JSON RFC 4627](https://www.ietf.org/rfc/rfc4627.txt). JSON objects are an unordered collection, see below:
+-   **Ordering:** According to the [JSON RFC 4627](https://www.ietf.org/rfc/rfc4627.txt). JSON objects are an unordered collection, see below:
+
 ```
 An object is an unordered collection of zero or more name/value
 pairs, where a name is a string and a value is a string, number,
@@ -111,7 +103,6 @@ boolean, null, object, or array.
 
 With this the order shouldn't matter, but if you decide to switch the key ordering for any reason, the resulting hash would be different. You should process as received.
 
-
 ### References
 
--  [Generating Stripe-like Webhook Signatures](https://getconvoy.io/blog/generating-stripe-like-webhook-signatures/)
+-   [Generating Stripe-like Webhook Signatures](https://getconvoy.io/blog/generating-stripe-like-webhook-signatures/)

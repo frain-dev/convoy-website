@@ -3,37 +3,42 @@ title: Kubernetes
 'og:title': Install Convoy using Kubernetes
 'og:description': Install Convoy using Kubernetes
 'twitter:description': Install Convoy using Kubernetes
-'twitter:url': https://docs.getconvoy.io/deployment/install-convoy/kubernetes
+'twitter:url': https://getconvoy.io/docs/deployment/install-convoy/kubernetes
 ---
 
 import DefaultCredentialsComponent from '/snippets/default-credentials-component.mdx';
 
-
 ## Prerequisites
-- A running Kubernetes cluster.
-- Helm 3 or above. See Installing [Helm](https://helm.sh/docs/intro/install).
-- A Postgres instance
-- A Redis instance
+
+-   A running Kubernetes cluster.
+-   Helm 3 or above. See Installing [Helm](https://helm.sh/docs/intro/install).
+-   A Postgres instance
+-   A Redis instance
 
 <Note>We provide Postgres and Redis helm charts for testing and evaluation. Please do not use them in production environments</Note>
 
-## Steps 
+## Steps
+
 Add Convoy’s chart repository to Helm:
+
 ```shell
 helm repo add convoy https://frain-dev.github.io/helm-charts
 ```
 
 Update the chart repository:
+
 ```shell
 helm repo update
 ```
 
 Install the chart:
+
 ```shell
 helm install --values values.yaml convoy convoy/convoy -n convoy
 ```
 
 Upgrade the chart:
+
 ```shell
 helm upgrade --values values.yaml convoy convoy/convoy -n convoy
 ```
@@ -41,6 +46,7 @@ helm upgrade --values values.yaml convoy convoy/convoy -n convoy
 ## Upgrading
 
 ### Upgrading to Convoy v24.8.x (Convoy Helm charts v3.1.0)
+
 To upgrade to Convoy [v24.8.x](../../release-notes/releases#v24-8-x),
 you need to update the charts to [v3.x.x](https://artifacthub.io/packages/helm/convoy/convoy/3.1.0).
 In this release, we have gated a number of features behind a license.
@@ -49,73 +55,76 @@ a license key.
 Read [here](/business-and-enterprise/licensing) to learn about all the paid features,
 and [here](/business-and-enterprise/paid-features) to learn how to get a license key.
 
-
 ### Upgrading the Convoy version without upgrading the chart
+
 Change both the image tag value to the convoy version you want
+
 ```yaml values.yml
 convoy:
     tag: v24.8.1
 
 worker:
-  image:
-    tag: v24.8.1
+    image:
+        tag: v24.8.1
 
 ingest:
-  image:
-    tag: v24.8.1
+    image:
+        tag: v24.8.1
 
 stream:
-  image:
-    tag: v24.8.1
+    image:
+        tag: v24.8.1
 
 server:
-  image:
-    tag: v24.8.1
+    image:
+        tag: v24.8.1
 
 migrate:
-  image:
-    tag: v24.8.1
+    image:
+        tag: v24.8.1
 ```
 
 ## ArgoCD Configuration
+
 Convoy uses helm hooks to trigger migrations every time the charts are installed or upgraded. These hooks alone won't work for an ArgoCD installation since they are not compatible.
 
 ```yaml Helm hooks
-"helm.sh/hook": post-install,post-upgrade
-"helm.sh/hook-delete-policy": before-hook-creation
+'helm.sh/hook': post-install,post-upgrade
+'helm.sh/hook-delete-policy': before-hook-creation
 ```
 
 You can apply this ArgoCD definition to run migrations on your cluster when the chart is installed and upgraded
+
 ```yaml ArgoCD Definition
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: convoy
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+    name: convoy
+    namespace: argocd
+    finalizers:
+        - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
-  source:
-    repoURL: 'https://frain-dev.github.io/helm-charts'
-    targetRevision: '2.3.0'
-    chart: convoy
-    helm:
-      releaseName: convoy
-      valuesObject:
-        migrate:
-          jobAnnotations:
-            argocd.argoproj.io/hook: Sync
-  destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: convoy
-  syncPolicy:
-    syncOptions:
-      - ServerSideApply=true
-      - CreateNamespace=true
-    automated:
-      selfHeal: true
-      prune: true
+    project: default
+    source:
+        repoURL: 'https://frain-dev.github.io/helm-charts'
+        targetRevision: '2.3.0'
+        chart: convoy
+        helm:
+            releaseName: convoy
+            valuesObject:
+                migrate:
+                    jobAnnotations:
+                        argocd.argoproj.io/hook: Sync
+    destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: convoy
+    syncPolicy:
+        syncOptions:
+            - ServerSideApply=true
+            - CreateNamespace=true
+        automated:
+            selfHeal: true
+            prune: true
 ```
 
 ## Login to your instance

@@ -10,13 +10,13 @@ tags:
     - Convoy
     - Open Thoughts
 featured: false
-description: A webhook gateway is a webhook management tool that sits between a webhooks provider and webhooks consumer. It acts as a reverse proxy for webhooks. It can be deployed by both the API provider that sends webhooks and the consumer that receives webhooks to handle webhook events multiplexing and de-multiplexing respectively. 
+description: A webhook gateway is a webhook management tool that sits between a webhooks provider and webhooks consumer. It acts as a reverse proxy for webhooks. It can be deployed by both the API provider that sends webhooks and the consumer that receives webhooks to handle webhook events multiplexing and de-multiplexing respectively.
 published_at: 2023-01-23T18:00:00.000+00:00
 ---
 
 # What is a Webhook Gateway
 
-A webhook gateway is a webhook management tool that sits between a webhooks provider and webhooks consumer. It acts as a reverse and forward proxy for webhooks. It can be deployed by both the API provider that sends webhooks and the consumer that receives webhooks to handle webhook events multiplexing and de-multiplexing respectively. 
+A webhook gateway is a webhook management tool that sits between a webhooks provider and webhooks consumer. It acts as a reverse and forward proxy for webhooks. It can be deployed by both the API provider that sends webhooks and the consumer that receives webhooks to handle webhook events multiplexing and de-multiplexing respectively.
 
 # Why use a Webhook Gateway?
 
@@ -34,23 +34,23 @@ Your challenge is offering developers in your organisation a simple and dependab
 
 ![Webhooks Gateway Architecture](/blog-assets/webhook-gateway-architecture.png)
 
-The diagram above provides an high level view of how a webhook gateway operates. We used AWS specific elements but this can be any cloud environment - Azure, GCP, Digital Ocean, etc or even On-Prem. The arrows from the left show the flow of traffic from your backend services to client endpoints on the right, and the arrows from the right show the flow of traffic from third-party providers like (stripe, twilio, etc.) to your backend services for processing. 
+The diagram above provides an high level view of how a webhook gateway operates. We used AWS specific elements but this can be any cloud environment - Azure, GCP, Digital Ocean, etc or even On-Prem. The arrows from the left show the flow of traffic from your backend services to client endpoints on the right, and the arrows from the right show the flow of traffic from third-party providers like (stripe, twilio, etc.) to your backend services for processing.
 
-Generally, to avoid vendor lock-in, a webhook gateway will (should) provide support for multiple broker systems like Amazon SQS, Google PubSub, Kafka etc. to allow you use the best broker for your scenario. Visit this [page](https://docs.getconvoy.io/deployment/architecture) to learn about Convoy's internal architecture.
+Generally, to avoid vendor lock-in, a webhook gateway will (should) provide support for multiple broker systems like Amazon SQS, Google PubSub, Kafka etc. to allow you use the best broker for your scenario. Visit this [page](https://getconvoy.io/docs/deployment/architecture) to learn about Convoy's internal architecture.
 
 # API Gateways vs. Webhook Gateways
 
 Webhook gateways share similarities with API gateways
 
-|  | API Gateway | Webhooks Gateway |
-| --- | --- | --- |
-|  Entrypoint | Entry into the API. | Exit from the API. |
-|  Key Metric | Throughput & Latency | Throughput |
-|  API Type | Synchronous API | Asynchronous API |
-|  Protocols | Multiple Protocols - HTTP, Websockets, gRPC | HTTP |
-|  Message Format | JSON, XML & Protocol Buffers. | Mostly JSON. |
-|  State | Stateless | Stateful |
+|                | API Gateway                                 | Webhooks Gateway   |
+| -------------- | ------------------------------------------- | ------------------ |
+| Entrypoint     | Entry into the API.                         | Exit from the API. |
+| Key Metric     | Throughput & Latency                        | Throughput         |
+| API Type       | Synchronous API                             | Asynchronous API   |
+| Protocols      | Multiple Protocols - HTTP, Websockets, gRPC | HTTP               |
+| Message Format | JSON, XML & Protocol Buffers.               | Mostly JSON.       |
+| State          | Stateless                                   | Stateful           |
 
 # Conclusion
 
-Convoy is the first ever open-source webhooks gateway to manage millions of  webhooks end-to-end. If you’re exploring solutions for your webhooks, we welcome you to try out [Convoy Cloud](https://dashboard.getconvoy.io/signup) for free today. If you have any questions or you’d like to nerd out about webhooks, feel free to join our growing community on [slack](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ).
+Convoy is the first ever open-source webhooks gateway to manage millions of webhooks end-to-end. If you’re exploring solutions for your webhooks, we welcome you to try out [Convoy Cloud](https://dashboard.getconvoy.io/signup) for free today. If you have any questions or you’d like to nerd out about webhooks, feel free to join our growing community on [slack](https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ).

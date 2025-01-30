@@ -3,14 +3,15 @@ title: Retention Policy
 'og:title': Retention Policy
 'og:description': Retention policy facilitates shipping older webhook data to S3 compatible cold storage.
 'twitter:description': Retention policy facilitates shipping older webhook data to S3 compatible cold storage.
-'twitter:url': https://docs.getconvoy.io/product-manual/retention-policy
+'twitter:url': https://getconvoy.io/docs/product-manual/retention-policy
 ---
 
 Convoy supports exporting events to any S3 compatible cold storage.
 
 > **Note:**
-> * The retention policies functionality is available only for licensed users.
-> * This feature is currently in beta and disabled by default. To enable it, use the environment variable `CONVOY_ENABLE_FEATURE_FLAG=retention-policy` or the CLI flag `--enable-feature-flag=retention-policy`.
+>
+> -   The retention policies functionality is available only for licensed users.
+> -   This feature is currently in beta and disabled by default. To enable it, use the environment variable `CONVOY_ENABLE_FEATURE_FLAG=retention-policy` or the CLI flag `--enable-feature-flag=retention-policy`.
 
 ## Configuring Retention
 
@@ -19,7 +20,7 @@ Convoy supports exporting events to any S3 compatible cold storage.
 You can configure read replicas by adding the `storage_policy` object to your database configuration JSON.
 
 | Key                | Description                                               |
-|--------------------|-----------------------------------------------------------|
+| ------------------ | --------------------------------------------------------- |
 | `type`             | Storage type, either "s3" or "on_prem"                    |
 | `s3.prefix`        | Prefix for S3 storage path                                |
 | `s3.bucket`        | Name of the S3 bucket                                     |
@@ -32,21 +33,21 @@ You can configure read replicas by adding the `storage_policy` object to your da
 
 ```json using storage policy via JSON configuration
 {
-  "storage_policy": {
-    "type": "s3 | on_prem",
-    "s3": {
-      "prefix": "<insert-s3-prefix>",
-      "bucket": "<insert-s3-bucket>",
-      "access_key": "<insert-s3-access-key>",
-      "secret_key": "<insert-s3-secret-key>",
-      "region": "<insert-s3-region>",
-      "session_token": "<insert-s3-session-token>",
-      "endpoint": "<insert-s3-endpoint>"
-    },
-    "on_prem": {
-      "path": "<insert-on-prem-path>"
-    }
-  }
+	"storage_policy": {
+		"type": "s3 | on_prem",
+		"s3": {
+			"prefix": "<insert-s3-prefix>",
+			"bucket": "<insert-s3-bucket>",
+			"access_key": "<insert-s3-access-key>",
+			"secret_key": "<insert-s3-secret-key>",
+			"region": "<insert-s3-region>",
+			"session_token": "<insert-s3-session-token>",
+			"endpoint": "<insert-s3-endpoint>"
+		},
+		"on_prem": {
+			"path": "<insert-on-prem-path>"
+		}
+	}
 }
 ```
 
@@ -55,7 +56,7 @@ You can configure read replicas by adding the `storage_policy` object to your da
 Alternatively, you can supply environment variables to configure the storage policy.
 
 | Environment Variable               | Description                                               |
-|------------------------------------|-----------------------------------------------------------|
+| ---------------------------------- | --------------------------------------------------------- |
 | `CONVOY_STORAGE_POLICY_TYPE`       | Storage type, either "s3" or "on_prem"                    |
 | `CONVOY_STORAGE_AWS_PREFIX`        | Prefix for S3 storage path                                |
 | `CONVOY_STORAGE_AWS_BUCKET`        | Name of the S3 bucket                                     |
@@ -79,24 +80,30 @@ CONVOY_STORAGE_PREM_PATH=''
 ```
 
 ## Retention Using Postgres Partitions
+
 Prior to `Convoy v25.1.1` the job that ran the retention policy carried out two tasks:
-- Backing up the webhook event data to S3.
-- Running DELETE queries on the tables.
+
+-   Backing up the webhook event data to S3.
+-   Running DELETE queries on the tables.
 
 The problem with this approach was that any of these tasks could fail for a number of reasons
-- The backup action could fail, making the retention query not run.
-- The backup action could succeed, but the retention query would time out.
-- Both actions failed
+
+-   The backup action could fail, making the retention query not run.
+-   The backup action could succeed, but the retention query would time out.
+-   Both actions failed
 
 With the new system, the backup and delete operations run in different jobs that are triggered at different times.
 
 ## Switching to Partition for Retention
+
 To switch to managing retention using Postgres partitions, you need to run:
+
 ```
 convoy utils partition
 ```
 
 To switch back from managing retention using Postgres partitions, you need to run:
+
 ```
 convoy utils unpartition
 ```

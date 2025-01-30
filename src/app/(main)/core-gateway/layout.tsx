@@ -1,24 +1,25 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Core Gateway | Convoy Webhook Management',
-	description:
-		"Explore Convoy's core webhook gateway features: reliable event delivery, retry mechanisms, payload search, and subscription filtering for efficient webhook management.",
+	title: 'Convoy Core Gateway | Advanced Webhook Management Platform',
+	description: 'Enterprise webhook gateway with retries, circuit breaking, and static IPs. Designed for reliability, security, and unlimited scale.',
 	openGraph: {
-		title: 'Convoy Core Gateway Features',
-		description: 'Advanced webhook management features for reliable event delivery and filtering.',
+		title: 'Convoy Core Gateway - Advanced Webhook Management',
+		description: 'Enterprise webhook gateway with retries, circuit breaking, and static IPs. Designed for reliability, security, and unlimited scale.',
 		type: 'website'
 	},
-    alternates: {
-        canonical: '/core-gateway',
-      }
+	alternates: {
+		canonical: '/core-gateway'
+	},
+	keywords: 'webhook gateway, webhook management platform, enterprise webhooks, webhook infrastructure'
+
 };
 
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'WebPage',
 	name: 'Convoy Core Gateway',
-	description: 'Enterprise-grade webhook gateway features for reliable event delivery',
+	description: 'Enterprise webhook gateway with retries, circuit breaking, and static IPs. Designed for reliability, security, and unlimited scale.',
 	mainEntity: {
 		'@type': 'SoftwareApplication',
 		name: 'Convoy Core Gateway',
@@ -55,12 +56,12 @@ const jsonLd = {
 		'@type': 'UseAction',
 		target: {
 			'@type': 'EntryPoint',
-			urlTemplate: 'https://getconvoy.io/docs/getting-started',
+			urlTemplate: 'https://www.getconvoy.io/docs/getting-started',
 			actionPlatform: ['http://schema.org/DesktopWebPlatform', 'http://schema.org/AndroidPlatform', 'http://schema.org/IOSPlatform']
 		},
 		expectsAcceptanceOf: {
 			'@type': 'Offer',
-			'@id': 'https://getconvoy.io/pricing'
+			'@id': 'https://www.getconvoy.io/pricing'
 		}
 	}
 };

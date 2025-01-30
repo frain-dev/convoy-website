@@ -3,26 +3,25 @@ title: Webhooks Documentation
 'og:title': Webhooks
 'og:description': Webhooks are a mechanism for notifying third-party applications about a change in their account in real time.
 'twitter:description': Webhooks are a mechanism for notifying third-party applications about a change in their account in real time.
-'twitter:url': https://docs.getconvoy.io/product-manual/webhooks-documentation
+'twitter:url': https://getconvoy.io/docs/product-manual/webhooks-documentation
 ---
 
 import StaticIPsComponent from '/snippets/static-ips-component.mdx';
 
-We wrote this document for webhook providers to copy and adapt to their own webhook 
+We wrote this document for webhook providers to copy and adapt to their own webhook
 delivery configuration. Most segments can be fully copied, a few others require you to
 select the option for your docs. **Watch out for the tooltips and callouts.**
 
-
 ## What are webhooks?
+
 Webhooks are a mechanism for notifying third-party applications about a change in their
 account in real time. Oftentimes, APIs are able to respond immediately to API calls, but
-not all the time, in scenarios like this, a webhook event is used to notify the third-party 
-app via a Webhook URL. 
-
+not all the time, in scenarios like this, a webhook event is used to notify the third-party
+app via a Webhook URL.
 
 ## Event Types
-<Note> Find a way to document all your supported event types and their accompanying payload. 
-Use the one below, only as a guide. </Note>
+
+<Note> Find a way to document all your supported event types and their accompanying payload. Use the one below, only as a guide. </Note>
 
 <CodeGroup>
     ```json invoice.created
@@ -48,36 +47,29 @@ Use the one below, only as a guide. </Note>
 </CodeGroup>
 
 ## Retry Behaviour
-Convoy supports two types of retry strategies: `linear`, and `exponential backoff`, based on your configuration you 
+
+Convoy supports two types of retry strategies: `linear`, and `exponential backoff`, based on your configuration you
 can use any of the below to communicate with your users.
 
 <Tabs>
-  <Tab title="Linear Retry Strategy">
-    <Note> Swap out the specific delay and duration according to your config. </Note>
-    ```text
-    In production, if your endpoint does not respond with a 2xx, 
-    we continue to retry the event every n seconds for a 
-    maximum of n hours.
-    ```
-  </Tab>
-  <Tab title="Exponential Backoff Strategy">
-    <Note> Swap out the specific delay and duration according to your config. </Note>
-    ```text
-    In production, if your endpoint does not respond with a 2xx 
-    status code, we continue to retry the event with an exponential 
-    retry schedule.
-    ```
-  </Tab>
+	<Tab title="Linear Retry Strategy">
+		<Note> Swap out the specific delay and duration according to your config. </Note>
+		```text In production, if your endpoint does not respond with a 2xx, we continue to retry the event every n seconds for a maximum of n hours. ```
+	</Tab>
+	<Tab title="Exponential Backoff Strategy">
+		<Note> Swap out the specific delay and duration according to your config. </Note>
+		```text In production, if your endpoint does not respond with a 2xx status code, we continue to retry the event with an exponential retry schedule. ```
+	</Tab>
 </Tabs>
 
-
 ## Webhook Verification
-There are two ways you can verify webhooks from <Tooltip tip="replace this with your company name.">provider</Tooltip>. Let's take a look at both methods 
+
+There are two ways you can verify webhooks from <Tooltip tip="replace this with your company name.">provider</Tooltip>. Let's take a look at both methods
 and what safe guards they provide.
 
-
 ### Static IPs
-With this verification method, you can configure your firewalls to receive webhooks 
+
+With this verification method, you can configure your firewalls to receive webhooks
 from only the following IP addresses, while blocking out the rest.
 
 <Note> If you're a cloud customer, select the IP addresses from the region your cluster is deployed</Note>
@@ -85,10 +77,11 @@ from only the following IP addresses, while blocking out the rest.
 <StaticIPsComponent />
 
 ### Signature Verification
+
 With this verification method, we're able to determine if the webhook came from
-<Tooltip tip="replace this with your company name.">provider</Tooltip>, and has not been 
-tampered with in transit. We use [Convoy](https://getconvoy.io), and they provide SDKs 
-for the following languages:
+
+<Tooltip tip="replace this with your company name.">provider</Tooltip>, and has not been tampered with in transit. We use [Convoy](https://getconvoy.io), and they provide SDKs for
+the following languages:
 
 <Note> 
 Make sure to substitue the `encoding`, `hash`, and `header` for your configuration.
@@ -193,7 +186,7 @@ Supported values for them are:
             render status: 400, json: nil and return
           end
 
-          private 
+          private
 
           def endpoint_secret
             ENV['WEBHOOK_ENDPOINT_SECRET']
@@ -209,8 +202,8 @@ Supported values for them are:
 <Note> You can freely copy and paste this segment. </Note>
 
 1. Always return early. If you have a long running process that you'd like to executed
-preferably push that to a background job to process, and return quickly with a `2xx`. 
+   preferably push that to a background job to process, and return quickly with a `2xx`.
 2. Favour Idempotent processing. All webhooks are delivered with a `X-Convoy-Idempotency-Key`
-header which can be used for Idempotent processing.
-3. Default to `HTTPS` endpoints. Webhooks are endpoint exposed to the internet, for safety, 
-we default to `HTTPS` only URLs, and validate the certs.
+   header which can be used for Idempotent processing.
+3. Default to `HTTPS` endpoints. Webhooks are endpoint exposed to the internet, for safety,
+   we default to `HTTPS` only URLs, and validate the certs.

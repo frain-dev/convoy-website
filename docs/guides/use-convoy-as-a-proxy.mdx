@@ -4,15 +4,15 @@ sidebarTitle: Use Convoy as a Proxy
 'og:title': Use Convoy as a Webhook Proxy
 'og:description': Use Convoy as a Webhook Proxy to deliver webhooks with one API
 'twitter:description': Use Convoy as a Webhook Proxy to deliver webhooks with one API
-'twitter:url': https://docs.getconvoy.io/guides/use-convoy-as-a-proxy
+'twitter:url': https://getconvoy.io/docs/guides/use-convoy-as-a-proxy
 ---
 
-Usually to use a Convoy, you'd need to create an endpoint, and then create a 
+Usually to use a Convoy, you'd need to create an endpoint, and then create a
 subscription, then send events. This isn't the easiest migration path, especially
 for users who already have a webhook system in-place, and are looking to offload
-the delivery to a better delivery system. 
+the delivery to a better delivery system.
 
-In this guide, I will show you how to use Convoy as a proxy to deliver webhooks 
+In this guide, I will show you how to use Convoy as a proxy to deliver webhooks
 with one API. No need for creating any resources upfront. Let's dive in!
 
 ### Guide
@@ -44,14 +44,13 @@ with one API. No need for creating any resources upfront. Let's dive in!
   </Step>
 </Steps>
 
-
 ### Limitations
 
-While this endpoint enables you get going super fast, there are a few limitations, you 
+While this endpoint enables you get going super fast, there are a few limitations, you
 should be aware of, such as:
 
-- **Limited Subscription Configuration:** This endpoint, only supports `event_type` filtering with the `event_types` array.
-It doesn't provide advanced [payload filtering](../product-manual/subscriptions#filters). To configure, such filters, check this 
-[endpoint](../api-reference/subscriptions/create-a-subscription).
-- **Limited Endpoint Configuration:** This doesn't enable you to set attributes like `http_timeout`, 
-`rate_limit_duration`. To see what is fully possible check this [endpoint](../api-reference/endpoints/create-an-endpoint).
+-   **Limited Subscription Configuration:** This endpoint, only supports `event_type` filtering with the `event_types` array.
+    It doesn't provide advanced [payload filtering](../product-manual/subscriptions#filters). To configure, such filters, check this
+    [endpoint](../api-reference/subscriptions/create-a-subscription).
+-   **Limited Endpoint Configuration:** This doesn't enable you to set attributes like `http_timeout`,
+    `rate_limit_duration`. To see what is fully possible check this [endpoint](../api-reference/endpoints/create-an-endpoint).

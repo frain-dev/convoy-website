@@ -282,7 +282,7 @@ const selfHostedPricing = [
 			'Perfect for developers exploring self-hosted solutions, the Community plan provides everything you need to reliably manage webhooks in your own environment. Start simple with no cost and scale as your needs grow.',
 		cta: {
 			text: 'Link to Docs',
-			link: 'https://docs.getconvoy.io/'
+			link: 'https://www.getconvoy.io/docs/'
 		}
 	},
 	{

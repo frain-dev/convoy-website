@@ -107,7 +107,7 @@ export default function Webhooks() {
 							</a>
 							<a
 								target="_blank"
-								href="https://docs.getconvoy.io/"
+								href="https://www.getconvoy.io/docs/"
 								className="px-16px py-10px text-14 h-[40px] font-semibold rounded-8px bg-white-100 text-[#000] flex items-center justify-center hover:bg-[#e7e7e7] group transition-all duration-300 border-[#E7E7E7] border shadow-btn w-full sm-old:w-max">
 								<span>Visit docs</span>
 
@@ -648,7 +648,7 @@ export default function Webhooks() {
 								className="space-y-1 w-full desktop:w-max">
 								<a
 									target="_blank"
-									href="https://docs.getconvoy.io/webhook-guides/webhook-retries"
+									href="https://www.getconvoy.io/docs/webhook-guides/webhook-retries"
 									className="flex items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] group w-max">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="min-w-max stroke-[#BBBBBB]">
 										<line x1="6" y1="11" x2="18" y2="11" stroke-width="2" />
@@ -657,7 +657,7 @@ export default function Webhooks() {
 								</a>
 								<a
 									target="_blank"
-									href="https://docs.getconvoy.io/webhook-guides/tackling-ssrf"
+									href="https://www.getconvoy.io/docs/webhook-guides/tackling-ssrf"
 									className="flex items-start desktop:items-center gap-2 py-1 text-14 desktop:text-16 font-medium text-[#2780F1] group desktop:w-max">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="min-w-max stroke-[#BBBBBB]">
 										<line x1="6" y1="11" x2="18" y2="11" stroke-width="2" />

@@ -44,7 +44,7 @@ const advancedFeatures = [
 		icon: retries,
 		title: 'Retries:',
 		description: 'Automatically retry failed webhooks to ensure eventual delivery and handle temporary network issues.',
-		link: 'https://docs.getconvoy.io/webhook-guides/webhook-retries#webhook-retries'
+		link: 'https://www.getconvoy.io/docs/webhook-guides/webhook-retries#webhook-retries'
 	},
 	{
 		icon: circuit,
@@ -101,7 +101,7 @@ const architectureFeatures = [
 		icon: control,
 		title: 'Control and Data Plane Architecture:',
 		description: 'Achieve high availability and fault tolerance by splitting the ingestion and delivery pipeline (data plane) from the configuration layer (control plane).',
-		link: 'https://docs.getconvoy.io/deployment/architecture'
+		link: 'https://www.getconvoy.io/docs/deployment/architecture'
 	},
 	{
 		icon: read,
