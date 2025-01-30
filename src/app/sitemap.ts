@@ -39,7 +39,7 @@ export default async function sitemap() {
 	};
 
 	const getDocsRoutes = async () => {
-		const response = await fetch('https://docs.getconvoy.io/sitemap.xml');
+		const response = await fetch('https://convoy.mintlify.app/sitemap.xml');
 		const text = await response.text();
 		const docUrls =
 			text
