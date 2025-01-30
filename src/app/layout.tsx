@@ -1,10 +1,10 @@
 import './globals.scss';
 import type { Metadata } from 'next';
-import Script from 'next/script';
-import { getPosts } from '@/lib/getPosts';
 import Header from './components/Header';
 import Toast from './components/Toast';
 import Footer from './components/Footer';
+import { GoogleAnalytics } from '@next/third-parties/google';
+import CookieConsent from './components/CookieConsent';
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://getconvoy.io'),
@@ -108,12 +108,8 @@ const jsonLd = {
 		alternateName: 'Convoy Logo'
 	},
 	description: 'Open-source webhooks gateway for secure and reliable event delivery',
-	sameAs: [
-		'https://github.com/frain-dev/convoy',
-		'https://twitter.com/getconvoy',
-		'https://linkedin.com/company/convoy-webhooks/'
-	],
-	foundingDate: '2021', 
+	sameAs: ['https://github.com/frain-dev/convoy', 'https://twitter.com/getconvoy', 'https://linkedin.com/company/convoy-webhooks/'],
+	foundingDate: '2021',
 	email: 'sales@getconvoy.io',
 	address: {
 		'@type': 'PostalAddress',
@@ -150,16 +146,15 @@ const jsonLd = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-	const featurePosts = await getPosts();
-	const filteredArticles = featurePosts.filter(article => !article.isError).sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at));
 	return (
 		<html lang="en" style={{ scrollBehavior: 'smooth' }}>
 			<body suppressHydrationWarning={true}>
-			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+				<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
 				<Header></Header>
 
 				{children}
+				<CookieConsent />
 				<Toast></Toast>
 				<Footer></Footer>
 
@@ -200,18 +195,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 					</symbol>
 				</svg>
 			</body>
-			<Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`} />
-
-			<Script strategy="lazyOnload">
-				{`
-					window.dataLayer = window.dataLayer || [];
-					function gtag(){dataLayer.push(arguments);}
-					gtag('js', new Date());
-					gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}', {
-					page_path: window.location.pathname,
-					});
-				`}
-			</Script>
+			{process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />}{' '}
 		</html>
 	);
 }
