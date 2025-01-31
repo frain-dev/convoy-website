@@ -371,7 +371,7 @@ export default function Blog({ articles }: { articles: articles }) {
 							/>
 						</div>
 
-						<ul className="p-0">
+						<div className="p-0">
 							<h6 className="font-bold text-[#000] mb-18px">CATEGORIES</h6>
 							{tags.map((tag, i) => (
 								<li key={i} className="font-medium text-14 mb-[15px] ml-20px">
@@ -382,15 +382,19 @@ export default function Blog({ articles }: { articles: articles }) {
 									</Link>
 								</li>
 							))}
-						</ul>
+						</div>
 
 						<div>
 							<h6 className="font-semibold mb-18px mt-8">Follow Us</h6>
 
 							<ul className="flex">
 								<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset] hover:opacity-75 transition-all">
-									<a target="_blank" href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
-										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+									<a
+										target="_blank"
+										href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ"
+										aria-label="Join Convoy Community on Slack"
+										rel="noopener noreferrer">
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
 											<path
 												d="M26.25 8.125C26.25 6.39875 24.8512 5 23.125 5C21.3988 5 20 6.39875 20 8.125C20 9.12 20 14.6275 20 15.625C20 17.3512 21.3988 18.75 23.125 18.75C24.8512 18.75 26.25 17.3512 26.25 15.625C26.25 14.6275 26.25 9.12 26.25 8.125ZM33.75 15.625C33.75 17.3512 32.3512 18.75 30.625 18.75C29.8487 18.75 27.5 18.75 27.5 18.75C27.5 18.75 27.5 16.575 27.5 15.625C27.5 13.8988 28.8988 12.5 30.625 12.5C32.3512 12.5 33.75 13.8988 33.75 15.625ZM30.625 26.25C32.3512 26.25 33.75 24.8512 33.75 23.125C33.75 21.3988 32.3512 20 30.625 20C29.63 20 24.1225 20 23.125 20C21.3988 20 20 21.3988 20 23.125C20 24.8512 21.3988 26.25 23.125 26.25C24.1225 26.25 29.63 26.25 30.625 26.25ZM23.125 33.75C21.3988 33.75 20 32.3512 20 30.625C20 29.8487 20 27.5 20 27.5C20 27.5 22.175 27.5 23.125 27.5C24.8512 27.5 26.25 28.8988 26.25 30.625C26.25 32.3512 24.8512 33.75 23.125 33.75ZM12.5 30.625C12.5 32.3512 13.8988 33.75 15.625 33.75C17.3512 33.75 18.75 32.3512 18.75 30.625C18.75 29.63 18.75 24.1225 18.75 23.125C18.75 21.3988 17.3512 20 15.625 20C13.8988 20 12.5 21.3988 12.5 23.125C12.5 24.1225 12.5 29.63 12.5 30.625ZM5 23.125C5 21.3988 6.39875 20 8.125 20C8.90125 20 11.25 20 11.25 20C11.25 20 11.25 22.175 11.25 23.125C11.25 24.8512 9.85125 26.25 8.125 26.25C6.39875 26.25 5 24.8512 5 23.125ZM8.125 12.5C6.39875 12.5 5 13.8988 5 15.625C5 17.3512 6.39875 18.75 8.125 18.75C9.12 18.75 14.6275 18.75 15.625 18.75C17.3512 18.75 18.75 17.3512 18.75 15.625C18.75 13.8988 17.3512 12.5 15.625 12.5C14.6275 12.5 9.12 12.5 8.125 12.5ZM15.625 5C17.3512 5 18.75 6.39875 18.75 8.125C18.75 8.90125 18.75 11.25 18.75 11.25C18.75 11.25 16.575 11.25 15.625 11.25C13.8988 11.25 12.5 9.85125 12.5 8.125C12.5 6.39875 13.8988 5 15.625 5Z"
 												fill="#666666"
@@ -399,8 +403,8 @@ export default function Blog({ articles }: { articles: articles }) {
 									</a>
 								</li>
 								<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset] hover:opacity-75 transition-all">
-									<a target="_blank" href="https://twitter.com/getconvoy">
-										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+									<a target="_blank" href="https://twitter.com/getconvoy" aria-label="Follow Convoy on Twitter">
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
 											<path
 												d="M5.02344 5L16.3662 22.0117L5.42139 35H8.69043L17.8091 24.1797L25.0234 35H25.6924H35.021L23.3926 17.5537L33.9712 5H30.7021L21.9497 15.3882L15.0234 5H5.02344ZM9.69629 7.5H13.6855L30.3506 32.5H26.3613L9.69629 7.5Z"
 												fill="#666666"
@@ -409,8 +413,8 @@ export default function Blog({ articles }: { articles: articles }) {
 									</a>
 								</li>
 								<li className="bg-opacity-10 w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset] hover:opacity-75 transition-all">
-									<a target="_blank" href="https://github.com/frain-dev/convoy">
-										<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+									<a target="_blank" href="https://github.com/frain-dev/convoy" aria-label="View Convoy on GitHub" rel="noopener noreferrer">
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
 											<path
 												fillRule="evenodd"
 												clipRule="evenodd"
@@ -603,6 +607,7 @@ export default function Blog({ articles }: { articles: articles }) {
 								}}
 								className="flex items-center justify-center space-x-1.5 mt-[72px]">
 								<button
+									aria-label="Previous page"
 									className="w-[43px] h-[39px] flex items-center justify-center rounded-8px border border-[#e7e7e7] disabled:opacity-50 shadow-btn bg-white-100"
 									onClick={prevPage}
 									disabled={currentPage === 1}>
@@ -616,6 +621,8 @@ export default function Blog({ articles }: { articles: articles }) {
 									if (pageNumber === 1 || pageNumber === totalPages || (pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1)) {
 										return (
 											<button
+												aria-label={`Go to page ${pageNumber}`}
+												aria-current={currentPage === pageNumber ? 'page' : undefined}
 												key={index}
 												className={`w-[43px] h-[39px] flex items-center justify-center rounded-8px  disabled:opacity-50 shadow-btn text-[15px] font-semibold ${
 													currentPage === pageNumber
@@ -632,6 +639,7 @@ export default function Blog({ articles }: { articles: articles }) {
 										return (
 											<span
 												key={index}
+												aria-hidden="true"
 												className="w-[43px] h-[39px] flex items-center justify-center rounded-8px border border-[#e7e7e7] disabled:opacity-50 shadow-btn bg-white-100">
 												...
 											</span>
@@ -642,6 +650,7 @@ export default function Blog({ articles }: { articles: articles }) {
 								})}
 
 								<button
+									aria-label="Next page"
 									className="w-[43px] h-[39px] flex items-center justify-center rounded-8px border border-[#e7e7e7] disabled:opacity-50 shadow-btn bg-white-100"
 									onClick={nextPage}
 									disabled={currentPage === totalPages}>
@@ -651,6 +660,7 @@ export default function Blog({ articles }: { articles: articles }) {
 								</button>
 
 								<button
+									aria-label="Go to last page"
 									className="w-[43px] h-[39px] flex items-center justify-center rounded-8px border border-[#e7e7e7] disabled:opacity-50 shadow-btn bg-white-100"
 									onClick={() => paginate(totalPages)}
 									disabled={currentPage === totalPages}>
@@ -682,8 +692,12 @@ export default function Blog({ articles }: { articles: articles }) {
 
 							<ul className="flex">
 								<li className="bg-opacity-10 w-30px h-30px flex items-center justify-center mr-10px last-of-type:mr-[unset] hover:opacity-75 transition-all">
-									<a target="_blank" href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40" fill="none">
+									<a
+										target="_blank"
+										href="https://join.slack.com/t/convoy-community/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ"
+										aria-label="Join Convoy Community on Slack"
+										rel="noopener noreferrer">
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40" fill="none">
 											<path
 												d="M26.25 8.125C26.25 6.39875 24.8512 5 23.125 5C21.3988 5 20 6.39875 20 8.125C20 9.12 20 14.6275 20 15.625C20 17.3512 21.3988 18.75 23.125 18.75C24.8512 18.75 26.25 17.3512 26.25 15.625C26.25 14.6275 26.25 9.12 26.25 8.125ZM33.75 15.625C33.75 17.3512 32.3512 18.75 30.625 18.75C29.8487 18.75 27.5 18.75 27.5 18.75C27.5 18.75 27.5 16.575 27.5 15.625C27.5 13.8988 28.8988 12.5 30.625 12.5C32.3512 12.5 33.75 13.8988 33.75 15.625ZM30.625 26.25C32.3512 26.25 33.75 24.8512 33.75 23.125C33.75 21.3988 32.3512 20 30.625 20C29.63 20 24.1225 20 23.125 20C21.3988 20 20 21.3988 20 23.125C20 24.8512 21.3988 26.25 23.125 26.25C24.1225 26.25 29.63 26.25 30.625 26.25ZM23.125 33.75C21.3988 33.75 20 32.3512 20 30.625C20 29.8487 20 27.5 20 27.5C20 27.5 22.175 27.5 23.125 27.5C24.8512 27.5 26.25 28.8988 26.25 30.625C26.25 32.3512 24.8512 33.75 23.125 33.75ZM12.5 30.625C12.5 32.3512 13.8988 33.75 15.625 33.75C17.3512 33.75 18.75 32.3512 18.75 30.625C18.75 29.63 18.75 24.1225 18.75 23.125C18.75 21.3988 17.3512 20 15.625 20C13.8988 20 12.5 21.3988 12.5 23.125C12.5 24.1225 12.5 29.63 12.5 30.625ZM5 23.125C5 21.3988 6.39875 20 8.125 20C8.90125 20 11.25 20 11.25 20C11.25 20 11.25 22.175 11.25 23.125C11.25 24.8512 9.85125 26.25 8.125 26.25C6.39875 26.25 5 24.8512 5 23.125ZM8.125 12.5C6.39875 12.5 5 13.8988 5 15.625C5 17.3512 6.39875 18.75 8.125 18.75C9.12 18.75 14.6275 18.75 15.625 18.75C17.3512 18.75 18.75 17.3512 18.75 15.625C18.75 13.8988 17.3512 12.5 15.625 12.5C14.6275 12.5 9.12 12.5 8.125 12.5ZM15.625 5C17.3512 5 18.75 6.39875 18.75 8.125C18.75 8.90125 18.75 11.25 18.75 11.25C18.75 11.25 16.575 11.25 15.625 11.25C13.8988 11.25 12.5 9.85125 12.5 8.125C12.5 6.39875 13.8988 5 15.625 5Z"
 												fill="#666666"
@@ -692,8 +706,8 @@ export default function Blog({ articles }: { articles: articles }) {
 									</a>
 								</li>
 								<li className="bg-opacity-10 w-30px h-30px flex items-center justify-center mr-10px last-of-type:mr-[unset] hover:opacity-75 transition-all">
-									<a target="_blank" href="https://twitter.com/getconvoy">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40" fill="none">
+									<a target="_blank" href="https://twitter.com/getconvoy" aria-label="Follow Convoy on Twitter" rel="noopener noreferrer">
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40" fill="none">
 											<path
 												d="M5.02344 5L16.3662 22.0117L5.42139 35H8.69043L17.8091 24.1797L25.0234 35H25.6924H35.021L23.3926 17.5537L33.9712 5H30.7021L21.9497 15.3882L15.0234 5H5.02344ZM9.69629 7.5H13.6855L30.3506 32.5H26.3613L9.69629 7.5Z"
 												fill="#666666"
@@ -702,8 +716,8 @@ export default function Blog({ articles }: { articles: articles }) {
 									</a>
 								</li>
 								<li className="bg-opacity-10 w-30px h-30px flex items-center justify-center mr-10px last-of-type:mr-[unset] hover:opacity-75 transition-all">
-									<a target="_blank" href="https://github.com/frain-dev/convoy">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40" fill="none">
+									<a target="_blank" href="https://github.com/frain-dev/convoy" aria-label="View Convoy on GitHub" rel="noopener noreferrer">
+										<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40" fill="none">
 											<path
 												fillRule="evenodd"
 												clipRule="evenodd"

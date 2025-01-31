@@ -12,7 +12,6 @@ export default function NotFound() {
 
 				<div className="flex flex-wrap gap-16px mt-4 desktop:mt-0 mb-56px desktop:items-center desktop:justify-center">
 					<Link
-						target="_blank"
 						href="/"
 						className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center justify-center w-full sm-old:w-max">
 						<span>Go back Home</span>
