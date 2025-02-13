@@ -80,35 +80,84 @@ CONVOY_STORAGE_PREM_PATH=''
 ```
 
 ## Retention Using Postgres Partitions
-
+We introduced a new way to manage retention using Postgres-native partitions
+using [go_partman](https://github.com/jirevwe/go_partman) with each table is partitioned by day.
 Prior to `Convoy v25.1.1` the job that ran the retention policy carried out two tasks:
+- Running `SELECT` queries and uploading webhook event data to S3.
+- Running `DELETE` queries on the tables.
 
--   Backing up the webhook event data to S3.
--   Running DELETE queries on the tables.
+### Problems with the old system
+#### Concurrency
+The problem with the old approach was that both the backup and deletion queries ran in the same job,
+and any of these tasks could fail for a number of reasons:
+- The backup action could fail because of a network issue, making the retention query not run.
+- The backup action could succeed, but the retention query would time out leading to duplication data the next time the backup action ran.
 
-The problem with this approach was that any of these tasks could fail for a number of reasons
+This approach also had some other issues:
+- There also wasn't any visibility into what error occurred or why the backup did not work.
+- Running `DELETE` queries on moderately large Postgres databases triggers `AUTOVACUUM` and causes disk pressure.
 
--   The backup action could fail, making the retention query not run.
--   The backup action could succeed, but the retention query would time out.
--   Both actions failed
+#### Retention Granularity
+The previous system also didn't make it possible to specify different retention periods for different projects.
+Now it is possible to specify different retention periods per project,
+and this can be managed from the project settings page.
 
+### Proposed Solution
 With the new system, the backup and delete operations run in different jobs that are triggered at different times.
 
+#### Backups
+The backup job backs up events sent on a particular day at the end of that day.
+
+#### Deletion
+The retention (deletion) job deletes events sent on a particular day n-days after it was sent;
+where n is the retention policy duration.
+
+
 ## Switching to Partition for Retention
+The tables that are partitioned are:
+- `convoy.delivery_attempts`
+- `convoy.event_deliveries`
+- `convoy.events`
+- `convoy.events_search`
 
+Before partitioning (or un-partitioning), the tables be sure to back up the database,
+or test it on a fresh database with all the organization and project configuration copied over.
+
+### Partitioning the tables
 To switch to managing retention using Postgres partitions, you need to run:
-
+```shell partition all tables
+# The retention policy feature flag must be enabled
+convoy utils partition --enable-feature-flag=retention-policy
+CONVOY_ENABLE_FEATURE_FLAG=retention-policy convoy utils partition
 ```
-convoy utils partition
+
+> If you are running convoy in a docker container, you can execute this command using `docker exec`
+> ``` shell partitioning using docker exec
+> docker exec -it convoy-staging /cmd util partition
+> ```
+
+When the above command is run, it attempts to partition all the tables at the same time.
+This operation can take a while (10 to 60 minutes) if the tables are moderately
+large, so you would need to partition them one after the other like this:
+
+``` shell partition tables one after the other
+convoy utils partition delivery_attempts
+convoy utils partition event_deliveries
+convoy utils partition events
+convoy utils partition events_search
 ```
 
-To switch back from managing retention using Postgres partitions, you need to run:
-
-```
+### Un-partitioning the tables
+To switch back from managing retention using Postgres partitions,
+you can un-partition all of them at the same time by running:
+``` shell unpartition all tables
 convoy utils unpartition
 ```
 
-## Retention Granularity
-
-The previous system also didn't make it possible to specify different retention periods for different projects. Now it is possible to specify different retention periods per project.
-This can be managed from the project settings page.
+Or you can un-partition them one after the other by running:
+``` shell unpartition tables one after the other
+convoy utils unpartition delivery_attempts
+convoy utils unpartition event_deliveries
+convoy utils unpartition events
+convoy utils unpartition events_search
+```
