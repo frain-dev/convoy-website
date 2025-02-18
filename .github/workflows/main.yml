@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy Mintlify Preview
-        uses: frain-dev/mintlify-preview-action@v0.1.0
+        uses: frain-dev/mintlify-preview-action@v0.1.2
         with:
           docs_path: "docs/mint.json"  # Path to your documentation file
           github_token: ${{ secrets.GITHUB_TOKEN }}
