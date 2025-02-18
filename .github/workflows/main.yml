@@ -20,3 +20,4 @@ jobs:
         with:
           docs_path: "docs/mint.json"  # Path to your documentation file
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          backend_url: http://mintlify-previewer.getconvoy.io/deploy
