@@ -1,0 +1,22 @@
+name: Mintlify Preview
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**'  # Trigger only for changes in the docs directory
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy Mintlify Preview
+        uses: frain-dev/mintlify-preview-action@v0.1.0
+        with:
+          docs_path: "docs/mint.json"  # Path to your documentation file
+          github_token: ${{ secrets.GITHUB_TOKEN }}
