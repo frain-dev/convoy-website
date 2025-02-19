@@ -45,7 +45,7 @@ export default async function sitemap() {
 			text
 				.match(/<loc>(.*?)<\/loc>/g)
 				?.map(loc => loc.replace(/<\/?loc>/g, ''))
-				?.map(url => url.replace('https://docs.getconvoy.io', '/docs'))
+				?.map(url => url.replace('https://docs.getconvoy.io/docs', '/docs'))
 				?.filter(route => !shouldExcludeRoute(route))
 				?.map(route => ({
 					url: `${URL}${route}`,
