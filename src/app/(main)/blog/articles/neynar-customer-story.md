@@ -1,7 +1,7 @@
 ---
 title: How Neynar adopted Convoy to deliver Fine-grained Farcaster webhooks
-feature_image: jan-newsletter.png
-post_image: jan-newsletter.png
+feature_image: neynar-customer-story.png
+post_image: neynar-customer-story.png
 primary_author:
     name: Subomi Oluwalana
     twitter: subomiOluwalana
