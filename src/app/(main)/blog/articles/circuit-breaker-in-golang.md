@@ -9,7 +9,7 @@ primary_tag: Engineering
 tags:
     - Convoy
     - Engineering
-featured: true
+featured: false
 description: 'One of the major problems of designing a webhook delivery system is designing around bad/zombie endpoints. Zombie endpoints are dead endpoints that fail continuously and, over time, clog up your queues, create back pressure, and delay event delivery to legitimate webhook endpoints.'
 published_at: 2024-12-10T13:00:00.000+00:00
 ---
