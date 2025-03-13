@@ -398,9 +398,9 @@ components:
                     type: string
                 description:
                     type: string
-                id:
-                    type: string
                 name:
+                    type: string
+                uid:
                     type: string
             type: object
         datastore.ProviderConfig:
@@ -655,6 +655,21 @@ components:
                     description: Specify a key for event deduplication
                     type: string
             type: object
+        models.BulkUpdateFilterRequest:
+            properties:
+                body:
+                    additionalProperties: true
+                    type: object
+                event_type:
+                    type: string
+                headers:
+                    additionalProperties: true
+                    type: object
+                uid:
+                    type: string
+            required:
+                - uid
+            type: object
         models.CreateEndpoint:
             properties:
                 advanced_signatures:
@@ -757,6 +772,22 @@ components:
                     description: Name is the event type name. E.g., invoice.created
                     type: string
             type: object
+        models.CreateFilterRequest:
+            properties:
+                body:
+                    allOf:
+                        - $ref: '#/components/schemas/datastore.M'
+                    description: Body matching criteria (optional)
+                event_type:
+                    description: Type of event this filter applies to (required)
+                    type: string
+                headers:
+                    allOf:
+                        - $ref: '#/components/schemas/datastore.M'
+                    description: Header matching criteria (optional)
+            required:
+                - event_type
+            type: object
         models.CreateSource:
             properties:
                 body_function:
@@ -826,7 +857,7 @@ components:
                 function:
                     description: |-
                         Convoy supports mutating your request payload using a js function. Use this field
-                        to specify a `transform` function for this purpose. See this[https://getconvoy.io/docs/product-manual/subscriptions#functions] for more
+                        to specify a `transform` function for this purpose. See this[https://docs.getconvoy.io/product-manual/subscriptions#functions] for more
                     type: string
                 name:
                     description: Subscription Nme
@@ -835,10 +866,6 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/models.RateLimitConfiguration'
                     description: Rate limit configuration
-                retry_config:
-                    allOf:
-                        - $ref: '#/components/schemas/models.RetryConfiguration'
-                    description: Retry configuration
                 source_id:
                     description: Source Id
                     type: string
@@ -852,8 +879,6 @@ components:
             type: object
         models.DynamicEvent:
             properties:
-                acknowledged_at:
-                    type: string
                 custom_headers:
                     additionalProperties:
                         type: string
@@ -1109,6 +1134,23 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/models.FS'
                     description: Body & Header filters
+            type: object
+        models.FilterResponse:
+            properties:
+                body:
+                    $ref: '#/components/schemas/datastore.M'
+                event_type:
+                    type: string
+                headers:
+                    $ref: '#/components/schemas/datastore.M'
+                raw_body:
+                    $ref: '#/components/schemas/datastore.M'
+                raw_headers:
+                    $ref: '#/components/schemas/datastore.M'
+                subscription_id:
+                    type: string
+                uid:
+                    type: string
             type: object
         models.FilterSchema:
             properties:
@@ -1389,6 +1431,8 @@ components:
                     type: string
                 name:
                     type: string
+                project_id:
+                    type: string
                 rate_limit_config:
                     $ref: '#/components/schemas/datastore.RateLimitConfiguration'
                 retry_config:
@@ -1412,6 +1456,19 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/models.FilterSchema'
                     description: Sample test schema
+            type: object
+        models.TestFilterRequest:
+            properties:
+                payload:
+                    description: Sample payload to test against the filter (required)
+            required:
+                - payload
+            type: object
+        models.TestFilterResponse:
+            properties:
+                is_match:
+                    description: Whether the payload matches the filter criteria
+                    type: boolean
             type: object
         models.UpdateCustomResponse:
             properties:
@@ -1489,6 +1546,23 @@ components:
                     description: Description is used to describe what the event type does
                     type: string
             type: object
+        models.UpdateFilterRequest:
+            properties:
+                body:
+                    allOf:
+                        - $ref: '#/components/schemas/datastore.M'
+                    description: Body matching criteria (optional)
+                event_type:
+                    description: Type of event this filter applies to (optional)
+                    type: string
+                headers:
+                    allOf:
+                        - $ref: '#/components/schemas/datastore.M'
+                    description: Header matching criteria (optional)
+                is_flattened:
+                    description: Whether the filter uses flattened JSON paths (optional)
+                    type: boolean
+            type: object
         models.UpdateSource:
             properties:
                 body_function:
@@ -1563,7 +1637,7 @@ components:
                 function:
                     description: |-
                         Convoy supports mutating your request payload using a js function. Use this field
-                        to specify a `transform` function for this purpose. See this[https://getconvoy.io/docs/product-manual/subscriptions#functions] for more
+                        to specify a `transform` function for this purpose. See this[https://docs.getconvoy.io/product-manual/subscriptions#functions] for more
                     type: string
                 name:
                     description: Subscription Nme
@@ -1672,7 +1746,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -1690,7 +1764,7 @@ paths:
                                                     type: object
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -1701,7 +1775,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -1712,7 +1786,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -1747,7 +1821,7 @@ paths:
                 required: true
                 x-originalParamName: endpoint
             responses:
-                '201':
+                "201":
                     content:
                         application/json:
                             schema:
@@ -1758,7 +1832,7 @@ paths:
                                               $ref: '#/components/schemas/models.EndpointResponse'
                                       type: object
                     description: Created
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -1769,7 +1843,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -1780,7 +1854,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -1814,7 +1888,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -1825,7 +1899,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -1836,7 +1910,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -1847,7 +1921,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -1880,7 +1954,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -1891,7 +1965,7 @@ paths:
                                               $ref: '#/components/schemas/models.EndpointResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -1902,7 +1976,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -1913,7 +1987,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -1954,7 +2028,7 @@ paths:
                 required: true
                 x-originalParamName: endpoint
             responses:
-                '202':
+                "202":
                     content:
                         application/json:
                             schema:
@@ -1965,7 +2039,7 @@ paths:
                                               $ref: '#/components/schemas/models.EndpointResponse'
                                       type: object
                     description: Accepted
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -1976,7 +2050,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -1987,7 +2061,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2021,7 +2095,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '202':
+                "202":
                     content:
                         application/json:
                             schema:
@@ -2032,7 +2106,7 @@ paths:
                                               $ref: '#/components/schemas/models.EndpointResponse'
                                       type: object
                     description: Accepted
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -2043,7 +2117,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -2054,7 +2128,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2096,7 +2170,7 @@ paths:
                 required: true
                 x-originalParamName: endpoint
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -2107,7 +2181,7 @@ paths:
                                               $ref: '#/components/schemas/models.EndpointResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -2118,7 +2192,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -2129,7 +2203,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2163,7 +2237,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '202':
+                "202":
                     content:
                         application/json:
                             schema:
@@ -2174,7 +2248,7 @@ paths:
                                               $ref: '#/components/schemas/models.EndpointResponse'
                                       type: object
                     description: Accepted
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -2185,7 +2259,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -2196,7 +2270,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2224,7 +2298,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -2235,7 +2309,7 @@ paths:
                                               $ref: '#/components/schemas/models.EventTypeListResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -2246,7 +2320,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -2257,7 +2331,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2292,7 +2366,7 @@ paths:
                 required: true
                 x-originalParamName: eventType
             responses:
-                '201':
+                "201":
                     content:
                         application/json:
                             schema:
@@ -2303,7 +2377,7 @@ paths:
                                               $ref: '#/components/schemas/models.EventTypeResponse'
                                       type: object
                     description: Created
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -2314,7 +2388,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -2325,7 +2399,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2344,7 +2418,7 @@ paths:
     /v1/projects/{projectID}/event-types/{eventTypeId}:
         put:
             description: This endpoint updates an event type
-            operationId: CreateEventType
+            operationId: UpdateEventType
             parameters:
                 - description: Project ID
                   in: path
@@ -2361,7 +2435,7 @@ paths:
                 required: true
                 x-originalParamName: eventType
             responses:
-                '201':
+                "201":
                     content:
                         application/json:
                             schema:
@@ -2372,7 +2446,7 @@ paths:
                                               $ref: '#/components/schemas/models.EventTypeResponse'
                                       type: object
                     description: Created
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -2383,7 +2457,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -2394,7 +2468,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2412,7 +2486,7 @@ paths:
                 - EventTypes
     /v1/projects/{projectID}/event-types/{eventTypeId}/deprecate:
         post:
-            description: This endpoint creates an event type
+            description: This endpoint deprecates an event type
             operationId: DeprecateEventType
             parameters:
                 - description: Project ID
@@ -2428,7 +2502,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '201':
+                "201":
                     content:
                         application/json:
                             schema:
@@ -2439,7 +2513,7 @@ paths:
                                               $ref: '#/components/schemas/models.EventTypeResponse'
                                       type: object
                     description: Created
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -2450,7 +2524,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -2461,7 +2535,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2474,7 +2548,7 @@ paths:
                     description: Not Found
             security:
                 - ApiKeyAuth: []
-            summary: Create an event type
+            summary: Deprecates an event type
             tags:
                 - EventTypes
     /v1/projects/{projectID}/eventdeliveries:
@@ -2563,7 +2637,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -2581,7 +2655,7 @@ paths:
                                                     type: object
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -2592,7 +2666,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -2603,7 +2677,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2637,7 +2711,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -2648,7 +2722,7 @@ paths:
                                               $ref: '#/components/schemas/models.EventDeliveryResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -2659,7 +2733,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -2670,7 +2744,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2704,7 +2778,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -2717,7 +2791,7 @@ paths:
                                               type: array
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -2728,7 +2802,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -2739,7 +2813,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2779,7 +2853,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -2790,7 +2864,7 @@ paths:
                                               $ref: '#/components/schemas/datastore.DeliveryAttempt'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -2801,7 +2875,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -2812,7 +2886,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2846,7 +2920,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -2857,7 +2931,7 @@ paths:
                                               $ref: '#/components/schemas/models.EventDeliveryResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -2868,7 +2942,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -2879,7 +2953,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -2981,7 +3055,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -2992,7 +3066,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3003,7 +3077,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3014,7 +3088,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -3050,7 +3124,7 @@ paths:
                 required: true
                 x-originalParamName: deliveryIds
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -3061,7 +3135,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3072,7 +3146,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3083,7 +3157,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -3175,7 +3249,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -3193,7 +3267,7 @@ paths:
                                                     type: object
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3204,7 +3278,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3215,7 +3289,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -3250,7 +3324,7 @@ paths:
                 required: true
                 x-originalParamName: event
             responses:
-                '201':
+                "201":
                     content:
                         application/json:
                             schema:
@@ -3261,7 +3335,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Created
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3272,7 +3346,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3283,7 +3357,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -3317,7 +3391,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -3328,7 +3402,7 @@ paths:
                                               $ref: '#/components/schemas/models.EventResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3339,7 +3413,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3350,7 +3424,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -3384,7 +3458,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -3395,7 +3469,7 @@ paths:
                                               $ref: '#/components/schemas/models.EventResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3406,7 +3480,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3417,7 +3491,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -3509,7 +3583,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -3525,7 +3599,7 @@ paths:
                                                     type: object
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3536,7 +3610,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3547,7 +3621,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -3584,7 +3658,7 @@ paths:
                 required: true
                 x-originalParamName: event
             responses:
-                '201':
+                "201":
                     content:
                         application/json:
                             schema:
@@ -3595,7 +3669,7 @@ paths:
                                               $ref: '#/components/schemas/models.EventResponse'
                                       type: object
                     description: Created
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3606,7 +3680,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3617,7 +3691,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -3655,13 +3729,13 @@ paths:
                 required: true
                 x-originalParamName: event
             responses:
-                '201':
+                "201":
                     content:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/handlers.Stub'
                     description: Created
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3672,7 +3746,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3683,7 +3757,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -3720,7 +3794,7 @@ paths:
                 required: true
                 x-originalParamName: event
             responses:
-                '201':
+                "201":
                     content:
                         application/json:
                             schema:
@@ -3731,7 +3805,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Created
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3742,7 +3816,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3753,7 +3827,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -3821,7 +3895,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -3839,7 +3913,7 @@ paths:
                                                     type: object
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3850,7 +3924,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3861,7 +3935,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -3895,7 +3969,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -3906,7 +3980,7 @@ paths:
                                               $ref: '#/components/schemas/models.MetaEventResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3917,7 +3991,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3928,7 +4002,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -3962,7 +4036,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -3973,7 +4047,7 @@ paths:
                                               $ref: '#/components/schemas/models.MetaEventResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -3984,7 +4058,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -3995,7 +4069,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4063,7 +4137,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -4081,7 +4155,7 @@ paths:
                                                     type: object
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4092,7 +4166,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -4103,7 +4177,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4138,7 +4212,7 @@ paths:
                 required: true
                 x-originalParamName: portallink
             responses:
-                '201':
+                "201":
                     content:
                         application/json:
                             schema:
@@ -4149,7 +4223,7 @@ paths:
                                               $ref: '#/components/schemas/models.PortalLinkResponse'
                                       type: object
                     description: Created
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4160,7 +4234,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -4171,7 +4245,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4205,7 +4279,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -4216,7 +4290,7 @@ paths:
                                               $ref: '#/components/schemas/models.PortalLinkResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4227,7 +4301,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -4238,7 +4312,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4279,7 +4353,7 @@ paths:
                 required: true
                 x-originalParamName: portallink
             responses:
-                '202':
+                "202":
                     content:
                         application/json:
                             schema:
@@ -4290,7 +4364,7 @@ paths:
                                               $ref: '#/components/schemas/models.PortalLinkResponse'
                                       type: object
                     description: Accepted
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4301,7 +4375,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -4312,7 +4386,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4346,7 +4420,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -4357,7 +4431,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4368,7 +4442,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -4379,7 +4453,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4447,7 +4521,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -4465,7 +4539,7 @@ paths:
                                                     type: object
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4476,7 +4550,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -4487,7 +4561,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4522,7 +4596,7 @@ paths:
                 required: true
                 x-originalParamName: source
             responses:
-                '201':
+                "201":
                     content:
                         application/json:
                             schema:
@@ -4533,7 +4607,7 @@ paths:
                                               $ref: '#/components/schemas/models.SourceResponse'
                                       type: object
                     description: Created
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4544,7 +4618,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -4555,7 +4629,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4589,7 +4663,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -4600,7 +4674,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4611,7 +4685,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -4622,7 +4696,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4655,7 +4729,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -4666,7 +4740,7 @@ paths:
                                               $ref: '#/components/schemas/models.SourceResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4677,7 +4751,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -4688,7 +4762,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4729,7 +4803,7 @@ paths:
                 required: true
                 x-originalParamName: source
             responses:
-                '202':
+                "202":
                     content:
                         application/json:
                             schema:
@@ -4740,7 +4814,7 @@ paths:
                                               $ref: '#/components/schemas/models.SourceResponse'
                                       type: object
                     description: Accepted
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4751,7 +4825,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -4762,7 +4836,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4798,7 +4872,7 @@ paths:
                 required: true
                 x-originalParamName: filter
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -4809,7 +4883,7 @@ paths:
                                               $ref: '#/components/schemas/models.FunctionResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4820,7 +4894,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -4831,7 +4905,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4901,7 +4975,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -4919,7 +4993,7 @@ paths:
                                                     type: object
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4930,7 +5004,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -4941,7 +5015,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -4976,7 +5050,7 @@ paths:
                 required: true
                 x-originalParamName: subscription
             responses:
-                '201':
+                "201":
                     content:
                         application/json:
                             schema:
@@ -4987,7 +5061,7 @@ paths:
                                               $ref: '#/components/schemas/models.SubscriptionResponse'
                                       type: object
                     description: Created
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -4998,7 +5072,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -5009,7 +5083,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -5043,7 +5117,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -5054,7 +5128,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -5065,7 +5139,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -5076,7 +5150,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -5109,7 +5183,7 @@ paths:
                   schema:
                       type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -5120,7 +5194,7 @@ paths:
                                               $ref: '#/components/schemas/models.SubscriptionResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -5131,7 +5205,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -5142,7 +5216,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -5183,7 +5257,7 @@ paths:
                 required: true
                 x-originalParamName: subscription
             responses:
-                '202':
+                "202":
                     content:
                         application/json:
                             schema:
@@ -5194,7 +5268,7 @@ paths:
                                               $ref: '#/components/schemas/models.SubscriptionResponse'
                                       type: object
                     description: Accepted
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -5205,7 +5279,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -5216,7 +5290,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -5232,6 +5306,615 @@ paths:
             summary: Update a subscription
             tags:
                 - Subscriptions
+    /v1/projects/{projectID}/subscriptions/{subscriptionID}/filters:
+        get:
+            description: This endpoint fetches all filters for a subscription
+            operationId: GetFilters
+            parameters:
+                - description: Project ID
+                  in: path
+                  name: projectID
+                  required: true
+                  schema:
+                      type: string
+                - description: Subscription ID
+                  in: path
+                  name: subscriptionID
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              items:
+                                                  $ref: '#/components/schemas/models.FilterResponse'
+                                              type: array
+                                      type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Unauthorized
+                "404":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Not Found
+            security:
+                - ApiKeyAuth: []
+            summary: List all filters
+            tags:
+                - Filters
+        post:
+            description: This endpoint creates a new filter for a subscription
+            operationId: CreateFilter
+            parameters:
+                - description: Project ID
+                  in: path
+                  name: projectID
+                  required: true
+                  schema:
+                      type: string
+                - description: Subscription ID
+                  in: path
+                  name: subscriptionID
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/models.CreateFilterRequest'
+                description: Filter to create
+                required: true
+                x-originalParamName: filter
+            responses:
+                "201":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/models.FilterResponse'
+                                      type: object
+                    description: Created
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Unauthorized
+                "404":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Not Found
+            security:
+                - ApiKeyAuth: []
+            summary: Create a new filter
+            tags:
+                - Filters
+    /v1/projects/{projectID}/subscriptions/{subscriptionID}/filters/{filterID}:
+        delete:
+            description: This endpoint deletes a filter
+            operationId: DeleteFilter
+            parameters:
+                - description: Project ID
+                  in: path
+                  name: projectID
+                  required: true
+                  schema:
+                      type: string
+                - description: Subscription ID
+                  in: path
+                  name: subscriptionID
+                  required: true
+                  schema:
+                      type: string
+                - description: Filter ID
+                  in: path
+                  name: filterID
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Unauthorized
+                "404":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Not Found
+            security:
+                - ApiKeyAuth: []
+            summary: Delete a filter
+            tags:
+                - Filters
+        get:
+            description: This endpoint retrieves a single filter
+            operationId: GetFilter
+            parameters:
+                - description: Project ID
+                  in: path
+                  name: projectID
+                  required: true
+                  schema:
+                      type: string
+                - description: Subscription ID
+                  in: path
+                  name: subscriptionID
+                  required: true
+                  schema:
+                      type: string
+                - description: Filter ID
+                  in: path
+                  name: filterID
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/models.FilterResponse'
+                                      type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Unauthorized
+                "404":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Not Found
+            security:
+                - ApiKeyAuth: []
+            summary: Get a filter
+            tags:
+                - Filters
+        put:
+            description: This endpoint updates an existing filter
+            operationId: UpdateFilter
+            parameters:
+                - description: Project ID
+                  in: path
+                  name: projectID
+                  required: true
+                  schema:
+                      type: string
+                - description: Subscription ID
+                  in: path
+                  name: subscriptionID
+                  required: true
+                  schema:
+                      type: string
+                - description: Filter ID
+                  in: path
+                  name: filterID
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/models.UpdateFilterRequest'
+                description: Updated filter
+                required: true
+                x-originalParamName: filter
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/models.FilterResponse'
+                                      type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Unauthorized
+                "404":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Not Found
+            security:
+                - ApiKeyAuth: []
+            summary: Update a filter
+            tags:
+                - Filters
+    /v1/projects/{projectID}/subscriptions/{subscriptionID}/filters/bulk:
+        post:
+            description: This endpoint creates multiple filters for a subscription in a
+                single request
+            operationId: BulkCreateFilters
+            parameters:
+                - description: Project ID
+                  in: path
+                  name: projectID
+                  required: true
+                  schema:
+                      type: string
+                - description: Subscription ID
+                  in: path
+                  name: subscriptionID
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            items:
+                                $ref: '#/components/schemas/models.CreateFilterRequest'
+                            type: array
+                description: Filters to create
+                required: true
+                x-originalParamName: filters
+            responses:
+                "201":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              items:
+                                                  $ref: '#/components/schemas/models.FilterResponse'
+                                              type: array
+                                      type: object
+                    description: Created
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Unauthorized
+                "404":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Not Found
+            security:
+                - ApiKeyAuth: []
+            summary: Create multiple filters at once
+            tags:
+                - Filters
+    /v1/projects/{projectID}/subscriptions/{subscriptionID}/filters/bulk_update:
+        put:
+            description: This endpoint updates multiple filters for a subscription in a
+                single request
+            operationId: BulkUpdateFilters
+            parameters:
+                - description: Project ID
+                  in: path
+                  name: projectID
+                  required: true
+                  schema:
+                      type: string
+                - description: Subscription ID
+                  in: path
+                  name: subscriptionID
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            items:
+                                $ref: '#/components/schemas/models.BulkUpdateFilterRequest'
+                            type: array
+                description: Filters to update
+                required: true
+                x-originalParamName: filters
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              items:
+                                                  $ref: '#/components/schemas/models.FilterResponse'
+                                              type: array
+                                      type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Unauthorized
+                "404":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Not Found
+            security:
+                - ApiKeyAuth: []
+            summary: Update multiple filters at once
+            tags:
+                - Filters
+    /v1/projects/{projectID}/subscriptions/{subscriptionID}/filters/test/{eventType}:
+        post:
+            description: This endpoint tests a filter against a payload
+            operationId: TestFilter
+            parameters:
+                - description: Project ID
+                  in: path
+                  name: projectID
+                  required: true
+                  schema:
+                      type: string
+                - description: Subscription ID
+                  in: path
+                  name: subscriptionID
+                  required: true
+                  schema:
+                      type: string
+                - description: Event Type
+                  in: path
+                  name: eventType
+                  required: true
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/models.TestFilterRequest'
+                description: Payload to test
+                required: true
+                x-originalParamName: payload
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/models.TestFilterResponse'
+                                      type: object
+                    description: OK
+                "400":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Bad Request
+                "401":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Unauthorized
+                "404":
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: '#/components/schemas/util.ServerResponse'
+                                    - properties:
+                                          data:
+                                              $ref: '#/components/schemas/handlers.Stub'
+                                      type: object
+                    description: Not Found
+            security:
+                - ApiKeyAuth: []
+            summary: Test a filter
+            tags:
+                - Filters
     /v1/projects/{projectID}/subscriptions/test_filter:
         post:
             description: This endpoint validates that a filter will match a certain payload
@@ -5253,7 +5936,7 @@ paths:
                 required: true
                 x-originalParamName: filter
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -5264,7 +5947,7 @@ paths:
                                               type: boolean
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -5275,7 +5958,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -5286,7 +5969,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
@@ -5322,7 +6005,7 @@ paths:
                 required: true
                 x-originalParamName: filter
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
@@ -5333,7 +6016,7 @@ paths:
                                               $ref: '#/components/schemas/models.FunctionResponse'
                                       type: object
                     description: OK
-                '400':
+                "400":
                     content:
                         application/json:
                             schema:
@@ -5344,7 +6027,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Bad Request
-                '401':
+                "401":
                     content:
                         application/json:
                             schema:
@@ -5355,7 +6038,7 @@ paths:
                                               $ref: '#/components/schemas/handlers.Stub'
                                       type: object
                     description: Unauthorized
-                '404':
+                "404":
                     content:
                         application/json:
                             schema:
