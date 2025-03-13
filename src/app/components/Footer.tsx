@@ -27,7 +27,7 @@ export default function Footer() {
 				{ name: 'About Us', link: '/aboutus', isExternal: false },
 				{ name: 'Trust Center', link: 'https://trust.getconvoy.io/', isExternal: true },
 				{ name: 'Terms of Use', link: '/legal/Terms-of-Use-Convoy.pdf', isExternal: true },
-				{ name: 'Privacy Policy', link: '/legal/Privacy-Policy-Convoy.pdf', isExternal: true },
+				{ name: 'Privacy Policy', link: '/legal/privacy-policy', isExternal: false },
 				{ name: 'DPA', link: '/legal/dpa', isExternal: false }
 			]
 		},
