@@ -41,112 +41,186 @@ export default function DPA() {
       <div className="max-w-4xl mx-auto px-20px mobile-min:px-16px py-60px">
         <div className="prose prose-lg">
           <section className="mb-40px">
-            <h2 className="text-24 font-semibold text-gray-900 mb-16px">1. Introduction</h2>
             <p className="text-16 text-gray-700 mb-16px">
-              This Data Processing Addendum ("DPA") forms part of the Agreement between Convoy Technologies Inc. ("Convoy", "we", "us") and the Customer as defined in the Agreement ("Customer", "you"). This DPA reflects the parties' agreement with respect to the processing of Customer Personal Data by Convoy on behalf of Customer in connection with the Services.
+              This Data Processing Addendum ("DPA") is entered into between Convoy ("Processor" or "Service Provider") and the User ("Controller" or "Business"), collectively referred to as the "Parties," and forms an integral part of the Terms of Service or other applicable agreement governing the use of Convoy's services (the "Agreement").
             </p>
             <p className="text-16 text-gray-700 mb-16px">
-              All capitalized terms not defined herein shall have the meaning set forth in the Agreement.
+              This DPA outlines the responsibilities and obligations of the Parties regarding the processing of personal data under applicable data protection laws, including but not limited to the General Data Protection Regulation (GDPR), the UK Data Protection Act 2018, the California Consumer Privacy Act (CCPA), and other relevant privacy laws. It includes provisions on data processing, security measures, international data transfers, and data subject rights.
             </p>
           </section>
 
           <section className="mb-40px">
-            <h2 className="text-24 font-semibold text-gray-900 mb-16px">2. Definitions</h2>
+            <h2 className="text-24 font-semibold text-gray-900 mb-16px">1. Definitions</h2>
             <p className="text-16 text-gray-700 mb-16px">
-              For the purposes of this DPA, the following terms shall have the meanings set out below:
+              1.1 <strong>"Applicable Data Protection Laws"</strong>: Refers to all laws and regulations relating to privacy and data protection, including GDPR, UK GDPR, CCPA, and any other applicable laws governing personal data processing.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              1.2 <strong>"Personal Data"</strong>: Any information relating to an identified or identifiable natural person as defined under the GDPR, CCPA, or other applicable laws.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              1.3 <strong>"Processing"</strong>: Any operation or set of operations performed on Personal Data, including collection, recording, organization, structuring, storage, adaptation, retrieval, consultation, use, disclosure, dissemination, alignment, restriction, erasure, or destruction.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              1.4 <strong>"Sub-Processor"</strong>: Any third party engaged by Convoy to process Personal Data on behalf of the User.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              1.5 <strong>"Standard Contractual Clauses (SCCs)"</strong>: The contractual clauses adopted by the European Commission for the lawful transfer of Personal Data outside the EEA.
+            </p>
+          </section>
+
+          <section className="mb-40px">
+            <h2 className="text-24 font-semibold text-gray-900 mb-16px">2. Scope and Role of the Parties</h2>
+            <p className="text-16 text-gray-700 mb-16px">
+              2.1 <strong>Roles of the Parties</strong>: The User acts as the Controller, and Convoy acts as the Processor in relation to Personal Data. Where applicable, Convoy may act as a "Service Provider" under the CCPA.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              2.2 <strong>Processing Purposes</strong>: Convoy processes Personal Data solely to provide webhook delivery and related services, in accordance with documented User instructions. Convoy shall not process Personal Data for any other purposes.
+            </p>
+          </section>
+
+          <section className="mb-40px">
+            <h2 className="text-24 font-semibold text-gray-900 mb-16px">3. Data Processing Obligations</h2>
+            <p className="text-16 text-gray-700 mb-16px">
+              3.1 <strong>Controller Instructions</strong>: Convoy shall process Personal Data only in accordance with the User's documented instructions unless required by law. If Convoy is required by law to process Personal Data beyond the agreed instructions, it shall notify the User unless legally prohibited.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              3.2 <strong>Confidentiality</strong>: Convoy ensures that personnel authorized to process Personal Data are subject to confidentiality obligations.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              3.3 <strong>Security Measures</strong>: Convoy implements appropriate technical and organizational measures to protect Personal Data against unauthorized access, loss, alteration, or destruction, including:
             </p>
             <ul className="list-disc pl-24px mb-16px">
-              <li className="text-16 text-gray-700 mb-8px">
-                <strong>"Customer Personal Data"</strong> means any Personal Data that Convoy processes on behalf of Customer in connection with Convoy's provision of the Services.
-              </li>
-              <li className="text-16 text-gray-700 mb-8px">
-                <strong>"Data Protection Laws"</strong> means all data protection and privacy laws applicable to the processing of Personal Data under the Agreement, including, where applicable, EU Data Protection Law.
-              </li>
-              <li className="text-16 text-gray-700 mb-8px">
-                <strong>"EU Data Protection Law"</strong> means (i) Regulation 2016/679 of the European Parliament and of the Council on the protection of natural persons with regard to the processing of personal data and on the free movement of such data (General Data Protection Regulation) ("GDPR"); and (ii) Directive 2002/58/EC concerning the processing of personal data and the protection of privacy in the electronic communications sector.
-              </li>
-              <li className="text-16 text-gray-700 mb-8px">
-                <strong>"Personal Data"</strong> means any information relating to an identified or identifiable natural person.
-              </li>
-              <li className="text-16 text-gray-700 mb-8px">
-                <strong>"Security Incident"</strong> means any unauthorized or unlawful breach of security that leads to the accidental or unlawful destruction, loss, alteration, unauthorized disclosure of or access to Customer Personal Data.
-              </li>
-              <li className="text-16 text-gray-700 mb-8px">
-                <strong>"Services"</strong> means the services and other activities to be provided by Convoy to Customer pursuant to the Agreement.
-              </li>
-              <li className="text-16 text-gray-700 mb-8px">
-                <strong>"Subprocessor"</strong> means any processor engaged by Convoy to assist in fulfilling its obligations with respect to providing the Services pursuant to the Agreement or this DPA.
-              </li>
+              <li className="text-16 text-gray-700 mb-8px">Encryption of data at rest and in transit</li>
+              <li className="text-16 text-gray-700 mb-8px">Access controls and authentication mechanisms</li>
+              <li className="text-16 text-gray-700 mb-8px">Continuous security monitoring and logging</li>
+              <li className="text-16 text-gray-700 mb-8px">Regular security audits and penetration testing</li>
             </ul>
-          </section>
-
-          <section className="mb-40px">
-            <h2 className="text-24 font-semibold text-gray-900 mb-16px">3. Processing of Customer Personal Data</h2>
             <p className="text-16 text-gray-700 mb-16px">
-              Convoy shall process Customer Personal Data only for the purposes described in this DPA and only in accordance with Customer's documented lawful instructions. The parties agree that this DPA and the Agreement set out the Customer's complete and final instructions to Convoy in relation to the processing of Customer Personal Data.
-            </p>
-            <p className="text-16 text-gray-700 mb-16px">
-              Convoy shall promptly inform Customer if, in Convoy's opinion, any instructions from Customer infringe any applicable Data Protection Laws.
+              3.4 <strong>Assistance to the Controller</strong>: Convoy shall assist the User in ensuring compliance with GDPR obligations, including responding to Data Subject requests and conducting data protection impact assessments.
             </p>
           </section>
 
           <section className="mb-40px">
-            <h2 className="text-24 font-semibold text-gray-900 mb-16px">4. Data Security</h2>
+            <h2 className="text-24 font-semibold text-gray-900 mb-16px">4. Sub-Processing</h2>
             <p className="text-16 text-gray-700 mb-16px">
-              Convoy shall implement and maintain appropriate technical and organizational security measures to protect Customer Personal Data from Security Incidents and to ensure the security and confidentiality of Customer Personal Data. These measures include, at a minimum:
-            </p>
-            <ul className="list-disc pl-24px mb-16px">
-              <li className="text-16 text-gray-700 mb-8px">Encryption of personal data during transit and at rest</li>
-              <li className="text-16 text-gray-700 mb-8px">Ability to ensure the ongoing confidentiality, integrity, availability, and resilience of processing systems and services</li>
-              <li className="text-16 text-gray-700 mb-8px">Ability to restore the availability and access to personal data in a timely manner in the event of a physical or technical incident</li>
-              <li className="text-16 text-gray-700 mb-8px">A process for regularly testing, assessing, and evaluating the effectiveness of technical and organizational measures for ensuring the security of the processing</li>
-            </ul>
-          </section>
-
-          <section className="mb-40px">
-            <h2 className="text-24 font-semibold text-gray-900 mb-16px">5. Subprocessing</h2>
-            <p className="text-16 text-gray-700 mb-16px">
-              Customer agrees that Convoy may engage Subprocessors to process Customer Personal Data on Customer's behalf. Convoy shall ensure that any Subprocessor it engages to process Customer Personal Data has entered into a written agreement that requires the Subprocessor to abide by terms no less protective than those provided in this DPA.
+              4.1 <strong>Authorized Sub-Processors</strong>: The User authorizes Convoy to engage Sub-Processors for service delivery. Convoy shall ensure Sub-Processors meet the same data protection obligations.
             </p>
             <p className="text-16 text-gray-700 mb-16px">
-              Convoy shall make available to Customer a current list of Subprocessors for the Services, including the identities of those Subprocessors and their country of location. Convoy shall update the list of Subprocessors on its website prior to adding or replacing a Subprocessor.
+              4.2 <strong>Notice of Changes</strong>: Convoy shall provide advance notice of new Sub-Processors. The User may object to new Sub-Processors based on reasonable privacy concerns.
             </p>
           </section>
 
           <section className="mb-40px">
-            <h2 className="text-24 font-semibold text-gray-900 mb-16px">6. International Transfers</h2>
+            <h2 className="text-24 font-semibold text-gray-900 mb-16px">5. International Data Transfers</h2>
             <p className="text-16 text-gray-700 mb-16px">
-              Convoy may transfer and process Customer Personal Data anywhere in the world where Convoy, its Affiliates or its Subprocessors maintain data processing operations. Convoy shall at all times provide an adequate level of protection for the Customer Personal Data processed, in accordance with the requirements of Data Protection Laws.
+              5.1 <strong>Data Residency</strong>: Convoy operates separate environments in the EU and the US. EU Personal Data is processed within the EU.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              5.2 <strong>Standard Contractual Clauses (SCCs)</strong>: If data transfers outside the EU are necessary, Convoy shall rely on SCCs as the legal basis.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              5.3 <strong>Description of Transfers (SCC Annex I)</strong>
+            </p>
+            <div className="overflow-x-auto mb-16px">
+              <table className="min-w-full border-collapse border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 px-4 py-2 text-16 font-semibold text-left">Specification</th>
+                    <th className="border border-gray-300 px-4 py-2 text-16 font-semibold text-left">Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2 text-16 font-medium">Data Subjects</td>
+                    <td className="border border-gray-300 px-4 py-2 text-16">Administrative users, end customers, third-party providers.</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2 text-16 font-medium">Categories of Personal Data</td>
+                    <td className="border border-gray-300 px-4 py-2 text-16">Name, email, IP address, authentication data, webhook payloads, metadata.</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2 text-16 font-medium">Sensitive Data</td>
+                    <td className="border border-gray-300 px-4 py-2 text-16">Not applicable unless customers include such data.</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2 text-16 font-medium">Frequency of Transfers</td>
+                    <td className="border border-gray-300 px-4 py-2 text-16">Continuous and on-demand webhook processing.</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2 text-16 font-medium">Nature of Processing</td>
+                    <td className="border border-gray-300 px-4 py-2 text-16">Webhook transmission, event routing, logging, monitoring.</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2 text-16 font-medium">Purpose of Transfer</td>
+                    <td className="border border-gray-300 px-4 py-2 text-16">Delivering webhook services securely and reliably.</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2 text-16 font-medium">Data Retention</td>
+                    <td className="border border-gray-300 px-4 py-2 text-16">Data is retained based on user configuration or deleted upon request.</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-300 px-4 py-2 text-16 font-medium">Supervisory Authority</td>
+                    <td className="border border-gray-300 px-4 py-2 text-16">The EU member state's data protection authority where the User is based.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section className="mb-40px">
+            <h2 className="text-24 font-semibold text-gray-900 mb-16px">6. Data Subject Rights</h2>
+            <p className="text-16 text-gray-700 mb-16px">
+              6.1 <strong>User Assistance</strong>: Convoy shall assist the User in responding to data subject requests under GDPR and CCPA.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              6.2 <strong>Deletion Requests</strong>: Convoy shall delete Personal Data upon request unless legally required to retain it.
             </p>
           </section>
 
           <section className="mb-40px">
-            <h2 className="text-24 font-semibold text-gray-900 mb-16px">7. Return or Deletion of Data</h2>
+            <h2 className="text-24 font-semibold text-gray-900 mb-16px">7. Data Breach Notification</h2>
             <p className="text-16 text-gray-700 mb-16px">
-              Upon termination or expiration of the Agreement, Convoy shall, at Customer's election, delete or return to Customer all Customer Personal Data in Convoy's possession or control, except to the extent Convoy is required by applicable law to retain some or all of the Customer Personal Data.
+              7.1 <strong>Incident Response</strong>: Convoy shall notify the User without undue delay upon becoming aware of a Personal Data Breach.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              7.2 <strong>Breach Details</strong>: The notification shall include the nature of the breach, affected data, mitigation steps, and recommendations.
             </p>
           </section>
 
           <section className="mb-40px">
-            <h2 className="text-24 font-semibold text-gray-900 mb-16px">8. Assistance</h2>
+            <h2 className="text-24 font-semibold text-gray-900 mb-16px">8. Retention and Deletion</h2>
             <p className="text-16 text-gray-700 mb-16px">
-              Convoy shall provide reasonable assistance to Customer with:
+              8.1 <strong>Data Retention</strong>: Personal Data is retained for the duration of the User's active account. Webhook data retention is configurable by the User.
             </p>
-            <ul className="list-disc pl-24px mb-16px">
-              <li className="text-16 text-gray-700 mb-8px">Responding to individuals exercising their rights under applicable Data Protection Laws</li>
-              <li className="text-16 text-gray-700 mb-8px">Implementing appropriate technical and organizational measures to ensure a level of security appropriate to the risk</li>
-              <li className="text-16 text-gray-700 mb-8px">Conducting privacy impact assessments and prior consultations with supervisory authorities, if required</li>
-              <li className="text-16 text-gray-700 mb-8px">Investigating and remediating Security Incidents</li>
-            </ul>
+            <p className="text-16 text-gray-700 mb-16px">
+              8.2 <strong>Data Deletion</strong>: Upon termination of services, Convoy shall delete or return Personal Data within 60 days unless required by law to retain it.
+            </p>
           </section>
 
           <section className="mb-40px">
-            <h2 className="text-24 font-semibold text-gray-900 mb-16px">9. Contact Information</h2>
+            <h2 className="text-24 font-semibold text-gray-900 mb-16px">9. Governing Law</h2>
             <p className="text-16 text-gray-700 mb-16px">
-              For questions about this DPA or to exercise your rights, please contact us at:
+              9.1 <strong>Applicable Law</strong>: This DPA is governed by the laws of the <strong>State of California</strong> unless EU data protection laws require otherwise.
             </p>
             <p className="text-16 text-gray-700 mb-16px">
-              <a href="mailto:privacy@getconvoy.io" className="text-primary-500 hover:underline">privacy@getconvoy.io</a>
+              9.2 <strong>Dispute Resolution</strong>: Any disputes shall be resolved through arbitration or as agreed in the primary Agreement.
+            </p>
+          </section>
+
+          <section className="mb-40px">
+            <h2 className="text-24 font-semibold text-gray-900 mb-16px">Appendix A: Data Processing Details</h2>
+            <p className="text-16 text-gray-700 mb-16px">
+              This appendix outlines the subject matter, duration, and scope of processing activities as required under Article 28(3) of the GDPR. Convoy maintains records of processing activities and ensures regulatory compliance.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              This DPA, including its annexes and SCCs, forms an essential part of the Agreement between Convoy and the User, ensuring compliance with all applicable data protection laws.
+            </p>
+          </section>
+
+          <section className="mb-40px">
+            <h2 className="text-24 font-semibold text-gray-900 mb-16px">Contact Information</h2>
+            <p className="text-16 text-gray-700 mb-16px">
+              For questions about this DPA or to exercise your rights, please contact us at <a href="mailto:security@getconvoy.io" className="text-primary-500 hover:underline">security@getconvoy.io</a>.
             </p>
           </section>
         </div>

@@ -236,10 +236,7 @@ export default function PrivacyPolicy() {
           <section className="mb-40px">
             <h2 className="text-24 font-semibold text-gray-900 mb-16px">11. Questions regarding User's Personal Data?</h2>
             <p className="text-16 text-gray-700 mb-16px">
-              If the User has any questions about this Privacy Notice or the Company data practices generally, please contact us using the following information:
-            </p>
-            <p className="text-16 text-gray-700 mb-16px">
-              <a href="mailto:info@frain.dev" className="text-primary-500 hover:underline">info@frain.dev</a>
+              If the User has any questions about this Privacy Notice or the Company data practices generally, please contact us using the following information: <a href="security@getconvoy.io" className="text-primary-500 hover:underline">security@getconvoy.io</a>
             </p>
           </section>
         </div>
