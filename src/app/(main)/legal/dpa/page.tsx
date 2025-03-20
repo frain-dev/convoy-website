@@ -111,6 +111,18 @@ export default function DPA() {
             <p className="text-16 text-gray-700 mb-16px">
               4.2 <strong>Notice of Changes</strong>: Convoy shall provide advance notice of new Sub-Processors. The User may object to new Sub-Processors based on reasonable privacy concerns.
             </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              4.3 A list of Convoy's current authorized Sub-Processors (the “List”) is available to the User at <a href="https://trust.getconvoy.io/subprocessors" className="text-primary-500 hover:underline">https://trust.getconvoy.io/subprocessors</a>. Such List may be updated by Convoy from time to time.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              4.4. If the User reasonably objects to an engagement in accordance with Section 4.2, and Convoy cannot provide a commercially reasonable alternative within a reasonable period of time, the User may discontinue the use of the affected Service by providing written notice to Convoy. Discontinuation shall not relieve the User of any fees owed to Convoy under the Main Agreement.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              4.5. If the User does not object to the engagement of a Sub-Processor in accordance with Section 4.2 within fourteen (14) days of notice by Convoy, that Sub-Processor will be deemed an authorized Sub-Processor for the purposes of this DPA.
+            </p>
+            <p className="text-16 text-gray-700 mb-16px">
+              4.6. Convoy shall only disclose the personal data to a Sub-Processor on documented instructions from the User or in alignment with this DPA.
+            </p>
           </section>
 
           <section className="mb-40px">
