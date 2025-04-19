@@ -122,7 +122,7 @@ const components = {
 	Image: ({ src, alt }: any) => {
 		return (
 			<div className="my-30px m-auto border border-primary-50 rounded-10px">
-				<OptimizedImage src={src} alt={alt} className="rounded-10px" />
+				<OptimizedImage width={100} height={100} src={src} alt={alt} className="rounded-10px" />
 			</div>
 		);
 	},
