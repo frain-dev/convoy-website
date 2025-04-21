@@ -10,10 +10,9 @@ tags:
     - Convoy
     - Engineering
 featured: false
-description: 'One of the major problems of designing a webhook delivery system is designing around bad/zombie endpoints. Zombie endpoints are dead endpoints that fail continuously and, over time, clog up your queues, create back pressure, and delay event delivery to legitimate webhook endpoints.'
+description: "In the world of distributed systems, ensuring reliable event delivery is crucial, especially when dealing with webhooks. The transactional outbox pattern has emerged as a robust solution to this challenge. In this post, we'll explore how to implement this pattern to guarantee reliable webhook delivery, even in the face of system failures."
 published_at: 2025-04-17T13:00:00.000+00:00
 ---
-
 
 In the world of distributed systems, ensuring reliable event delivery is crucial, especially when dealing with webhooks. The transactional outbox pattern has emerged as a robust solution to this challenge. In this post, we'll explore how to implement this pattern to guarantee reliable webhook delivery, even in the face of system failures.
 
@@ -33,6 +32,8 @@ The key benefits of this pattern are:
 ## Designing the Outbox
 
 Let’s dive into implementing the transactional outbox pattern using Go and SQLite. Our implementation consists of two main components: an ingest service that creates events and a worker that processes them. In your system, the ingest service can represent any component that performs CRUD operations on domain objects — in this example, we’ll use invoices.
+
+You can visit [webhooks with transactional outbox](https://github.com/frain-dev/tutorial-scripts/tree/main/webhooks-with-transactional-outbox) to see the full working code used in this article.
 
 ### Database Schema
 
@@ -257,6 +258,3 @@ When running a transactional outbox system in production, consider these importa
    - Use a message queue for the worker to handle high throughput
 
 By following these operational guidelines and implementing the transactional outbox pattern as shown, you can build a reliable webhook delivery system that guarantees exactly-once delivery, even in the face of system failures. 
-
-## Getting Started with Convoy
-Want to add webhooks to your API in minutes? You can get started at [cloud.getconvoy.io/signup](https://cloud.getconvoy.io/signup).
