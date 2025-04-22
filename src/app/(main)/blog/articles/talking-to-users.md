@@ -1,5 +1,5 @@
 ---
-title: "What I’ve learned from talking to users as a Technical founder"
+title: "What I’ve learned from talking to users as a Technical Founder"
 feature_image: distributed-circuit-breaker.png
 post_image: distributed-circuit-breaker.png
 primary_author:
