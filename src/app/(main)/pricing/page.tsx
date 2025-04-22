@@ -211,7 +211,7 @@ const cloudFeatures = [
 			},
 			{
 				name: 'SOC 2',
-				basic: 'Unsupported',
+				basic: 'Supported',
 				premium: 'Supported'
 			},
 			{
