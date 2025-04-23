@@ -35,6 +35,8 @@ One of the biggest misconceptions I had was that "talking to users" meant only e
 
 It's tempting to jump straight to product feedback, especially when you already have something to show. But the real value in talking to users isn't just about collecting comments on your latest feature. It's about immersing yourself in the problem space. When you deeply understand the challenges your target users face—like why payroll or tax compliance is such a pain point for startup founders—you gain insights that go beyond what a demo could reveal. This means falling in love with the problem itself and exploring how it impacts their daily lives. It's about understanding their world before you even bring your solution into the picture.
 
+One of my favourite examples of this is Carta. Engineers often confuse them as just a spreadsheet SaaS, whereas I humourously like to describe them as a legal firm. This explains why building an open-source Carta is somewhat laughable; the real value of the product is not the spreadsheet but the value-added service. 
+
 The below are some of the benefits I started to experience from constantly talking to users.
 
 ## Users will help you understand value creation. This is especially important for B2B SaaS.
