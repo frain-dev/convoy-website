@@ -1,7 +1,7 @@
 ---
 title: "What I’ve learned from talking to users as a Technical Founder"
-feature_image: distributed-circuit-breaker.png
-post_image: distributed-circuit-breaker.png
+feature_image: talking-to-users.png
+post_image: talking-to-users.png
 primary_author:
     name: Subomi Oluwalana
     twitter: subomiOluwalana
