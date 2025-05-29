@@ -13,15 +13,13 @@ interface RegionDropdownProps {
 	baseUrl: string;
 	className?: string;
 	variant?: 'primary' | 'secondary' | 'office-hours';
-	isExternalDomain?: boolean; // For special cases like playground.getconvoy.io
 }
 
 export default function RegionDropdown({ 
 	buttonText, 
 	baseUrl, 
 	className = '', 
-	variant = 'secondary',
-	isExternalDomain = false 
+	variant = 'secondary'
 }: RegionDropdownProps) {
 	const [showDropdown, setShowDropdown] = useState(false);
 
@@ -29,12 +27,12 @@ export default function RegionDropdown({
 		{ 
 			name: 'US Region', 
 			flag: '🇺🇸', 
-			url: isExternalDomain ? `https://us.${baseUrl}` : `https://us.getconvoy.cloud${baseUrl}` 
+			url: `https://us.getconvoy.cloud${baseUrl}` 
 		},
 		{ 
 			name: 'EU Region', 
 			flag: '🇪🇺', 
-			url: isExternalDomain ? `https://eu.${baseUrl}` : `https://eu.getconvoy.cloud${baseUrl}` 
+			url: `https://eu.getconvoy.cloud${baseUrl}` 
 		}
 	];
 
@@ -63,7 +61,7 @@ export default function RegionDropdown({
 		
 		switch (variant) {
 			case 'primary':
-				return `${baseStyles} px-12px py-10px text-14 h-10 nav-bar-break:bg-[#2780F1] hover:nav-bar-break:bg-[#1f66c1] nav-bar-break:text-white-100 text-[#2780F1]`;
+				return `${baseStyles} px-12px py-10px text-14 h-10 nav-bar-break:bg-[#2780F1] hover:nav-bar-break:bg-[#1f66c1] text-white-100`;
 			case 'office-hours':
 				return `${baseStyles} desktop:px-16px py-10px w-auto text-14 h-10 nav-bar-break:h-11 bg-white-100 desktop:bg-[#2780F1] text-[#2780F1] hover:desktop:bg-[#1f66c1] desktop:text-white-100 desktop:shadow-btn-secondary cursor-pointer`;
 			default: // secondary

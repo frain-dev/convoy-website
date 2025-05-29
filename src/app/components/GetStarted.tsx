@@ -19,7 +19,7 @@ export default function GetStarted() {
 				once: true
 			}}
 			className="w-full flex items-center justify-center px-5">
-			<div className="mb-100px desktop:mb-130px desktop:max-w-[800px] w-full h-auto desktop:h-[217px] bg-white-100 border border-[#ebebeb] flex mx-auto rounded-16px overflow-hidden">
+			<div className="mb-100px desktop:mb-130px desktop:max-w-[800px] w-full h-auto desktop:h-[217px] bg-white-100 border border-[#ebebeb] flex mx-auto rounded-16px">
 				<div className="w-[90px] desktop:w-[197px] min-h-full bg-gradient-to-r from-white-100/40 from-[-20%] to-[#2780F1]/40 to-[150%] rounded-l-16px relative p-6 desktop:p-10">
 					<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] absolute top-0 right-0 w-full h-full"></div>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" className="z-10 w-10 h-10 desktop:w-16 desktop:h-16">

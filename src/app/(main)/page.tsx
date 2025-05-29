@@ -31,14 +31,21 @@ import RegionDropdown from '@/app/components/RegionDropdown';
 
 export default function Home() {
 	const companies = [
-		{ name: 'dojah', url: 'https://dojah.io', class: 'h-[30px]' },
-		{ name: 'catlog', url: 'https://catlog.ng', class: 'h-[30px]' },
-		{ name: 'getwalletsio', url: 'https://getwallets.io', class: 'h-[30px]' },
-		{ name: 'payourse', url: 'https://payourse.com', class: 'h-[30px]' },
-		{ name: 'piggyvest', url: 'https://piggyvest.com', class: 'h-[30px]' },
-		{ name: 'termii', url: 'https://termii.com', class: 'h-[30px]' },
-		{ name: 'hailify', url: 'https://hailify.com', class: 'h-[30px]' },
-		{ name: 'buycoins', url: 'https://buycoins.africa', class: 'h-[30px]' }
+		{ name: 'maple-full', url: 'https://maplebilling.com/', class: 'h-20px desktop:h-30px' },
+		{ name: 'testlify-full', url: 'https://testlify.com/', class: 'h-20px desktop:h-28px' },
+		{ name: 'mono-full', url: 'https://mono.co/', class: 'h-20px' },
+		{ name: 'ascenda-full', url: 'https://www.ascenda.com/', class: 'h-20px desktop:h-24px' },
+		{ name: 'xendit-full', url: 'https://www.xendit.co/', class: 'h-20px desktop:h-28px mr-[20px]' },
+		{ name: 'spruce-full', url: 'https://sprucehealth.com/', class: 'h-20px desktop:h-28px' },
+		{ name: 'caxton-full', url: 'https://www.caxton.io/', class: 'h-20px' },
+		{ name: 'neynar-full', url: 'https://neynar.com/', class: 'h-20px desktop:h-26px' },
+		{ name: 'source-full', url: 'https://source.ag/', class: 'h-20px desktop:h-26px' },
+		{ name: 'piggyvest-full', url: 'https://www.piggyvest.com/', class: 'h-20px desktop:h-30px' },
+		{ name: 'trustmi-full', url: 'https://www.trustmi.ai/', class: 'h-20px desktop:h-24px' },
+		{ name: 'sline-full', url: 'https://www.sline.io/', class: 'h-20px desktop:h-26px' },
+		{ name: 'elenpay-full', url: 'https://elenpay.tech/', class: 'h-20px desktop:h-24px' },
+		{ name: 'freshtrack-full', url: 'https://www.freshtrack.ma/', class: 'h-20px desktop:h-36px mx-20px -mt-8px' },
+		{ name: 'marble-full', url: 'https://www.checkmarble.com/', class: 'h-20px desktop:h-28px ml-[20px]' }
 	];
 
 	return (

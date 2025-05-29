@@ -73,7 +73,7 @@ export default function Header() {
 								/>
 								<div className="block nav-bar-break:hidden h-18px w-[1px] bg-primary-25 mx-5px"></div>
 								<RegionDropdown 
-									buttonText="Start your project" 
+									buttonText="Get started for free" 
 									baseUrl="/signup" 
 									variant="primary"
 								/>
