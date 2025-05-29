@@ -38,6 +38,7 @@ import support from '../../../../public/svg/support.svg';
 import retry from '../../../../public/svg/retry.svg';
 import synchronous from '../../../../public/svg/synchronous.svg';
 import { OptimizedImage } from '@/app/components/OptimizedImaged';
+import RegionDropdown from '@/app/components/RegionDropdown';
 
 const advancedFeatures = [
 	{
@@ -215,21 +216,12 @@ export default function WebhookGateway() {
 					</p>
 
 					<div className="flex flex-wrap gap-16px mt-4 desktop:mt-6 desktop:items-center desktop:justify-center mb-56px">
-						<a
-							target="_blank"
-							href="https://cloud.getconvoy.io/signup"
-							className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center justify-center w-full sm-old:w-max">
-							<span>Try for free</span>
-
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="18"
-								height="19"
-								viewBox="0 0 18 19"
-								className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
-								<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
-							</svg>
-						</a>
+						<RegionDropdown 
+							buttonText="Try for free" 
+							baseUrl="/signup" 
+							variant="primary"
+							className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center justify-center w-full sm-old:w-max"
+						/>
 						<a
 							target="_blank"
 							href="https://cal.com/subomi/30min"
