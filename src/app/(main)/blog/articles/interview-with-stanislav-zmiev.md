@@ -63,7 +63,3 @@ Stanislav is the tech lead of platform engineering at [Monite](https://monite.co
     I contacted the article’s author, Brandur Leach, we had a few discussions on API versioning and within a few months I was able to bring [Cadwyn](https://github.com/zmievsa/cadwyn) to life — my own FastAPI-based implementation of Stripe’s approach. It solved all of our problems at the cost of a steeper initial learning curve. Cadwyn does not just copy Stripe though — I believe we were able to go much further than that. It is type safe, supports request migrations, has code generation, is open-source, and has an extensive documentation. I call it the zero-duplication API versioning — schemas, routers, data — everything is generated for you from your migrations. As a result, Cadwyn gave us the ability to stop worrying about ever deprecating API versions  as the cost of supporting each version has become almost unnoticeable. 
     
     Cadwyn is not just a python framework — its documentation has an entire section on similar frameworksб best articles about API versioning, and guidelines on how to build a similar framework. I hope that Cadwyn and its docs can become a learning resource for anybody trying to master API versioning.
-
-## Getting Started with Convoy
-
-Want to add webhooks to your API in minutes? You can get started at [cloud.getconvoy.io/signup](http://cloud.getconvoy.io/signup).

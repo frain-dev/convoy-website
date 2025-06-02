@@ -132,7 +132,3 @@ In this first part of the series, you got to learn about how popular API platfor
 No one authentication method is 100% secure, each method is simply another layer of security in addition to all other security best practices that you must adopt. It's not uncommon to implement more than one mechanism for authentication, choosing the best method for different parts of your API or for different entities or principals. 
 
 The next in the series will go in-depth on authorization. Hope to see you there!
-
-### Getting Started with Convoy
-
-Already have an API, and want to send or receive webhooks from it? Get started in minutes at [cloud.getconvoy.io/signup](http://cloud.getconvoy.io/signup).

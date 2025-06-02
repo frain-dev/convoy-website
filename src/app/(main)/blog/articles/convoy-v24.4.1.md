@@ -58,5 +58,3 @@ We re-implemented our endpoint rate limiter (which limits the rate of requests s
 - Fixed endpoints count query for portal links.
 - Added data plane capabilities back to the worker, which was unintentionally removed.
 
-# Getting Started with Convoy
-Want to add webhooks to your API in minutes? You can get started at [cloud.getconvoy.io/signup](https://cloud.getconvoy.io/signup).

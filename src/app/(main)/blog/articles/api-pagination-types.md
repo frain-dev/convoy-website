@@ -179,7 +179,3 @@ GET https://{shop}.myshopify.com/admin/api/{api_version}/customers.json?page_inf
 
 Either of the two pagination types discussed here come with their benefits and trade-offs, but the numbers show that many leading API platforms implement them in ways that best serve their pagination needs. Take some time to analyze the different use cases where each of these methods have been applied, to see if they help you determine the approach that would work best for the next API you build.
 
-### Getting Started with Convoy
-
-Already have an API, and want to send or receive webhooks from it? Get started in minutes at [cloud.getconvoy.io/signup](http://cloud.getconvoy.io/signup).
-
