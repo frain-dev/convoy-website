@@ -58,7 +58,6 @@
       "pages":[
         "guides/sending-webhook-example",
         "guides/receiving-webhook-example",
-        "guides/use-convoy-as-a-proxy",
         "guides/best-practices-for-generating-webhook-events"
       ]
     },
@@ -89,7 +88,6 @@
         "product-manual/portal-links",
         "product-manual/meta-events",
         "product-manual/idempotency",
-        "product-manual/static-ips",
         "product-manual/webhooks-documentation",
         {
           "group":"Forward Proxies",
