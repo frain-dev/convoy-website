@@ -71,7 +71,3 @@ What also struck the team at Neynar was how nimble and responsive the Convoy tea
 # The Results
 
 As a result of Convoy, Neynar has become the leading provider of webhook events for Farcaster. They’ve been able to iterate rapidly and even build a webhooks subscription API on top of Convoy’s flexibility.
-
-# Getting Started with Convoy
-
-Want to deliver fine-grained webhooks like Neynar? You can get started at [cloud.getconvoy.io/signup](http://cloud.getconvoy.io/signup).

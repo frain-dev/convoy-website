@@ -34,6 +34,3 @@ A hallmark of good software design is when several unintended benefits emerge na
 
 Take care!
 
-## Getting Started with Convoy
-
-Want to add webhooks to your API in minutes? You can get started at [cloud.getconvoy.io/signup](http://cloud.getconvoy.io/signup).
