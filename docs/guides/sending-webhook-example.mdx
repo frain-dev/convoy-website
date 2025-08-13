@@ -24,17 +24,16 @@ npm install convoy.js
 
 ```js example
 const { Convoy } = require('convoy.js');
-const convoy = new Convoy({ api_key: 'your_api_key' });
-```
-
-In the event you're using a self-hosted convoy instance, you can define the url as part of what is passed into convoy's constructor.
-
-```js example
-const convoy = new Convoy({
+const convoy = new Convoy({ 
 	api_key: 'your_api_key',
-	uri: 'self-hosted-instance'
+	uri: 'your_uri'
 });
 ```
+
+In the event you're using a self-hosted convoy instance, you can add your instance uri. But if you are using the cloud base service, your `uri` will either be the following base on the region you register as:
+- `https://us.getconvoy.cloud/api/v1`
+- `https://eu.getconvoy.cloud/api/v1`
+
 
 Now that your client has been configured, create a convoy application.
 
