@@ -77,7 +77,8 @@
               "product-manual/functions",
               "product-manual/metrics",
               "product-manual/read-replicas",
-              "product-manual/retention-policy"
+              "product-manual/retention-policy",
+              "product-manual/custom-certificate-authority"
             ]
           },
           {
