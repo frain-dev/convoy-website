@@ -34,30 +34,30 @@ export default function AboutUs() {
 			linkedIn: 'https://www.linkedin.com/in/subomi-oluwalana-one/',
 			twitter: 'https://twitter.com/subomiOluwalana'
 		}
-		// ,{
-		// 	name: 'Daniel Oluojomu',
-		// 	role: 'Backend Engineer',
-		// 	image: 'emmanuel',
-		// 	github: 'https://github.com/danvixent',
-		// 	linkedIn: 'https://www.linkedin.com/in/daniel-oluojomu/',
-		// 	twitter: 'http://twitter.com/danvixent'
-		// },
-		// {
-		// 	name: 'Pelumi Oni',
-		// 	role: 'Frontend Engineer',
-		// 	image: 'manan',
-		// 	github: 'https://github.com/oluwadaminiola',
-		// 	linkedIn: 'https://www.linkedin.com/in/pelumioni',
-		// 	twitter: 'https://twitter.com/pelumi__o'
-		// },
-		// {
-		// 	name: 'Philip Simbwa',
-		// 	role: 'Cloud Engineer',
-		// 	image: 'michael',
-		// 	github: 'https://github.com/simbwa',
-		// 	linkedIn: 'https://www.linkedin.com/in/phillip-simbwa-8517741b/',
-		// 	twitter: 'http://twitter.com/simbwa'
-		// }
+		,{
+			name: 'Oluwatosin Fatungase',
+			role: 'Business',
+			image: 'tosin',
+			github: '',
+			linkedIn: 'https://www.linkedin.com/in/oluwatosinfatungase/',
+			twitter: ''
+		},
+		{
+			name: 'Smart Mekiliuwa',
+			role: 'Engineering',
+			image: 'smart',
+			github: 'https://github.com/mekilis',
+			linkedIn: 'https://www.linkedin.com/in/mekilis/',
+			twitter: 'https://x.com/mekiliuwa'
+		},
+		{
+			name: 'Olalekan Odukoya',
+			role: 'Engineering',
+			image: 'olalekan',
+			github: 'https://github.com/olamilekan000',
+			linkedIn: 'https://www.linkedin.com/in/olalekan-odukoya-a5aab811b/',
+			twitter: ''
+		}
 	];
 
 	return (
@@ -133,7 +133,7 @@ export default function AboutUs() {
 			</motion.section>
 
 			<section className="w-full px-20px m-auto py-24 bg-[#Fff] flex desktop:items-center justify-center">
-				<div className="desktop:max-w-[900px] w-full">
+				<div className="max-w-[1233px] w-full">
 					<motion.h3
 						initial={{ opacity: 0, y: 40 }}
 						whileInView={{
@@ -153,7 +153,7 @@ export default function AboutUs() {
 						By the best team
 					</motion.h3>
 
-					<div className="grid xs:grid-cols-1 sm-old:grid-cols-2 tab-min:grid-cols-2 gap-60px tab-min:gap-40px justify-center items-center m-auto w-full desktop:w-max">
+					<div className="grid gap-32px m-auto w-full" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))' }}>
 						{teamMembers.map((member, i) => (
 							<motion.div
 								initial={{ opacity: 0, y: 5 }}
@@ -173,12 +173,12 @@ export default function AboutUs() {
 								key={i}
 								className="">
 								<div className="flex flex-col justify-center lg-old:items-center lg-old:text-center m-auto">
-									<div className="w-full lg-old:w-[310px] h-auto aspect-square lg-old:aspect-auto lg-old:h-[310px] overflow-hidden rounded-8px">
-										<OptimizedImage src={`/employees/${member.image}.jpg`} alt={member.image} className="object-cover" width={500} height={500} />
+									<div className="w-full lg-old:w-[220px] h-auto aspect-square lg-old:aspect-auto lg-old:h-[220px] overflow-hidden rounded-8px">
+										<OptimizedImage src={`/employees/${member.image}.jpg`} alt={member.image} className="object-cover" width={320} height={320} />
 									</div>
 
-									<p className="mt-16px mb-2px text-18 desktop:text-20 font-semibold">{member.name}</p>
-									<p className="text-[#666] text-16 desktop:text-18 font-medium">{member.role}</p>
+									<p className="mt-16px mb-2px text-16 desktop:text-18 font-semibold">{member.name}</p>
+									<p className="text-[#666] text-14 desktop:text-16 font-medium">{member.role}</p>
 
 									<ul className="flex gap-16px mt-16px">
 										<a href={member.github} target="_blank">
@@ -249,7 +249,7 @@ export default function AboutUs() {
 						Backed by Industry leaders
 					</motion.h2>
 
-					<div className="grid grid-cols-1 sm-old:grid-cols-2 md-old:grid-cols-3 xl-old:grid-cols-4 gap-60px desktop:gap-110px">
+					<div className="grid gap-40px desktop:gap-60px" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
 						{backedLeaders.map((leader, i) => (
 							<motion.div
 								initial={{ opacity: 0, y: 5 }}
