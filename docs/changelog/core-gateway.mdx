@@ -2,6 +2,29 @@
 title: Core Gateway
 ---
 
+<Update label="25.9.1">
+    ### Features
+    - Added Google SSO for authentication
+
+    ### Enhancements
+    - Updated package versions for improved stability
+    - Upgraded base Docker image and integrated Dependabot
+    - Added organization ID to logs for better traceability
+    - Refined Docker Compose setup for development
+    - Standardized PortalLink authentication types
+    - Improved batch retry mechanism for reliability
+    - Moved circuit breaker configuration to project config
+    - Refactored RBAC for cleaner access control
+
+    ### Bug Fixes
+    - Fixed issue with returning internal errors to clients
+
+    ### Patches
+    The changelogs for this minor release version and any maintenance versions are listed below.  
+    - [Convoy v25.9.1](https://github.com/frain-dev/convoy/releases/tag/v25.9.1)  
+    - Release 25.9.1 introduces Google SSO, dependency and Docker updates, logging and RBAC improvements, circuit breaker configuration refactor, enhanced batch retries, and a fix for internal error handling.
+</Update>
+
 <Update label="25.7">
     ### Features
     - Add owner ID filtering in the event log
