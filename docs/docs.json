@@ -47,6 +47,7 @@
             "group": "Product Manual",
             "pages": [
               "product-manual/organizations-and-projects",
+              "product-manual/rbac",
               "product-manual/endpoints",
               "product-manual/signatures",
               "product-manual/sources",
