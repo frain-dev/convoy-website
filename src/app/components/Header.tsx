@@ -16,6 +16,7 @@ export default function Header() {
 		{ name: 'Core Gateway', route: '/core-gateway', type: 'route' },
 		{ name: 'Documentation', route: '/docs', type: 'route' },
 		{ name: 'Blog', route: '/blog', type: 'route' },
+		{ name: 'Changelog', route: '/changelog', type: 'route' },
 		{ name: 'Pricing', route: '/pricing', type: 'route' },
 		{ name: 'About', route: '/aboutus', type: 'route' }
 	];
