@@ -8,35 +8,34 @@ authors:
     image: /employees/subomi.jpg
 ---
 
-We shipped two features this week that change how you manage access to Convoy: Google SSO and a rebuilt permissions system.
+![Google SSO & RBAC](/feature-images/google-sso-and-rbac.png)
+
+We released two features this week: Google SSO and a complete rewrite of how permissions work.
 
 **Google SSO**
 
-If your team uses Google Workspace, you can now sign in to Convoy with your Google account. No separate password to remember or rotate.
+Google Workspace users can sign into Convoy using their Google account. No more separate passwords to manage.
 
-Here's how it works. Click "Sign in with Google" on the login page. Google handles the authentication. You're redirected back to Convoy and you're in. First-time users get a quick setup flow where they name their organization. If you already have a Convoy account with the same email, we link it automatically.
+The flow works like this: click "Sign in with Google", you'll get redirected through Google's auth, then back to Convoy. First time logging in? You'll name your organization. Existing account with that email? We'll connect it up.
 
-This matters because password management is a pain. Your team already has Google accounts. Why create another credential to manage? With SSO, onboarding is faster and your security posture improves since you're centralizing identity management.
+Since everyone's already using Google accounts anyway, this cuts down on password chaos. New team members get onboarded faster, and all your identity stuff lives in one place.
 
-For self-hosted deployments, you'll need to set up OAuth credentials in Google Cloud Console and configure them in your `convoy.json`. Our [setup guide](/docs/product-manual/google-sso) walks through the process step by step.
+Self-hosted users: pull OAuth credentials from Google Cloud Console and add them to `convoy.json`. Full steps are in the [setup guide](/docs/product-manual/google-sso).
 
 **Role-Based Access Control**
 
-We rebuilt permissions from the ground up. The old system worked, but it didn't scale well as teams grew. Now you have five distinct roles:
+The old permissions setup worked okay, but it started breaking down as teams got bigger. So we rebuilt it. You've got five roles now:
 
-- **Instance Admin** — Full control across the entire Convoy instance
-- **Organization Admin** — Manage your organization and all its projects
-- **Billing Admin** — Handle billing, nothing else
-- **Project Admin** — Manage a specific project's settings and resources
-- **Project Viewer** — Read-only access to project data
+- **Instance Admin** — Controls everything across your Convoy instance
+- **Organization Admin** — Runs the organization and all its projects
+- **Billing Admin** — Only billing stuff
+- **Project Admin** — One project's settings and resources
+- **Project Viewer** — Can look but can't touch
 
-The roles follow a hierarchy. Instance Admin inherits everything. Organization Admin gets Project Admin and Project Viewer permissions. You get the idea. This means you can grant broad access without manually checking dozens of permission boxes.
+Permissions stack on top of each other. Instance Admin sees and controls everything. Organization Admin gets Project Admin and Viewer powers automatically. Makes it easy to give someone wide access without going through a bunch of checkboxes.
 
-You can also scope roles to specific projects or even individual endpoints. Need someone to manage webhooks for one client but not see others? Scope their Project Admin role to that project. Simple.
+You can also lock roles down to specific projects or even individual endpoints. Say you need someone managing webhooks for Client A but you don't want them seeing Client B's stuff. Scope their Project Admin role to just that one project.
 
-Why does this matter? As your team grows, you need granular control over who can do what. A contractor shouldn't have the same access as your CTO. An intern reviewing logs doesn't need to modify production endpoints. RBAC gives you the tools to enforce the principle of least privilege without micromanaging every permission.
+The bigger your team gets, the more you need this kind of control. Your contractor shouldn't have the same keys as your CTO. Someone reviewing event logs doesn't need to mess with production endpoints. RBAC gives you a way to set boundaries without having to manually approve every little thing.
 
-Both features are live now. Check the [Google SSO docs](/docs/product-manual/google-sso) and [RBAC guide](/docs/product-manual/rbac) for implementation details.
-
-![Google SSO & RBAC](/feature-images/google-sso-and-rbac.png)
-
+Both are live now. Check out the [Google SSO docs](/docs/product-manual/google-sso) and [RBAC guide](/docs/product-manual/rbac) to get started.
