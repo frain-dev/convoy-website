@@ -48,6 +48,7 @@
             "pages": [
               "product-manual/organizations-and-projects",
               "product-manual/rbac",
+              "product-manual/google-sso",
               "product-manual/endpoints",
               "product-manual/signatures",
               "product-manual/sources",
