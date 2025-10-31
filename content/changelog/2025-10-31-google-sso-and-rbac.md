@@ -14,28 +14,28 @@ We released two features this week: Google SSO and a complete rewrite of how per
 
 **Google SSO**
 
-Google Workspace users can sign into Convoy using their Google account. No more separate passwords to manage.
+Google Workspace users can sign into Convoy using their Google account, eliminating the need for separate passwords.
 
-The flow works like this: click "Sign in with Google", you'll get redirected through Google's auth, then back to Convoy. First time logging in? You'll name your organization. Existing account with that email? We'll connect it up.
+Click "Sign in with Google" on the login page. The authentication flow redirects through Google and back to Convoy. First-time users will set up their organization name during the process. Existing accounts with the same email are automatically linked.
 
-Since everyone's already using Google accounts anyway, this cuts down on password chaos. New team members get onboarded faster, and all your identity stuff lives in one place.
+This reduces password management overhead since teams already use Google accounts. New team members get onboarded faster, and all identity management is centralized.
 
-Self-hosted users: pull OAuth credentials from Google Cloud Console and add them to `convoy.json`. Full steps are in the [setup guide](/docs/product-manual/google-sso).
+For self-hosted deployments, configure OAuth credentials from Google Cloud Console in your `convoy.json`. See the [setup guide](/docs/product-manual/google-sso) for details.
 
 **Role-Based Access Control**
 
-The old permissions setup worked okay, but it started breaking down as teams got bigger. So we rebuilt it. You've got five roles now:
+The old permissions setup worked for smaller teams but started breaking down as teams grew. We rebuilt it with five roles:
 
 - **Instance Admin** — Controls everything across your Convoy instance
 - **Organization Admin** — Runs the organization and all its projects
-- **Billing Admin** — Only billing stuff
+- **Billing Admin** — Handles billing only
 - **Project Admin** — One project's settings and resources
-- **Project Viewer** — Can look but can't touch
+- **Project Viewer** — View-only access to project data
 
-Permissions stack on top of each other. Instance Admin sees and controls everything. Organization Admin gets Project Admin and Viewer powers automatically. Makes it easy to give someone wide access without going through a bunch of checkboxes.
+Permissions stack on top of each other. Instance Admin sees and controls everything. Organization Admin automatically includes Project Admin and Viewer permissions, making it easy to grant broad access without configuring individual permissions.
 
-You can also lock roles down to specific projects or even individual endpoints. Say you need someone managing webhooks for Client A but you don't want them seeing Client B's stuff. Scope their Project Admin role to just that one project.
+You can also scope roles to specific projects or endpoints. For example, you can grant someone Project Admin access for one client project while restricting access to others.
 
-The bigger your team gets, the more you need this kind of control. Your contractor shouldn't have the same keys as your CTO. Someone reviewing event logs doesn't need to mess with production endpoints. RBAC gives you a way to set boundaries without having to manually approve every little thing.
+As teams grow, granular access control becomes essential. Different team members need different levels of access. Someone reviewing event logs shouldn't have permission to modify production endpoints. RBAC provides tools to enforce least privilege without managing every permission individually.
 
-Both are live now. Check out the [Google SSO docs](/docs/product-manual/google-sso) and [RBAC guide](/docs/product-manual/rbac) to get started.
+Both features are available now. See the [Google SSO docs](/docs/product-manual/google-sso) and [RBAC guide](/docs/product-manual/rbac) for implementation details.
