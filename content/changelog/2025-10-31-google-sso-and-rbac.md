@@ -16,6 +16,8 @@ Google Workspace users can sign into Convoy using their Google account, eliminat
 
 Click "Sign in with Google" on the login page. The authentication flow redirects through Google and back to Convoy. First-time users will set up their organization name during the process. Existing accounts with the same email are automatically linked.
 
+![Google SSO Login](/feature-images/google-sso-login.png)
+
 **Role-Based Access Control**
 
 The old permissions setup worked for smaller teams but started breaking down as teams grew. We rebuilt it with five roles:
@@ -25,6 +27,8 @@ The old permissions setup worked for smaller teams but started breaking down as 
 - **Billing Admin** — Handles billing only
 - **Project Admin** — One project's settings and resources
 - **Project Viewer** — View-only access to project data
+
+![RBAC](/feature-images/rbac.png)
 
 This gives you granular control over who can access and modify resources in your Convoy instance.
 
