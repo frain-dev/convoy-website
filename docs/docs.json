@@ -232,10 +232,22 @@
               "api-reference/subscriptions/list-all-subscriptions",
               "api-reference/subscriptions/create-a-subscription",
               "api-reference/subscriptions/validate-subscription-filter",
-              "api-reference/subscriptions/validate-subscription-filter-1",
+              "api-reference/subscriptions/test-a-subscription-function",
               "api-reference/subscriptions/retrieve-a-subscription",
               "api-reference/subscriptions/update-a-subscription",
               "api-reference/subscriptions/delete-subscription"
+            ]
+          },
+          {
+            "group": "Subscription Filters",
+            "pages": [
+              "api-reference/filters/create-a-subscription-filter",
+              "api-reference/filters/bulk-create-subscription-filters",
+              "api-reference/filters/update-a-subscription-filter",
+              "api-reference/filters/bulk-update-subscription-filters",
+              "api-reference/filters/get-all-subscription-filters",
+              "api-reference/filters/get-one-subscription-filter",
+              "api-reference/filters/delete-a-subscription-filter"
             ]
           }
         ]
