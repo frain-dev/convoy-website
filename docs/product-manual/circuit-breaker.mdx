@@ -1,12 +1,14 @@
 ---
 title: Circuit Breaker
-description: Prevent cascading failures with automatic endpoint health management
 id: circuit-breaker
 ---
 
-# Circuit Breaker
+This is an advanced reliability feature that automatically detects unhealthy endpoints and prevents repeated failed delivery attempts, protecting your system from cascading failures.
 
-Circuit breaker is an advanced reliability feature that automatically detects unhealthy endpoints and prevents repeated failed delivery attempts, protecting your system from cascading failures.
+> **Note:**
+> - The circuit breaker functionality is available only for licensed users with Circuit Breaking capability.
+> - This feature is disabled by default. To enable it, use the environment variable `CONVOY_ENABLE_FEATURE_FLAG=circuit-breaker` or the CLI flag `--enable-feature-flag=circuit-breaker`.
+> - Requires Redis for state storage and a running background worker process.
 
 ## Overview
 
@@ -20,8 +22,8 @@ The circuit breaker implements a three-state pattern to intelligently manage end
 stateDiagram-v2
     [*] --> Closed
     Closed --> Open: Failure threshold exceeded
-    Open --> HalfOpen: Timeout expires
-    HalfOpen --> Closed: Success threshold met
+    Open --> HalfOpen: Error timeout expires
+    HalfOpen --> Closed:  Success threshold met
     HalfOpen --> Open: Failures continue
 ```
 
@@ -29,22 +31,22 @@ stateDiagram-v2
 
 ### State Transitions
 
-1. **Closed � Open (Tripping)**
-   - Triggers when failure rate exceeds the configured threshold
-   - Requires minimum request count to be met
-   - Example: With 70% threshold and 10 minimum requests, 7 out of 10 failures will trip the breaker
+1. **Closed → Open (Tripping)**
+    - Triggers when the failure rate exceeds the configured threshold
+    - Requires a minimum request count to be met
+    - Example: With a 70% threshold and 10 minimum requests, 7 out of 10 failures will trip the breaker
 
-2. **Open � Half-Open (Recovery Mode)**
-   - Automatically transitions after the configured timeout period
-   - Allows limited requests to test endpoint health
+2. **Open → Half-Open (Recovery Mode)**
+    - Automatically transitions after the configured timeout period
+    - Allows limited requests to test endpoint health
 
-3. **Half-Open � Closed (Reset)**
-   - Occurs when success rate meets the threshold
-   - Endpoint returns to normal operation
+3. **Half-Open → Closed (Reset)**
+    - Occurs when the success rate meets the threshold
+    - Endpoint returns to normal operation
 
 4. **Consecutive Failures (Disable)**
-   - After repeated circuit breaker trips, the endpoint is automatically disabled
-   - Notifications are sent to endpoint contacts and project owners
+    - After repeated circuit breaker trips, the endpoint is automatically disabled
+    - Notifications are sent to endpoint contacts and project owners
 
 ### Monitoring Window
 
@@ -53,21 +55,44 @@ The circuit breaker continuously monitors endpoint health by:
 - Analyzing metrics from a rolling time window (default: last 5 minutes)
 - Calculating failure and success rates from actual delivery attempts
 
+**How the Observability Window Affects Tripping Speed:**
+
+The `observability_window` setting directly impacts how quickly a circuit breaker can trip:
+
+- **Shorter window (e.g., 3 minutes)**: Faster response to failures, but more sensitive to temporary issues
+- The breaker only needs enough failures within 3 minutes to meet the threshold
+- Example: 10 failures in 3 minutes = faster trip
+
+- **Longer window (e.g., 10 minutes)**: Slower to trip, but more stable and less prone to false positives
+- Requires sustained failures over a longer period
+- Example: 10 failures must occur across 10 minutes = slower trip
+
+**Important Timing Considerations:**
+
+1. **Minimum requests must accumulate**: The `minimum_request_count` must be reached within the `observability_window` for evaluation
+    - Example problem: `5 req/min` traffic with `minimum_request_count = 10` and `observability_window = 1 minute` will never trip because it can't reach 10 requests
+    - Example solution: Increase `observability_window` to 5 minutes to allow accumulation
+
+2. **Sample rate vs observability window**: The `sample_rate` determines how often the circuit breaker checks, while `observability_window` determines the data it analyzes
+    - Checking every 30 seconds with a 5-minute window means each check analyzes the last 5 minutes of data
+    - A longer `sample_rate` delays detection but reduces system load
+    - A shorter `sample_rate` enables faster detection but increases processing frequency
+
 ## Configuration
 
-Circuit breaker settings can be configured at the project level. Each setting controls different aspects of the circuit breaker behavior.
+Circuit breaker settings can be configured per project. Each setting controls different aspects of the circuit breaker's behavior.
 
 ### Configuration Options
 
-| Setting | Default | Description |
-|---------|---------|-------------|
-| `sample_rate` | 30 seconds | How often to poll and evaluate endpoint metrics |
-| `error_timeout` | 30 seconds | Wait time before transitioning from Open to Half-Open |
-| `failure_threshold` | 70% | Percentage of failures that triggers the circuit breaker |
-| `success_threshold` | 5% | Percentage of successes needed to close from Half-Open |
-| `minimum_request_count` | 10 | Minimum requests needed before evaluating thresholds |
-| `observability_window` | 5 minutes | Time window to analyze for calculating failure rates |
-| `consecutive_failure_threshold` | 10 | Number of consecutive trips before disabling the endpoint |
+| Setting                         | Default    | Description                                                                                            |
+|---------------------------------|------------|--------------------------------------------------------------------------------------------------------|
+| `sample_rate`                   | 30 seconds | How often to poll and evaluate endpoint metrics                                                        |
+| `error_timeout`                 | 30 seconds | Wait time before transitioning from Open to Half-Open                                                  |
+| `failure_threshold`             | 70%        | Percentage of failures that triggers the circuit breaker                                               |
+| `success_threshold`             | 5%         | Percentage of successes needed to close from Half-Open                                                 |
+| `minimum_request_count`         | 10         | Minimum requests needed before evaluating thresholds                                                   |
+| `observability_window`          | 5 minutes  | Rolling time window for calculating failure rates. **Shorter = faster tripping, Longer = more stable** |
+| `consecutive_failure_threshold` | 10         | Number of consecutive trips before disabling the endpoint                                              |
 
 ### Configuration Priority
 
@@ -75,19 +100,6 @@ Circuit breaker configuration is resolved in this order:
 1. **Project-level configuration** - Custom settings for your project
 2. **Application-level configuration** - System-wide defaults
 3. **Hardcoded defaults** - Fallback values
-
-### Validation Rules
-
-When configuring circuit breaker settings, the following rules apply:
-
-- `sample_rate` must be greater than 0
-- `error_timeout` must be greater than 0
-- `failure_threshold` must be between 1-100
-- `success_threshold` must be between 1-100
-- `minimum_request_count` must be at least 10
-- `observability_window` must be greater than 0
-- `observability_window * 60` must be greater than `sample_rate`
-- `consecutive_failure_threshold` must be greater than 0
 
 ## Usage Examples
 
@@ -113,6 +125,8 @@ This configuration:
 - Requires 10% success rate to recover
 - Disables endpoint after 10 consecutive circuit breaker trips
 
+**Timing behavior**: With a 5-minute observability window, the breaker needs at least 10 failed requests within the last 5 minutes to evaluate. This provides a balanced approach - responsive enough to catch issues quickly, but stable enough to avoid false positives from brief outages.
+
 ### Example 2: Aggressive Protection
 
 For critical systems requiring fast failure detection:
@@ -132,8 +146,10 @@ For critical systems requiring fast failure detection:
 This configuration:
 - Checks more frequently (every 15 seconds)
 - Lower failure tolerance (50%)
-- Requires higher success rate to recover (20%)
+- Requires a higher success rate to recover (20%)
 - Disables endpoint faster (after 5 trips)
+
+**Timing behavior**: With a 3-minute observability window, the breaker can trip very quickly—it only needs 5 out of 10 requests to fail within 3 minutes to trip. This aggressive setup is ideal for protecting critical systems where you want to fail fast and prevent cascading issues. The trade-off is higher sensitivity to temporary problems.
 
 ### Example 3: Lenient Configuration
 
@@ -155,7 +171,14 @@ This configuration:
 - Checks less frequently (every 60 seconds)
 - Higher failure tolerance (85%)
 - Easier recovery (5% success)
-- More patient with repeated failures (15 trips before disable)
+- More lenient with repeated failures (15 trips before endpoints are disabled)
+
+**Timing behavior**: With a 10-minute observability window, the breaker requires sustained failures over a longer period before tripping. You need 20 requests with 85% failures within 10 minutes. This conservative approach is ideal for endpoints that experience occasional issues but generally recover on their own. The breaker will only trip during prolonged outages, minimizing false alarms.
+
+## Updating Disabled Endpoints
+
+Endpoints that are [disabled (inactive)](/product-manual/endpoints#endpoint-state) due to consecutive failures can be re-enabled on the dashboard.
+<img src="/images/circuit-breaker-reactivate-endpoint.png" alt="Re-enabled Endpoint" width="600"/>
 
 ## Managing Circuit Breakers
 
@@ -197,11 +220,28 @@ Notifications are rate-limited to prevent alert fatigue (maximum 3 notifications
 ## Best Practices
 
 1. **Start with defaults**: The default configuration works well for most use cases
+
 2. **Monitor your metrics**: Review delivery attempts before tuning thresholds
-3. **Consider traffic patterns**: High-traffic endpoints may need lower minimum_request_count
-4. **Balance recovery time**: Longer `error_timeout` gives endpoints more recovery time but delays legitimate traffic
-5. **Set appropriate windows**: `observability_window` should capture meaningful traffic patterns
-6. **Test your configuration**: Use lower thresholds in staging to verify behavior
+
+3. **Calculate your timing requirements**: Consider how quickly you need to detect and respond to failures
+- **Example**: If your endpoint receives 2 requests per minute and you want to detect failures within 10 minutes:
+- `observability_window`: 10 minutes (detection timeframe)
+- `minimum_request_count`: 10-20 (achievable with 2 req/min × 10 min = 20 requests)
+- Expected trip time: 5-10 minutes after failures start
+
+- **Example**: For high-traffic endpoints (100 requests per minute) requiring fast detection:
+- `observability_window`: 2 minutes (quick detection)
+- `minimum_request_count`: 50 (easily met with 100 req/min × 2 min = 200 requests)
+- Expected trip time: 1-2 minutes after failures start
+
+4. **Match window to traffic volume**: Ensure `minimum_request_count` can be reached within `observability_window`
+- Low traffic (< 5 req/min): Use longer windows (10+ minutes)
+- Medium traffic (5-50 req/min): Use moderate windows (5-10 minutes)
+- High traffic (> 50 req/min): Can use shorter windows (2-5 minutes)
+
+5. **Balance recovery time**: Longer `error_timeout` gives endpoints more recovery time but delays legitimate traffic
+
+6. **Test your configuration**: Use lower thresholds in staging to verify behavior and measure actual trip times
 
 ## Troubleshooting
 
@@ -209,7 +249,7 @@ Notifications are rate-limited to prevent alert fatigue (maximum 3 notifications
 
 - Verify `minimum_request_count` is being met in the `observability_window`
 - Check that failure rate actually exceeds `failure_threshold`
-- Ensure circuit breaker feature is enabled in your license
+- Ensure the circuit breaker feature is enabled in your license
 - Confirm the feature flag is enabled for your deployment
 
 ### Endpoint Disabled Unexpectedly
@@ -240,21 +280,45 @@ Circuit breaker state is stored in Redis with automatic expiration matching the 
 ### Metrics Source
 
 The circuit breaker analyzes actual delivery attempts from the database, querying:
-- Delivery success and failure counts
+- Delivery success and failure counts from recent delivery attempts
 - Grouped by endpoint and project
 - Within the configured observability window
+
+This gives the circuit breaker a real-time view of endpoint health.
 
 ### High Availability
 
 Circuit breaker sampling uses distributed locking to ensure:
-- Only one instance samples at a time across your deployment
-- Lock TTL matches the sample rate
-- Automatic failover if a sampler crashes
+- Only one convoy agent instance samples at a time across your deployment
+- The Lock TTL matches the sample rate
+- Automatically fails-open if a sampler crashes
 
-## Feature Requirements
+## Enabling The Circuit Breaker (Self-Hosted)
 
-Circuit breaker requires:
-- Feature flag `CircuitBreaker` enabled
-- License with Circuit Breaking capability
-- Redis for state storage
-- Background worker process running
+### Using Environment Variable
+
+Set the feature flag when starting Convoy:
+
+```shell
+CONVOY_ENABLE_FEATURE_FLAG=circuit-breaker convoy server --config convoy.json
+```
+
+### Using CLI Flag
+
+Alternatively, enable the feature using the CLI flag:
+
+```shell
+convoy server --config convoy.json --enable-feature-flag=circuit-breaker
+```
+
+### Docker Deployment
+
+For Docker deployments, pass the environment variable:
+
+```shell
+docker run -e CONVOY_ENABLE_FEATURE_FLAG=circuit-breaker getconvoy/convoy:latest
+```
+
+## Enabling The Circuit Breaker (Cloud)
+
+The circuit breaker is enabled by default in Convoy Cloud. If you want to configure it based on your use case, please reach out to us on slack or via email.
