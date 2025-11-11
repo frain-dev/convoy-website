@@ -34,6 +34,8 @@
 		"typescript": "5.1.6"
 	},
 	"devDependencies": {
+		"eslint": "9.39.1",
+		"eslint-config-next": "16.0.1",
 		"sass": "^1.64.2"
 	}
 }
