@@ -79,6 +79,7 @@
               "product-manual/functions",
               "product-manual/metrics",
               "product-manual/read-replicas",
+              "product-manual/circuit-breaker",
               "product-manual/retention-policy",
               "product-manual/custom-certificate-authority"
             ]
@@ -260,17 +261,6 @@
             "pages": [
               "webhook-guides/webhook-retries",
               "webhook-guides/tackling-ssrf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Changelog",
-        "groups": [
-          {
-            "group": "Changelog",
-            "pages": [
-              "changelog/core-gateway"
             ]
           }
         ]
