@@ -159,8 +159,3 @@ Until this point, you got to learn about 5 different access control models and t
 
 The next article in this series will be about pagination in APIs. Again, hope to see you there.
 
-
-### Getting Started with Convoy
-
-Already have an API, and want to send or receive webhooks from it? Get started in minutes at [cloud.getconvoy.io/signup](http://cloud.getconvoy.io/signup).
-

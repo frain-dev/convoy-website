@@ -7,43 +7,40 @@ title: Licensing
 ---
 
 import AddLicense from '/snippets/add-license.mdx';
+import BookCall from '/snippets/book-call-component.mdx';
 
-Convoy has three license tiers, namely `Community` which is the free plan, `Business` and `Enterprise`. This documentation will guide you on how to purchase a license,
-and configure the license key on your convoy instance(s). The pricing of all tiers can be found [here](https://getconvoy.io/pricing).
+Convoy offers two self-hosted plans: `Community (free)` and `Premium`. This documentation will guide you on how to get a Premium license key and configure it on your Convoy instance(s).
 
-## Steps
+## Getting a Premium License
 
-Follow the instructions below to create a license key:
+To get a Premium license key, you'll need to book a call with our team. During this call, we'll discuss your specific requirements, provide pricing details, and help you get started.
+
+<BookCall />
+
+## Steps to Configure Your License
+
+Once you receive your Premium license key, follow these steps to configure it:
 
 <Steps>
-	<Step title="Register or login to Convoy Cloud">
-		<Frame caption="cloud.getconvoy.io">
-			<img src="/images/login-to-convoy-cloud.png" />
-		</Frame>
-	</Step>
-	<Step title="Navigate to the Licenses Page using the sidebar">
-		<Frame>![naviagte to Licenses page using sidebar](/images/licenses-page.png)</Frame>
-	</Step>
-	<Step title="Create a new License">
-		<Frame>![create sqs queue](/images/fill-license-details.png)</Frame>
-	</Step>
-	<Step title="Retrieve license key from your email">
-		<Frame>![retrieve license key](/images/license-key-ready.png)</Frame>
-	</Step>
 	<Step title="Configure instance with license key">
 		<AddLicense />
+	</Step>
+	<Step title="Restart your Convoy instance">
+		After adding the license key configuration, restart your Convoy instance to activate the Premium features.
+	</Step>
+	<Step title="Verify Premium features">
+		Log into your Convoy dashboard to verify that Premium features are now available and accessible.
 	</Step>
 </Steps>
 
 ## Running the Instance
 
-Once you've added the license key configuration, you're ready to proceed. Simply start the instance as usual, and you will now have access to all the features included in your license tier.
+Once you've added the license key configuration, you're ready to proceed. Simply start the instance as usual, and you will now have access to all Premium features included in your license.
 
-## Upgrades
+## License Management
 
-Upgrading your license will not remove any features you currently have. In addition, you'll gain access to the new features provided by your upgraded license.
+### Upgrades
+Upgrading your license will not remove any features you currently have. You'll gain access to additional Premium features as they become available.
 
-## Downgrades
-
-When you downgrade your license, you'll lose access to the paid features of your previous license. You'll only have access to the features included in your current license. If you downgrade to the community plan and have more than two projects (the limit for the community plan), Convoy will freeze all projects except two, which will be randomly selected. The frozen projects will be restricted from actions that write new data, such as creating events, endpoints, or sources.
-You will be able to view your dashboard per usual.
+### Support
+Premium license holders receive priority support. If you need assistance, please reach out to our support team or book another call if you need to discuss additional requirements.

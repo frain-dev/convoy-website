@@ -1,0 +1,57 @@
+---
+title: Role-Based Access Control (RBAC)
+---
+
+Convoy supports role-based access control to manage who can access and perform actions across an instance, organisations, and projects.
+
+## Roles
+
+The following roles are available:
+
+- **Instance Admin** (`instance_admin`): Instance-level access. Can manage all organisations and projects.
+- **Organisation Admin** (`organisation_admin`): Organisation-level access. Can manage the organisation and all projects within it.
+- **Billing Admin** (`billing_admin`): Organisation-level access. Can manage billing only.
+- **Project Admin** (`project_admin`): Project-level access. Can manage project settings and users for the specified project.
+- **Project Viewer** (`project_viewer`): Project-level access. Can view project data only.
+
+> Note: A deprecated `api` role may appear in older integrations; it has the lowest rank.
+
+## Role hierarchy
+
+Higher-ranked roles implicitly have all permissions of lower-ranked roles.
+
+- instance_admin → organisation_admin → billing_admin → project_admin → project_viewer → api (deprecated)
+
+## Scopes
+
+Some roles may be scoped to a specific project and optionally an endpoint.
+
+- Project scope: role applies to a single project.
+- Endpoint scope: role applies to a single endpoint within the scoped project.
+
+## Permissions mapping (UI)
+
+<Frame>![RBAC roles and permissions overview](/images/rbac-add-team.png)</Frame>
+
+> <Tip>
+> Instance Admin isn’t shown in the dashboard. It’s reserved for instance operations and prevents accidental privilege escalation. It replaces the legacy `super_user` role.
+> </Tip>
+
+Convoy's UI uses permissions to toggle actions. Typical mappings:
+
+- Project Viewer: view-only access to events, deliveries, sources, subscriptions, endpoints, portal links, project settings, and organisations (read).
+- Project Admin: all Project Viewer permissions plus manage actions on events, sources, subscriptions, endpoints, portal links, meta events, project settings, event types, and project setup.
+- Organisation Admin: manage organisation and team; inherits Project Admin and Project Viewer permissions.
+- Billing Admin: manage billing.
+- Instance Admin: full instance management; inherits Organisation Admin, Billing Admin, Project Admin, and Project Viewer permissions.
+
+## API keys and invites
+
+When creating API keys or inviting members, assign the appropriate role and scope:
+
+- Organisation Admin for org-wide administration.
+- Project Admin/Viewer for project-level access.
+
+## Backward compatibility
+
+Older roles such as `super_user`, `admin`, and `member` have been replaced. Ensure clients and automations use the new role names listed above.

@@ -12,6 +12,7 @@ import linear from 'public/svg/linear.svg';
 import github from 'public/svg/github-new.svg';
 import pagerduty from 'public/svg/pagerduty.svg';
 import { OptimizedImage } from '@/app/components/OptimizedImaged';
+import RegionDropdown from '@/app/components/RegionDropdown';
 
 const sections = [
 	{
@@ -87,24 +88,15 @@ export default function Webhooks() {
 						className="flex flex-col items-start w-full desktop:w-auto">
 						<h1 className="text-32 desktop:text-[40px] font-medium">What are Webhooks?</h1>
 						<p className="max-w-[683px] mx-auto desktop:text-16 text-14 !leading-[200%] text-[#4b4b4b] mt-2 desktop:mt-24px font-medium">
-							Whether you’re an engineer or product manager, this guide walks you through everything you need to become a webhook pro. Let’s begin!
+							Whether you're an engineer or product manager, this guide walks you through everything you need to become a webhook pro. Let's begin!
 						</p>
 						<div className="flex flex-wrap w-full gap-16px mt-4 desktop:mt-24px">
-							<a
-								target="_blank"
-								href="https://cloud.getconvoy.io/signup"
-								className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center justify-center w-full sm-old:w-max">
-								<span>Get started</span>
-
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="18"
-									height="19"
-									viewBox="0 0 18 19"
-									className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
-									<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
-								</svg>
-							</a>
+							<RegionDropdown 
+								buttonText="Get started"
+								baseUrl="/signup" 
+								variant="primary"
+								className="pl-14px pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center justify-center w-full sm-old:w-max"
+							/>
 							<a
 								target="_blank"
 								href="https://www.getconvoy.io/docs/"
@@ -197,7 +189,7 @@ export default function Webhooks() {
 									once: true
 								}}
 								className="text-14 desktop:text-16 font-medium leading-[200%] text-[#4b4b4b]">
-								While webhooks and APIs facilitate data exchange between systems, they function differently. Here’s a quick comparison:
+								While webhooks and APIs facilitate data exchange between systems, they function differently. Here's a quick comparison:
 							</motion.p>
 
 							<motion.div
@@ -625,9 +617,9 @@ export default function Webhooks() {
 									once: true
 								}}
 								className="text-14 desktop:text-16 leading-[200%]">
-								If you’re an engineering leader and would like to learn more about implementing webhook best practises. We’ve written extensively on the topic, you
-								can follow the guides below to learn more.If you’re an engineering leader and would like to learn more about implementing webhook best practises.
-								We’ve written extensively on the topic, you can follow the guides below to learn more.
+								If you're an engineering leader and would like to learn more about implementing webhook best practises. We've written extensively on the topic, you
+								can follow the guides below to learn more.If you're an engineering leader and would like to learn more about implementing webhook best practises.
+								We've written extensively on the topic, you can follow the guides below to learn more.
 							</motion.p>
 
 							<motion.div

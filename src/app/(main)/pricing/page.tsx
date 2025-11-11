@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { OptimizedImage } from '@/app/components/OptimizedImaged';
+import RegionDropdown from '@/app/components/RegionDropdown';
 
 const selfHostedFeatures = [
 	{
@@ -211,7 +212,7 @@ const cloudFeatures = [
 			},
 			{
 				name: 'SOC 2',
-				basic: 'Unsupported',
+				basic: 'Supported',
 				premium: 'Supported'
 			},
 			{
@@ -246,7 +247,7 @@ const cloudFeatures = [
 const faqs = [
 	{
 		question: 'Do you offer free trials?',
-		answer: <>We have a 14 days free trial in the Cloud, but we don’t offer free trials for self-hosted deployments.</>
+		answer: <>We have a 14 days free trial in the Cloud, but we don't offer free trials for self-hosted deployments.</>
 	},
 	{
 		question: 'The 25 events/sec limit in the Cloud is too small, how can I purchase more?',
@@ -308,7 +309,7 @@ const cloudPricing = [
 		description:
 			'Designed for small teams and startups, the Pro plan offers essential webhook delivery features. Get started quickly with a simple, predictable pricing model.',
 		cta: {
-			text: 'Link to the cloud',
+			text: 'Get started for free',
 			link: 'https://cloud.getconvoy.io/signup'
 		}
 	},
@@ -532,7 +533,7 @@ const PricingCard = ({ data, variant }) => {
 						key={item.name}
 						className={`rounded-8px p-20px desktop:p-40px bg-gradient-to-b ${getBgGradient(
 							index
-						)} flex flex-col items-start justify-between w-full desktop:w-[560px] h-full desktop:h-[370px] relative overflow-hidden border border-[#e7e7e7]`}>
+						)} flex flex-col items-start justify-between w-full desktop:w-[560px] h-full desktop:h-[370px] relative border border-[#e7e7e7]`}>
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.45rem_2.55rem] absolute left-0 -top-1 w-full h-full"></div>
 
 						<div className="z-10">
@@ -544,21 +545,32 @@ const PricingCard = ({ data, variant }) => {
 						<div className="z-10">
 							{renderPrice(item.price)}
 
-							<a
-								target="_blank"
-								href={item.cta.link}
-								className="mt-3 pl-20px desktop:pl-14px pr-14px desktop:pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center z-10 w-max">
-								<span>{item.cta.text}</span>
+							{index === 0 && item.name === 'Pro' ? (
+								<div className="mt-3">
+									<RegionDropdown 
+										buttonText={item.cta.text}
+										baseUrl="/signup" 
+										variant="primary"
+										className="pl-20px desktop:pl-14px pr-14px desktop:pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center z-10 w-max"
+									/>
+								</div>
+							) : (
+								<a
+									target="_blank"
+									href={item.cta.link}
+									className="mt-3 pl-20px desktop:pl-14px pr-14px desktop:pr-12px py-10px text-14 font-semibold rounded-8px h-10 bg-[#2780F1] hover:bg-[#1f66c1] group transition-all duration-300 text-white-100 flex items-center z-10 w-max">
+									<span>{item.cta.text}</span>
 
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="18"
-									height="19"
-									viewBox="0 0 18 19"
-									className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
-									<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
-								</svg>
-							</a>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="18"
+										height="19"
+										viewBox="0 0 18 19"
+										className="ml-1 mt-[1px] group-hover:translate-x-[2px] transition-all">
+										<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" fill="white" />
+									</svg>
+								</a>
+							)}
 						</div>
 					</motion.div>
 				))}

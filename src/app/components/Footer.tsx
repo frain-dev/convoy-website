@@ -27,7 +27,8 @@ export default function Footer() {
 				{ name: 'About Us', link: '/aboutus', isExternal: false },
 				{ name: 'Trust Center', link: 'https://trust.getconvoy.io/', isExternal: true },
 				{ name: 'Terms of Use', link: '/legal/Terms-of-Use-Convoy.pdf', isExternal: true },
-				{ name: 'Privacy Policy', link: '/legal/Privacy-Policy-Convoy.pdf', isExternal: true }
+				{ name: 'Privacy Policy', link: '/legal/privacy-policy', isExternal: false },
+				{ name: 'DPA', link: '/legal/dpa', isExternal: false }
 			]
 		},
 		{
@@ -35,11 +36,9 @@ export default function Footer() {
 			links: [
 				{ name: 'Open Source', link: 'http://github.com/frain-dev/convoy', isExternal: true },
 				{ name: 'Core Gateway', link: '/core-gateway', isExternal: false },
-				{ name: 'Cloud', link: 'https://cloud.getconvoy.io/login', isExternal: true },
 				{ name: 'Convoy Playground', link: 'https://playground.getconvoy.io', isExternal: true }
 			]
 		},
-
 		{
 			title: 'Resources',
 			links: [

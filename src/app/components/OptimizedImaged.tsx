@@ -12,9 +12,10 @@ interface OptimizedImageProps {
 	className?: string;
 	priority?: boolean;
 	sizes?: string;
+	style?: React.CSSProperties;
 }
 
-export function OptimizedImage({ src, alt, width, height, className, priority = false, sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' }: OptimizedImageProps) {
+export function OptimizedImage({ src, alt, width, height, className, priority = false, sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw', style }: OptimizedImageProps) {
 	const [isLoading, setIsLoading] = useState(true);
 
 	return (
@@ -28,6 +29,7 @@ export function OptimizedImage({ src, alt, width, height, className, priority = 
 			className={cn('duration-700 ease-in-out', isLoading ? 'blur-[1px]' : 'blur-0', className)}
 			onLoadingComplete={() => setIsLoading(false)}
 			quality={90}
+			style={style}
 		/>
 	);
 }

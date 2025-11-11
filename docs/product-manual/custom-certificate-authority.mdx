@@ -1,0 +1,165 @@
+---
+title: Custom Certificate Authority
+'og:title': Custom Certificate Authority
+'og:description': Convoy supports custom Certificate Authority certificates for TLS verification of private/internal endpoints.
+'twitter:description': Convoy supports custom Certificate Authority certificates for TLS verification of private/internal endpoints.
+'twitter:url': https://getconvoy.io/docs/product-manual/custom-certificate-authority
+---
+
+Convoy supports custom Certificate Authority (CA) certificates for TLS verification, enabling secure connections to endpoints with certificates signed by private or internal Certificate Authorities.
+
+> **Note:**
+>
+> -   The Custom Certificate Authority functionality is available only for licensed users.
+> -   This feature requires a valid license with Custom Certificate Authority access enabled.
+
+## Overview
+
+When connecting to HTTPS endpoints that use certificates signed by private or internal Certificate Authorities, Convoy needs to trust those CA certificates to perform proper TLS verification. The Custom Certificate Authority feature allows you to configure Convoy with your internal CA certificates.
+
+## Architecture
+
+With custom CA certificates configured, Convoy can verify TLS connections to endpoints using certificates signed by your internal Certificate Authorities, while maintaining security and proper certificate validation.
+
+<Tip>Custom CA certificates are loaded alongside system CA certificates, providing trust for both public and private certificate authorities.</Tip>
+
+## Configuration
+
+### JSON Configuration
+
+You can configure custom CA certificates by adding the `dispatcher` object to your configuration JSON:
+
+```json
+{
+    "dispatcher": {
+        "ca_cert_path": "/path/to/ca-certificate.crt"
+    }
+}
+```
+
+### Environment Variables
+
+Alternatively, you can use environment variables to configure custom CA certificates:
+
+```shell
+CONVOY_DISPATCHER_CACERT_PATH="/path/to/ca-certificate.crt"
+```
+
+### Helm Chart Configuration
+
+If you're using the Helm chart, you can configure CA certificates through the values:
+
+```yaml
+global:
+  convoy:
+    cacert_content: |
+      -----BEGIN CERTIFICATE-----
+      # Your CA certificate content
+      -----END CERTIFICATE-----
+    # OR
+    cacert_secret_name: "my-ca-cert-secret"
+```
+
+#### Creating Kubernetes Secret
+
+If using `cacert_secret_name`, create the secret separately:
+
+```bash
+kubectl create secret generic my-ca-cert-secret \
+  --from-file=ca.crt=/path/to/your/ca-certificate.crt
+```
+
+## Certificate Requirements
+
+### Format
+- **Content structure**: Must be in PEM format with BEGIN/END markers
+- **Certificate type**: CA certificate (not endpoint certificate)
+
+### Example Certificate Structure
+```
+-----BEGIN CERTIFICATE-----
+MIIFtzCCA5+gAwIBAgIUIYdQv74LF6tTl3VXgrlOtmP4ISIwDQYJKoZIhvcNAQEL
+... (base64 encoded certificate content) ...
+-----END CERTIFICATE-----
+```
+
+## Implementation Details
+
+### How It Works
+
+1. **Certificate Loading**: Convoy loads your custom CA certificate during startup
+2. **Trust Store**: The certificate is added to the TLS trust store
+3. **TLS Verification**: All HTTPS connections use the combined trust store
+4. **Security**: Maintains proper certificate validation while supporting custom CAs
+
+### Component Coverage
+
+The Custom Certificate Authority configuration applies to all Convoy components:
+- **Server**: Validates endpoints during creation/update
+- **Agent**: Delivers webhooks to endpoints
+- **Worker**: Processes webhook delivery tasks
+
+## Troubleshooting
+
+### Common Issues
+
+#### "x509: certificate signed by unknown authority" Error
+If you're getting this error after configuring a custom CA certificate:
+
+1. **Check License**: Ensure your license includes Custom Certificate Authority feature
+2. **Verify Configuration**: Confirm CA certificate path and format
+3. **Restart Services**: Restart Convoy after adding CA certificate
+4. **Check Logs**: Look for CA certificate loading messages
+
+#### Feature Not Available
+If you see "Custom Certificate Authority feature unavailable" errors:
+- Contact sales to upgrade your license
+- Verify license key is properly configured
+
+#### Certificate Format Issues
+- Verify certificate is in PEM format
+- Check certificate content starts with `-----BEGIN CERTIFICATE-----`
+- Ensure the file is readable by the Convoy process
+
+### Debug Commands
+
+```bash
+# Verify certificate format
+openssl x509 -in ca-certificate.crt -text -noout
+
+# Check if certificate is properly mounted (Kubernetes)
+kubectl exec convoy-server-<pod-id> -- ls -la /etc/convoy/
+
+# Verify environment variable
+kubectl exec convoy-server-<pod-id> -- env | grep CONVOY_DISPATCHER_CACERT_PATH
+
+# Check Convoy logs for CA loading
+kubectl logs convoy-server-<pod-id> | grep -i "ca\|cert\|tls"
+```
+
+## Best Practices
+
+### Security
+- Use Kubernetes secrets for certificate storage
+- Rotate certificates regularly
+- Monitor certificate expiration dates
+- Limit access to certificate secrets
+
+### Configuration
+- Use `cacert_secret_name` for production (more control)
+- Use `cacert_content` for development/testing (easier)
+- Document which certificates are trusted
+- Version control your configuration
+
+### Maintenance
+- Plan certificate rotation procedures
+- Test certificate updates in non-production first
+- Keep backup of original certificates
+- Monitor for certificate-related errors
+
+## Related Documentation
+
+- [Deployment Guide](/deployment/configuration) - General configuration options
+- [Helm Chart Configuration](/deployment/install-convoy/kubernetes) - Kubernetes deployment
+- [Best Practices](/guides/best-practices-for-generating-webhook-events) - Security and best practices
+- [Paid Features](/business-and-enterprise/paid-features) - Available premium features

@@ -1,0 +1,204 @@
+---
+title: Google Single Sign-On (SSO)
+---
+
+Convoy supports Google OAuth authentication, allowing teams to sign in using their Google Workspace accounts for simplified identity management and improved security.
+
+## Prerequisites
+
+1. A valid enterprise license with the `GOOGLE_OAUTH` feature enabled.
+2. A Google Cloud Platform account with OAuth 2.0 credentials configured.
+
+## Benefits
+
+- **Faster onboarding**: New team members can sign in immediately with their existing Google accounts.
+- **Centralized identity**: Leverage your organization's Google Workspace for access control.
+- **Reduced password risks**: Eliminate the need for separate Convoy passwords.
+- **Audit trails**: Track sign-ins through Google's authentication logs.
+
+## Setup
+
+### Step 1: Configure Google Cloud Console
+
+#### 1.1 Create OAuth 2.0 Credentials
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create or select a project
+3. Navigate to **APIs & Services** → **Credentials**
+4. Click **Create Credentials** → **OAuth 2.0 Client IDs**
+5. Choose **Web application**
+
+#### 1.2 Configure Authorized Origins
+
+Add your production domain:
+
+```
+https://your-domain.com
+```
+
+#### 1.3 Configure Redirect URIs
+
+Add your production callback URL:
+
+```
+https://your-domain.com/ui/auth/google/callback
+```
+
+#### 1.4 Copy Your Client ID
+
+Save your **Client ID** — you'll need it for Convoy configuration.
+
+### Step 2: Configure Convoy
+
+Update your `convoy.json` with the Google OAuth settings:
+
+```json
+{
+  "auth": {
+    "google_oauth": {
+      "enabled": true,
+      "client_id": "your-google-client-id.apps.googleusercontent.com",
+      "redirect_url": "https://your-domain.com/ui/auth/google/callback"
+    }
+  }
+}
+```
+
+Alternatively, use environment variables:
+
+```bash
+export CONVOY_GOOGLE_OAUTH_ENABLED=true
+export CONVOY_GOOGLE_OAUTH_CLIENT_ID="your-google-client-id.apps.googleusercontent.com"
+export CONVOY_GOOGLE_OAUTH_REDIRECT_URL="https://your-domain.com/ui/auth/google/callback"
+```
+
+### Step 3: Restart Convoy
+
+Restart your Convoy instance to apply the Google OAuth configuration.
+
+### Step 4: Test the Integration
+
+1. Navigate to your Convoy login page
+2. Click **Sign in with Google**
+3. Complete the Google OAuth consent flow
+4. You should be redirected back to Convoy and signed in
+
+<Frame caption="Login page with Google SSO">
+  <img src="/docs-assets/google-sso-login.png" />
+</Frame>
+
+## How It Works
+
+When a user signs in with Google:
+
+1. Convoy redirects to Google's OAuth consent screen
+2. User authenticates with their Google account
+3. Google returns an ID token containing user information
+4. Convoy validates the token and creates or updates the user record
+5. An access token and refresh token are issued for the Convoy session
+
+## First-Time User Setup
+
+New users signing in with Google OAuth for the first time will be prompted to:
+
+1. Provide a **Business Name** for their organization
+2. Complete initial setup
+3. Access their Convoy dashboard
+
+<Frame caption="First-time Google SSO setup">
+  <img src="/docs-assets/google-sso-setup.png" />
+</Frame>
+
+Existing users with matching email addresses will be automatically linked to their Google accounts.
+
+## API Endpoints
+
+The following endpoints handle Google OAuth flows:
+
+- `POST /ui/auth/google/token` - Exchange Google ID token for Convoy session
+- `POST /ui/auth/google/setup` - Complete first-time user setup
+
+Both endpoints require a valid enterprise license with the `GOOGLE_OAUTH` feature.
+
+## Security Considerations
+
+### Best Practices
+
+- **Use HTTPS**: Always use HTTPS for OAuth flows
+- **Restrict domains**: Configure allowed Google Workspace domains to prevent unauthorized sign-ins
+- **Scopes**: Convoy requests minimal scopes (`openid email profile`)
+- **Token validation**: ID tokens are validated against Google's public keys
+- **Audit logs**: All authentication events are logged
+
+### License Requirements
+
+Google OAuth requires an active enterprise license with the `GOOGLE_OAUTH` feature. The authentication flow will be blocked if:
+
+- No valid license is present
+- The license doesn't include the `GOOGLE_OAUTH` feature
+- The `enabled` flag is set to `false` in configuration
+
+## Troubleshooting
+
+### Common Issues
+
+#### "Not a valid origin for the client"
+
+**Problem**: Google blocks requests from unregistered origins.
+
+**Solution**: Ensure your domain is added to **Authorized JavaScript Origins** in Google Cloud Console.
+
+#### "Redirect URI mismatch"
+
+**Problem**: The redirect URI in your configuration doesn't match Google Console settings.
+
+**Solution**: Verify that the `redirect_url` in `convoy.json` exactly matches the URI configured in Google Cloud Console.
+
+#### "Invalid ID token"
+
+**Problem**: Token validation failed.
+
+**Solution**: 
+- Check that your Client ID is correct
+- Ensure your server clock is synchronized (token validation is time-sensitive)
+- Verify that the token hasn't expired
+
+#### Google OAuth button doesn't appear
+
+**Problem**: Feature is not enabled or license is missing.
+
+**Solution**:
+- Verify your license includes the `GOOGLE_OAUTH` feature
+- Check that `google_oauth.enabled` is set to `true` in configuration
+- Restart Convoy after configuration changes
+
+### Debug Steps
+
+1. **Check browser console**: Look for JavaScript errors during OAuth flow
+2. **Check network tab**: Verify API calls to `/ui/auth/google/token` are successful
+3. **Check backend logs**: Look for authentication errors or token validation failures
+4. **Verify configuration**: Ensure Google Console and Convoy settings match exactly
+
+## Multiple Authentication Methods
+
+Convoy supports both email/password and Google OAuth authentication simultaneously. Users can choose their preferred sign-in method:
+
+1. If a user's email in Convoy matches their Google account email, they can sign in with either method
+2. First-time Google sign-in automatically links the account
+3. Both authentication methods remain available unless explicitly disabled
+
+This flexibility allows teams to adopt Google SSO gradually without disrupting existing workflows.
+
+## Related Features
+
+- [Enterprise SSO (SAML)](/business-and-enterprise/single-sign-on) - For SAML-based authentication
+- [RBAC](/product-manual/rbac) - Manage permissions after users sign in
+- [Organizations and Projects](/product-manual/organizations-and-projects) - Structure your teams
+
+## Support
+
+For additional help:
+- Review [Google's Identity Services documentation](https://developers.google.com/identity/gsi/web)
+- Check [Convoy GitHub issues](https://github.com/frain-dev/convoy/issues)
+- Contact support at support@getconvoy.io
+

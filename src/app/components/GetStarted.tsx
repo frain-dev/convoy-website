@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import RegionDropdown from './RegionDropdown';
 
 export default function GetStarted() {
 	return (
@@ -18,7 +19,7 @@ export default function GetStarted() {
 				once: true
 			}}
 			className="w-full flex items-center justify-center px-5">
-			<div className="mb-100px desktop:mb-130px desktop:max-w-[800px] w-full h-auto desktop:h-[217px] bg-white-100 border border-[#ebebeb] flex mx-auto rounded-16px overflow-hidden">
+			<div className="mb-100px desktop:mb-130px desktop:max-w-[800px] w-full h-auto desktop:h-[217px] bg-white-100 border border-[#ebebeb] flex mx-auto rounded-16px">
 				<div className="w-[90px] desktop:w-[197px] min-h-full bg-gradient-to-r from-white-100/40 from-[-20%] to-[#2780F1]/40 to-[150%] rounded-l-16px relative p-6 desktop:p-10">
 					<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] absolute top-0 right-0 w-full h-full"></div>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" className="z-10 w-10 h-10 desktop:w-16 desktop:h-16">
@@ -37,21 +38,12 @@ export default function GetStarted() {
 						</p>
 					</div>
 
-					<a
-						href="https://cloud.getconvoy.io"
-						target="_blank"
-						className="desktop:px-16px py-10px w-[107px] text-14 font-medium rounded-8px h-10 nav-bar-break:h-11 bg-white-100 desktop:bg-[#2780F1] hover:desktop:bg-[#1f66c1] group transition-all duration-300 text-[#2780F1] desktop:text-white-100 flex items-center desktop:shadow-btn-secondary cursor-pointer">
-						<span>Sign up</span>
-
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="18"
-							height="19"
-							viewBox="0 0 18 19"
-							className="ml-1 mt-[1px] fill-[#2780F1] desktop:fill-white-100 group-hover:translate-x-[2px] transition-all">
-							<path d="M9.8803 9.50052L6.16797 5.7882L7.22863 4.72754L12.0016 9.50052L7.22863 14.2734L6.16797 13.2128L9.8803 9.50052Z" />
-						</svg>
-					</a>
+					<RegionDropdown 
+						buttonText="Sign up" 
+						baseUrl="/signup" 
+						variant="office-hours"
+						className="w-[107px]"
+					/>
 				</div>
 			</div>
 		</motion.section>

@@ -2,7 +2,137 @@
 title: Core Gateway
 ---
 
-<Update label="25.1.1">
+<Update label="25.9">
+    ### Features
+    - Added Google SSO for authentication
+    - Added expirable tokens for enhanced security
+    - Added read replica support for better database performance
+    - Introduced command line improvements with unified agent command
+
+    ### Enhancements
+    - Updated package versions for improved stability
+    - Upgraded base Docker image and integrated Dependabot
+    - Added organization ID to logs for better traceability
+    - Refined Docker Compose setup for development
+    - Standardized PortalLink authentication types
+    - Improved batch retry mechanism for reliability
+    - Moved circuit breaker configuration to project config
+    - Refactored RBAC for cleaner access control
+    - Enhanced token expiration support for portal links
+    - Configurable failure thresholds and timeouts for circuit breakers
+    - Database read replica configuration for improved scalability
+    - Deprecated worker and ingest commands in favor of unified agent command
+    - Added global logger-level flag
+
+    ### Configuration Changes
+    - Added `CONVOY_SENTRY_SAMPLE_RATE` for error sampling configuration
+    - Added `CONVOY_READ_REPLICA_DSN` for database read replica connection
+    - Enhanced circuit breaker configuration options
+
+    ### Bug Fixes
+    - Fixed issue with returning internal errors to clients
+
+    ### Patches
+    The changelogs for this minor release version and any maintenance versions are listed below.
+    - [Convoy v25.9.2](https://github.com/frain-dev/convoy/releases/tag/v25.9.2)
+    - [Convoy v25.9.1](https://github.com/frain-dev/convoy/releases/tag/v25.9.1)
+    - Release 25.9.x introduces Google SSO, enhanced RBAC, expirable tokens, project-level circuit breakers, read replica support, command line improvements, and various stability enhancements.
+</Update>
+
+<Update label="25.7">
+    ### Features
+    - Add owner ID filtering in the event log
+
+    ### Patches
+    The changelogs for this minor release version and any maintenance versions are listed below.
+    - [Convoy v25.7.1](https://github.com/frain-dev/convoy/releases/tag/v25.7.1)
+</Update>
+
+<Update label="25.6">
+    ### Features
+    - Add more debug logs
+    - Improve subscriptions loader #2307
+
+    ### Enhancements
+    - Increase the default API and ingest rate limits
+    - Fixed race condition in the compare package
+
+    ### Bug Fixes
+    - Make Sentry tracer sample rate configurable
+
+    ### Patches
+    The changelogs for this minor release version and any maintenance versions are listed below.
+    - [Convoy v25.6.8](https://github.com/frain-dev/convoy/releases/tag/v25.6.8)
+    - [Convoy v25.6.7](https://github.com/frain-dev/convoy/releases/tag/v25.6.7)
+    - [Convoy v25.6.6](https://github.com/frain-dev/convoy/releases/tag/v25.6.6)
+    - [Convoy v25.6.5](https://github.com/frain-dev/convoy/releases/tag/v25.6.5)
+    - [Convoy v25.6.4](https://github.com/frain-dev/convoy/releases/tag/v25.6.4)
+    - [Convoy v25.6.3](https://github.com/frain-dev/convoy/releases/tag/v25.6.3)
+    - [Convoy v25.6.2](https://github.com/frain-dev/convoy/releases/tag/v25.6.2)
+    - [Convoy v25.6.1](https://github.com/frain-dev/convoy/releases/tag/v25.6.1)
+</Update>
+
+<Update label="25.5">
+    ### Enhancements
+    - Run batch event delivery retry in a background job #2299
+
+    ### Patches
+    The changelogs for this minor release version and any maintenance versions are listed below.
+    - [Convoy v25.5.1](https://github.com/frain-dev/convoy/releases/tag/v25.5.1)
+</Update>
+
+<Update label="25.4">
+    ### Enhancements
+    - Use webhook dispatcher when creating and updating endpoints #2280
+
+    ### Bug Fixes
+    - Fixed an issue where read replicas environment variable wasn't being parsed correctly #2298
+
+    ### Patches
+    The changelogs for this minor release version and any maintenance versions are listed below.
+    - [Convoy v25.4.2](https://github.com/frain-dev/convoy/releases/tag/v25.4.2)
+    - [Convoy v25.4.1](https://github.com/frain-dev/convoy/releases/tag/v25.4.1)
+</Update>
+
+<Update label="25.3">
+    ### Features
+    - Added custom Certificate Authority support in dispatcher and server for secure TLS connections #2266
+
+    ### Bug Fixes
+    - Fixed an issue where the retention policies job crashes
+    - Fixed an issue where the filter wasn't properly being saved
+    - Fixed pagination issue #2273
+    - Fixed CA certificate issues #2270
+
+    ### Patches
+    The changelogs for this minor release version and any maintenance versions are listed below.
+    - [Convoy v25.3.5](https://github.com/frain-dev/convoy/releases/tag/v25.3.5)
+    - [Convoy v25.3.4](https://github.com/frain-dev/convoy/releases/tag/v25.3.4)
+    - [Convoy v25.3.3](https://github.com/frain-dev/convoy/releases/tag/v25.3.3)
+    - [Convoy v25.3.2](https://github.com/frain-dev/convoy/releases/tag/v25.3.2)
+    - [Convoy v25.3.1](https://github.com/frain-dev/convoy/releases/tag/v25.3.1)
+</Update>
+
+<Update label="25.2">
+    ### Features
+    - Improve Tracing: Add Event ID To Workflow Stages #2245 #2240 #2244
+
+    ### Enhancements
+    - Portal links can now be authenticated using the owner id #2256
+    - Updated credential encryption #2233 #2231
+    - Updated read-replicas to rely on feature flags #2226
+
+    ### Bug Fixes
+    - Fixed a bug where the rate-limit setting was not being deleted when updating projects and endpoints #2246
+    - Fix panic in backup project data handler #2232
+
+    ### Patches
+    The changelogs for this minor release version and any maintenance versions are listed below.
+    - [Convoy v25.2.2](https://github.com/frain-dev/convoy/releases/tag/v25.2.2)
+    - [Convoy v25.2.1](https://github.com/frain-dev/convoy/releases/tag/v25.2.1)
+</Update>
+
+<Update label="25.1">
     ### Features
     - Added database read replica support #2195
     - Create event types whenever a subscription is created or updated #2201

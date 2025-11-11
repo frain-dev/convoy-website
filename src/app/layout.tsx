@@ -191,8 +191,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 						<path d="M9 12.75H9.00674" strokeLinecap="round" strokeLinejoin="round" />
 					</symbol>
 				</svg>
+				{process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />}
 			</body>
-			{process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />}{' '}
 		</html>
 	);
 }
