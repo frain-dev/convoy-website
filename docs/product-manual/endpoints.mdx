@@ -31,6 +31,26 @@ Endpoint authentication is a scenario where the endpoint owner needs to specify 
 
 <Frame>![Endpoint authentication](/images/endpoint-auth.png)</Frame>
 
+### mTLS Client Certificate Support
+
+Some endpoints require mutual TLS (mTLS) authentication, where both the client and server present certificates to establish a secure connection. Convoy supports mTLS client certificates for endpoints that require certificate-based authentication.
+
+When you configure an mTLS client certificate on an endpoint, Convoy will present the client certificate during webhook delivery to that endpoint. This is especially useful for enterprise integrations that require certificate-based authentication.
+
+To configure mTLS:
+
+1. Provide your client certificate (PEM format)
+2. Provide your client private key (PEM format)
+3. Configure these in the endpoint settings via the API or dashboard
+
+Convoy handles certificate presentation automatically during delivery. This feature requires an enterprise license.
+
+### Content Type
+
+Endpoints can be configured to send webhook payloads in different content types. By default, Convoy sends events as `application/json`. You can also configure endpoints to send events as `application/x-www-form-urlencoded` for endpoints that expect form-encoded data instead of JSON.
+
+Configure the content type in your endpoint settings via the API or dashboard.
+
 ### Endpoint Owner ID
 
 Endpoint Owner ID is a unique ID for identifying a group of endpoints. It is useful for fanning out an event to multiple endpoints and creating portal link for multiple endpoints. It is typically set by you, the user and should have meaningful significance within your internal systems, serving the purpose of logically grouping endpoints.
