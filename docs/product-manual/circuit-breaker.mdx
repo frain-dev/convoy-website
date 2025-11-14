@@ -198,10 +198,10 @@ This returns detailed information including:
 
 ### Updating Configuration
 
-To update circuit breaker configuration for a specific endpoint:
+To update circuit breaker configuration for a specific project:
 
 ```bash
-convoy circuit-breakers update <endpoint-id> \
+convoy circuit-breakers update <project-id> \
   --failure_threshold 75 \
   --success_threshold 10 \
   --minimum_request_count 15 \
