@@ -199,6 +199,12 @@ Here's the full configuration reference
     "database": 0,
 
     // [optional]
+    // Enable TLS encryption for Redis connections. The environment
+    // variable equivalent is CONVOY_REDIS_TLS_ENABLED. The default
+    // value is false.
+    "tls_enabled": false,
+
+    // [optional]
     // Redis cluster addresses. The environment variable equivalent is
     // CONVOY_REDIS_ADDRESSES. The value takes precedence over the
     // other redis configuration in this object. The urls are fully
@@ -426,7 +432,13 @@ Here's the full configuration reference
 
   // [optional]
   // This is used to configure the server's rate limit. It defaults to 25 reqs/sec.
-  "api_rate_limit": 25
+  "api_rate_limit": 25,
+
+  // [optional]
+  // This is used to configure the root path for Convoy deployments. This is useful
+  // when deploying Convoy behind a reverse proxy with a path prefix. The environment
+  // variable equivalent is CONVOY_ROOT_PATH.
+  "root_path": "",
 
   // [optional]
   // This is used to configure the ingestion rate limit on the data plane. Internally,

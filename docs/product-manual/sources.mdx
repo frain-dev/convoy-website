@@ -85,3 +85,9 @@ It is designed for and only available to outgoing projects. Today Convoy support
 2. [Amazon SQS](../product-manual/message-brokers/sqs)
 3. [Google PubSub](../product-manual/message-brokers/pub-sub)
 4. [RabbitMQ (currently in beta)](../product-manual/message-brokers/rabbitmq)
+
+### Broker Message ID Tracking
+
+Convoy automatically captures and stores the broker message ID for every event ingested from message brokers. This allows you to trace events back to their original broker message, making debugging and troubleshooting much easier.
+
+The broker message ID is extracted from each message and stored in the event metadata. You can filter events and deliveries by their original broker message ID using the `brokerMessageId` query parameter in the API, or search for it in the dashboard.
