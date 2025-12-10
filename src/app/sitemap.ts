@@ -20,7 +20,7 @@ export default async function sitemap() {
 			url: `${URL}${route}`,
 			lastModified: new Date(),
 			changeFrequency: 'daily',
-			priority: 1
+			priority: 0.7
 		}));
 		return blogRoutes;
 	};
@@ -33,7 +33,7 @@ export default async function sitemap() {
 				url: `${URL}${route}`,
 				lastModified: new Date(),
 				changeFrequency: 'daily',
-				priority: 0.8
+				priority: 0.7
 			}));
 		return mainRoutes;
 	};
@@ -51,7 +51,7 @@ export default async function sitemap() {
 					url: `${URL}${route}`,
 					lastModified: new Date(),
 					changeFrequency: 'daily',
-					priority: 0.9
+					priority: 0.7
 				})) || [];
 		return docUrls;
 	};
