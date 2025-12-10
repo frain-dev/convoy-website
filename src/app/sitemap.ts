@@ -19,7 +19,7 @@ export default async function sitemap() {
 		const blogRoutes = slugs.map(route => ({
 			url: `${URL}${route}`,
 			lastModified: new Date(),
-			changeFrequency: 'weekly',
+			changeFrequency: 'daily',
 			priority: 1
 		}));
 		return blogRoutes;
@@ -32,7 +32,7 @@ export default async function sitemap() {
 			.map(route => ({
 				url: `${URL}${route}`,
 				lastModified: new Date(),
-				changeFrequency: 'monthly',
+				changeFrequency: 'daily',
 				priority: 0.8
 			}));
 		return mainRoutes;
@@ -50,7 +50,7 @@ export default async function sitemap() {
 				?.map(route => ({
 					url: `${URL}${route}`,
 					lastModified: new Date(),
-					changeFrequency: 'weekly',
+					changeFrequency: 'daily',
 					priority: 0.9
 				})) || [];
 		return docUrls;
@@ -59,7 +59,7 @@ export default async function sitemap() {
 	const indexRoute = {
 		url: `${URL}/`,
 		lastModified: new Date(),
-		changeFrequency: 'yearly',
+		changeFrequency: 'always',
 		priority: 1
 	};
 
