@@ -1,4 +1,5 @@
 import { getAllRoutes, getPosts } from '@/lib/getPosts';
+import { getAllChangelogSlugs } from '@/lib/changelog';
 
 export default async function sitemap() {
 	const URL = 'https://www.getconvoy.io';
@@ -7,6 +8,17 @@ export default async function sitemap() {
 
 	const shouldExcludeRoute = (route: string) => {
 		return excludedPaths.some(path => route.includes(path));
+	};
+
+	const getChangelogRoutes = () => {
+		const slugs = getAllChangelogSlugs();
+		const changelogRoutes = slugs.map(slug => ({
+			url: `${URL}/changelog/${slug}`,
+			lastModified: new Date(),
+			changeFrequency: 'daily',
+			priority: 0.7
+		}));
+		return changelogRoutes;
 	};
 
 	const getBlogRoutes = async () => {
@@ -66,6 +78,7 @@ export default async function sitemap() {
 	const mainRoutes = await getMainRoutes();
 	const blogRoutes = await getBlogRoutes();
 	const docsRoute = await getDocsRoutes();
+	const changelogRoutes = getChangelogRoutes();
 
-	return [indexRoute, ...mainRoutes, ...blogRoutes, ...docsRoute];
+	return [indexRoute, ...mainRoutes, ...blogRoutes, ...changelogRoutes, ...docsRoute];
 }
