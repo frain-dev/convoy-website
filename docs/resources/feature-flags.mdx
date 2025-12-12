@@ -9,7 +9,19 @@ Several new features usually start out as `experimental` features before moving 
 
 Experimental features aren't stable yet and their behaviour and API are subject to change in future releases, so enable them with care. All changes are communicated via our [Changelog](/release-notes/releases).
 
-You can enable any of the `experimental` features using the `--enable-feature-flag` flag or `CONVOY_ENABLE_FEATURE_FLAG` environment variable with a comma separated list of features.
+Convoy supports feature flags at two levels:
+- **System-wide**: Controlled via CLI flags or environment variables, affecting the entire system
+- **Organization-level**: Controlled per organization, either system-controlled or user-controlled via the UI
+
+## Feature Flag Types
+
+### System-wide Features
+These features are controlled system-wide using the `--enable-feature-flag` flag or `CONVOY_ENABLE_FEATURE_FLAG` environment variable with a comma separated list of features.
+
+### Organization-specific Features
+These features can be enabled per organization:
+- **System-controlled**: Managed by the system based on license or configuration
+- **User-controlled**: Can be toggled by users in the organization settings UI
 
 ## Features
 
@@ -18,17 +30,39 @@ You can enable any of the `experimental` features using the `--enable-feature-fl
 `--enable-feature-flag=prometheus` <br />
 This is Convoy native metrics that enable you observe the internal state of the data plane from the ingestion pipeline to the delivery pipeline. See the [docs](/product-manual/metrics).
 
-### Webhook Full text search
+### Read Replicas
 
-`--enable-feature-flag=full-text-search` <br />
-Search your webhook logs with any parameter in the JSON Payload. This is to enable faster debugging. It indexes all ingested events in the configured time period to make them available for search. Check the project settings to configure it.
+`--enable-feature-flag=read-replicas` <br />
+Distribute database read queries across multiple replicas to improve scalability and performance while keeping write operations on the primary database. See the [docs](/product-manual/read-replicas).
 
 ### Circuit Breaker
 
 `--enable-feature-flag=circuit-breaker` <br />
 Identify and automatically disable bad endpoints. See the [docs](/product-manual/endpoints#circuit-breaker).
 
-### Read Replicas
+### Early Adopter Features
 
-`--enable-feature-flag=read-replicas` <br />
-Distribute database read queries across multiple replicas to improve scalability and performance while keeping write operations on the primary database. See the [docs](/product-manual/read-replicas).
+Early Adopter features are experimental features that can be enabled individually in the organization settings UI. These features are available before general availability and may change before being released to all users.
+
+**Available Early Adopter Features:**
+- **mTLS**: Mutual TLS support for secure endpoint communication
+- **OAuth Token Exchange**: OAuth token exchange functionality for endpoint authentication
+- **Credential Encryption**: Encryption at rest for sensitive credentials
+
+**How it works:**
+- Navigate to Organization Settings → Early Adopter Features
+- You'll see a list of all available early adopter features
+- Toggle each feature individually to enable or disable it
+- Each feature can be controlled independently
+
+### mTLS
+
+Mutual TLS (mTLS) support for secure endpoint communication.
+
+### OAuth Token Exchange
+
+OAuth token exchange functionality for endpoint authentication.
+
+### Credential Encryption
+
+Encryption at rest for sensitive credentials.
