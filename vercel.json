@@ -1,4 +1,11 @@
 {
+	"redirects": [
+		{
+			"source": "/docs/docs/:match*",
+			"destination": "/docs/:match*",
+			"permanent": true
+		}
+	],
 	"rewrites": [
 		{
 			"source": "/docs",
