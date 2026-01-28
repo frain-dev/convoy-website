@@ -6,7 +6,21 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: 'Convoy Core Gateway - Advanced Webhook Management',
 		description: 'Enterprise webhook gateway with retries, circuit breaking, and static IPs. Designed for reliability, security, and unlimited scale.',
-		type: 'website'
+		type: 'website',
+		images: [
+			{
+				url: '/static/Core-Gateway-OG.png',
+				width: 1200,
+				height: 630,
+				alt: 'Convoy Core Gateway'
+			}
+		]
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'Convoy Core Gateway - Advanced Webhook Management',
+		description: 'Enterprise webhook gateway with retries, circuit breaking, and static IPs. Designed for reliability, security, and unlimited scale.',
+		images: ['/static/Core-Gateway-OG.png']
 	},
 	alternates: {
 		canonical: '/core-gateway'

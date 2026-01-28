@@ -6,7 +6,21 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: 'Convoy Webhook Gateway Pricing Plans',
 		description: 'Find the right webhook plan for your scale. Choose between cloud-hosted solutions starting at $99/month or enterprise self-hosted options.',
-		type: 'website'
+		type: 'website',
+		images: [
+			{
+				url: '/static/Pricing-OG.png',
+				width: 1200,
+				height: 630,
+				alt: 'Convoy Pricing Plans'
+			}
+		]
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'Convoy Webhook Gateway Pricing Plans',
+		description: 'Find the right webhook plan for your scale. Choose between cloud-hosted solutions starting at $99/month or enterprise self-hosted options.',
+		images: ['/static/Pricing-OG.png']
 	},
 	alternates: {
 		canonical: '/pricing'

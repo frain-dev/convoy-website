@@ -16,6 +16,7 @@ export interface ChangelogEntry {
     content: string;
     authors: Author[];
     slug: string;
+    image: string | null;
 }
 
 export interface MonthGroup {
@@ -83,6 +84,10 @@ function getAllEntries(): ChangelogEntry[] {
         // Remove date prefix from slug (e.g., "2025-08-22-message-broker-functions" -> "message-broker-functions")
         const slug = filename.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '');
 
+        // Extract first image from markdown content for OG image
+        const imageMatch = content.match(/!\[.*?\]\((.*?)\)/);
+        const image = data.image || (imageMatch ? imageMatch[1] : null);
+
         return {
             date: data.date,
             displayDate: formatDisplayDate(date),
@@ -90,7 +95,8 @@ function getAllEntries(): ChangelogEntry[] {
             title: data.title,
             content: JSON.stringify(renderedContent),
             authors: data.authors || [],
-            slug
+            slug,
+            image
         };
     });
 
