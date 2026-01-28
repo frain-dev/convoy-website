@@ -25,6 +25,7 @@
 		"gray-matter": "^4.0.3",
 		"next": "^13.3.4",
 		"postcss": "8.4.27",
+		"posthog-js": "^1.335.5",
 		"prismjs": "^1.29.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",

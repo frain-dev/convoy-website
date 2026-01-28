@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import posthog from 'posthog-js';
 
 declare global {
 	interface Window {
@@ -25,9 +26,19 @@ export default function CookieConsent() {
 
 	const handleConsent = (accepted: boolean) => {
 		localStorage.setItem('cookie-consent', accepted ? 'accepted' : 'declined');
+
+		// Google Analytics consent
 		window.gtag?.('consent', 'update', {
 			analytics_storage: accepted ? 'granted' : 'denied'
 		} as any);
+
+		// PostHog consent
+		if (accepted) {
+			posthog.opt_in_capturing();
+		} else {
+			posthog.opt_out_capturing();
+		}
+
 		setShowConsent(false);
 	};
 
