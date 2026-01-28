@@ -19,18 +19,20 @@ export const metadata: Metadata = {
 		description: 'Scalable webhook gateway for managing millions of events. Built for developers with features like retries, circuit breaking, and enterprise security.',
 		url: 'https:/www.getconvoy.io/',
 		type: 'website',
-		images: '/static/convoy-new.png'
+		images: [
+			{
+				url: '/static/Convoy-OG.png',
+				width: 1200,
+				height: 630,
+				alt: 'Convoy - Enterprise Webhook Gateway'
+			}
+		]
 	},
 	twitter: {
 		title: 'Convoy - Enterprise-Grade Webhook Gateway for Reliable Event Delivery',
 		description: 'Scalable webhook gateway for managing millions of events. Built for developers with features like retries, circuit breaking, and enterprise security.',
 		creator: '@getconvoy',
-		images: [
-			{
-				url: '/static/convoy-new.png',
-				alt: 'Convoy Logo'
-			}
-		],
+		images: ['/static/Convoy-OG.png'],
 		site: '@getconvoy',
 		card: 'summary_large_image'
 	},

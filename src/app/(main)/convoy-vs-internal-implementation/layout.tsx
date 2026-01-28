@@ -6,7 +6,21 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: 'Convoy vs Building Your Own Webhook Infrastructure',
 		description: "Compare using Convoy's webhook gateway vs building internally. Understand the trade-offs in reliability, maintenance, and development costs.",
-		type: 'article'
+		type: 'article',
+		images: [
+			{
+				url: '/static/Convoy-vs-internal-implemetation-OG.png',
+				width: 1200,
+				height: 630,
+				alt: 'Convoy vs Internal Implementation Comparison'
+			}
+		]
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'Convoy vs Building Your Own Webhook Infrastructure',
+		description: "Compare using Convoy's webhook gateway vs building internally. Understand the trade-offs in reliability, maintenance, and development costs.",
+		images: ['/static/Convoy-vs-internal-implemetation-OG.png']
 	},
 	alternates: {
 		canonical: '/convoy-vs-internal-implementation'

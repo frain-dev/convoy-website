@@ -6,7 +6,21 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: 'What are Webhooks? Complete Implementation Guide',
 		description: 'Learn how webhooks enable real-time data exchange between applications. A comprehensive guide to webhook implementation and best practices.',
-		type: 'article'
+		type: 'article',
+		images: [
+			{
+				url: '/static/What-are-webhooks-OG.png',
+				width: 1200,
+				height: 630,
+				alt: 'What are Webhooks? Complete Guide by Convoy'
+			}
+		]
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'What are Webhooks? Complete Implementation Guide',
+		description: 'Learn how webhooks enable real-time data exchange between applications. A comprehensive guide to webhook implementation and best practices.',
+		images: ['/static/What-are-webhooks-OG.png']
 	},
 	alternates: {
 		canonical: '/what-are-webhooks'
