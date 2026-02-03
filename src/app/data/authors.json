@@ -12,5 +12,6 @@
 	{ "id": "pelumiOni", "name": "Pelumi Oni", "role": "Frontend Engineer", "twitter": "pelumi__o" },
 	{ "id": "press", "name": "Press", "role": "Convoy", "twitter": "getconvoy" },
 	{ "id": "convoyengineering", "name": "Convoy Engineering", "role": "Writer", "twitter": "getconvoy" },
-	{ "id": "phillipSimbwa", "name": "Phillip Simbwa", "role": "Senior Software Engineer", "twitter": "PhillipSimbwa" }
+	{ "id": "phillipSimbwa", "name": "Phillip Simbwa", "role": "Senior Software Engineer", "twitter": "PhillipSimbwa" },
+	{ "id": "tosinFatungase", "name": "Oluwatosin Fatungase", "role": "Business", "twitter": "", "linkedIn": "https://www.linkedin.com/in/oluwatosinfatungase/" }
 ]
