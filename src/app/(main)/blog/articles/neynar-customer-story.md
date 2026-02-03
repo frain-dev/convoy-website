@@ -9,7 +9,7 @@ primary_tag: Customer Stories
 tags:
     - Convoy
     - Customer Stories
-featured: false
+featured: true
 description: Early in their journey of building the developer infrastructure for Farcaster, Neynar Co-founder & CTO Manan Patel realised that they needed a reliable, performant and highly customisable way to deliver webhook notifications to customer endpoints.
 published_at: 2025-02-25T17:00:00.000+00:00
 ---

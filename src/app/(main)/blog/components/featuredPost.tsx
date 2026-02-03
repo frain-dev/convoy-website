@@ -68,7 +68,7 @@ export default function FeaturedPost({ postData }: any) {
 						<div className="flex items-end">
 							{postData.primary_author && !postData.authors && (
 								<a
-									href={`${postData.primary_author?.twitter ? 'http://twitter.com/' + postData.primary_author?.twitter : postData.primary_author?.linkedIn || ''}`}
+									href={`${postData.primary_author?.twitter ? 'http://twitter.com/' + postData.primary_author?.twitter : ''}`}
 									target="_blank"
 									className="flex items-start desktop:mb-[unset]">
 									<div className="w-32px h-32px rounded-50% mr-8px overflow-hidden flex items-center">
