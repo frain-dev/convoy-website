@@ -14,7 +14,7 @@ We shipped bug fixes, better observability, and a refactored data layer for the 
 
 **Fixes & observability**
 
-Endpoints in **Paused** or **Inactive** state now activate correctly, and OSS default-user login no longer requires an organization. We fixed filter evaluation for boolean values in arrays and a startup bug where the worker blocked the agent server. For Sentry, you can set `CONVOY_SENTRY_DEBUG=true` and `CONVOY_SENTRY_ENVIRONMENT` to get debug logging and environment tagging.
+Endpoints in **Paused** or **Inactive** state now activate correctly, and OSS default-user login no longer requires a license. We fixed filter evaluation for boolean values in arrays and a startup bug where the worker blocked the agent server. For Sentry, we've updated the configuration to use the default **Environment** field.
 
 **Data layer improvements**
 
