@@ -11,7 +11,7 @@ tags:
     - Customer Stories
     - Engineering
 featured: true
-description: Spruce Principal Engineer Michael Raines shares how Convoy fan-out functionality and reliability helped their small team deliver webhook events to customers efficiently, saving an estimated six to nine months of development time.
+description: Spruce Principal Engineer Michael Raines shares how Convoy fan-out functionality and reliability helped their lean engineering team deliver webhook events to customers efficiently, saving an estimated six to nine months of development time.
 published_at: 2026-02-02T17:00:00.000+00:00
 ---
 
