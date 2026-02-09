@@ -17,11 +17,11 @@ published_at: 2026-02-02T17:00:00.000+00:00
 
 # About Spruce
 
-[Spruce Health](https://sprucehealth.com) is the leading platform for HIPAA-compliant healthcare communication, serving over 25,000 healthcare professionals and facilitating more than 500,000 daily healthcare interactions. With over 10 years in business and 5 million patient accounts, Spruce provides an all-in-one communication solution that includes secure messaging, phone, video, e-fax, and team messaging capabilities for healthcare providers.
+[Spruce Health](https://sprucehealth.com) is the leading platform for HIPAA-compliant healthcare communication. As a comprehensive communication solution, Spruce provides healthcare providers with secure messaging, phone, video, e-fax, and team collaboration capabilities.
 
-With a lean engineering team of approximately six full-time backend engineers, Spruce focuses on customer-driven product development and data-driven decision making. Their public API serves as the gateway for webhook integrations, enabling healthcare providers and third-party systems to integrate with Spruce's platform and receive real-time event notifications.
+With a lean engineering team focused on customer-driven product development and data-driven decision-making, Spruce utilizes their own API as the gateway for webhook integrations. This enables healthcare providers and third-party systems to integrate seamlessly with the Spruce platform and receive real-time event notifications.
 
-Michael Raines, Principal Engineer at Spruce, leads security, backend architecture, and implementation for the team. His role includes ensuring reliable event delivery to customers who integrate with Spruce's products.
+Michael Raines, Principal Engineer at Spruce, oversees the architecture and implementation of the team’s webhook and event-delivery infrastructure. His work ensures reliable, secure event delivery for the growing number of customers and integration partners who build on top of Spruce’s products.
 
 ---
 
