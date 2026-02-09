@@ -199,11 +199,11 @@ export default function BlogPage({ posts, blogData, children }: any) {
 							<h4 className="text-[#666] text-[13px] sm-old:text-14 desktop:text-16 font-medium leading-[24px]">Written by</h4>
 							<div className="flex flex-wrap mb-10px desktop:mb-26px items-end justify-between">
 								<div className="flex items-end">
-									{blogData.primary_author && !blogData.authors && (
-										<a
-											href={`${blogData.primary_author?.twitter ? 'http://twitter.com/' + blogData.primary_author?.twitter : ''}`}
-											target="_blank"
-											className="flex items-start desktop:mb-[unset]">
+								{blogData.primary_author && !blogData.authors && (
+									<a
+										href={`${blogData.primary_author?.twitter ? 'http://twitter.com/' + blogData.primary_author?.twitter : blogData.primary_author?.linkedIn || ''}`}
+										target="_blank"
+										className="flex items-start desktop:mb-[unset]">
 											<div className="w-36px h-36px rounded-50% mr-8px overflow-hidden flex items-center">
 												<OptimizedImage
 													src={`/profile-images/${blogData.primary_author?.name}.png`}
