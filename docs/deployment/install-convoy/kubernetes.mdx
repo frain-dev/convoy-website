@@ -10,12 +10,15 @@ import DefaultCredentialsComponent from '/snippets/default-credentials-component
 
 ## Prerequisites
 
--   A running Kubernetes cluster.
--   Helm 3 or above. See Installing [Helm](https://helm.sh/docs/intro/install).
--   A Postgres instance
--   A Redis instance
+- A running Kubernetes cluster.
+- Helm 3 or above. See Installing [Helm](https://helm.sh/docs/intro/install).
+- Access to a Postgres instance (or use the default Postgres chart installed by Convoy's Helm chart)
+- Access to a Redis instance (or use the default Redis chart installed by Convoy's Helm chart)
 
-<Note>We provide Postgres and Redis helm charts for testing and evaluation. Please do not use them in production environments</Note>
+<Note>
+	The Convoy Helm chart depends on Bitnami Postgres and Redis charts and will install them by default for testing and evaluation. For production, you should use managed or
+	self-hosted Postgres and Redis instead of these defaults and configure the chart to point at your external databases.
+</Note>
 
 ## Steps
 
@@ -31,16 +34,22 @@ Update the chart repository:
 helm repo update
 ```
 
-Install the chart:
+Install the chart with default values:
 
 ```shell
-helm install --values values.yaml convoy convoy/convoy -n convoy
+helm install convoy convoy/convoy --namespace convoy --create-namespace
+```
+
+Install the chart with a custom `values.yaml`:
+
+```shell
+helm install convoy convoy/convoy --namespace convoy --create-namespace --values values.yaml
 ```
 
 Upgrade the chart:
 
 ```shell
-helm upgrade --values values.yaml convoy convoy/convoy -n convoy
+helm upgrade convoy convoy/convoy --namespace convoy --values values.yaml
 ```
 
 ## Upgrading
@@ -48,7 +57,8 @@ helm upgrade --values values.yaml convoy convoy/convoy -n convoy
 ### Upgrading to Convoy v24.8.x (Convoy Helm charts v3.1.0)
 
 To upgrade to Convoy [v24.8.x](../../release-notes/releases#v24-8-x),
-you need to update the charts to [v3.x.x](https://artifacthub.io/packages/helm/convoy/convoy/3.1.0).
+you need to update the chart to the `3.x.x` series.
+See the [Convoy Helm chart on ArtifactHub](https://artifacthub.io/packages/helm/convoy/convoy) for the latest `3.x.x` version.
 In this release, we have gated a number of features behind a license.
 If you use them, these features will cease to work until you provide
 a license key.
@@ -57,32 +67,128 @@ and [here](/business-and-enterprise/paid-features) to learn how to get a license
 
 ### Upgrading the Convoy version without upgrading the chart
 
-Change both the image tag value to the convoy version you want
+Change the image tag values to the Convoy version you want. The chart exposes a **global tag** that fans out to all Convoy components (server and agent), and **per-component tags** if you need finer control:
 
 ```yaml values.yml
-convoy:
-    tag: v24.8.1
-
-worker:
-    image:
-        tag: v24.8.1
-
-ingest:
-    image:
-        tag: v24.8.1
-
-stream:
-    image:
-        tag: v24.8.1
-
-server:
-    image:
-        tag: v24.8.1
-
-migrate:
-    image:
-        tag: v24.8.1
+# Recommended: update all Convoy components at once
+global:
+    convoy:
+        tag: vX.Y.Z # replace with the Convoy version you want to run (for example v26.1.4; see Convoy Releases for the latest version)
 ```
+
+## Production deployment (managed Postgres and Redis)
+
+For production, we strongly recommend using managed Postgres and Redis instead of the bundled Bitnami charts.
+
+Disable the bundled Postgres and Redis charts and switch to external services:
+
+```yaml values.yml
+postgresql:
+    enabled: false
+
+redis:
+    enabled: false
+
+global:
+    externalDatabase:
+        enabled: true # use an external / managed Postgres
+    nativeRedis:
+        enabled: false # do not deploy the in-cluster Redis
+    externalRedis:
+        enabled: true # use an external / managed Redis
+```
+
+### Example: managed Postgres (RDS, CloudSQL, etc.)
+
+Point Convoy at a managed Postgres instance by configuring `global.externalDatabase` and disabling the in-cluster Postgres chart:
+
+```yaml values.yml
+global:
+    externalDatabase:
+        enabled: true
+        host: my-postgres-host.rds.amazonaws.com
+        port: 5432
+        database: convoy
+        username: convoy
+        # When 'secret' is set, the inline password values are ignored.
+        # Create a Kubernetes Secret with key 'password' containing your DB password.
+        secret: convoy-postgres
+        # options: "sslmode=require&connect_timeout=30" # example for managed Postgres with TLS
+
+postgresql:
+    enabled: false
+```
+
+### Example: managed Redis
+
+Use a managed Redis (e.g. AWS ElastiCache, GCP Memorystore, Azure Managed Redis, etc.) by configuring `global.externalRedis`, disabling `global.nativeRedis`, and disabling the in-cluster Redis chart:
+
+```yaml values.yml
+global:
+    nativeRedis:
+        enabled: false
+    externalRedis:
+        enabled: true
+        host: my-redis-host.cache.amazonaws.com
+        port: '6379'
+        scheme: 'rediss' # use 'rediss' for TLS-enabled Redis endpoints
+        database: '0'
+        # When 'secret' is set, the inline password values are ignored.
+        # Create a Kubernetes Secret with key 'password' containing your Redis password.
+        secret: convoy-redis
+
+redis:
+    enabled: false
+```
+
+### Connectivity and startup behaviour
+
+- If Postgres or Redis are unreachable (DNS, firewall, wrong credentials, TLS issues), Convoy pods will fail to start and may go into `CrashLoopBackOff`. Check the pod logs for connection errors.
+- Helm itself will succeed in creating resources, but the deployment will not become healthy until Convoy can connect to the database and Redis.
+- For managed services with TLS, ensure you set appropriate connection options (for Postgres) or `scheme: rediss` (for Redis), and that your network policies / security groups allow traffic from the cluster to the managed service.
+- Both the server and agent deployments include a `wait-for-migrate` init container that runs `migrate up` before the application starts. If migrations cannot run (for example, the database is unreachable), these init containers will fail and the pods will not become Ready.
+
+## Scaling and resources
+
+Use `server.app.resources` and `agent.app.resources` to set CPU/memory requests and limits, and `server.autoscaling` / `agent.autoscaling` to enable horizontal autoscaling.
+
+Start with conservative values and tune based on your event volume and observed CPU/memory usage:
+
+```yaml values.yml
+server:
+    app:
+        resources:
+            requests:
+                cpu: 500m
+                memory: 1Gi
+            limits:
+                cpu: 1
+                memory: 2Gi
+    autoscaling:
+        enabled: true
+        minReplicas: 2
+        maxReplicas: 10
+        targetCPUUtilizationPercentage: 70
+        targetMemoryUtilizationPercentage: 80
+
+agent:
+    app:
+        resources:
+            requests:
+                cpu: 500m
+                memory: 1Gi
+            limits:
+                cpu: 1
+                memory: 2Gi
+    autoscaling:
+        enabled: true
+        minReplicas: 2
+        maxReplicas: 10
+        targetCPUUtilizationPercentage: 70
+        targetMemoryUtilizationPercentage: 80
+```
+
+For higher traffic workloads, increase the requests/limits and allow higher `maxReplicas`, and use metrics from your cluster (Prometheus, cloud monitoring) to fine-tune thresholds.
 
 ## ArgoCD Configuration
 
@@ -107,7 +213,7 @@ spec:
     project: default
     source:
         repoURL: 'https://frain-dev.github.io/helm-charts'
-        targetRevision: '2.3.0'
+        targetRevision: 'X.Y.Z' # use the chart version you want to deploy (for example 3.7.5; see ArtifactHub for the latest version)
         chart: convoy
         helm:
             releaseName: convoy
