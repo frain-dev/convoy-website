@@ -1,36 +1,124 @@
 ---
-title: Single sign-on 
-'og:title': Enterprise SSO 
+title: Single Sign-On (SAML)
+'og:title': Single Sign-On (SAML) for Self-Hosted Convoy
+'og:description': Set up SAML-based SSO on your self-hosted Convoy instance
 ---
 
-import AddLicense from '/snippets/add-license.mdx';
+SAML SSO lets your team sign in to Convoy using your organisation's identity provider (IdP). Supported providers include Google, Okta, Entra ID (Azure AD), Auth0, ADP, CAS, ClassLink, Cloudflare, and any custom SAML 2.0 or OIDC-compatible provider.
 
 ## Prerequisites
 
-1. Ensure you have an active license.
+1. A Premium license with the SSO feature.
+2. A SAML 2.0-compatible identity provider.
 
-## Steps
+## Setup
 
 <Steps>
-  <Step title="Add your license key"> 
-    <AddLicense />
+  <Step title="Enable SSO in your config">
+    Add your license key and enable SSO in `convoy.json`:
+
+    ```json convoy.json
+    {
+      "license_key": "your-license-key",
+      "auth": {
+        "sso": {
+          "enabled": true,
+
+          // [optional] Override the callback URL Convoy gives to your IdP.
+          // Defaults to the incoming request origin. Set this if Convoy is
+          // behind a reverse proxy or load balancer.
+          "redirect_url": "https://convoy.yourcompany.com/ui/saml"
+        }
+      }
+    }
+    ```
+
+    Alternatively, use environment variables:
+
+    ```bash
+    export CONVOY_LICENSE_KEY="your-license-key"
+    export CONVOY_SSO_ENABLED=true
+
+    # Optional — same as redirect_url above
+    export CONVOY_SSO_REDIRECT_URL="https://convoy.yourcompany.com/ui/saml"
+    ```
   </Step>
 
-  <Step title="Configure your SAML Connection from the SSO Portal">
-    <Frame caption="SSO Portal">
-      <img src="/images/sso-portal.png" /> 
-    </Frame>
-    After you purchase a license with SSO, you'd get an email with a link to configure a `SAML Connection`. **Please ensure you only configure one `SAML Connection`**. Please reach out to us if you need to configure multiple connections.
-  </Step> 
+  <Step title="Restart Convoy">
+    Restart your instance to apply the new config.
+  </Step>
 
-  <Step title="Ensure your Convoy instance can communicate with the SSO Server">
-    To make sure sso works, make sure your instance can reach our servers at `ssoproxy.getconvoy.io`. The `SSO` server is responsible for generating `redirect uris` and validating `sso tokens`.
+  <Step title="Configure your SAML connection">
+    In the Convoy dashboard, go to **Organisation Settings** and click **Configure SSO**.
+
+    <Frame caption="Organisation Settings — Configure SSO">
+      <img src="/images/sso-settings.png" />
+    </Frame>
+
+    This opens the SSO admin portal where you select your identity provider and complete the SAML setup.
+
+    <Frame caption="SSO portal — select your identity provider">
+      <img src="/images/sso-portal.png" />
+    </Frame>
+
+    The portal provides the **ACS URL** and **SP Entity ID** you'll need to enter in your IdP. Configure exactly one SAML connection.
+
+    <Note>
+      If you need multiple SAML connections, reach out to us at support@getconvoy.io.
+    </Note>
   </Step>
 
   <Step title="Login with SSO">
-    <Frame caption="Login screen for SAML">
+    On the login page, click **Login with SSO**. You'll be redirected to your IdP, and after authentication you'll land back in Convoy signed in.
+
+    <Frame caption="Login page with SSO option">
       <img src="/images/login-with-sso.png" />
     </Frame>
   </Step>
 </Steps>
 
+## How It Works
+
+1. You click **Login with SSO** on the login page.
+2. Convoy redirects you to your IdP for authentication.
+3. You authenticate with your IdP.
+4. The IdP sends a SAML assertion back to Convoy.
+5. Convoy validates the assertion and issues a short-lived token.
+6. Your browser lands on Convoy's `/ui/saml` callback with this token.
+7. Convoy exchanges the token for a session and logs you in.
+
+## Troubleshooting
+
+### "auth.sso.redirect_url is required for SSO login"
+
+Convoy couldn't determine where to redirect after authentication. Set the `host` field in your config to your Convoy instance's public URL:
+
+```json
+{
+  "host": "https://convoy.yourcompany.com"
+}
+```
+
+Or set `auth.sso.redirect_url` explicitly.
+
+### SSO button doesn't appear on the login page
+
+- Check that your license includes the SSO feature.
+- Verify `auth.sso.enabled` is `true`.
+- Restart Convoy after config changes.
+
+### "Authentication failed" after IdP redirect
+
+- Check that the SAML connection in the SSO portal is configured correctly.
+- Ensure the ACS URL and SP Entity ID in your IdP match the values shown in the SSO portal.
+
+### Blank page or errors after callback
+
+- Make sure you're running the latest version of Convoy.
+- Clear your browser cache and try again.
+
+## Related
+
+- [Licensing](/business-and-enterprise/licensing) — Get and configure a Premium license
+- [Google SSO](/product-manual/google-sso) — Sign in with Google OAuth
+- [RBAC](/product-manual/rbac) — Manage permissions after sign-in
