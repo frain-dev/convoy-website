@@ -52,7 +52,10 @@ export default function Footer() {
 		},
 		{
 			title: 'Speak to us',
-			links: [{ name: 'Slack', link: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', isExternal: true }]
+			links: [
+				{ name: 'Slack', link: 'https://convoy-community.slack.com/join/shared_invite/zt-xiuuoj0m-yPp~ylfYMCV9s038QL0IUQ#/shared-invite/email', isExternal: true },
+				{ name: 'sales@getconvoy.io', link: 'mailto:sales@getconvoy.io', isExternal: true }
+			]
 		}
 	];
 	const subscribeToNewsletter = async (event: React.FormEvent) => {
@@ -272,7 +275,7 @@ export default function Footer() {
 
 						<div className="flex flex-col desktop:flex-row desktop:justify-between items-start desktop:items-center gap-10 w-full">
 							<div className="flex flex-col">
-								<h6 className="font-semibold mb-8px text-[#666] text-12 desktop:text-14">Follow Us</h6>
+								<h6 className="font-semibold mb-8px text-[#666] text-12 desktop:text-14">Connect with us</h6>
 
 								<ul className="flex">
 									<li className="bg-opacity-10 hover:opacity-75 transition-all w-42px h-42px flex items-center justify-center mr-16px last-of-type:mr-[unset]">
