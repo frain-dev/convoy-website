@@ -10,14 +10,16 @@ import { PostHogProvider } from './components/PostHogProvider';
 export const metadata: Metadata = {
 	metadataBase: new URL('https://www.getconvoy.io'),
 	title: 'Convoy - Enterprise-Grade Webhook Gateway for Reliable Event Delivery',
-	description: 'Scalable webhook gateway for managing millions of events. Built for developers with features like retries, circuit breaking, and enterprise security.',
+	description:
+		'Enterprise webhook gateway for secure, scalable, and reliable event delivery. Manage incoming and outgoing webhooks with retries, signatures, rate limiting, and observability.',
 	alternates: {
 		canonical: '/'
 	},
 	openGraph: {
 		title: 'Convoy - The Enterprise Webhook Gateway',
-		description: 'Scalable webhook gateway for managing millions of events. Built for developers with features like retries, circuit breaking, and enterprise security.',
-		url: 'https:/www.getconvoy.io/',
+		description:
+			'Enterprise webhook gateway for secure, scalable, and reliable event delivery. Manage incoming and outgoing webhooks with retries, signatures, rate limiting, and observability.',
+		url: 'https://www.getconvoy.io/',
 		type: 'website',
 		images: [
 			{
@@ -30,7 +32,8 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		title: 'Convoy - Enterprise-Grade Webhook Gateway for Reliable Event Delivery',
-		description: 'Scalable webhook gateway for managing millions of events. Built for developers with features like retries, circuit breaking, and enterprise security.',
+		description:
+			'Enterprise webhook gateway for secure, scalable, and reliable event delivery. Manage incoming and outgoing webhooks with retries, signatures, rate limiting, and observability.',
 		creator: '@getconvoy',
 		images: ['/static/Convoy-OG.png'],
 		site: '@getconvoy',
@@ -99,7 +102,7 @@ export const metadata: Metadata = {
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Organization',
-	'@id': 'https://wwww.getconvoy.io',
+	'@id': 'https://www.getconvoy.io',
 	name: 'Convoy',
 	url: 'https://www.getconvoy.io',
 	logo: {
@@ -107,7 +110,8 @@ const jsonLd = {
 		url: 'https://www.getconvoy.io/svg/convoy-logo-full-new.svg',
 		alternateName: 'Convoy Logo'
 	},
-	description: 'Scalable webhook gateway for managing millions of events. Built for developers with features like retries, circuit breaking, and enterprise security.',
+	description:
+		'Enterprise webhook gateway for secure, scalable, and reliable event delivery. Manage incoming and outgoing webhooks with retries, signatures, rate limiting, and observability.',
 	sameAs: ['https://github.com/frain-dev/convoy', 'https://twitter.com/getconvoy', 'https://linkedin.com/company/convoy-webhooks/'],
 	foundingDate: '2021',
 	email: 'sales@getconvoy.io',

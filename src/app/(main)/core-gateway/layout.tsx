@@ -2,10 +2,14 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
 	title: 'Convoy Core Gateway | Advanced Webhook Management Platform',
-	description: 'Enterprise webhook gateway with retries, circuit breaking, and static IPs. Designed for reliability, security, and unlimited scale.',
+	description:
+		'Enterprise webhook gateway for reliable webhook and event delivery, with retries, circuit breaking, rate limiting, HMAC signatures, and observability for secure scale.',
 	openGraph: {
 		title: 'Convoy Core Gateway - Advanced Webhook Management',
-		description: 'Enterprise webhook gateway with retries, circuit breaking, and static IPs. Designed for reliability, security, and unlimited scale.',
+		description:
+			'Enterprise webhook gateway for reliable webhook and event delivery, with retries, circuit breaking, rate limiting, HMAC signatures, and observability for secure scale.',
+		url: 'https://www.getconvoy.io/core-gateway',
+		siteName: 'Convoy',
 		type: 'website',
 		images: [
 			{
@@ -19,7 +23,8 @@ export const metadata: Metadata = {
 	twitter: {
 		card: 'summary_large_image',
 		title: 'Convoy Core Gateway - Advanced Webhook Management',
-		description: 'Enterprise webhook gateway with retries, circuit breaking, and static IPs. Designed for reliability, security, and unlimited scale.',
+		description:
+			'Enterprise webhook gateway for reliable webhook and event delivery, with retries, circuit breaking, rate limiting, HMAC signatures, and observability for secure scale.',
 		images: ['/static/Core-Gateway-OG.png']
 	},
 	alternates: {
@@ -33,7 +38,8 @@ const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'WebPage',
 	name: 'Convoy Core Gateway',
-	description: 'Enterprise webhook gateway with retries, circuit breaking, and static IPs. Designed for reliability, security, and unlimited scale.',
+	description:
+		'Enterprise webhook gateway for reliable webhook and event delivery, with retries, circuit breaking, rate limiting, HMAC signatures, and observability for secure scale.',
 	mainEntity: {
 		'@type': 'SoftwareApplication',
 		name: 'Convoy Core Gateway',
@@ -70,7 +76,7 @@ const jsonLd = {
 		'@type': 'UseAction',
 		target: {
 			'@type': 'EntryPoint',
-			urlTemplate: 'https://www.getconvoy.io/docs/getting-started',
+			urlTemplate: 'https://www.getconvoy.io/docs/home/quickstart',
 			actionPlatform: ['http://schema.org/DesktopWebPlatform', 'http://schema.org/AndroidPlatform', 'http://schema.org/IOSPlatform']
 		},
 		expectsAcceptanceOf: {

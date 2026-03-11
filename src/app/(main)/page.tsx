@@ -30,6 +30,11 @@ import { cn } from '@/lib/utils';
 import RegionDropdown from '@/app/components/RegionDropdown';
 
 export default function Home() {
+	const aiPrompt =
+		"What is Convoy, and how can it help my team with secure, scalable, and reliable webhook delivery? Give me a short practical summary.";
+	const askChatGptUrl = `https://chatgpt.com/?q=${encodeURIComponent(aiPrompt)}`;
+	const askClaudeUrl = `https://claude.ai/new?q=${encodeURIComponent(aiPrompt)}`;
+
 	const companies = [
 		{ name: 'maple-full', url: 'https://maplebilling.com/', class: 'h-20px desktop:h-30px' },
 		{ name: 'testlify-full', url: 'https://testlify.com/', class: 'h-20px desktop:h-28px' },
@@ -68,7 +73,7 @@ export default function Home() {
 					}}
 					className="">
 					<h1 className="desktop:text-center font-medium text-[32px] desktop:text-[40px] mb-6 desktop:max-w-[683px]">
-						The webhook gateway for <br className="hidden desktop:inline-flex" />
+						The Webhook Gateway for <br className="hidden desktop:inline-flex" />
 						<motion.span className="relative inline-block overflow-hidden h-[38px] desktop:h-[42px] w-[154px] desktop:w-[190px] bor der align-bottom pt-1 desktop:pt-0 desktop:align-middle xxs-old:ml-1 desktop:ml-0 desktop:mr-2.5">
 							<motion.span
 								initial={{ y: -11 }}
@@ -99,11 +104,11 @@ export default function Home() {
 								receiving
 							</motion.span>
 						</motion.span>
-						events
+						events reliably
 					</h1>
 					<p className="desktop:text-center text-[#666] text-[16px] desktop:max-w-[683px] m-auto mb-6 desktop:font-medium">
-						The complete solution for <span className="text-[#2780F1]">secure, scalable, and reliable</span> webhook delivery. Built for developers, trusted by
-						enterprises.
+						The complete solution for <span className="text-[#2780F1]">secure, scalable, and reliable</span> webhook delivery. Manage incoming and outgoing
+						webhooks with confidence. Built for developers, trusted by enterprises.
 					</p>
 
 					<div className="flex flex-wrap gap-16px mt-4 desktop:mt-0 mb-56px desktop:items-center desktop:justify-center">
@@ -189,7 +194,7 @@ export default function Home() {
 							once: true
 						}}
 						className="desktop:text-center text-32 desktop:text-[40px] font-medium w-full desktop:w-[603px]">
-						The World's Most Advanced Webhooks Gateway
+						Enterprise Webhook Gateway Platform for Reliability and Scale
 					</motion.h2>
 				</div>
 				<div className="flex flex-col desktop:flex-row gap-30px desktop:gap-[60px]">
@@ -259,7 +264,7 @@ export default function Home() {
 						className="flex flex-col gap-3">
 						<h4 className="text-24 desktop:text-20 font-semibold leading-[150%]">Unparalleled Developer Experience</h4>
 						<p className="text-14 desktop:text-16 leading-[150%] text-[#666] w-full desktop:w-[378px]">
-							Create secrets, sign payload, verify events. Increase security by enabling rolling secrets. Prevents well known attacks like SSRF (Server-Side Request
+							Create secrets, sign payload, verify events. Increase security by enabling rolling secrets. Prevents well-known attacks like SSRF (Server-Side Request
 							Forgery).
 						</p>
 					</motion.div>
@@ -353,7 +358,7 @@ export default function Home() {
 					}}
 					className="bg-white-100 rounded-8px gap-40px desktop:gap-60px my-10 desktop:my-20 p-5 desktop:p-10 border border-[#e7e7e7] flex flex-col max-w-[1180px] w-full">
 					<div className="flex flex-col items-start desktop:items-center gap-3">
-						<h2 className="text-32 desktop:text-[40px] font-medium desktop:text-center">Customer Remarks</h2>
+						<h2 className="text-32 desktop:text-[40px] font-medium desktop:text-center">Customer Stories</h2>
 						<p className="text-[#666] desktop:text-center text-14 desktop:text-16 leading-[150%]">Read what our customers have to say about Convoy</p>
 					</div>
 
@@ -465,7 +470,7 @@ export default function Home() {
 							once: true
 						}}
 						className="flex flex-col desktop:items-center gap-6">
-						<h2 className="text-32 desktop:text-[40px] w-full desktop:w-[436px] font-medium desktop:text-center">Security, Scalability and Compliance</h2>
+						<h2 className="text-32 desktop:text-[40px] w-full desktop:w-[436px] font-medium desktop:text-center">Webhook Security, Scalability, and Compliance</h2>
 						<p className="text-[#666] w-full desktop:w-[512px] desktop:text-center text-14 desktop:text-16 leading-[180%] desktop:leading-[150%]">
 							Built for the highest standards of security, we ensure your business runs with reliability and meets the compliance requirements you rely on.
 						</p>
@@ -569,6 +574,50 @@ export default function Home() {
 						</motion.div>
 					</div>
 				</div>
+			</section>
+
+			<section className="flex items-center justify-center w-full px-10px xs-old:px-20px mt-10">
+				<motion.div
+					initial={{ opacity: 0, y: 30 }}
+					whileInView={{
+						opacity: 1,
+						y: 0,
+						transition: {
+							duration: 0.8,
+							delay: 0,
+							ease: [0.44, 0, 0, 1]
+						}
+					}}
+					viewport={{
+						amount: 'some',
+						once: true
+					}}
+					className="relative overflow-hidden border border-[#2780F133] rounded-16px bg-gradient-to-br from-[#EEF5FF] via-[#F7FAFF] to-[#FFFFFF] max-w-[1180px] w-full p-8 desktop:p-12">
+					<div className="absolute inset-0 opacity-30 bg-[linear-gradient(135deg,transparent_0%,transparent_35%,#CFE0FF_35%,#CFE0FF_36%,transparent_36%,transparent_64%,#CFE0FF_64%,#CFE0FF_65%,transparent_65%)]" />
+					<div className="absolute -top-24 -right-24 h-60 w-60 rounded-full bg-[#2780F11A] blur-3xl" />
+					<div className="absolute -bottom-24 -left-24 h-60 w-60 rounded-full bg-[#2780F114] blur-3xl" />
+					<div className="relative flex flex-col items-center text-center gap-4 desktop:gap-5">
+						<h3 className="text-[28px] desktop:text-[44px] leading-[120%] font-medium">Not sure how Convoy can help your team?</h3>
+						<p className="text-[#666] text-14 desktop:text-18 leading-[160%]">Let your favorite LLM help you get a clear answer.</p>
+
+						<div className="flex flex-wrap items-center justify-center gap-3 mt-1">
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href={askChatGptUrl}
+								className="h-40px px-16px rounded-8px bg-[#2780F1] text-white-100 font-semibold text-14 flex items-center justify-center hover:bg-[#1f66c1] transition-all">
+								Ask ChatGPT
+							</a>
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href={askClaudeUrl}
+								className="h-40px px-16px rounded-8px bg-[#2780F1] text-white-100 font-semibold text-14 flex items-center justify-center hover:bg-[#1f66c1] transition-all">
+								Ask Claude
+							</a>
+						</div>
+					</div>
+				</motion.div>
 			</section>
 		</main>
 	);
