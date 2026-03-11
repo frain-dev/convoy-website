@@ -52,7 +52,7 @@ const advancedFeatures = [
 		title: 'Circuit Breaking:',
 		description:
 			'Temporarily pause webhook delivery to failing endpoints, preventing repeated errors and maintain system stability by redirecting traffic away from problematic connections.',
-		link: ''
+		link: 'https://www.getconvoy.io/docs/product-manual/circuit-breaker'
 	},
 	{
 		icon: ssl,
@@ -65,7 +65,7 @@ const advancedFeatures = [
 		icon: rateLimiting,
 		title: 'Rate Limiting:',
 		description: 'Control the number of webhooks sent per second, preventing overload and ensuring system stability.',
-		link: ''
+		link: 'https://www.getconvoy.io/docs/product-manual/rate-limits'
 	},
 	{
 		icon: timeouts,
