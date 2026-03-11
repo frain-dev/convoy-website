@@ -51,7 +51,7 @@ const advancedFeatures = [
 		icon: circuit,
 		title: 'Circuit Breaking:',
 		description:
-			'Temporarily pause webhook delivery to failing endpoints, preventing repeated errors and maintain system stability by redirecting traffic away from problematic connections.',
+			'Temporarily pause webhook delivery to failing endpoints, preventing repeated errors and maintaining system stability by redirecting traffic away from problematic connections.',
 		link: 'https://www.getconvoy.io/docs/product-manual/circuit-breaker'
 	},
 	{
@@ -135,7 +135,7 @@ const secureFeatures = [
 	{
 		icon: tls,
 		title: 'Replay Attack Prevention:',
-		description: 'Protect your data from malicious attacks with replay attack prevention, ensuring that each webhook delivery is unique and secure..',
+		description: 'Protect your data from malicious attacks with replay attack prevention, ensuring that each webhook delivery is unique and secure.',
 		link: ''
 	}
 ];
@@ -149,7 +149,7 @@ const observabilityFeatures = [
 	},
 	{
 		icon: telemetry,
-		title: 'Open Telemetry:',
+		title: 'OpenTelemetry:',
 		description: 'Diagnose performance issues in your entire cluster with OpenTelemetry on any backend you choose.',
 		link: ''
 	}
@@ -255,7 +255,7 @@ export default function WebhookGateway() {
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
-							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Advanced endpoint management</h3>
+							<h2 className="text-18 desktop:text-28 leading-[140%] font-semibold">Advanced endpoint management</h2>
 							<p className="text-[#666] text-14 desktop:text-16 leading-[140%] desktop:leading-[160%] font-medium">
 								Enhance your webhook reliability, security, and performance with advanced endpoint controls tailored to ensure stable, secure, and efficient message
 								delivery.
@@ -288,7 +288,7 @@ export default function WebhookGateway() {
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
-							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Rock-solid Webhooks Logs & Filtering</h3>
+							<h2 className="text-18 desktop:text-28 leading-[140%] font-semibold">Rock-solid Webhook Logs & Filtering</h2>
 							<p className="text-[#666] text-14 desktop:text-16 leading-[140%] desktop:leading-[160%] font-medium">
 								Easily trace and troubleshoot webhook activity with detailed logs and powerful filtering options, ensuring faster resolutions and seamless
 								monitoring.
@@ -321,7 +321,7 @@ export default function WebhookGateway() {
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
-							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Secure Webhook Delivery</h3>
+							<h2 className="text-18 desktop:text-28 leading-[140%] font-semibold">Secure Webhook Delivery</h2>
 							<p className="text-[#666] text-14 desktop:text-16 leading-[140%] desktop:leading-[160%] font-medium">
 								Ensure reliable and secure webhook delivery with advanced security measures including HMAC signatures, static IPs, and replay attack prevention,
 								safeguarding data integrity and compliance.
@@ -354,7 +354,7 @@ export default function WebhookGateway() {
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
-							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Highly Reliable Architecture</h3>
+							<h2 className="text-18 desktop:text-28 leading-[140%] font-semibold">Highly Reliable Architecture</h2>
 							<p className="text-[#666] text-14 desktop:text-16 leading-[140%] desktop:leading-[160%] font-medium">
 								Built for unmatched reliability, our architecture ensures high availability, fault tolerance, and seamless performance at scale.
 							</p>
@@ -386,7 +386,7 @@ export default function WebhookGateway() {
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
-							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Observability</h3>
+							<h2 className="text-18 desktop:text-28 leading-[140%] font-semibold">Observability</h2>
 							<p className="text-[#666] text-14 desktop:text-16 leading-[140%] desktop:leading-[160%] font-medium">
 								Gain deep insights into system performance and webhook delivery with robust metrics and end-to-end observability tools.
 							</p>
@@ -418,7 +418,7 @@ export default function WebhookGateway() {
 						<div className="bg-[linear-gradient(to_right,#E7E7E74D_1px,transparent_1px),linear-gradient(to_bottom,#E7E7E74D_1px,transparent_1px)] bg-[size:2.54rem_2.35rem] absolute -left-[1.5px] -top-[1px] w-full h-full"></div>
 
 						<div className="flex flex-col w-[704px] z-10 gap-2 desktop:gap-0">
-							<h3 className="text-18 desktop:text-28 leading-[140%] font-semibold">Unparalleled Developer Experience</h3>
+							<h2 className="text-18 desktop:text-28 leading-[140%] font-semibold">Unparalleled Developer Experience</h2>
 							<p className="text-[#666] text-14 desktop:text-16 leading-[140%] desktop:leading-[160%] font-medium">
 								Empower your developers with a seamless experience, offering intuitive tools for managing webhooks, precise event control, and guaranteed
 								reliability
