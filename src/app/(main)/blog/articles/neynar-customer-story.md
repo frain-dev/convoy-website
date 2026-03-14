@@ -37,7 +37,7 @@ As an engineering leader, Manan wasn’t new to the build vs. buy dilemma but kn
 
 After searching the space for products to meet his requirements, to his surprise, most the products lacked the breadth of features Neynar required. His top requirements: 
 
-- Fine-grained [webhook subscriptions](https://www.getconvoy.io/docs/product-manual/filters) (including regex matching)
+- Fine-grained [webhook subscriptions](https://docs.getconvoy.io/product-manual/filters) (including regex matching)
 - Broadcast events to multiple tenants.
 - A developer portal for developers to manage their endpoints and event deliveries.
 

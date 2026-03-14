@@ -45,14 +45,14 @@ const advancedFeatures = [
 		icon: retries,
 		title: 'Retries:',
 		description: 'Automatically retry failed webhooks to ensure eventual delivery and handle temporary network issues.',
-		link: 'https://www.getconvoy.io/docs/webhook-guides/webhook-retries#webhook-retries'
+		link: 'https://docs.getconvoy.io/webhook-guides/webhook-retries#webhook-retries'
 	},
 	{
 		icon: circuit,
 		title: 'Circuit Breaking:',
 		description:
 			'Temporarily pause webhook delivery to failing endpoints, preventing repeated errors and maintaining system stability by redirecting traffic away from problematic connections.',
-		link: 'https://www.getconvoy.io/docs/product-manual/circuit-breaker'
+		link: 'https://docs.getconvoy.io/product-manual/circuit-breaker'
 	},
 	{
 		icon: ssl,
@@ -65,7 +65,7 @@ const advancedFeatures = [
 		icon: rateLimiting,
 		title: 'Rate Limiting:',
 		description: 'Control the number of webhooks sent per second, preventing overload and ensuring system stability.',
-		link: 'https://www.getconvoy.io/docs/product-manual/rate-limits'
+		link: 'https://docs.getconvoy.io/product-manual/rate-limits'
 	},
 	{
 		icon: timeouts,
@@ -87,7 +87,7 @@ const webhookFeatures = [
 		title: 'Flexible Retention Policies:',
 		description:
 			'Provide customisable data retention policies for archiving older events, optimising storage costs, and ensuring compliance with regulatory requirements efficiently.',
-		link: 'https://www.getconvoy.io/docs/product-manual/retention-policy'
+		link: 'https://docs.getconvoy.io/product-manual/retention-policy'
 	},
 	{
 		icon: logs,
@@ -102,14 +102,14 @@ const architectureFeatures = [
 		icon: control,
 		title: 'Control and Data Plane Architecture:',
 		description: 'Achieve high availability and fault tolerance by splitting the ingestion and delivery pipeline (data plane) from the configuration layer (control plane).',
-		link: 'https://www.getconvoy.io/docs/deployment/architecture'
+		link: 'https://docs.getconvoy.io/deployment/architecture'
 	},
 	{
 		icon: read,
 		title: 'Read and Write Replicas:',
 		description:
 			'Leverage PostgreSQL read replicas to speed up read queries for the dashboard and other functions while writing only events, event deliveries and delivery attempts to the primary database.',
-		link: 'https://www.getconvoy.io/docs/product-manual/read-replicas'
+		link: 'https://docs.getconvoy.io/product-manual/read-replicas'
 	},
 	{
 		icon: archiving,
@@ -124,7 +124,7 @@ const secureFeatures = [
 		icon: hmac,
 		title: 'HMAC Signatures:',
 		description: 'Verify webhook authenticity using HMAC (Hash-based Message Authentication Code), ensuring data integrity and origin validation.',
-		link: 'https://www.getconvoy.io/docs/product-manual/signatures'
+		link: 'https://docs.getconvoy.io/product-manual/signatures'
 	},
 	{
 		icon: blacklisting,
@@ -145,7 +145,7 @@ const observabilityFeatures = [
 		icon: prometheus,
 		title: 'Prometheus Metrics:',
 		description: 'Easily diagnose all webhook delivery issues, like high latencies and high queue backlogs per tenant.',
-		link: 'https://www.getconvoy.io/docs/product-manual/metrics'
+		link: 'https://docs.getconvoy.io/product-manual/metrics'
 	},
 	{
 		icon: telemetry,
@@ -160,7 +160,7 @@ const otherFeatures = [
 		icon: ingest,
 		title: 'Ingest webhooks from any source:',
 		description: 'Convoy’s flexible architecture enables you to ingest webhooks from just any source like Amazon SQS, Apache Kafka, Google PubSub, RabbitMQ and HTTP.',
-		link: 'https://www.getconvoy.io/docs/product-manual/sources'
+		link: 'https://docs.getconvoy.io/product-manual/sources'
 	},
 	{
 		icon: connect,
@@ -172,19 +172,19 @@ const otherFeatures = [
 		icon: portal,
 		title: 'Developer Portal:',
 		description: 'Create read or read-and-write developer portal for users to view their event deliveries, configure and debug their endpoints.',
-		link: 'https://www.getconvoy.io/docs/product-manual/portal-links'
+		link: 'https://docs.getconvoy.io/product-manual/portal-links'
 	},
 	{
 		icon: fineGrained,
 		title: 'Fine-grained webhook subscriptions:',
 		description: 'Go beyond the basic event-type webhooks subscriptions and subscribe to specific events with a particular payload shape.',
-		link: 'https://www.getconvoy.io/docs/product-manual/subscriptions'
+		link: 'https://docs.getconvoy.io/product-manual/subscriptions'
 	},
 	{
 		icon: retry,
 		title: 'Bulk Retry for Failed Event Deliveries:',
 		description: 'Quickly recover from delivery failures by retrying multiple events in bulk, ensuring minimal disruption and faster resolution for your workflows.',
-		link: 'https://www.getconvoy.io/docs/api-reference/event-deliveries/batch-retry-event-delivery'
+		link: 'https://docs.getconvoy.io/api-reference/event-deliveries/batch-retry-event-delivery'
 	}
 ];
 

@@ -76,7 +76,7 @@ const jsonLd = {
 		'@type': 'UseAction',
 		target: {
 			'@type': 'EntryPoint',
-			urlTemplate: 'https://www.getconvoy.io/docs/home/quickstart',
+			urlTemplate: 'https://docs.getconvoy.io/home/quickstart',
 			actionPlatform: ['http://schema.org/DesktopWebPlatform', 'http://schema.org/AndroidPlatform', 'http://schema.org/IOSPlatform']
 		},
 		expectsAcceptanceOf: {

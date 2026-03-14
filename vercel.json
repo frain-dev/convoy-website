@@ -8,12 +8,14 @@
 	],
 	"rewrites": [
 		{
-			"source": "/docs",
-			"destination": "https://convoy.mintlify.dev/docs"
+			"source": "/sitemap.xml",
+			"has": [{ "type": "host", "value": "docs.getconvoy.io" }],
+			"destination": "https://convoy.mintlify.app/sitemap.xml"
 		},
 		{
-			"source": "/docs/:match*",
-			"destination": "https://convoy.mintlify.dev/docs/:match*"
+			"source": "/:match*",
+			"has": [{ "type": "host", "value": "docs.getconvoy.io" }],
+			"destination": "https://convoy.mintlify.dev/:match*"
 		}
 	]
 }
