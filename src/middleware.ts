@@ -6,19 +6,24 @@ export function middleware(request: NextRequest) {
 	const hostname = url.hostname;
 
 	if (url.pathname.startsWith('/docs/docs')) {
-		url.hostname = 'docs.getconvoy.io';
+		url.pathname = url.pathname.replace(/^\/docs\/docs/, '/docs');
+		url.hostname = 'www.getconvoy.io';
 		url.port = '';
-		url.pathname = url.pathname.replace(/^\/docs\/docs/, '');
 		return NextResponse.redirect(url, 301);
 	}
 
-	if (
-		(hostname === 'getconvoy.io' || hostname === 'www.getconvoy.io') &&
-		(url.pathname === '/docs' || url.pathname.startsWith('/docs/'))
-	) {
-		url.hostname = 'docs.getconvoy.io';
+	if (hostname === 'docs.getconvoy.io') {
+		url.hostname = 'www.getconvoy.io';
 		url.port = '';
-		url.pathname = url.pathname.replace(/^\/docs/, '') || '/';
+		if (!url.pathname.startsWith('/docs')) {
+			url.pathname = `/docs${url.pathname}`;
+		}
+		return NextResponse.redirect(url, 301);
+	}
+
+	if (hostname === 'getconvoy.io' && (url.pathname === '/docs' || url.pathname.startsWith('/docs/'))) {
+		url.hostname = 'www.getconvoy.io';
+		url.port = '';
 		return NextResponse.redirect(url, 301);
 	}
 }

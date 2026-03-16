@@ -50,6 +50,24 @@ export default async function sitemap() {
 		return mainRoutes;
 	};
 
+	const getDocsRoutes = async () => {
+		const response = await fetch('https://convoy.mintlify.app/sitemap.xml');
+		const text = await response.text();
+		const docUrls =
+			text
+				.match(/<loc>(.*?)<\/loc>/g)
+				?.map(loc => loc.replace(/<\/?loc>/g, ''))
+				?.map(url => url.replace('https://docs.getconvoy.io/docs', '/docs'))
+				?.filter(route => !shouldExcludeRoute(route))
+				?.map(route => ({
+					url: `${URL}${route}`,
+					lastModified: new Date(),
+					changeFrequency: 'daily',
+					priority: 0.7
+				})) || [];
+		return docUrls;
+	};
+
 	const indexRoute = {
 		url: `${URL}/`,
 		lastModified: new Date(),
@@ -59,7 +77,8 @@ export default async function sitemap() {
 
 	const mainRoutes = await getMainRoutes();
 	const blogRoutes = await getBlogRoutes();
+	const docsRoute = await getDocsRoutes();
 	const changelogRoutes = getChangelogRoutes();
 
-	return [indexRoute, ...mainRoutes, ...blogRoutes, ...changelogRoutes];
+	return [indexRoute, ...mainRoutes, ...blogRoutes, ...changelogRoutes, ...docsRoute];
 }
