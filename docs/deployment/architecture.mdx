@@ -26,7 +26,7 @@ When events are sent through the API, they are immediately enqueued to Redis,
 where an agent picks it up and persists the events into the database, before dispatching to endpoints.
 We iterate at a fast pace and often release new features,
 we try our best to make it backward compatible while shipping new exciting features.
-When there are breaking changes, we explicitly communicate them in the [Release Notes.](/release-notes/releases)
+When there are breaking changes, we explicitly communicate them in the [Release Notes.](/changelog/releases)
 
 The API Server is a stateless service, and can be scaled horizontally.
 We suggest that you deploy them behind a load balancer to properly distribute traffic among the instances.
