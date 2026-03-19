@@ -38,3 +38,10 @@ Reaching this limit will cause requests to receive a `429 (Rate Limit Exceeded)`
 ## Technical Details
 
 Rate limits are stored in Redis and are prefixed by `rate:`
+
+## Validating Rate Limits
+
+To test and ensure your rate limits are adequately configured for your scale:
+- **Configuration Inspection**: Check your `convoy.json` config, environment variables (`CONVOY_API_RATE_LIMIT`, `CONVOY_INSTANCE_INGEST_RATE`), or Helm values for your cluster limits. By default both are set to 1000.
+- **Load Testing**: Use tools like `k6`, `hey`, or `vegeta` to send bursts (>1000 requests/sec) to the Convoy ingest API. The API will respond with an `HTTP 429 Too Many Requests` status code once the limit is breached.
+- **Metrics**: Utilize the exposed Prometheus metrics or traces to observe 429 responses and dropped/throttled events during high throughput times.

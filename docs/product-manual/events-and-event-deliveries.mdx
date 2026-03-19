@@ -8,6 +8,9 @@ title: Events and Event Deliveries
 
 ## Ingesting Events
 
+### Payload Size Limits & Best Practices
+Keep webhook payloads as concise as possible (ideally under **1MB - 5MB**). Avoid sending large binary data or documents within the webhook payload itself. Instead, pass a URL or reference ID that the receiving endpoint can query to fetch the file. Large payloads consume more memory in Redis during queuing and increase network IOPS, potentially degrading total cluster throughput.
+
 Convoy supports four different message formats to ingest webhook events into Convoy.
 This section will help you understand each one of them so that you can select an appropriate format for your use case.
 All these formats can both be ingested from the API or through any message broker.
