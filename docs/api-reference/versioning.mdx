@@ -2,7 +2,7 @@
 title: 'Versioning'
 ---
 
-Convoy’s API is designed to be backwards compatible from scratch. The aim was not to break your apps with every new update to the API. Not all Convoy [releases](https://getconvoy.io/docs/release-notes/releases) have breaking API changes; you can view the list of all versions with breaking changes [here](#breaking-changes).
+Convoy’s API is designed to be backwards compatible from scratch. The aim was not to break your apps with every new update to the API. Not all Convoy [releases](https://www.getconvoy.io/docs/changelog/releases) have breaking API changes; you can view the list of all versions with breaking changes [here](#breaking-changes).
 
 For every new release that includes breaking API changes, we create a new version, and set the new version to the default API version. The current default version is `2024-01-01`. To lock your instance to a specific version, specify the `api_version` in your `convoy.json`. You can also make per-request calls by specifying the header: `X-Convoy-Version` in the request header.
 

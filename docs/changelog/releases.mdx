@@ -42,7 +42,7 @@ To upgrade from `v24.6.x` to `v24.8.x` and above:
 
 - **Docker**: Update the docker image from `docker.cloudsmith.io/convoy/convoy/frain-dev/convoy` to `getconvoy/convoy`.
 - **Kubernetes**: Update both the image repository and the image tag values to `getconvoy/convoy` and `v24.8.x` respectively.
-See [here](../../deployment/install-convoy/kubernetes#upgrading-to-v24-8-x) for more info.
+See [here](../deployment/install-convoy/kubernetes) for more info.
 <Note>**You need to switch back to the old image to downgrade**</Note>
 
 ### Patches
@@ -284,7 +284,7 @@ Convoy v0.8 was a significant upgrade from our previous versions. We introduced 
     
 -   **New Fan out mechanism**: Applications in the former design were the anchor for fan-out. In this release, we introduced a new mechanism for fan-out, after deprecating apps. We introduced a new endpoint -- `/event/fanout`, and a new field on the endpoint object -- `owner_id`. The latter acts as a grouping concept to group multiple endpoints under one entity, and the endpoint is the only means of fan out possible in Convoy.
     
--   **Subscriptions Filtering**: Subscriptions Filtering is the act of subscribing for events based on the structure of the payload. It is one of our most exciting features. With this, webhook consumers can filter events they receive based on the payload. This includes two types of filters, from simple filters (exact object match) to complex matches (like $or, $in etc.) It would be best if you headed over to our docs to see a [complete reference](https://getconvoy.io/docs/manual/subscriptions#subscription-filters).
+-   **Subscriptions Filtering**: Subscriptions Filtering is the act of subscribing for events based on the structure of the payload. It is one of our most exciting features. With this, webhook consumers can filter events they receive based on the payload. This includes two types of filters, from simple filters (exact object match) to complex matches (like $or, $in etc.) It would be best if you headed over to our docs to see a [complete reference](https://www.getconvoy.io/docs/product-manual/filters).
     
 -   **Simpler Events Logs and Events Dashboard**: Another quick advantage of ripping out applications is it enabled us to provide a more straightforward event dashboard. The new events dashboard immediately shows your event deliveries, while the events log shows you all events sent to Convoy for incoming and outgoing projects.
     
@@ -310,7 +310,7 @@ The changelogs for this minor release version and any maintenance versions are l
 
 - **Endpoint Authentication**: We've added the option to enable you to add authentication to your endpoints. Endpoints can now require traditional authentication, like Basic authentication, API Key, etc., to receive events.
 
-- **Advanced Signatures**: We've updated the signature implementation in Convoy to parse both [simple and advanced signatures](/docs/manual/signatures). You can configure the type of signature send advanced signatures in your webhook request headers to Convoy.
+- **Advanced Signatures**: We've updated the signature implementation in Convoy to parse both [simple and advanced signatures](/product-manual/signatures). You can configure the type of signature send advanced signatures in your webhook request headers to Convoy.
 
 ### Patches
 
