@@ -8,6 +8,11 @@ title: Architecture
 
 Convoy consists of several services working in tandem. Below is an architecture diagram and the traffic pattern.
 
+## Benchmarks & Performance
+
+While absolute throughput depends heavily on your underlying infrastructure (CPU, Memory, IOPS), Convoy is designed for **sub-second latencies** using its control and data plane architecture.
+For organizations processing millions of events per month, horizontal scaling of the Agent nodes, configuring Redis Sentinel for high availability, and utilizing Postgres read replicas is strongly recommended. 
+
 <Frame>![Convoy Architecture](/images/convoy-architecture-3.png)</Frame>
 
 ## Components
@@ -26,6 +31,10 @@ When there are breaking changes, we explicitly communicate them in the [Release 
 The API Server is a stateless service, and can be scaled horizontally.
 We suggest that you deploy them behind a load balancer to properly distribute traffic among the instances.
 See the CLI details [here](/cli-file/convoy#server).
+
+<Note>
+**Sizing Guidance:** For standard production deployments, the recommended starting point is **1 vCPU (1000m)** and **2GB of RAM (2000Mi)** per container replica. Both the Server and Agent are stateless and can be horizontally scaled.
+</Note>
 
 ### Agent
 
@@ -74,6 +83,8 @@ Postgres is used as for the following
 -   Primary data store
 -   Search backend
 
+**Scaling Best Practice**: For high-traffic setups, configure **Read Replicas** via the `read_replicas` or `read_replica_dsn` settings to distribute read queries, improving dashboard and retrieval performance. The connection pool defaults are tuned at `max_open_conn: 10`, `max_idle_conn: 10`, and `conn_max_lifetime: 10`.
+
 ### Redis 6+
 
 Redis is used for a number of operations, namely
@@ -82,6 +93,8 @@ Redis is used for a number of operations, namely
 -   Job queueing
 -   Rate limiting
 -   Circuit breaking
+
+**Scaling Best Practice**: Provision a highly available Redis cluster or configure **Redis Sentinel** to ensure reliability and sufficient memory to hold your queued (scheduled/retrying) webhooks payload.
 
 ## Deprecated Architecture and Components
 

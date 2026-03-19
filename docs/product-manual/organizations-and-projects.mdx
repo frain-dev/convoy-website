@@ -72,9 +72,10 @@ The following are parameters that can be configured on a project.
 
 All these configurations act as sensible defaults for all subscriptions in a project. A project can't exist without all these parameters defined in the project. Each configuration can also be described on subscriptions in a project, where a subscription doesn't define these parameters, we fall back to the project's defaults.
 
-### Multiple Projects
+### Multiple Projects & Multi-Tenancy
 
-There are several practical ways of using projects:
+There are several practical ways of using projects. Convoy's official recommendation for handling multi-tenant architectures is as follows:
 
-- **A project per environment:** You can decide to test your integration with a development or staging environment, before going live to a production environment to keep data separate.
-- **A project per product:** If you have several projects, you can scope them differently on Convoy too.
+- **A project per environment:** We strongly recommend maintaining projects **per environment** (e.g., Staging vs. Production) rather than per customer. Currently, projects cannot be created dynamically via the API and must be provisioned ahead of time. However, every other entity inside a project (sources, endpoints, subscriptions) can be fully managed via the API.
+- **Single Project for Multi-Tenancy:** Since projects are per environment, the best practice for handling your actual tenants (customers) within that environment is to use a **Single Project** with **Fan-out** or **Broadcast** event structures. By providing the tenant's `owner_id` when ingesting an event, Convoy routes it automatically to all endpoints registered for that specific tenant.
+- **Community Limitations**: The Community edition is strictly limited to 1 organization and 2 projects. For true multi-tenant management without limits, the Enterprise/Premium version is required.

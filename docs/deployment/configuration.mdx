@@ -183,7 +183,7 @@ Here's the full configuration reference
     "host": "localhost",
 
     // Redis scheme. The environment variable equivalent is
-    // CONVOY_REDIS_SCHEME. Redis sentinel is not currently supported.
+    // CONVOY_REDIS_SCHEME. Can be "redis", "redis-sentinel" or "rediss".
     "scheme": "redis",
 
     // Redis username. The environment variable equivalent is
@@ -209,7 +209,22 @@ Here's the full configuration reference
     // CONVOY_REDIS_ADDRESSES. The value takes precedence over the
     // other redis configuration in this object. The urls are fully
     // qualified domain names.
-    "addresses": "{url}, {url}, ..."
+    "addresses": "{url}, {url}, ...",
+
+    // [optional]
+    // The master name for Redis Sentinel setups. Required when scheme is redis-sentinel.
+    // The environment variable equivalent is CONVOY_REDIS_SENTINEL_MASTER_NAME.
+    "master_name": "",
+
+    // [optional]
+    // The username for Redis Sentinel setups.
+    // The environment variable equivalent is CONVOY_REDIS_SENTINEL_USERNAME.
+    "sentinel_username": "",
+
+    // [optional]
+    // The password for Redis Sentinel setups.
+    // The environment variable equivalent is CONVOY_REDIS_SENTINEL_PASSWORD.
+    "sentinel_password": ""
   },
 
 
@@ -427,6 +442,34 @@ Here's the full configuration reference
       // The environment variable equivalent is CONVOY_NATIVE_REALM_ENABLED.
       // The default value is true.
       "enabled": true
+    },
+
+    "portal": {
+      // Enables Portal Realm authentication.
+      // The environment variable equivalent is CONVOY_PORTAL_REALM_ENABLED
+      "enabled": true
+    },
+
+    "google_oauth": {
+      // Boolean flag to enable Google OAuth.
+      // The environment variable equivalent is CONVOY_GOOGLE_OAUTH_ENABLED.
+      "enabled": false,
+
+      // Your Google OAuth Client ID. The environment variable equivalent is CONVOY_GOOGLE_OAUTH_CLIENT_ID.
+      "client_id": "",
+
+      // Your Google OAuth Redirect URL. The environment variable equivalent is CONVOY_GOOGLE_OAUTH_REDIRECT_URL.
+      "redirect_url": ""
+    },
+
+    "sso": {
+      // Boolean flag to enable SSO.
+      // The environment variable equivalent is CONVOY_SSO_ENABLED.
+      "enabled": false,
+
+      // Global SSO redirect URL.
+      // The environment variable equivalent is CONVOY_SSO_REDIRECT_URL.
+      "redirect_url": ""
     }
   }
 
@@ -439,6 +482,17 @@ Here's the full configuration reference
   // when deploying Convoy behind a reverse proxy with a path prefix. The environment
   // variable equivalent is CONVOY_ROOT_PATH.
   "root_path": "",
+
+  // [optional]
+  // A string specifying a custom domain suffix used for webhook portal links or ingress routing.
+  // The environment variable equivalent is CONVOY_CUSTOM_DOMAIN_SUFFIX
+  "custom_domain_suffix": "",
+
+  // [optional]
+  // Specifies the maximum allowed response size from the webhook endpoints in kilobytes.
+  // Responses exceeding this limit will be truncated. The default is 50.
+  // The environment variable equivalent is CONVOY_MAX_RESPONSE_SIZE.
+  "max_response_size": 50,
 
   // [optional]
   // This is used to configure the ingestion rate limit on the data plane. Internally,
@@ -501,20 +555,140 @@ Here's the full configuration reference
 
     // This is used to configure the set of IP addresses we can connect to.
     // The equivalent environment variable is CONVOY_DISPATCHER_ALLOW_LIST.
-    "allow_list": [ "0.0.0.0/0" ]
+    "allow_list": [ "0.0.0.0/0", "::/0" ],
 
     // This is used to configure the set of IP addresses that are blocked.
     // The equivalent environment variable is CONVOY_DISPATCHER_BLOCK_LIST.
-    "deny_list": [ "127.0.0.0/8", "169.254.169.254" ]
-  }
+    "deny_list": [ "127.0.0.0/8", "169.254.169.254", "::1/128" ],
+
+    // [optional] Custom CA configuration for the dispatcher.
+    // The environment variable equivalent is CONVOY_DISPATCHER_CACERT_PATH
+    "ca_cert_path": "",
+
+    // [optional] String containing the custom CA certificate logic in a single string.
+    // The environment variable equivalent is CONVOY_DISPATCHER_CACERT_STRING
+    "ca_cert_string": "",
+
+    // The HTTP methods allowed for ping events.
+    // The environment variable equivalent is CONVOY_DISPATCHER_PING_METHODS
+    "ping_methods": [ "HEAD", "GET", "POST" ],
+
+    // Whether to skip ping valiation entirely.
+    // The environment variable equivalent is CONVOY_DISPATCHER_SKIP_PING_VALIDATION
+    "skip_ping_validation": false
+  },
 
   // [optional]
   // This is the total time in seconds used to cap the exponential backoff
   // retry algorithm. For example, if set to 7200, it means we will never
   // exceed 2 hours in retry delay.
   // The equivalent environment variable is CONVOY_MAX_RETRY_SECONDS.
-  "max_retry_seconds": 2000
+  "max_retry_seconds": 2000,
 
+  // [optional]
+  // Configure Pyroscope profiling capabilities.
+  "pyroscope": {
+    // Enable continuous profiling. The environment variable equivalent is CONVOY_ENABLE_PYROSCOPE_PROFILING.
+    "enabled": false,
+
+    // The environment variable equivalent is CONVOY_PYROSCOPE_URL.
+    "url": "",
+
+    // Authentication for Pyroscope. The environment variable equivalent is CONVOY_PYROSCOPE_USERNAME.
+    "username": "",
+
+    // The environment variable equivalent is CONVOY_PYROSCOPE_PASSWORD.
+    "password": "",
+
+    // Identifies the application inside your pyroscope server.
+    // The environment variable equivalent is CONVOY_PYROSCOPE_PROFILE_ID.
+    "profile_id": ""
+  },
+
+  // [optional]
+  // Advanced metrics configuration backend to push cluster metrics.
+  "metrics": {
+    // To enable gathering metrics. The environment variable equivalent is CONVOY_METRICS_ENABLED.
+    "enabled": false,
+
+    // Backend for metrics (default: 'prometheus'). The environment variable equivalent is CONVOY_METRICS_BACKEND.
+    "metrics_backend": "prometheus",
+
+    // Configuration specific to Prometheus metrics.
+    "prometheus_metrics": {
+
+      // How often to sample the metrics in seconds. The environment variable equivalent is CONVOY_METRICS_SAMPLE_TIME.
+      "sample_time": 5,
+
+      // Query timeout in seconds. The environment variable equivalent is CONVOY_METRICS_QUERY_TIMEOUT.
+      "query_timeout": 30,
+
+      // Interval at which materialized views are automatically refreshed.
+      // The environment variable equivalent is CONVOY_METRICS_MATERIALIZED_VIEW_REFRESH_INTERVAL.
+      "materialized_view_refresh_interval": 2
+    }
+  },
+
+  // [optional]
+  // HCP Vault configuration object for secrets management.
+  "hcp_vault": {
+    // HCP Vault Client ID. The environment variable equivalent is CONVOY_HCP_CLIENT_ID.
+    "client_id": "",
+
+    // HCP Vault Client Secret. The environment variable equivalent is CONVOY_HCP_CLIENT_SECRET.
+    "client_secret": "",
+
+    // HCP Vault Organization ID. The environment variable equivalent is CONVOY_HCP_ORG_ID.
+    "org_id": "",
+
+    // HCP Vault Project ID. The environment variable equivalent is CONVOY_HCP_PROJECT_ID.
+    "project_id": "",
+
+    // Application name mapped in HCP Vault. The environment variable equivalent is CONVOY_HCP_APP_NAME.
+    "app_name": "",
+
+    // Defines a specific secret name reference for default vault operations.
+    // The environment variable equivalent is CONVOY_HCP_SECRET_NAME.
+    "secret_name": ""
+  },
+
+  // [optional]
+  // Configure the License Service backend specifics for Enterprise setup.
+  "license_service": {
+    // Hosted instance of the license service. The environment variable equivalent is CONVOY_LICENSE_SERVICE_HOST.
+    "host": "",
+
+    // Path to validate tokens. The environment variable equivalent is CONVOY_LICENSE_SERVICE_VALIDATE_ENDPOINT.
+    "validate_path": "",
+
+    // Timeout duration. The environment variable equivalent is CONVOY_LICENSE_SERVICE_TIMEOUT.
+    "timeout": "10s",
+    
+    // Number of retries upon error. The environment variable equivalent is CONVOY_LICENSE_SERVICE_RETRY_COUNT.
+    "retry_count": 3
+  },
+
+  // [optional]
+  // Configure standalone SSO service paths (Overwatch).
+  "sso_service": {
+    // Host URL of the SSO provider service. The environment variable equivalent is CONVOY_SSO_SERVICE_HOST.
+    "host": "",
+
+    // Path for OIDC/SAML redirection. The environment variable equivalent is CONVOY_SSO_SERVICE_REDIRECT_PATH.
+    "redirect_path": "",
+
+    // Path for gaining auth access tokens. The environment variable equivalent is CONVOY_SSO_SERVICE_TOKEN_PATH.
+    "token_path": "",
+
+    // Path for navigating to the admin portal endpoint. The environment variable equivalent is CONVOY_SSO_SERVICE_ADMIN_PORTAL_PATH.
+    "admin_portal_path": "",
+
+    // Request Timeout. The environment variable equivalent is CONVOY_SSO_SERVICE_TIMEOUT.
+    "timeout": "10s",
+
+    // Number of retries upon error. The environment variable equivalent is CONVOY_SSO_SERVICE_RETRY_COUNT.
+    "retry_count": 3
+  }
 }
 
 ```
