@@ -10,7 +10,7 @@ Subscriptions are conduits through which events are routed from a source to a de
 
 ## How Event Routing Works?
 
-In an Incoming webhooks project, events are routed to a [source](https://www.getconvoy.io/docs/product-manual/sources); then we subscribe multiple endpoints to receive from that source. If no subscriptions are present, events are only saved in the [Event Log](https://www.getconvoy.io/docs/product-manual/events-and-event-deliveries) for reference purposes. If subscriptions are present, we match the event against its subscription filters, only endpoints whose subscription filters match will receive events.
+In an Incoming webhooks project, events are routed to a [source](https://getconvoy.io/docs/product-manual/sources); then we subscribe multiple endpoints to receive from that source. If no subscriptions are present, events are only saved in the [Event Log](https://getconvoy.io/docs/product-manual/events-and-event-deliveries) for reference purposes. If subscriptions are present, we match the event against its subscription filters, only endpoints whose subscription filters match will receive events.
 
 In an Outgoing webhooks project, events are routed specifically to an endpoint from the API. If the endpoint has no subscription, we create a subscription that will receive all events on-the-fly, create an event delivery and forward the event to your endpoint. When a subscription is present, we match the event first, against the `event_type` then against the subscription filters. If both are present, both have to be true, else events will not be sent to the endpoint.
 

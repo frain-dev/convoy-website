@@ -674,7 +674,7 @@ components:
             properties:
                 advanced_signatures:
                     description: |-
-                        Convoy supports two [signature formats](https://www.getconvoy.io/docs/product-manual/signatures)
+                        Convoy supports two [signature formats](https://getconvoy.io/docs/product-manual/signatures)
                         -- simple or advanced. If left unspecified, we default to false.
                     type: boolean
                 appID:
@@ -704,7 +704,7 @@ components:
                 owner_id:
                     description: |-
                         The OwnerID is used to group more than one endpoint together to achieve
-                        [fanout](https://www.getconvoy.io/docs/product-manual/endpoints#endpoint-owner-id)
+                        [fanout](https://getconvoy.io/docs/product-manual/endpoints#endpoint-owner-id)
                     type: string
                 rate_limit:
                     description: |-
@@ -1481,7 +1481,7 @@ components:
             properties:
                 advanced_signatures:
                     description: |-
-                        Convoy supports two [signature formats](https://www.getconvoy.io/docs/product-manual/signatures)
+                        Convoy supports two [signature formats](https://getconvoy.io/docs/product-manual/signatures)
                         -- simple or advanced. If left unspecified, we default to false.
                     type: boolean
                 authentication:
@@ -1507,7 +1507,7 @@ components:
                 owner_id:
                     description: |-
                         The OwnerID is used to group more than one endpoint together to achieve
-                        [fanout](https://www.getconvoy.io/docs/product-manual/endpoints#endpoint-owner-id)
+                        [fanout](https://getconvoy.io/docs/product-manual/endpoints#endpoint-owner-id)
                     type: string
                 rate_limit:
                     description: |-
