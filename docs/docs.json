@@ -26,8 +26,7 @@
               "guides/sending-webhook-example",
               "guides/receiving-webhook-example",
               "guides/best-practices-for-generating-webhook-events",
-              "guides/api-onboarding",
-              "guides/load-testing-and-benchmarks"
+              "guides/api-onboarding"
             ]
           },
           {

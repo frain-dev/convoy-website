@@ -8,11 +8,6 @@ title: Architecture
 
 Convoy consists of several services working in tandem. Below is an architecture diagram and the traffic pattern.
 
-## Benchmarks & Performance
-
-While absolute throughput depends heavily on your underlying infrastructure (CPU, Memory, IOPS), Convoy is designed for **sub-second latencies** using its control and data plane architecture.
-For organizations processing millions of events per month, horizontal scaling of the Agent nodes, configuring Redis Sentinel for high availability, and utilizing Postgres read replicas is strongly recommended. 
-
 <Frame>![Convoy Architecture](/images/convoy-architecture-3.png)</Frame>
 
 ## Components
@@ -33,7 +28,7 @@ We suggest that you deploy them behind a load balancer to properly distribute tr
 See the CLI details [here](/cli-file/convoy#server).
 
 <Note>
-**Sizing Guidance:** For standard production deployments, the recommended starting point is **1 vCPU (1000m)** and **2GB of RAM (2000Mi)** per container replica. Both the Server and Agent are stateless and can be horizontally scaled.
+**Sizing guidance:** For standard production deployments, the recommended starting point is **1 vCPU (1000m)** and **2GB of RAM (2000Mi)** per Server replica. The Server is stateless and can be scaled horizontally behind a load balancer.
 </Note>
 
 ### Agent
@@ -55,6 +50,10 @@ These instances are responsible for the following:
 
 See the CLI details [here](/cli-file/convoy#agent)
 
+<Note>
+**Sizing guidance:** Use the same starting point as the Server: **1 vCPU (1000m)** and **2GB of RAM (2000Mi)** per Agent replica for typical production workloads. The Agent is stateless; add replicas to increase throughput (queue consumption, broker ingest, and deliveries). Heavy broker fan-in or large payloads may require more CPU or memory per replica.
+</Note>
+
 ### Egress
 
 The egress service is an HTTP Connect Proxy
@@ -74,6 +73,10 @@ we suggest you deploy at least three instances
 and place a load balancer in front of the egress services to distribute traffic evenly.
 We highly recommend and use [Smokescreen](https://github.com/stripe/smokescreen).
 
+<Note>
+**Sizing guidance:** Treat each egress instance like a stateless proxy: a practical starting point is **1 vCPU (1000m)** and **2GB of RAM (2000Mi)** per instance, then raise resources if you see high concurrent outbound connections or large response bodies. Keep **at least three** instances behind a load balancer for availability, as described above.
+</Note>
+
 ## Third-Party Dependencies
 
 ### PostgreSQL 15+
@@ -84,6 +87,10 @@ Postgres is used as for the following
 -   Search backend
 
 **Scaling Best Practice**: For high-traffic setups, configure **Read Replicas** via the `read_replicas` or `read_replica_dsn` settings to distribute read queries, improving dashboard and retrieval performance. The connection pool defaults are tuned at `max_open_conn: 10`, `max_idle_conn: 10`, and `conn_max_lifetime: 10`.
+
+<Note>
+**Sizing guidance:** For a modest production footprint, plan for **at least 2 vCPU** and **4GB RAM** on the primary Postgres node, with fast disk (IOPS) for the working set. Grow CPU, memory, and storage as event and delivery volume increase, and add **read replicas** before the primary becomes read-saturated.
+</Note>
 
 ### Redis 6+
 
@@ -96,25 +103,13 @@ Redis is used for a number of operations, namely
 
 **Scaling Best Practice**: Provision a highly available Redis cluster or configure **Redis Sentinel** to ensure reliability and sufficient memory to hold your queued (scheduled/retrying) webhooks payload.
 
-## Deprecated Architecture and Components
+<Note>
+**Sizing guidance:** Start with **at least 2–4GB RAM** in production so queues, cache, and rate-limit state have headroom; scale memory with peak backlog, payload size, and number of Agents. Pair sizing with **Redis Sentinel** or a managed HA deployment so Redis is not a single point of failure.
+</Note>
 
-<Note> **We will continue to maintain the worker and ingest component for two months. They will be unavailable by November, 2024.** </Note>
+## Benchmarks & Performance
 
-<Frame>![Convoy Architecture](/images/convoy-architecture-2.png)</Frame>
+While absolute throughput depends heavily on your underlying infrastructure (CPU, Memory, IOPS), Convoy is designed for **sub-second latencies** using its control and data plane architecture.
+For organizations processing millions of events per month, horizontal scaling of the Agent nodes, configuring Redis Sentinel for high availability, and utilizing Postgres read replicas is strongly recommended.
 
-### Workers
-
-The workers are responsible for processing all asynchronous tasks from Redis.
-This can range from important functions like processing webhook events to ancillary tasks like sending emails,
-purging stale events ([retention policies](./configuration#configuration-reference)) etc.
-
-These workers are designed to be stateless and can be scaled horizontally to increase the throughput of the entire system.
-See the CLI details [here](/cli-file/convoy#worker)
-
-### Ingest
-
-This is a stateless worker server used to consume webhook events from message brokers.
-It constantly polls source configuration from the database and consumes events from the broker.
-It is not responsible for processing these events other than consuming from the broker
-and writing to redis to be consumed by a standard worker.
-See the CLI details [here](/cli-file/convoy#ingest)
+To **measure capacity on your own cluster**, use **[convoy-bench](https://github.com/frain-dev/convoy-bench)**. The repo ships scripts and configs for load-testing Convoy with **k6** and **Go**, including HTTP ingest/outgoing flows and broker-backed producers (SQS, Pub/Sub, Kafka). See the README for `./bench.sh` options, prerequisites, and examples.
