@@ -104,7 +104,7 @@ export default function Blog({ articles }: { articles: articles }) {
 		event.preventDefault();
 		setStatus('submitting');
 		try {
-			const response = await fetch('https://newsletter.getconvoy.io/register', {
+			const response = await fetch('/api/subscribe', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'

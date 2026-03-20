@@ -15,25 +15,28 @@ export default function Subscribe() {
 		event.preventDefault();
 		setIsSubmittingEmail(true);
 		try {
-			const response = await fetch('/.netlify/functions/subscribe', {
+			const response = await fetch('/api/subscribe', {
 				method: 'POST',
-				mode: 'cors',
-				cache: 'no-cache',
-				credentials: 'same-origin',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				redirect: 'follow',
-				referrerPolicy: 'no-referrer',
 				body: JSON.stringify({
 					email: inputRef.current !== null ? inputRef.current['value'] : ''
 				})
 			});
-			await response.json();
-			useToaster({ message: 'Email submitted successfully', style: 'success' });
+			const data = await response.json();
+
+			if (!response.ok) {
+				useToaster({ message: data.error || 'An error occurred, please try again', style: 'danger' });
+				setIsSubmittingEmail(false);
+				return;
+			}
+
+			useToaster({ message: data.message || 'Email submitted successfully', style: 'success' });
+			if (inputRef.current) (inputRef.current as HTMLInputElement).value = '';
 			setIsSubmittingEmail(false);
 		} catch (error) {
-			useToaster({ message: 'An error occured, please try again', style: 'danger' });
+			useToaster({ message: 'An error occurred, please try again', style: 'danger' });
 			setIsSubmittingEmail(false);
 		}
 	};
