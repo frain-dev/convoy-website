@@ -8,7 +8,7 @@ This is an advanced reliability feature that automatically detects unhealthy end
 > **Note:**
 > - The circuit breaker functionality is available only for licensed users with Circuit Breaking capability.
 > - This feature is disabled by default. To enable it, use the environment variable `CONVOY_ENABLE_FEATURE_FLAG=circuit-breaker` or the CLI flag `--enable-feature-flag=circuit-breaker`.
-> - Requires Redis for state storage and a running background worker process.
+> - Requires Redis for state storage and a running **agent** (or equivalent process) that executes deliveries so circuit state is applied during dispatch.
 
 ## Overview
 

@@ -1,0 +1,139 @@
+---
+title: API-driven onboarding
+'og:title': API-driven onboarding
+'og:description': Recommended order of API calls to provision organisations, projects, sources, endpoints, and subscriptions at scale.
+---
+
+Convoy is operated through the **HTTP API** and dashboard. There is **no single "import tenant"** endpoint that creates an entire organisation graph in one request. For large or repeatable setups, use a script or infrastructure-as-code that calls the API in a defined order, driven by the [OpenAPI specification](/api-reference/welcome).
+
+## Suggested provisioning order
+
+1. **Organisation** — Create or select the organisation that owns the work.
+2. **Project** — Create an **incoming** or **outgoing** project (see [Organisations and projects](/product-manual/organizations-and-projects)).
+3. **Sources** (incoming) — Define how events enter Convoy (HTTP, REST API, broker-backed, etc.); see [Sources](/product-manual/sources).
+4. **Endpoints** (outgoing) — Define destination URLs, timeouts, auth, and optional [verification](/product-manual/endpoint-verification) considerations. For many endpoints at once inside an existing project, use [bulk onboard](#bulk-onboard) after the project exists (and configure sources separately if your topology needs explicit source links).
+5. **Subscriptions** — Link sources to endpoints (filters, retry policy, functions); see [Subscriptions](/product-manual/subscriptions).
+
+Re-run or update the same resources idempotently where the API allows; for event ingestion deduplication, see [Idempotency](/product-manual/idempotency).
+
+## Bulk onboard {#bulk-onboard}
+
+`POST /api/v1/projects/{projectID}/onboard` creates endpoints and matching subscriptions in bulk inside a project you already have. It does not replace the full org → project → sources graph above — use it after your project exists.
+
+### Payload formats
+
+Send either JSON or a CSV file (not both in the same request).
+
+**JSON** — `Content-Type: application/json`:
+
+```json
+{
+  "items": [
+    { "name": "Acme Production", "url": "https://acme.example.com/webhooks", "event_type": "invoice.paid" },
+    { "name": "Acme Staging", "url": "https://staging.acme.example.com/hooks", "auth_username": "convoy", "auth_password": "s3cret" }
+  ]
+}
+```
+
+Each item requires `name` and `url`. Optional fields: `event_type` (defaults to `*` — all events), `auth_username` and `auth_password` (must both be set or both omitted).
+
+**CSV** — `Content-Type: multipart/form-data`, field name `file` (max 10 MB):
+
+```csv
+name,url,event_type
+Acme Production,https://acme.example.com/webhooks,invoice.paid
+Acme Staging,https://staging.acme.example.com/hooks,
+```
+
+Required columns: `name`, `url`. Optional columns: `event_type`, `auth_username`, `auth_password`.
+
+### Recommended workflow
+
+<Steps>
+  <Step title="Dry run">
+    Add `?dry_run=true` to validate your payload without creating anything:
+
+```bash
+curl -X POST "https://dashboard.getconvoy.io/api/v1/projects/{projectID}/onboard?dry_run=true" \
+  -H "Authorization: Bearer $API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"items": [{"name": "Test", "url": "https://example.com/hook"}]}'
+```
+
+A **200** response returns validation results:
+
+```json
+{
+  "status": true,
+  "message": "Dry run validation complete",
+  "data": {
+    "total_rows": 1,
+    "valid_count": 1,
+    "errors": []
+  }
+}
+```
+
+If there are problems, `errors` lists each one with `row`, `field`, and `message`.
+  </Step>
+  <Step title="Fix validation errors">
+    Correct any rows flagged in the dry-run response and re-run until `errors` is empty.
+  </Step>
+  <Step title="Submit">
+    Remove the `dry_run` parameter and POST the same payload. A **202** confirms the request is accepted:
+
+```json
+{
+  "status": true,
+  "message": "Bulk onboard request accepted",
+  "data": {
+    "batch_count": 1,
+    "total_items": 2,
+    "message": "Bulk onboard request accepted for processing"
+  }
+}
+```
+
+Work is processed asynchronously in batches of up to 50 items. If you submit without `dry_run` and there are validation errors, the API returns **400** with the same error shape as the dry run.
+  </Step>
+  <Step title="Verify">
+    Poll the [list endpoints](/api-reference/endpoints/list-all-endpoints) and [list subscriptions](/api-reference/subscriptions/list-all-subscriptions) APIs, or check the dashboard, until the expected resources appear.
+  </Step>
+</Steps>
+
+For CSV uploads, use `-F` instead of `-d`:
+
+```bash
+curl -X POST "https://dashboard.getconvoy.io/api/v1/projects/{projectID}/onboard" \
+  -H "Authorization: Bearer $API_KEY" \
+  -F "file=@endpoints.csv"
+```
+
+### Limits
+
+| Limit | Value |
+|---|---|
+| Maximum items per request | 1,000 |
+| Batch size (items per queue job) | 50 |
+| Multipart form size (CSV upload) | 10 MB |
+
+### What gets created
+
+For each valid row the processor creates:
+
+- **Endpoint** — active status, `application/json` content type, auto-generated signing secret.
+- **Subscription** — named `{name}-subscription`, type `api`, event type filter set from `event_type` (default `*`). No source is attached; if you need source-to-endpoint wiring for incoming projects, update the subscription via the [subscriptions API](/api-reference/subscriptions/update-a-subscription) after onboard.
+
+If `auth_username` and `auth_password` are both provided, the endpoint is configured with HTTP Basic outbound auth. Basic auth requires an enterprise license and the organisation early adopter flag — see [Endpoint authentication](/product-manual/endpoints#basic-authentication-outbound) for details.
+
+### Self-hosted note
+
+The Convoy agent (`convoy agent`) must be running to process onboard batches. If it is not, jobs sit in the queue and endpoints will not appear until the agent starts.
+
+## Export, audit, and backups
+
+- **API listing:** Use list endpoints (projects, endpoints, subscriptions, etc.) to snapshot configuration for audits or drift detection.
+- **Self-hosted:** Database backups and restores are your operational responsibility; Convoy stores configuration and state in PostgreSQL.
+- **Hosted / Cloud:** Follow your provider's export and support processes for tenant data.
+
+For load and capacity validation after onboarding, see [Load testing and benchmarks](/guides/load-testing-and-benchmarks).

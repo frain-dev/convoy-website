@@ -1,3 +1,4 @@
+# OpenAPI provenance: frain-dev/convoy @ 09fd0cf4b97cce3d0f8f82c0e5e89b902a8fa165 (PR #2607 head; replace with main mergeCommit.oid after merge).
 components:
     schemas:
         datastore.AlertConfiguration:
@@ -633,6 +634,33 @@ components:
                 - password
                 - username
             type: object
+        models.BulkOnboardAcceptedResponse:
+            properties:
+                batch_count:
+                    type: integer
+                message:
+                    type: string
+                total_items:
+                    type: integer
+            type: object
+        models.BulkOnboardDryRunResponse:
+            properties:
+                errors:
+                    items:
+                        $ref: "#/components/schemas/models.OnboardValidationError"
+                    type: array
+                total_rows:
+                    type: integer
+                valid_count:
+                    type: integer
+            type: object
+        models.BulkOnboardRequest:
+            properties:
+                items:
+                    items:
+                        $ref: "#/components/schemas/models.OnboardItem"
+                    type: array
+            type: object
         models.BroadcastEvent:
             properties:
                 acknowledged_at:
@@ -1256,6 +1284,28 @@ components:
                     type: string
                 updated_at:
                     type: string
+            type: object
+        models.OnboardItem:
+            properties:
+                auth_password:
+                    type: string
+                auth_username:
+                    type: string
+                event_type:
+                    type: string
+                name:
+                    type: string
+                url:
+                    type: string
+            type: object
+        models.OnboardValidationError:
+            properties:
+                field:
+                    type: string
+                message:
+                    type: string
+                row:
+                    type: integer
             type: object
         models.PagedResponse:
             properties:
@@ -2286,6 +2336,117 @@ paths:
             summary: Pause endpoint
             tags:
                 - Endpoints
+    /v1/projects/{projectID}/onboard:
+        post:
+            description: This endpoint accepts a CSV file or JSON body to bulk-create endpoints
+                with subscriptions.
+            operationId: BulkOnboard
+            parameters:
+                - description: Project ID
+                  in: path
+                  name: projectID
+                  required: true
+                  schema:
+                      type: string
+                - description: Validate without creating resources
+                  in: query
+                  name: dry_run
+                  schema:
+                      type: boolean
+            requestBody:
+                description: >-
+                    Send `application/json` with an `items` array, or `multipart/form-data`
+                    with a CSV file in field `file` (max 10 MB form). Do not combine both in one request.
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/models.BulkOnboardRequest"
+                    multipart/form-data:
+                        schema:
+                            type: object
+                            properties:
+                                file:
+                                    type: string
+                                    format: binary
+                                    description: >-
+                                        CSV with header columns `name`, `url` (required) and optional
+                                        `event_type`, `auth_username`, `auth_password`.
+            responses:
+                "200":
+                    description: OK (dry run only)
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: "#/components/schemas/util.ServerResponse"
+                                    - type: object
+                                      properties:
+                                          data:
+                                              $ref: "#/components/schemas/models.BulkOnboardDryRunResponse"
+                "202":
+                    description: Accepted — batches queued for async processing
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: "#/components/schemas/util.ServerResponse"
+                                    - type: object
+                                      properties:
+                                          data:
+                                              $ref: "#/components/schemas/models.BulkOnboardAcceptedResponse"
+                "400":
+                    description: >-
+                        Bad request — invalid input, limits exceeded, or non–dry-run validation
+                        failure (response `data` uses the dry-run error shape).
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: "#/components/schemas/util.ServerResponse"
+                                    - type: object
+                                      properties:
+                                          data:
+                                              oneOf:
+                                                  - $ref: "#/components/schemas/handlers.Stub"
+                                                  - $ref: "#/components/schemas/models.BulkOnboardDryRunResponse"
+                "401":
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: "#/components/schemas/util.ServerResponse"
+                                    - type: object
+                                      properties:
+                                          data:
+                                              $ref: "#/components/schemas/handlers.Stub"
+                "404":
+                    description: Not Found
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: "#/components/schemas/util.ServerResponse"
+                                    - type: object
+                                      properties:
+                                          data:
+                                              $ref: "#/components/schemas/handlers.Stub"
+                "500":
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            schema:
+                                allOf:
+                                    - $ref: "#/components/schemas/util.ServerResponse"
+                                    - type: object
+                                      properties:
+                                          data:
+                                              $ref: "#/components/schemas/handlers.Stub"
+            security:
+                - ApiKeyAuth: []
+            summary: Bulk onboard endpoints with subscriptions
+            tags:
+                - Onboard
     /v1/projects/{projectID}/event-types:
         get:
             description: This endpoint fetches the project's event types
@@ -6070,3 +6231,5 @@ tags:
       name: Portal Links
     - description: Meta Events related APIs
       name: Meta Events
+    - description: Bulk onboard endpoints and subscriptions
+      name: Onboard
