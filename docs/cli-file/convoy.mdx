@@ -83,87 +83,29 @@ Usage:
   Convoy [command]
 
 Available Commands:
-  bootstrap   bootstrap creates a new user account
-  completion  generate the autocompletion script for the specified shell
-  config      config outputs your instances computed configuration
-  help        Help about any command
-  ingest      Ingest webhook events from Pub/Sub streams
-  migrate     Convoy migrations
-  retry       retry event deliveries with a particular status in a timeframe
-  scheduler   scheduler runs periodic tasks
-  server      Start the HTTP server
-  stream      Start a websocket server to pipe events to a convoy cli instance
-  version     Print the version
-  worker      Start worker instance
+  agent         Start agent instance
+  bootstrap     bootstrap creates a new user account
+  completion    Generate the autocompletion script for the specified shell
+  config        config outputs your instances computed configuration
+  feature-flags Print the list of feature flags
+  help          Help about any command
+  migrate       Convoy migrations
+  openapi       Extract webhook schemas from OpenAPI specifications
+  retry         retry event deliveries with a particular status in a timeframe
+  server        Start the HTTP server
+  utils         runs utility commands
+  version       Print the version
 
-Flags:
-      --config string           Configuration file for convoy (default "./convoy.json")
-      --license-key string      License key
-      --db-database string      Database Database
-      --db-host string          Database Host
-      --db-options string       Database Options
-      --db-password string      Database Password
-      --db-port int             Database Port
-      --db-scheme string        Database Scheme
-      --db-type string          Database provider
-      --db-username string      Database Username
-  -h, --help                    help for Convoy
-      --redis-database string   Redis database
-      --redis-host string       Redis Host
-      --redis-password string   Redis Password
-      --redis-port int          Redis Port
-      --redis-scheme string     Redis Scheme
-      --redis-type string       Redis provider
-      --redis-username string   Redis Username
-  -v, --version                 version for Convoy
-
+Use "Convoy [command] --help" for more information about a command.
 ```
 
+Global flags (database, Redis, tracing, metrics, billing, and so on) are defined on the root command; run `convoy --help` on your installed binary for the full list for that version.
 
-To get help for any specific command, pass the `-h` flag to the relevant subcommand. For example, to get help about the `worker` sub-command run `convoy worker -h`
+To get help for a subcommand, pass `-h` (for example `convoy agent -h`).
 
-### Ingest
+### Historical CLI commands
 
-Command: `convoy ingest`
-
-#### Synopsis
-
-```txt terminal
-$ convoy ingest --help
-Ingest webhook events from Pub/Sub streams
-
-Usage:
-  Convoy ingest [flags]
-
-Flags:
-  -h, --help           help for ingest
-      --interval int   the time interval, measured in seconds, at which the database should be polled for new pub sub sources (default 300)
-
-Global Flags:
-      --config string           Configuration file for convoy (default "./convoy.json")
-      --db-database string      Database Database
-      --db-host string          Database Host
-      --db-options string       Database Options
-      --db-password string      Database Password
-      --db-port int             Database Port
-      --db-scheme string        Database Scheme
-      --db-type string          Database provider
-      --db-username string      Database Username
-      --redis-database string   Redis database
-      --redis-host string       Redis Host
-      --redis-password string   Redis Password
-      --redis-port int          Redis Port
-      --redis-scheme string     Redis Scheme
-      --redis-username string   Redis Username
-
-```
-
-
-#### Description
-
-#### Command Flags
-
--  `--interval`: The time in seconds to poll the database for changes in the source configuration.
+Older docs referred to **`convoy worker`**, **`convoy ingest`**, **`convoy stream`**, and **`convoy scheduler`**. Current Convoy exposes **`convoy server`** for the control-plane HTTP API and **`convoy agent`** for the data plane (queue consumers, broker ingest, and data-plane HTTP including `/metrics` on **`server.http.agent_port`**). A common local layout is **`convoy server`** on the API port and **`convoy agent`** on the agent port—for example **5005** / **5008** in [docker-compose.dev.yml](https://github.com/frain-dev/convoy/blob/main/docker-compose.dev.yml). See the [core gateway changelog](/changelog/core-gateway) for the unified agent change.
 
 ### Bootstrap
 
@@ -212,54 +154,6 @@ The bootstrap creates a new user account.
 #### Command Flags
 
 -  `--help`: Get help on the bootstrap command.
-
-### Stream
-
-Command: `convoy stream`
-
-#### Synopsis
-
-
-```txt terminal
-$ convoy stream --help
-Start a websocket server to pipe events to a convoy cli instance
-
-Usage:
-  Convoy stream [flags]
-
-Flags:
-  -h, --help                 help for stream
-      --log-level string     stream log level (default "error")
-      --socket-port uint32   Socket port (default 5008)
-
-Global Flags:
-      --config string           Configuration file for convoy (default "./convoy.json")
-      --db-database string      Database Database
-      --db-host string          Database Host
-      --db-options string       Database Options
-      --db-password string      Database Password
-      --db-port int             Database Port
-      --db-scheme string        Database Scheme
-      --db-type string          Database provider
-      --db-username string      Database Username
-      --redis-database string   Redis database
-      --redis-host string       Redis Host
-      --redis-password string   Redis Password
-      --redis-port int          Redis Port
-      --redis-scheme string     Redis Scheme
-      --redis-username string   Redis Username
-
-
-```
-
-
-#### Description
-
-The stream command starts a websocket server to pipe events to another convoy instance.
-
-#### Command Flags
-
--  `--help`: Get help on the stream command.
 
 ### Migrate
 
@@ -354,7 +248,7 @@ The config command outputs the configuration for your active instances.
 
 #### Command Flags
 
--  `--help`: Get help on the config worker.
+-  `--help`: Get help on the `config` command.
 
 ### Server
 
@@ -373,168 +267,48 @@ Aliases:
   server, serve, s
 
 Flags:
-      --api-auth string            API-Key authentication credentials
-      --basic-auth string          Basic authentication credentials
-      --cache string               Cache Provider ("redis" or "in-memory") (default "redis")
-      --disable-endpoint           Disable all application endpoints
-      --env string                 Convoy environment (default "development")
-  -h, --help                       help for server
-      --host string                Host - The application host name
-      --limiter string             Rate limiter provider ("redis" or "in-memory") (default "redis")
-      --log-level string           Log level (default "error")
-      --logger string              Logger (default "info")
-      --max-response-size uint     Max response size
-      --multi-tenant               Start convoy in single- or multi-tenant mode
-      --native                     Enable native-realm authentication
-      --new-relic-app string       NewRelic application name
-      --new-relic-config-enabled   Enable new-relic config
-      --new-relic-key string       NewRelic application license key
-      **--new-relic-**tracer-enabled   Enable new-relic distributed tracer
-      --port uint32                Server port
-      --promaddr string            Prometheus dsn
-      --proxy string               HTTP Proxy
-      --replay-attacks             Enable feature to prevent replay attacks
-      --retry-interval uint        Endpoint retry interval
-      --retry-limit uint           Endpoint retry limit
-      --retry-strategy string      Endpoint retry strategy
-      --searcher string            Searcher
-      --sentry string              Sentry DSN
-      --signature-hash string      Application signature hash
-      --signature-header string    Application signature header
-      --ssl                        Configure SSL
-      --ssl-cert-file string       SSL certificate file
-      --ssl-key-file string        SSL key file
-      --typesense-api-key string   Typesense Api Key
-      --typesense-host string      Typesense Host
-      --worker-port uint32         Worker port
-
-Global Flags:
-      --config string           Configuration file for convoy (default "./convoy.json")
-      --db-database string      Database Database
-      --db-host string          Database Host
-      --db-options string       Database Options
-      --db-password string      Database Password
-      --db-port int             Database Port
-      --db-scheme string        Database Scheme
-      --db-type string          Database provider
-      --db-username string      Database Username
-      --redis-database string   Redis database
-      --redis-host string       Redis Host
-      --redis-password string   Redis Password
-      --redis-port int          Redis Port
-      --redis-scheme string     Redis Scheme
-      --redis-username string   Redis Username
-
-
+      --api-auth string          API-Key authentication credentials
+      --basic-auth string        Basic authentication credentials
+      --cache string             Cache Provider ("redis" or "in-memory") (default "redis")
+      --env string               Convoy environment (default "development")
+  -h, --help                     help for server
+      --host string              Host - The application host name
+      --limiter string           Rate limiter provider ("redis" or "in-memory") (default "redis")
+      --logger string            Logger (default "info")
+      --max-response-size uint   Max response size
+      --native                   Enable native-realm authentication
+      --port uint32              Server port
+      --promaddr string          Prometheus dsn
+      --proxy string             HTTP Proxy
+      --root-path string         Root path for routing behind load balancers (e.g., /convoy)
+      --ssl                      Configure SSL
+      --ssl-cert-file string     SSL certificate file
+      --ssl-key-file string      SSL key file
 ```
+
+Global flags are the same as the root command; run `convoy server --help` on your binary for the full list.
 
 #### Description
 
-The server command runs convoy’s REST API. The REST API is the primary entry point to using convoy and this command is likely the most important command.
+The **`server`** command runs Convoy’s **control-plane** HTTP API (dashboard, configuration, and management endpoints). For split deployments, run **`convoy agent`** separately for the data plane (ingest, queue consumers, and data-plane HTTP on **`server.http.agent_port`**). See [Historical CLI commands](#historical-cli-commands) above.
 
 #### Command Flags
 
--  `--port`: This flag specifies the port number the server listens on. This is a required parameter that must be configured from one of the configuration sources.
-    
--  `--auth`: This flag specifies if the REST API will require authentication or not. It is enabled by default
-    
--  `--multi-tenant`: This flag specifies the mode the instance is running. It’s a boolean flag. When set to `true` . The server will only receive events but not run workers in the background. It is expected that you will run `convoy worker` as a different process to consume event deliveries off the queue. Defaults to `false`.
-    
--  `--max-response-size`: This flag specifies the maximum response in bytes of the endpoint’s payload to store. This configuration only affects the default group.
-    
--  `--native`: This flag specifies if the `native` realm should be enabled. You can read more about the native realm [here](https://getconvoy.io/docs/deployment/configuration#configuration-reference) It is a boolean flag. Defaults to `false`.
-    
--  `--disable-endpoint`: This flag specifies the `disable-endpoint` configuration for the default group for convoy instances running in non-multi tenant mode.Defaults to `false`.
-    
--  `--signature-hash`: This flag specifies the hash algorithm for the default group for convoy instances running in non-multi tenant mode.
-    
--  `--signature-header`: This flag specifies the HTTP header for the default group for convoy instances running in non-multi tenant mode.
-    
--  `--sentry`: This flag specifies the DSN to push telemetry data to sentry.
-    
--  `--ssl`: This specifies if the server should run with `ssl` enabled. If true, then you must specify two other flags `--ssl-cert-file` and `--ssl-key-file`.
-    
--  `--ssl-cert-file`: This is a path to the SSL certificate file. If specified and `ssl` is set to `false`; nothing happens.
-    
--  `--ssl-key-file`: This is a path to the SSL key file. If specified and `ssl` is set to `false`; nothing happens.
-    
--  `--with-workers`: This specifies if the server should run in monolith mode. This means both the server and worker will be run in the same process. Defaults to `true` if not specified.
-    
-
-### Worker
-
-Command: `convoy worker`
-
-#### Synopsis
-
-
-```txt terminal
-$ convoy worker -h
-Start worker instance
-
-Usage:
-  Convoy worker [flags]
-
-Flags:
-  -h, --help                       help for worker
-      --log-level string           scheduler log level
-      --new-relic-app string       NewRelic application name
-      --new-relic-config-enabled   Enable new-relic config
-      --new-relic-key string       NewRelic application license key
-      --new-relic-tracer-enabled   Enable new-relic distributed tracer
-      --smtp-from string           Sender email address
-      --smtp-password string       SMTP authentication password
-      --smtp-provider string       SMTP provider
-      --smtp-reply-to string       Email address to reply to
-      --smtp-ssl                   Enable SMTP SSL
-      --smtp-url string            SMTP provider URL
-      --smtp-username string       SMTP authentication username
-      --worker-port uint32         Worker port (default 5006)
-
-Global Flags:
-      --config string           Configuration file for convoy (default "./convoy.json")
-      --db-database string      Database Database
-      --db-host string          Database Host
-      --db-options string       Database Options
-      --db-password string      Database Password
-      --db-port int             Database Port
-      --db-scheme string        Database Scheme
-      --db-type string          Database provider
-      --db-username string      Database Username
-      --redis-database string   Redis database
-      --redis-host string       Redis Host
-      --redis-password string   Redis Password
-      --redis-port int          Redis Port
-      --redis-scheme string     Redis Scheme
-      --redis-username string   Redis Username
-
-```
-
-
-#### Description
-
-The worker command is used when running convoy in the micro-services mode. It does the job by simply reading event deliveries of the queue and passing them to consumers to process. It is possible to run multiple worker processes to scale up your workers.
-
-This command requires all Global configurations to be set either through the CLI or the configuration file. This is because the workers need to connect to both the database and the queues to perform its duty.
-
-#### Command Flags
-
--  `--smtp-provider`: This flag specifies the name of the SMTP provider. While this isn’t necessary for smtp configuration, it is used to provider rich log.
--  `--smtp-from`: This specifies the sender’s email address when sending notification emails.
--  `--smtp-url`: This specifies the smtp servers’ url. You should lookup the providers’ documentation on how to specify this flag.
--  `--smtp-port`: This specifies the smtp servers’ port. You should lookup the providers’ documentation o how to specify this flag.
--  `--smtp-reply-to`: This specifies the email to use as reply-to in notification emails sent.
--  `--smtp-username`: This specifies the username for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
--  `--smtp-password`: This specifies the password for smtp authentication. You should lookup the providers’ documentation on how to specify this flag.
--  `--smtp-ssl`: This specifies if ssl should be used in the smtp protocol for sending emails.
--  `--help`: Get help on the worker command.
--  `--worker-port`: Specify the worker server’s port. Defaults to `5006` if not specified.
--  `--mode`: The processing mode of the events' processor.
-
+- **`--port`**: HTTP port for the control server (overrides `server.http.port` in config when set).
+- **`--api-auth`** / **`--basic-auth`**: Optional inline API key or basic-auth credentials for the server process.
+- **`--cache`**, **`--limiter`**: Redis vs in-memory cache and rate limiter backends.
+- **`--env`**, **`--logger`**, **`--host`**, **`--root-path`**: Process environment, logging, hostname, and path prefix behind a reverse proxy.
+- **`--max-response-size`**: Cap on stored subscriber response payload size (see [configuration](/deployment/configuration)).
+- **`--native`**: Enable native-realm authentication.
+- **`--promaddr`**: Appears on `convoy server --help` as “Prometheus dsn”; it is **not** passed through in `buildServerCliConfiguration` in current source—use root metrics flags / `convoy.json` for Prometheus settings instead.
+- **`--proxy`**: Outbound HTTP proxy for the server process.
+- **`--ssl`**, **`--ssl-cert-file`**, **`--ssl-key-file`**: TLS for the control HTTP server.
 
 ### Agent
 
 Command: `convoy agent`
+
+#### Synopsis
 
 ```txt terminal
 $ convoy agent -h
@@ -544,13 +318,11 @@ Usage:
   Convoy agent [flags]
 
 Flags:
-      --agent-port uint32      Agent port
       --consumers int          Size of the consumers pool. (default -1)
   -h, --help                   help for agent
-      --ingest-port uint32     Ingest port
       --interval int           the time interval, measured in seconds to update the in-memory store from the database (default 10)
-      --log-level string       scheduler log level
       --mode string            Execution Mode (one of events, retry and default)
+      --port uint32            Agent port
       --smtp-from string       Sender email address
       --smtp-password string   SMTP authentication password
       --smtp-port uint32       SMTP Port
@@ -559,65 +331,21 @@ Flags:
       --smtp-ssl               Enable SMTP SSL
       --smtp-url string        SMTP provider URL
       --smtp-username string   SMTP authentication username
-      --worker-port uint32     Worker port
-
-Global Flags:
-      --config string                         Configuration file for convoy (default "./convoy.json")
-      --db-database string                    Database Database
-      --db-host string                        Database Host
-      --db-options string                     Database Options
-      --db-password string                    Database Password
-      --db-port int                           Database Port
-      --db-scheme string                      Database Scheme
-      --db-type string                        Database provider
-      --db-username string                    Database Username
-      --enable-feature-flag strings           List of feature flags to enable e.g. "full-text-search,prometheus"
-      --enable-profiling                      Enable profiling and exporting profile data to pyroscope
-      --max-retry-seconds uint                Max retry seconds exponential backoff (default 7200)
-      --metrics-backend string                Metrics backend e.g. prometheus. ('prometheus' feature flag required (default "prometheus")
-      --metrics-prometheus-sample-time uint   Prometheus metrics sample time (default 5)
-      --otel-auth-header-name string          OTel backend auth header name
-      --otel-auth-header-value string         OTel backend auth header value
-      --otel-collector-url string             OTel collector URL
-      --otel-sample-rate float                OTel tracing sample rate (default 1)
-      --redis-database string                 Redis database
-      --redis-host string                     Redis Host
-      --redis-password string                 Redis Password
-      --redis-port int                        Redis Port
-      --redis-scheme string                   Redis Scheme
-      --redis-type string                     Redis provider
-      --redis-username string                 Redis Username
-      --retention-policy string               SMTP Port
-      --retention-policy-enabled              SMTP Port
-      --sentry-dsn string                     Sentry backend dsn
-      --tracer-type string                    Tracer backend, e.g. sentry, datadog or otel
 ```
+
+Global flags are the same as the root command; run `convoy agent --help` on your binary for the full list.
 
 #### Description
 
-The worker command is used when running convoy in the microservices' mode.
-It does the job by simply reading event deliveries of the queue and passing them to consumers to process.
-It is possible to run multiple worker processes to scale up your workers.
-
-This command requires all Global configurations to be set either through the CLI or the configuration file.
-This is because the workers need to connect to both the database and the queues to perform its duty.
+The **`agent`** command runs the **data plane**: queue consumers, broker-backed ingest (where configured), notification paths that need SMTP, and the **data-plane HTTP server** on **`server.http.agent_port`** (CLI **`--port`** overrides that value when non-zero). Run one or more agent replicas alongside **`convoy server`**; [docker-compose.dev.yml](https://github.com/frain-dev/convoy/blob/main/docker-compose.dev.yml) maps this to service **`agent`** (for example port **5008**).
 
 #### Command Flags
 
--  `--smtp-provider`: This flag specifies the name of the SMTP provider. While this isn’t necessary for smtp configuration, it is used to provider rich log.
--  `--smtp-from`: This specifies the sender’s email address when sending notification emails.
--  `--smtp-url`: This specifies the smtp servers’ url. You should look up the providers’ documentation on how to specify this flag.
--  `--smtp-port`: This specifies the smtp servers’ port. You should look up the providers’ documentation on how to specify this flag.
--  `--smtp-reply-to`: This specifies the email to use as reply-to in notification emails sent.
--  `--smtp-username`: This specifies the username for smtp authentication. You should look up the providers’ documentation on how to specify this flag.
--  `--smtp-password`: This specifies the password for smtp authentication. You should look up the providers’ documentation on how to specify this flag.
--  `--smtp-ssl`: This specifies if ssl should be used in the smtp protocol for sending emails.
--  `--help`: Get help on the worker command.
--  `--agent-port`: Specify the agent server’s port. Defaults to `5007` if not specified.
--  `--interval`: The time in seconds to poll the database for changes in the source configuration.
--  `--mode`: The processing mode of the events' processor.
-
-
+- **`--port`**: Agent HTTP port (maps to **`server.http.agent_port`** / **`AGENT_PORT`** in config).
+- **`--consumers`**: Consumer pool size when set to a non-negative value (otherwise config defaults apply).
+- **`--interval`**: Seconds between in-memory config syncs from the database.
+- **`--mode`**: Worker execution mode: **`events`**, **`retry`**, or **`default`** (see configuration / license notes for your build).
+- **`--smtp-*`**: SMTP settings for notification email from the agent process.
 
 ### Retry
 

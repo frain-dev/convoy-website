@@ -47,6 +47,7 @@ Early Adopter features are experimental features that can be enabled individuall
 **Available Early Adopter Features:**
 - **mTLS**: Mutual TLS support for secure endpoint communication
 - **OAuth Token Exchange**: OAuth token exchange functionality for endpoint authentication
+- **Basic authentication (endpoints)**: HTTP Basic auth on outbound webhook deliveries to destination URLs (feature key `basic-auth-endpoint`; requires the matching license entitlement)
 - **Credential Encryption**: Encryption at rest for sensitive credentials
 
 **How it works:**
@@ -62,6 +63,10 @@ Mutual TLS (mTLS) support for secure endpoint communication.
 ### OAuth Token Exchange
 
 OAuth token exchange functionality for endpoint authentication.
+
+### Basic authentication (endpoints)
+
+HTTP Basic authentication for **destination** endpoints. When enabled for the organisation and licensed, you can configure `authentication.type: basic_auth` on an endpoint so deliveries include `Authorization: Basic`.
 
 ### Credential Encryption
 

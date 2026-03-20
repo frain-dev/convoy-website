@@ -1,0 +1,43 @@
+---
+title: Endpoint verification and outbound connections
+'og:title': Endpoint verification and outbound connections
+'og:description': How Convoy pings endpoints on create/update, TLS settings for deliveries, and dispatcher configuration.
+'twitter:description': How Convoy pings endpoints on create/update, TLS settings for deliveries, and dispatcher configuration.
+'twitter:url': https://getconvoy.io/docs/product-manual/endpoint-verification
+---
+
+When you create or update an **endpoint URL**, Convoy may issue a **ping** (an HTTP request to that URL) to confirm the destination responds before accepting the configuration. That check is separate from **TLS settings** used when Convoy **delivers webhooks** to the same URL.
+
+For ping failures (404, auth-only URLs, TLS errors), see [Troubleshooting](/deployment/install-convoy/troubleshooting) and the accordion on endpoint validation.
+
+## Ping validation (create/update)
+
+- Convoy tries a small set of HTTP methods when pinging, configurable via **`ping_methods`** (default typically includes `HEAD`, `GET`, and `POST`). See the dispatcher table below.
+- If the destination requires credentials Convoy does not have at ping time, returns **404** for unauthenticated `GET`, or only accepts unusual methods, the ping can fail even though deliveries might work once the endpoint is configured with [authentication](/product-manual/endpoints#endpoint-authentication).
+- To **skip only the ping** (not TLS verification for deliveries), set **`skip_ping_validation`** / **`CONVOY_DISPATCHER_SKIP_PING_VALIDATION`**. Use this sparingly; it means Convoy will not have verified reachability at configuration time.
+
+## TLS and certificate trust (deliveries and ping)
+
+- By default, outbound HTTPS uses the system trust store. For **private CAs**, set **`ca_cert_path`** or **`ca_cert_string`** on the dispatcher so Convoy loads an additional CA bundle (see also [Custom certificate authority](/product-manual/custom-certificate-authority) if you use that flow).
+- **`insecure_skip_verify`** / **`CONVOY_DISPATCHER_INSECURE_SKIP_VERIFY`** disables TLS certificate verification for outbound HTTP clients. This is a sharp edge; prefer fixing the certificate chain or custom CA.
+
+## SSRF controls
+
+- **`allow_list`** — CIDR ranges outbound connections are allowed to use (mitigates SSRF). Empty vs default behavior depends on your release; check the sample in [Configuration](/deployment/configuration).
+- **`block_list`** — CIDR ranges that are always denied (JSON key is **`block_list`**, not `deny_list`).
+
+## Dispatcher configuration reference
+
+These fields live under the **`dispatcher`** object in `convoy.json` (or equivalent env vars). They match the `DispatcherConfiguration` struct in the Convoy server configuration.
+
+| JSON field | Environment variable | Purpose |
+| :-- | :-- | :-- |
+| `insecure_skip_verify` | `CONVOY_DISPATCHER_INSECURE_SKIP_VERIFY` | Skip TLS cert verification for outbound HTTP (ping + delivery client). |
+| `allow_list` | `CONVOY_DISPATCHER_ALLOW_LIST` | Allowed destination CIDRs (SSRF allow list). |
+| `block_list` | `CONVOY_DISPATCHER_BLOCK_LIST` | Blocked destination CIDRs. |
+| `ca_cert_path` | `CONVOY_DISPATCHER_CACERT_PATH` | Path to PEM CA file (extra roots). |
+| `ca_cert_string` | `CONVOY_DISPATCHER_CACERT_STRING` | PEM CA string (extra roots). |
+| `ping_methods` | `CONVOY_DISPATCHER_PING_METHODS` | Methods used for endpoint ping on create/update. |
+| `skip_ping_validation` | `CONVOY_DISPATCHER_SKIP_PING_VALIDATION` | If true, skip ping on create/update. |
+
+Full JSON example and comments: [Configuration](/deployment/configuration) (`dispatcher` section).

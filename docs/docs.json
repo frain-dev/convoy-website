@@ -25,7 +25,8 @@
             "pages": [
               "guides/sending-webhook-example",
               "guides/receiving-webhook-example",
-              "guides/best-practices-for-generating-webhook-events"
+              "guides/best-practices-for-generating-webhook-events",
+              "guides/api-onboarding"
             ]
           },
           {
@@ -50,6 +51,7 @@
               "product-manual/rbac",
               "product-manual/google-sso",
               "product-manual/endpoints",
+              "product-manual/endpoint-verification",
               "product-manual/signatures",
               "product-manual/sources",
               "product-manual/subscriptions",
@@ -158,6 +160,12 @@
               "api-reference/endpoints/delete-endpoint",
               "api-reference/endpoints/roll-endpoint-secret",
               "api-reference/endpoints/pause-endpoint"
+            ]
+          },
+          {
+            "group": "Onboard",
+            "pages": [
+              "api-reference/onboard/bulk-onboard"
             ]
           },
           {

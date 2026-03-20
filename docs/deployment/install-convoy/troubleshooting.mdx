@@ -21,5 +21,13 @@ This page contains fixes for some of the known installation and usage errors enc
     Ensure that your Redis connection string is in the correct [format](https://github.com/lettuce-io/lettuce-core/wiki/Redis-URI-and-connection-details#uri-syntax) and that you can connect to the instance using redis-cli from the same machine.
 </Accordion>
 
+<Accordion title="Endpoint validation fails with 404 or non-2xx during create/update">
+    When creating or updating an endpoint, Convoy may call the URL to validate it (ping). If your server only accepts authenticated requests, returns 404 for `GET`, or is behind TLS that fails validation, the check can fail with errors such as `endpoint validation failed: endpoint returned a non-2xx response`.
+
+    For controlled environments you can disable ping validation by setting **`CONVOY_DISPATCHER_SKIP_PING_VALIDATION=true`** (or the equivalent `skip_ping_validation` field in configuration). Prefer fixing the destination (e.g. health route, correct method) when possible; skipping validation reduces confidence that the URL is reachable as Convoy will call it during delivery.
+
+    See [Endpoint verification and outbound connections](/product-manual/endpoint-verification) for how ping differs from TLS settings and the full dispatcher reference.
+</Accordion>
+
 
 If you're having any other issues, please reach out to us on [Slack](https://app.slack.com/client/T02JMPNCYNP).

@@ -6,7 +6,7 @@ title: Metrics
 'twitter:url': https://getconvoy.io/docs/product-manual/metrics
 ---
 
-Convoy exports metrics about the state of events received and sent via Prometheus
+Convoy exports metrics about the state of events received and sent via Prometheus.
 
 ## Enabling Metrics
 
@@ -14,37 +14,126 @@ Metrics are currently in beta, and aren't enabled by default. To enable them, yo
 
 -   Enable the `prometheus` feature flag using `CONVOY_ENABLE_FEATURE_FLAG=prometheus`
 -   Set the metrics backend env var `CONVOY_METRICS_BACKEND`
+-   Ensure your **license** allows Prometheus export (the server checks license capabilities before registering metrics)
 
 Either one of the two code blocks below will work.
 
 ```shell enabling convoy metrics using flags
-convoy worker --metrics-backend=prometheus --enable-feature-flag=prometheus
+convoy agent --metrics-backend=prometheus --enable-feature-flag=prometheus
 ```
 
 ```shell enabling convoy metrics using env vars
 export CONVOY_METRICS_BACKEND=prometheus
-convoy worker --enable-feature-flag=prometheus
+convoy agent --enable-feature-flag=prometheus
 ```
 
-## Queue Metrics
+Scrape **`GET /metrics`** on each process you run. Typical split deployments use **`convoy server`** (control plane API, default HTTP port **5005**) and **`convoy agent`** (data plane: ingest, queue consumers, and data-plane HTTP including `/metrics`, default **`agent_port` 5008**). For example, [docker-compose.dev.yml](https://github.com/frain-dev/convoy/blob/main/docker-compose.dev.yml) maps **`web`** → `5005` and **`agent`** → `5008`. Both can register the shared Prometheus registry when Redis + Postgres are available. Export still requires the **license** to allow Prometheus metrics where the handler enforces it.
 
-| Name                                          | Type  | Description                                                                                        |
-| :-------------------------------------------- | :---- | :------------------------------------------------------------------------------------------------- |
-| `convoy_event_queue_total`                    | Gauge | Total number of tasks in the event queue                                                           |
-| `convoy_event_queue_scheduled_total`          | Gauge | Total number of tasks scheduled in the event queue                                                 |
-| `convoy_event_queue_backlog_seconds`          | Gauge | Number of seconds the oldest pending task is waiting in pending state to be processed.             |
-| `convoy_event_delivery_queue_total`           | Gauge | Total number of tasks in the delivery queue per endpoint                                           |
-| `convoy_event_delivery_attempts_total`        | Gauge | Total number of attempts per endpoint                                                              |
-| `convoy_event_delivery_queue_backlog_seconds` | Gauge | Number of seconds the oldest pending task is waiting in pending state to be processed per endpoint |
+### Example scrape configuration
 
-## Data Ingestion Metrics
+Point Prometheus at each Convoy process you care about (replace host, port, and labels). Metrics path is always **`/metrics`**.
 
-| Name                        | Type      | Description                                               |
-| :-------------------------- | :-------- | :-------------------------------------------------------- |
-| `convoy_ingest_total`       | Counter   | Total number of events ingested                           |
-| `convoy_ingest_success`     | Counter   | Total number of events successfully ingested and consumed |
-| `convoy_ingest_error`       | Counter   | Total number of errors during event ingestion             |
-| `convoy_end_to_end_latency` | Histogram | Total time (in seconds) an event spends in Convoy.        |
+```yaml prometheus.yml fragment
+scrape_configs:
+  - job_name: convoy-server
+    static_configs:
+      - targets: ["convoy-server:5005"]
+        labels:
+          role: server
+  - job_name: convoy-agent
+    static_configs:
+      - targets: ["convoy-agent:5008"]
+        labels:
+          role: agent
+```
+
+Use the HTTP ports your deployment actually binds: **`server.http.port`** for **`convoy server`** (often **5005**) and **`server.http.agent_port`** / **`AGENT_PORT`** for **`convoy agent`** (often **5008**, matching the dev compose layout).
+
+### Example PromQL queries
+
+Illustrative only—adjust label selectors to match your deployment.
+
+```text
+# Ingest rate (events/s) summed over all projects/sources
+sum(rate(convoy_ingest_total[5m]))
+
+# Ingest errors share of total (ratio)
+sum(rate(convoy_ingest_error[5m])) / sum(rate(convoy_ingest_total[5m]))
+
+# Approximate p95 end-to-end latency (seconds) — requires histogram buckets on your scrape
+histogram_quantile(0.95, sum(rate(convoy_end_to_end_latency_bucket[5m])) by (le))
+
+# Max backlog age (seconds) seen across series (Postgres-backed gauge)
+max(convoy_event_queue_backlog_seconds)
+```
+
+Histogram series use Prometheus’ usual `_bucket` / `_sum` / `_count` suffixes for `convoy_end_to_end_latency`.
+
+## Ingest counters and end-to-end latency
+
+These are registered from **`internal/pkg/metrics/data_plane.go`** when Prometheus is enabled and the license allows export. Labels: `project` and `source` on ingest counters; `project` and `endpoint` on the histogram.
+
+| Name                        | Type      | Description                                                                 |
+| :-------------------------- | :-------- | :--------------------------------------------------------------------------- |
+| `convoy_ingest_total`       | Counter   | Total number of events ingested                                            |
+| `convoy_ingest_success`     | Counter   | Total number of events successfully ingested and consumed                  |
+| `convoy_ingest_error`       | Counter   | Total number of errors during event ingestion                              |
+| `convoy_end_to_end_latency` | Histogram | Total time (in seconds) an event spends in Convoy (recorded per delivery). |
+
+The code also defines a **`convoy_ingest_latency`** histogram (per `project`); your build may or may not register it on `/metrics`—confirm by scraping.
+
+## Queue depth and backlog (Redis and Postgres)
+
+These come from **custom collectors**, not from `data_plane.go`. When metrics are enabled, `RegisterQueueMetrics` attaches the **Redis queue** and **Postgres** implementations to the same registry, so they appear alongside the series above on `/metrics` for that process. In **server + agent** deployments, queue and ingest series are normally observed on the **agent** scrape target (data plane); the control server exposes its own `/metrics` for whatever it registers.
+
+Postgres-backed values are refreshed on a **sample interval** (`metrics.prometheus.sample_time`). Depending on version and schema, queries may use **materialized views** or live SQL—see the server release notes if you upgrade.
+
+### Redis (Asynq) queues
+
+| Name                                                 | Type  | Labels   | Description                                                                 |
+| :--------------------------------------------------- | :---- | :------- | :-------------------------------------------------------------------------- |
+| `convoy_event_queue_scheduled_total`                 | Gauge | `status` | Tasks waiting on the create-event queue (queue size minus completed/archived). |
+| `convoy_event_workflow_queue_match_subscriptions_total` | Gauge | `status` | Tasks waiting on the workflow queue used when matching subscriptions.        |
+
+### Postgres (events and deliveries)
+
+| Name                                          | Type  | Labels                                                                 | Description                                                                                        |
+| :-------------------------------------------- | :---- | :--------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------- |
+| `convoy_event_queue_total`                    | Gauge | `project`, `source`, `status`                                          | Counts derived from events (or materialized views when present).                                    |
+| `convoy_event_queue_backlog_seconds`          | Gauge | `project`, `source`                                                     | Age in seconds of the oldest pending work for that project/source.                                 |
+| `convoy_event_delivery_queue_total`           | Gauge | `project`, `project_name`, `endpoint`, `status`, `event_type`, `source`, `organisation_id`, `organisation_name` | Tasks in the delivery pipeline per endpoint and dimensions.                                         |
+| `convoy_event_delivery_queue_backlog_seconds` | Gauge | `project`, `endpoint`, `source`                                       | Oldest pending delivery backlog per endpoint (seconds).                                            |
+| `convoy_event_delivery_attempts_total`        | Gauge | `project`, `endpoint`, `status`, `http_status_code`                   | Delivery attempts grouped by outcome and HTTP status.                                              |
+
+## Tracing
+
+Convoy can emit **application traces** (separate from [product telemetry](/resources/telemetry) in Mixpanel). Configure the tracer under **`tracer`** in `convoy.json` (see [Configuration](/deployment/configuration)) or use the environment variables below—they map to `TracerConfiguration` in the Convoy server config.
+
+- **Provider:** `CONVOY_TRACER_PROVIDER` = `otel` \| `sentry` \| `datadog` (CLI: `--tracer-type`).
+- **OpenTelemetry:** `CONVOY_OTEL_COLLECTOR_URL` (collector gRPC URL), `CONVOY_OTEL_SAMPLE_RATE`, `CONVOY_OTEL_INSECURE_SKIP_VERIFY`, optional `CONVOY_OTEL_AUTH_HEADER_NAME` / `CONVOY_OTEL_AUTH_HEADER_VALUE` (same values as JSON `tracer.otel.otel_auth.header_name` / `header_value`).
+- **Sentry:** `CONVOY_SENTRY_DSN`, `CONVOY_SENTRY_SAMPLE_RATE`, `CONVOY_SENTRY_ENVIRONMENT`, `CONVOY_SENTRY_DEBUG`.
+- **Datadog:** `CONVOY_DATADOG_AGENT_URL` (requires Datadog tracing entitlement on the license).
+
+**OpenTelemetry via JSON (equivalent env vars above):**
+
+```json tracer otel fragment
+{
+  "tracer": {
+    "type": "otel",
+    "otel": {
+      "collector_url": "otel-collector:4317",
+      "sample_rate": 0.1,
+      "insecure_skip_verify": false,
+      "otel_auth": {
+        "header_name": "",
+        "header_value": ""
+      }
+    }
+  }
+}
+```
+
+Sampling is controlled by `sample_rate` / `CONVOY_OTEL_SAMPLE_RATE`; not every code path may emit spans at every request. Span names emitted from the data plane (**agent**) today include (non-exhaustive): `event.creation.success`, `event.creation.error`, `dynamic.event.creation.success`, `dynamic.event.creation.error`, `dynamic.event.subscription.matching.error`, and `meta_event_delivery`. New releases may add or rename spans—confirm in your trace backend.
 
 > [!WARNING]
 > Feature flags in Convoy were reimplemented on a per-feature basis.\

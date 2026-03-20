@@ -142,10 +142,14 @@ Here's the full configuration reference
           // true, then this must be supplied.
           "ssl_key_file": "",
 
-          // This is used to configure the port for the api server runs on. This
+          // This is used to configure the port the api server runs on. This
           // config has no effect on the other components. The environment
           // variable equivalent is PORT.
           "port": 5005,
+
+          // This is used to configure the port the agent server runs on.
+          // The environment variable equivalent is AGENT_PORT.
+          "agent_port": 5008,
 
           // This is used to configure the port the worker server runs on. This
           // config has no effect on the other components. The environment
@@ -162,7 +166,7 @@ Here's the full configuration reference
           // variable equivalent is SOCKET_PORT.
           "socket_port": 5008,
 
-          // This is used to configure the forward proxy URL. This is must be set
+          // This is used to configure the forward proxy URL. This must be set
           // on all workers if you want to configure a forward proxy. The
           // environment variable equivalent is HTTP_PROXY.
           "http_proxy": ""
@@ -559,7 +563,7 @@ Here's the full configuration reference
 
     // This is used to configure the set of IP addresses that are blocked.
     // The equivalent environment variable is CONVOY_DISPATCHER_BLOCK_LIST.
-    "deny_list": [ "127.0.0.0/8", "169.254.169.254", "::1/128" ],
+    "block_list": [ "127.0.0.0/8", "169.254.169.254", "::1/128" ],
 
     // [optional] Custom CA configuration for the dispatcher.
     // The environment variable equivalent is CONVOY_DISPATCHER_CACERT_PATH
@@ -573,10 +577,10 @@ Here's the full configuration reference
     // The environment variable equivalent is CONVOY_DISPATCHER_PING_METHODS
     "ping_methods": [ "HEAD", "GET", "POST" ],
 
-    // Whether to skip ping valiation entirely.
+    // Whether to skip ping validation entirely.
     // The environment variable equivalent is CONVOY_DISPATCHER_SKIP_PING_VALIDATION
     "skip_ping_validation": false
-  },
+  }
 
   // [optional]
   // This is the total time in seconds used to cap the exponential backoff

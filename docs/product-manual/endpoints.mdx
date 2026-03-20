@@ -8,6 +8,10 @@ title: Endpoints
 
 An endpoint is a valid [HTTP URL](https://datatracker.ietf.org/doc/html/rfc7230) that can receive webhook events. It can be configured with a number of attributes which include an `http timeout` which denotes how long Convoy should wait for a response before timing out, an `alert configuration` setting which gives you the option to get notified when an endpoint's status changes, a `rate limit` setting which allows you to match your consumers own rate limit, and an `authentication` setting which allows your consumer set an additional level of security on the endpoint.
 
+For **ping on create/update**, **TLS**, and **dispatcher** settings (`skip_ping_validation`, custom CA, allow/block lists), see [Endpoint verification and outbound connections](/product-manual/endpoint-verification).
+
+To provision **many endpoints** (and per-endpoint subscriptions) in one project via the API, see [Bulk onboard](/guides/api-onboarding#bulk-onboard) in [API-driven onboarding](/guides/api-onboarding).
+
 ### Endpoint State
 
 An endpoint can have any of the states below:
@@ -23,13 +27,21 @@ Because webhooks rely on a shared secret that needs to be rotated periodically t
 
 This can be triggered from both the API -- [this endpoint](/api-reference/endpoints/roll-endpoint-secret) and the dashboard, see below: <Frame>![Expire Secret](/images/expire-secret.png)</Frame>
 
-Once the secret is expired, conovy will send more than one message digest pending the full expiration of the old secret. You can learn more about [signatures](https://getconvoy.io/docs/product-manual/signatures)
+Once the secret is expired, Convoy will send more than one message digest pending the full expiration of the old secret. You can learn more about [signatures](https://getconvoy.io/docs/product-manual/signatures)
 
 ### Endpoint authentication
 
-Endpoint authentication is a scenario where the endpoint owner needs to specify an authentication mechanism separate from signatures to validate the webhook origin. Convoy supports API Key authentication and OAuth2 client credentials authentication for endpoints.
+Endpoint authentication is a scenario where the endpoint owner needs to specify an authentication mechanism separate from signatures so Convoy can call the destination successfully. Convoy supports **API key**, **OAuth2 client credentials**, and **HTTP Basic** authentication on outbound deliveries.
 
 <Frame>![Endpoint authentication](/images/endpoint-auth.png)</Frame>
+
+### Basic authentication (outbound)
+
+When the endpoint expects [HTTP Basic authentication](https://datatracker.ietf.org/doc/html/rfc7617), set authentication `type` to `basic_auth` and set `basic_auth` with JSON fields **`username`** and **`password`**. Convoy sends an `Authorization: Basic` header built as Base64(`username` + `:` + `password`).
+
+Basic auth for endpoints is gated by an **enterprise license** (entitlement `basic_auth_endpoint_auth`) and the organisation **early adopter** flag with feature key `basic-auth-endpoint` (enable under Organisation Settings → Early Adopter Features). Until both are enabled, create/update and delivery behaviour will reject or skip Basic auth as implemented in your Convoy version.
+
+See also [Feature flags](/resources/feature-flags) and the [OpenAPI specification](/api-reference/welcome) (`authentication.type`: `api_key` \| `oauth2` \| `basic_auth`).
 
 ### mTLS Client Certificate Support
 
@@ -68,6 +80,16 @@ To configure OAuth2:
 <Frame>![OAuth2 endpoint authentication](/images/oauth2-endpoint-auth.png)</Frame>
 
 Convoy handles token exchange and refresh automatically during delivery. This feature requires an enterprise license and the OAuth Token Exchange early adopter feature flag enabled for your organization.
+
+### Outbound authentication FAQ
+
+- **Which authentication types are supported?** **`api_key`** (static header name and value), **`oauth2`** (token URL + **shared secret** with `client_id` / `client_secret`, or **client assertion** with a JWK and JWT), **`basic_auth`** when your license and organisation early adopter flag allow it, plus **mTLS** client certificates for TLS client auth. See the [OpenAPI specification](/api-reference/welcome) for request shapes.
+
+- **Does OAuth2 cover “client ID and client secret”?** Yes — use the **shared secret** OAuth2 type with your provider’s token URL, `client_id`, and `client_secret`. For providers that require a JWT assertion instead of a secret, use **client assertion** as described above.
+
+- **Can I send multiple custom headers or arbitrary header maps?** Not as a first-class endpoint auth type. The **`api_key`** type is a **single** `header_name` / `header_value` pair. For more complex cases, discuss options with your Convoy contact (workarounds may be product-specific).
+
+- **How does Basic Auth differ from mTLS?** Basic Auth adds an `Authorization: Basic` header. mTLS presents a client certificate during the TLS handshake. They address different server requirements and are configured separately.
 
 ### Content Type
 
