@@ -102,7 +102,7 @@
 		},
 		{
 			"source": "/saml",
-			"destination": "/docs/product-manual/google-sso",
+			"destination": "/docs/business-and-enterprise/single-sign-on",
 			"permanent": true
 		},
 		{
