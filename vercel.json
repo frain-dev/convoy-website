@@ -4,6 +4,121 @@
 			"source": "/docs/docs/:match*",
 			"destination": "/docs/:match*",
 			"permanent": true
+		},
+		{
+			"source": "/product-manual/:match*",
+			"destination": "/docs/product-manual/:match*",
+			"permanent": true
+		},
+		{
+			"source": "/api-reference/:match*",
+			"destination": "/docs/api-reference/:match*",
+			"permanent": true
+		},
+		{
+			"source": "/deployment/:match*",
+			"destination": "/docs/deployment/:match*",
+			"permanent": true
+		},
+		{
+			"source": "/guides/:match*",
+			"destination": "/docs/guides/:match*",
+			"permanent": true
+		},
+		{
+			"source": "/webhook-guides/:match*",
+			"destination": "/docs/webhook-guides/:match*",
+			"permanent": true
+		},
+		{
+			"source": "/sdk/:match*",
+			"destination": "/docs/sdk/:match*",
+			"permanent": true
+		},
+		{
+			"source": "/faq/:match*",
+			"destination": "/docs/faq/:match*",
+			"permanent": true
+		},
+		{
+			"source": "/resources/:match*",
+			"destination": "/docs/resources/:match*",
+			"permanent": true
+		},
+		{
+			"source": "/cli-file/:match*",
+			"destination": "/docs/cli-file/:match*",
+			"permanent": true
+		},
+		{
+			"source": "/legal/support-policy",
+			"destination": "/docs/legal/support-policy",
+			"permanent": true
+		},
+		{
+			"source": "/legal/software-license-agreement",
+			"destination": "/docs/legal/software-license-agreement",
+			"permanent": true
+		},
+		{
+			"source": "/download",
+			"destination": "/docs/deployment/install-convoy/docker",
+			"permanent": true
+		},
+		{
+			"source": "/docs/manual/signatures",
+			"destination": "/docs/product-manual/signatures",
+			"permanent": true
+		},
+		{
+			"source": "/event/fanout",
+			"destination": "/docs/api-reference/events/create-a-broadcast-event",
+			"permanent": true
+		},
+		{
+			"source": "/events",
+			"destination": "/docs",
+			"permanent": true
+		},
+		{
+			"source": "/endpoint",
+			"destination": "/docs/product-manual/endpoints",
+			"permanent": true
+		},
+		{
+			"source": "/cmd",
+			"destination": "/docs/cli-file/convoy",
+			"permanent": true
+		},
+		{
+			"source": "/contact",
+			"destination": "/",
+			"permanent": true
+		},
+		{
+			"source": "/terms",
+			"destination": "/legal/privacy-policy",
+			"permanent": true
+		},
+		{
+			"source": "/saml",
+			"destination": "/docs/product-manual/google-sso",
+			"permanent": true
+		},
+		{
+			"source": "/blog/webhoook-failures-notifications-with-convoy",
+			"destination": "/blog/webhook-failures-notifications-with-convoy",
+			"permanent": true
+		},
+		{
+			"source": "/blog/:slug/blog/:slug2",
+			"destination": "/blog/:slug",
+			"permanent": true
+		},
+		{
+			"source": "/convoy.json\\:/convoy.json",
+			"destination": "/docs",
+			"permanent": true
 		}
 	],
 	"rewrites": [
