@@ -20,10 +20,10 @@ The Convoy CLI can be installed directly from your package manager or by buildin
   <Tab title="Linux">
     The installation procedures for Linux is split into two:
 
-       - Ubuntu and Debain users
+       - Ubuntu and Debian users
        - CentOS and RHEL users
 
-    **Ubuntu and Debain OS**
+    **Ubuntu and Debian**
 
     Install the Convoy CLI from apt repository:
 
@@ -99,9 +99,20 @@ Available Commands:
 Use "Convoy [command] --help" for more information about a command.
 ```
 
-Global flags (database, Redis, tracing, metrics, billing, and so on) are defined on the root command; run `convoy --help` on your installed binary for the full list for that version.
+Global flags (database, Redis, tracing, metrics, billing, feature flags, rate limits, and so on) are defined on the root command; run `convoy --help` on your installed binary for the authoritative list for that version.
 
 To get help for a subcommand, pass `-h` (for example `convoy agent -h`).
+
+### Core commands
+
+| Command | Purpose |
+| :------ | :------ |
+| **`convoy server`** | Control plane: dashboard and management HTTP API on **`server.http.port`** (flag **`--port`**). |
+| **`convoy agent`** | Data plane: queue consumers, broker ingest, SMTP-backed notifications, and data-plane HTTP (including **`/metrics`**) on **`server.http.agent_port`** (flag **`--port`**). |
+| **`convoy migrate up`** | Apply all pending database migrations against the DB from your config / flags. Run before starting server and agent in a new environment or after upgrading. |
+| **`convoy config`** | Print the resolved configuration as JSON (same merge rules as other commands: **`cli flags`** > **`environment variables`** > **`convoy.json`**—see [Configuration](/deployment/configuration)). Use the same **`--config`** and environment as the process you are inspecting. |
+
+Typical production layout: one or more **`server`** replicas behind a load balancer and multiple **`agent`** replicas; both use the same `convoy.json` (or equivalent env). See [Architecture](/deployment/architecture) and [Configuration](/deployment/configuration).
 
 ### Historical CLI commands
 
@@ -157,7 +168,7 @@ The bootstrap creates a new user account.
 
 ### Migrate
 
-Command: `convoy migrate`
+Command: `convoy migrate` with subcommands **`up`**, **`down`**, and **`create`**.
 
 #### Synopsis
 
@@ -175,36 +186,19 @@ Available Commands:
 
 Flags:
   -h, --help   help for migrate
-
-Global Flags:
-      --config string           Configuration file for convoy (default "./convoy.json")
-      --db-database string      Database Database
-      --db-host string          Database Host
-      --db-options string       Database Options
-      --db-password string      Database Password
-      --db-port int             Database Port
-      --db-scheme string        Database Scheme
-      --db-type string          Database provider
-      --db-username string      Database Username
-      --redis-database string   Redis database
-      --redis-host string       Redis Host
-      --redis-password string   Redis Password
-      --redis-port int          Redis Port
-      --redis-scheme string     Redis Scheme
-      --redis-username string   Redis Username
-
-
 ```
 
+Run **`convoy migrate up`** (alias **`migrate-up`**) to apply pending schema changes. It uses the same database settings as the rest of the CLI (`--config`, **`CONVOY_DB_*`**, or **`--db-*`** flags). For the full global flag list, run **`convoy migrate up --help`** on your binary.
 
 #### Description
 
-The migrate command is responsible for running pending migrations and rolling back migrations.
+Use **`migrate up`** in deploy scripts and release runbooks before starting **`server`** and **`agent`**. **`migrate down`** rolls back (optional **`--max`** on down—see **`convoy migrate down --help`**). **`migrate create`** is for Convoy developers adding SQL migrations.
 
 #### Command Flags
 
--  `down`: Rollback migrations.
--  `up`: Run all pending migrations
+- **`up`**: Apply all pending migrations.
+- **`down`**: Roll back migrations (see subcommand help for options).
+- **`create`**: Generate a new migration file (development workflow).
 
 ### Config
 
@@ -221,34 +215,17 @@ Usage:
 
 Flags:
   -h, --help   help for config
-
-Global Flags:
-      --config string           Configuration file for convoy (default "./convoy.json")
-      --db-database string      Database Database
-      --db-host string          Database Host
-      --db-options string       Database Options
-      --db-password string      Database Password
-      --db-port int             Database Port
-      --db-scheme string        Database Scheme
-      --db-type string          Database provider
-      --db-username string      Database Username
-      --redis-database string   Redis database
-      --redis-host string       Redis Host
-      --redis-password string   Redis Password
-      --redis-port int          Redis Port
-      --redis-scheme string     Redis Scheme
-      --redis-username string   Redis Username
-
-
 ```
+
+Global flags are the same as the root command; run **`convoy config --help`** for the full list.
 
 ##### Description
 
-The config command outputs the configuration for your active instances.
+**`convoy config`** loads configuration the same way **`server`** and **`agent`** do, then prints the merged struct as indented JSON ([implementation](https://github.com/frain-dev/convoy/blob/main/cmd/config/config.go)). Use it to verify effective values; precedence is **`cli flags`** > **`environment variables`** > **`convoy.json`** (see [Configuration](/deployment/configuration)). It does not start HTTP services or run migrations.
 
 #### Command Flags
 
--  `--help`: Get help on the `config` command.
+- **`--help`**: Help for the `config` command.
 
 ### Server
 
@@ -300,7 +277,7 @@ The **`server`** command runs Convoy’s **control-plane** HTTP API (dashboard, 
 - **`--env`**, **`--logger`**, **`--host`**, **`--root-path`**: Process environment, logging, hostname, and path prefix behind a reverse proxy.
 - **`--max-response-size`**: Cap on stored subscriber response payload size (see [configuration](/deployment/configuration)).
 - **`--native`**: Enable native-realm authentication.
-- **`--promaddr`**: Appears on `convoy server --help` as “Prometheus dsn”; it is **not** passed through in `buildServerCliConfiguration` in current source—use root metrics flags / `convoy.json` for Prometheus settings instead.
+- **`--promaddr`**: Listed on `convoy server --help` as “Prometheus dsn”; prefer **`metrics`** in `convoy.json`, **`CONVOY_METRICS_*`**, and root **`--metrics-*`** flags for Prometheus export (see [Metrics](/product-manual/metrics)).
 - **`--proxy`**: Outbound HTTP proxy for the server process.
 - **`--ssl`**, **`--ssl-cert-file`**, **`--ssl-key-file`**: TLS for the control HTTP server.
 
@@ -388,7 +365,7 @@ Global Flags:
 
 #### Description
 
-At core, convoy is an asynchronous messaging service. It relies on message brokers to carry out its duty. This command is used to filter event deliveries that match the filters set; it will purge the queues for all matched event deliveries and re-enqueue them all.
+**`convoy retry`** selects event deliveries matching **`--status`** and **`--time`** and re-queues them for delivery. Use it for operational recovery after incidents or misconfiguration; it does not replace normal retry policies on each endpoint.
 
 #### Command Flags
 
