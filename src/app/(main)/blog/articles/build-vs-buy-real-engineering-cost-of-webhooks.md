@@ -14,6 +14,8 @@ description: Most teams underestimate what webhook infrastructure really costs t
 published_at: 2026-04-02T10:00:00.000+00:00
 ---
 
+![Build vs Buy](/blog-assets/build-vs-buy.png)
+
 There is a moment that happens on almost every engineering team building a SaaS product. A product requirement comes in; customers need to receive real-time notifications when something happens in your system. Someone in the room says "we just need to fire an HTTP POST request when an event occurs, how long can that take?"
 
 Two weeks later, you have something working. Six months later, you are debugging silent failures at 2am. Twelve months later, two of your best engineers are spending 20% of their time maintaining infrastructure that has nothing to do with your actual product.
