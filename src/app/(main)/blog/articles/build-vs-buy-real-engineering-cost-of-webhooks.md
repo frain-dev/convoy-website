@@ -3,7 +3,7 @@ title: "Build vs Buy: The Real Engineering Cost of Webhooks"
 feature_image: build-vs-buy.png
 post_image: build-vs-buy.png
 primary_author:
-    name: Convoy
+    name: Convoy Engineering
     twitter: getconvoy
 primary_tag: Engineering
 tags:
