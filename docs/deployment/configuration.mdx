@@ -18,6 +18,14 @@ if you mix and match, the order of precedence is as follows:
 will override the same config values set in `environment variables`, and
 values set in both of them will override the same values set in your `convoy.json`.
 
+## Root path {#root-path}
+
+Use **`root_path`** in `convoy.json` or the **`CONVOY_ROOT_PATH`** environment variable when Convoy sits behind a reverse proxy that serves it under a **URL prefix** (for example `https://example.com/convoy`).
+
+- The value must start with `/`, must not end with `/`, and cannot be `/` (use an empty string when serving at the root).
+- The **server** and **agent** are separate processes: each has its **own** config. For one hostname with two prefixes (for example `/server` and `/agent`), set **`CONVOY_ROOT_PATH=/server`** on the server deployment and **`CONVOY_ROOT_PATH=/agent`** on the agent deployment.
+- On Kubernetes with Helm, set **`server.env.root_path`** and **`agent.env.root_path`** in your values file. For a full Ingress example, see [Kubernetes — Path prefix and Ingress](/deployment/install-convoy/kubernetes#path-prefix-and-ingress).
+
 ## Configuration Reference
 
 ---
@@ -482,9 +490,10 @@ Here's the full configuration reference
   "api_rate_limit": 25,
 
   // [optional]
-  // This is used to configure the root path for Convoy deployments. This is useful
-  // when deploying Convoy behind a reverse proxy with a path prefix. The environment
-  // variable equivalent is CONVOY_ROOT_PATH.
+  // Base URL path when Convoy is behind a reverse proxy with a path prefix (e.g. /convoy).
+  // Environment variable: CONVOY_ROOT_PATH. Applies to both server and agent configs;
+  // use a different value per process when exposing server and agent under different
+  // prefixes on the same host. See the Root path section above.
   "root_path": "",
 
   // [optional]

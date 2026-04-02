@@ -190,6 +190,71 @@ agent:
 
 For higher traffic workloads, increase the requests/limits and allow higher `maxReplicas`, and use metrics from your cluster (Prometheus, cloud monitoring) to fine-tune thresholds.
 
+## Path prefix and Ingress {#path-prefix-and-ingress}
+
+You can expose the **server** (control plane) and **agent** (data plane) on **one hostname** with different path prefixes—for example `https://webhooks.example.com/server` and `https://webhooks.example.com/agent`.
+
+Convoy uses the same setting for both processes: **`CONVOY_ROOT_PATH`** (or `root_path` in `convoy.json`). Each deployment must use the prefix that matches what your Ingress sends to that Service (no trailing slash; must start with `/`). See [Root path](/deployment/configuration#root-path) for format rules and behaviour.
+
+### Helm values
+
+Set the root path **per component** and avoid duplicate Ingress rules for the same host (disable the subchart Ingress objects if you manage routing yourself):
+
+```yaml values.yml
+server:
+    ingress:
+        enabled: false
+    env:
+        root_path: '/server'
+
+agent:
+    ingress:
+        enabled: false
+    env:
+        root_path: '/agent'
+```
+
+For **separate hostnames** (for example `server.example.com` and `agent.example.com`), leave `server.env.root_path` and `agent.env.root_path` empty and use `server.ingress` / `agent.ingress`, or your own Ingress with path `/` per host.
+
+### Example Ingress
+
+Point each prefix at the Kubernetes Services created by the chart. Default Service names are **`convoy-server`** and **`convoy-agent`** (from `server.fullNameOverride` / `agent.fullNameOverride`); Service ports are usually **`server.service.port`** and **`agent.service.port`** (often `80`).
+
+```yaml Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: convoy-paths
+    namespace: convoy
+spec:
+    ingressClassName: nginx # replace with your ingress class
+    rules:
+        - host: webhooks.example.com
+          http:
+              paths:
+                  - path: /server
+                    pathType: Prefix
+                    backend:
+                        service:
+                            name: convoy-server
+                            port:
+                                number: 80
+                  - path: /agent
+                    pathType: Prefix
+                    backend:
+                        service:
+                            name: convoy-agent
+                            port:
+                                number: 80
+```
+
+Adjust `namespace`, `ingressClassName`, host, paths, and ports to match your release. Add TLS and controller-specific annotations as needed. The proxy should forward the **full path** to the pod (no rewrite that strips `/server` or `/agent` unless you intentionally configure the app for that).
+
+<Note>
+	When the control plane has a non-empty root path, Convoy also registers API routes at `/` to support the dashboard; restrict what is publicly reachable using your Ingress or
+	network policies if you rely on path isolation.
+</Note>
+
 ## ArgoCD Configuration
 
 Convoy uses helm hooks to trigger migrations every time the charts are installed or upgraded. These hooks alone won't work for an ArgoCD installation since they are not compatible.
