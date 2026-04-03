@@ -2,16 +2,19 @@ import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
 import getReadTime from './read-time';
+import authors from '@/app/data/authors.json';
 
 type PostProps = {
 	title: string;
 	metaTitle?: string;
 	feature_image: string;
 	post_image?: string;
-	primary_author: {
+	primary_author?: {
 		name: string;
 		twitter: string;
+		linkedIn?: string;
 	};
+	author?: string;
 	primary_tag: string;
 	tags?: string[];
 	featured?: boolean;
@@ -23,13 +26,25 @@ type PostProps = {
 	isError?: boolean;
 };
 
+const resolveAuthor = (data: Record<string, any>) => {
+	if (data.primary_author) return data.primary_author;
+
+	if (data.author) {
+		const match = authors.find(a => a.id === data.author);
+		if (match) return { name: match.name, twitter: match.twitter, linkedIn: (match as any).linkedIn };
+	}
+
+	return undefined;
+};
+
 const fetchContent = async (filePath: string) => {
 	const postContent = await fs.readFile(filePath, 'utf8');
 	const slug = path.basename(filePath, path.extname(filePath));
 	const { data, content } = matter(postContent);
 	const readTime = getReadTime(content);
 	const isError = filePath.includes('404');
-	return { ...data, readTime, slug, content, isError } as PostProps;
+	const primary_author = resolveAuthor(data);
+	return { ...data, primary_author, readTime, slug, content, isError } as PostProps;
 };
 
 const fetchPostsAndPostContent = async () => {
@@ -84,13 +99,7 @@ const getPost = async paramsSlug => {
 	} catch {
 		const filePath = `src/app/(main)/blog/articles/404.md`;
 		const post: PostProps = await fetchContent(filePath);
-		return {
-		  ...post,
-		  primary_author: {
-			name: 'Convoy',
-			twitter: 'getconvoy'
-		  }
-		};
+		return post;
 	  }
 };
 

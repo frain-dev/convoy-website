@@ -11,7 +11,7 @@ type BlogPost = {
 	metaTitle?: string;
 	feature_image: string;
 	post_image?: string;
-	primary_author: {
+	primary_author?: {
 		name: string;
 		twitter: string;
 	};

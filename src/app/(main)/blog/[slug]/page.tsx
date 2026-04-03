@@ -12,29 +12,12 @@ type PageProps = {
 	};
 };
 
-// type PostProps = {
-// 	title: string;
-// 	metaTitle: string;
-// 	description: string;
-// 	primary_tag: string;
-// 	feature_image: string;
-// 	readTime: any;
-// 	published_at: any;
-// 	primary_author: {
-// 		name: string;
-// 		twitter: string;
-// 	};
-// 	slug: string;
-// 	content: any;
-// 	isError?: boolean;
-// };
-
 type PostProps = {
 	title: string;
 	metaTitle?: string;
 	feature_image: string;
 	post_image?: string;
-	primary_author: {
+	primary_author?: {
 		name: string;
 		twitter: string;
 	};
@@ -72,17 +55,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 				type: 'article',
 				description: article.description,
 				url: `https://www.getconvoy.io/blog/${article.slug}`,
-				images: ['https://www.getconvoy.io/blog-socials/' + article.feature_image],
+				images: ['https://www.getconvoy.io/post-images/' + article.feature_image],
 				tags: article.primary_tag,
 				publishedTime: article.published_at,
-				authors: ['http://twitter.com/' + article.primary_author.twitter]
+				...(article.primary_author?.twitter && {
+					authors: ['http://twitter.com/' + article.primary_author.twitter]
+				})
 			},
 			twitter: {
 				title: article.metaTitle,
 				card: 'summary_large_image',
-				images: { url: 'https://www.getconvoy.io/blog-socials/' + article.feature_image, alt: article.feature_image },
+				images: { url: 'https://www.getconvoy.io/post-images/' + article.feature_image, alt: article.feature_image },
 				description: article.description,
-				creator: `@${article.primary_author.name}`
+				...(article.primary_author?.name && {
+					creator: `@${article.primary_author.name}`
+				})
 			}
 		};
 }
@@ -97,9 +84,7 @@ export async function generateStaticParams() {
 export default async function BlogPost({ params }: PageProps) {
 	const post = await getPost(params.slug);
 
-	// Handle missing post data
-	if (!post || !post.primary_author) {
-		// Return error page or redirect
+	if (!post) {
 		return <div>Post not found</div>;
 	}
 
@@ -114,16 +99,18 @@ export default async function BlogPost({ params }: PageProps) {
 		'@type': 'Article',
 		headline: post.title,
 		description: post.description,
-		image: `https://www.getconvoy.io/blog-socials/${post.feature_image}`,
+		image: `https://www.getconvoy.io/post-images/${post.feature_image}`,
 		datePublished: post.published_at,
 		dateModified: post.published_at, // Add modified date if available
 		wordCount: post.readTime * 200, // Approximate based on read time
 		timeRequired: `PT${post.readTime}M`,
-		author: {
-			'@type': 'Person',
-			name: post.primary_author.name,
-			sameAs: `http://twitter.com/${post.primary_author.twitter}`
-		},
+		...(post.primary_author && {
+			author: {
+				'@type': 'Person',
+				name: post.primary_author.name,
+				sameAs: `http://twitter.com/${post.primary_author.twitter}`
+			}
+		}),
 		publisher: {
 			'@type': 'Organization',
 			name: 'Convoy',
