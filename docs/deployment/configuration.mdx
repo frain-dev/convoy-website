@@ -18,6 +18,19 @@ if you mix and match, the order of precedence is as follows:
 will override the same config values set in `environment variables`, and
 values set in both of them will override the same values set in your `convoy.json`.
 
+## Redis Sentinel
+
+When using **`redis-sentinel`** as **`CONVOY_REDIS_SCHEME`** (or **`scheme`** in `convoy.json`):
+
+1. **`CONVOY_REDIS_HOST`** — hostname or IP of a **Sentinel** (or a Kubernetes Service fronting Sentinels), **not** necessarily the Redis primary hostname.
+2. **`CONVOY_REDIS_PORT`** — Sentinel port, commonly **26379**.
+3. **`CONVOY_REDIS_SENTINEL_MASTER_NAME`** — logical master name Sentinels monitor (maps to **`master_name`** in `convoy.json`).
+4. **`CONVOY_REDIS_PASSWORD`** — password for **Redis** after the client discovers the primary.
+5. **`CONVOY_REDIS_SENTINEL_PASSWORD`** / **`CONVOY_REDIS_SENTINEL_USERNAME`** — only if Sentinels require authentication.
+
+On **Kubernetes with Helm**, you can avoid putting passwords in `values.yaml`: set **`global.externalRedis.secret`** (Redis password) and **`global.externalRedis.sentinelSecret`** (Sentinel password) to existing Secret **names**. Each Secret must include a key named **`password`**. When **`sentinelSecret`** is set, **`sentinelPassword`** in values is ignored. See [Kubernetes — Redis Sentinel](./install-convoy/kubernetes#redis-sentinel).
+
+
 ## Configuration Reference
 
 ---
@@ -218,6 +231,7 @@ Here's the full configuration reference
     // [optional]
     // The master name for Redis Sentinel setups. Required when scheme is redis-sentinel.
     // The environment variable equivalent is CONVOY_REDIS_SENTINEL_MASTER_NAME.
+    // On Kubernetes Helm, set global.externalRedis.sentinelMasterName. See "Redis Sentinel" above.
     "master_name": "",
 
     // [optional]
