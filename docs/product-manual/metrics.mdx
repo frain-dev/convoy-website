@@ -10,11 +10,12 @@ Convoy exports metrics about the state of events received and sent via Prometheu
 
 ## Enabling Metrics
 
-Metrics are currently in beta, and aren't enabled by default. To enable them, you need to
+Metrics are not enabled by default. To turn them on you need all of the following:
 
--   Enable the `prometheus` feature flag using `CONVOY_ENABLE_FEATURE_FLAG=prometheus`
--   Set the metrics backend env var `CONVOY_METRICS_BACKEND`
--   Ensure your **license** allows Prometheus export (the server checks license capabilities before registering metrics)
+-   Enable the **`prometheus` feature flag** (`CONVOY_ENABLE_FEATURE_FLAG=prometheus` or `--enable-feature-flag=prometheus`).
+-   Set the metrics backend to Prometheus: JSON **`metrics.metrics_backend`**: `"prometheus"`, env **`CONVOY_METRICS_BACKEND=prometheus`**, or CLI **`--metrics-backend=prometheus`**.
+-   Set **`metrics.enabled`** / **`CONVOY_METRICS_ENABLED=true`** together with **`metrics.metrics_backend`**: `"prometheus"` / **`CONVOY_METRICS_BACKEND=prometheus`** when using `convoy.json` or environment. Pure CLI use can instead pass **`--metrics-backend=prometheus`**, which (with the prometheus feature flag) enables the merged metrics configuration loaded for **`server`** and **`agent`**.
+-   Ensure your **license** allows Prometheus export where the handler enforces entitlements.
 
 Either one of the two code blocks below will work.
 
@@ -23,8 +24,10 @@ convoy agent --metrics-backend=prometheus --enable-feature-flag=prometheus
 ```
 
 ```shell enabling convoy metrics using env vars
+export CONVOY_METRICS_ENABLED=true
 export CONVOY_METRICS_BACKEND=prometheus
-convoy agent --enable-feature-flag=prometheus
+export CONVOY_ENABLE_FEATURE_FLAG=prometheus
+convoy agent
 ```
 
 Scrape **`GET /metrics`** on each process you run. Typical split deployments use **`convoy server`** (control plane API, default HTTP port **5005**) and **`convoy agent`** (data plane: ingest, queue consumers, and data-plane HTTP including `/metrics`, default **`agent_port` 5008**). For example, [docker-compose.dev.yml](https://github.com/frain-dev/convoy/blob/main/docker-compose.dev.yml) maps **`web`** → `5005` and **`agent`** → `5008`. Both can register the shared Prometheus registry when Redis + Postgres are available. Export still requires the **license** to allow Prometheus metrics where the handler enforces it.
@@ -69,6 +72,31 @@ max(convoy_event_queue_backlog_seconds)
 
 Histogram series use Prometheus’ usual `_bucket` / `_sum` / `_count` suffixes for `convoy_end_to_end_latency`.
 
+## Grafana and dashboards
+
+Use Grafana (or any Prometheus-backed UI) to track whether observability keeps pace with the product and stays trustworthy.
+
+**Dashboard and query hygiene**
+
+-   **Version and review**: Treat dashboard JSON like code—store it in git when possible, review changes in PRs, and note which Convoy version each dashboard targets. When upgrading Convoy, re-check panels that use concrete metric or label names (see tables below and [`internal/pkg/metrics`](https://github.com/frain-dev/convoy/tree/main/internal/pkg/metrics) in the Convoy repo).
+-   **Metric contract**: Prefer recording rules or documented PromQL snippets next to dashboards so renames or label changes surface during review, not only in production.
+-   **Environment parity**: If staging and production differ (extra labels, fewer scrapes, or different scrape intervals), document that on the dashboard or in your internal runbook so comparisons stay honest.
+
+**Data quality checks**
+
+-   **Scrape health**: Alert on Prometheus **`up`** for each `job` that scrapes Convoy, on **`scrape_samples_scraped`** collapsing to zero for critical jobs, and on rule evaluation errors if you use recording rules.
+-   **Series sanity**: Compare **`convoy_ingest_total`** rates to traffic you expect; sudden flatlines or orders-of-magnitude drift often indicate scrape, network, or process issues—not just low traffic.
+-   **Cardinality**: High-cardinality labels (many unique `endpoint`, `source`, or `project` values) increase cost; use Grafana’s **Explore** or Prometheus **TSDB status** to spot exploding label sets after config or feature changes.
+-   **Postgres-backed gauges**: Queue depth metrics refresh on **`metrics.prometheus_metrics.sample_time`**; stale values can reflect sampling interval, DB load, or query timeouts (`CONVOY_METRICS_QUERY_TIMEOUT` / `query_timeout`), not only empty queues.
+
+**Alerts and runbooks**
+
+-   **Noise vs signal**: Pair alerts on error rates or backlog with minimum traffic thresholds (for example, a `for:` duration, or a separate guard on ingest rate) to avoid flapping on idle environments.
+-   **Runbook links**: Add a **runbook URL** or on-call note to each alert annotation (Grafana Alerting, Alertmanager `annotations.runbook_url`, etc.) describing first steps: check Convoy process health, Redis, Postgres, recent deploys, and the relevant section of this metrics doc.
+-   **License-gated metrics**: If `/metrics` returns minimal or empty output after a license change, verify entitlements before chasing infrastructure issues.
+
+For product usage analytics (Mixpanel), see [Telemetry](/resources/telemetry)—that pipeline is separate from Prometheus.
+
 ## Ingest counters and end-to-end latency
 
 These are registered from **`internal/pkg/metrics/data_plane.go`** when Prometheus is enabled and the license allows export. Labels: `project` and `source` on ingest counters; `project` and `endpoint` on the histogram.
@@ -86,7 +114,7 @@ The code also defines a **`convoy_ingest_latency`** histogram (per `project`); y
 
 These come from **custom collectors**, not from `data_plane.go`. When metrics are enabled, `RegisterQueueMetrics` attaches the **Redis queue** and **Postgres** implementations to the same registry, so they appear alongside the series above on `/metrics` for that process. In **server + agent** deployments, queue and ingest series are normally observed on the **agent** scrape target (data plane); the control server exposes its own `/metrics` for whatever it registers.
 
-Postgres-backed values are refreshed on a **sample interval** (`metrics.prometheus.sample_time`). Depending on version and schema, queries may use **materialized views** or live SQL—see the server release notes if you upgrade.
+Postgres-backed values are refreshed on a **sample interval** (`metrics.prometheus_metrics.sample_time`). Depending on version and schema, queries may use **materialized views** or live SQL—see the server release notes if you upgrade.
 
 ### Redis (Asynq) queues
 

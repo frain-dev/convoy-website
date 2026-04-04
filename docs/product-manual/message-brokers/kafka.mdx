@@ -9,7 +9,7 @@ This is currently only supported in [outgoing projects](../../product-manual/org
 To connect your Kafka topic, you need to supply:
 - The kafka **cluster hostname and port** (e.g., localhost:9092)
 - The **topic name** (e.g., audit-log-events)
-- The **number of workers** -- the **number of partitions** for the topic should match the number of workers.
+- The number of **Convoy agent replicas** consuming the topic — the **number of partitions** for the topic should match how you scale agents for that source.
 - The **consumer group id** --it is recommended that you set one-- which by default this is set to an empty string.
 - Supply authentication configured on the cluster
 
@@ -55,6 +55,6 @@ There are two ways to ingest events into Convoy from your Kafka topic:
     ```
 
 ## Things to note
-- Messages are read of the topic one-by-one by each worker reading off a partition.
+- Messages are read off the topic one-by-one by each agent consumer reading a partition.
 - Acknowledgements are done per message.
-- Ingestion is rate-limited (50 per second), and this can be configured by setting the `CONVOY_INGEST_RATE` environment variable.
+- Ingestion is subject to the **instance ingest rate** (`CONVOY_INSTANCE_INGEST_RATE` / `instance_ingest_rate`, default **1000**/s in code). See [Rate limits](/product-manual/rate-limits).

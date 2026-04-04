@@ -8,8 +8,10 @@ title: Rate Limits
 
 ## Ingress Rate limits
 
-This controls how many events Convoy can ingest per second
-This is configured by setting the `CONVOY_INGEST_RATE` env var.
+This controls how many events Convoy can ingest per second across the instance for routes that use the instance ingest limiter (message brokers, event-creation APIs, and related ingest paths).
+
+Configure it with **`instance_ingest_rate`** in `convoy.json`, the environment variable **`CONVOY_INSTANCE_INGEST_RATE`**, or the root CLI flag **`--instance-ingest-rate`**. The default in [`config/config.go`](https://github.com/frain-dev/convoy/blob/main/config/config.go) is **1000** events per second unless you override it.
+
 This value limits the number of:
 
 -   Messages read off message brokers
@@ -25,13 +27,16 @@ There is no instance wide configuration, instead egress rates are configured per
 
 ## HTTP API Rate Limits
 
-This controls how requests per second Convoy can process.
+This controls how many HTTP requests per second Convoy allows on routes protected by the HTTP API rate limiter.
+
+Configure it with **`api_rate_limit`** in `convoy.json`, **`CONVOY_API_RATE_LIMIT`**, or **`--api-rate-limit`**. The default in code is **1000** requests per second.
+
 This includes:
 
 -   Headless control plane APIs (used for managing project resources).
--   Ingress APIs
+-   Some ingest HTTP routes that share this limiter (see server routing in the Convoy repo for details).
 
-Reaching this limit will cause requests to receive a `429 (Rate Limit Exceeded)` error response from all APIs.
+Reaching this limit will cause affected requests to receive a `429 (Rate Limit Exceeded)` error response.
 
 > Requests made to the Convoy instance via the UI don't count towards rate limits.
 
