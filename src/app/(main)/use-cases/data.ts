@@ -1,6 +1,8 @@
 export interface UseCase {
 	slug: string;
 	title: string;
+	displayName: string;
+	description: string;
 	industry: string;
 	metaTitle: string;
 	metaDescription: string;
@@ -8,16 +10,16 @@ export interface UseCase {
 	heroTitle: string;
 	heroDescription: string;
 	icon: string;
+	painPointsHeading: string;
+	painPointsSubheading: string;
+	featuresHeading: string;
+	featuresSubheading: string;
 	painPoints: {
 		title: string;
 		description: string;
 	}[];
 	features: {
 		title: string;
-		description: string;
-	}[];
-	webhookExamples: {
-		eventType: string;
 		description: string;
 	}[];
 	faq: {
@@ -38,6 +40,8 @@ export const useCases: UseCase[] = [
 	{
 		slug: 'fintech',
 		title: 'Fintech',
+		displayName: 'fintech',
+		description: 'Real-time transaction alerts, payment confirmations, and compliance notifications with sub-second latency and cryptographic verification.',
 		industry: 'Financial Services',
 		icon: 'fintech',
 		metaTitle: 'Webhook Gateway for Fintech | Convoy',
@@ -46,7 +50,11 @@ export const useCases: UseCase[] = [
 		keywords: 'fintech webhooks, payment webhooks, transaction notifications, financial API webhooks, banking webhook gateway',
 		heroTitle: 'Real-time financial event delivery your customers depend on',
 		heroDescription:
-			'In financial services, delayed notifications cost money and erode trust. Convoy ensures every transaction alert, payment confirmation, and compliance event reaches its destination with sub-second latency, cryptographic verification, and a complete audit trail.',
+			'Delayed financial notifications cost money and erode trust. Convoy delivers every transaction alert, payment confirmation, and compliance event with sub-second latency and cryptographic verification.',
+		painPointsHeading: 'The cost of unreliable webhooks in financial services',
+		painPointsSubheading: 'In fintech, failed webhooks translate directly to lost revenue, compliance gaps, and eroded customer trust.',
+		featuresHeading: 'Built for the speed and security fintech demands',
+		featuresSubheading: 'Convoy gives financial services teams the webhook infrastructure they need to move fast without compromising on security or compliance.',
 		painPoints: [
 			{
 				title: 'Latency kills trust',
@@ -100,14 +108,6 @@ export const useCases: UseCase[] = [
 					'Deliver webhooks from consistent egress IPs, simplifying firewall configurations for enterprise customers who require IP allowlisting for their receiving infrastructure.'
 			}
 		],
-		webhookExamples: [
-			{ eventType: 'payment.completed', description: 'Notify merchants and customers when a payment settles successfully' },
-			{ eventType: 'transaction.flagged', description: 'Alert fraud detection systems when suspicious activity is detected' },
-			{ eventType: 'account.balance.updated', description: 'Push balance changes to connected financial apps in real time' },
-			{ eventType: 'kyc.verification.completed', description: 'Trigger downstream onboarding flows when identity verification passes' },
-			{ eventType: 'settlement.processed', description: 'Notify accounting systems when end-of-day settlements complete' },
-			{ eventType: 'card.authorization.declined', description: 'Alert cardholders and monitoring systems of declined transactions' }
-		],
 		faq: [
 			{
 				question: 'How does Convoy handle PCI-sensitive webhook data?',
@@ -142,6 +142,8 @@ export const useCases: UseCase[] = [
 	{
 		slug: 'ai-ml',
 		title: 'AI & Machine Learning',
+		displayName: 'AI & machine learning',
+		description: 'Deliver model training completions, inference results, and pipeline events reliably so your team can focus on building AI.',
 		industry: 'AI/ML Platforms',
 		icon: 'ai-ml',
 		metaTitle: 'Webhook Gateway for AI & ML Platforms | Convoy',
@@ -150,7 +152,11 @@ export const useCases: UseCase[] = [
 		keywords: 'AI webhooks, machine learning webhooks, model training notifications, inference webhooks, ML pipeline webhooks',
 		heroTitle: "Reliable event delivery for AI workflows that can't afford to miss a beat",
 		heroDescription:
-			"AI workloads are asynchronous by nature. Model training takes hours, inference jobs queue up, and data pipelines run on schedules. Convoy ensures every completion, result, and status change reaches the right system at the right time, so nothing falls through the cracks.",
+			"AI workloads are asynchronous by nature. Convoy ensures every training completion, inference result, and pipeline status change reaches the right system at the right time.",
+		painPointsHeading: 'Why async AI workloads need dedicated webhook infrastructure',
+		painPointsSubheading: 'AI pipelines are event-driven at their core. When webhook delivery fails, your entire workflow stalls.',
+		featuresHeading: 'Webhook infrastructure built for AI-scale workloads',
+		featuresSubheading: 'Convoy handles the event delivery plumbing so your team can stay focused on models, not infrastructure.',
 		painPoints: [
 			{
 				title: 'Long-running jobs need reliable completion signals',
@@ -205,14 +211,6 @@ export const useCases: UseCase[] = [
 					"Send event references for large model outputs, or include result summaries directly in the payload. Convoy supports flexible payload structures to match your platform's needs."
 			}
 		],
-		webhookExamples: [
-			{ eventType: 'model.training.completed', description: 'Signal downstream systems when a training run finishes' },
-			{ eventType: 'inference.result.ready', description: 'Deliver prediction results to customer applications' },
-			{ eventType: 'pipeline.stage.failed', description: 'Alert monitoring systems when a pipeline stage encounters errors' },
-			{ eventType: 'dataset.processing.done', description: 'Trigger model training when data preprocessing completes' },
-			{ eventType: 'model.deployed', description: 'Notify CI/CD systems when a model is promoted to production' },
-			{ eventType: 'gpu.quota.exceeded', description: 'Alert administrators when compute usage hits thresholds' }
-		],
 		faq: [
 			{
 				question: 'Can Convoy handle the high event volumes from batch inference jobs?',
@@ -239,6 +237,8 @@ export const useCases: UseCase[] = [
 	{
 		slug: 'developer-tools',
 		title: 'Developer Tools',
+		displayName: 'developer tools',
+		description: 'Ship world-class webhooks in your developer platform, CI/CD notifications, deployment hooks, and event-driven integrations, in days, not months.',
 		industry: 'Developer Platforms',
 		icon: 'developer-tools',
 		metaTitle: 'Webhook Gateway for Developer Tools & Platforms | Convoy',
@@ -247,7 +247,11 @@ export const useCases: UseCase[] = [
 		keywords: 'developer tools webhooks, CI/CD webhooks, deployment notifications, developer platform webhook gateway, API webhooks',
 		heroTitle: 'Ship world-class webhooks in your developer platform, not months of infrastructure work',
 		heroDescription:
-			'Your developers expect webhooks. They expect payload signing, retry logic, delivery logs, and a portal to manage their endpoints. Building all of this yourself takes months of engineering time. With Convoy, you ship it in days.',
+			'Your developers expect payload signing, retry logic, delivery logs, and endpoint management. Building it yourself takes months. With Convoy, you ship it in days.',
+		painPointsHeading: 'The build-it-yourself trap for developer platforms',
+		painPointsSubheading: 'Your users are developers. They notice when your webhooks lack proper signatures, retries, or debugging tools.',
+		featuresHeading: 'Ship webhooks your developers will love',
+		featuresSubheading: 'Convoy gives developer platforms production-grade webhook infrastructure that meets the bar your users expect.',
 		painPoints: [
 			{
 				title: 'Developers expect mature webhook infrastructure',
@@ -302,14 +306,6 @@ export const useCases: UseCase[] = [
 					"Protect your users' endpoints from being overwhelmed. Convoy rate-limits delivery per endpoint and circuit-breaks failing destinations, preventing one bad integration from affecting others."
 			}
 		],
-		webhookExamples: [
-			{ eventType: 'build.completed', description: 'Trigger downstream deployments when CI builds pass' },
-			{ eventType: 'deployment.status.changed', description: 'Notify monitoring systems of deployment state changes' },
-			{ eventType: 'repository.push', description: 'Kick off automated workflows when code is pushed' },
-			{ eventType: 'issue.created', description: 'Sync new issues to project management tools' },
-			{ eventType: 'api.key.rotated', description: 'Alert dependent services when API credentials change' },
-			{ eventType: 'user.invited', description: 'Trigger onboarding flows when new team members are added' }
-		],
 		faq: [
 			{
 				question: 'How quickly can we integrate Convoy into our platform?',
@@ -344,6 +340,8 @@ export const useCases: UseCase[] = [
 	{
 		slug: 'logistics',
 		title: 'Logistics',
+		displayName: 'logistics',
+		description: 'Keep every link in your supply chain synchronized, shipment tracking, inventory updates, and fleet management events delivered in real time.',
 		industry: 'Logistics & Supply Chain',
 		icon: 'logistics',
 		metaTitle: 'Webhook Gateway for Logistics & Supply Chain | Convoy',
@@ -352,7 +350,11 @@ export const useCases: UseCase[] = [
 		keywords: 'logistics webhooks, supply chain webhooks, shipment tracking webhooks, fleet management webhooks, inventory webhook notifications',
 		heroTitle: 'Keep every link in your supply chain synchronized in real time',
 		heroDescription:
-			"In logistics, information delays cascade. A late shipment update means a warehouse isn't prepared, a driver is rerouted too late, or a customer receives the wrong ETA. Convoy ensures every tracking event, inventory change, and status update reaches every system that needs it, in real time.",
+			"In logistics, a late update means a warehouse isn't prepared and a customer sees the wrong ETA. Convoy ensures every tracking event, inventory change, and status update reaches every system in real time.",
+		painPointsHeading: 'When information delays cascade through your supply chain',
+		painPointsSubheading: 'In logistics, a single missed event update can ripple through your entire operation.',
+		featuresHeading: 'Keep every partner and system in sync',
+		featuresSubheading: 'Convoy gives logistics teams reliable, real-time event delivery across every link in the supply chain.',
 		painPoints: [
 			{
 				title: 'Delayed updates cascade through the supply chain',
@@ -407,14 +409,6 @@ export const useCases: UseCase[] = [
 					"Let partners subscribe only to events relevant to their operations. A last-mile carrier in Berlin doesn't need updates about shipments in Tokyo. Convoy's subscription filtering keeps integrations efficient."
 			}
 		],
-		webhookExamples: [
-			{ eventType: 'shipment.status.updated', description: 'Push real-time tracking updates to customer portals and partner systems' },
-			{ eventType: 'inventory.low_stock', description: 'Alert procurement systems when warehouse stock drops below thresholds' },
-			{ eventType: 'delivery.completed', description: 'Trigger invoicing and proof-of-delivery workflows' },
-			{ eventType: 'route.eta.changed', description: 'Update customer delivery windows when ETAs shift' },
-			{ eventType: 'customs.clearance.approved', description: 'Notify warehouses to prepare for incoming international shipments' },
-			{ eventType: 'fleet.vehicle.maintenance_due', description: 'Alert fleet managers when vehicles require servicing' }
-		],
 		faq: [
 			{
 				question: 'How does Convoy handle logistics partner API outages?',
@@ -441,6 +435,8 @@ export const useCases: UseCase[] = [
 	{
 		slug: 'healthcare',
 		title: 'Healthcare',
+		displayName: 'healthcare',
+		description: 'Secure, reliable event delivery for patient notifications, EHR integrations, and clinical workflows, with SOC 2 certification and audit trails.',
 		industry: 'Healthcare & Life Sciences',
 		icon: 'healthcare',
 		metaTitle: 'Webhook Gateway for Healthcare & Life Sciences | Convoy',
@@ -449,7 +445,11 @@ export const useCases: UseCase[] = [
 		keywords: 'healthcare webhooks, EHR webhook integration, patient notification webhooks, clinical workflow webhooks, healthcare API gateway',
 		heroTitle: "Secure, reliable event delivery for healthcare systems that can't afford downtime",
 		heroDescription:
-			'Healthcare integrations demand the highest standards of security, reliability, and compliance. Convoy delivers patient notifications, EHR updates, and clinical workflow events with SOC 2 certified infrastructure, end-to-end encryption, and complete audit trails.',
+			'Convoy delivers patient notifications, EHR updates, and clinical workflow events with SOC 2 certified infrastructure, encryption, and complete audit trails.',
+		painPointsHeading: 'Why healthcare webhook infrastructure needs a higher bar',
+		painPointsSubheading: 'Patient care, compliance, and data security leave zero room for unreliable event delivery.',
+		featuresHeading: 'Enterprise-grade security meets reliable delivery',
+		featuresSubheading: 'Convoy meets the compliance and reliability standards that healthcare organizations require.',
 		painPoints: [
 			{
 				title: 'Security and compliance are table stakes',
@@ -504,14 +504,6 @@ export const useCases: UseCase[] = [
 					'For healthcare organizations running on-premise systems behind firewalls, Convoy supports static IP delivery and can work with your network security requirements.'
 			}
 		],
-		webhookExamples: [
-			{ eventType: 'appointment.reminder', description: 'Send automated reminders to patients and care coordinators' },
-			{ eventType: 'lab.results.available', description: 'Notify providers and patient portals when lab results are ready' },
-			{ eventType: 'prescription.updated', description: 'Alert pharmacy systems when prescriptions are modified' },
-			{ eventType: 'patient.record.updated', description: 'Sync EHR changes to connected healthcare systems' },
-			{ eventType: 'insurance.verification.completed', description: 'Trigger billing workflows when coverage is confirmed' },
-			{ eventType: 'clinical.trial.event', description: 'Notify research systems of clinical trial milestones' }
-		],
 		faq: [
 			{
 				question: 'Is Convoy SOC 2 compliant?',
@@ -546,6 +538,8 @@ export const useCases: UseCase[] = [
 	{
 		slug: 'saas',
 		title: 'SaaS Platforms',
+		displayName: 'SaaS',
+		description: 'Give your customers the webhook experience they expect, self-service endpoint management, delivery logs, and an embeddable portal, out of the box.',
 		industry: 'SaaS',
 		icon: 'saas',
 		metaTitle: 'Webhook Gateway for SaaS Platforms | Convoy',
@@ -554,7 +548,11 @@ export const useCases: UseCase[] = [
 		keywords: 'SaaS webhooks, multi-tenant webhooks, webhook management portal, SaaS platform webhooks, customer webhook configuration',
 		heroTitle: 'The webhook infrastructure your SaaS customers expect, without building it yourself',
 		heroDescription:
-			'Your SaaS customers need webhooks to integrate your product into their workflows. They expect self-service endpoint management, delivery logs, payload signing, and granular event filtering. Convoy gives you all of this out of the box, so you can focus on your core product.',
+			'Your customers expect self-service endpoint management, delivery logs, and event filtering. Convoy gives you all of this out of the box, so you can focus on your core product.',
+		painPointsHeading: 'The webhook expectations gap in SaaS',
+		painPointsSubheading: 'Your customers expect Stripe-quality webhooks. Building that yourself takes longer than you think.',
+		featuresHeading: 'Everything your SaaS customers expect from webhooks',
+		featuresSubheading: 'Convoy gives SaaS platforms multi-tenant webhook infrastructure with self-service built in.',
 		painPoints: [
 			{
 				title: 'Customers expect webhooks on day one',
@@ -609,14 +607,6 @@ export const useCases: UseCase[] = [
 					"Whether you have 10 customers or 10,000, Convoy's architecture scales seamlessly. Add new tenants without worrying about webhook infrastructure capacity."
 			}
 		],
-		webhookExamples: [
-			{ eventType: 'user.created', description: 'Notify customer systems when new users sign up in their account' },
-			{ eventType: 'subscription.renewed', description: 'Trigger billing reconciliation when subscriptions renew' },
-			{ eventType: 'invoice.payment.failed', description: 'Alert customer finance teams of failed payments' },
-			{ eventType: 'data.export.completed', description: 'Notify customers when their requested data export is ready' },
-			{ eventType: 'integration.connected', description: 'Trigger setup workflows when a new integration is authorized' },
-			{ eventType: 'feature.flag.updated', description: 'Sync feature flag changes to customer deployment pipelines' }
-		],
 		faq: [
 			{
 				question: 'How does Convoy handle multi-tenancy for SaaS platforms?',
@@ -651,6 +641,8 @@ export const useCases: UseCase[] = [
 	{
 		slug: 'ecommerce',
 		title: 'E-commerce',
+		displayName: 'e-commerce',
+		description: 'Real-time order, inventory, and payment events across your entire e-commerce ecosystem, from flash sales to marketplace integrations.',
 		industry: 'E-commerce & Marketplaces',
 		icon: 'ecommerce',
 		metaTitle: 'Webhook Gateway for E-commerce & Marketplaces | Convoy',
@@ -659,7 +651,11 @@ export const useCases: UseCase[] = [
 		keywords: 'ecommerce webhooks, order notification webhooks, inventory webhook updates, marketplace webhooks, payment webhook notifications',
 		heroTitle: 'Real-time order, inventory, and payment events across your entire e-commerce ecosystem',
 		heroDescription:
-			'E-commerce runs on events. Every order, payment, inventory change, and shipping update needs to reach multiple systems instantly, your OMS, WMS, payment processor, shipping provider, and customer notifications. Convoy ensures every event reaches every system, every time.',
+			'Every order, payment, inventory change, and shipping update needs to reach multiple systems instantly. Convoy ensures every event reaches every system, every time.',
+		painPointsHeading: 'Why e-commerce webhook failures cost you money',
+		painPointsSubheading: 'Every missed event means a delayed order, unsynchronized inventory, or a frustrated customer.',
+		featuresHeading: 'Webhook infrastructure that scales with your busiest days',
+		featuresSubheading: 'Convoy keeps your entire e-commerce ecosystem synchronized, from flash sales to steady-state traffic.',
 		painPoints: [
 			{
 				title: 'Flash sales and peak traffic create massive spikes',
@@ -714,14 +710,6 @@ export const useCases: UseCase[] = [
 					'Monitor webhook delivery health across your entire e-commerce ecosystem. Identify failing seller endpoints, track delivery latency, and get proactive alerts when issues arise.'
 			}
 		],
-		webhookExamples: [
-			{ eventType: 'order.placed', description: 'Trigger fulfillment workflows and inventory reservation' },
-			{ eventType: 'payment.captured', description: 'Confirm payment to order management and seller systems' },
-			{ eventType: 'inventory.updated', description: 'Sync stock levels across channels and storefronts' },
-			{ eventType: 'shipment.tracking.updated', description: 'Push tracking updates to customer notification systems' },
-			{ eventType: 'refund.processed', description: 'Notify accounting systems and trigger customer communications' },
-			{ eventType: 'cart.abandoned', description: 'Trigger remarketing workflows for abandoned shopping carts' }
-		],
 		faq: [
 			{
 				question: 'Can Convoy handle Black Friday-level traffic spikes?',
@@ -748,6 +736,8 @@ export const useCases: UseCase[] = [
 	{
 		slug: 'iot',
 		title: 'IoT & Connected Devices',
+		displayName: 'IoT',
+		description: 'Bridge your IoT event streams to external systems, device telemetry, sensor alerts, and firmware update notifications delivered at massive scale.',
 		industry: 'Internet of Things',
 		icon: 'iot',
 		metaTitle: 'Webhook Gateway for IoT & Connected Devices | Convoy',
@@ -756,7 +746,11 @@ export const useCases: UseCase[] = [
 		keywords: 'IoT webhooks, device telemetry webhooks, sensor alert webhooks, connected device notifications, IoT webhook gateway',
 		heroTitle: 'Bridge your IoT event streams to the systems that need them, reliably and at scale',
 		heroDescription:
-			'IoT platforms generate massive volumes of device events, telemetry readings, sensor alerts, status changes, and firmware updates. Convoy bridges your internal event streams to external webhook consumers, handling the complexity of reliable delivery at IoT scale.',
+			'Convoy bridges your internal event streams to external webhook consumers, handling reliable delivery of device telemetry, sensor alerts, and firmware updates at massive scale.',
+		painPointsHeading: 'The unique challenges of webhook delivery at IoT scale',
+		painPointsSubheading: 'Millions of devices generating billions of events demands infrastructure built for sustained high throughput.',
+		featuresHeading: 'Event delivery infrastructure designed for IoT volumes',
+		featuresSubheading: 'Convoy bridges your internal event streams to external consumers, reliably and at massive scale.',
 		painPoints: [
 			{
 				title: 'Volume is the defining challenge',
@@ -810,14 +804,6 @@ export const useCases: UseCase[] = [
 				description:
 					'A single device event might need to reach a fleet management dashboard, a maintenance system, a customer app, and an analytics pipeline. Convoy fans out to all destinations reliably.'
 			}
-		],
-		webhookExamples: [
-			{ eventType: 'sensor.threshold.exceeded', description: 'Alert monitoring systems when readings cross critical thresholds' },
-			{ eventType: 'device.status.changed', description: 'Notify fleet management when devices go online or offline' },
-			{ eventType: 'firmware.update.available', description: 'Trigger over-the-air update workflows for device fleets' },
-			{ eventType: 'telemetry.batch.ready', description: 'Notify analytics pipelines when aggregated telemetry is available' },
-			{ eventType: 'geofence.entered', description: 'Alert tracking systems when devices enter or leave geographic zones' },
-			{ eventType: 'device.maintenance.due', description: 'Trigger maintenance scheduling when devices reach service intervals' }
 		],
 		faq: [
 			{
