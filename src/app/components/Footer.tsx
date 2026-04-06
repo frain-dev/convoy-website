@@ -40,6 +40,19 @@ export default function Footer() {
 			]
 		},
 		{
+			title: 'Use Cases',
+			links: [
+				{ name: 'Fintech', link: '/use-cases/fintech', isExternal: false },
+				{ name: 'AI & Machine Learning', link: '/use-cases/ai-ml', isExternal: false },
+				{ name: 'Developer Tools', link: '/use-cases/developer-tools', isExternal: false },
+				{ name: 'Healthcare', link: '/use-cases/healthcare', isExternal: false },
+				{ name: 'SaaS Platforms', link: '/use-cases/saas', isExternal: false },
+				{ name: 'E-commerce', link: '/use-cases/ecommerce', isExternal: false },
+				{ name: 'Logistics', link: '/use-cases/logistics', isExternal: false },
+				{ name: 'IoT & Devices', link: '/use-cases/iot', isExternal: false }
+			]
+		},
+		{
 			title: 'Resources',
 			links: [
 				{ name: 'API Reference', link: '/docs/api-reference', isExternal: false },
