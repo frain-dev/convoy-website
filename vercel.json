@@ -51,6 +51,16 @@
 			"permanent": true
 		},
 		{
+			"source": "/home/:match*",
+			"destination": "/docs/home/:match*",
+			"permanent": true
+		},
+		{
+			"source": "/business-and-enterprise/:match*",
+			"destination": "/docs/business-and-enterprise/:match*",
+			"permanent": true
+		},
+		{
 			"source": "/legal/support-policy",
 			"destination": "/docs/legal/support-policy",
 			"permanent": true
