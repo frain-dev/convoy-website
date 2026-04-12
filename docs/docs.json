@@ -314,6 +314,11 @@
       "linkedin": "https://www.linkedin.com/company/convoy-webhooks/"
     }
   },
+  "seo": {
+    "metatags": {
+      "canonical": "https://www.getconvoy.io"
+    }
+  },
   "integrations": {
     "posthog": {
       "apiKey": "phc_X7uV1sRNzjoTmWp8uXYrzrfrdUtGdMRTEEklRNt04eb",
