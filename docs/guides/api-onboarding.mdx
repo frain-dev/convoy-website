@@ -54,7 +54,7 @@ Required columns: `name`, `url`. Optional columns: `event_type`, `auth_username`
     Add `?dry_run=true` to validate your payload without creating anything:
 
 ```bash
-curl -X POST "https://dashboard.getconvoy.io/api/v1/projects/{projectID}/onboard?dry_run=true" \
+curl -X POST "https://{region}.getconvoy.cloud/api/v1/projects/{projectID}/onboard?dry_run=true" \
   -H "Authorization: Bearer $API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"items": [{"name": "Test", "url": "https://example.com/hook"}]}'
@@ -104,7 +104,7 @@ Work is processed asynchronously in batches of up to 50 items. If you submit wit
 For CSV uploads, use `-F` instead of `-d`:
 
 ```bash
-curl -X POST "https://dashboard.getconvoy.io/api/v1/projects/{projectID}/onboard" \
+curl -X POST "https://{region}.getconvoy.cloud/api/v1/projects/{projectID}/onboard" \
   -H "Authorization: Bearer $API_KEY" \
   -F "file=@endpoints.csv"
 ```

@@ -6209,7 +6209,10 @@ paths:
             tags:
                 - Subscriptions
 servers:
-    - url: https://dashboard.getconvoy.io/api
+    - url: https://us.getconvoy.cloud/api
+      description: US Region
+    - url: https://eu.getconvoy.cloud/api
+      description: EU Region
 tags:
     - description: Organisation related APIs
       name: Organisations
