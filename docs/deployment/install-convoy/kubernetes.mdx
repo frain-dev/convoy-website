@@ -141,6 +141,66 @@ redis:
     enabled: false
 ```
 
+### Redis Sentinel
+
+Use Redis Sentinel when you want Convoy to discover the **current Redis primary** through Sentinels (typical for HA deployments). The Convoy Helm chart wires this through **`global.externalRedis`**: set **`scheme: redis-sentinel`**, point **`host`** at a **Sentinel** endpoint, and use **`port: '26379'`** (unless your provider uses a different Sentinel port).
+
+<Note>
+	**`global.nativeRedis.enabled: true`** configures Convoy for a **single** Redis host and port (**6379**). For Sentinel, set **`global.nativeRedis.enabled: false`** and **`global.externalRedis.enabled: true`** so server and agent receive **`CONVOY_REDIS_SCHEME=redis-sentinel`** and related variables.
+</Note>
+
+**Helm values (external / managed Redis with Sentinel):**
+
+```yaml values.yml
+global:
+    nativeRedis:
+        enabled: false
+    externalRedis:
+        enabled: true
+        host: redis-sentinel.example.com # DNS of your Sentinel service or load balancer
+        port: '26379'
+        scheme: redis-sentinel
+        sentinelMasterName: mymaster # logical master name your Sentinels monitor (provider-specific)
+        password: your-redis-password # AUTH to the Redis primary after Sentinel discovery
+        sentinelPassword: '' # set if Sentinels require a password (same as Redis on many setups)
+        sentinelUsername: '' # optional ACL username for Sentinel
+        database: '0'
+        secret: '' # optional: Secret name with key 'password' for Redis (inline password ignored)
+        sentinelSecret: '' # optional: Secret with key 'password' for Sentinel auth
+
+redis:
+    enabled: false # no in-cluster Redis when using external Sentinel
+```
+
+- **`sentinelMasterName`** must match the master name configured in your Sentinel deployment (for example Bitnami’s default is often **`mymaster`**; AWS ElastiCache publishes its replication group / primary name in the console).
+- **`password`** is the Redis primary password (used for **`AUTH`** after Sentinel discovers the primary). **`sentinelPassword`** / **`sentinelUsername`** are only needed when Sentinels enforce authentication.
+- **Secrets (recommended for production):**
+	- **`global.externalRedis.secret`** — Kubernetes **`Secret`** name. When set, the chart sets **`CONVOY_REDIS_PASSWORD`** from **`secretKeyRef`** with key **`password`**; the inline **`password`** value is ignored. Create the Secret in the same namespace as Convoy (e.g. `stringData.password`).
+	- **`global.externalRedis.sentinelSecret`** — Secret name for the **Sentinel** password. When set, **`CONVOY_REDIS_SENTINEL_PASSWORD`** is sourced from that Secret with key **`password`**; inline **`sentinelPassword`** is ignored. There is no separate Secret reference for **`sentinelUsername`** today—use **`sentinelUsername`** in values if your Sentinels need an ACL username.
+- If **`global.externalRedis.addresses`** is set (cluster mode), it **takes precedence** over **`host`**; use the non-addresses form above for a single Sentinel entry point unless your operator documents otherwise.
+
+<Note>
+	If **`server.rollout.enabled`** or **`agent.rollout.enabled`** is **true** (Argo Rollouts), the rollout templates may not yet emit all Redis Sentinel environment variables (including **`sentinelSecret`**). Use the default **Deployment**-based install for Sentinel, or confirm rendered manifests with **`helm template`** before relying on Rollouts with **`redis-sentinel`**.
+</Note>
+
+**In-cluster Bitnami Redis (replication + Sentinel) for testing:** you can enable Sentinel on the dependency chart (`redis.architecture: replication`, `redis.sentinel.enabled: true`) while still pointing Convoy at **`global.externalRedis`**. Important details:
+
+- With **`fullnameOverride: redis`**, Bitnami usually exposes **6379** and **26379** on Services named **`redis`** and **`redis-headless`**. There is typically **no** Service called `redis-sentinel`; set **`global.externalRedis.host: redis`** (or **`redis-headless`** to discover all pods) and **`port: '26379'`**.
+- When **`nativeRedis.enabled` is false**, keep **`redis.auth.enabled: true`** in the Bitnami subchart so the bundled Redis stays password-protected (the chart may tie auth to **`nativeRedis`** by default).
+- Bitnami’s default Sentinel image tags can be **removed from Docker Hub**; pin **`redis.sentinel.image`** to the same **`bitnamilegacy/redis-sentinel`** tag line as **`redis.image`** if pulls fail.
+- **`redis.replica.replicaCount`** in recent Bitnami **node** layouts is the number of **`redis-node-*`** pods (each runs Redis + Sentinel sidecar); scale it for multi-node tests.
+
+**Verify from the cluster:**
+
+```shell
+kubectl run redis-check --rm -it --restart=Never -n convoy --image=docker.io/bitnamilegacy/redis:8.2.1-debian-12-r0 -- \
+  redis-cli -h redis -p 26379 -a YOUR_PASSWORD SENTINEL get-master-addr-by-name mymaster
+```
+
+(Use your namespace, host, password, and master name. From your laptop, use **`kubectl port-forward svc/redis 26379:26379`** and **`redis-cli -h 127.0.0.1 -p 26379`**.)
+
+See [Redis Sentinel in Configuration](../configuration#redis-sentinel) and the **`redis`** object in the [full configuration reference](../configuration#configuration-reference) (`master_name`, `sentinel_password`, etc.).
+
 ### Connectivity and startup behaviour
 
 - If Postgres or Redis are unreachable (DNS, firewall, wrong credentials, TLS issues), Convoy pods will fail to start and may go into `CrashLoopBackOff`. Check the pod logs for connection errors.
