@@ -27,7 +27,7 @@ SAML SSO lets your team sign in to Convoy using your organisation's identity pro
           // [optional] Override the callback URL Convoy gives to your IdP.
           // Defaults to the incoming request origin. Set this if Convoy is
           // behind a reverse proxy or load balancer.
-          "redirect_url": "https://convoy.yourcompany.com/ui/saml"
+          "redirect_url": "https://convoy.yourcompany.com/saml"
         }
       }
     }
@@ -40,7 +40,7 @@ SAML SSO lets your team sign in to Convoy using your organisation's identity pro
     export CONVOY_SSO_ENABLED=true
 
     # Optional — same as redirect_url above
-    export CONVOY_SSO_REDIRECT_URL="https://convoy.yourcompany.com/ui/saml"
+    export CONVOY_SSO_REDIRECT_URL="https://convoy.yourcompany.com/saml"
     ```
   </Step>
 
@@ -84,7 +84,7 @@ SAML SSO lets your team sign in to Convoy using your organisation's identity pro
 3. You authenticate with your IdP.
 4. The IdP sends a SAML assertion back to Convoy.
 5. Convoy validates the assertion and issues a short-lived token.
-6. Your browser lands on Convoy's `/ui/saml` callback with this token.
+6. Your browser lands on Convoy's `/saml` callback with this token.
 7. Convoy exchanges the token for a session and logs you in.
 
 ## Troubleshooting
@@ -100,6 +100,8 @@ Convoy couldn't determine where to redirect after authentication. Set the `host`
 ```
 
 Or set `auth.sso.redirect_url` explicitly.
+
+Use the UI callback path (`/saml`) rather than API-prefixed paths (`/ui/...`). If you deploy with a `root_path`, include it (for example, `https://convoy.yourcompany.com/convoy/saml`).
 
 ### SSO button doesn't appear on the login page
 
