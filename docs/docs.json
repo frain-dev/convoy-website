@@ -159,7 +159,9 @@
               "api-reference/endpoints/update-an-endpoint",
               "api-reference/endpoints/delete-endpoint",
               "api-reference/endpoints/roll-endpoint-secret",
-              "api-reference/endpoints/pause-endpoint"
+              "api-reference/endpoints/pause-endpoint",
+              "api-reference/endpoints/activate-endpoint",
+              "api-reference/endpoints/test-oauth2-connection"
             ]
           },
           {
@@ -184,6 +186,7 @@
               "api-reference/event-types/create-an-event-type",
               "api-reference/event-types/update-an-event-type",
               "api-reference/event-types/deprecate-an-event-type",
+              "api-reference/event-types/import-event-types",
               "api-reference/event-types/list-event-types"
             ]
           },
@@ -222,7 +225,8 @@
               "api-reference/portal-links/create-a-portal-link",
               "api-reference/portal-links/retrieve-a-portal-link",
               "api-reference/portal-links/update-a-portal-link",
-              "api-reference/portal-links/revoke-a-portal-link"
+              "api-reference/portal-links/revoke-a-portal-link",
+              "api-reference/portal-links/refresh-portal-link-token"
             ]
           },
           {
@@ -232,7 +236,8 @@
               "api-reference/sources/create-a-source",
               "api-reference/sources/retrieve-a-source",
               "api-reference/sources/update-a-source",
-              "api-reference/sources/delete-a-source"
+              "api-reference/sources/delete-a-source",
+              "api-reference/sources/validate-source-function"
             ]
           },
           {
@@ -256,7 +261,8 @@
               "api-reference/filters/bulk-update-subscription-filters",
               "api-reference/filters/get-all-subscription-filters",
               "api-reference/filters/get-one-subscription-filter",
-              "api-reference/filters/delete-a-subscription-filter"
+              "api-reference/filters/delete-a-subscription-filter",
+              "api-reference/filters/test-a-filter"
             ]
           }
         ]
