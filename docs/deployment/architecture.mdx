@@ -86,7 +86,7 @@ Postgres is used as for the following
 -   Primary data store
 -   Search backend
 
-**Scaling Best Practice**: For high-traffic setups, configure **Read Replicas** via the `read_replicas` or `read_replica_dsn` settings to distribute read queries, improving dashboard and retrieval performance. The connection pool defaults are tuned at `max_open_conn: 10`, `max_idle_conn: 10`, and `conn_max_lifetime: 10`.
+**Scaling Best Practice**: For high-traffic setups, configure **Read Replicas** via the `read_replicas` or `read_replica_dsn` settings to distribute read queries, improving dashboard and retrieval performance. The connection pool defaults are tuned at `max_open_conn: 10`, `max_idle_conn: 10`, and `conn_max_lifetime: 10`. For PGBouncer setup and PostgreSQL tuning guidance, see [PostgreSQL & PGBouncer](/deployment/postgres-and-pgbouncer).
 
 <Note>
 **Sizing guidance:** For a modest production footprint, plan for **at least 2 vCPU** and **4GB RAM** on the primary Postgres node, with fast disk (IOPS) for the working set. Grow CPU, memory, and storage as event and delivery volume increase, and add **read replicas** before the primary becomes read-saturated.
