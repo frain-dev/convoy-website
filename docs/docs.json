@@ -34,6 +34,7 @@
             "pages": [
               "deployment/architecture",
               "deployment/configuration",
+              "deployment/postgres-and-pgbouncer",
               {
                 "group": "Install Convoy",
                 "pages": [
