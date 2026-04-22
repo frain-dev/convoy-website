@@ -1,5 +1,6 @@
 import { getAllRoutes, getPosts } from '@/lib/getPosts';
 import { getAllChangelogSlugs } from '@/lib/changelog';
+import { useCases } from './(main)/use-cases/data';
 
 export default async function sitemap() {
 	const URL = 'https://www.getconvoy.io';
@@ -75,10 +76,17 @@ export default async function sitemap() {
 		priority: 1
 	};
 
+	const useCaseRoutes = useCases.map(uc => ({
+		url: `${URL}/use-cases/${uc.slug}`,
+		lastModified: new Date(),
+		changeFrequency: 'weekly' as const,
+		priority: 0.8
+	}));
+
 	const mainRoutes = await getMainRoutes();
 	const blogRoutes = await getBlogRoutes();
 	const docsRoute = await getDocsRoutes();
 	const changelogRoutes = getChangelogRoutes();
 
-	return [indexRoute, ...mainRoutes, ...blogRoutes, ...changelogRoutes, ...docsRoute];
+	return [indexRoute, ...mainRoutes, ...useCaseRoutes, ...blogRoutes, ...changelogRoutes, ...docsRoute];
 }
