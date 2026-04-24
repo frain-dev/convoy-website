@@ -1,0 +1,19 @@
+# Substrings that must not appear under docs/ (stale or incorrect product docs).
+# Lines starting with # and blank lines are ignored.
+# Extend this list when env vars or filenames are renamed or removed in the Convoy server.
+
+# Primary server config file is convoy.json, not YAML.
+convoy.yaml
+convoy.yml
+
+# Wrong env naming (metrics use CONVOY_METRICS_* in config/config.go).
+CONVOY_PROMETHEUS_ENABLED
+CONVOY_PROMETHEUS_BACKEND
+
+# Wrong DB pool env names (see CONVOY_DB_MAX_OPEN_CONN / CONVOY_DB_MAX_IDLE_CONN).
+CONVOY_DB_MAX_CONNECTIONS
+CONVOY_DB_MAX_CONNECTION
+
+# Inverted or outdated precedence wording (canonical line uses cli > env > file).
+environment variables` > `cli flags
+environment variables > cli flags

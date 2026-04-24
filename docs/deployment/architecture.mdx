@@ -41,10 +41,10 @@ These instances are responsible for the following:
     Processing all asynchronous tasks in the queue.
     These can range from important functions like processing webhook events to ancillary tasks like sending emails,
     purging stale events ([retention policies](./configuration#configuration-reference)) etc.
-    These workers are designed to be stateless and can be scaled horizontally to increase the throughput of the entire system.
+    Agent replicas are stateless and can be scaled horizontally to increase the throughput of the entire system.
 
 2.  **Message Brokers Integration**:
-    These stateless workers are used to consume webhook events from [message brokers](/product-manual/message-brokers).
+    Agent replicas consume webhook events from [message brokers](/product-manual/message-brokers).
     They poll source configuration from the database and consume events from the broker
     and write it to the redis queue.
 
@@ -76,6 +76,10 @@ We highly recommend and use [Smokescreen](https://github.com/stripe/smokescreen)
 <Note>
 **Sizing guidance:** Treat each egress instance like a stateless proxy: a practical starting point is **1 vCPU (1000m)** and **2GB of RAM (2000Mi)** per instance, then raise resources if you see high concurrent outbound connections or large response bodies. Keep **at least three** instances behind a load balancer for availability, as described above.
 </Note>
+
+## Observability
+
+Prometheus scrapes **`/metrics`** on the processes you run (typically **`convoy server`** and **`convoy agent`** on **`server.http.port`** and **`server.http.agent_port`**). See [Metrics](/product-manual/metrics) for scrape examples, metric names, and [Grafana-oriented guidance](/product-manual/metrics#grafana-and-dashboards). Optional product telemetry (Mixpanel) is described in [Telemetry](/resources/telemetry).
 
 ## Third-Party Dependencies
 
