@@ -101,7 +101,7 @@ Redis is used for a number of operations, namely
 -   Rate limiting
 -   Circuit breaking
 
-**Scaling Best Practice**: Provision a highly available Redis cluster or configure **Redis Sentinel** to ensure reliability and sufficient memory to hold your queued (scheduled/retrying) webhooks payload.
+**Scaling Best Practice**: Provision a highly available Redis cluster or configure **Redis Sentinel** to ensure reliability and sufficient memory to hold your queued (scheduled/retrying) webhooks payload. For Redis Sentinel HA setup and self-hosting guidance, see [Redis & Redis Sentinel](/deployment/redis-and-sentinel).
 
 <Note>
 **Sizing guidance:** Start with **at least 2–4GB RAM** in production so queues, cache, and rate-limit state have headroom; scale memory with peak backlog, payload size, and number of Agents. Pair sizing with **Redis Sentinel** or a managed HA deployment so Redis is not a single point of failure.
