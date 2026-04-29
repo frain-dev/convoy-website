@@ -1,0 +1,495 @@
+---
+title: AKS (Azure Kubernetes Service)
+'og:title': Deploy Convoy on AKS
+'og:description': Deploy Convoy on Azure Kubernetes Service with or without Terraform
+'twitter:description': Deploy Convoy on Azure Kubernetes Service with or without Terraform
+'twitter:url': https://getconvoy.io/docs/deployment/install-convoy/aks
+---
+
+This is a practical AKS runbook with one clear order:
+
+1. Do a complete default install end-to-end.
+2. Do a complete managed-services install end-to-end.
+3. Terraform notes last.
+
+## 0) Install and verify tools
+
+### macOS
+
+```shell
+brew install azure-cli kubectl helm
+```
+
+### Windows (PowerShell)
+
+Use `winget`:
+
+```powershell
+winget install --id Microsoft.AzureCLI -e
+winget install --id Kubernetes.kubectl -e
+winget install --id Helm.Helm -e
+```
+
+Or use Chocolatey:
+
+```powershell
+choco install azure-cli kubernetes-cli kubernetes-helm -y
+```
+
+### Verify tools
+
+```shell
+az --version
+kubectl version --client
+helm version
+```
+
+## 1) Sign in to Azure
+
+```shell
+az login
+az account list -o table
+az account set --subscription "<subscription-name-or-id>"
+az account show -o table
+```
+
+<Note>
+  During `az login`, Azure CLI may ask you to choose a subscription by index (for example `1` or `2`). That is expected.
+</Note>
+
+## 2) Use one test profile for the whole guide
+
+Use these same variables throughout this page:
+
+```shell
+export AKS_RG="convoy-aks-test-rg"
+export AKS_NAME="convoy-aks-test"
+export AKS_LOCATION="eastus2"
+```
+
+## 3) Create and connect to AKS (end-to-end first section)
+
+```shell
+az group create --name "$AKS_RG" --location "$AKS_LOCATION"
+
+az aks create \
+  --resource-group "$AKS_RG" \
+  --name "$AKS_NAME" \
+  --node-count 3 \
+  --enable-managed-identity \
+  --generate-ssh-keys
+
+az aks get-credentials --resource-group "$AKS_RG" --name "$AKS_NAME" --overwrite-existing
+kubectl get nodes
+```
+
+### Time guide (normal ranges)
+
+- Resource group create: ~5-15 seconds
+- AKS create (`3` nodes): ~4-8 minutes
+- Get credentials + node check: ~10-30 seconds
+
+## 4) Path A - default chart install (in-cluster Postgres + Redis)
+
+This is the fastest way to validate Convoy on AKS.
+
+```shell
+helm repo add convoy https://frain-dev.github.io/helm-charts
+helm repo update
+
+helm install convoy-default convoy/convoy \
+  --namespace convoy-default \
+  --create-namespace
+```
+
+Check health:
+
+```shell
+kubectl get pods -n convoy-default
+kubectl get svc -n convoy-default
+kubectl logs -n convoy-default deploy/convoy-default-convoy-server --tail=100
+kubectl logs -n convoy-default deploy/convoy-default-convoy-agent --tail=100
+```
+
+### Time guide
+
+- Helm install: ~30-90 seconds
+- Pods fully ready (first boot): ~2-6 minutes
+
+## 5) Path B - managed Postgres + Redis install (same AKS cluster)
+
+Use a separate namespace/release so you can test both paths cleanly.
+
+### 5.1 Provision managed services in Azure
+
+```shell
+export PG_SERVER="convoyakspg$(date +%m%d%H%M%S)"
+export REDIS_NAME="convoyakstest$(date +%m%d%H%M%S)"
+export PG_ADMIN="convoyadmin"
+export PG_PASSWORD="replace-with-strong-password"
+
+az postgres flexible-server create \
+  --resource-group "$AKS_RG" \
+  --name "$PG_SERVER" \
+  --location "$AKS_LOCATION" \
+  --admin-user "$PG_ADMIN" \
+  --admin-password "$PG_PASSWORD" \
+  --sku-name Standard_B1ms \
+  --tier Burstable \
+  --storage-size 32 \
+  --version 16 \
+  --public-access 0.0.0.0
+
+az postgres flexible-server db create \
+  --resource-group "$AKS_RG" \
+  --server-name "$PG_SERVER" \
+  --database-name convoy
+
+# Required by Convoy migrations on Azure Postgres.
+az postgres flexible-server parameter set \
+  --resource-group "$AKS_RG" \
+  --server-name "$PG_SERVER" \
+  --name azure.extensions \
+  --value "pgcrypto"
+
+az redis create \
+  --name "$REDIS_NAME" \
+  --resource-group "$AKS_RG" \
+  --location "$AKS_LOCATION" \
+  --sku Basic \
+  --vm-size c0
+```
+
+Fetch connection values:
+
+```shell
+export PG_HOST=$(az postgres flexible-server show -g "$AKS_RG" -n "$PG_SERVER" --query fullyQualifiedDomainName -o tsv)
+export PG_DATABASE="convoy"
+export PG_USERNAME="${PG_ADMIN}"
+export REDIS_HOST=$(az redis show -g "$AKS_RG" -n "$REDIS_NAME" --query hostName -o tsv)
+export REDIS_PASSWORD=$(az redis list-keys -g "$AKS_RG" -n "$REDIS_NAME" --query primaryKey -o tsv)
+```
+
+### Time guide
+
+- Postgres Flexible Server create: ~5-12 minutes
+- Redis create: ~5-12 minutes
+
+<Note>
+  Azure Redis can be slower than other steps. Waiting up to ~15 minutes can still be normal.
+</Note>
+
+Check Redis provisioning status while you wait:
+
+```shell
+az redis show -g "$AKS_RG" -n "$REDIS_NAME" --query provisioningState -o tsv
+```
+
+### 5.2 Create Kubernetes secrets
+
+```shell
+export CONVOY_NS="convoy-managed"
+kubectl create namespace "$CONVOY_NS" --dry-run=client -o yaml | kubectl apply -f -
+kubectl create secret generic convoy-postgres -n "$CONVOY_NS" --from-literal=password="$PG_PASSWORD" --dry-run=client -o yaml | kubectl apply -f -
+kubectl create secret generic convoy-redis -n "$CONVOY_NS" --from-literal=password="$REDIS_PASSWORD" --dry-run=client -o yaml | kubectl apply -f -
+```
+
+### 5.3 Create `values-aks.yaml`
+
+Get the exact values first:
+
+```shell
+az postgres flexible-server show -g "$AKS_RG" -n "$PG_SERVER" --query "{host:fullyQualifiedDomainName,username:administratorLogin}" -o table
+az postgres flexible-server db list -g "$AKS_RG" -s "$PG_SERVER" -o table
+az redis show -g "$AKS_RG" -n "$REDIS_NAME" --query "{host:hostName,sslPort:sslPort}" -o table
+```
+
+Map them like this:
+
+- `externalDatabase.host` -> Postgres FQDN from Azure
+- `externalDatabase.port` -> `5432`
+- `externalDatabase.database` -> `convoy` (or your created DB name)
+- `externalDatabase.username` -> Postgres admin/user from Azure
+- `externalDatabase.secret` -> `convoy-postgres` (Kubernetes Secret with DB password)
+- `externalRedis.host` -> Redis hostname from Azure
+- `externalRedis.port` -> `6380` (TLS)
+- `externalRedis.scheme` -> `rediss`
+- `externalRedis.secret` -> `convoy-redis` (Kubernetes Secret with Redis key/password)
+
+```yaml values-aks.yaml
+postgresql:
+  enabled: false
+
+redis:
+  enabled: false
+
+global:
+  externalDatabase:
+    enabled: true
+    host: "<postgres-host>"
+    port: 5432
+    database: "convoy"
+    username: "<postgres-username>"
+    secret: "convoy-postgres"
+    options: "sslmode=require"
+  nativeRedis:
+    enabled: false
+  externalRedis:
+    enabled: true
+    host: "<redis-host>"
+    port: "6380"
+    scheme: "rediss"
+    database: "0"
+    secret: "convoy-redis"
+```
+
+Sample with real-looking values:
+
+```yaml
+global:
+  externalDatabase:
+    enabled: true
+    host: "convoyakspg0429115458.postgres.database.azure.com"
+    port: 5432
+    database: "convoy"
+    username: "convoyadmin"
+    secret: "convoy-postgres"
+    options: "sslmode=require"
+  nativeRedis:
+    enabled: false
+  externalRedis:
+    enabled: true
+    host: "convoyakstest0429120108.redis.cache.windows.net"
+    port: "6380"
+    scheme: "rediss"
+    database: "0"
+    secret: "convoy-redis"
+```
+
+### 5.4 Install managed release
+
+```shell
+helm install convoy-managed convoy/convoy \
+  --namespace "$CONVOY_NS" \
+  --create-namespace \
+  --values values-aks.yaml
+```
+
+Verify:
+
+```shell
+kubectl get pods -n "$CONVOY_NS"
+kubectl get svc -n "$CONVOY_NS"
+kubectl logs -n "$CONVOY_NS" deploy/convoy-managed-convoy-server --tail=100
+kubectl logs -n "$CONVOY_NS" deploy/convoy-managed-convoy-agent --tail=100
+```
+
+## 6) Troubleshooting (AKS-specific)
+
+### Postgres or Redis connection failures
+
+Check:
+
+- `values-aks.yaml` host/port/scheme values
+- Secret names and passwords (`convoy-postgres`, `convoy-redis`)
+- AKS outbound network access to Postgres/Redis
+- TLS settings (`sslmode=require` for Postgres, `rediss` + `6380` for Redis TLS)
+
+### Migration error: `pgcrypto` is not allow-listed
+
+If you see this during `wait-for-migrate`:
+
+`ERROR: extension "pgcrypto" is not allow-listed for users in Azure Database for PostgreSQL`
+
+run:
+
+```shell
+az postgres flexible-server parameter set \
+  --resource-group "$AKS_RG" \
+  --server-name "$PG_SERVER" \
+  --name azure.extensions \
+  --value "pgcrypto"
+```
+
+Then restart managed pods:
+
+```shell
+kubectl delete pod -n convoy-managed -l app.kubernetes.io/instance=convoy-managed
+```
+
+### `FailedAttachVolume` / `LinkedAuthorizationFailed`
+
+Grant the failing identity role on the AKS node resource group:
+
+```shell
+NODE_RG=$(az aks show -g "$AKS_RG" -n "$AKS_NAME" --query nodeResourceGroup -o tsv)
+NODE_RG_ID=$(az group show -n "$NODE_RG" --query id -o tsv)
+ASSIGNEE_OBJECT_ID="<object-id-from-error>"
+
+az role assignment create \
+  --assignee-object-id "$ASSIGNEE_OBJECT_ID" \
+  --assignee-principal-type ServicePrincipal \
+  --role "Contributor" \
+  --scope "$NODE_RG_ID"
+```
+
+## 7) Upgrade and cleanup
+
+Upgrade managed release:
+
+```shell
+helm repo update
+helm upgrade convoy-managed convoy/convoy --namespace convoy-managed --values values-aks.yaml
+```
+
+## 8) Test both installs
+
+Run these checks so you can confirm both releases are healthy.
+
+### 8.1 Check pods and rollouts
+
+```shell
+kubectl get pods -n convoy-default
+kubectl get pods -n convoy-managed
+
+kubectl rollout status deploy/convoy-default-convoy-server -n convoy-default
+kubectl rollout status deploy/convoy-default-convoy-agent -n convoy-default
+kubectl rollout status deploy/convoy-managed-convoy-server -n convoy-managed
+kubectl rollout status deploy/convoy-managed-convoy-agent -n convoy-managed
+```
+
+Expected result: all pods `Running` and all rollout checks report `successfully rolled out`.
+
+### 8.2 Probe default release health endpoints
+
+```shell
+kubectl port-forward -n convoy-default svc/convoy-default-convoy-server 18080:80
+```
+
+In another terminal:
+
+```shell
+curl -i http://127.0.0.1:18080/health
+curl -i http://127.0.0.1:18080/healthz
+curl -i http://127.0.0.1:18080/livez
+curl -i http://127.0.0.1:18080/readyz
+```
+
+Expected result: HTTP `200` on all four endpoints.
+
+### 8.3 Probe managed release health endpoints
+
+```shell
+kubectl port-forward -n convoy-managed svc/convoy-managed-convoy-server 18081:80
+```
+
+In another terminal:
+
+```shell
+curl -i http://127.0.0.1:18081/health
+curl -i http://127.0.0.1:18081/healthz
+curl -i http://127.0.0.1:18081/livez
+curl -i http://127.0.0.1:18081/readyz
+```
+
+Expected result: HTTP `200` on all four endpoints.
+
+### 8.4 Optional: check recent warning events
+
+```shell
+kubectl get events -n convoy-default --sort-by=.lastTimestamp | rg "Warning|Failed|BackOff|Unhealthy" || true
+kubectl get events -n convoy-managed --sort-by=.lastTimestamp | rg "Warning|Failed|BackOff|Unhealthy" || true
+```
+
+You might see old startup warnings from earlier retries. Focus on current pod health and endpoint responses.
+
+### 8.5 Open and log into each install
+
+Port-forward the default release:
+
+```shell
+kubectl port-forward -n convoy-default svc/convoy-default-convoy-server 18080:80
+```
+
+Then open:
+
+- `http://127.0.0.1:18080`
+
+Port-forward the managed release:
+
+```shell
+kubectl port-forward -n convoy-managed svc/convoy-managed-convoy-server 18081:80
+```
+
+Then open:
+
+- `http://127.0.0.1:18081`
+
+For default login credentials, use the credentials shown in the [Kubernetes login section](./kubernetes#login-to-your-instance).
+
+The same default login flow applies to the managed release unless you changed auth settings.
+
+## 9) Terraform (last)
+
+If you use Terraform, provision these first:
+
+- AKS cluster
+- PostgreSQL server + `convoy` database
+- Redis instance
+- Networking rules for AKS to reach Postgres/Redis
+
+Then reuse sections **5.2 -> 8** from this page (same Helm and values flow).
+
+## 10) Clean up test installs
+
+### 10.1 Remove Kubernetes releases and namespaces
+
+```shell
+helm uninstall convoy-default -n convoy-default || true
+helm uninstall convoy-managed -n convoy-managed || true
+kubectl delete namespace convoy-default convoy-managed --ignore-not-found=true
+```
+
+### 10.2 Remove Azure test infrastructure
+
+If you used the test profile from this guide, delete the whole resource group:
+
+```shell
+az group delete --name "$AKS_RG" --yes --no-wait
+```
+
+<Tip>
+  Deletion can take a while. For AKS + Postgres + Redis test stacks, 20-45 minutes is common.
+</Tip>
+
+Monitor progress:
+
+```shell
+az group exists --name "$AKS_RG"
+```
+
+For continuous polling:
+
+```shell
+for i in {1..120}; do
+  echo "$(date +%H:%M:%S) $(az group exists --name "$AKS_RG")"
+  sleep 15
+done
+```
+
+Optional: wait until Azure confirms the resource group is fully removed:
+
+```shell
+for i in {1..60}; do
+  az group exists --name "$AKS_RG"
+  sleep 10
+done
+```
+
+When deletion is complete, `az group exists` returns `false`.
+
+## Related docs
+
+- [Kubernetes install guide](./kubernetes)
+- [Deployment configuration](../configuration)
+- [Postgres and PgBouncer](../postgres-and-pgbouncer)
