@@ -40,6 +40,7 @@
                 "pages": [
                   "deployment/install-convoy/docker",
                   "deployment/install-convoy/kubernetes",
+                  "deployment/install-convoy/aks",
                   "deployment/install-convoy/troubleshooting"
                 ]
               }
