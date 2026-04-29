@@ -35,6 +35,7 @@
               "deployment/architecture",
               "deployment/configuration",
               "deployment/postgres-and-pgbouncer",
+              "deployment/redis-and-sentinel",
               {
                 "group": "Install Convoy",
                 "pages": [
