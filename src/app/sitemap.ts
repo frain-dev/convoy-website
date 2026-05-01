@@ -1,6 +1,30 @@
 import { getAllRoutes, getPosts } from '@/lib/getPosts';
 import { getAllChangelogSlugs } from '@/lib/changelog';
 
+/** Mintlify <loc> values may be absolute (e.g. https://getconvoy.io/docs/...). Strip origin so we never concatenate base URL onto a full URL. */
+function mintlifyLocToPath(loc: string): string | null {
+	let s = loc.trim().replace(/&amp;/g, '&');
+	if (!s.startsWith('http://') && !s.startsWith('https://')) {
+		return s.startsWith('/') ? s : `/${s}`;
+	}
+	try {
+		const u = new URL(s);
+		const host = u.hostname.toLowerCase();
+		const isOurSite =
+			host === 'getconvoy.io' ||
+			host.endsWith('.getconvoy.io') ||
+			host === 'convoy.mintlify.app' ||
+			host.endsWith('.mintlify.app');
+		if (!isOurSite) {
+			return null;
+		}
+		const path = u.pathname + u.search + u.hash;
+		return path.length > 0 ? path : '/';
+	} catch {
+		return null;
+	}
+}
+
 export default async function sitemap() {
 	const URL = 'https://www.getconvoy.io';
 
@@ -57,8 +81,8 @@ export default async function sitemap() {
 			text
 				.match(/<loc>(.*?)<\/loc>/g)
 				?.map(loc => loc.replace(/<\/?loc>/g, ''))
-				?.map(url => url.replace('https://docs.getconvoy.io/docs', '/docs'))
-				?.filter(route => !shouldExcludeRoute(route))
+				?.map(mintlifyLocToPath)
+				?.filter((route): route is string => route !== null && !shouldExcludeRoute(route))
 				?.map(route => ({
 					url: `${URL}${route}`,
 					lastModified: new Date(),
