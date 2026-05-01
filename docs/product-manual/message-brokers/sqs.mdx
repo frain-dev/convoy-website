@@ -70,4 +70,4 @@ For a full list of reference payloads, see [our guide on ingesting events](../..
 ## Things to note
 - Messages are read of the topic one-by-one by each worker reading off the queue.
 - Acknowledgements are done per message.
-- Ingestion is rate-limited (50 per second), and this can be configured by setting the `CONVOY_INGEST_RATE` environment variable.
+- Ingestion is subject to the **instance ingest rate** (`CONVOY_INSTANCE_INGEST_RATE` / `instance_ingest_rate`, default **1000**/s in code). See [Rate limits](/product-manual/rate-limits).

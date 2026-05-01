@@ -1,0 +1,90 @@
+# Receives repository_dispatch convoy_docs_sync from the Convoy server repo (or manual
+# workflow_dispatch), regenerates docs on convoy main (or requested ref), copies
+# docs/generated/* into docs/generated/convoy/, then opens or updates PR branch
+# chore/sync-convoy-generated-docs via peter-evans/create-pull-request.
+name: Receive Convoy docs sync
+
+on:
+  repository_dispatch:
+    types:
+      - convoy_docs_sync
+  workflow_dispatch:
+    inputs:
+      convoy_ref:
+        description: "Convoy repo ref (branch, tag, or SHA)"
+        required: false
+        default: main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: convoy-docs-sync-receive-${{ github.repository }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      CONVOY_REF: ${{ github.event.inputs.convoy_ref || github.event.client_payload.convoy_ref || 'main' }}
+    steps:
+      - name: Check out convoy-website
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          ref: main
+
+      - name: Check out Convoy server
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          repository: ${{ github.repository_owner }}/convoy
+          ref: ${{ env.CONVOY_REF }}
+          path: convoy-src
+          # Prefer PAT when Convoy is private or GITHUB_TOKEN cannot read it; else default token (public convoy).
+          token: ${{ secrets.CONVOY_CHECKOUT_TOKEN || github.token }}
+
+      - name: Set up Go
+        uses: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5 # v6
+        with:
+          go-version: "1.25.7"
+
+      - name: Cache Go modules (Convoy)
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-convoy-docs-sync-receive-${{ hashFiles('convoy-src/go.sum') }}
+
+      - name: Download modules
+        working-directory: convoy-src
+        run: go mod download
+
+      - name: Regenerate reference artifacts
+        working-directory: convoy-src
+        run: make docs-generated
+
+      - name: Copy generated artifacts into website tree
+        run: |
+          rm -rf docs/generated/convoy
+          mkdir -p docs/generated/convoy
+          cp -R convoy-src/docs/generated/. docs/generated/convoy/
+
+      - name: Open or update PR when drift exists
+        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6
+        with:
+          commit-message: "chore(docs): sync Convoy generated reference artifacts"
+          title: "chore(docs): sync Convoy generated reference artifacts"
+          body: |
+            This PR was opened or updated automatically after a **`convoy_docs_sync`** `repository_dispatch` (or a manual run of this workflow).
+
+            **Source:** `${{ github.repository_owner }}/convoy` at ref **`${{ env.CONVOY_REF }}`**, `make docs-generated`, mirrored under `docs/generated/convoy/`.
+
+            **What to do:** Review the diff; if it matches the config/CLI state you expect on Convoy `main`, merge.
+
+            **Branch:** `chore/sync-convoy-generated-docs` is reused and updated when new drift appears.
+
+            Maintainer reference: **Automation modes** → **Mode B — Generated reference sync (receive)** in `.github/DOCUMENTATION_SYNC.md` (dispatch token on the Convoy repo, optional `CONVOY_CHECKOUT_TOKEN` here).
+          branch: chore/sync-convoy-generated-docs
+          base: main
+          delete-branch: false
+          add-paths: |
+            docs/generated/**

@@ -35,6 +35,8 @@ On **Kubernetes with Helm**, you can avoid putting passwords in `values.yaml`: s
 
 ---
 
+The JSON keys and environment variable names below follow the Convoy server’s `Configuration` struct in [`config/config.go`](https://github.com/frain-dev/convoy/blob/main/config/config.go) (`DefaultConfiguration` holds built-in defaults). This block uses JSON-with-comments style for documentation only; copy fields into valid `convoy.json` as needed.
+
 Here's the full configuration reference
 
 ```json Config
@@ -44,13 +46,13 @@ Here's the full configuration reference
   // for the REST API. This config specifies which version your
   // instance should use. The environment variable equivalent is
   // CONVOY_API_VERSION. The default value is the latest at the time of release.
-  "api_version": "2024-01-01",
+  "api_version": "2025-11-24",
 
   // [optional]
   // This is used to specify the host the server is running on.
   // It is used in emails with links to access the instance.
   // E.g. user invitation. The environment variable equivalent is
-  // CONVOY_HOST. The default value is localhost.
+  // CONVOY_HOST. The default in code is localhost:5005.
   "host": "hooks.domain.com",
 
   // [required]
@@ -83,7 +85,7 @@ Here's the full configuration reference
 
     // Database port. The environment equivalent is
     // CONVOY_DB_PORT. The default value is 5432.
-    "port": 5432
+    "port": 5432,
 
     // This is used to tune the connection to the database
     // for maximum performance. It specifies the maximum
@@ -99,9 +101,9 @@ Here's the full configuration reference
 
     // This is used to tune the connection to the database
     // for maximum performance. It specifies how long any
-    // connection is kept in the pool before being killed.
+    // connection is kept in the pool before being killed (seconds).
     // The environment variable equivalent is CONVOY_DB_CONN_MAX_LIFETIME
-    "conn_max_lifetime": 10
+    "conn_max_lifetime": 3600,
 
     // [optional]
     // Read replicas configuration. These are additional database
@@ -171,13 +173,12 @@ Here's the full configuration reference
 
           // This is used to configure the port the ingest server runs on. This
           // config has no effect on the other components. The environment
-          // variable equivalent is INGEST_PORT.
-          "ingest_port": 5007,
+          // variable equivalent is INGEST_PORT. The default in code is 5009.
+          "ingest_port": 5009,
 
-          // This is used to configure the port the socket server runs on. This
-          // config has no effect on the other components. The environment
-          // variable equivalent is SOCKET_PORT.
-          "socket_port": 5008,
+          // Port for the socket server when used. The environment variable
+          // equivalent is SOCKET_PORT (no non-zero default in DefaultConfiguration).
+          "socket_port": 0,
 
           // This is used to configure the forward proxy URL. This must be set
           // on all workers if you want to configure a forward proxy. The
@@ -205,28 +206,29 @@ Here's the full configuration reference
 
     // Redis username. The environment variable equivalent is
     // CONVOY_REDIS_USERNAME.
-    "username": "redis",
+    "username": "",
 
     // Redis password. The environment variable equivalent is
     // CONVOY_REDIS_PASSWORD.
-    "password": "redis",
+    "password": "",
 
-    // Redis database. The environment variable equivalent is
-    // CONVOY_REDIS_DATABASE. The default: 0
-    "database": 0,
-
-    // [optional]
-    // Enable TLS encryption for Redis connections. The environment
-    // variable equivalent is CONVOY_REDIS_TLS_ENABLED. The default
-    // value is false.
-    "tls_enabled": false,
+    // Redis logical database index (string in config). The environment variable equivalent is
+    // CONVOY_REDIS_DATABASE.
+    "database": "0",
 
     // [optional]
-    // Redis cluster addresses. The environment variable equivalent is
-    // CONVOY_REDIS_ADDRESSES. The value takes precedence over the
-    // other redis configuration in this object. The urls are fully
-    // qualified domain names.
-    "addresses": "{url}, {url}, ...",
+    // TLS: skip verify, cert paths, or CA for Redis. Env vars:
+    // CONVOY_REDIS_TLS_SKIP_VERIFY, CONVOY_REDIS_TLS_CERT_FILE, CONVOY_REDIS_TLS_KEY_FILE,
+    // CONVOY_REDIS_TLS_CA_CERT_FILE. Prefer scheme "rediss" when the server expects TLS.
+    "tls_skip_verify": false,
+    "tls_cert_file": "",
+    "tls_key_file": "",
+    "tls_ca_cert_file": "",
+
+    // [optional]
+    // Redis cluster / sentinel address list (comma-separated). The environment variable equivalent is
+    // CONVOY_REDIS_CLUSTER_ADDRESSES. CLI flag: --redis-addresses. Takes precedence over host/port when set.
+    "addresses": "",
 
     // [optional]
     // The master name for Redis Sentinel setups. Required when scheme is redis-sentinel.
@@ -245,6 +247,11 @@ Here's the full configuration reference
     "sentinel_password": ""
   },
 
+  // [optional]
+  // Separate from `metrics`: legacy Prometheus push/address field used by some tooling. Env: CONVOY_PROM_DSN.
+  "prometheus": {
+    "dsn": ""
+  },
 
   // [optional]
   // your convoy license key, you will to specify this in order to access paid features.
@@ -298,7 +305,7 @@ Here's the full configuration reference
     // Specify the smtp from email. The environment variable equivalent is
     // CONVOY_SMTP_FROM
     "from": "[email protected]"
-  }
+  },
 
   // [optional]
   // Specify the retention policy configurations for your convoy instance
@@ -310,7 +317,7 @@ Here's the full configuration reference
 
       // Specify whether the retention policy job should run. The environment variable equivalent is CONVOY_RETENTION_POLICY_ENABLED
       "enabled": false,
-  }
+  },
 
   // [optional]
   // This is used to configure the logger for any Convoy component.
@@ -320,7 +327,7 @@ Here's the full configuration reference
     // are: fatal, error, warn, info, debug. The environment variable
     // equivalent is CONVOY_LOGGER_LEVEL. The default value is error.
     "level": "debug"
-  }
+  },
 
   // [optional]
   // This is used to configure how we generate and push traces to. While
@@ -342,7 +349,7 @@ Here's the full configuration reference
       "sample_rate": 1.0,
 
       // OTel backend URL. Only grpc ingestion urls are supported.
-      // The environment variable equivalent is CONVOY_OTEL_SAMPLE_RATE
+      // The environment variable equivalent is CONVOY_OTEL_COLLECTOR_URL
       "collector_url": "",
 
       // Specifies if server certs should be verified or not.
@@ -374,13 +381,20 @@ Here's the full configuration reference
   },
 
   // [optional]
+  // Product telemetry (Mixpanel), separate from Prometheus metrics. The environment variable equivalent is CONVOY_ANALYTICS_ENABLED.
+  "analytics": {
+    "enabled": true
+  },
+
+  // [optional]
   // We use this to configure deleting events away from PostgreSQL. This config
   // is optional, but if you're configuring retention policies on your project,
   // then you need to supply it.
   "storage_policy": {
 
     // The type can be either s3 or on_prem. The environment variable equivalent is CONVOY_STORAGE_POLICY_TYPE.
-    "type": "s3",
+    // The default in code is on_prem.
+    "type": "on_prem",
 
     // If type above is set to s3, then this config needs to be supplied.
     "s3": {
@@ -420,7 +434,7 @@ Here's the full configuration reference
       // The environment variable equivalent is CONVOY_STORAGE_PREM_PATH.
       "path": ""
     }
-  }
+  },
 
   // [optional]
   // This is used to configure authentication on your instance. The default values
@@ -489,11 +503,12 @@ Here's the full configuration reference
       // The environment variable equivalent is CONVOY_SSO_REDIRECT_URL.
       "redirect_url": ""
     }
-  }
+  },
 
   // [optional]
-  // This is used to configure the server's rate limit. It defaults to 25 reqs/sec.
-  "api_rate_limit": 25,
+  // HTTP API rate limit (requests per second) for control-plane and ingest HTTP routes that use this limiter.
+  // The environment variable equivalent is CONVOY_API_RATE_LIMIT. The default in code is 1000.
+  "api_rate_limit": 1000,
 
   // [optional]
   // This is used to configure the root path for Convoy deployments. This is useful
@@ -513,15 +528,14 @@ Here's the full configuration reference
   "max_response_size": 50,
 
   // [optional]
-  // This is used to configure the ingestion rate limit on the data plane. Internally,
-  // it is a distributed rate limiter implemented on Redis to ensure consistent limits
-  // across the cluster.
-  "instance_ingest_rate": 50
+  // Ingestion rate limit (events per second) for ingest paths that use InstanceIngestRate (API event creation, brokers, etc.).
+  // The environment variable equivalent is CONVOY_INSTANCE_INGEST_RATE. The default in code is 1000.
+  "instance_ingest_rate": 1000,
 
   // [optional]
-  // This is used to control the agent's execution mode. The values can be either
-  // default, retry and events.
-  "execution_mode": "retry"
+  // Agent execution mode: default, retry, or events. Maps to CLI `convoy agent --mode`.
+  // The environment variable equivalent is CONVOY_WORKER_EXECUTION_MODE.
+  "worker_execution_mode": "default",
 
   // [optional]
   // This is used to configure how we circuit break client endpoints.
@@ -530,38 +544,38 @@ Here's the full configuration reference
     // This is the frequency of polling the database in seconds to calculate
     // an endpoint's error rate.
     // The environment variable equivalent is CONVOY_CIRCUIT_BREAKER_SAMPLE_RATE.
-    "sample_rate": 10,
+    "sample_rate": 30,
 
     // This is the total amount of time in seconds wait in the half-open state
     // to enable the endpoint to recover.
     // The environment variable equivalent is CONVOY_CIRCUIT_BREAKER_ERROR_TIMEOUT.
-    "error_timeout": 60,
+    "error_timeout": 30,
 
     // This is the % number of failures in the observability window, before
     // we tripe the circuit.
     // The environment variable equivalent is CONVOY_CIRCUIT_BREAKER_FAILURE_THRESHOLD.
-    "failure_threshold": 10,
+    "failure_threshold": 70,
 
     // This is the total number of successes in the half-open state that'll
     // trigger the circuit back to a closed state.
     // The  environment variable equivalent is CONVOY_CIRCUIT_BREAKER_SUCCESS_THRESHOLD.
-    "success_threshold": 50,
+    "success_threshold": 5,
 
     // This is the total number of requests an endpoint must have before
     // we begin calculating error rate.
     // The environment variable equivalent is CONVOY_CIRCUIT_BREAKER_MINIMUM_REQUEST_COUNT.
-    "minimum_request_count": 15,
+    "minimum_request_count": 10,
 
     // This is the total time window to use in calculating the endpoint error rate.
     // It is configured in minutes.
     // The environment variable equivalent is CONVOY_CIRCUIT_BREAKER_OBSERVABILITY_WINDOW.
-    "observability_window": 30,
+    "observability_window": 5,
 
     // This is the total number of consecutive transitions to the open state
     // before we finally disable the endpoint.
     // The environment variable equivalent is CONVOY_CIRCUIT_BREAKER_CONSECUTIVE_FAILURE_THRESHOLD.
     "consecutive_failure_threshold": 10
-  }
+  },
 
   // [optional]
   // This configures a set of IP addresses that we can connect to. The goal
@@ -577,7 +591,7 @@ Here's the full configuration reference
 
     // This is used to configure the set of IP addresses that are blocked.
     // The equivalent environment variable is CONVOY_DISPATCHER_BLOCK_LIST.
-    "block_list": [ "127.0.0.0/8", "169.254.169.254", "::1/128" ],
+    "block_list": [ "127.0.0.0/8", "::1/128" ],
 
     // [optional] Custom CA configuration for the dispatcher.
     // The environment variable equivalent is CONVOY_DISPATCHER_CACERT_PATH
@@ -594,14 +608,14 @@ Here's the full configuration reference
     // Whether to skip ping validation entirely.
     // The environment variable equivalent is CONVOY_DISPATCHER_SKIP_PING_VALIDATION
     "skip_ping_validation": false
-  }
+  },
 
   // [optional]
   // This is the total time in seconds used to cap the exponential backoff
   // retry algorithm. For example, if set to 7200, it means we will never
   // exceed 2 hours in retry delay.
-  // The equivalent environment variable is CONVOY_MAX_RETRY_SECONDS.
-  "max_retry_seconds": 2000,
+  // The equivalent environment variable is CONVOY_MAX_RETRY_SECONDS. The root CLI flag --max-retry-seconds defaults to 7200.
+  "max_retry_seconds": 7200,
 
   // [optional]
   // Configure Pyroscope profiling capabilities.
@@ -710,3 +724,9 @@ Here's the full configuration reference
 }
 
 ```
+
+## Related documentation
+
+- [Metrics](/product-manual/metrics) — Prometheus endpoints, metric semantics, and Grafana operational guidance.
+- [Rate limits](/product-manual/rate-limits) — how **`api_rate_limit`** and **`instance_ingest_rate`** differ.
+- [Telemetry](/resources/telemetry) — optional product analytics (Mixpanel), separate from application metrics.

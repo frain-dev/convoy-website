@@ -1,0 +1,23 @@
+name: Docs drift
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - '.github/workflows/docs-drift.yml'
+      - '.github/scripts/docs-drift-check.sh'
+      - '.github/docs-drift/**'
+      - '.github/pull_request_template.md'
+      - '.github/DOCUMENTATION_SYNC.md'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run docs drift checks
+        run: bash .github/scripts/docs-drift-check.sh
