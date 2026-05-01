@@ -1,22 +1,50 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { OptimizedImage } from './OptimizedImaged';
 import RegionDropdown from './RegionDropdown';
 
+const useCaseLinks = [
+	{ name: 'Fintech', route: '/use-cases/fintech' },
+	{ name: 'AI & Machine Learning', route: '/use-cases/ai-ml' },
+	{ name: 'Developer Tools', route: '/use-cases/developer-tools' },
+	{ name: 'Healthcare', route: '/use-cases/healthcare' },
+	{ name: 'SaaS Platforms', route: '/use-cases/saas' },
+	{ name: 'E-commerce', route: '/use-cases/ecommerce' },
+	{ name: 'Logistics', route: '/use-cases/logistics' },
+	{ name: 'IoT & Devices', route: '/use-cases/iot' }
+];
+
 export default function Header() {
 	const [showMenu, setShowMenu] = useState(false);
 	const [currentRoute, setCurrentRoute] = useState('');
+	const [showUseCases, setShowUseCases] = useState(false);
+	const useCaseRef = useRef<HTMLLIElement>(null);
 	const pathname = usePathname();
+
+	useEffect(() => {
+		const handleClickOutside = (e: MouseEvent) => {
+			if (useCaseRef.current && !useCaseRef.current.contains(e.target as Node)) {
+				setShowUseCases(false);
+			}
+		};
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => document.removeEventListener('mousedown', handleClickOutside);
+	}, []);
+
+	useEffect(() => {
+		setShowUseCases(false);
+		setShowMenu(false);
+	}, [pathname]);
 
 	const menuItems = [
 		{ name: 'Core Gateway', route: '/core-gateway', type: 'route' },
+		{ name: 'Use Cases', route: '/use-cases', type: 'dropdown' },
 		{ name: 'Documentation', route: '/docs', type: 'route' },
 		{ name: 'Blog', route: '/blog', type: 'route' },
-		{ name: 'Changelog', route: '/changelog', type: 'route' },
 		{ name: 'Pricing', route: '/pricing', type: 'route' },
 		{ name: 'About', route: '/aboutus', type: 'route' }
 	];
@@ -39,9 +67,12 @@ export default function Header() {
 									<li
 										className="py-14px nav-bar-break:py-8px px-12px border-b border-b-primary-25 last-of-type:border-none nav-bar-break:border-none relative"
 										key={link.name}
+										ref={link.type === 'dropdown' ? useCaseRef : undefined}
 										onClick={() => {
-											setCurrentRoute(link.name);
-											setShowMenu(false);
+											if (link.type !== 'dropdown') {
+												setCurrentRoute(link.name);
+												setShowMenu(false);
+											}
 										}}>
 										{link.type === 'route' && link.route && (
 											<Link
@@ -51,6 +82,45 @@ export default function Header() {
 												href={link.route}>
 												{link.name}
 											</Link>
+										)}
+										{link.type === 'dropdown' && (
+											<>
+												<button
+													onClick={() => setShowUseCases(!showUseCases)}
+													className={`text-14 font-medium hover:opacity-75 transition-all flex items-center gap-1 ${
+														pathname.startsWith('/use-cases') ? 'text-[#2780F1] hover:opacity-100' : 'text-[#000]'
+													}`}>
+													{link.name}
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="12"
+														height="12"
+														viewBox="0 0 12 12"
+														fill="none"
+														className={`transition-transform ${showUseCases ? 'rotate-180' : ''}`}>
+														<path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+													</svg>
+												</button>
+												{showUseCases && (
+													<div className="nav-bar-break:absolute nav-bar-break:top-full nav-bar-break:left-1/2 nav-bar-break:-translate-x-1/2 nav-bar-break:mt-[6px] nav-bar-break:bg-white-100 nav-bar-break:border nav-bar-break:border-[#E7E7E7] nav-bar-break:rounded-8px nav-bar-break:shadow-lg nav-bar-break:z-[200] nav-bar-break:w-[220px] nav-bar-break:py-2 mt-2 nav-bar-break:mt-[6px]">
+														<Link
+															href="/use-cases"
+															className="block px-4 py-2 text-14 font-semibold text-[#000] hover:bg-[#f5f5f5] transition-all border-b border-[#E7E7E7] mb-1">
+															All Use Cases
+														</Link>
+														{useCaseLinks.map(uc => (
+															<Link
+																key={uc.route}
+																href={uc.route}
+																className={`block px-4 py-[7px] text-13 font-medium hover:bg-[#f5f5f5] transition-all ${
+																	pathname === uc.route ? 'text-[#2780F1]' : 'text-[#666]'
+																}`}>
+																{uc.name}
+															</Link>
+														))}
+													</div>
+												)}
+											</>
 										)}
 										{link.type === 'link' && link.route && (
 											<a className="text-14 text-[#000] font-medium transition-all duration-300 hover:text-black" target="_blank" href={link.route}>
